@@ -10,8 +10,8 @@ import {
 import { getIsochroneColor } from "@/assets/js/overlay";
 import { defineProps, computed, ref } from "vue";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import sheltersData from "@/assets/Chernivtsi_Shelters.geojson?raw";
-import isochroneData from "@/assets/Chernivtsi_Isochrone_Geoapify.geojson?raw";
+import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
+import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 // Points Layer Setting
 const shelters = JSON.parse(sheltersData);
 const sheltersName = "Shelters";
@@ -62,6 +62,7 @@ props.map.leafletObject.on("overlayremove", (e) => {
 </script>
 
 <template>
+  <!-- Overlay Import -->
   <l-feature-group :name="sheltersName" layer-type="overlay">
     <l-circle-marker
       pane="markerPane"
@@ -95,6 +96,7 @@ props.map.leafletObject.on("overlayremove", (e) => {
     :options-style="isochroneStyles"
     pane="overlayPane"
   ></l-geo-json>
+  <!-- Legend Control -->
   <l-control position="bottomright">
     <button
       @click="showLegend = !showLegend"
