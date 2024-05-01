@@ -8,10 +8,11 @@ import {
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { defineProps, computed, ref } from "vue";
+import { computed, ref, setBlockTracking } from "vue";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
+import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
 // Points Layer Setting
 const shelters = JSON.parse(sheltersData);
 const sheltersName = "Shelters";
@@ -29,7 +30,7 @@ const markerOptions = {
 // Isochrones Layer Setting
 const isochrones = JSON.parse(isochroneData);
 const isochronesName = "Isochrones";
-const isochroneStyles = (feature) => {
+const isochroneStyle = (feature) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
     fillOpacity: 0.5,
@@ -41,28 +42,51 @@ const isochroneStyles = (feature) => {
 const sortedIsochrones = [...isochrones.features].sort(
   (a, b) => b.properties.range - a.properties.range,
 );
+// Polyline Layer Setting
+const boundary = JSON.parse(boundaryData);
+const boundaryName = "Boundary";
+const boundaryStyle = () => {
+  return {
+    fillOpacity: 0,
+    color: "black",
+  };
+};
 // Legend
+// Save the map object sent from parent component MapView.vue in props
 const props = defineProps({
   map: Object,
 });
 const showLegend = ref(false);
-const showSheltersLegend = ref(true);
-const showIsochronesLegend = ref(false);
+const showPointLegend = ref(true);
+const showPolygonLegend = ref(false);
+const showPolylineLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
 });
 props.map.leafletObject.on("overlayadd", (e) => {
-  if (e.name === isochronesName) showIsochronesLegend.value = true;
-  else showSheltersLegend.value = true;
+  if (e.name === isochronesName) showPolygonLegend.value = true;
+  else if (e.name === boundaryName) showPolylineLegend.value = true;
+  else showPointLegend.value = true;
 });
 props.map.leafletObject.on("overlayremove", (e) => {
-  if (e.name === isochronesName) showIsochronesLegend.value = false;
-  else showSheltersLegend.value = false;
+  if (e.name === isochronesName) showPolygonLegend.value = false;
+  else if (e.name === boundaryName) showPolylineLegend.value = false;
+  else showPointLegend.value = false;
 });
 </script>
 
 <template>
   <!-- Overlay Import -->
+  <!-- Boundary -->
+  <l-geo-json
+    :name="boundaryName"
+    :geojson="boundary"
+    layer-type="overlay"
+    :visible="true"
+    :options-style="boundaryStyle"
+    pane="overlayPane"
+  ></l-geo-json>
+  <!-- Shelters -->
   <l-feature-group :name="sheltersName" layer-type="overlay">
     <l-circle-marker
       pane="markerPane"
@@ -88,12 +112,13 @@ props.map.leafletObject.on("overlayremove", (e) => {
       ></l-popup
     ></l-circle-marker>
   </l-feature-group>
+  <!-- Isochrones -->
   <l-geo-json
     :name="isochronesName"
     :geojson="sortedIsochrones"
     layer-type="overlay"
     :visible="false"
-    :options-style="isochroneStyles"
+    :options-style="isochroneStyle"
     pane="overlayPane"
   ></l-geo-json>
   <!-- Legend Control -->
@@ -106,11 +131,11 @@ props.map.leafletObject.on("overlayremove", (e) => {
       <strong>Legend</strong>
     </button>
     <div class="legend" v-show="showLegend">
-      <div class="pointLegend" v-show="showSheltersLegend">
+      <div class="legend--point" v-show="showPointLegend">
         <i class="point" :style="{ background: markerOptions.fillColor }"></i>
         Shelters
       </div>
-      <div class="polygonLegend" v-show="showIsochronesLegend">
+      <div class="legend--polygon" v-show="showPolygonLegend">
         <template
           v-for="feature in isochrones.features"
           :key="feature.properties.range"
@@ -121,6 +146,10 @@ props.map.leafletObject.on("overlayremove", (e) => {
           ></i
           >Isochrone {{ feature.properties.range }} min<br />
         </template>
+      </div>
+      <div class="legend--polyline" v-show="showPolylineLegend">
+        <i class="polyline" :style="{ background: boundaryStyle().color }"></i>
+        City Boundary
       </div>
     </div>
   </l-control>
@@ -148,15 +177,17 @@ props.map.leafletObject.on("overlayremove", (e) => {
 }
 .legend .point {
   border-radius: 50%;
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
 }
 .legend .polygon {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
 }
 .legend .polyline {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 2.5px;
+  margin-left: 0;
+  margin-top: 0.5em;
 }
 </style>

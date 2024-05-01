@@ -1,23 +1,20 @@
 <script setup>
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import { defineProps, onMounted } from "vue";
+// [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
+// Save the data sent from parent component MapView.vue in props
 const props = defineProps({
   map: Object,
   zoom: Number,
   centers: Array,
 });
-// console.log("NaviControl Setup");
-// onMounted(() => {
-//   console.log("NaviControl Mounted");
-// });
-const btnNaviClick = (center) => {
-  props.map.leafletObject.setView(center, props.zoom);
+const btnNaviClick = (latLng) => {
+  props.map.leafletObject.setView(latLng, props.zoom);
 };
 </script>
 
 <template>
   <l-control position="topleft">
-    <div class="btn-group dropend">
+    <div class="btn-group dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
         type="button"
@@ -25,16 +22,15 @@ const btnNaviClick = (center) => {
         aria-expanded="false"
         data-bs-auto-close="false"
       >
-        Navi
+        Navigation
       </button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu show">
         <template v-for="center in props.centers" :key="center.name">
           <li>
             <a
               class="dropdown-item"
               href="#"
               @click="btnNaviClick(center.latLng)"
-              type="button"
             >
               {{ center.name }}
             </a>
@@ -51,5 +47,12 @@ const btnNaviClick = (center) => {
 }
 .btn-group .dropdown-menu a {
   color: black;
+}
+ul {
+  position: absolute;
+  will-change: transform;
+  top: 0px;
+  left: 0px;
+  transform: translate3d(0px, 39px, 0px);
 }
 </style>

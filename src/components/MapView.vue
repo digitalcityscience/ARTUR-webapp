@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 // // Import Leaflet
 // import * as L from "leaflet";
 
-// Map Setting
+// Map Settings
 const zoom = 12;
 const firstZoom = 12;
 const centers = [
@@ -18,7 +18,7 @@ const centers = [
 ];
 const map = ref();
 const flag = ref(false);
-// Tile Layers Setting
+// Tile Layers Settings
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 const isReady = () => {
