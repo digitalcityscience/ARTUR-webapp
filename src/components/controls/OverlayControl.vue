@@ -7,18 +7,24 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
+import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { computed, ref, setBlockTracking } from "vue";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import { computed, ref, onMounted, inject } from "vue";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
-// Points Layer Setting
+// Polyline Layer Settings
+const boundary = JSON.parse(boundaryData);
+const boundaryName = "Boundary";
+const boundaryStyle = () => {
+  return {
+    fillOpacity: 0,
+    color: "black",
+  };
+};
+// Points Layer Settings
 const shelters = JSON.parse(sheltersData);
 const sheltersName = "Shelters";
-const popupOptions = {
-  autoPan: false,
-};
 const markerOptions = {
   radius: 5,
   fillColor: "orange",
@@ -27,8 +33,14 @@ const markerOptions = {
   opacity: 0.8,
   fillOpacity: 0.8,
 };
-// Isochrones Layer Setting
+const popupOptions = {
+  autoPan: false,
+};
+// Isochrones Layer Settings
 const isochrones = JSON.parse(isochroneData);
+const sortedIsochrones = [...isochrones.features].sort(
+  (a, b) => b.properties.range - a.properties.range,
+);
 const isochronesName = "Isochrones";
 const isochroneStyle = (feature) => {
   return {
@@ -39,23 +51,8 @@ const isochroneStyle = (feature) => {
     opacity: 1,
   };
 };
-const sortedIsochrones = [...isochrones.features].sort(
-  (a, b) => b.properties.range - a.properties.range,
-);
-// Polyline Layer Setting
-const boundary = JSON.parse(boundaryData);
-const boundaryName = "Boundary";
-const boundaryStyle = () => {
-  return {
-    fillOpacity: 0,
-    color: "black",
-  };
-};
 // Legend
-// Save the map object sent from parent component MapView.vue in props
-const props = defineProps({
-  map: Object,
-});
+const map = inject("map");
 const showLegend = ref(false);
 const showPointLegend = ref(true);
 const showPolygonLegend = ref(false);
@@ -63,15 +60,23 @@ const showPolylineLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
 });
-props.map.leafletObject.on("overlayadd", (e) => {
+map.value.leafletObject.on("overlayadd", (e) => {
   if (e.name === isochronesName) showPolygonLegend.value = true;
   else if (e.name === boundaryName) showPolylineLegend.value = true;
   else showPointLegend.value = true;
 });
-props.map.leafletObject.on("overlayremove", (e) => {
+map.value.leafletObject.on("overlayremove", (e) => {
   if (e.name === isochronesName) showPolygonLegend.value = false;
   else if (e.name === boundaryName) showPolylineLegend.value = false;
   else showPointLegend.value = false;
+});
+const pointGroup = ref();
+const polyline = ref();
+const polygon = ref();
+const ready = ref(false);
+onMounted(() => {
+  ready.value = true;
+  console.log("Layer is mounted");
 });
 </script>
 
@@ -85,9 +90,10 @@ props.map.leafletObject.on("overlayremove", (e) => {
     :visible="true"
     :options-style="boundaryStyle"
     pane="overlayPane"
+    ref="polyline"
   ></l-geo-json>
   <!-- Shelters -->
-  <l-feature-group :name="sheltersName" layer-type="overlay">
+  <l-feature-group :name="sheltersName" layer-type="overlay" ref="pointGroup">
     <l-circle-marker
       pane="markerPane"
       v-for="feature in shelters.features"
@@ -120,12 +126,15 @@ props.map.leafletObject.on("overlayremove", (e) => {
     :visible="false"
     :options-style="isochroneStyle"
     pane="overlayPane"
+    ref="polygon"
   ></l-geo-json>
+  <!-- Popup Description -->
+  <!-- <SidebarLeft></SidebarLeft> -->
   <!-- Legend Control -->
-  <l-control position="bottomright">
+  <l-control position="bottomleft">
     <button
       @click="showLegend = !showLegend"
-      class="btn btn-primary btn-sm legend_button"
+      class="btn btn-primary btn-sm legend__button"
     >
       <i :class="btnLegendIconClass"></i>
       <strong>Legend</strong>
@@ -134,6 +143,10 @@ props.map.leafletObject.on("overlayremove", (e) => {
       <div class="legend--point" v-show="showPointLegend">
         <i class="point" :style="{ background: markerOptions.fillColor }"></i>
         Shelters
+      </div>
+      <div class="legend--polyline" v-show="showPolylineLegend">
+        <i class="polyline" :style="{ background: boundaryStyle().color }"></i>
+        City Boundary
       </div>
       <div class="legend--polygon" v-show="showPolygonLegend">
         <template
@@ -147,16 +160,13 @@ props.map.leafletObject.on("overlayremove", (e) => {
           >Isochrone {{ feature.properties.range }} min<br />
         </template>
       </div>
-      <div class="legend--polyline" v-show="showPolylineLegend">
-        <i class="polyline" :style="{ background: boundaryStyle().color }"></i>
-        City Boundary
-      </div>
     </div>
   </l-control>
+  <RightSiderbarControl v-if="ready"></RightSiderbarControl>
 </template>
 
 <style scoped>
-.legend_button {
+.legend__button {
   position: relative;
   width: 100%;
 }

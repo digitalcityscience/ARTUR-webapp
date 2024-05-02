@@ -1,14 +1,18 @@
 <script setup>
 import { LControl } from "@vue-leaflet/vue-leaflet";
+import { inject } from "vue";
 // [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
 // Save the data sent from parent component MapView.vue in props
+const map = inject("map");
 const props = defineProps({
-  map: Object,
   zoom: Number,
   centers: Array,
 });
+const href = (name) => {
+  return "#" + name;
+};
 const btnNaviClick = (latLng) => {
-  props.map.leafletObject.setView(latLng, props.zoom);
+  map.value.leafletObject.setView(latLng, props.zoom);
 };
 </script>
 
@@ -22,14 +26,15 @@ const btnNaviClick = (latLng) => {
         aria-expanded="false"
         data-bs-auto-close="false"
       >
-        Navigation
+        <i class="fa fa-crosshairs"></i>
+        Cities
       </button>
       <ul class="dropdown-menu show">
         <template v-for="center in props.centers" :key="center.name">
           <li>
             <a
               class="dropdown-item"
-              href="#"
+              :href="href(center.name)"
               @click="btnNaviClick(center.latLng)"
             >
               {{ center.name }}
