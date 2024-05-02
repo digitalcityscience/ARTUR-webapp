@@ -1,8 +1,6 @@
 <script setup>
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import { inject } from "vue";
-// [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
-// Save the data sent from parent component MapView.vue in props
 const map = inject("map");
 const props = defineProps({
   zoom: Number,
