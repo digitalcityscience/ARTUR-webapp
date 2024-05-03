@@ -10,7 +10,7 @@ import {
 import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { ref, onMounted, provide } from "vue";
+import { provide, ref } from "vue";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
@@ -18,6 +18,8 @@ import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Polyline Layer Settings
 const boundary = JSON.parse(boundaryData);
+const boundaryName = "City Boundary";
+const showBoundary = ref(true);
 const boundaryStyle = () => {
   return {
     fillOpacity: 0,
@@ -26,6 +28,8 @@ const boundaryStyle = () => {
 };
 // Point Layer Settings
 const shelters = JSON.parse(sheltersData);
+const sheltersName = "Shelters";
+const showShelters = ref(true);
 const markerOptions = {
   radius: 5,
   fillColor: "orange",
@@ -39,6 +43,8 @@ const popupOptions = {
 };
 // Isochrone Layer Settings
 const isochrones = JSON.parse(isochroneData);
+const isochronesName = "Isochrones";
+const showIsochrones = ref(true);
 const isochroneRange = [];
 isochrones.features.forEach((feature) => {
   const properties = feature.properties;
@@ -59,17 +65,9 @@ const isochroneStyle = (feature) => {
 provide("markerColor", markerOptions.fillColor);
 provide("boundaryColor", boundaryStyle().color);
 provide("isochroneRange", isochroneRange);
-const osm = ref();
-const pointGroup = ref();
-const polyline = ref();
-const polygon = ref();
-onMounted(() => {
-  console.log("Layer is mounted");
-  if (osm.value.ready) {
-    console.log(osm.value.leafletObject);
-  }
-  console.log(pointGroup.value.ready);
-});
+provide("sheltersLayer", { name: sheltersName, visible: showShelters });
+provide("boundaryLayer", { name: boundaryName, visible: showBoundary });
+provide("isochronesLayer", { name: isochronesName, visible: showIsochrones });
 </script>
 
 <template>
@@ -79,11 +77,14 @@ onMounted(() => {
     layer-type="base"
     name="OpenStreetMap"
     pane="tilePane"
-    ref="osm"
   >
   </l-tile-layer>
   <!-- Shelters -->
-  <l-feature-group name="shelters" layer-type="overlay" ref="pointGroup">
+  <l-feature-group
+    :name="sheltersName"
+    layer-type="overlay"
+    :visible="showShelters"
+  >
     <l-circle-marker
       pane="markerPane"
       v-for="feature in shelters.features"
@@ -110,36 +111,27 @@ onMounted(() => {
   </l-feature-group>
   <!-- Boundary -->
   <l-geo-json
-    name="boundary"
+    :name="boundaryName"
     :geojson="boundary"
+    :visible="showBoundary"
     layer-type="overlay"
-    :visible="true"
     :options-style="boundaryStyle"
     pane="overlayPane"
-    ref="polyline"
   ></l-geo-json>
   <!-- Isochrones -->
   <l-geo-json
-    name="isochrones"
+    :name="isochronesName"
     :geojson="isochrones"
+    :visible="showIsochrones"
     layer-type="overlay"
-    :visible="false"
     :options-style="isochroneStyle"
     pane="overlayPane"
-    ref="polygon"
   ></l-geo-json>
   <LegendControl></LegendControl>
-  <RightSiderbarControl>
-    <template #layers>
-      <label><input type="radio" name="tilelayer" />OpenStreetMap</label>
-      <br />
-      <input
-        type="checkbox"
-        id="shelters"
-        name="shelters"
-        value="shelters"
-      /><label for="shelters">Shelters</label>
-    </template>
-  </RightSiderbarControl>
+  <RightSiderbarControl></RightSiderbarControl>
 </template>
-<style scoped></style>
+<style scoped>
+.label-text {
+  margin-left: 3px;
+}
+</style>

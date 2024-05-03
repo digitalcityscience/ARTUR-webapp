@@ -40,7 +40,7 @@ provide("map", map);
     style="width: 100vw; height: 100vh"
   >
     <!-- Controls -->
-    <l-control-layers :collapsed="false"></l-control-layers>
+    <!-- <l-control-layers :collapsed="false"></l-control-layers> -->
     <l-control-scale :imperial="false"></l-control-scale>
     <NaviControl :zoom="firstZoom" :centers="centers" />
     <LayerControl></LayerControl>

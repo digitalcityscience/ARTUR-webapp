@@ -1,6 +1,10 @@
 <script setup>
-import { onMounted, inject } from "vue";
+import { onMounted, inject, ref } from "vue";
 const map = inject("map");
+const sheltersLayer = inject("sheltersLayer");
+const boundaryLayer = inject("boundaryLayer");
+const isochronesLayer = inject("isochronesLayer");
+const overlays = [sheltersLayer, boundaryLayer, isochronesLayer];
 onMounted(() => {
   console.log("Right Sidebar is mounted");
   let sidebar = L.control
@@ -9,7 +13,13 @@ onMounted(() => {
       position: "right",
       closebutton: true,
     })
-    .addTo(map.value.leafletObject);
+    .addTo(map.value.leafletObject)
+    .open("layer");
+});
+// Initiallize My Layer Control
+const ready = ref(false);
+map.value.leafletObject.on("layeradd", () => {
+  ready.value = true;
 });
 </script>
 <template>
@@ -44,7 +54,26 @@ onMounted(() => {
           ></span>
         </h1>
         <div class="layer-control-content" style="margin-top: 10px">
-          <slot name="layers"></slot>
+          <template v-if="ready">
+            <label>
+              <span>
+                <input type="radio" name="baselayer" :checked="true" />
+                <span class="label-text">Open Street Map</span>
+              </span>
+            </label>
+            <template v-for="overlay in overlays" :key="overlay.name">
+              <label>
+                <span>
+                  <input
+                    type="checkbox"
+                    :name="overlay.name"
+                    v-model="overlay.visible.value"
+                  />
+                  <span class="label-text">{{ overlay.name }}</span>
+                </span>
+              </label>
+            </template>
+          </template>
         </div>
 
         <h2>Shelters' Information</h2>
@@ -90,5 +119,11 @@ onMounted(() => {
   .leaflet-sidebar-pane {
     min-width: 335px;
   }
+}
+.label-text {
+  margin-left: 3px;
+}
+label {
+  display: block;
 }
 </style>
