@@ -13,7 +13,6 @@ const centers = [
   { name: "Zhytomyr", latLng: [50.26453, 28.67374] },
 ];
 const map = ref();
-const ready = ref(false);
 const mapOptions = {
   zoomControl: true,
   attributionControl: false,
@@ -23,7 +22,6 @@ const mapOptions = {
 };
 // Is map ready?
 const isReady = () => {
-  ready.value = true;
   console.log("Map is ready");
 };
 onMounted(() => {
@@ -42,10 +40,10 @@ provide("map", map);
     style="width: 100vw; height: 100vh"
   >
     <!-- Controls -->
-    <l-control-layers></l-control-layers>
+    <l-control-layers :collapsed="false"></l-control-layers>
     <l-control-scale :imperial="false"></l-control-scale>
-    <NaviControl v-if="ready" :zoom="firstZoom" :centers="centers" />
-    <LayerControl v-if="ready"></LayerControl>
+    <NaviControl :zoom="firstZoom" :centers="centers" />
+    <LayerControl></LayerControl>
   </l-map>
 </template>
 <style scoped></style>

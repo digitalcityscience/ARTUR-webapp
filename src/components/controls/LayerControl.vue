@@ -39,9 +39,14 @@ const popupOptions = {
 };
 // Isochrone Layer Settings
 const isochrones = JSON.parse(isochroneData);
-const sortedIsochrones = [...isochrones.features].sort(
-  (a, b) => b.properties.range - a.properties.range,
-);
+const isochroneRange = [];
+isochrones.features.forEach((feature) => {
+  const properties = feature.properties;
+  if (properties && properties.range !== undefined) {
+    isochroneRange.push(properties.range);
+  }
+});
+isochrones.features.sort((a, b) => b.properties.range - a.properties.range);
 const isochroneStyle = (feature) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
@@ -51,23 +56,19 @@ const isochroneStyle = (feature) => {
     opacity: 1,
   };
 };
-const isochroneRange = [];
-isochrones.features.forEach((feature) => {
-  const properties = feature.properties;
-  if (properties && properties.range !== undefined) {
-    isochroneRange.push(properties.range);
-  }
-});
 provide("markerColor", markerOptions.fillColor);
 provide("boundaryColor", boundaryStyle().color);
 provide("isochroneRange", isochroneRange);
+const osm = ref();
 const pointGroup = ref();
 const polyline = ref();
 const polygon = ref();
-const ready = ref(false);
 onMounted(() => {
-  ready.value = true;
   console.log("Layer is mounted");
+  if (osm.value.ready) {
+    console.log(osm.value.leafletObject);
+  }
+  console.log(pointGroup.value.ready);
 });
 </script>
 
@@ -78,18 +79,9 @@ onMounted(() => {
     layer-type="base"
     name="OpenStreetMap"
     pane="tilePane"
+    ref="osm"
   >
   </l-tile-layer>
-  <!-- Boundary -->
-  <l-geo-json
-    name="boundary"
-    :geojson="boundary"
-    layer-type="overlay"
-    :visible="true"
-    :options-style="boundaryStyle"
-    pane="overlayPane"
-    ref="polyline"
-  ></l-geo-json>
   <!-- Shelters -->
   <l-feature-group name="shelters" layer-type="overlay" ref="pointGroup">
     <l-circle-marker
@@ -116,21 +108,31 @@ onMounted(() => {
       ></l-popup
     ></l-circle-marker>
   </l-feature-group>
+  <!-- Boundary -->
+  <l-geo-json
+    name="boundary"
+    :geojson="boundary"
+    layer-type="overlay"
+    :visible="true"
+    :options-style="boundaryStyle"
+    pane="overlayPane"
+    ref="polyline"
+  ></l-geo-json>
   <!-- Isochrones -->
   <l-geo-json
     name="isochrones"
-    :geojson="sortedIsochrones"
+    :geojson="isochrones"
     layer-type="overlay"
     :visible="false"
     :options-style="isochroneStyle"
     pane="overlayPane"
     ref="polygon"
   ></l-geo-json>
-  <LegendControl v-if="ready"></LegendControl>
-  <RightSiderbarControl v-if="ready">
-    <template v-slot:layers>
-      <input type="radio" id="tilelayer" name="tilelayer" value="tilelayer" />
-      <label for="tilelayer">OpenStreetMap</label><br />
+  <LegendControl></LegendControl>
+  <RightSiderbarControl>
+    <template #layers>
+      <label><input type="radio" name="tilelayer" />OpenStreetMap</label>
+      <br />
       <input
         type="checkbox"
         id="shelters"
