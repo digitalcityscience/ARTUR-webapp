@@ -1,6 +1,5 @@
 <script setup>
 import {
-  LControl,
   LGeoJson,
   LCircleMarker,
   LFeatureGroup,
@@ -8,9 +7,10 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
+import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { computed, ref, onMounted, inject } from "vue";
+import { ref, onMounted, provide } from "vue";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
@@ -18,7 +18,6 @@ import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Polyline Layer Settings
 const boundary = JSON.parse(boundaryData);
-const boundaryName = "Boundary";
 const boundaryStyle = () => {
   return {
     fillOpacity: 0,
@@ -27,7 +26,6 @@ const boundaryStyle = () => {
 };
 // Point Layer Settings
 const shelters = JSON.parse(sheltersData);
-const sheltersName = "Shelters";
 const markerOptions = {
   radius: 5,
   fillColor: "orange",
@@ -44,7 +42,6 @@ const isochrones = JSON.parse(isochroneData);
 const sortedIsochrones = [...isochrones.features].sort(
   (a, b) => b.properties.range - a.properties.range,
 );
-const isochronesName = "Isochrones";
 const isochroneStyle = (feature) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
@@ -54,25 +51,16 @@ const isochroneStyle = (feature) => {
     opacity: 1,
   };
 };
-// Legend
-const map = inject("map");
-const showLegend = ref(false);
-const showPointLegend = ref(true);
-const showPolygonLegend = ref(false);
-const showPolylineLegend = ref(true);
-const btnLegendIconClass = computed(() => {
-  return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
+const isochroneRange = [];
+isochrones.features.forEach((feature) => {
+  const properties = feature.properties;
+  if (properties && properties.range !== undefined) {
+    isochroneRange.push(properties.range);
+  }
 });
-map.value.leafletObject.on("overlayadd", (e) => {
-  if (e.name === isochronesName) showPolygonLegend.value = true;
-  else if (e.name === boundaryName) showPolylineLegend.value = true;
-  else showPointLegend.value = true;
-});
-map.value.leafletObject.on("overlayremove", (e) => {
-  if (e.name === isochronesName) showPolygonLegend.value = false;
-  else if (e.name === boundaryName) showPolylineLegend.value = false;
-  else showPointLegend.value = false;
-});
+provide("markerColor", markerOptions.fillColor);
+provide("boundaryColor", boundaryStyle().color);
+provide("isochroneRange", isochroneRange);
 const pointGroup = ref();
 const polyline = ref();
 const polygon = ref();
@@ -94,7 +82,7 @@ onMounted(() => {
   </l-tile-layer>
   <!-- Boundary -->
   <l-geo-json
-    :name="boundaryName"
+    name="boundary"
     :geojson="boundary"
     layer-type="overlay"
     :visible="true"
@@ -103,7 +91,7 @@ onMounted(() => {
     ref="polyline"
   ></l-geo-json>
   <!-- Shelters -->
-  <l-feature-group :name="sheltersName" layer-type="overlay" ref="pointGroup">
+  <l-feature-group name="shelters" layer-type="overlay" ref="pointGroup">
     <l-circle-marker
       pane="markerPane"
       v-for="feature in shelters.features"
@@ -130,7 +118,7 @@ onMounted(() => {
   </l-feature-group>
   <!-- Isochrones -->
   <l-geo-json
-    :name="isochronesName"
+    name="isochrones"
     :geojson="sortedIsochrones"
     layer-type="overlay"
     :visible="false"
@@ -138,85 +126,18 @@ onMounted(() => {
     pane="overlayPane"
     ref="polygon"
   ></l-geo-json>
-  <!-- Legend Control -->
-  <l-control position="bottomleft">
-    <button
-      @click="showLegend = !showLegend"
-      class="btn btn-primary btn-sm legend__button"
-    >
-      <i :class="btnLegendIconClass"></i>
-      <strong>Legend</strong>
-    </button>
-    <div class="legend" v-show="showLegend">
-      <div class="legend--point" v-show="showPointLegend">
-        <i class="point" :style="{ background: markerOptions.fillColor }"></i>
-        Shelters
-      </div>
-      <div class="legend--polyline" v-show="showPolylineLegend">
-        <i class="polyline" :style="{ background: boundaryStyle().color }"></i>
-        City Boundary
-      </div>
-      <div class="legend--polygon" v-show="showPolygonLegend">
-        <template
-          v-for="feature in isochrones.features"
-          :key="feature.properties.range"
-        >
-          <i
-            class="polygon"
-            :style="{ background: getIsochroneColor(feature.properties.range) }"
-          ></i
-          >Isochrone {{ feature.properties.range }} min<br />
-        </template>
-      </div>
-    </div>
-  </l-control>
+  <LegendControl v-if="ready"></LegendControl>
   <RightSiderbarControl v-if="ready">
     <template v-slot:layers>
       <input type="radio" id="tilelayer" name="tilelayer" value="tilelayer" />
       <label for="tilelayer">OpenStreetMap</label><br />
       <input
         type="checkbox"
-        :id="sheltersName"
-        :name="sheltersName"
-        value="sheltersName"
-      /><label :for="sheltersName">{{ sheltersName }}</label>
+        id="shelters"
+        name="shelters"
+        value="shelters"
+      /><label for="shelters">Shelters</label>
     </template>
   </RightSiderbarControl>
 </template>
-
-<style scoped>
-.legend__button {
-  position: relative;
-  width: 100%;
-}
-.legend {
-  padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  line-height: 18px;
-  color: #555;
-}
-.legend i {
-  margin-top: 2.7px;
-  float: left;
-  margin-right: 8px;
-  opacity: 0.7;
-}
-.legend .point {
-  border-radius: 50%;
-  width: 12px;
-  height: 12px;
-}
-.legend .polygon {
-  width: 12px;
-  height: 12px;
-}
-.legend .polyline {
-  width: 12px;
-  height: 2.5px;
-  margin-left: 0;
-  margin-top: 0.5em;
-}
-</style>
+<style scoped></style>
