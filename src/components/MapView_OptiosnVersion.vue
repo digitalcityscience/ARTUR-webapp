@@ -9,7 +9,7 @@ import {
   LFeatureGroup,
   LGeoJson,
 } from "@vue-leaflet/vue-leaflet";
-import LegendControl from "./controls/OverlayControl.vue";
+import LegendControl from "./controls/LayerControl.vue";
 import NaviControl from "./controls/NaviControl.vue";
 import { getIsochroneColor } from "@/assets/overlay";
 import "leaflet/dist/leaflet.css";

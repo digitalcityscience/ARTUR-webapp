@@ -4,6 +4,7 @@ import {
   LGeoJson,
   LCircleMarker,
   LFeatureGroup,
+  LTileLayer,
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
@@ -13,6 +14,8 @@ import { computed, ref, onMounted, inject } from "vue";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
+// Tile Layers Settings
+const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Polyline Layer Settings
 const boundary = JSON.parse(boundaryData);
 const boundaryName = "Boundary";
@@ -22,7 +25,7 @@ const boundaryStyle = () => {
     color: "black",
   };
 };
-// Points Layer Settings
+// Point Layer Settings
 const shelters = JSON.parse(sheltersData);
 const sheltersName = "Shelters";
 const markerOptions = {
@@ -36,7 +39,7 @@ const markerOptions = {
 const popupOptions = {
   autoPan: false,
 };
-// Isochrones Layer Settings
+// Isochrone Layer Settings
 const isochrones = JSON.parse(isochroneData);
 const sortedIsochrones = [...isochrones.features].sort(
   (a, b) => b.properties.range - a.properties.range,
@@ -81,7 +84,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Overlay Import -->
+  <!-- Base Layers -->
+  <l-tile-layer
+    :url="url"
+    layer-type="base"
+    name="OpenStreetMap"
+    pane="tilePane"
+  >
+  </l-tile-layer>
   <!-- Boundary -->
   <l-geo-json
     :name="boundaryName"
@@ -128,8 +138,6 @@ onMounted(() => {
     pane="overlayPane"
     ref="polygon"
   ></l-geo-json>
-  <!-- Popup Description -->
-  <!-- <SidebarLeft></SidebarLeft> -->
   <!-- Legend Control -->
   <l-control position="bottomleft">
     <button
@@ -162,7 +170,18 @@ onMounted(() => {
       </div>
     </div>
   </l-control>
-  <RightSiderbarControl v-if="ready"></RightSiderbarControl>
+  <RightSiderbarControl v-if="ready">
+    <template v-slot:layers>
+      <input type="radio" id="tilelayer" name="tilelayer" value="tilelayer" />
+      <label for="tilelayer">OpenStreetMap</label><br />
+      <input
+        type="checkbox"
+        :id="sheltersName"
+        :name="sheltersName"
+        value="sheltersName"
+      /><label :for="sheltersName">{{ sheltersName }}</label>
+    </template>
+  </RightSiderbarControl>
 </template>
 
 <style scoped>

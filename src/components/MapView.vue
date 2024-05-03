@@ -1,12 +1,7 @@
 <script setup>
-import {
-  LMap,
-  LTileLayer,
-  LControlLayers,
-  LControlScale,
-} from "@vue-leaflet/vue-leaflet";
+import { LMap, LControlLayers, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, onMounted, provide } from "vue";
-import OverlayControl from "./controls/OverlayControl.vue";
+import LayerControl from "./controls/LayerControl.vue";
 import NaviControl from "./controls/NaviControl.vue";
 // Map Settings
 const zoom = 12;
@@ -26,9 +21,7 @@ const mapOptions = {
   maxZoom: 18,
   center: centers[0].latLng,
 };
-// Tile Layers Settings
-const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
-// Flag
+// Is map ready?
 const isReady = () => {
   ready.value = true;
   console.log("Map is ready");
@@ -48,20 +41,11 @@ provide("map", map);
     @ready="isReady"
     style="width: 100vw; height: 100vh"
   >
-    <!-- Layers -->
-    <l-tile-layer
-      :url="url"
-      layer-type="base"
-      name="OpenStreetMap"
-      pane="tilePane"
-    >
-    </l-tile-layer>
     <!-- Controls -->
     <l-control-layers></l-control-layers>
     <l-control-scale :imperial="false"></l-control-scale>
     <NaviControl v-if="ready" :zoom="firstZoom" :centers="centers" />
-    <OverlayControl v-if="ready"></OverlayControl>
+    <LayerControl v-if="ready"></LayerControl>
   </l-map>
 </template>
-
 <style scoped></style>

@@ -35,6 +35,7 @@ onMounted(() => {
     </div>
     <!-- panel content -->
     <div class="leaflet-sidebar-content">
+      <!-- Layers -->
       <div class="leaflet-sidebar-pane" id="layer">
         <h1 class="leaflet-sidebar-header">
           Layer Control
@@ -42,13 +43,11 @@ onMounted(() => {
             ><i class="fa fa-caret-down"></i
           ></span>
         </h1>
-        <p>
-          A responsive sidebar for the mapping library
-          <a href="https://leafletjs.com/">Leaflet</a>.
-        </p>
-        <p>Compatible with version 0.7 and 1.x (tested up to 1.6.0)</p>
-        <p><b>Select the other panes for a showcase of each feature.</b></p>
-        <h2>More examples</h2>
+        <div class="layer-control-content" style="margin-top: 10px">
+          <slot name="layers"></slot>
+        </div>
+
+        <h2>Shelters' Information</h2>
         <ul>
           <li><a href="./position-right.html">Right aligned</a></li>
           <li>
@@ -63,6 +62,7 @@ onMounted(() => {
           </li>
         </ul>
       </div>
+      <!-- Dashboard -->
       <div class="leaflet-sidebar-pane" id="dashboard">
         <h1 class="leaflet-sidebar-header">
           Dashboard
