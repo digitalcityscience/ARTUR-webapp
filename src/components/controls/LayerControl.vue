@@ -62,12 +62,21 @@ const isochroneStyle = (feature) => {
     opacity: 1,
   };
 };
-provide("markerColor", markerOptions.fillColor);
-provide("boundaryColor", boundaryStyle().color);
-provide("isochroneRange", isochroneRange);
-provide("sheltersLayer", { name: sheltersName, visible: showShelters });
-provide("boundaryLayer", { name: boundaryName, visible: showBoundary });
-provide("isochronesLayer", { name: isochronesName, visible: showIsochrones });
+provide("sheltersLayer", {
+  name: sheltersName,
+  visible: showShelters,
+  color: markerOptions.fillColor,
+});
+provide("boundaryLayer", {
+  name: boundaryName,
+  visible: showBoundary,
+  color: boundaryStyle().color,
+});
+provide("isochronesLayer", {
+  name: isochronesName,
+  visible: showIsochrones,
+  color: isochroneRange,
+});
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup>
-import { LMap, LControlLayers, LControlScale } from "@vue-leaflet/vue-leaflet";
+import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, onMounted, provide } from "vue";
 import LayerControl from "./controls/LayerControl.vue";
 import NaviControl from "./controls/NaviControl.vue";
