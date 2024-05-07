@@ -5,7 +5,7 @@ import { getIsochroneColor } from "@/assets/js/overlay";
 const sheltersLayer = inject("sheltersLayer");
 const boundaryLayer = inject("boundaryLayer");
 const isochronesLayer = inject("isochronesLayer");
-const showLegend = ref(false);
+const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
 });

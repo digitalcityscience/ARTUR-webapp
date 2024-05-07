@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, inject, ref } from "vue";
+import { onMounted, inject } from "vue";
 const map = inject("map");
 const sheltersLayer = inject("sheltersLayer");
 const boundaryLayer = inject("boundaryLayer");
@@ -25,16 +25,20 @@ onMounted(() => {
       <!-- top aligned tabs -->
       <ul role="tablist">
         <li>
-          <a href="#layer" role="tab"><i class="bi bi-stack"></i></a>
+          <a href="#layer" role="tab" title="Layers Information"
+            ><i class="bi bi-stack"></i
+          ></a>
         </li>
         <li>
-          <a href="#dashboard" role="tab"><i class="fa fa-bar-chart"></i></a>
+          <a href="#dashboard" role="tab" title="Dashboard"
+            ><i class="fa fa-bar-chart"></i
+          ></a>
         </li>
       </ul>
       <!-- bottom tabs -->
       <ul role="tablist">
         <li>
-          <a href="#settings"><i class="fa fa-gear"></i></a>
+          <a href="#settings" title="Settings"><i class="fa fa-gear"></i></a>
         </li>
       </ul>
     </div>
@@ -56,15 +60,21 @@ onMounted(() => {
                 data-bs-toggle="collapse"
                 data-bs-target="#layer-control-collapse"
                 aria-expanded="true"
+                style="padding-left: 0"
               >
                 Layer Control
               </button>
-              <div class="collapse show" id="layer-control-collapse">
+              <div
+                class="collapse show"
+                id="layer-control-collapse"
+                style="margin-left: 1em"
+              >
+                <p>Base Layers</p>
                 <div class="form-check">
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="baselayer"
+                    name="osm"
                     id="osm"
                     checked
                   />
@@ -73,6 +83,7 @@ onMounted(() => {
                   </label>
                 </div>
                 <div class="border-top my-1"></div>
+                <p>Overlays</p>
                 <template v-for="overlay in overlays" :key="overlay.name">
                   <div class="form-check">
                     <input
@@ -92,26 +103,20 @@ onMounted(() => {
             <li class="border-top my-3"></li>
             <li class="mb-1">
               <button
-                class="btn btn-toggle align-items-center rounded collapsed"
+                class="btn btn-toggle rounded collapsed"
                 data-bs-toggle="collapse"
-                data-bs-target="#dashboard-collapse"
-                aria-expanded="false"
+                data-bs-target="#popup-collapse"
+                aria-expanded="true"
+                style="padding-left: 0"
               >
-                Dashboard
+                Shelters Information
               </button>
-              <div class="collapse" id="dashboard-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="#" class="link-dark rounded">Overview</a></li>
-                  <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                  <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                  <li><a href="#" class="link-dark rounded">Annually</a></li>
-                </ul>
+              <div class="collapse show" id="popup-collapse">
+                <slot name="popup"></slot>
               </div>
             </li>
-            <li class="border-top my-3"></li>
           </ul>
         </div>
-        <h2>Shelters' Information</h2>
       </div>
       <!-- Dashboard -->
       <div class="leaflet-sidebar-pane" id="dashboard">
@@ -142,21 +147,22 @@ onMounted(() => {
     min-width: 335px;
   }
 }
+p {
+  margin-bottom: 0;
+}
 .btn-toggle {
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.5rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.65);
   background-color: transparent;
   border: 0;
 }
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(0, 0, 0, 0.85);
-  background-color: #d2f4ea;
+  background-color: #7dbfeb;
 }
-
 .btn-toggle::before {
   width: 1.25em;
   line-height: 0;
@@ -165,22 +171,19 @@ onMounted(() => {
   transform-origin: 0.5em 50%;
 }
 
-.btn-toggle[aria-expanded="true"] {
-  color: rgba(0, 0, 0, 0.85);
-}
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
 
-.btn-toggle-nav a {
+/* .btn-toggle-nav a {
   display: inline-flex;
   padding: 0.1875rem 0.5rem;
   margin-top: 0.125rem;
-  margin-left: 1.25rem;
+  margin-left: 0;
   text-decoration: none;
-}
-.btn-toggle-nav a:hover,
+} */
+/* .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
-}
+} */
 </style>

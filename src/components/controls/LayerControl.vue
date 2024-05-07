@@ -5,12 +5,11 @@ import {
   LFeatureGroup,
   LTileLayer,
   LTooltip,
-  LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { provide, ref } from "vue";
+import { provide, ref, computed } from "vue";
 import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
 import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
 import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
@@ -37,9 +36,6 @@ const markerOptions = {
   weight: 1,
   opacity: 0.8,
   fillOpacity: 0.8,
-};
-const popupOptions = {
-  autoPan: false,
 };
 // Isochrone Layer Settings
 const isochrones = JSON.parse(isochroneData);
@@ -77,6 +73,12 @@ provide("isochronesLayer", {
   visible: showIsochrones,
   color: isochroneRange,
 });
+const popup = ref();
+const togglePopup = (feature) => {
+  popup.value = feature.properties.description
+    ? feature.properties.description
+    : feature.properties.Name;
+};
 </script>
 
 <template>
@@ -105,18 +107,11 @@ provide("isochronesLayer", {
       ]"
       :options="markerOptions"
       layer-type="overlay"
+      @click="togglePopup(feature)"
       ><l-tooltip>
         {{ feature.properties.Name }}
       </l-tooltip>
-      <l-popup
-        :options="popupOptions"
-        :content="
-          feature.properties.description
-            ? feature.properties.description
-            : feature.properties.Name
-        "
-      ></l-popup
-    ></l-circle-marker>
+    </l-circle-marker>
   </l-feature-group>
   <!-- Boundary -->
   <l-geo-json
@@ -137,7 +132,11 @@ provide("isochronesLayer", {
     pane="overlayPane"
   ></l-geo-json>
   <LegendControl></LegendControl>
-  <RightSiderbarControl></RightSiderbarControl>
+  <RightSiderbarControl>
+    <template #popup>
+      <h6 v-html="popup" style="margin-left: 1em"></h6>
+    </template>
+  </RightSiderbarControl>
 </template>
 <style scoped>
 .label-text {
