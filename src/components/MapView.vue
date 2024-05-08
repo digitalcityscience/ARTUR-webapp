@@ -1,33 +1,47 @@
 <script setup>
 import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
-import { ref, onMounted, provide } from "vue";
+import { ref, provide, watch, onBeforeMount } from "vue";
 import LayerControl from "./controls/LayerControl.vue";
 import NaviControl from "./controls/NaviControl.vue";
+import { loadData } from "../assets/js/overlay.js";
+const cities = [
+  { name: "Zhytomyr", latLng: [50.26453, 28.67374] },
+  { name: "Dnipro", latLng: [48.467953, 35.041797] },
+  { name: "Sumy", latLng: [50.911913, 34.80279] },
+  { name: "Chernivtsi", latLng: [48.30933, 25.94639] },
+];
+const city = ref();
+const shelters = ref();
+const boundary = ref();
+const isochrones = ref();
+const isJsonDataLoad = ref(false);
+onBeforeMount(() => {
+  city.value = cities[0].name;
+});
+watch(city, async (newValue, oldValue) => {
+  await loadData(newValue, shelters, boundary, isochrones);
+  isJsonDataLoad.value = true;
+  console.log(`change to ${newValue} from ${oldValue}`);
+});
 // Map Settings
+const map = ref();
 const zoom = 12;
 const firstZoom = 12;
-const centers = [
-  { name: "Chernivtsi", latLng: [48.30933, 25.94639] },
-  { name: "Poltava", latLng: [49.60009, 34.54352] },
-  { name: "Vinnytsia", latLng: [49.23866, 28.47993] },
-  { name: "Zhytomyr", latLng: [50.26453, 28.67374] },
-];
-const map = ref();
 const mapOptions = {
   zoomControl: true,
   attributionControl: false,
   minZoom: 3,
   maxZoom: 18,
-  center: centers[0].latLng,
+  center: cities[0].latLng,
 };
-// Is map ready?
+provide("map", map);
+provide("city", city);
+provide("shelters", shelters);
+provide("boundary", boundary);
+provide("isochrones", isochrones);
 const isReady = () => {
   console.log("Map is ready");
 };
-onMounted(() => {
-  console.log("Map is mounted");
-});
-provide("map", map);
 </script>
 <template>
   <l-map
@@ -40,10 +54,9 @@ provide("map", map);
     style="width: 100vw; height: 100vh"
   >
     <!-- Controls -->
-    <!-- <l-control-layers :collapsed="false"></l-control-layers> -->
     <l-control-scale :imperial="false"></l-control-scale>
-    <NaviControl :zoom="firstZoom" :centers="centers" />
-    <LayerControl></LayerControl>
+    <NaviControl :zoom="firstZoom" :cities="cities" />
+    <LayerControl v-if="isJsonDataLoad"></LayerControl>
   </l-map>
 </template>
 <style scoped></style>

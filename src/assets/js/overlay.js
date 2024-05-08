@@ -12,7 +12,22 @@ export function getIsochroneColor(minute) {
       return "#82E0AA";
     default:
       alert(
-        "This Isochrone map has invalid range! The range should be a value within 1-5 min.",
+        "This Isochrone map has invalid range! The range should be a Name within 1-5 min.",
       );
   }
+}
+export async function loadData(cityValue, shelters, boundary, isochrones) {
+  const [sheltersData, boundaryData, isochronesData] = await Promise.all([
+    import(`@/assets/data/${cityValue}_Shelters.geojson?raw`),
+    import(`@/assets/data/${cityValue}_Boundary.geojson?raw`),
+    import(`@/assets/data/${cityValue}_Isochrone_Geoapify.geojson?raw`),
+  ]);
+
+  shelters.value = JSON.parse(sheltersData.default);
+  boundary.value = JSON.parse(boundaryData.default);
+  isochrones.value = JSON.parse(isochronesData.default);
+  isochrones.value.features.sort(
+    (a, b) => b.properties.range - a.properties.range,
+  );
+  console.log("Data loaded for", cityValue);
 }

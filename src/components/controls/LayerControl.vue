@@ -9,24 +9,11 @@ import {
 import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
 import { getIsochroneColor } from "@/assets/js/overlay";
-import { provide, ref, computed } from "vue";
-import sheltersData from "@/assets/data/Chernivtsi_Shelters.geojson?raw";
-import isochroneData from "@/assets/data/Chernivtsi_Isochrone_Geoapify.geojson?raw";
-import boundaryData from "@/assets/data/Chernivtsi_Boundary.geojson?raw";
+import { provide, ref, inject } from "vue";
 // Tile Layers Settings
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
-// Polyline Layer Settings
-const boundary = JSON.parse(boundaryData);
-const boundaryName = "City Boundary";
-const showBoundary = ref(true);
-const boundaryStyle = () => {
-  return {
-    fillOpacity: 0,
-    color: "black",
-  };
-};
 // Point Layer Settings
-const shelters = JSON.parse(sheltersData);
+const shelters = inject("shelters");
 const sheltersName = "Shelters";
 const showShelters = ref(true);
 const markerOptions = {
@@ -37,18 +24,37 @@ const markerOptions = {
   opacity: 0.8,
   fillOpacity: 0.8,
 };
+const popup = ref();
+const togglePopup = (feature) => {
+  popup.value = feature.properties.description
+    ? feature.properties.description
+    : feature.properties.Name;
+};
+const highlightPoint = (e) => {
+  e.target.setStyle({
+    weight: 3,
+    dashArray: "",
+    color: "black",
+  });
+};
+const resetHighlight = (e) => {
+  e.target.setStyle(markerOptions);
+};
+// Polyline Layer Settings
+const boundary = inject("boundary");
+const boundaryName = "City Boundary";
+const showBoundary = ref(true);
+const boundaryStyle = () => {
+  return {
+    fillOpacity: 0,
+    color: "black",
+  };
+};
 // Isochrone Layer Settings
-const isochrones = JSON.parse(isochroneData);
+const isochrones = inject("isochrones");
 const isochronesName = "Isochrones";
 const showIsochrones = ref(true);
-const isochroneRange = [];
-isochrones.features.forEach((feature) => {
-  const properties = feature.properties;
-  if (properties && properties.range !== undefined) {
-    isochroneRange.push(properties.range);
-  }
-});
-isochrones.features.sort((a, b) => b.properties.range - a.properties.range);
+const isochroneRange = [1, 2, 3, 4, 5];
 const isochroneStyle = (feature) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
@@ -73,12 +79,6 @@ provide("isochronesLayer", {
   visible: showIsochrones,
   color: isochroneRange,
 });
-const popup = ref();
-const togglePopup = (feature) => {
-  popup.value = feature.properties.description
-    ? feature.properties.description
-    : feature.properties.Name;
-};
 </script>
 
 <template>
@@ -106,8 +106,10 @@ const togglePopup = (feature) => {
         feature.geometry.coordinates[0],
       ]"
       :options="markerOptions"
-      layer-type="overlay"
       @click="togglePopup(feature)"
+      @mouseover="highlightPoint"
+      @mouseout="resetHighlight"
+      layer-type="overlay"
       ><l-tooltip>
         {{ feature.properties.Name }}
       </l-tooltip>
@@ -138,8 +140,4 @@ const togglePopup = (feature) => {
     </template>
   </RightSiderbarControl>
 </template>
-<style scoped>
-.label-text {
-  margin-left: 3px;
-}
-</style>
+<style scoped></style>

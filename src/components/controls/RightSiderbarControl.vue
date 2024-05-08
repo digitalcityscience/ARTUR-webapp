@@ -49,7 +49,7 @@ onMounted(() => {
         <h1 class="leaflet-sidebar-header">
           Layers
           <span class="leaflet-sidebar-close"
-            ><i class="fa fa-caret-down"></i
+            ><i class="fa fa-caret-right"></i
           ></span>
         </h1>
         <div class="layer-control-content" style="margin-top: 10px">
@@ -123,7 +123,7 @@ onMounted(() => {
         <h1 class="leaflet-sidebar-header">
           Dashboard
           <span class="leaflet-sidebar-close"
-            ><i class="fa fa-caret-down"></i
+            ><i class="fa fa-caret-right"></i
           ></span>
         </h1>
         <p>

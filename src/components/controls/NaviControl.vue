@@ -1,16 +1,18 @@
 <script setup>
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import { inject } from "vue";
+import { ref, inject } from "vue";
 const map = inject("map");
 const props = defineProps({
   zoom: Number,
-  centers: Array,
+  cities: Array,
 });
-const href = (name) => {
-  return "#" + name;
+const btnNaviClick = (city) => {
+  map.value.leafletObject.flyTo(city.latLng, props.zoom);
+  selectedCity.value = city.name;
 };
-const btnNaviClick = (latLng) => {
-  map.value.leafletObject.setView(latLng, props.zoom);
+const selectedCity = inject("city");
+const isSelected = (cityName) => {
+  return selectedCity.value === cityName;
 };
 </script>
 
@@ -19,24 +21,23 @@ const btnNaviClick = (latLng) => {
     <div class="btn-group dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
-        type="button"
         data-bs-toggle="dropdown"
-        aria-expanded="false"
+        aria-expanded="true"
         data-bs-auto-close="false"
       >
         <i class="fa fa-crosshairs"></i>
         Cities
       </button>
       <ul class="dropdown-menu show">
-        <template v-for="center in props.centers" :key="center.name">
+        <template v-for="city in props.cities" :key="city.name">
           <li>
-            <a
+            <button
               class="dropdown-item"
-              :href="href(center.name)"
-              @click="btnNaviClick(center.latLng)"
+              @click="btnNaviClick(city)"
+              :class="{ active: isSelected(city.name) }"
             >
-              {{ center.name }}
-            </a>
+              {{ city.name }}
+            </button>
           </li>
         </template>
       </ul>
@@ -45,6 +46,10 @@ const btnNaviClick = (latLng) => {
 </template>
 
 <style scoped>
+.active {
+  background-color: var(--bs-gray-500);
+  color: black;
+}
 .btn-group .dropdown-menu {
   --bs-dropdown-link-hover-bg: var(--bs-gray-500);
 }
