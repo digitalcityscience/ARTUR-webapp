@@ -5,6 +5,7 @@ import {
   LFeatureGroup,
   LTileLayer,
   LTooltip,
+  LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
@@ -98,8 +99,8 @@ provide("isochronesLayer", {
   >
     <l-circle-marker
       pane="markerPane"
-      v-for="feature in shelters.features"
-      :key="feature.properties.ID"
+      v-for="(feature, index) in shelters.features"
+      :key="`${index}-${feature.properties.Name}`"
       :name="feature.properties.Name"
       :lat-lng="[
         feature.geometry.coordinates[1],
@@ -113,6 +114,13 @@ provide("isochronesLayer", {
       ><l-tooltip>
         {{ feature.properties.Name }}
       </l-tooltip>
+      <!-- <l-popup
+        :content="
+          feature.properties.description
+            ? feature.properties.description
+            : feature.properties.Name
+        "
+      ></l-popup> -->
     </l-circle-marker>
   </l-feature-group>
   <!-- Boundary -->
