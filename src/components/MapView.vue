@@ -46,7 +46,6 @@ const isReady = () => {
 <template>
   <l-map
     ref="map"
-    :zoom="zoom"
     v-model:zoom="zoom"
     :use-global-leaflet="false"
     :options="mapOptions"
