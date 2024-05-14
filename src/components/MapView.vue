@@ -5,7 +5,8 @@ import type { Ref } from "vue";
 import LayerControl from "./controls/LayerControl.vue";
 import NaviControl from "./controls/NaviControl.vue";
 import { loadData } from "../assets/ts/functions";
-const cities = [
+import type { City } from "../assets/ts/types.ts";
+const cities: Array<City> = [
   { name: "Zhytomyr", latLng: [50.26453, 28.67374] },
   { name: "Dnipro", latLng: [48.467953, 35.041797] },
   { name: "Sumy", latLng: [50.911913, 34.80279] },
