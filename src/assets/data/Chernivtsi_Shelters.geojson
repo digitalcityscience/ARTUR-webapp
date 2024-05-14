@@ -1,0 +1,3637 @@
+{
+  "type": "FeatureCollection",
+  "name": "Chernivtsi_Shelters",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 183",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9710952, 48.2842783, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 129",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ligh4fl4th3lukqs5u570b4cuc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq9LFfLWof7Ks1kiMuiC3jbyQV8kW3Fa64yWzMFv9PI5fM0DS3AVvOWAbaxHJC0o0FTzLr9OHk3Ap2FhoUxGdk2ayqacVx9bqzY6DugqfvsXuqbzNID_e5U5YO542-JWGjV6nX3t7KYsTGYRZAEqX-CtJNessVNqS_3LykYAXo1ApWXEhktQefKMNWHM6uLEmKu?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ligh4fl4th3lukqs5u570b4cuc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq9LFfLWof7Ks1kiMuiC3jbyQV8kW3Fa64yWzMFv9PI5fM0DS3AVvOWAbaxHJC0o0FTzLr9OHk3Ap2FhoUxGdk2ayqacVx9bqzY6DugqfvsXuqbzNID_e5U5YO542-JWGjV6nX3t7KYsTGYRZAEqX-CtJNessVNqS_3LykYAXo1ApWXEhktQefKMNWHM6uLEmKu?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9403097, 48.2815588, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Комунальників, 5",
+        "description": "«Чернівціводоканал»",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.98851, 48.2708992, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 24",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ano70qcd10qvfrssm2f79opshc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrkWljgiBeN2EgcGORHBynydQ5RgITpKHoOxDONnoJy1J4vFGVRN9Ycx54cmzluszkDEWd6Z0STKqT3dKWMMLnLU9AlAqzUJQz6gI8V_Yhn5oPZptnjk5NfqL4cm6ZGC_2cigGRNZb5x1xZmtzCCtL96jXgnJy4nJfihdcEY8sZv4RMbsuodQ_4CJkNXPIg7JE?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ano70qcd10qvfrssm2f79opshc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrkWljgiBeN2EgcGORHBynydQ5RgITpKHoOxDONnoJy1J4vFGVRN9Ycx54cmzluszkDEWd6Z0STKqT3dKWMMLnLU9AlAqzUJQz6gI8V_Yhn5oPZptnjk5NfqL4cm6ZGC_2cigGRNZb5x1xZmtzCCtL96jXgnJy4nJfihdcEY8sZv4RMbsuodQ_4CJkNXPIg7JE?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9359832, 48.2936835, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кишинівська, 6",
+        "description": "Ключі у жильців",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9571499, 48.2893177, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 48",
+        "description": "<img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/v9o5u8ql2h9ue2q3mgb65ovkrc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrewbHNvVw8HC8qr4BSQmFPQjRMkZLtSLbDgdpHjU8fE0ZFfIeKc250h5ieH38Z3hBt-l7tP0T1VVGLHCpFnTuhu3jhB_wBb2X71h_LFJFFOj_EHqSr35WUzNhdMbFcoGeu9So7KQRZz3uv77J7A0otbXCSVIjsg2POHnYp5ovXaWlGVWB2NWT9kVfOi6ZB6iVN?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/d9r9n46d7efrieem1onk3cd1o4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJr9Yds3hDIGmxlyWAE7cmnS1TE5cT8qnI4dYpmSuaQPDXC5tkP885eLn2nUyyUW6O9rfJcEW6q4p5_M3xybzpdpTAKR6O4ANL82aKepFUJUWgvC41Nsqt2Xf6mOf_X1kYe55hkGwqpOmRlRqCJSeaOoaPVn9QVA9mvCRH2AN3yuTCStjMO9ZsSx8pgWRbUpQ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/q1tq00efnmni977n8bn2vj78es/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoTS7sU8R1qYhVzRpZpU7DCKBDlycNffmhnrtFA_Aw4eBb8d1qEumPoHkiL0glTJIlJFt5zyVUetOCxEjKD0BbtAehjibv1vMxfVUugx1YQ-17j6kxrDAe1X0vlzo-FR7JjAGv-4KbvyNRH3hnAWauTgupIzLUKBZb8SuCJtzu4oBUANkG2XnLmP3O8HTe3gUjP?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/v9o5u8ql2h9ue2q3mgb65ovkrc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrewbHNvVw8HC8qr4BSQmFPQjRMkZLtSLbDgdpHjU8fE0ZFfIeKc250h5ieH38Z3hBt-l7tP0T1VVGLHCpFnTuhu3jhB_wBb2X71h_LFJFFOj_EHqSr35WUzNhdMbFcoGeu9So7KQRZz3uv77J7A0otbXCSVIjsg2POHnYp5ovXaWlGVWB2NWT9kVfOi6ZB6iVN?session=0&fife https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/d9r9n46d7efrieem1onk3cd1o4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJr9Yds3hDIGmxlyWAE7cmnS1TE5cT8qnI4dYpmSuaQPDXC5tkP885eLn2nUyyUW6O9rfJcEW6q4p5_M3xybzpdpTAKR6O4ANL82aKepFUJUWgvC41Nsqt2Xf6mOf_X1kYe55hkGwqpOmRlRqCJSeaOoaPVn9QVA9mvCRH2AN3yuTCStjMO9ZsSx8pgWRbUpQ?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/q1tq00efnmni977n8bn2vj78es/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoTS7sU8R1qYhVzRpZpU7DCKBDlycNffmhnrtFA_Aw4eBb8d1qEumPoHkiL0glTJIlJFt5zyVUetOCxEjKD0BbtAehjibv1vMxfVUugx1YQ-17j6kxrDAe1X0vlzo-FR7JjAGv-4KbvyNRH3hnAWauTgupIzLUKBZb8SuCJtzu4oBUANkG2XnLmP3O8HTe3gUjP?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9438711, 48.2904239, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лук'яна Кобилиці, 103",
+        "description": "<img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ii7lhj7f207u36m0k3iukmikmc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrLv_Vtm0dnV-4mH83Fssk6BUWF9shVtPc-QCLBbnZ36hYGQ_gqNOhiwNynx6IUhMY_fJ5s7P3iE1Apf-BXy5NnsMzGmhJEb44GsCmV7YQi3_-TSPqkwyKcU55IpMalaB0T5s5F_rvBNJ6IMiWRH2FprK09PXpoDIVyDUK_IfBgCRuI8jX_03wW-Rq8Au40mok?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ключі у жильців<br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/7kd6ca6u11985iv6f7c9fst1n8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqiQWVXalHybXI9GZ4_8bDaTQShvJLKbkZgZFNwetgddurwJM9f1LybgFeSIZKAhcISJWxiMysAOUPDPCN4hRSNLslfJxxWPlb2uQ32fh-l7io4c_glv6ZuhsmrlluP8N03Vs9Qdb9-i22W48ODjn8ad0TMjLWAmIrSNbtyU3Rpd2ee_jdUdcbG-u-Ko_Xls5Y?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/omdoputs1pksgfuu28er2uvi54/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgquy2dbycjzOi2229avg9tNKTdeH6aI-ImbchgYLYOif_UiNfsgL8mhX8bqyJMSMQavCr5CSAy5sU64__LGw_pEjQ1uTTglT7dQ3b0pL4hB0zFYUlsoNZNh8PnIXUkHZ2ZCDLn12nygY-BKdBLHI0Oe1CHdgP0bK94WGwEAeqRA7trRFk4U97kVLmyquzqHsfI?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/lgl4jk4s6dgf6e65qiquvovbmk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqiVe0iblrxrIGQUeeKESxNEMpL5TNohy-ni5wQDT3ZyyRl7xmWuHELuxqli_KKyz8OFTsAjD9kZU5nUfdjXUXiq7N2r9_DTupykR5u-RoIseegwqVbhacuw3uxtxhAisukU_ZttPt_cSh219ew4D83d8UyQ-py_n5v6hrPdxgeGXUQPtx3i-VwoTQZfykv-0g?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/unia85krtd9ea0glh4a9n6id14/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpcRmbvscgjOevgmWpXu3XAoTKio8UB-ZnZL8c9FimauodaazNzTtFu90Vpn5X8imRLhjxk9Oo5M9WQq5mEcxxg-zCPqlHowW8jz1-K81XGy20HaEyLu5iU7Z12iWdF8wmpdvcUivq4rXc4J5S0tPzSqjcaX5s19qSFIhD0ymHdahn0PJtYGh-bXBmWbtN4Smc?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0rilp6ncci8g8e74a68pi1u654/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqzZGQ5SMGq6qNZU7SrH20mZe2-pd3Ja-SyF0Zf0WLxHvRV9MI-SBs_ezHPd6kpsg0r61ha1c_QxsKkMbuYLPrdtaKCw6Bioe_B9jbB4F6RcTaBWaV2hvavqgX-8INrWLU_E9gLw5O_0GAfaAlDENZQxv2f4-4HAK4p_eekHEe3SVxj61vpkxMH2cFsmvGyS1I?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ii7lhj7f207u36m0k3iukmikmc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrLv_Vtm0dnV-4mH83Fssk6BUWF9shVtPc-QCLBbnZ36hYGQ_gqNOhiwNynx6IUhMY_fJ5s7P3iE1Apf-BXy5NnsMzGmhJEb44GsCmV7YQi3_-TSPqkwyKcU55IpMalaB0T5s5F_rvBNJ6IMiWRH2FprK09PXpoDIVyDUK_IfBgCRuI8jX_03wW-Rq8Au40mok?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/7kd6ca6u11985iv6f7c9fst1n8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqiQWVXalHybXI9GZ4_8bDaTQShvJLKbkZgZFNwetgddurwJM9f1LybgFeSIZKAhcISJWxiMysAOUPDPCN4hRSNLslfJxxWPlb2uQ32fh-l7io4c_glv6ZuhsmrlluP8N03Vs9Qdb9-i22W48ODjn8ad0TMjLWAmIrSNbtyU3Rpd2ee_jdUdcbG-u-Ko_Xls5Y?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/omdoputs1pksgfuu28er2uvi54/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgquy2dbycjzOi2229avg9tNKTdeH6aI-ImbchgYLYOif_UiNfsgL8mhX8bqyJMSMQavCr5CSAy5sU64__LGw_pEjQ1uTTglT7dQ3b0pL4hB0zFYUlsoNZNh8PnIXUkHZ2ZCDLn12nygY-BKdBLHI0Oe1CHdgP0bK94WGwEAeqRA7trRFk4U97kVLmyquzqHsfI?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/lgl4jk4s6dgf6e65qiquvovbmk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqiVe0iblrxrIGQUeeKESxNEMpL5TNohy-ni5wQDT3ZyyRl7xmWuHELuxqli_KKyz8OFTsAjD9kZU5nUfdjXUXiq7N2r9_DTupykR5u-RoIseegwqVbhacuw3uxtxhAisukU_ZttPt_cSh219ew4D83d8UyQ-py_n5v6hrPdxgeGXUQPtx3i-VwoTQZfykv-0g?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/unia85krtd9ea0glh4a9n6id14/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpcRmbvscgjOevgmWpXu3XAoTKio8UB-ZnZL8c9FimauodaazNzTtFu90Vpn5X8imRLhjxk9Oo5M9WQq5mEcxxg-zCPqlHowW8jz1-K81XGy20HaEyLu5iU7Z12iWdF8wmpdvcUivq4rXc4J5S0tPzSqjcaX5s19qSFIhD0ymHdahn0PJtYGh-bXBmWbtN4Smc?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0rilp6ncci8g8e74a68pi1u654/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqzZGQ5SMGq6qNZU7SrH20mZe2-pd3Ja-SyF0Zf0WLxHvRV9MI-SBs_ezHPd6kpsg0r61ha1c_QxsKkMbuYLPrdtaKCw6Bioe_B9jbB4F6RcTaBWaV2hvavqgX-8INrWLU_E9gLw5O_0GAfaAlDENZQxv2f4-4HAK4p_eekHEe3SVxj61vpkxMH2cFsmvGyS1I?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9496428, 48.2882167, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кобилянської, 38",
+        "description": "<img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/bb588pqecsakbreacc6vc9rtrg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqg_OX0Dj5icHe_hQ3pGhPV7PJYA4oGpC2g-YBAB8dYmKXXa1klFUH3U4DhU04DHpESiM3WToWvAiNqFfIj3nmCeqBzlzyuAlxEnd_bn52_B0aKrQzIzLJJlhoiJVhg1SVGxc8dPORGWl8KbUhbRF2e7kEZ7CYSEnWDKBCy0ejImIKwuB_1M9u7H6xVu1Ox40oZ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/r9m8b2p1gialcu91ijkb3ffhm8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqtAaYgan8yYb0XoD1qakDo1F7Pcg_sBYtTGiLOhWMHnAT8KxmT8PYdxnQjWGFl0pueyCGouhhWCIi08GaQrSSP5cbFMA0NL51JEn8Rv3y8iVInCULAdQtWDRQ6bciBkx7aApKunR36fnXX0qYr27RIcXKXvV0TWTpgocfxZkQS86NvpAJu_OREiuVL9laYryaC?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/bb588pqecsakbreacc6vc9rtrg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqg_OX0Dj5icHe_hQ3pGhPV7PJYA4oGpC2g-YBAB8dYmKXXa1klFUH3U4DhU04DHpESiM3WToWvAiNqFfIj3nmCeqBzlzyuAlxEnd_bn52_B0aKrQzIzLJJlhoiJVhg1SVGxc8dPORGWl8KbUhbRF2e7kEZ7CYSEnWDKBCy0ejImIKwuB_1M9u7H6xVu1Ox40oZ?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/r9m8b2p1gialcu91ijkb3ffhm8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqtAaYgan8yYb0XoD1qakDo1F7Pcg_sBYtTGiLOhWMHnAT8KxmT8PYdxnQjWGFl0pueyCGouhhWCIi08GaQrSSP5cbFMA0NL51JEn8Rv3y8iVInCULAdQtWDRQ6bciBkx7aApKunR36fnXX0qYr27RIcXKXvV0TWTpgocfxZkQS86NvpAJu_OREiuVL9laYryaC?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.938665, 48.2864752, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 125",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1ddp88m8o935335asr83jd8hes/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrVSOGrk8ItriQOeCQ3xZhf0FK7VGWkTknaCpGvZWYDYDN8HFtP79Gf_T3aCUXCtDfXN-mBVIWj60y7E_Z953M90sXpbWmaaZlCo-buzu4F3FZa1GgRmaVcKci7g6-ri98WKfVIoZ7xOOSbqNcJR9FogphufO5BY_9kC--Kvbpd5IQ-bWUupZtJVSBuDCUbfcA?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Територія лікарні, вхід через задній двір лікарні<br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nh56aejngmibdtn7u01snm4kqs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrfAFJcl7TKSkMzsaA6W0iz2eT7J2_W2k-xIHbpqWNuoaR2AV_HD4KdRFSBQtxrrG4WF8MigJnP0brL-dRdpJQSiGTQTDyCDU4cWDJhHpQkzqMOFijcsSqdXoyUVHu_v0Xb_Pn_hcJTA8QjGxirVFletCjGg-H5jOJs7magBUi2DDZd3vwyM1XMS9KqEF-uvhs?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ti6a3m2kk7vvhcgbcspt4jnhu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjG1cXEbEMutl-VUkcCwCQWWuLAHrHItAUd252xkmQngAZPr5g4guOoErHal_B7npRRbojDq_PBaxqvMw4B19lJrbKirb1ibgSPs4bwxXbf5lCqt3kMAD73LMJoMyAlXIzeAxMCqj-E_TNLUf6ifJyVWdTmwreHCbEd-48C29SIE5z0JcgAvDIgSyFMB0KDrg?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1ddp88m8o935335asr83jd8hes/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrVSOGrk8ItriQOeCQ3xZhf0FK7VGWkTknaCpGvZWYDYDN8HFtP79Gf_T3aCUXCtDfXN-mBVIWj60y7E_Z953M90sXpbWmaaZlCo-buzu4F3FZa1GgRmaVcKci7g6-ri98WKfVIoZ7xOOSbqNcJR9FogphufO5BY_9kC--Kvbpd5IQ-bWUupZtJVSBuDCUbfcA?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nh56aejngmibdtn7u01snm4kqs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrfAFJcl7TKSkMzsaA6W0iz2eT7J2_W2k-xIHbpqWNuoaR2AV_HD4KdRFSBQtxrrG4WF8MigJnP0brL-dRdpJQSiGTQTDyCDU4cWDJhHpQkzqMOFijcsSqdXoyUVHu_v0Xb_Pn_hcJTA8QjGxirVFletCjGg-H5jOJs7magBUi2DDZd3vwyM1XMS9KqEF-uvhs?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ti6a3m2kk7vvhcgbcspt4jnhu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjG1cXEbEMutl-VUkcCwCQWWuLAHrHItAUd252xkmQngAZPr5g4guOoErHal_B7npRRbojDq_PBaxqvMw4B19lJrbKirb1ibgSPs4bwxXbf5lCqt3kMAD73LMJoMyAlXIzeAxMCqj-E_TNLUf6ifJyVWdTmwreHCbEd-48C29SIE5z0JcgAvDIgSyFMB0KDrg?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9395583, 48.282261, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лук'яна Кобилиці, 122",
+        "description": "<img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mu6jg47faqsq92s1f7d28bd7f0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoeD9m3wR5EG5FpHwFHsn4_LlZFTC3lKSN3NP6HMstjmommXaS45iauS96qHgajNEQskdfsWmkeRNV635-kuVpbGyiC48v04FaRUat4c9dLuVGUNiG9eB88a6dTg9I6HblFMlknk1fM_ej3dRzkrl3WQGsZ0mXa8PJfQeF6oB88LR4YFWQkmmPhx05nOcVuFII?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ключі у жильців<br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e9d7i967uijig7nr6r09bu5n1g/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq8E7293Jab37AV_dUmY7kYU8BBblZ9-6hfQA9tBynAoYetloG6GhE13URoiyQOziBVjBhQFIVC3dqVDVngQzypDN23rfu1GCl_tirMpmUd2P2IqdW92fbTwCMqycHHXW7ULs4hrlBfjcaPYdU5IYYX7ak5SxKFcJWxlh4uIE9cggGoR5ktB7sUQptCKvizPIk?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/m85ojf1711aa24j2l4r055l82c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoYsGaMkx7I8UJQ4HPuvRwnmC6DGBdQc8A_VNAOLjbuERPfnBHp7HruogniOuS5Xg0bVQD4zdlweq3nX8139R74guLzkOMZ35MYN8pPQnaDKGNc775e2PnMyrXUddvs7OkaUJ494_gFdHa7e2RAaJQrl6yUVuR2LL3WEl1som5U8hTJiXZ1paRwKAft63dPWkON?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/fvu5fo30k57r9r1mmro6uf2t08/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqmpy4Klh5hIjaC1zKX0DAzjY6E9z8w3zzws8AdRdLvQvOGFH6s78tzz5nr-q_tD98VLy0UbXApWQz6R_UEXAAZBs4j9_-ZcQlPAWTTJjKRCmGZZRer6hh06s8K02MYZbu7fh-tRxkWUc5cmv2qK6N_oY7uSfhtceBoBk-aVMLZkbjy9oujJ-04X3DydJGJqNm7?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mu6jg47faqsq92s1f7d28bd7f0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoeD9m3wR5EG5FpHwFHsn4_LlZFTC3lKSN3NP6HMstjmommXaS45iauS96qHgajNEQskdfsWmkeRNV635-kuVpbGyiC48v04FaRUat4c9dLuVGUNiG9eB88a6dTg9I6HblFMlknk1fM_ej3dRzkrl3WQGsZ0mXa8PJfQeF6oB88LR4YFWQkmmPhx05nOcVuFII?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e9d7i967uijig7nr6r09bu5n1g/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq8E7293Jab37AV_dUmY7kYU8BBblZ9-6hfQA9tBynAoYetloG6GhE13URoiyQOziBVjBhQFIVC3dqVDVngQzypDN23rfu1GCl_tirMpmUd2P2IqdW92fbTwCMqycHHXW7ULs4hrlBfjcaPYdU5IYYX7ak5SxKFcJWxlh4uIE9cggGoR5ktB7sUQptCKvizPIk?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/m85ojf1711aa24j2l4r055l82c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoYsGaMkx7I8UJQ4HPuvRwnmC6DGBdQc8A_VNAOLjbuERPfnBHp7HruogniOuS5Xg0bVQD4zdlweq3nX8139R74guLzkOMZ35MYN8pPQnaDKGNc775e2PnMyrXUddvs7OkaUJ494_gFdHa7e2RAaJQrl6yUVuR2LL3WEl1som5U8hTJiXZ1paRwKAft63dPWkON?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/fvu5fo30k57r9r1mmro6uf2t08/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqmpy4Klh5hIjaC1zKX0DAzjY6E9z8w3zzws8AdRdLvQvOGFH6s78tzz5nr-q_tD98VLy0UbXApWQz6R_UEXAAZBs4j9_-ZcQlPAWTTJjKRCmGZZRer6hh06s8K02MYZbu7fh-tRxkWUc5cmv2qK6N_oY7uSfhtceBoBk-aVMLZkbjy9oujJ-04X3DydJGJqNm7?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.950741, 48.2892009, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кобилянської, 29",
+        "description": "Код дверей: 37",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9376473, 48.2885121, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кобилянської, 12",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pcqf5vv6hrddao1d3t0nhedmgc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr5mW9OmJlm0bY4R13kxU8GHtkij-lPakZBiZRFNcSreciO1tt9a7ohyTyxT74N-cE_zYNUGJswdx5l2_ozvfMHt5q_IEpNNTMpFkglZAyDCMYzOp4X0zL7q5ZXOzlIPJlE5x7m3oaktxjtO-_O_zb-a-mTWVgCrqOUoJ8ndRyND0n_xwdD6Gt4qpYXmQ90J5Jy?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Код 137<br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pv61osffp18grk7jpreq1c8scs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjAfQ6INXJP20hMgqVZ5_fNbPAjYXpObfy4nOhUJ78nJiCsKfugW6eUa2k66hocW5BePp92IFYyoGuaHkJ0qEk8WtjUlAS8ecQG6Wo1l0gFPebutAO5N9TgTY4ZbO32wmLZWxK08X5qTl8rfYsRxvglEPTrpfoCQ8RCCLdIbHaEs1iINObQVFz2V-b4DYhZA0?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pcqf5vv6hrddao1d3t0nhedmgc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr5mW9OmJlm0bY4R13kxU8GHtkij-lPakZBiZRFNcSreciO1tt9a7ohyTyxT74N-cE_zYNUGJswdx5l2_ozvfMHt5q_IEpNNTMpFkglZAyDCMYzOp4X0zL7q5ZXOzlIPJlE5x7m3oaktxjtO-_O_zb-a-mTWVgCrqOUoJ8ndRyND0n_xwdD6Gt4qpYXmQ90J5Jy?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pv61osffp18grk7jpreq1c8scs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjAfQ6INXJP20hMgqVZ5_fNbPAjYXpObfy4nOhUJ78nJiCsKfugW6eUa2k66hocW5BePp92IFYyoGuaHkJ0qEk8WtjUlAS8ecQG6Wo1l0gFPebutAO5N9TgTY4ZbO32wmLZWxK08X5qTl8rfYsRxvglEPTrpfoCQ8RCCLdIbHaEs1iINObQVFz2V-b4DYhZA0?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9359727, 48.2905939, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Поштова, 1",
+        "description": "<img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/df7rvat9di8k9559s5brt5bksg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoG7NTq2ECBpl8JjCkeLRTb-Gv02ufusf8p78Ok7Q-LXFccnddDKQij4lIU2iLhbarJGubm0zhQklRf0kCrAIpd3Rim_NOlgz56rhXu-7TRzdw_aB-sju5zukX42sP9gScBKkQJzZy0NubrrC9XVZBehTRy-AWzwQzQdgR4ykc0HZ0P5y9yRuHO365HwQr0OngL?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/j4id8p4ilqpa9tc09o0pk3kc5o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpkSzhWE9I3V3f1Vl_wwAOYCnNHS0csp80k9NNaYaLPr2fKsLP3g71Q7fFlYvMVPMzAKGaMWdfhQ0_O5lNdaQJtdQIAC_7XlMHfRfY5sUQHl93zRgU1z0EhRUm0iOt5t21l64WbezapqzTeutjyM40Jt3jhcro5KeaIwUsHp5016l0mYDT50JNIrtA9e16tph0?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/df7rvat9di8k9559s5brt5bksg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoG7NTq2ECBpl8JjCkeLRTb-Gv02ufusf8p78Ok7Q-LXFccnddDKQij4lIU2iLhbarJGubm0zhQklRf0kCrAIpd3Rim_NOlgz56rhXu-7TRzdw_aB-sju5zukX42sP9gScBKkQJzZy0NubrrC9XVZBehTRy-AWzwQzQdgR4ykc0HZ0P5y9yRuHO365HwQr0OngL?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/j4id8p4ilqpa9tc09o0pk3kc5o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpkSzhWE9I3V3f1Vl_wwAOYCnNHS0csp80k9NNaYaLPr2fKsLP3g71Q7fFlYvMVPMzAKGaMWdfhQ0_O5lNdaQJtdQIAC_7XlMHfRfY5sUQHl93zRgU1z0EhRUm0iOt5t21l64WbezapqzTeutjyM40Jt3jhcro5KeaIwUsHp5016l0mYDT50JNIrtA9e16tph0?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9345761, 48.2931695, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 5",
+        "description": "Ключі від запасного виходу <br>+380507384866 В'ячеслав",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 14
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.945277, 48.2776098, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 78",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9549345, 48.2842655, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Соборна площа, 7",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/tur9hfhprh1dlt71kvnj2rd9e4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp5TiPIjsJuPAUUsYFRigUfDHcS7JFBeTLqi5N9L83co5megejRJHyQDUMd2koOn_qAmJ22eB13ypcjX9smxVu3vT-Z3ILtWod5X9b6qMhC1TrJPyjq3ajs1ZJparGiJ1tYweng6rahv-N8fVOaUesYxqhKV5G6MbB1LO8gb4l31W5pWIQF-P_cmTc1pLUU2-n0?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/2aehdnfrid7a17dmao4v26fj04/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpIre6OxbyrIfy4O-eyT3Ic4AqZYVlNrBvKsDM0bPklI2RzqoiN9pOUeAGEdj5FvIMJmBJ27zXow7hzU8CBwRwlZjPSSuYDP-T7R8z9xA1dPiRBykES_l5ikyRI0XJzmWzJmNQjun80v8a-NlAz70drkee_BQg9-FWch6ILZry5Yb9h5-ayXByQ7qqil01_XdWQ?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/tur9hfhprh1dlt71kvnj2rd9e4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp5TiPIjsJuPAUUsYFRigUfDHcS7JFBeTLqi5N9L83co5megejRJHyQDUMd2koOn_qAmJ22eB13ypcjX9smxVu3vT-Z3ILtWod5X9b6qMhC1TrJPyjq3ajs1ZJparGiJ1tYweng6rahv-N8fVOaUesYxqhKV5G6MbB1LO8gb4l31W5pWIQF-P_cmTc1pLUU2-n0?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/2aehdnfrid7a17dmao4v26fj04/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpIre6OxbyrIfy4O-eyT3Ic4AqZYVlNrBvKsDM0bPklI2RzqoiN9pOUeAGEdj5FvIMJmBJ27zXow7hzU8CBwRwlZjPSSuYDP-T7R8z9xA1dPiRBykES_l5ikyRI0XJzmWzJmNQjun80v8a-NlAz70drkee_BQg9-FWch6ILZry5Yb9h5-ayXByQ7qqil01_XdWQ?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9321187, 48.288369, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Українська, 48",
+        "description": "<img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/37k05l5jld24esl7gu2rgu3nps/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrWQXYGMVDYE0UiVeihG83jjaNSePa_gZldyAgYWMkLnCHYnihyTfEcuGsOnG9kmRJcldG9i4fg85dW1VdEzod5LQ-dYVtZVRP24ckc95Q4T6csjC5NQXlPXuCZ-JKnENt1Aws1ihBjKzImxnEYEkOV2S4L-nfWpzPEr4lI73znQkW7rKZ3Oej3OvCeKfnziA3C?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/obd6m840upet6a1h0sujoiqgl0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpT8YNzEHO3ka0v9oenmUTxoEE4W9HzURWYarhf_Q5zP5eJvYrlAEsi26LAzYLU2N-AUPyRX7Tl2pfTsCfz2rRUcq_dEuryD8wWmOndyO4SUrRw731-FbOX5VVy_E5ea-8GpNDGWvDyNw2o2TphLkLj8B7GN0UahvXd4khmvBoVGoD-qRUugG6xQUsIBbC40cOE?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/37k05l5jld24esl7gu2rgu3nps/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrWQXYGMVDYE0UiVeihG83jjaNSePa_gZldyAgYWMkLnCHYnihyTfEcuGsOnG9kmRJcldG9i4fg85dW1VdEzod5LQ-dYVtZVRP24ckc95Q4T6csjC5NQXlPXuCZ-JKnENt1Aws1ihBjKzImxnEYEkOV2S4L-nfWpzPEr4lI73znQkW7rKZ3Oej3OvCeKfnziA3C?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/obd6m840upet6a1h0sujoiqgl0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpT8YNzEHO3ka0v9oenmUTxoEE4W9HzURWYarhf_Q5zP5eJvYrlAEsi26LAzYLU2N-AUPyRX7Tl2pfTsCfz2rRUcq_dEuryD8wWmOndyO4SUrRw731-FbOX5VVy_E5ea-8GpNDGWvDyNw2o2TphLkLj8B7GN0UahvXd4khmvBoVGoD-qRUugG6xQUsIBbC40cOE?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 17
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9418304, 48.2869391, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Гоголя, 5",
+        "description": "<img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/l57h3pg3sigte0aggkhh5u5coo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpTP53IV8eozkGhgTl5cQ-LHJjgBUqgSzBl5EhUfBSTKIgwNt_xF6OACQIRi3PAMDl2pAK5GLb1kKzq-DC4jLg-aynCkOJxh0_DT4LmU78GeJ3X6spEPW0o8m0obt46Nt3K1wBHdECLhU1KvQf_WCTbmhxFgoEcKk7WcMkqodpHTqvzRz2my_HYBYK5KvZuFkY?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Доступ через домофон, код: 1045<br><br><img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/emrrvdc7bend00kci7pv1sdlhc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJMoelW-mky5F9frN6OxHP9QcVWXL6nWPvfaanFUhnb0j5le1JZah0PEZOOTIwpheQ3hXh_jhKh65_tkP2pimfD5mlHGwsM7EQcnfjbRGRJwPLbquwCMLuGxACogrL8EFfzWdfpAHr0cGmU6U6jzBEqHS_aSze11kqhJnEPrwJGEVKUESH7IhqBvR9zDQM4rg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/euicb1kh2scjdgvpr1cet1hrgs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqS5n1873Wmplwcd3huXa01z-7vwm9azEaOYKSKMGc7-Pg4As_hBleh1jDwU8Edayg8NAaE_f-6SCVKFJqsC1_tPPO64CYw4qQz4yB1P_nsw-9wNbj5y-NcndyRnqMVQQHgcvKqdIuKMhfIN_rmEEjOjN9rkbq7Ah3OxBj3L8NXHaqGc-NN3tKX69GEaCbtN6A?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ji310uq42ljrgpr2854rucnars/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqorf6ZA_3Y3BzM_oLNhj1ypZ82kJqyYVQU0v63LHYE06-RPGI52X-IuhZ9Bu7ZBZQ6f5rdJIwjBxWif6xE5H4xNvNApdf3A2B4Hul_kun5uljeqKXBiZbuV_85M9oWFotESZpoUzx9advVA8Ls6hpda-V5mrLml-XeayFopMfvtT5JFCvKwUNEBKuLsf-xxgg?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/l57h3pg3sigte0aggkhh5u5coo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpTP53IV8eozkGhgTl5cQ-LHJjgBUqgSzBl5EhUfBSTKIgwNt_xF6OACQIRi3PAMDl2pAK5GLb1kKzq-DC4jLg-aynCkOJxh0_DT4LmU78GeJ3X6spEPW0o8m0obt46Nt3K1wBHdECLhU1KvQf_WCTbmhxFgoEcKk7WcMkqodpHTqvzRz2my_HYBYK5KvZuFkY?session=0&fife https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/emrrvdc7bend00kci7pv1sdlhc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJMoelW-mky5F9frN6OxHP9QcVWXL6nWPvfaanFUhnb0j5le1JZah0PEZOOTIwpheQ3hXh_jhKh65_tkP2pimfD5mlHGwsM7EQcnfjbRGRJwPLbquwCMLuGxACogrL8EFfzWdfpAHr0cGmU6U6jzBEqHS_aSze11kqhJnEPrwJGEVKUESH7IhqBvR9zDQM4rg?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/euicb1kh2scjdgvpr1cet1hrgs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqS5n1873Wmplwcd3huXa01z-7vwm9azEaOYKSKMGc7-Pg4As_hBleh1jDwU8Edayg8NAaE_f-6SCVKFJqsC1_tPPO64CYw4qQz4yB1P_nsw-9wNbj5y-NcndyRnqMVQQHgcvKqdIuKMhfIN_rmEEjOjN9rkbq7Ah3OxBj3L8NXHaqGc-NN3tKX69GEaCbtN6A?session=0&fife https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ji310uq42ljrgpr2854rucnars/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqorf6ZA_3Y3BzM_oLNhj1ypZ82kJqyYVQU0v63LHYE06-RPGI52X-IuhZ9Bu7ZBZQ6f5rdJIwjBxWif6xE5H4xNvNApdf3A2B4Hul_kun5uljeqKXBiZbuV_85M9oWFotESZpoUzx9advVA8Ls6hpda-V5mrLml-XeayFopMfvtT5JFCvKwUNEBKuLsf-xxgg?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 18
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9355428, 48.2886873, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Першотравнева, 2А",
+        "description": "<img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/fac9u018g1nsbc1hfq4op8eb5c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9p_ATY2qfIDDBDz0UAXIJ5th_SBfm7fAyIv0VmxE3-VrqjxBvYKbpy_jU1qyd_NnSKfBOhxDBuMPLUT4kU6IZillgbOhQf85NvgyVFwPydUznUiwQQRlp-CVFBOHDtP-u93nP16QP-lhBxyW7YS-JAZa9bG4-YzpkXnEm8F9r4R_wAzZTbwd1PnYuh385y1Rx?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ключі у жильців, код 248<br><br><img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/q52vf8ajscr9htciv5fni25f18/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpXZ1rCzDipBKFayGFyZzRpQsKoqQO-VI3Xroeye4QkYu5WGK1dIovzqTu66pmCY9GKznZTjnAbrDqoWAw28ivbnqPCrsf80YO9q9gCx5tNBT3tvzfXpRIImFVKUYhaNyPPHAzIa6kF4FcWekyA9mpatf3UfBCD_68SlCoI6H2R20OY4_zaMPNtJlL8Dg1PpoLV?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/fac9u018g1nsbc1hfq4op8eb5c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9p_ATY2qfIDDBDz0UAXIJ5th_SBfm7fAyIv0VmxE3-VrqjxBvYKbpy_jU1qyd_NnSKfBOhxDBuMPLUT4kU6IZillgbOhQf85NvgyVFwPydUznUiwQQRlp-CVFBOHDtP-u93nP16QP-lhBxyW7YS-JAZa9bG4-YzpkXnEm8F9r4R_wAzZTbwd1PnYuh385y1Rx?session=0&fife https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/q52vf8ajscr9htciv5fni25f18/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpXZ1rCzDipBKFayGFyZzRpQsKoqQO-VI3Xroeye4QkYu5WGK1dIovzqTu66pmCY9GKznZTjnAbrDqoWAw28ivbnqPCrsf80YO9q9gCx5tNBT3tvzfXpRIImFVKUYhaNyPPHAzIa6kF4FcWekyA9mpatf3UfBCD_68SlCoI6H2R20OY4_zaMPNtJlL8Dg1PpoLV?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.936902, 48.283628, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Мусоргського, 8",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/rojg5sj808q886flkkn36maosg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqcBwLuQdqDQvqiIn4NU3-lXOolftoLqWED43LjrfoB9mWXhk69K9RfSyJhC-wJ_Dqhu_E8Afct5oHap4-rcTRJthfUeCvaJTt3Rd6ouJPd0s_uJyIH_giZEwx6w3l_CcIVVMeQ0a4mlwwRzBLkOqi-WVacb87E2Xl8Ant_3LRArAWA6roOu-SoltJOjBK-UGUQ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Сховище лікарні <br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/s7quarrtu2vmbio6pua46rahv8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqnxHAu-rwM3ckuMLv34zPzv8dQmnKQSneC5xSAaSrHo80EftcXI39Gc_xMq2IsKlBF3RI9m76rdv6OinixZFmZmVNnHD4dnK1VwmqCJvRuCSC1fD_VFLhDUwhkahW9khgM9rIS0Xpv_lYt_vCef6ScBRCyFHYYLEBfmd943cFK4mAp0z5BhAupYvhlhxRuBok?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/rojg5sj808q886flkkn36maosg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqcBwLuQdqDQvqiIn4NU3-lXOolftoLqWED43LjrfoB9mWXhk69K9RfSyJhC-wJ_Dqhu_E8Afct5oHap4-rcTRJthfUeCvaJTt3Rd6ouJPd0s_uJyIH_giZEwx6w3l_CcIVVMeQ0a4mlwwRzBLkOqi-WVacb87E2Xl8Ant_3LRArAWA6roOu-SoltJOjBK-UGUQ?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/s7quarrtu2vmbio6pua46rahv8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqnxHAu-rwM3ckuMLv34zPzv8dQmnKQSneC5xSAaSrHo80EftcXI39Gc_xMq2IsKlBF3RI9m76rdv6OinixZFmZmVNnHD4dnK1VwmqCJvRuCSC1fD_VFLhDUwhkahW9khgM9rIS0Xpv_lYt_vCef6ScBRCyFHYYLEBfmd943cFK4mAp0z5BhAupYvhlhxRuBok?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 20
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9438248, 48.2654685, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Андрія Шептицького, 4",
+        "description": "<img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1b53fbu1ie330qqhq0jcvkcm8g/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqTJAGud_o-ig71SCz5ylzTLf8WKnr7e7LF3qR-bcxGfqHhQNkSCvGyvVn7VvvUA09DqFdarZAfz9map0rvDudwxt7FiMta7rJxrEnevWEs1tnltulJuALvKBn5EqqBBnpraVpBWDO03SvrnCT9XDs0DDFqnapKu1lYOiDX0lvAUEcCXTzz4ZMh9UiHLTK_iIxg?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ключі у жильців<br>Контактний номер: +380954882117",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1b53fbu1ie330qqhq0jcvkcm8g/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqTJAGud_o-ig71SCz5ylzTLf8WKnr7e7LF3qR-bcxGfqHhQNkSCvGyvVn7VvvUA09DqFdarZAfz9map0rvDudwxt7FiMta7rJxrEnevWEs1tnltulJuALvKBn5EqqBBnpraVpBWDO03SvrnCT9XDs0DDFqnapKu1lYOiDX0lvAUEcCXTzz4ZMh9UiHLTK_iIxg?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 21
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9365908, 48.2929949, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 226",
+        "description": "Лікарня, сховище готове ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9251922, 48.2645791, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Жасмінна, 3А",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 23
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.963147, 48.285093, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 17",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 24
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9477314, 48.2794321, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Челюскінців, 5",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/2b7ok1da0f5lpgk1ct59capvbg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr-QqXYlGLtKiRkH2vxUmS1p0fLzGi4r_pGNw_bL4KZbZryKnLDmDumXnXRs2BrBWdm7fzYyzDD6cx47B6ty1EGO8mRrCnR2n3_VlGCxrKQHd3nUNunyX9oB7_bpB17_wSJIJ9FcbeBDg1GpoJ3PNYyFn0QqW38HBVFtKZdsnFraPl4LAZMSMZQdkg1XX5eu-0?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Код: 29<br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/rlvk66aq09cbof7i4sisgn07dg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoibnpwVSp8SPjNxIS4AqAYq7HAKqJ9SNQ912k8M985OPI-d5FDN3dfixqM3D8XagKKMiu8mQycOjKx_4ZVksbZR38P1x1-TMn2zUfwiXnm6cvgZychHk6sIbLyWIUerinZnLxGG9o-kZNsHbQ4xdt4RQFwmNXqtQWcfe5ua6Ldrnbojg1LT3mpjLRo3izJV_s?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/2b7ok1da0f5lpgk1ct59capvbg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr-QqXYlGLtKiRkH2vxUmS1p0fLzGi4r_pGNw_bL4KZbZryKnLDmDumXnXRs2BrBWdm7fzYyzDD6cx47B6ty1EGO8mRrCnR2n3_VlGCxrKQHd3nUNunyX9oB7_bpB17_wSJIJ9FcbeBDg1GpoJ3PNYyFn0QqW38HBVFtKZdsnFraPl4LAZMSMZQdkg1XX5eu-0?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/rlvk66aq09cbof7i4sisgn07dg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoibnpwVSp8SPjNxIS4AqAYq7HAKqJ9SNQ912k8M985OPI-d5FDN3dfixqM3D8XagKKMiu8mQycOjKx_4ZVksbZR38P1x1-TMn2zUfwiXnm6cvgZychHk6sIbLyWIUerinZnLxGG9o-kZNsHbQ4xdt4RQFwmNXqtQWcfe5ua6Ldrnbojg1LT3mpjLRo3izJV_s?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9395412, 48.2870965, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Сагайдачного, 83",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 26
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9432139, 48.2926239, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Тобілевича, 1",
+        "description": "Доступ забезпечує сторож в КПП",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 27
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9416936, 48.2859621, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 104",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 28
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9450939, 48.2733231, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Богдана Хмельницького, 40",
+        "description": "Код: 569                           ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 29
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9299939, 48.2959425, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Поштова, 4",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/hcn8783a00p7cd53g87oamt9bg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoRXv6crTtRXMp0TZxdSlQMb_Hr7m7S5lc-Xpq8G9G_dsLx97JXqVq58CEi-Wp6e84fLYdqryHnmViGgBs9G04dDQ3EG3DZvD8nwoLp2B7DB-JORnXoDxeJHg7KQsaDpHQwK1bd1eNKbq_EEh6YVP6LRTXrG3QKZzxTlfYdoXicfdrKRV412JV-ybvSZ2ajyw2i?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/upusfgiidv0e64stcse1e48qek/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpgsW_2qANo5JWuTbunML5-aLqMH-34h7O8cWb_IIYPMc54cTXG3zwKtAzmprI_Z4a3W4ghotBas8Yje_wWnltcqo5tAXzAqBc-vaonZ9gBfBOB91kAHigxjqIichQvXEkJ9J9G3cDRbdSphYzTcbNCLEWcnAF_zTlgFaiGcfYTAtm6p71UHyznqwHC__vAqwUa?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/hcn8783a00p7cd53g87oamt9bg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoRXv6crTtRXMp0TZxdSlQMb_Hr7m7S5lc-Xpq8G9G_dsLx97JXqVq58CEi-Wp6e84fLYdqryHnmViGgBs9G04dDQ3EG3DZvD8nwoLp2B7DB-JORnXoDxeJHg7KQsaDpHQwK1bd1eNKbq_EEh6YVP6LRTXrG3QKZzxTlfYdoXicfdrKRV412JV-ybvSZ2ajyw2i?session=0&fife https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/upusfgiidv0e64stcse1e48qek/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpgsW_2qANo5JWuTbunML5-aLqMH-34h7O8cWb_IIYPMc54cTXG3zwKtAzmprI_Z4a3W4ghotBas8Yje_wWnltcqo5tAXzAqBc-vaonZ9gBfBOB91kAHigxjqIichQvXEkJ9J9G3cDRbdSphYzTcbNCLEWcnAF_zTlgFaiGcfYTAtm6p71UHyznqwHC__vAqwUa?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 30
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9350964, 48.2936067, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 200",
+        "description": "<img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/erl9gj7gac14rankjnbrd7ea2o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJpnJtZSegAH2UtBzw_YV_dxIa9tj5PIx6SvZjywwv3O_lylhnAE7nPGYqBtuHnSx1FhmMRQOI9pQG0WC9_Ua9FJAbiZFz6zue7Gek8rxWL7xL3dKEBA06tCSRdM50RSE3uz-eM2BQDlf0gD_lMecJ3vzVFDpOGJtXuq0Pqu7BVx1ZAaqtAhUNMoFRfuQy7DDm?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Є два входи зі сторони вулиці Головна, 200 та Ентузіастів, 2ж<br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nm9klb1qjpllp400nhrur3bkj4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp2oVbUlQasBsHg7ZTQjteUHZEJDqdmBCrK8Kor3Um8tsmXs7TJm34ezRuD7aGis3Z-SvHrbDMlVDgTOkBU65UA23QYeigDmyLa15gMIDGVu3EckHQwRBtRqoQIf8BK2YM_jCRH783M1DEjn-EIiGvy7apl4HFmozafiti9suscreKs3ot5ZTuePe9TJQPevGU?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/gtfk94apahtrj9k89v1i5mphcc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo8sxU2Hp_a7OJpq8KzPEsA_98jDt_-Lp2rdl1z5toFvIh3NL68ZRfaJ9U6HhlEo56JbLzaLmkEvmFNvyTWxRtOqZH7T9LSjPev54HsryLbvF5ClLkEzukagR_Ak91heTh-3uVd9pEFsjTDpTVc9c4s6UV0gH5NH2GX2AO4OQASq32D-g-4zd9T8HgJTgk2j9w?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vr2el6u070c08kbh580hbffjb4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq0elUz5xW8ar7Ny2XU7FCTV6j_MxZfa908TAmYpsI4mikuVsT4YxD1VwpjchhuAzLjDMHM62ucKWMPI-lSQclu04McSqmISQTeG3rUKYXQ21TL5-bBccISje-KmiGryn8NkmNXveKl1UHyi7ykMFGQfzdDig88OlwNXSVxhxnUzmNuAKq76GKxXDdizHkBXQE?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/np4v2srrkpm9s4ouu7mebplp50/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoHEpoybmx3vhJgn5Nmv5vwRfc-sFbu236nfHWuteUGPnDtJrH6GvNqwR6_f8mvR9NlVBVrgxKWI__vmV8v0Ww-Yd9a9mGgJXpVa7hCVYx9q8iSDYlGJnnm6FuKotN73NH7OVyGXbG6jWWFH_W1riaIX7b8Tt1oqivJ6ARc5GgKazCxcqA-ryiSIVv5UAJkbFc?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/khln9avbd3c7gombf5hkhv9568/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqYcmabgUF1LOVcSjjHSgeOKGqHkAfFoaxW1zGl5qMVABzDbhtgRB4_LgI0l27emIi8EcghGae2lZIa94ChTlWvP2iegrP26L2_KZzdqqg8L5VaF-tD5T0pEG49rQ9Rc7rnQPHfnhiOniHO9viB_7fqfngv9NEvM_IlbKCmSZeEGlMfp_YtL48DqXyg3IWpTGu6?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/uoks8psiof6psv7s5apnncukas/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpVCKclbex4frEAcBXtwDH_RMRbwzUMkz4FoI2ivmcBOEdgHUdP0xiBHQmP0CjYnPpNou72MmiPF0KwsfzsOoauZXXw5q-1UuzBQq-Keg8UjPxXEr2HUSuvGnDVNhm70PY3FQ-bCWvy-cPH2nLl8Edf51X90kmFTPjSw_T7rsAdphoLlMTH1thMW1-63CVdBodT?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0bvlag1t4n36p6e4smou0g49f0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgolb7JEssNfh8ol2MP9s4Zdky0YWOA77dbWIS0hHsBD7lHU7A3NQV4USdvz6A8TWbaG7DGCE5IWMyyNG7PU5SPPAcwpqE56LMEw-fIpyBG579ylVVewUGREC-H5guJht2ijhrO6juBbDkBUPRvv4axRqNAaXUcGVVIGMRIzJFEor6tQUQ5eC_NOzkhd6MO7hajp?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mpn8bvhs296e9jqtbmql3jeeho/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqrKFCTZBj6onkE0w4gPzgd_vtdChfEvBtWUmZK3HyvPGvvwQ3-DUU5OxQnEddExn_3nJ9lH01SR2vtAdz_PbF7kgb2-64egPW5XqN7iHiSSsyHEx7JlThHVZ7lN4-78iGF7mfDhGfJPSSDznU2W8gUWrcSyZ-MxLS9qAUauqgX6wNtyalQEv0X_jD8215SZVLC?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/erl9gj7gac14rankjnbrd7ea2o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoJpnJtZSegAH2UtBzw_YV_dxIa9tj5PIx6SvZjywwv3O_lylhnAE7nPGYqBtuHnSx1FhmMRQOI9pQG0WC9_Ua9FJAbiZFz6zue7Gek8rxWL7xL3dKEBA06tCSRdM50RSE3uz-eM2BQDlf0gD_lMecJ3vzVFDpOGJtXuq0Pqu7BVx1ZAaqtAhUNMoFRfuQy7DDm?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nm9klb1qjpllp400nhrur3bkj4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp2oVbUlQasBsHg7ZTQjteUHZEJDqdmBCrK8Kor3Um8tsmXs7TJm34ezRuD7aGis3Z-SvHrbDMlVDgTOkBU65UA23QYeigDmyLa15gMIDGVu3EckHQwRBtRqoQIf8BK2YM_jCRH783M1DEjn-EIiGvy7apl4HFmozafiti9suscreKs3ot5ZTuePe9TJQPevGU?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/gtfk94apahtrj9k89v1i5mphcc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo8sxU2Hp_a7OJpq8KzPEsA_98jDt_-Lp2rdl1z5toFvIh3NL68ZRfaJ9U6HhlEo56JbLzaLmkEvmFNvyTWxRtOqZH7T9LSjPev54HsryLbvF5ClLkEzukagR_Ak91heTh-3uVd9pEFsjTDpTVc9c4s6UV0gH5NH2GX2AO4OQASq32D-g-4zd9T8HgJTgk2j9w?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vr2el6u070c08kbh580hbffjb4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq0elUz5xW8ar7Ny2XU7FCTV6j_MxZfa908TAmYpsI4mikuVsT4YxD1VwpjchhuAzLjDMHM62ucKWMPI-lSQclu04McSqmISQTeG3rUKYXQ21TL5-bBccISje-KmiGryn8NkmNXveKl1UHyi7ykMFGQfzdDig88OlwNXSVxhxnUzmNuAKq76GKxXDdizHkBXQE?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/np4v2srrkpm9s4ouu7mebplp50/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoHEpoybmx3vhJgn5Nmv5vwRfc-sFbu236nfHWuteUGPnDtJrH6GvNqwR6_f8mvR9NlVBVrgxKWI__vmV8v0Ww-Yd9a9mGgJXpVa7hCVYx9q8iSDYlGJnnm6FuKotN73NH7OVyGXbG6jWWFH_W1riaIX7b8Tt1oqivJ6ARc5GgKazCxcqA-ryiSIVv5UAJkbFc?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/khln9avbd3c7gombf5hkhv9568/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqYcmabgUF1LOVcSjjHSgeOKGqHkAfFoaxW1zGl5qMVABzDbhtgRB4_LgI0l27emIi8EcghGae2lZIa94ChTlWvP2iegrP26L2_KZzdqqg8L5VaF-tD5T0pEG49rQ9Rc7rnQPHfnhiOniHO9viB_7fqfngv9NEvM_IlbKCmSZeEGlMfp_YtL48DqXyg3IWpTGu6?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/uoks8psiof6psv7s5apnncukas/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpVCKclbex4frEAcBXtwDH_RMRbwzUMkz4FoI2ivmcBOEdgHUdP0xiBHQmP0CjYnPpNou72MmiPF0KwsfzsOoauZXXw5q-1UuzBQq-Keg8UjPxXEr2HUSuvGnDVNhm70PY3FQ-bCWvy-cPH2nLl8Edf51X90kmFTPjSw_T7rsAdphoLlMTH1thMW1-63CVdBodT?session=0&fife https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0bvlag1t4n36p6e4smou0g49f0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgolb7JEssNfh8ol2MP9s4Zdky0YWOA77dbWIS0hHsBD7lHU7A3NQV4USdvz6A8TWbaG7DGCE5IWMyyNG7PU5SPPAcwpqE56LMEw-fIpyBG579ylVVewUGREC-H5guJht2ijhrO6juBbDkBUPRvv4axRqNAaXUcGVVIGMRIzJFEor6tQUQ5eC_NOzkhd6MO7hajp?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mpn8bvhs296e9jqtbmql3jeeho/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqrKFCTZBj6onkE0w4gPzgd_vtdChfEvBtWUmZK3HyvPGvvwQ3-DUU5OxQnEddExn_3nJ9lH01SR2vtAdz_PbF7kgb2-64egPW5XqN7iHiSSsyHEx7JlThHVZ7lN4-78iGF7mfDhGfJPSSDznU2W8gUWrcSyZ-MxLS9qAUauqgX6wNtyalQEv0X_jD8215SZVLC?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 31
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9532539, 48.2608984, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "1-й провулок Кармелюка, 6\n",
+        "description": "Доступ цілодобово забезпечує вахтер",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9521397, 48.2811986, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "1-й провулок Кармелюка, 4 \n",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 33
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.951263, 48.280577, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Донбасівська, 1",
+        "description": "<img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/66v0rs7fbutu4htcl9m1s6k20k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpf4Ti5PzM7gr3QtF64Rn2l1J31hWKKYzdb5k3dEKJppVHljVkdIkW_SwHXOiAv8unVzhmZxCOvsR1W6XdbpC297b1N6b5As2-tjVciLKv2XC6g51NGcIhskwuywkp1qpSBgXrZypPxaE73UVXxIH7xhT4RCjVx5ql6tXJOejTNhm3nYEtkKOctgyQ_qnxIDNwi?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/47buv0eh4p8nqc82nkki1s7buk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpYFHrG9KFK_Ak4uHuuWFGgagVU1SAjKYWa3VjVw4XUgsyShbm5m6oWQWeK6ocVy9MX7XS4hbJcVVVDSMyEfNgEY-xAgBGSEJBz4cJqase74IneUifsfBApSbid-XXh_ClFZ3Zabm2_n6L9WcWYdfNurRQeS9e-H72pSLQNht8Krg5fklhb33nNTGmFzIi-CDqL?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/66v0rs7fbutu4htcl9m1s6k20k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpf4Ti5PzM7gr3QtF64Rn2l1J31hWKKYzdb5k3dEKJppVHljVkdIkW_SwHXOiAv8unVzhmZxCOvsR1W6XdbpC297b1N6b5As2-tjVciLKv2XC6g51NGcIhskwuywkp1qpSBgXrZypPxaE73UVXxIH7xhT4RCjVx5ql6tXJOejTNhm3nYEtkKOctgyQ_qnxIDNwi?session=0&fife https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/47buv0eh4p8nqc82nkki1s7buk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpYFHrG9KFK_Ak4uHuuWFGgagVU1SAjKYWa3VjVw4XUgsyShbm5m6oWQWeK6ocVy9MX7XS4hbJcVVVDSMyEfNgEY-xAgBGSEJBz4cJqase74IneUifsfBApSbid-XXh_ClFZ3Zabm2_n6L9WcWYdfNurRQeS9e-H72pSLQNht8Krg5fklhb33nNTGmFzIi-CDqL?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 34
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9264173, 48.3073947, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 3",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 35
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9447421, 48.2771928, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Білоруська, 25ж",
+        "description": "Локомотивне депо <br>Доступ до сховища забезпечує черговий",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 36
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.950777, 48.299271, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Небесної сотні, 5а",
+        "description": "Діагностичний центр.<br>Вхід з двору, де роблять тести",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 37
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9406391, 48.2707475, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Комарова, 28",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/k5upoebt6f0jvnejgj2emfn0t8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqB6ohRtiWG-xXMpGkCeJYPMiW85_Slj3JcpI4YMv58ecr8SlOfmxBq5zc88acvVvXTEPOHMHTx6Xyvrnf3krI4ELArh_0fn9Od3ZAdfUbyjDsQUneuAuIKnujHLzlUDWrcwHXfvfbygl3AKylBnQ_wmU4-neiLA5DUpv9TOvTwCrQoRIs4A5_OaDAttcCsWIO5?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Доступ до сховища забезпечує черговий працівник бібліотеки<br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/5jhocmsen8pl4s6ef5ihos8hlc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrDBnD1G4fqt0ad_3ro7O-KGHrzeePu1Nw1h1IGE8DuA80ex80y5W0YV5nf1Y8KMoPuWShytOyHlBovk1g8hxxFfbPEnMEMPngNHTL6vZsVYJ-3k2gD1tvv0bArNXZpy-FkCzocx-UZJGd5aFpBvdBAENatO4btwkgNeMGL41ID2OfiYq0rtqw5dcLfNTTDIabL?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/hc7cmefgco6srqmc97mq06admo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrBbrOw7PN8lDkhqhSxWqGf3qPRLP4cX-QymNCD3Pwya8HPvr5r0n3mQPOe_ZR2Q6DpoS5bPlaBcY45c_h8PubblO1XyUBYAG_hH0R5C4tQIYk_ngdvLummW5Df5qqx1XqikdInHsstecwAwBxrH0TUBOPDUyClVsng5MMVhPqKmwCv4sZiMOewTWX60C9knWaK?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/k5upoebt6f0jvnejgj2emfn0t8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqB6ohRtiWG-xXMpGkCeJYPMiW85_Slj3JcpI4YMv58ecr8SlOfmxBq5zc88acvVvXTEPOHMHTx6Xyvrnf3krI4ELArh_0fn9Od3ZAdfUbyjDsQUneuAuIKnujHLzlUDWrcwHXfvfbygl3AKylBnQ_wmU4-neiLA5DUpv9TOvTwCrQoRIs4A5_OaDAttcCsWIO5?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/5jhocmsen8pl4s6ef5ihos8hlc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrDBnD1G4fqt0ad_3ro7O-KGHrzeePu1Nw1h1IGE8DuA80ex80y5W0YV5nf1Y8KMoPuWShytOyHlBovk1g8hxxFfbPEnMEMPngNHTL6vZsVYJ-3k2gD1tvv0bArNXZpy-FkCzocx-UZJGd5aFpBvdBAENatO4btwkgNeMGL41ID2OfiYq0rtqw5dcLfNTTDIabL?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/hc7cmefgco6srqmc97mq06admo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrBbrOw7PN8lDkhqhSxWqGf3qPRLP4cX-QymNCD3Pwya8HPvr5r0n3mQPOe_ZR2Q6DpoS5bPlaBcY45c_h8PubblO1XyUBYAG_hH0R5C4tQIYk_ngdvLummW5Df5qqx1XqikdInHsstecwAwBxrH0TUBOPDUyClVsng5MMVhPqKmwCv4sZiMOewTWX60C9knWaK?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 38
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9336922, 48.2585704, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Івана Франка, 1",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9345984, 48.2914146, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Соборна площа, 9",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/26mlab4ra0je8aimc0i4rileo4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp57VjkAau1UIrSbt3_lEeFghAqj2OkkSYxsIsPiPfhKxhVQU1O4zDB6s2CuOf7qFq7uN6lQP7OJc1f_c1a02D1o1D6BUcxSbKCU1dKA-rVNSlx4zqOz9zH1AhxZQBT5Cy2RyOGW4AzOHooeM0F80iRwjerTL2A1BbzgpoN-6cHpt8zxzLzmkgzFcYGNcBoirWe?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Код 250<br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/d1q92ksmkunmmn2j5tasrl16hg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9kcXsTb9sw0G-NTVrZOoH1WblLjL3QHXgpP27fhhA7vR3jNXLAUsPZMnjTW3o7jWb1SIh3dNBCWVLkS1DjpF6kn5Qev57lE7r9b-NkjyWUOBxJON2RxuFW9bl1Za4wUTnhHEXpCA6AhZf3yve25sEfHmFuCmpx_do8qVF0iqSwJJpxjcQBpNkkOm34nA41yTS?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/u6bni571g70oddb97jogo6s43c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrDV_qQNU-3pXsUtgsVhdEykKxGBxgOntD0uIVWzoZU0Ud3HbzBNln2a9dURMRKVH_1_Ax-4YhtrG0FQ07CMbXRjarCz7PABu7Hlslcv2ia3KgSDahwXPFQqvAY1lXvo6sUWI4ID5obIU3Y7EgkxpfLb1zcWm16uZD-cXS5PxdK9X2Ajdl2RvoAJBJglFN4nIUY?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/26mlab4ra0je8aimc0i4rileo4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp57VjkAau1UIrSbt3_lEeFghAqj2OkkSYxsIsPiPfhKxhVQU1O4zDB6s2CuOf7qFq7uN6lQP7OJc1f_c1a02D1o1D6BUcxSbKCU1dKA-rVNSlx4zqOz9zH1AhxZQBT5Cy2RyOGW4AzOHooeM0F80iRwjerTL2A1BbzgpoN-6cHpt8zxzLzmkgzFcYGNcBoirWe?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/d1q92ksmkunmmn2j5tasrl16hg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9kcXsTb9sw0G-NTVrZOoH1WblLjL3QHXgpP27fhhA7vR3jNXLAUsPZMnjTW3o7jWb1SIh3dNBCWVLkS1DjpF6kn5Qev57lE7r9b-NkjyWUOBxJON2RxuFW9bl1Za4wUTnhHEXpCA6AhZf3yve25sEfHmFuCmpx_do8qVF0iqSwJJpxjcQBpNkkOm34nA41yTS?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/u6bni571g70oddb97jogo6s43c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrDV_qQNU-3pXsUtgsVhdEykKxGBxgOntD0uIVWzoZU0Ud3HbzBNln2a9dURMRKVH_1_Ax-4YhtrG0FQ07CMbXRjarCz7PABu7Hlslcv2ia3KgSDahwXPFQqvAY1lXvo6sUWI4ID5obIU3Y7EgkxpfLb1zcWm16uZD-cXS5PxdK9X2Ajdl2RvoAJBJglFN4nIUY?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9328342, 48.2882794, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Штейнбарга, 23",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/b22dpk5b341299j7865oa2t86s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoddhkzk1Qu8l0BDy2xq7EEwDrUmvwSTIMvh3i-8D4FXq99um2MN98X6h2Ej5DKw6k9DspOcLOIRoSW0a7VSvFmVgd8RnpTnhNs8mNNCqlAq7b_P6R-DWfunxmJbwBM4FhKvks1C8jI5voFI0y2tu41v6oax6aGt0EPCcf2AkklJze3Z3sSVannJJXfH0h-zFRf?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Дзвонити у домофон з 5 квартири і далі<br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/tkk5g59f0p46k6eul18hvn4n0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr6wDoPZKHNxbH5VdwcKXY3pW9ttdbBDbIEECJtWOJWIq44BNoy5Ug_C-rpDa1QFzV7G-f7rIXmefq5dldoBQu63suxZv66CybMXa_Bq0sOmnv8UNQfDO4ZVypUr9IcXq7tDp5my-RYkG2qGJlqneXjL4VUpYcye2fwptf7qu9uFv5os9XXrL6_xVDutC-NlVJF?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/b22dpk5b341299j7865oa2t86s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoddhkzk1Qu8l0BDy2xq7EEwDrUmvwSTIMvh3i-8D4FXq99um2MN98X6h2Ej5DKw6k9DspOcLOIRoSW0a7VSvFmVgd8RnpTnhNs8mNNCqlAq7b_P6R-DWfunxmJbwBM4FhKvks1C8jI5voFI0y2tu41v6oax6aGt0EPCcf2AkklJze3Z3sSVannJJXfH0h-zFRf?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/tkk5g59f0p46k6eul18hvn4n0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr6wDoPZKHNxbH5VdwcKXY3pW9ttdbBDbIEECJtWOJWIq44BNoy5Ug_C-rpDa1QFzV7G-f7rIXmefq5dldoBQu63suxZv66CybMXa_Bq0sOmnv8UNQfDO4ZVypUr9IcXq7tDp5my-RYkG2qGJlqneXjL4VUpYcye2fwptf7qu9uFv5os9XXrL6_xVDutC-NlVJF?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 41
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9310844, 48.2926799, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Заньковецької, 18",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 42
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9351319, 48.2951389, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Університетська, 54",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 43
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9261255, 48.2957519, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Горького, 2",
+        "description": "відповідальний Віктор Анатолійович +380501834140",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 44
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9333943, 48.295142, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Горького, 15",
+        "description": "Відповідальний: Туник Саша +380501833827",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 45
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9319903, 48.2957936, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Сіді-Таль, 2",
+        "description": "Без пароля<br>Черговий з ключем у квартирі 15, 2 корпус під'їзду ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 46
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9306277, 48.2908117, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 16",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 47
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9360828, 48.2947425, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кобилянської, 55",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/182tr4bjjjqbslch2a80o58kl8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpZ8Ml1HaiGwNeVfj7qhu7UIMO-zxzt-vix156iGfN6KNg0yvfrUmO7451SaSWW2cISyaYQvUTX3ZixCtyNow8z1WZLYrtGU11MaEKbcHdFIThmcqVBdMLqIJeHtp23s5ZRfpeT18PadM2QDq8pIe6A0bPI0eXJFQTiZcxYCLKLVMimCPs2TZ_rtkaE7z4mt55t?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Код домофона: 139<br><br><img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/74e6nahncspe9vrdsivqi1kjto/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrpL-ApvOn9GLYTc2dwvhu1AWbtdH3FwDKKTvttiGewJZqieaB73JZ2M7XdMbbgCtOyDhfzb8anujIaBsSrFrsOMBnEzWHu75nPdXqc2Rdyp1leQHRx4UnNqY-L1T1Ih1IAIwTbQmXWhIoR3EfzY7q3zQLwTMvPMD4DBzfrNzoZKeg0dCkcraH7042f-NtdGts?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pdus8hec6475i141uqaqfc06t4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqkCyervtktJdphOSVvnKE7xoo8C9TW4tao20OdaXKUozUF7o6AW4iXu6AMv_IdvXdWitp_Qiu2Fw9DqvzuCOduVBSFklPMyF_Rkmj948tsdV_yqvWYwaRyGSVA1RFZH7raVAfdasmRzRBgPmA4XVcx0sQb5g46d67O0dpuYW4fc_jhBtAoU5x7oTZKN_4UTXJt?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/182tr4bjjjqbslch2a80o58kl8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpZ8Ml1HaiGwNeVfj7qhu7UIMO-zxzt-vix156iGfN6KNg0yvfrUmO7451SaSWW2cISyaYQvUTX3ZixCtyNow8z1WZLYrtGU11MaEKbcHdFIThmcqVBdMLqIJeHtp23s5ZRfpeT18PadM2QDq8pIe6A0bPI0eXJFQTiZcxYCLKLVMimCPs2TZ_rtkaE7z4mt55t?session=0&fife https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/74e6nahncspe9vrdsivqi1kjto/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrpL-ApvOn9GLYTc2dwvhu1AWbtdH3FwDKKTvttiGewJZqieaB73JZ2M7XdMbbgCtOyDhfzb8anujIaBsSrFrsOMBnEzWHu75nPdXqc2Rdyp1leQHRx4UnNqY-L1T1Ih1IAIwTbQmXWhIoR3EfzY7q3zQLwTMvPMD4DBzfrNzoZKeg0dCkcraH7042f-NtdGts?session=0&fife https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pdus8hec6475i141uqaqfc06t4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqkCyervtktJdphOSVvnKE7xoo8C9TW4tao20OdaXKUozUF7o6AW4iXu6AMv_IdvXdWitp_Qiu2Fw9DqvzuCOduVBSFklPMyF_Rkmj948tsdV_yqvWYwaRyGSVA1RFZH7raVAfdasmRzRBgPmA4XVcx0sQb5g46d67O0dpuYW4fc_jhBtAoU5x7oTZKN_4UTXJt?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9394097, 48.2861078, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Садова, 3А",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ohk918h5lh8u8ef6vklstacepc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqllm4OTrTuAMcT9hDlu0wWd-va9jOLJRkcHz809siRjV9oHxrfzeKYOS2gPzTdsnVzGjHmmOxUuUZyGOu1SHQvddgtU9MlNBIHtNMTFsQNDctVvmU6h3x--BOA-ErDj5CAZ2pknMtUA-iSdXBSPD_ldl8Ut8irP2131qhAJuLVBtY8mDl3mk9nEEBOhJdhhsc?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Два входи<br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/03g43ihtpc1s14qnuf412m089c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrowPaJ4ZqJ90Ziqb3ugAnOVlrvGtjlfCVmjVPv-lz83eaDK1LsEHtmyGTdDDfZwZYt-TPwDtpklAolES3gqSTtmM2_dj4jGVbscVHYse5UIs7aZYsHzvEhHZeNCdzhAZljYK8Sspl3i07qw5omna5ZUjmTcPq0ofzJtFTPzWGmCDKCdIrmXp6EmQmK4KK3a7cn?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/em3vfn1a26h1pjlruujmdser2o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqyUOTv3Uk8WtQrhtVcNqF017-T8jtYRHqVK43o-d_Z03_9sn2-CMX-phP_KpqT7invRXOoJLXOo39RKw_WQE5uL--qkhRYakBD0TAbo_WRRQyB2ljXn4INX9bZkoRrRKrp2fbGy3icIiqX6hx4qSmb2Z0ROKMEnzPse-ULnaYG7S80T3aBReTWOJSv7MU2sOmx?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/8rlg5i64990be3rc7phl0bv3n8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpA_2oLUylheH8xsmtkCJ1Y2uJOYEY65J7HzoloOewD2BmlfT8lvlalwUtulvAqGLdZMeuADA9l7t9OplIj-zwjtCa522GKyu8LYrf9o7H6MaA5E82hAAp3fIfm97ZGaM8mLDsyiOd-UUHAoXwauZZaJKeHPilXmzi8Z5A-lXdoBqJnXYFFl-EfrJiQXUAgzWk?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nr0r2j216fba62rrp1uvqss37k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqD5ZZtofbIa3HXNlt7YL6nfort5Xf9iMZsI0fAASbDHa4H-5SGZL29AEE9B5nyGhStaH4a_iF8sIx5IeEHoPwbFXb7Gmdhb30lnlCiNeS9oUgNg4PvAY3b7sAtqGw-QW4gzk9sdR2lUDa6cjb7A4ULQLDZy-K8GA2iAUAr_E635Yxx0a9Nhjg82qZziF37S18?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vnh6h2udrs5283r4nja6r3ld0c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrUrsYIQArSbiUEbbhb0VNAynCyiM6QBTVc9YAXMUf71Pz21-V8XfTSkCicRXHh5CGud2dvyokAVHokZiUWLGJn-4cZJli9AFcgyB_-UzvOIA_SiSJkWx1wFz5iu6xi8mgf6bmCoS2JeenVKdoQTp0XUjkdLM0Jsq5cm5t6xboiUyAfWwF_wEyQpsHMCUgsoNg?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ohk918h5lh8u8ef6vklstacepc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqllm4OTrTuAMcT9hDlu0wWd-va9jOLJRkcHz809siRjV9oHxrfzeKYOS2gPzTdsnVzGjHmmOxUuUZyGOu1SHQvddgtU9MlNBIHtNMTFsQNDctVvmU6h3x--BOA-ErDj5CAZ2pknMtUA-iSdXBSPD_ldl8Ut8irP2131qhAJuLVBtY8mDl3mk9nEEBOhJdhhsc?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/03g43ihtpc1s14qnuf412m089c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrowPaJ4ZqJ90Ziqb3ugAnOVlrvGtjlfCVmjVPv-lz83eaDK1LsEHtmyGTdDDfZwZYt-TPwDtpklAolES3gqSTtmM2_dj4jGVbscVHYse5UIs7aZYsHzvEhHZeNCdzhAZljYK8Sspl3i07qw5omna5ZUjmTcPq0ofzJtFTPzWGmCDKCdIrmXp6EmQmK4KK3a7cn?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/em3vfn1a26h1pjlruujmdser2o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqyUOTv3Uk8WtQrhtVcNqF017-T8jtYRHqVK43o-d_Z03_9sn2-CMX-phP_KpqT7invRXOoJLXOo39RKw_WQE5uL--qkhRYakBD0TAbo_WRRQyB2ljXn4INX9bZkoRrRKrp2fbGy3icIiqX6hx4qSmb2Z0ROKMEnzPse-ULnaYG7S80T3aBReTWOJSv7MU2sOmx?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/8rlg5i64990be3rc7phl0bv3n8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpA_2oLUylheH8xsmtkCJ1Y2uJOYEY65J7HzoloOewD2BmlfT8lvlalwUtulvAqGLdZMeuADA9l7t9OplIj-zwjtCa522GKyu8LYrf9o7H6MaA5E82hAAp3fIfm97ZGaM8mLDsyiOd-UUHAoXwauZZaJKeHPilXmzi8Z5A-lXdoBqJnXYFFl-EfrJiQXUAgzWk?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/nr0r2j216fba62rrp1uvqss37k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqD5ZZtofbIa3HXNlt7YL6nfort5Xf9iMZsI0fAASbDHa4H-5SGZL29AEE9B5nyGhStaH4a_iF8sIx5IeEHoPwbFXb7Gmdhb30lnlCiNeS9oUgNg4PvAY3b7sAtqGw-QW4gzk9sdR2lUDa6cjb7A4ULQLDZy-K8GA2iAUAr_E635Yxx0a9Nhjg82qZziF37S18?session=0&fife https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vnh6h2udrs5283r4nja6r3ld0c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrUrsYIQArSbiUEbbhb0VNAynCyiM6QBTVc9YAXMUf71Pz21-V8XfTSkCicRXHh5CGud2dvyokAVHokZiUWLGJn-4cZJli9AFcgyB_-UzvOIA_SiSJkWx1wFz5iu6xi8mgf6bmCoS2JeenVKdoQTp0XUjkdLM0Jsq5cm5t6xboiUyAfWwF_wEyQpsHMCUgsoNg?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 49
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.934305, 48.281244, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Івасюка, 9",
+        "description": "<img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/r7icihras4cirsiq55t44hlua4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrn8hKdjTcOuYLXJ9iC6srGiZ6Dl0AjiZI6FhhYLjn2A0-Z_nwGRG0eZSCK7ypFwzwhJry77yENrpbJGrDr9HPoNt2gpwuIKYfvL_IM8i53wwk-S1bbvvZ-VO1_FMJX2Da_8CzezzEu5oNw8HnEUv3_-4cdd4p5gTNp5HoF6in1c5o-Hgsokjh-sENNSuSS0_zJ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1gvcvt2dp9js8ruk96hliefouk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpULe5Aft4Qx4ESv5bQRIraoJLS8JxzIcJYsbuTquK2cp3vKDM8r3a63OjkQq6Qmd5GNPzBx2ybAHOyH2mKTzgfVcG9fG02x7d06bljie7EFjey5YeWuTYveOF3XyFHV5E0xUoGvQGcF72W6dYY7xWKITjMzoy5VfwkC7thoim8ptGOKwt_IBIpkPDraOzpUMGN?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/8dh0chq3ph4jvoqkscp38ptfu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoReyddEQvaDBDS_jXkQMb0GYZpGLHzi6-91wTt58Odj5fsFhjBXGTXn7e_2JqBmnnj93G3--M5WIjBXzo90GtiG2Jyyu4vq8tB4lE6vgYMsm45ZHlc3MIJV9UPi5HSMU-g5zITvcpfTbvmYDMVq63y6EeNgGziukmQUjHWpCuy2mPc1ouCWQAnFC_0Zf6P2Pr_?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/17t85p97pn7q5ocnmsepn42k4s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoO7DjG1ahqOovCH-_gf_SsGYR48MeNFmLso99a5eL9vlpphSkv8onEL0wXYrBhWCstfkn5BVFBN4mAE5AW4b_4dtYmGgUxXqMcExIZ4G8js5kJsIojalUyOyAmwN6-piMcJ-hwVV5h3XeaKZcL7RvrLkeuaTKfAPbM7XIMra6OQ4hJvH1EaPiogtQ_t0zPI-w?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/r7icihras4cirsiq55t44hlua4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrn8hKdjTcOuYLXJ9iC6srGiZ6Dl0AjiZI6FhhYLjn2A0-Z_nwGRG0eZSCK7ypFwzwhJry77yENrpbJGrDr9HPoNt2gpwuIKYfvL_IM8i53wwk-S1bbvvZ-VO1_FMJX2Da_8CzezzEu5oNw8HnEUv3_-4cdd4p5gTNp5HoF6in1c5o-Hgsokjh-sENNSuSS0_zJ?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1gvcvt2dp9js8ruk96hliefouk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpULe5Aft4Qx4ESv5bQRIraoJLS8JxzIcJYsbuTquK2cp3vKDM8r3a63OjkQq6Qmd5GNPzBx2ybAHOyH2mKTzgfVcG9fG02x7d06bljie7EFjey5YeWuTYveOF3XyFHV5E0xUoGvQGcF72W6dYY7xWKITjMzoy5VfwkC7thoim8ptGOKwt_IBIpkPDraOzpUMGN?session=0&fife https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/8dh0chq3ph4jvoqkscp38ptfu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoReyddEQvaDBDS_jXkQMb0GYZpGLHzi6-91wTt58Odj5fsFhjBXGTXn7e_2JqBmnnj93G3--M5WIjBXzo90GtiG2Jyyu4vq8tB4lE6vgYMsm45ZHlc3MIJV9UPi5HSMU-g5zITvcpfTbvmYDMVq63y6EeNgGziukmQUjHWpCuy2mPc1ouCWQAnFC_0Zf6P2Pr_?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/17t85p97pn7q5ocnmsepn42k4s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoO7DjG1ahqOovCH-_gf_SsGYR48MeNFmLso99a5eL9vlpphSkv8onEL0wXYrBhWCstfkn5BVFBN4mAE5AW4b_4dtYmGgUxXqMcExIZ4G8js5kJsIojalUyOyAmwN6-piMcJ-hwVV5h3XeaKZcL7RvrLkeuaTKfAPbM7XIMra6OQ4hJvH1EaPiogtQ_t0zPI-w?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 50
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9469666, 48.2606498, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 265а, корпус 36",
+        "description": "<img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/iohci33u60i8nnit1q3jg71ko4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgookiWX-jkhMCfWjg3jmfG11R3edjNnA5NWdkf1bdeDzAlZDtfAN7XjX3DQNyPkE9WcSlijzkzI0B7QBCuw3B2sE8tMFVW4w5z_OVQHMbIAPfUJiGwubZjKq7OVIKfGAr753tCAGSv2GDDMmxE_pMYgBaqQgOzq1vQZIcEram6Rq9lHO09--MfCpWHM9w6UflM?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0e4i9mt7tatn9sk3he5ce7a3t8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqRCUi9v9oSpSaJwA8DkMh1q3ZWOlbCgHBSRhubTkfZfGOHOClMYa0pWQ9PfxzMBoE7yzms4NFw-r4XnDmKIsccWXpTjcbXhQ08qUnqIH7H_WqxIP8Vyy_cxRNUvkEOE1Qh3Oko0Uat42VJxOHg--2NUxV6eIMxMY0WAXLGlFuAtV9mbB6gv_tMiZCTwPX14Wfj?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/63qvj7p5cgj15mnb7jb3og2dps/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr_-EaU9Qnmmi84XifPHZyMObwKtYDQUPDQvyFI2pBNf2XJHosizZyd949kxjf4t_TBCubEI16B84tWW4_S9hDRbVh4aAqHNQxaQqdLIv6x4J7Ue7ygiaE7xAzK3BjRg4OC2mA-lZ8zOrllJBpeW5Ci20LiclZRlzWzpevGWe0JjDewMdq-a7vqoJKSnhZ7p_s?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/v84doc0fjresth01lidsa05d0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoDUXWA5KZL4zLbzm3IyVol2JPFJZZJ20nmpj0F1dWLf37iVf06EXy4YXCzxFwua6j5adHpSYnh9op-SqiReviQYQ9Bsu0mwK1EY9HASvuMvfou9iLco-l-l4mexsK2qwJqT8sO6uyo97NLNYOvx8zVY4q6mYDn6KEKqpmIt2EYJtR-KCl5HLLGICsDfaZK8lwS?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/iohci33u60i8nnit1q3jg71ko4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgookiWX-jkhMCfWjg3jmfG11R3edjNnA5NWdkf1bdeDzAlZDtfAN7XjX3DQNyPkE9WcSlijzkzI0B7QBCuw3B2sE8tMFVW4w5z_OVQHMbIAPfUJiGwubZjKq7OVIKfGAr753tCAGSv2GDDMmxE_pMYgBaqQgOzq1vQZIcEram6Rq9lHO09--MfCpWHM9w6UflM?session=0&fife https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0e4i9mt7tatn9sk3he5ce7a3t8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqRCUi9v9oSpSaJwA8DkMh1q3ZWOlbCgHBSRhubTkfZfGOHOClMYa0pWQ9PfxzMBoE7yzms4NFw-r4XnDmKIsccWXpTjcbXhQ08qUnqIH7H_WqxIP8Vyy_cxRNUvkEOE1Qh3Oko0Uat42VJxOHg--2NUxV6eIMxMY0WAXLGlFuAtV9mbB6gv_tMiZCTwPX14Wfj?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/63qvj7p5cgj15mnb7jb3og2dps/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgr_-EaU9Qnmmi84XifPHZyMObwKtYDQUPDQvyFI2pBNf2XJHosizZyd949kxjf4t_TBCubEI16B84tWW4_S9hDRbVh4aAqHNQxaQqdLIv6x4J7Ue7ygiaE7xAzK3BjRg4OC2mA-lZ8zOrllJBpeW5Ci20LiclZRlzWzpevGWe0JjDewMdq-a7vqoJKSnhZ7p_s?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/v84doc0fjresth01lidsa05d0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoDUXWA5KZL4zLbzm3IyVol2JPFJZZJ20nmpj0F1dWLf37iVf06EXy4YXCzxFwua6j5adHpSYnh9op-SqiReviQYQ9Bsu0mwK1EY9HASvuMvfou9iLco-l-l4mexsK2qwJqT8sO6uyo97NLNYOvx8zVY4q6mYDn6KEKqpmIt2EYJtR-KCl5HLLGICsDfaZK8lwS?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 51
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9591047, 48.25593, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Центральна площа, 1",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 52
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.934894, 48.291614, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Васіле Александрі, 101",
+        "description": "Вхід з вулиці Лісової",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 53
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9639147, 48.3344631, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Степана Бандери, 1",
+        "description": "Доступ через домофон",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9330502, 48.292705, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця 29-го Березня, 9а",
+        "description": "Приміщення поліції",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9318947, 48.2867382, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Білоруська, 3б",
+        "description": "<img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ec39ujp33gcerjsgeme7mncu0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrJJP_RmSTg7jwRhQzxP8JH3N_vlesnkGztviOhztR49oDMQP55wX6HbHKlUqRxqN_pzPRIU4zTIyVGJf7ZMbkUtAMEQ18L9fQF9BFn6vnJyvB_VKdbDtDB3HL1xZwQ8oYwtZ8Wnmsn0PtvZz0NlcGRugwaxFjwmAmqVpc4oickaxQPu0k3oAbLf4WPGhKznVZ4?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Доступ до сховища забезпечує черговий<br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0123i58on6k198r8r0migboihs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo9bXldCWG3doknQ6rTC1ZHCEGfDyfnz3gFlbjBOkKQpVuzGZLyCgxDJlEhWN7wb6_1qe0RHZw7OsuMotcYINqpYRHIMbUeNvVCpqfwUdE0wHhr5IJMd2ERoK4r8yxv60_HZZ1lXxYHkeIX3LXlAm7rV-e2baUvgFTaY930LgxtHNRU6X7U7HAtiAWYBmerkVkt?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/oaq7mab1p23inqp578jt35tvu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqy5H98pBjlZzSPVZ7NnXrTDccAwwpuCYmifjrOKH7690VmVFO-21PEobTybrcxvpmzNmE8K2PQqPCkqssykCFXAtASzqk-kQxsFl-Xkkpb0hYl_qUV8Mfg375c2ekcTRh4y_EdYk8EHMyJWVuvjBbRxVxkFhS7s-_0spQsc5f5rJazAnoG7M6h0fVk9-jR2z4?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ec39ujp33gcerjsgeme7mncu0s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrJJP_RmSTg7jwRhQzxP8JH3N_vlesnkGztviOhztR49oDMQP55wX6HbHKlUqRxqN_pzPRIU4zTIyVGJf7ZMbkUtAMEQ18L9fQF9BFn6vnJyvB_VKdbDtDB3HL1xZwQ8oYwtZ8Wnmsn0PtvZz0NlcGRugwaxFjwmAmqVpc4oickaxQPu0k3oAbLf4WPGhKznVZ4?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/0123i58on6k198r8r0migboihs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo9bXldCWG3doknQ6rTC1ZHCEGfDyfnz3gFlbjBOkKQpVuzGZLyCgxDJlEhWN7wb6_1qe0RHZw7OsuMotcYINqpYRHIMbUeNvVCpqfwUdE0wHhr5IJMd2ERoK4r8yxv60_HZZ1lXxYHkeIX3LXlAm7rV-e2baUvgFTaY930LgxtHNRU6X7U7HAtiAWYBmerkVkt?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/oaq7mab1p23inqp578jt35tvu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqy5H98pBjlZzSPVZ7NnXrTDccAwwpuCYmifjrOKH7690VmVFO-21PEobTybrcxvpmzNmE8K2PQqPCkqssykCFXAtASzqk-kQxsFl-Xkkpb0hYl_qUV8Mfg375c2ekcTRh4y_EdYk8EHMyJWVuvjBbRxVxkFhS7s-_0spQsc5f5rJazAnoG7M6h0fVk9-jR2z4?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9474412, 48.2985239, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Винниченка, 9а, 9в",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ft17hasd2vvjplsr7r5c4ulqn0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqucUgsC2Xo_eCXHgD5WpJmcUI6Psbt-1ax9TOI1oEHdzOaCuUv3Q7_pVyk5R7akree97XLHafggbFEwuNai-EQtns_ktnJVejdksVuIvU0fFLQyHt9EjUxr8RWPV32AB1K95pFEyhOadOdWJoUp-xFJ10MFwTIVvrJPcX4GFZ8J2IiXaACZ_L682H1OTu2wp4?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Сховище в \"ЧернівціГаз\"",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ft17hasd2vvjplsr7r5c4ulqn0/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqucUgsC2Xo_eCXHgD5WpJmcUI6Psbt-1ax9TOI1oEHdzOaCuUv3Q7_pVyk5R7akree97XLHafggbFEwuNai-EQtns_ktnJVejdksVuIvU0fFLQyHt9EjUxr8RWPV32AB1K95pFEyhOadOdWJoUp-xFJ10MFwTIVvrJPcX4GFZ8J2IiXaACZ_L682H1OTu2wp4?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 57
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9526877, 48.2716267, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Воробкевича, 5",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9444627, 48.260006, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 176",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 59
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9269574, 48.2681263, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 202",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 60
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9256065, 48.2653234, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Гагаріна, 25ж",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 61
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9300182, 48.3003745, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Галицький Шлях, 46",
+        "description": "”Чернівецький завод залізобетонних виробів та конструкцій”, заступник директора Юрій +380504344064, вхід через прохідну заводу",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 62
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9113862, 48.3163133, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 1",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 63
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9445091, 48.2769625, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 91",
+        "description": "<img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ubchp9ovitv0a5vgjuqqgfuosg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgos-Cofl-Q3lDr5TsXJXOhQyJD9p5nkT7t4ymnP6eeWtUsVXAbaXBcawFwOR4P8GZctb1ydgNU1_Cvt-12iRXCOc1PBXsjTZrAX5D58XoZzUwA_gL5kcqSnf_4w3Fm8dxEWkf__v6X2Mp02VFASdc0nyKOQnSBE0MRBnZtlwR20idFpyYOE8c40R0vmuACzA_-q?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>За доступ відповідає ЧЕРНІВЕЦЬКА ОБЛАСНА ДЕРЖАВНА ТЕЛЕРАДІОКОМПАНІЯ, тел: 0372 524 783, 0372 550 775 <br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/sfp17v0s1pep0ppar6s4rg80h8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqEOXiwjskgoM8tpEe_eZeXD6mtIkP5wZT95Rd51MwIFtQWzNivvuB3NtRsb395w9cz4fSnlLH504OKxQ7mp-utlvKp07gIp-R-hpBybm4_heuBg76WuTxUcN1rqnZbQzBUqRLau370ReNsYqOEf73wHseOE8ZPhObZOQWc2U2wEjLFqJ5dCrYuJoVvRRG0JE5m?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/6cb13o1v8op6onk4k51uo5n5v4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrMkFoFieosnIEgQLnShR63Hme0rh9k92YLffl_yYucKryxlUSOFrUftS6eQVGcHaaX_KaCoJiwb-WrHGyav9bsbBQ_-X5bzSb27PTkPZ1khn8St5MyfE-supKPtI-sACZiFWzVbMxOC7-WQ52CcRXBZrInvaoI6DUiQlv0ThXb1q7IilRItw8NlDWMpJedlQuO?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/ubchp9ovitv0a5vgjuqqgfuosg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgos-Cofl-Q3lDr5TsXJXOhQyJD9p5nkT7t4ymnP6eeWtUsVXAbaXBcawFwOR4P8GZctb1ydgNU1_Cvt-12iRXCOc1PBXsjTZrAX5D58XoZzUwA_gL5kcqSnf_4w3Fm8dxEWkf__v6X2Mp02VFASdc0nyKOQnSBE0MRBnZtlwR20idFpyYOE8c40R0vmuACzA_-q?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/sfp17v0s1pep0ppar6s4rg80h8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqEOXiwjskgoM8tpEe_eZeXD6mtIkP5wZT95Rd51MwIFtQWzNivvuB3NtRsb395w9cz4fSnlLH504OKxQ7mp-utlvKp07gIp-R-hpBybm4_heuBg76WuTxUcN1rqnZbQzBUqRLau370ReNsYqOEf73wHseOE8ZPhObZOQWc2U2wEjLFqJ5dCrYuJoVvRRG0JE5m?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/6cb13o1v8op6onk4k51uo5n5v4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrMkFoFieosnIEgQLnShR63Hme0rh9k92YLffl_yYucKryxlUSOFrUftS6eQVGcHaaX_KaCoJiwb-WrHGyav9bsbBQ_-X5bzSb27PTkPZ1khn8St5MyfE-supKPtI-sACZiFWzVbMxOC7-WQ52CcRXBZrInvaoI6DUiQlv0ThXb1q7IilRItw8NlDWMpJedlQuO?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 64
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9367719, 48.2861885, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 120",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pbi1nnbq36cn6bl0qm8ggpajbo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoOiXaUu5SH5vm_YL_GqQTZak9Z3N9D3lY8QaMJtA0jiqOLrseU-WhIgtd5PvOGfm6krOLbEECqs0kjlilxibIV2QAzlTUI_Z1D8OZa6G5WfURV34yCyLx8g5im2warn4imiFVK9C5Hw5do2SLGbWb-Hnefqr5iuR1mCwxxYaiKHgPmCa98gK7v9kVxNJW5zo8?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/7ctifgklbgvcobbfbktu1u5epc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqbeY1w3qdDBj-Is32cGPPHZOmlm7YopPWt9j8dSEt4_owk2p6Zq7chiusF65tlZG0UzeNdBQdhnsQd4zZQmS_4MJx5xVjTgnDSYv4X0obS7wCQOUfzaI45exy4QoPpb2pn7auDm6kpAGiV-UfEqJtsNHOM6t9K64Ikl0RfbXWKRDFXcaIhxz7fhgP7ePrH_be8?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vne5gf37guk043n0bq8b66rvhk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpu4pkUx1D2xuAvXpJoNatqqIRBxSUJExmBAdNqG2V817Rhqz214Srb8Voq2L8c8P1mUwAd7nPRZZrtwahGtc5YPLjr5N96Rv8Neoqhq380m-fEZ2LRibFzMmupytpgqI82AYTqxBAKUyn3d-a7ELuT2y-0SDYoSzy_WUQCZ8b57wyTrjGKBR4PsEd4dMwxNyI?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/pbi1nnbq36cn6bl0qm8ggpajbo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoOiXaUu5SH5vm_YL_GqQTZak9Z3N9D3lY8QaMJtA0jiqOLrseU-WhIgtd5PvOGfm6krOLbEECqs0kjlilxibIV2QAzlTUI_Z1D8OZa6G5WfURV34yCyLx8g5im2warn4imiFVK9C5Hw5do2SLGbWb-Hnefqr5iuR1mCwxxYaiKHgPmCa98gK7v9kVxNJW5zo8?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/7ctifgklbgvcobbfbktu1u5epc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqbeY1w3qdDBj-Is32cGPPHZOmlm7YopPWt9j8dSEt4_owk2p6Zq7chiusF65tlZG0UzeNdBQdhnsQd4zZQmS_4MJx5xVjTgnDSYv4X0obS7wCQOUfzaI45exy4QoPpb2pn7auDm6kpAGiV-UfEqJtsNHOM6t9K64Ikl0RfbXWKRDFXcaIhxz7fhgP7ePrH_be8?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vne5gf37guk043n0bq8b66rvhk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpu4pkUx1D2xuAvXpJoNatqqIRBxSUJExmBAdNqG2V817Rhqz214Srb8Voq2L8c8P1mUwAd7nPRZZrtwahGtc5YPLjr5N96Rv8Neoqhq380m-fEZ2LRibFzMmupytpgqI82AYTqxBAKUyn3d-a7ELuT2y-0SDYoSzy_WUQCZ8b57wyTrjGKBR4PsEd4dMwxNyI?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9459244, 48.2720188, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 137",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/6ntvtg6n0buvl3db2c18t8koeo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp-QDYU0beGvNwY5rZeXLvRWBo8tCnSTAr_GzhumZdMfXmuLSBVckMlhAMjcwaB7SYz7KLYgGDgOrIvzdHAMg_M2rzBVR3H9tko7a9-FUoEHGxRByRlqA94F7F3cuJIHbnpGQu1_IdMfn0018JvcgFB3mQUkaGqKWxB2_mVwrHS_XwgBcvzmrNI7HExJA5nXFM?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Чернівецька обласна клінічна лікарня<br>Вхід у сховище з вулиці Буковинська<br>Сергій +380996694117<br><br><img src=\"https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/a30041g3q8c1tv82hr9bhh84cc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqsoGXYLcPVNjpb61Z6xXYpJoxPsaDOBpqLAdBaailggSPZskLa5XHKp8T-oKd409Zjhu8l1zvFqOMVLSJYsuOnQgHtSdHx3RwDy0f1LtHL7AmN3YfYHgrkCB_SaBMSwaHZO2c-XGUsXKZfmM4pnD3LzGJXwSj6OO0CjCnV76HhwBnaAJj4JbH8E5WoQiF9WUM?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/6ntvtg6n0buvl3db2c18t8koeo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp-QDYU0beGvNwY5rZeXLvRWBo8tCnSTAr_GzhumZdMfXmuLSBVckMlhAMjcwaB7SYz7KLYgGDgOrIvzdHAMg_M2rzBVR3H9tko7a9-FUoEHGxRByRlqA94F7F3cuJIHbnpGQu1_IdMfn0018JvcgFB3mQUkaGqKWxB2_mVwrHS_XwgBcvzmrNI7HExJA5nXFM?session=0&fife https://doc-0k-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/a30041g3q8c1tv82hr9bhh84cc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqsoGXYLcPVNjpb61Z6xXYpJoxPsaDOBpqLAdBaailggSPZskLa5XHKp8T-oKd409Zjhu8l1zvFqOMVLSJYsuOnQgHtSdHx3RwDy0f1LtHL7AmN3YfYHgrkCB_SaBMSwaHZO2c-XGUsXKZfmM4pnD3LzGJXwSj6OO0CjCnV76HhwBnaAJj4JbH8E5WoQiF9WUM?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 66
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9432383, 48.2795601, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 246",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 67
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9593632, 48.2498467, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Денисівська, 7а",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 68
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9255201, 48.3196868, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Заводська вулиця, 19",
+        "description": "<img src=\"https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vq4uhabill4ird4sa4b51m8qas/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrZlFhX0_IHDKwa2Xjat33kWlZHvq9L-xuFhcdSK3_8tr5wPIVs89GshyDZFHySwMzeOLcWV6kn3rnbiu0daXl-UcwzpnjhQadk9JTb8RJEEGBRoHzH5LfEk_-nDqFLm0ZptjmZANIATRUPUDQVaM9sECTIt5A3KmgPrcYYWh2KE2vzVYmYJKHp9hI62GNgq80G?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Контакт працівниці заводу +380507360086<br>Вхід через прохідну заводу<br><br><img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/15b9ilpbrf6ffl39fost821fkg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9LAzQedMCNgSfhrwGO5pyUsD6dAD_x_hp3YNJ7SrhNdlSP6O_maQLVV_Gt2zL2DdesqZFV2Hpn5_lRjnxFDhRtOQugUehqPyK1gIa3C3ipm1RgwTyhOQfUV0uOSXb3z3xDWgrrVQCfZ4zI7cIZL7Rch10eJdWa-J7tRUKWOVkm8LXsqrdZn2k3P6Pwr4SFFQ?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/uve5m12fclts285bqavcf91dfk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrGmWi4vq3-3P4f5YIf0swtquHG3rlS1FSoPFQ8rTue2pYXYV_IJK0epw6An13AI1VZY5K2qRraizbayUeaw_bAEn9-bs_e18FkMdBLxDSNOlNj9p3qMMoKP8zWiWpfY4K0kbX5wR4Fa2-j-8ZbvYUSGw7GRYxgQXk_9Mye1iGJKxdY1mKP-_nHK4AtM3mP_dc?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/jd9iphhstchsepaj3e5kf7ca1k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgow-lirARrwL3NXIbmEwAA7ycZtpOh-8DogZuwu0ITcAzfTwuZ-wxAhbKv3rVPbU9VC1IneM5HbLrvpjiCZU1QYbDhEGitKfiN-3coa7Oltkcs6JJRlEsMSJ50xq8LQX3fhT5yYDRAZPj0oXAVVtLEFM3jdMtqlmmJHEuwasbFZExl75wmvwkIIKSq-BRev73c?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0o-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vq4uhabill4ird4sa4b51m8qas/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrZlFhX0_IHDKwa2Xjat33kWlZHvq9L-xuFhcdSK3_8tr5wPIVs89GshyDZFHySwMzeOLcWV6kn3rnbiu0daXl-UcwzpnjhQadk9JTb8RJEEGBRoHzH5LfEk_-nDqFLm0ZptjmZANIATRUPUDQVaM9sECTIt5A3KmgPrcYYWh2KE2vzVYmYJKHp9hI62GNgq80G?session=0&fife https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/15b9ilpbrf6ffl39fost821fkg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp9LAzQedMCNgSfhrwGO5pyUsD6dAD_x_hp3YNJ7SrhNdlSP6O_maQLVV_Gt2zL2DdesqZFV2Hpn5_lRjnxFDhRtOQugUehqPyK1gIa3C3ipm1RgwTyhOQfUV0uOSXb3z3xDWgrrVQCfZ4zI7cIZL7Rch10eJdWa-J7tRUKWOVkm8LXsqrdZn2k3P6Pwr4SFFQ?session=0&fife https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/uve5m12fclts285bqavcf91dfk/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrGmWi4vq3-3P4f5YIf0swtquHG3rlS1FSoPFQ8rTue2pYXYV_IJK0epw6An13AI1VZY5K2qRraizbayUeaw_bAEn9-bs_e18FkMdBLxDSNOlNj9p3qMMoKP8zWiWpfY4K0kbX5wR4Fa2-j-8ZbvYUSGw7GRYxgQXk_9Mye1iGJKxdY1mKP-_nHK4AtM3mP_dc?session=0&fife https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/jd9iphhstchsepaj3e5kf7ca1k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgow-lirARrwL3NXIbmEwAA7ycZtpOh-8DogZuwu0ITcAzfTwuZ-wxAhbKv3rVPbU9VC1IneM5HbLrvpjiCZU1QYbDhEGitKfiN-3coa7Oltkcs6JJRlEsMSJ50xq8LQX3fhT5yYDRAZPj0oXAVVtLEFM3jdMtqlmmJHEuwasbFZExl75wmvwkIIKSq-BRev73c?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 69
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.92099, 48.3191362, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Заводська вулиця, 41",
+        "description": "Черговий +380507846904<br>Вхід через прохідну заводу",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 70
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9223382, 48.3234053, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Зелена, 3",
+        "description": "Доступ до сховища забезпечує черговий",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9517996, 48.2904863, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Кармелюка, 78",
+        "description": "Цегельний завод, цілодобова охорона.",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 72
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9538736, 48.2774683, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Зелена, 5д",
+        "description": "Доступ до сховища забезпечує черговий",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 73
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9542922, 48.2917999, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Зелена, 10",
+        "description": "Приватний сектор",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9540977, 48.2902484, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Кафедральна вулиця, 2",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 75
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9345328, 48.2868695, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Коломийська, 4А",
+        "description": "<img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/icgpcv9690i3ahgjlkbpriemmg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp_g1WDgyECm6BjNZxGcoDFS87TqNLR78hS2P5JbLVeIW9ONhhwreXzP77Pha3l690nFIQwuYSBZvRE9MHG_O-Yoh_XQB4_SYkJCrdos4CeiCEW7-jKClYd5LGqFs4iBbxgY1T8SVp_NzJBmstN9k58b2-F_UDzfqA1-GI2G-6T-c8a5g4xECN7hLII_9CZ6os?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/icgpcv9690i3ahgjlkbpriemmg/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp_g1WDgyECm6BjNZxGcoDFS87TqNLR78hS2P5JbLVeIW9ONhhwreXzP77Pha3l690nFIQwuYSBZvRE9MHG_O-Yoh_XQB4_SYkJCrdos4CeiCEW7-jKClYd5LGqFs4iBbxgY1T8SVp_NzJBmstN9k58b2-F_UDzfqA1-GI2G-6T-c8a5g4xECN7hLII_9CZ6os?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 76
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.912064, 48.329712, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Коломийська, 13Б",
+        "description": "<img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/i1ka4tg0a510km5ri3rmr1bb3c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq8Q7BRGbeZDObPTG7C5kisRhr2LM161BhCEOHkzx0jEeuUHh2MF7rLGzodyB1AB2RjQ9bSC12-0ciBt-htrnJCGSmz8S5CUEOp0fbGnZ7wQlMiTr9ZnlphirJNSPTMtchS4hcSOxBaS0V_rdkP_3oiHh_cALBkBwY4r49RomESpG6lqHYhR61Y3x3hgYAM-mzE?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/a31edl07r3aaiqt2e4h1t5ju90/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo3YPCVpb6ZyfYtQZR6VpSWaS_pZgRxh_ihlunCVUiCb_8qtxcf1eSTFc2nvHaFTImCK8UBPKvs4FnvwSDgCkH3O5ySUEUZdC_HTValV8uh8-KOkxM-RtPW30bsBzr2Yu6nIXbANpPR3-9AWXcfbzn3NT2T5r6NndPZ-ROV7m9msBHTjXDy-rpj4zHhPunLejMz?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/i1ka4tg0a510km5ri3rmr1bb3c/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgq8Q7BRGbeZDObPTG7C5kisRhr2LM161BhCEOHkzx0jEeuUHh2MF7rLGzodyB1AB2RjQ9bSC12-0ciBt-htrnJCGSmz8S5CUEOp0fbGnZ7wQlMiTr9ZnlphirJNSPTMtchS4hcSOxBaS0V_rdkP_3oiHh_cALBkBwY4r49RomESpG6lqHYhR61Y3x3hgYAM-mzE?session=0&fife https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/a31edl07r3aaiqt2e4h1t5ju90/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo3YPCVpb6ZyfYtQZR6VpSWaS_pZgRxh_ihlunCVUiCb_8qtxcf1eSTFc2nvHaFTImCK8UBPKvs4FnvwSDgCkH3O5ySUEUZdC_HTValV8uh8-KOkxM-RtPW30bsBzr2Yu6nIXbANpPR3-9AWXcfbzn3NT2T5r6NndPZ-ROV7m9msBHTjXDy-rpj4zHhPunLejMz?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 77
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.898957, 48.332736, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Коростишевського, 8",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 78
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9215118, 48.3079681, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лесі Українки, 23",
+        "description": "<img src=\"https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e33n4p1vbl5704127h0vna8t3o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo0WQHCj2mwvhmLk3zIMOcz9D4lFndq_YeGAzIZnu_0OYddjLRcS3aQuUMrBwGl9RBYTdzNpbpKGN1GZiPRbMzL1iOKFogGKP77tdLrPEFGfOEh3lm9XoAKOGKnlO0Zr8nyNrK6PHPfBzxWmrCNFyEeGZwYf_Yl4Xv2FAqf4nS-GQ40FfinzimAtRpJr7JGMFB_?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Приміщення бібліотеки<br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/kr6g34jc0fkeiorguodklbnuu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpWTsDruzTDsrbSoKuAJJqtidz3LfkCRxAuCTBRG2jSfykdN2xu8Vng3qj9-zj2BmZIeS0ntnuJbzP-odbl5t9-sY-FjSopQ1Vud2D8MiigUEFSuF33dWtArafNTUh7b6jodoACdKqyRixBcb_QyxN_t3qvu8xK5wg9XvQdz0UaBPAjnoglFIE4pnOlKlgD--c?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-08-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e33n4p1vbl5704127h0vna8t3o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgo0WQHCj2mwvhmLk3zIMOcz9D4lFndq_YeGAzIZnu_0OYddjLRcS3aQuUMrBwGl9RBYTdzNpbpKGN1GZiPRbMzL1iOKFogGKP77tdLrPEFGfOEh3lm9XoAKOGKnlO0Zr8nyNrK6PHPfBzxWmrCNFyEeGZwYf_Yl4Xv2FAqf4nS-GQ40FfinzimAtRpJr7JGMFB_?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/kr6g34jc0fkeiorguodklbnuu4/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpWTsDruzTDsrbSoKuAJJqtidz3LfkCRxAuCTBRG2jSfykdN2xu8Vng3qj9-zj2BmZIeS0ntnuJbzP-odbl5t9-sY-FjSopQ1Vud2D8MiigUEFSuF33dWtArafNTUh7b6jodoACdKqyRixBcb_QyxN_t3qvu8xK5wg9XvQdz0UaBPAjnoglFIE4pnOlKlgD--c?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 79
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9282555, 48.2922176, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Василя Лесина, 4",
+        "description": "Контактний номер: Сергій +380502583733",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 80
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9846572, 48.2690772, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лугова, 5",
+        "description": "Збоку від Ашану",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9517209, 48.3252379, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Олега Кошового, 57",
+        "description": "Контакт: Василь +380954856790",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9200174, 48.2785683, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Маловокзальна вулиця, 21а",
+        "description": "Станція Чернівці Південна Львівської залізниці",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 83
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9577237, 48.2651475, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Миру, 19",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 84
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9585717, 48.2686696, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Переяславська, 10",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9348233, 48.2965673, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Поштова, 6",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9351617, 48.294007, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Прутська, 16",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 87
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9399194, 48.3048143, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Прутська, 23А",
+        "description": "АТ \"Чернівціобленерго\"",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.936642, 48.303384, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Прутська, 29",
+        "description": "ТОВ \"РОЗМА\"",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9383072, 48.3062454, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Олени Пчілки, 5",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9850095, 48.2754538, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 248",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 91
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9902232, 48.2742726, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Севастопольська, 36",
+        "description": "<img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/umh0n7l78f591ii905nnjkilg8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrqj_tr8Ns1NU3b6CA8sx0bWcQSZfZuoXOCiRoy1dDNVqBS0muCqTs3Nuhu3Dc8EorWPVDkPdegK-g2OM7ij8TtJ1BAprmzCdJmheiEwf7Jv6OHKeXDtpyvxmYjCogVK5KJ0TCioKyQvh3HB32Q3kxF1wpvWGrymGYpifgzD5yV28Crv_nTzJYSUhehOP-S49E?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/5g6f0vtpnsvk713m2l05i5onck/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqynRT-IPYF3jX6yqhVk80qlY5uJpeInpRnQzcwnWbYO4YDapms9trv06wPiMepUm3OiDDwNzS3BT9NM2C1RKiLQaj5R6lbNaRC4g0F9E9hCFImUgn8RrH9ImWtzMMbVT0cmxH8Kt8JmcWmw8p-ejRK6K9kDw9GMOgUSW5_VJ6eI5W6eNAYBhibNwQSyZSspdpD?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/trtqqumadd0q5id0tn9t6avb5s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrq6G38GZ864gXBijzt4GkSdROKvu_T4lO9hvgawaLKzDxfErS6XaYlxWE4N-PYtOkdEiwvQTz4OclrRrkcm2GLfF-74H7-LyJuO7ppil-_bpxhq1uZ4PTYxgk7xaMEE2MfwdVbE5yXRyRaOtyEl-LB53OH_mrYfKZR-Ay0OeRgDYFsiMhfxY8RrNNGyxoygwkU?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/umh0n7l78f591ii905nnjkilg8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrqj_tr8Ns1NU3b6CA8sx0bWcQSZfZuoXOCiRoy1dDNVqBS0muCqTs3Nuhu3Dc8EorWPVDkPdegK-g2OM7ij8TtJ1BAprmzCdJmheiEwf7Jv6OHKeXDtpyvxmYjCogVK5KJ0TCioKyQvh3HB32Q3kxF1wpvWGrymGYpifgzD5yV28Crv_nTzJYSUhehOP-S49E?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/5g6f0vtpnsvk713m2l05i5onck/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqynRT-IPYF3jX6yqhVk80qlY5uJpeInpRnQzcwnWbYO4YDapms9trv06wPiMepUm3OiDDwNzS3BT9NM2C1RKiLQaj5R6lbNaRC4g0F9E9hCFImUgn8RrH9ImWtzMMbVT0cmxH8Kt8JmcWmw8p-ejRK6K9kDw9GMOgUSW5_VJ6eI5W6eNAYBhibNwQSyZSspdpD?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/trtqqumadd0q5id0tn9t6avb5s/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrq6G38GZ864gXBijzt4GkSdROKvu_T4lO9hvgawaLKzDxfErS6XaYlxWE4N-PYtOkdEiwvQTz4OclrRrkcm2GLfF-74H7-LyJuO7ppil-_bpxhq1uZ4PTYxgk7xaMEE2MfwdVbE5yXRyRaOtyEl-LB53OH_mrYfKZR-Ay0OeRgDYFsiMhfxY8RrNNGyxoygwkU?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 92
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9304464, 48.3029361, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Смоленська, 1А",
+        "description": "<img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/qo8s989hi2tccalhm6q25fheu8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqm4bBz9fgxy_mF1dOOVlm_9MDyMJdKEkJI_ezVz6tertNDZrMYyp8QHqPDT0eK5W0UCZlozWTeotH1lhg30zpy5z5bT9akpSBwyYhYFXX-_98_iaLbWD_0Bu0tmnL-9h6ON2-77kxwe0Jew4d2czFUIQbyvCT4zKxSSRQI8axiiWBWMCC-mR_oUh_l5ZXqJ8tn?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Вхід через прохідну заводу ЖБК<br>Контакт: +380505773731<br><br><img src=\"https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/dc8no69ghs51vl0qcm4pbtg5ec/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrE7QP7RkRZCO5DawRKB9JBE_GszzbzufUtS0vFDamE_kUeMMXjDbNJoPfTUrvB02wQbs-71XKjnwysHIYHiIjUsjdyqN1r4rarSUZXLhnKdYP8jMRbKEGQ1Tm2Xgur_dMhyeyhFr_nozNCsJUptnGmqIZmoBZI9y-U6X0sDu5bFgzPddQ-UJh3V5TbVIGrlleX?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/qo8s989hi2tccalhm6q25fheu8/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqm4bBz9fgxy_mF1dOOVlm_9MDyMJdKEkJI_ezVz6tertNDZrMYyp8QHqPDT0eK5W0UCZlozWTeotH1lhg30zpy5z5bT9akpSBwyYhYFXX-_98_iaLbWD_0Bu0tmnL-9h6ON2-77kxwe0Jew4d2czFUIQbyvCT4zKxSSRQI8axiiWBWMCC-mR_oUh_l5ZXqJ8tn?session=0&fife https://doc-00-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/dc8no69ghs51vl0qcm4pbtg5ec/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrE7QP7RkRZCO5DawRKB9JBE_GszzbzufUtS0vFDamE_kUeMMXjDbNJoPfTUrvB02wQbs-71XKjnwysHIYHiIjUsjdyqN1r4rarSUZXLhnKdYP8jMRbKEGQ1Tm2Xgur_dMhyeyhFr_nozNCsJUptnGmqIZmoBZI9y-U6X0sDu5bFgzPddQ-UJh3V5TbVIGrlleX?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9106012, 48.3179572, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Соборна площа, 1",
+        "description": "<img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/p3q98veer0df3f8u3501cd47og/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjjpbdpVSdZ8XLE-eeB5qCeYu4aWv_qeOBvDDIO4l-_huTxAN6p111M_sq4ADrQ2NOpNKbyeozAS1GcNv7zDqb8VMKUhlU00jwlfhnSUOjXf4Ar2a-4Y04e6aqBJZOqc5A6RF-kweKv-4qBT3B1vWJ2JoZ6YnlFBGzCS-RSfxUHYtENkxaqhDmGCrlwbuCmKI?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Ключі в квартирі 10<br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/va18rklteverufglu134bmnmqo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpL9QE_oWQUgDVyn-H2P-MgT5MRApwghyCRolscEZpLyPlKwGmS_4YI9D6EtGBeKH7Qb5r7X1LivmW7My4qfmYphM6RizVt8viwipMa6vl9vdo6xh5J_FfMDAsRSVS8-eoi_jCG6XZuZwP_1N3-QbuNat9lolgc5xbH-W-2N801CAW0OS5g4lwqf_OVFM1WDjI?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/p3q98veer0df3f8u3501cd47og/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpjjpbdpVSdZ8XLE-eeB5qCeYu4aWv_qeOBvDDIO4l-_huTxAN6p111M_sq4ADrQ2NOpNKbyeozAS1GcNv7zDqb8VMKUhlU00jwlfhnSUOjXf4Ar2a-4Y04e6aqBJZOqc5A6RF-kweKv-4qBT3B1vWJ2JoZ6YnlFBGzCS-RSfxUHYtENkxaqhDmGCrlwbuCmKI?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/va18rklteverufglu134bmnmqo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgpL9QE_oWQUgDVyn-H2P-MgT5MRApwghyCRolscEZpLyPlKwGmS_4YI9D6EtGBeKH7Qb5r7X1LivmW7My4qfmYphM6RizVt8viwipMa6vl9vdo6xh5J_FfMDAsRSVS8-eoi_jCG6XZuZwP_1N3-QbuNat9lolgc5xbH-W-2N801CAW0OS5g4lwqf_OVFM1WDjI?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 94
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.933602, 48.2871152, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Хотинська, 39",
+        "description": "Доступ відкритий, ключ у 5 квартирі<br>Контактна особа: Урсулян Соломія Григорівна +380993769100",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9336411, 48.3184778, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Хотинська, 33А",
+        "description": "Невеликий приватний склад запчастин<br>Контакт власника: +380666698982<br>Вхід через прохідну, ключ схований поблизу дверей",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 96
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.930183, 48.318654, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Центральна площа, 10",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 97
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9342721, 48.2917495, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Ярослава Мудрого, 17",
+        "description": "ПрАТ Чернівецький олійно-жировий комбінат Вхід через прохідну заводу",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9264287, 48.3233243, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Ясська, 13",
+        "description": "<img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/o1iu306plcscp9qr8q56ihgcvo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrHp1Yh_39zdJ1f0fQrgKAaNx9gPZ1st6sGVPJsFG-HMIJmMfpdBXSpY_vI5fsO1LEQVtwQDHvDr3Uz9f8BeEJegRwFn61yawM_z1ShHsgsvVo3Bx8DR6Jci-OVlztXwqRWh8lxAB9AEODZAMWhcHRKTDy55SqbsiPTxzc36sgnrf04czEWCSUm64mgkTv1mcs?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/urangrk0jla9v99appsmab7vao/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoeWCpkO8hhkdldvIOexyCywNwkNht36hcP8Ajs4V1gtJyDqyn9u8D45CT7azp4I7_HRHETgB01EQXKg_QyyNBt0LJ7cz0t_W27ddAdii09avxok34WIniyUNgnJ7BhVb5LYMVoK4U6X2a2cRf_VrjPokvCrUUyADvo2_vmB7mqNCS0DJRyX997bxikJfnY_K6c?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/o1iu306plcscp9qr8q56ihgcvo/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgrHp1Yh_39zdJ1f0fQrgKAaNx9gPZ1st6sGVPJsFG-HMIJmMfpdBXSpY_vI5fsO1LEQVtwQDHvDr3Uz9f8BeEJegRwFn61yawM_z1ShHsgsvVo3Bx8DR6Jci-OVlztXwqRWh8lxAB9AEODZAMWhcHRKTDy55SqbsiPTxzc36sgnrf04czEWCSUm64mgkTv1mcs?session=0&fife https://doc-04-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/urangrk0jla9v99appsmab7vao/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoeWCpkO8hhkdldvIOexyCywNwkNht36hcP8Ajs4V1gtJyDqyn9u8D45CT7azp4I7_HRHETgB01EQXKg_QyyNBt0LJ7cz0t_W27ddAdii09avxok34WIniyUNgnJ7BhVb5LYMVoK4U6X2a2cRf_VrjPokvCrUUyADvo2_vmB7mqNCS0DJRyX997bxikJfnY_K6c?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9493703, 48.2715398, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 26",
+        "description": "<img src=\"https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/9js6l64k0dsjds1s9jsq4iso4o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp6JyRI7nKvzZfEAgsXPs4M1rVdsWuOg7LIhXsvDI-9jWVsW9UNiBzbLJ-KewYfjEnhqB-FxJRkAqy7F9Bxkjkj3R7QzN_iZQ1VGQjk6u3ohtLwULO2E-O8LCfDTX7Ga0CQdyS-6hesEct3pQRuLSgZ7X4u-omdF0Zk-eVlKdQn6AFmkDR_pJe94cRfDbkCGKUM?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vrrpasr6agc1d2biv98sh7644k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoIH2Ioqtd6Uy2BT3xitlAEL9AADTFvQ1CrFOcX2RuF37vWC1lbUk6ZQPili5aeJ_EMaQeTEApTI-_6TgxEPPytb8tO5fWR9PtMC2t4Gk3avquVoh2HGCwbXdk3DKxjJ23fNOjiIxH7rbfCAEm9od8ahRD8n9GLWSkYpZBKhk0_lQ2IeCrf5xIMCeazZRDKACs?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0g-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/9js6l64k0dsjds1s9jsq4iso4o/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgp6JyRI7nKvzZfEAgsXPs4M1rVdsWuOg7LIhXsvDI-9jWVsW9UNiBzbLJ-KewYfjEnhqB-FxJRkAqy7F9Bxkjkj3R7QzN_iZQ1VGQjk6u3ohtLwULO2E-O8LCfDTX7Ga0CQdyS-6hesEct3pQRuLSgZ7X4u-omdF0Zk-eVlKdQn6AFmkDR_pJe94cRfDbkCGKUM?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/vrrpasr6agc1d2biv98sh7644k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoIH2Ioqtd6Uy2BT3xitlAEL9AADTFvQ1CrFOcX2RuF37vWC1lbUk6ZQPili5aeJ_EMaQeTEApTI-_6TgxEPPytb8tO5fWR9PtMC2t4Gk3avquVoh2HGCwbXdk3DKxjJ23fNOjiIxH7rbfCAEm9od8ahRD8n9GLWSkYpZBKhk0_lQ2IeCrf5xIMCeazZRDKACs?session=0&fife",
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.935894, 48.2933586, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 187",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 101
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9482015, 48.2700734, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Коломийська 9A",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 102
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9102577, 48.3265291, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Комунальників, 1а",
+        "description": null,
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in Chernivtsi",
+        "ID": 103
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9741836, 48.2766285, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 131 ",
+        "description": "<img src=\"https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e7e6mti9drb7ic6k391jnugvls/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoGjtjbb9mn_1h0mJ1ut9zsgkcoikWanoxu03wOty8T4ox-P1JW4iIOJqtJUEWpnz4lpgIvTrpfkntopKTZPWfIbcNwV_wOmSiifjvz5qky8mv4IZFK7iAhb3yGqL-XeLBdk-s0CeMwL9o8ylD4jDwXhJMn2FXvgWTIsZXyqA2gJqo85ACAZNFBr5716gWAo3Qh?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0s-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/e7e6mti9drb7ic6k391jnugvls/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoGjtjbb9mn_1h0mJ1ut9zsgkcoikWanoxu03wOty8T4ox-P1JW4iIOJqtJUEWpnz4lpgIvTrpfkntopKTZPWfIbcNwV_wOmSiifjvz5qky8mv4IZFK7iAhb3yGqL-XeLBdk-s0CeMwL9o8ylD4jDwXhJMn2FXvgWTIsZXyqA2gJqo85ACAZNFBr5716gWAo3Qh?session=0&fife",
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 104
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9410873, 48.2812252, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Ентузіастів, 11\n",
+        "description": "Підземний паркінг",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 105
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9466901, 48.2575344, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лук'яна Кобилиці, 88А ",
+        "description": "<img src=\"https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1tairsi311dbqcqghvvtf5se5k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqYPfS8a6vAmEHMNuCi70axTJ1noyiDUFPsJp5GjJKivqL8piahCnwCkgDDMTw6zj1CuHg6LF5wHMdfDsQg0-Pu590xX5ecIPyRRmZthnu3UqT8DBqDmaghAFkZx1MudgDsbUBx2xTXHUntemMzk7nbz5kDX03BED24A03DIRy78QSXlu4wjmwLOlBFpznwWWQR?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Навчальний заклад<br><br><img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/cmd8tg35n8rikqld3h57gthcjs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoOflBxZ_0Ynp8EzGhRKJaBFtG3b0zZc2sgEqSFJEM49ddLauICuestyfQSwhY__xAujEMxu3W7AQptL3KNDbX4fXPwgnF7X6Q15eXIKrCjDHEKWqHhmH60kZ8ncQ_veSr1jPH4GGSTs936P1YB1AtRc5E8fAtActzDKv9ZkzgKSSkKza8vLZh3c0LdK4oJeEIS?session=0&fife\" height=\"200\" width=\"auto\" /><br><br><img src=\"https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mp0tjeq2rr58njjakvnm8bamhc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqrrKXp0F7eknZSFrAdEYN8wPgM2f2AS5hfkFX9RoYnMOx-DuhNBDI_CGI41nCIczpYWoCETWB5nt059wZ7d-gfcH9eHqCzSBuu5FZx1V_rmbA7eFeYdKtCulOjdGN9xNDI6XovTd_gj_NPIIsDpHO8_y2c_G8xFV9TYVyYPg8UthsQZveUecWJym0lr-kRU8Q?session=0&fife\" height=\"200\" width=\"auto\" />",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-14-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/1tairsi311dbqcqghvvtf5se5k/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqYPfS8a6vAmEHMNuCi70axTJ1noyiDUFPsJp5GjJKivqL8piahCnwCkgDDMTw6zj1CuHg6LF5wHMdfDsQg0-Pu590xX5ecIPyRRmZthnu3UqT8DBqDmaghAFkZx1MudgDsbUBx2xTXHUntemMzk7nbz5kDX03BED24A03DIRy78QSXlu4wjmwLOlBFpznwWWQR?session=0&fife https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/cmd8tg35n8rikqld3h57gthcjs/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoOflBxZ_0Ynp8EzGhRKJaBFtG3b0zZc2sgEqSFJEM49ddLauICuestyfQSwhY__xAujEMxu3W7AQptL3KNDbX4fXPwgnF7X6Q15eXIKrCjDHEKWqHhmH60kZ8ncQ_veSr1jPH4GGSTs936P1YB1AtRc5E8fAtActzDKv9ZkzgKSSkKza8vLZh3c0LdK4oJeEIS?session=0&fife https://doc-10-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/mp0tjeq2rr58njjakvnm8bamhc/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgqrrKXp0F7eknZSFrAdEYN8wPgM2f2AS5hfkFX9RoYnMOx-DuhNBDI_CGI41nCIczpYWoCETWB5nt059wZ7d-gfcH9eHqCzSBuu5FZx1V_rmbA7eFeYdKtCulOjdGN9xNDI6XovTd_gj_NPIIsDpHO8_y2c_G8xFV9TYVyYPg8UthsQZveUecWJym0lr-kRU8Q?session=0&fife",
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 106
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9492025, 48.2859905, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Воробкевича, 31-33              ",
+        "description": "Підземний паркінг ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 107
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9470353, 48.2548465, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 2а",
+        "description": "Підземний паркінг                            ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 108
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9452668, 48.2767793, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "ЖК \"Кришталеве Озеро\" ",
+        "description": "Підземний паркінг                            ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 109
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9716046, 48.2815365, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "проспект Незалежності, 116                      ",
+        "description": "Підземний паркінг       ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 110
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9363537, 48.2672575, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Марка Черемшини, 39                           ",
+        "description": "Підземний паркінг  ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 111
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9289207, 48.2760437, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Щербанюка, 39а                      ",
+        "description": "Підземний паркінг",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 112
+      },
+      "geometry": { "type": "Point", "coordinates": [25.93921, 48.272767, 0.0] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Рівненська, 12б                     ",
+        "description": "Підземний паркінг",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 113
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9172559, 48.266994, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Щербанюка, 79                           ",
+        "description": "Підземний паркінг",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 114
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9306086, 48.2742307, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Івана Підкови, 11б                        ",
+        "description": "Підземний паркінг     ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 115
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9564234, 48.3506087, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 150                          ",
+        "description": "Підземний паркінг   ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 116
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9288322, 48.2737125, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Павла Каспрука, 1                          ",
+        "description": "Підземний паркінг  ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 117
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9224011, 48.2749017, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 219е  ",
+        "description": "Підземний паркінг                           ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 118
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9810678, 48.2811984, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Горіхівська, 1               ",
+        "description": "У школі",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 119
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9073342, 48.2809214, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Залозецького, 13А",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 120
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.947446, 48.274496, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "проспект Незалежності, 68",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 121
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9432164, 48.2689465, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лесі Українки, 29",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 122
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9269933, 48.2938345, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Щепкіна, 2",
+        "description": "<img src=\"https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/b938srr2iin51rh6k87sff3eng/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoaVg06b-1EnGLdQllMsWFYfpqN7KcFovVJ_RA3_1SiNT088WsjFTm9Lc-_zpCBs7sv02gbY8VmbGG6z1UhjhMRl19FzHUITwLCXyI0jNhC4maPVwwLQwX6qTrRAnl8LiYDOt7LT138KXfAyC94JUa13xBtLQ_ssFwomyozA7H5F3XLdHbOQ5DwUSEEDbudOa_n?session=0&fife\" height=\"200\" width=\"auto\" /><br><br>Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": "https://doc-0c-6g-mymaps.googleusercontent.com/untrusted/hostedimage/m/rpn2te4s29c1t1e7pkf60g2kok/b938srr2iin51rh6k87sff3eng/1713266412000/dj8jbgHIYtbGNsfwPUUVq4e0aMsG2aPA/16984324761434590167/5AHUGKgoaVg06b-1EnGLdQllMsWFYfpqN7KcFovVJ_RA3_1SiNT088WsjFTm9Lc-_zpCBs7sv02gbY8VmbGG6z1UhjhMRl19FzHUITwLCXyI0jNhC4maPVwwLQwX6qTrRAnl8LiYDOt7LT138KXfAyC94JUa13xBtLQ_ssFwomyozA7H5F3XLdHbOQ5DwUSEEDbudOa_n?session=0&fife",
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 123
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9273714, 48.2972251, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 73",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 124
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9347134, 48.2892381, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Лесі Українки, 1",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 125
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9307445, 48.289328, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Бережанська, 25А",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 126
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9143738, 48.3068996, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Південно-Кільцева, 17",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 127
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9477979, 48.2520371, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Шкільна, 3",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 128
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9386148, 48.2941452, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Шкільна, 2",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 129
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.937639, 48.294154, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Головна вулиця, 87",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 130
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9364206, 48.2867467, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Південно-Кільцева, 7б",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 131
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9361285, 48.2556238, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Комарова, 26В",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.93533, 48.2594236, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Фізкультурна, 5",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 133
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.946375, 48.2663648, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Воробкевича, 19",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 134
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9479018, 48.2564479, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Немирівська вулиця, 3",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 135
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9936702, 48.2794815, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Сокирянська, 18",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 136
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.8938001, 48.2750468, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 228А",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 137
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9791919, 48.2796972, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Емінеску, 1",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 138
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.933683, 48.291652, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Герцена, 36",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 139
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9527782, 48.2823104, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Шевченка, 14-16",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 140
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.938372, 48.2852055, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Горіхівська, 29",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 141
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.8926616, 48.2867705, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Білоруська, 77",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 142
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9596184, 48.2998654, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Луковецька, 24",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 143
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9044573, 48.288533, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 257а",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 144
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9961199, 48.2747625, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вул. Щербаюка, 4 \n",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 145
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9427077, 48.2734833, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 152А",
+        "description": "Укриття в школі<br>Доступ забезпечує охоронець",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 146
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9271675, 48.2737397, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Івана Підкови, 9",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 147
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9566881, 48.3495959, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 230а",
+        "description": "Підземний паркінг      ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 148
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9259163, 48.2623116, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 226а",
+        "description": "Підземний паркінг      ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 149
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9261824, 48.2642218, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Героїв Майдану, 111д",
+        "description": "Підземний паркінг      ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9303378, 48.2553788, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Суворова, 2б",
+        "description": "Підземний паркінг      ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 151
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9349172, 48.2791382, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Руська, 213б",
+        "description": "Підземний паркінг      ",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 152
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9800994, 48.2823527, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Небесної сотні, 18а",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 153
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9378071, 48.2651939, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Дмитра Загула, 8",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 154
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9345774, 48.2833602, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Андрія Шептицького, 19",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 155
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9392759, 48.2924092, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "проспект Незалежності, 88 д",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 156
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9340955, 48.2695696, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Глібова, 12",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 157
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9496493, 48.2695361, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "вулиця Дібровецька, 5",
+        "description": "Навчальний заклад",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": -1,
+        "extrude": 0,
+        "visibility": -1,
+        "drawOrder": null,
+        "icon": null,
+        "gx_media_links": null,
+        "layer": "Chernivtsi-Shelters in educational institutions and underground car parks",
+        "ID": 158
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.9646559, 48.3261435, 0.0]
+      }
+    }
+  ]
+}
