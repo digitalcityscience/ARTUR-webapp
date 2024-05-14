@@ -13,7 +13,6 @@ const overlays = [sheltersLayer, boundaryLayer, isochronesLayer].filter(
   (layer): layer is Layer => layer !== undefined,
 );
 onMounted(() => {
-  console.log("Right Sidebar is mounted");
   let sidebar = L.control
     .sidebar({
       container: "rightsidebar",
