@@ -13,17 +13,16 @@ const cities: Array<City> = [
   { name: "Chernivtsi", latLng: [48.30933, 25.94639] },
 ];
 const city = ref<string | null>(null);
-const shelters = ref<Object | null>(null);
-const boundary = ref<Object | null>(null);
-const isochrones = ref<Object | null>(null);
-const isJsonDataLoad = ref<Boolean>(false);
+const shelters = ref();
+const boundary = ref();
+const isochrones = ref();
+const isJsonDataLoad = ref<boolean>(false);
 onBeforeMount(() => {
   city.value = cities[0].name;
 });
-watch(city, async (newValue, oldValue) => {
+watch(city, async (newValue) => {
   await loadData(newValue, shelters, boundary, isochrones);
   isJsonDataLoad.value = true;
-  console.log(`change to ${newValue} from ${oldValue}`);
 });
 // Map Settings
 const map = ref();
@@ -41,9 +40,6 @@ provide<Ref<string | null>>("city", city);
 provide<Ref<any>>("shelters", shelters);
 provide<Ref<any>>("boundary", boundary);
 provide<Ref<any>>("isochrones", isochrones);
-const isReady = () => {
-  console.log("Map is ready");
-};
 </script>
 <template>
   <l-map
@@ -51,7 +47,6 @@ const isReady = () => {
     v-model:zoom="zoom"
     :use-global-leaflet="false"
     :options="mapOptions"
-    @ready="isReady"
     style="width: 100vw; height: 100vh"
   >
     <!-- Controls -->

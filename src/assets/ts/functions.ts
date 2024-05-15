@@ -36,5 +36,4 @@ export async function loadData(
   isochrones.value.features.sort(
     (a: any, b: any) => b.properties.range - a.properties.range,
   );
-  console.log("Data loaded for", cityValue);
 }
