@@ -5,7 +5,6 @@ import {
   LFeatureGroup,
   LTileLayer,
   LTooltip,
-  LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
@@ -27,7 +26,7 @@ const markerOptions = {
   opacity: 0.8,
   fillOpacity: 0.8,
 };
-const popup = ref<string | null>(null);
+const popup = ref<string>("");
 const togglePopup = (feature: any) => {
   popup.value = feature.properties.description
     ? feature.properties.description

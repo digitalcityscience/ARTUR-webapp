@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, inject } from "vue";
+import SunburstControl from "./SunburstControl.vue";
+import { onMounted, inject, ref } from "vue";
 import type { Ref } from "vue";
 import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
@@ -24,7 +25,6 @@ onMounted(() => {
 });
 </script>
 <template>
-  <!-- optionally define the sidebar content via HTML markup -->
   <div id="rightsidebar" class="leaflet-sidebar collapsed">
     <!-- nav tabs -->
     <div class="leaflet-sidebar-tabs">
@@ -132,22 +132,42 @@ onMounted(() => {
             ><i class="fa fa-caret-right"></i
           ></span>
         </h1>
-        <p>
-          <code>Leaflet.control.sidebar({ autopan: true })</code>
-          makes shure that the map center always stays visible.
-        </p>
-        <p>
-          The autopan behviour is responsive as well. Try opening and closing
-          the sidebar from this pane!
-        </p>
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#sunburst-collapse"
+              aria-expanded="true"
+              style="padding-left: 0"
+            >
+              Select Indicators
+            </button>
+            <div class="collapse show" id="sunburst-collapse">
+              <SunburstControl></SunburstControl>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button
+              class="btn btn-toggle rounded collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#results-collapse"
+              aria-expanded="true"
+              style="padding-left: 0"
+            >
+              Results
+            </button>
+            <div class="collapse show" id="results-collapse"></div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
-.leaflet-sidebar:not(.collapsed) {
+/* .leaflet-sidebar:not(.collapsed) {
   width: 380px;
-}
+} */
 @media (min-width: 1200px) {
   .leaflet-sidebar-pane {
     min-width: 335px;
@@ -180,7 +200,6 @@ p {
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
-
 /* .btn-toggle-nav a {
   display: inline-flex;
   padding: 0.1875rem 0.5rem;
