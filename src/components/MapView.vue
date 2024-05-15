@@ -12,7 +12,7 @@ const cities: Array<City> = [
   { name: "Sumy", latLng: [50.911913, 34.80279] },
   { name: "Chernivtsi", latLng: [48.30933, 25.94639] },
 ];
-const city = ref<string | null>(null);
+const city = ref<string>("");
 const shelters = ref();
 const boundary = ref();
 const isochrones = ref();
@@ -28,7 +28,7 @@ watch(city, async (newValue) => {
 const map = ref();
 const zoom = 12;
 const firstZoom = 12;
-const mapOptions = {
+const mapOptions: object = {
   zoomControl: true,
   attributionControl: false,
   minZoom: 3,
@@ -36,7 +36,7 @@ const mapOptions = {
   center: cities[0].latLng,
 };
 provide<Ref<any>>("map", map);
-provide<Ref<string | null>>("city", city);
+provide<Ref<string>>("city", city);
 provide<Ref<any>>("shelters", shelters);
 provide<Ref<any>>("boundary", boundary);
 provide<Ref<any>>("isochrones", isochrones);
