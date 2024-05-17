@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import SunburstControl from "./SunburstControl.vue";
-import { onMounted, inject, ref } from "vue";
+import { onMounted, inject } from "vue";
 import type { Ref } from "vue";
 import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
@@ -13,6 +12,19 @@ const isochronesLayer = inject<Layer>("isochronesLayer");
 const overlays = [sheltersLayer, boundaryLayer, isochronesLayer].filter(
   (layer): layer is Layer => layer !== undefined,
 );
+const openSunburstSelection = () => {
+  const mainWinWidth = window.innerWidth;
+  const mainWinHeight = window.innerHeight;
+  const newWinWidth = 1000;
+  const newWinHeight = 1000;
+  const leftOffset = (mainWinWidth - newWinWidth) / 2;
+  const topOffset = (mainWinHeight - newWinHeight) / 2;
+  window.open(
+    "/sunburst-popup.html",
+    "",
+    `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable,scrollbars=yes`,
+  );
+};
 onMounted(() => {
   let sidebar = L.control
     .sidebar({
@@ -144,7 +156,9 @@ onMounted(() => {
               Select Indicators
             </button>
             <div class="collapse show" id="sunburst-collapse">
-              <SunburstControl></SunburstControl>
+              <button class="btn btn-primary" @click="openSunburstSelection">
+                Select
+              </button>
             </div>
           </li>
           <li class="mb-1">
