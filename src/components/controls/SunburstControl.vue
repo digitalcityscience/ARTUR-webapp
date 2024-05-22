@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="chart" class="chart-container"></div>
+    <div ref="chartContainer" class="chart-container"></div>
     <button class="btn btn-success" @click="completeSelection">Complete</button>
   </div>
 </template>
@@ -9,8 +9,8 @@
 import { onMounted, ref } from "vue";
 import * as echarts from "echarts";
 
-const chart = ref<HTMLDivElement | null>(null);
-const selectedBlock = ref<string | null>(null);
+const chartContainer = ref<HTMLDivElement | null>(null);
+const selected = ref<{ [key: string]: boolean }>({});
 const data = {
   name: "Urban Resilience",
   children: [
@@ -20,40 +20,71 @@ const data = {
         {
           name: "Basic Needs",
           children: [
-            { name: "1.1 Safe & affordable\nhousing", value: 5 },
-            { name: "1.2 Adequate affordable\nenergy supply", value: 5 },
-            { name: "1.3 Inclusive access\nto safe drinking water", value: 5 },
+            { name: "1.1 Safe & affordable housing", value: 5 },
+            { name: "1.2 Adequate affordable energy supply", value: 5 },
+            { name: "1.3 Inclusive access to safe drinking water", value: 5 },
             { name: "1.4 Effective sanitation", value: 5 },
           ],
         },
         {
-          name: "Labor &\nlivelihood",
+          name: "Labor & livelihood",
           children: [
             {
-              name: "1.5 Sufficient\naffordable\nfood supply",
-              children: [{ name: "2.1 Inclusive\nlabour policies", value: 7 }],
+              name: "1.5 Sufficient affordable food supply",
+              itemStyle: { color: "#7db165" },
+              children: [
+                {
+                  name: "2.1 Inclusive labour policies",
+                  value: 7,
+                  itemStyle: { color: "#3ba272" },
+                },
+              ],
             },
           ],
         },
         {
           name: "Health & Safety",
           children: [
-            { name: "2.2 Relevant skills\n& training", value: 5 },
-            { name: "3.1 Robust public\nhealth systems", value: 5 },
-            { name: "3.2 Adequate access\nto quality healthcare", value: 5 },
             {
-              name: "3.3 Emergency\nmedical care",
+              name: "2.2 Relevant skills & training",
+              value: 5,
+            },
+            {
+              name: "3.1 Robust public health systems",
+              value: 5,
+            },
+            {
+              name: "3.2 Adequate access to quality healthcare",
+              value: 5,
+            },
+            {
+              name: "3.3 Emergency medical care",
+              itemStyle: { color: "#7db165" },
               children: [
-                { name: "5.1 Effective systems\nto deter crime", value: 5 },
-                { name: "5.2 Proactive\ncorruption prevention ", value: 5 },
-                { name: "5.3 Competent policing", value: 5 },
                 {
-                  name: "5.4 Accessible criminal\n& civil justice",
+                  name: "5.1 Effective systems to deter crime",
                   value: 5,
+                  itemStyle: { color: "#3ba272" },
                 },
                 {
-                  name: "11.2 Widespread community\nawareness & preparedness",
+                  name: "5.2 Proactive corruption prevention ",
                   value: 5,
+                  itemStyle: { color: "#3ba272" },
+                },
+                {
+                  name: "5.3 Competent policing",
+                  value: 5,
+                  itemStyle: { color: "#3ba272" },
+                },
+                {
+                  name: "5.4 Accessible criminal & civil justice",
+                  value: 5,
+                  itemStyle: { color: "#3ba272" },
+                },
+                {
+                  name: "11.2 Widespread community awareness & preparedness",
+                  value: 5,
+                  itemStyle: { color: "#3ba272" },
                 },
               ],
             },
@@ -61,15 +92,15 @@ const data = {
           ],
         },
         {
-          name: "Community\nEngagement",
+          name: "Community Engagement",
           children: [
             {
-              name: "11.3 Effective mechanisms\nfor communities\nto engage with government",
-              value: 5,
+              name: "11.3 Effective mechanisms for communities to engage with government",
+              value: 8,
             },
-            { name: "4.1 Local community\nsupport", value: 5 },
-            { name: "4.2 Cohesive communities", value: 5 },
-            { name: "4.4 Actively engaged\ncitizens", value: 5 },
+            { name: "4.1 Local community support", value: 4 },
+            { name: "4.2 Cohesive communities", value: 4 },
+            { name: "4.4 Actively engaged citizens", value: 4 },
           ],
         },
       ],
@@ -81,29 +112,31 @@ const data = {
           name: "Bussiness sector",
           children: [
             {
-              name: "2.3 Local business\ndevelopment & innovation",
+              name: "2.3 Local business development & innovation",
               value: 5,
             },
-            { name: "2.4 Supportive\nfinancing mechanisms", value: 5 },
+            { name: "2.4 Supportive financing mechanisms", value: 5 },
             {
-              name: "6.2 Comprehensive business\ncontinuity planning",
+              name: "6.2 Comprehensive business continuity planning",
               value: 5,
             },
           ],
         },
         {
-          name: "Diversity &\nEquality",
+          name: "Diversity & Equality",
           children: [{ name: "6.3 Diverse economic base", value: 6 }],
         },
         {
           name: "Economic Vitality",
           children: [
             {
-              name: "6.4 Attractive\nbusiness\nenvironment",
+              name: "6.4 Attractive business environment",
+              itemStyle: { color: "#9b7b33" },
               children: [
                 {
-                  name: "6.5 Strong integration\nwith regional\n& global economies",
+                  name: "6.5 Strong integration with regional & global economies",
                   value: 5,
+                  itemStyle: { color: "#ea7ccc" },
                 },
               ],
             },
@@ -115,35 +148,47 @@ const data = {
       name: "INSTI-\nTUTIONAL",
       children: [
         {
-          name: "Governance &\nRegulation",
+          name: "Governance & Regulation",
           children: [
-            { name: "10.1 Appropriate government\ndecision-making", value: 6 },
+            { name: "10.1 Appropriate government decision-making", value: 6 },
             {
-              name: "10.4 Comprehensive hazard\nmonitoring and risk assessment",
+              name: "10.4 Comprehensive hazard monitoring and risk assessment",
               value: 6,
             },
           ],
         },
         {
-          name: "Community\nPlanning &\nManagement",
+          name: "Community Planning & Management",
           children: [
             {
-              name: "10.5 Comprehensive\ngovernment\nemergency\nmanagement",
+              name: "10.5 Comprehensive government emergency management",
               children: [
-                { name: "12.2 Consultative\nplanning process", value: 6 },
+                {
+                  name: "12.2 Consultative planning process",
+                  value: 6,
+                  itemStyle: { color: "#9a60b4" },
+                },
               ],
             },
-            { name: "12.3 Appropriate\nland use & zoning", value: 5 },
+            { name: "12.3 Appropriate land use & zoning", value: 5 },
           ],
         },
         {
-          name: "Public Finance\n& Support",
+          name: "Public Finance & Support",
           children: [
             {
-              name: "12.4 Robust\nplanning\napproval\nprocess",
+              name: "12.4 Robust planning approval process",
               children: [
-                { name: "6.1 Well-managed\npublic finances ", value: 5 },
-                { name: "4.3 Strong city-wide\nidentity & culture", value: 5 },
+                {
+                  name: "6.1 Well-managed public finances ",
+                  value: 5,
+                  itemStyle: { color: "#9a60b4" },
+                },
+                {
+                  name: "4.3 Strong city-wide identity & culture",
+                  value: 5,
+                  itemStyle: { color: "#9a60b4" },
+                },
               ],
             },
           ],
@@ -154,26 +199,28 @@ const data = {
       name: "PHYSICAL",
       children: [
         {
-          name: "Infrastructure\nResilience",
+          name: "Infrastructure Resilience",
           children: [
             {
-              name: "8.5 Adequate continuity\nfor critical assets\n& services",
+              name: "8.5 Adequate continuity for critical assets & services",
               value: 5,
             },
-            { name: "7.4 Robust protective\ninfrastructure", value: 5 },
+            { name: "7.4 Robust protective infrastructure", value: 5 },
             {
-              name: "3.4 Effective\nemergency\nresponse services",
+              name: "3.4 Effective emergency response services",
+              itemStyle: { color: "#548ea5" },
               children: [
                 {
-                  name: "7.3 Effectively managed\nprotective ecosystems",
+                  name: "7.3 Effectively managed protective ecosystems",
                   value: 5,
+                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
           ],
         },
         {
-          name: "Transport &\nCommunitations",
+          name: "Transport & Communitations",
           children: [
             {
               name: "9.4 Secure technology networks",
@@ -184,50 +231,54 @@ const data = {
               value: 5,
             },
             {
-              name: "9.2 Effective transport\noperation & maintenance",
+              name: "9.2 Effective transport operation & maintenance",
               value: 5,
             },
             {
               itemStyle: { color: "white" },
               children: [
                 {
-                  name: "9.1 Diverse & affordable\ntransport networks",
+                  name: "9.1 Diverse & affordable transport networks",
                   value: 5,
+                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
           ],
         },
         {
-          name: "Data\nManagement &\nMonitoring",
+          name: "Data Management & Monitoring",
           children: [
             {
-              name: "8.2 Flexible\ninfrastructure services",
+              name: "8.2 Flexible infrastructure services",
               value: 5,
             },
             {
               itemStyle: { color: "white" },
               children: [
                 {
-                  name: "8.1 Effective stewardship\nof ecosystems",
+                  name: "8.1 Effective stewardship of ecosystems",
                   value: 5,
+                  itemStyle: { color: "#5470c6" },
                 },
                 {
-                  name: "7.2 Appropriate codes,\nstandards\n& enforcement",
+                  name: "7.2 Appropriate codes, standards & enforcement",
                   value: 5,
+                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
             {
-              name: "7.1 Comprehensive hazard &\nexposure mapping",
-              value: 5,
+              name: "7.1 Comprehensive hazard & exposure mapping",
+              value: 6,
             },
             {
               itemStyle: { color: "white" },
               children: [
                 {
-                  name: "12.1 Comprehensive\ncity monitoring\n& data management",
+                  name: "12.1 Comprehensive city monitoring & data management",
                   value: 5,
+                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
@@ -237,93 +288,139 @@ const data = {
     },
   ],
 };
+const option = {
+  tooltip: {
+    show: true,
+    formatter: function (params: any) {
+      return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
+                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
+                    params.color,
+                  ]};"></span>
+                  ${params.name.replace(/-\n/g, "")}
+                </div>`;
+    },
+  },
+  series: {
+    type: "sunburst",
+    data: data.children,
+    radius: [0, "100%"],
+    sort: null,
+    itemStyle: {
+      borderRadius: 7,
+      borderWidth: 2,
+    },
+    emphasis: {
+      focus: "ancestor",
+      itemStyle: {
+        shadowBlur: 20,
+        shadowColor: "rgba(0, 0, 0, 0.8)",
+      },
+    },
+    selectedMode: "multiple",
+    levels: [
+      {
+        label: {
+          rotate: "tangential",
+        },
+      },
+      {
+        r0: "5%",
+        r: "20%",
+        itemStyle: {
+          borderWidth: 2,
+        },
+        label: {
+          rotate: "tangential",
+        },
+      },
+      {
+        r0: "20%",
+        r: "42%",
+        label: {
+          align: "center",
+          overflow: "break",
+          width: 100,
+        },
+      },
+      {
+        r0: "42%",
+        r: "73%",
+        label: {
+          align: "center",
+          overflow: "break",
+          width: 150,
+          padding: 0,
+          silent: false,
+        },
+        select: {
+          itemStyle: {
+            borderColor: "grey",
+            shadowBlur: 10,
+            shadowColor: "rgba(0, 0, 0, 5)",
+          },
+        },
+      },
+      {
+        r0: "73%",
+        r: "100%",
+        label: {
+          overflow: "break",
+          width: 120,
+          padding: 0,
+          silent: false,
+        },
+        select: {
+          itemStyle: {
+            borderColor: "grey",
+            shadowBlur: 10,
+            shadowColor: "rgba(0, 0, 0, 5)",
+          },
+        },
+      },
+    ],
+  },
+  grid: {
+    show: true,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+};
 
 const completeSelection = () => {
   window.close();
 };
-
+const handleClick = (params: any, chart: echarts.ECharts) => {
+  const level = params.treePathInfo.length;
+  if (level === 4 || level === 5) {
+    // Prevent default behavior
+    chart.setOption({ series: { nodeClick: false } });
+    // Highlight or unhighlight the clicked block
+    if (params.name && selected.value[params.name]) {
+      delete selected.value[params.name];
+      console.log(selected.value);
+    } else if (params.name) {
+      selected.value[params.name] = true;
+      console.log(selected.value);
+    } else {
+      // Do something here to cancel the selection of empty node
+      return;
+    }
+    chart.setOption({ series: { nodeClick: "rootToNode" } });
+  } else {
+  }
+};
 onMounted(() => {
-  if (chart.value) {
-    const myChart = echarts.init(chart.value);
-    const option = {
-      series: {
-        type: "sunburst",
-        data: data.children,
-        radius: [0, "100%"],
-        sort: undefined,
-        itemStyle: {
-          borderRadius: 7,
-          borderWidth: 2,
-        },
-        emphasis: {
-          focus: "ancestor",
-          itemStyle: {
-            shadowBlur: 20,
-            shadowColor: "rgba(0, 0, 0, 0.8)",
-          },
-        },
-        levels: [
-          {},
-          {
-            r0: "5%",
-            r: "20%",
-            itemStyle: {
-              borderWidth: 2,
-            },
-            label: {
-              rotate: "tangential",
-            },
-          },
-          {
-            r0: "20%",
-            r: "42%",
-            label: {
-              align: "center",
-            },
-          },
-          {
-            r0: "42%",
-            r: "44%",
-            label: {
-              position: "outside",
-              padding: 0,
-              silent: false,
-            },
-            itemStyle: {
-              borderWidth: 1,
-            },
-          },
-          {
-            r0: "68%",
-            r: "69%",
-            label: {
-              position: "outside",
-              padding: 0,
-              silent: false,
-            },
-            itemStyle: {
-              borderWidth: 1,
-            },
-          },
-        ],
-      },
-    };
-    myChart.setOption(option);
-    myChart.on("click", (params: any) => {
-      if (params.data.value < 8 && params.data.name) {
-        selectedBlock.value = params.data.name;
-        console.log("Selected Block:", selectedBlock.value);
-        // Update the chart to highlight the selected block
-        myChart.dispatchAction({
-          type: "highlight",
-          seriesIndex: params.seriesIndex,
-          dataIndex: params.dataIndex,
-        });
-      }
+  if (chartContainer.value) {
+    const chart: echarts.ECharts = echarts.init(chartContainer.value);
+    chart.setOption(option);
+    chart.on("click", (params: any) => {
+      handleClick(params, chart);
     });
     // Make the chart responsive
     window.onresize = () => {
-      myChart.resize();
+      chart.resize();
     };
   }
 });
@@ -332,6 +429,6 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 100%;
-  height: 110vh;
+  height: 96vh;
 }
 </style>
