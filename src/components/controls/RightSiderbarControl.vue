@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { onMounted, inject } from "vue";
+import { onMounted, inject, ref, watch } from "vue";
 import type { Ref } from "vue";
 import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
+
 const map = inject<Ref<any>>("map");
 const sheltersLayer = inject<Layer>("sheltersLayer");
 const boundaryLayer = inject<Layer>("boundaryLayer");
 const isochronesLayer = inject<Layer>("isochronesLayer");
-const overlays = [sheltersLayer, boundaryLayer, isochronesLayer].filter(
-  (layer): layer is Layer => layer !== undefined,
-);
-const openSunburstSelection = () => {
+const indicators = ref<string[]>([]);
+
+const overlays: Layer[] = [
+  sheltersLayer,
+  boundaryLayer,
+  isochronesLayer,
+].filter((layer): layer is Layer => layer !== undefined);
+const openSunburstSelection = (): void => {
   const mainWinWidth = window.innerWidth;
   const mainWinHeight = window.innerHeight;
   const newWinWidth = 1000;
@@ -25,6 +30,12 @@ const openSunburstSelection = () => {
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable,scrollbars=yes`,
   );
 };
+const deleteSelection = (indicator: string) => {
+  let set = new Set(indicators.value);
+  set.delete(indicator);
+  indicators.value = Array.from(set);
+};
+const analyzeResults = () => {};
 onMounted(() => {
   let sidebar = L.control
     .sidebar({
@@ -35,6 +46,20 @@ onMounted(() => {
     .addTo(map!.value.leafletObject)
     .open("layer");
 });
+// Watch for changes of sunburst selected indicators and update indicators
+window.addEventListener("storage", (event: StorageEvent) => {
+  if (event.key === "sunburstSelected") {
+    indicators.value = JSON.parse(event.newValue!);
+  }
+});
+// Store the changes of sidebar selected indicators
+watch(
+  indicators,
+  () => {
+    localStorage.setItem("sidebarSelected", JSON.stringify(indicators.value));
+  },
+  { deep: true },
+);
 </script>
 <template>
   <div id="rightsidebar" class="leaflet-sidebar collapsed">
@@ -156,9 +181,43 @@ onMounted(() => {
               Select Indicators
             </button>
             <div class="collapse show" id="sunburst-collapse">
-              <button class="btn btn-primary" @click="openSunburstSelection">
-                Select
-              </button>
+              <!-- <div
+                class="list-group"
+                v-for="indicator in indicators"
+                :key="indicator"
+              >
+                <label class="list-group-item">
+                  <input
+                    class="form-check-input me-1"
+                    type="checkbox"
+                    value="indicator"
+                    :checked="true"
+                  />
+                  {{ indicator }}
+                </label>
+              </div> -->
+              <ul
+                class="list-group"
+                v-for="indicator in indicators"
+                :key="indicator"
+              >
+                <li class="list-group-item list-group-item-secondary">
+                  {{ indicator }}
+                  <button
+                    class="btn-close"
+                    aria-label="Close"
+                    @click="deleteSelection(indicator)"
+                  ></button>
+                </li>
+              </ul>
+              <div class="btn-group" role="group" aria-label="select-and-run">
+                <button class="btn btn-primary" @click="openSunburstSelection">
+                  Select
+                </button>
+                <button class="btn btn-success" @click="analyzeResults">
+                  Run
+                </button>
+              </div>
             </div>
           </li>
           <li class="mb-1">
@@ -225,4 +284,17 @@ p {
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 } */
+div {
+  font-family: var(--bs-font-sans-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+#sunburst-collapse li {
+  padding: 5px;
+  font-size: 15px;
+}
+.btn-close {
+  right: 0;
+}
 </style>
