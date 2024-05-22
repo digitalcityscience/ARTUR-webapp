@@ -8,6 +8,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
+import { updateHighlightedNodes } from "@/assets/ts/functions";
 
 const chartContainer = ref<HTMLDivElement | null>(null);
 var chart: echarts.ECharts;
@@ -398,45 +399,7 @@ const handleClick = (params: any, chart: echarts.ECharts): void => {
     chart.setOption({ series: { nodeClick: "rootToNode" } });
   }
 };
-const highlightStyle: any = {
-  borderColor: "#5d5d5d",
-  shadowBlur: 10,
-  shadowColor: "rgba(0, 0, 0, 5)",
-};
-const normalStyle: any = {
-  borderColor: "white",
-  shadowBlur: 0,
-  shadowColor: "white",
-};
-const updateHighlightedNodes = (
-  data: any[],
-  highlightedNodes: Set<string>,
-): any => {
-  return data.map((node) => {
-    if (node.children) {
-      if (highlightedNodes.has(node.name)) {
-        return {
-          ...node,
-          children: updateHighlightedNodes(node.children, highlightedNodes),
-          itemStyle: highlightStyle,
-        };
-      } else if (node.name) {
-        return {
-          ...node,
-          children: updateHighlightedNodes(node.children, highlightedNodes),
-          itemStyle: normalStyle,
-        };
-      } else
-        return {
-          ...node,
-          children: updateHighlightedNodes(node.children, highlightedNodes),
-          itemStyle: node.itemStyle,
-        };
-    } else if (highlightedNodes.has(node.name)) {
-      return { ...node, itemStyle: highlightStyle };
-    } else return { ...node, itemStyle: normalStyle };
-  });
-};
+// Highlight selected block and store the changes
 watch(
   selected,
   (newValue) => {
