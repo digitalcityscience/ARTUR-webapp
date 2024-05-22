@@ -6,12 +6,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 
 const chartContainer = ref<HTMLDivElement | null>(null);
-const selected = ref<{ [key: string]: boolean }>({});
-const data = {
+var chart: echarts.ECharts;
+const selected = ref<string[]>([]);
+const sunburstData: any = {
   name: "Urban Resilience",
   children: [
     {
@@ -302,7 +303,7 @@ const option = {
   },
   series: {
     type: "sunburst",
-    data: data.children,
+    data: sunburstData.children,
     radius: [0, "100%"],
     sort: null,
     itemStyle: {
@@ -316,7 +317,6 @@ const option = {
         shadowColor: "rgba(0, 0, 0, 0.8)",
       },
     },
-    selectedMode: "multiple",
     levels: [
       {
         label: {
@@ -352,13 +352,6 @@ const option = {
           padding: 0,
           silent: false,
         },
-        select: {
-          itemStyle: {
-            borderColor: "grey",
-            shadowBlur: 10,
-            shadowColor: "rgba(0, 0, 0, 5)",
-          },
-        },
       },
       {
         r0: "73%",
@@ -368,13 +361,6 @@ const option = {
           width: 120,
           padding: 0,
           silent: false,
-        },
-        select: {
-          itemStyle: {
-            borderColor: "grey",
-            shadowBlur: 10,
-            shadowColor: "rgba(0, 0, 0, 5)",
-          },
         },
       },
     ],
@@ -391,29 +377,82 @@ const option = {
 const completeSelection = () => {
   window.close();
 };
-const handleClick = (params: any, chart: echarts.ECharts) => {
+const handleClick = (params: any, chart: echarts.ECharts): void => {
   const level = params.treePathInfo.length;
   if (level === 4 || level === 5) {
     // Prevent default behavior
     chart.setOption({ series: { nodeClick: false } });
     // Highlight or unhighlight the clicked block
-    if (params.name && selected.value[params.name]) {
-      delete selected.value[params.name];
+    if (params.name && selected.value.includes(params.name)) {
+      let set = new Set(selected.value);
+      set.delete(params.name);
+      selected.value = Array.from(set);
       console.log(selected.value);
     } else if (params.name) {
-      selected.value[params.name] = true;
+      selected.value.push(params.name);
       console.log(selected.value);
     } else {
       // Do something here to cancel the selection of empty node
       return;
     }
     chart.setOption({ series: { nodeClick: "rootToNode" } });
-  } else {
   }
 };
+const updateHighlightedNodes = (
+  data: any[],
+  highlightedNodes: Set<string>,
+): any => {
+  return data.map((node) => {
+    if (node.children) {
+      return {
+        ...node,
+        children: updateHighlightedNodes(node.children, highlightedNodes),
+      };
+    } else {
+      return {
+        ...node,
+        itemStyle: {
+          ...node.itemStyle,
+          borderColor: highlightedNodes.has(node.name)
+            ? "grey"
+            : "defaultColor",
+          shadowBlur: highlightedNodes.has(node.name) ? 10 : 0,
+          shadowColor: highlightedNodes.has(node.name)
+            ? "rgba(0, 0, 0, 5)"
+            : "defaultColor",
+        },
+      };
+    }
+  });
+};
+watch(
+  selected,
+  (newValue) => {
+    if (!chart) return;
+
+    const option: any = chart.getOption();
+    if (!option || !option.series) return;
+
+    const highlightedNodes = new Set(newValue);
+    const updatedData = updateHighlightedNodes(
+      option.series[0].data,
+      highlightedNodes,
+    );
+    chart.setOption({ series: [{ data: updatedData }] });
+    // Store the changes of sunburst selected indicators
+    localStorage.setItem("sunburstSelected", JSON.stringify(selected.value));
+  },
+  { deep: true },
+);
+// Watch for changes in sidebar selected indicators and update indicators
+window.addEventListener("storage", (event: StorageEvent) => {
+  if (event.key === "sidebarSelected") {
+    selected.value = JSON.parse(event.newValue!);
+  }
+});
 onMounted(() => {
   if (chartContainer.value) {
-    const chart: echarts.ECharts = echarts.init(chartContainer.value);
+    chart = echarts.init(chartContainer.value);
     chart.setOption(option);
     chart.on("click", (params: any) => {
       handleClick(params, chart);
