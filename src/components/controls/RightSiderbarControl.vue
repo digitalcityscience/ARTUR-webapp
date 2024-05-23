@@ -5,18 +5,14 @@ import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
-
-const map = inject<Ref<any>>("map");
-const sheltersLayer = inject<Layer>("sheltersLayer");
-const boundaryLayer = inject<Layer>("boundaryLayer");
-const isochronesLayer = inject<Layer>("isochronesLayer");
-const indicators = ref<string[]>([]);
-
-const overlays: Layer[] = [
-  sheltersLayer,
-  boundaryLayer,
-  isochronesLayer,
-].filter((layer): layer is Layer => layer !== undefined);
+// Variables
+const map = inject("map") as Ref<any>;
+const sheltersLayer = inject("sheltersLayer") as Layer;
+const boundaryLayer = inject("boundaryLayer") as Layer;
+const isochronesLayer = inject("isochronesLayer") as Layer;
+const indicators: Ref<Set<string>> = ref(new Set<string>());
+const overlays: Layer[] = [sheltersLayer, boundaryLayer, isochronesLayer];
+// Methods
 const openSunburstSelection = (): void => {
   const mainWinWidth = window.innerWidth;
   const mainWinHeight = window.innerHeight;
@@ -30,10 +26,18 @@ const openSunburstSelection = (): void => {
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable,scrollbars=yes`,
   );
 };
-const deleteSelection = (indicator: string) => {
-  let set = new Set(indicators.value);
-  set.delete(indicator);
-  indicators.value = Array.from(set);
+watch(
+  indicators,
+  (newValue) => {
+    // Save the selection of sidebar and store in the local storage
+    localStorage.setItem("sidebarSaved", JSON.stringify(Array.from(newValue)));
+  },
+  { deep: true },
+);
+const deleteSelection = (indicator: string): void => {
+  indicators.value.delete(indicator);
+  // Pass the deleted indicator to sunburst graph to unselect the indicator
+  localStorage.setItem("sidebarDeleted", indicator);
 };
 const analyzeResults = () => {};
 onMounted(() => {
@@ -43,23 +47,15 @@ onMounted(() => {
       position: "right",
       closebutton: true,
     })
-    .addTo(map!.value.leafletObject)
+    .addTo(map.value.leafletObject)
     .open("layer");
 });
 // Watch for changes of sunburst selected indicators and update indicators
 window.addEventListener("storage", (event: StorageEvent) => {
   if (event.key === "sunburstSelected") {
-    indicators.value = JSON.parse(event.newValue!);
+    indicators.value = new Set<string>(JSON.parse(event.newValue!));
   }
 });
-// Store the changes of sidebar selected indicators
-watch(
-  indicators,
-  () => {
-    localStorage.setItem("sidebarSelected", JSON.stringify(indicators.value));
-  },
-  { deep: true },
-);
 </script>
 <template>
   <div id="rightsidebar" class="leaflet-sidebar collapsed">
@@ -243,7 +239,7 @@ watch(
 } */
 @media (min-width: 1200px) {
   .leaflet-sidebar-pane {
-    min-width: 335px;
+    min-width: 420px;
   }
 }
 p {
