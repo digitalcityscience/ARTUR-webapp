@@ -6,14 +6,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { updateHighlightedNodes } from "@/assets/ts/functions";
 
 const chartContainer = ref<HTMLDivElement | null>(null);
-var chart: echarts.ECharts;
-const selected = ref<string[]>([]);
-const sunburstData: any = {
+let chart: echarts.ECharts;
+const selected = ref<Set<string>>(new Set<string>());
+const sunburstData = {
   name: "Urban Resilience",
   children: [
     {
@@ -33,60 +32,26 @@ const sunburstData: any = {
           children: [
             {
               name: "1.5 Sufficient affordable food supply",
-              itemStyle: { color: "#7db165" },
-              children: [
-                {
-                  name: "2.1 Inclusive labour policies",
-                  value: 7,
-                  itemStyle: { color: "#3ba272" },
-                },
-              ],
+              children: [{ name: "2.1 Inclusive labour policies", value: 7 }],
             },
           ],
         },
         {
           name: "Health & Safety",
           children: [
-            {
-              name: "2.2 Relevant skills & training",
-              value: 5,
-            },
-            {
-              name: "3.1 Robust public health systems",
-              value: 5,
-            },
-            {
-              name: "3.2 Adequate access to quality healthcare",
-              value: 5,
-            },
+            { name: "2.2 Relevant skills & training", value: 5 },
+            { name: "3.1 Robust public health systems", value: 5 },
+            { name: "3.2 Adequate access to quality healthcare", value: 5 },
             {
               name: "3.3 Emergency medical care",
-              itemStyle: { color: "#7db165" },
               children: [
-                {
-                  name: "5.1 Effective systems to deter crime",
-                  value: 5,
-                  itemStyle: { color: "#3ba272" },
-                },
-                {
-                  name: "5.2 Proactive corruption prevention ",
-                  value: 5,
-                  itemStyle: { color: "#3ba272" },
-                },
-                {
-                  name: "5.3 Competent policing",
-                  value: 5,
-                  itemStyle: { color: "#3ba272" },
-                },
-                {
-                  name: "5.4 Accessible criminal & civil justice",
-                  value: 5,
-                  itemStyle: { color: "#3ba272" },
-                },
+                { name: "5.1 Effective systems to deter crime", value: 5 },
+                { name: "5.2 Proactive corruption prevention ", value: 5 },
+                { name: "5.3 Competent policing", value: 5 },
+                { name: "5.4 Accessible criminal & civil justice", value: 5 },
                 {
                   name: "11.2 Widespread community awareness & preparedness",
                   value: 5,
-                  itemStyle: { color: "#3ba272" },
                 },
               ],
             },
@@ -113,10 +78,7 @@ const sunburstData: any = {
         {
           name: "Bussiness sector",
           children: [
-            {
-              name: "2.3 Local business development & innovation",
-              value: 5,
-            },
+            { name: "2.3 Local business development & innovation", value: 5 },
             { name: "2.4 Supportive financing mechanisms", value: 5 },
             {
               name: "6.2 Comprehensive business continuity planning",
@@ -133,12 +95,10 @@ const sunburstData: any = {
           children: [
             {
               name: "6.4 Attractive business environment",
-              itemStyle: { color: "#9b7b33" },
               children: [
                 {
                   name: "6.5 Strong integration with regional & global economies",
                   value: 5,
-                  itemStyle: { color: "#ea7ccc" },
                 },
               ],
             },
@@ -165,11 +125,7 @@ const sunburstData: any = {
             {
               name: "10.5 Comprehensive government emergency management",
               children: [
-                {
-                  name: "12.2 Consultative planning process",
-                  value: 6,
-                  itemStyle: { color: "#9a60b4" },
-                },
+                { name: "12.2 Consultative planning process", value: 6 },
               ],
             },
             { name: "12.3 Appropriate land use & zoning", value: 5 },
@@ -181,16 +137,8 @@ const sunburstData: any = {
             {
               name: "12.4 Robust planning approval process",
               children: [
-                {
-                  name: "6.1 Well-managed public finances ",
-                  value: 5,
-                  itemStyle: { color: "#9a60b4" },
-                },
-                {
-                  name: "4.3 Strong city-wide identity & culture",
-                  value: 5,
-                  itemStyle: { color: "#9a60b4" },
-                },
+                { name: "6.1 Well-managed public finances ", value: 5 },
+                { name: "4.3 Strong city-wide identity & culture", value: 5 },
               ],
             },
           ],
@@ -210,12 +158,10 @@ const sunburstData: any = {
             { name: "7.4 Robust protective infrastructure", value: 5 },
             {
               name: "3.4 Effective emergency response services",
-              itemStyle: { color: "#548ea5" },
               children: [
                 {
                   name: "7.3 Effectively managed protective ecosystems",
                   value: 5,
-                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
@@ -224,14 +170,8 @@ const sunburstData: any = {
         {
           name: "Transport & Communitations",
           children: [
-            {
-              name: "9.4 Secure technology networks",
-              value: 5,
-            },
-            {
-              name: "9.3 Reliable communications technology",
-              value: 5,
-            },
+            { name: "9.4 Secure technology networks", value: 5 },
+            { name: "9.3 Reliable communications technology", value: 5 },
             {
               name: "9.2 Effective transport operation & maintenance",
               value: 5,
@@ -242,7 +182,6 @@ const sunburstData: any = {
                 {
                   name: "9.1 Diverse & affordable transport networks",
                   value: 5,
-                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
@@ -251,36 +190,24 @@ const sunburstData: any = {
         {
           name: "Data Management & Monitoring",
           children: [
-            {
-              name: "8.2 Flexible infrastructure services",
-              value: 5,
-            },
+            { name: "8.2 Flexible infrastructure services", value: 5 },
             {
               itemStyle: { color: "white" },
               children: [
-                {
-                  name: "8.1 Effective stewardship of ecosystems",
-                  value: 5,
-                  itemStyle: { color: "#5470c6" },
-                },
+                { name: "8.1 Effective stewardship of ecosystems", value: 5 },
                 {
                   name: "7.2 Appropriate codes, standards & enforcement",
                   value: 5,
-                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
-            {
-              name: "7.1 Comprehensive hazard & exposure mapping",
-              value: 6,
-            },
+            { name: "7.1 Comprehensive hazard & exposure mapping", value: 6 },
             {
               itemStyle: { color: "white" },
               children: [
                 {
                   name: "12.1 Comprehensive city monitoring & data management",
                   value: 5,
-                  itemStyle: { color: "#5470c6" },
                 },
               ],
             },
@@ -291,6 +218,7 @@ const sunburstData: any = {
   ],
 };
 const option = {
+  backgroundColor: "#fff",
   tooltip: {
     show: true,
     formatter: function (params: any) {
@@ -318,6 +246,7 @@ const option = {
         shadowColor: "rgba(0, 0, 0, 0.8)",
       },
     },
+    selectedMode: "multiple",
     levels: [
       {
         label: {
@@ -327,9 +256,6 @@ const option = {
       {
         r0: "5%",
         r: "20%",
-        itemStyle: {
-          borderWidth: 2,
-        },
         label: {
           rotate: "tangential",
         },
@@ -353,6 +279,13 @@ const option = {
           padding: 0,
           silent: false,
         },
+        select: {
+          itemStyle: {
+            borderColor: "#5d5d5d",
+            shadowBlur: 20,
+            shadowColor: "rgba(0, 0, 0, 5)",
+          },
+        },
       },
       {
         r0: "73%",
@@ -362,6 +295,13 @@ const option = {
           width: 120,
           padding: 0,
           silent: false,
+        },
+        select: {
+          itemStyle: {
+            borderColor: "#5d5d5d",
+            shadowBlur: 20,
+            shadowColor: "rgba(0, 0, 0, 5)",
+          },
         },
       },
     ],
@@ -378,66 +318,68 @@ const option = {
 const completeSelection = () => {
   window.close();
 };
-const handleClick = (params: any, chart: echarts.ECharts): void => {
+// Function to handle node clicks
+const handleClick = (params: any): void => {
+  console.log(params);
+  // Prevent default behavior
+  chart.setOption({ series: { nodeClick: false } });
+  // Recover default behaviour
+  chart.setOption({ series: { nodeClick: "rootToNode" } });
   const level = params.treePathInfo.length;
   if (level === 4 || level === 5) {
-    // Prevent default behavior
-    chart.setOption({ series: { nodeClick: false } });
-    // Highlight or unhighlight the clicked block
-    if (params.name && selected.value.includes(params.name)) {
-      let set = new Set(selected.value);
-      set.delete(params.name);
-      selected.value = Array.from(set);
-      console.log(selected.value);
+    console.log(params);
+    params.event.stop("click");
+    // Recored the selected indicators'name
+    if (params.name && selected.value.has(params.name)) {
+      selected.value.delete(params.name);
     } else if (params.name) {
-      selected.value.push(params.name);
-      console.log(selected.value);
+      selected.value.add(params.name);
     } else {
-      // Do something here to cancel the selection of empty node
-      return;
+      chart.dispatchAction({
+        type: "unselect",
+        seriesIndex: 0,
+        dataIndex: params.dataIndex,
+      });
     }
-    chart.setOption({ series: { nodeClick: "rootToNode" } });
   }
 };
-// Highlight selected block and store the changes
+// Store the changes of sunburst selected indicators
 watch(
   selected,
   (newValue) => {
     if (!chart) return;
-
-    const option: any = chart.getOption();
-    if (!option || !option.series) return;
-
-    const highlightedNodes = new Set(newValue);
-    const updatedData = updateHighlightedNodes(
-      option.series[0].data,
-      highlightedNodes,
+    localStorage.setItem(
+      "sunburstSelected",
+      JSON.stringify(Array.from(newValue)),
     );
-    chart.setOption({ series: [{ data: updatedData }] });
-    // Store the changes of sunburst selected indicators
-    localStorage.setItem("sunburstSelected", JSON.stringify(selected.value));
   },
   { deep: true },
 );
-// Watch for changes in sidebar selected indicators and update indicators
+// Watch for changes in localStorage and update sidebar Selected indicators
 window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === "sidebarSelected") {
-    selected.value = JSON.parse(event.newValue!);
+  if (event.key === "sidebarDeleted") {
+    let deletedIndicator = event.newValue!;
+    selected.value.delete(deletedIndicator);
+    chart.dispatchAction({
+      type: "unselect",
+      seriesIndex: 0,
+      name: deletedIndicator,
+    });
   }
 });
 onMounted(() => {
-  const savedIndicators = localStorage.getItem("sidebarSelected");
-  if (savedIndicators) selected.value = JSON.parse(savedIndicators);
-  if (chartContainer.value) {
-    chart = echarts.init(chartContainer.value);
-    chart.setOption(option);
-    chart.on("click", (params: any) => {
-      handleClick(params, chart);
+  if (!chartContainer.value) return;
+  chart = echarts.init(chartContainer.value);
+  chart.setOption(option);
+  chart.on("click", (params: any) => handleClick(params));
+  const savedIndicators = localStorage.getItem("sidebarSaved");
+  if (savedIndicators) {
+    selected.value = new Set<string>(JSON.parse(savedIndicators));
+    chart.dispatchAction({
+      type: "select",
+      seriesIndex: 0,
+      name: JSON.parse(savedIndicators),
     });
-    // Make the chart responsive
-    window.onresize = () => {
-      chart.resize();
-    };
   }
 });
 </script>
