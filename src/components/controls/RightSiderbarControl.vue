@@ -218,6 +218,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
                     class="btn-close"
                     aria-label="Close"
                     @click="deleteSelection(indicator)"
+                    style="float: right"
                   ></button>
                 </li>
               </ul>
