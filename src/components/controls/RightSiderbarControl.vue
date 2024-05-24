@@ -64,6 +64,11 @@ window.addEventListener("storage", (event: StorageEvent) => {
       <!-- top aligned tabs -->
       <ul role="tablist">
         <li>
+          <a href="#home" role="tab" title="Welcome Info"
+            ><i class="bi bi-info-circle"></i
+          ></a>
+        </li>
+        <li>
           <a href="#layer" role="tab" title="Layers Information"
             ><i class="bi bi-stack"></i
           ></a>
@@ -83,6 +88,16 @@ window.addEventListener("storage", (event: StorageEvent) => {
     </div>
     <!-- panel content -->
     <div class="leaflet-sidebar-content">
+      <!-- home -->
+      <div class="leaflet-sidebar-pane" id="home">
+        <h1 class="leaflet-sidebar-header">
+          Info
+          <span class="leaflet-sidebar-close"
+            ><i class="fa fa-caret-right"></i
+          ></span>
+        </h1>
+        <p>Some information about how to use this tool.</p>
+      </div>
       <!-- Layers -->
       <div class="leaflet-sidebar-pane" id="layer">
         <h1 class="leaflet-sidebar-header">
