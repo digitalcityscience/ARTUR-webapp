@@ -8,10 +8,11 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { sunburstOption } from "@/assets/data/sunburst";
+import { mainOption } from "@/assets/data/sunburst";
+
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
+var chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
 // Methods
 const completeSelection = () => {
@@ -20,32 +21,21 @@ const completeSelection = () => {
 // Function to handle node clicks
 const handleClick = (params: any): void => {
   const level = params.treePathInfo.length;
-  switch (level) {
-    case 1:
-    case 2:
-      break;
-    case 3:
-      break;
-    case 4:
-    case 5:
-      // console.log(chart.getOption().series[0].nodeClick);
-      if (params.name && selected.value.has(params.name)) {
-        selected.value.delete(params.name);
-      } else if (params.name) {
-        selected.value.add(params.name);
-      } else {
-        chart.dispatchAction({
-          type: "unselect",
-          seriesIndex: 0,
-          dataIndex: params.dataIndex,
-        });
-      }
-      chart.setOption({ series: { nodeClick: "rootToNode" } });
-      break;
-    default:
-      console.log(`Wrong in Click Event: {level}`);
-      break;
+  if (level === 4 || level === 5) {
+    if (params.name && selected.value.has(params.name)) {
+      selected.value.delete(params.name);
+    } else if (params.name) {
+      selected.value.add(params.name);
+    } else {
+      chart.dispatchAction({
+        type: "unselect",
+        seriesIndex: 0,
+        dataIndex: params.dataIndex,
+      });
+    }
+    return;
   }
+  return;
 };
 // Store the changes of sunburst selected indicators
 watch(
@@ -73,7 +63,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
 });
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
-  chart.setOption(sunburstOption);
+  chart.setOption(mainOption);
   chart.on("click", (params: any) => handleClick(params));
 };
 onMounted(() => {
