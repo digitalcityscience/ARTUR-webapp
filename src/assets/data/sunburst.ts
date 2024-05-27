@@ -7,10 +7,10 @@ const data = {
         {
           name: "Basic Needs",
           children: [
-            { name: "1.1 Safe & affordable housing", value: 5 },
-            { name: "1.2 Adequate affordable energy supply", value: 5 },
-            { name: "1.3 Inclusive access to safe drinking water", value: 5 },
-            { name: "1.4 Effective sanitation", value: 5 },
+            { name: "1.1 Safe & affordable housing", value: 4 },
+            { name: "1.2 Adequate affordable energy supply", value: 4 },
+            { name: "1.3 Inclusive access to safe drinking water", value: 4 },
+            { name: "1.4 Effective sanitation", value: 4 },
           ],
         },
         {
@@ -18,7 +18,7 @@ const data = {
           children: [
             {
               name: "1.5 Sufficient affordable food supply",
-              children: [{ name: "2.1 Inclusive labour policies", value: 7 }],
+              children: [{ name: "2.1 Inclusive labour policies", value: 5 }],
             },
           ],
         },
@@ -31,10 +31,10 @@ const data = {
             {
               name: "3.3 Emergency medical care",
               children: [
-                { name: "5.1 Effective systems to deter crime", value: 5 },
-                { name: "5.2 Proactive corruption prevention ", value: 5 },
-                { name: "5.3 Competent policing", value: 5 },
-                { name: "5.4 Accessible criminal & civil justice", value: 5 },
+                { name: "5.1 Effective systems to deter crime", value: 4 },
+                { name: "5.2 Proactive corruption prevention ", value: 4 },
+                { name: "5.3 Competent policing", value: 4 },
+                { name: "5.4 Accessible criminal & civil justice", value: 4 },
                 {
                   name: "11.2 Widespread community awareness & preparedness",
                   value: 5,
@@ -114,7 +114,7 @@ const data = {
                 { name: "12.2 Consultative planning process", value: 6 },
               ],
             },
-            { name: "12.3 Appropriate land use & zoning", value: 5 },
+            { name: "12.3 Appropriate land use & zoning", value: 6 },
           ],
         },
         {
@@ -123,8 +123,8 @@ const data = {
             {
               name: "12.4 Robust planning approval process",
               children: [
-                { name: "6.1 Well-managed public finances ", value: 5 },
-                { name: "4.3 Strong city-wide identity & culture", value: 5 },
+                { name: "6.1 Well-managed public finances ", value: 6 },
+                { name: "4.3 Strong city-wide identity & culture", value: 6 },
               ],
             },
           ],
@@ -163,7 +163,9 @@ const data = {
               value: 5,
             },
             {
-              itemStyle: { color: "white" },
+              tooltip: { show: false },
+              itemStyle: { opacity: 0, color: "transparent" },
+              emphasis: { disabled: true },
               children: [
                 {
                   name: "9.1 Diverse & affordable transport networks",
@@ -178,7 +180,9 @@ const data = {
           children: [
             { name: "8.2 Flexible infrastructure services", value: 5 },
             {
-              itemStyle: { color: "white" },
+              tooltip: { show: false },
+              itemStyle: { opacity: 0, color: "transparent" },
+              emphasis: { disabled: true },
               children: [
                 { name: "8.1 Effective stewardship of ecosystems", value: 5 },
                 {
@@ -189,7 +193,9 @@ const data = {
             },
             { name: "7.1 Comprehensive hazard & exposure mapping", value: 6 },
             {
-              itemStyle: { color: "white" },
+              tooltip: { show: false },
+              itemStyle: { opacity: 0, color: "transparent" },
+              emphasis: { disabled: true },
               children: [
                 {
                   name: "12.1 Comprehensive city monitoring & data management",
@@ -203,7 +209,7 @@ const data = {
     },
   ],
 };
-export const sunburstOption = {
+export const mainOption = {
   backgroundColor: "#fff",
   tooltip: {
     show: true,
@@ -237,14 +243,9 @@ export const sunburstOption = {
         shadowColor: "rgba(0, 0, 0, 0.8)",
       },
     },
-    // nodeClick: false,
     selectedMode: "multiple",
     levels: [
-      {
-        label: {
-          rotate: "tangential",
-        },
-      },
+      {},
       {
         r0: 20,
         r: 80,
@@ -269,6 +270,7 @@ export const sunburstOption = {
           padding: 0,
           silent: false,
         },
+        nodeClick: false,
         select: {
           itemStyle: {
             borderColor: "#5d5d5d",
@@ -285,6 +287,7 @@ export const sunburstOption = {
           padding: 0,
           silent: false,
         },
+        nodeClick: false,
         select: {
           itemStyle: {
             borderColor: "#5d5d5d",
