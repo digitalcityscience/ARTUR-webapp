@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button class="btn btn-success" @click="completeSelection">Complete</button>
     <div ref="chartContainer" class="chart-container"></div>
   </div>
 </template>
@@ -15,9 +14,6 @@ const chartContainer = ref<HTMLDivElement | null>(null);
 var chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
 // Methods
-const completeSelection = () => {
-  window.close();
-};
 // Function to handle node clicks
 const handleClick = (params: any): void => {
   const level = params.treePathInfo.length;
@@ -26,12 +22,6 @@ const handleClick = (params: any): void => {
       selected.value.delete(params.name);
     } else if (params.name) {
       selected.value.add(params.name);
-    } else {
-      chart.dispatchAction({
-        type: "unselect",
-        seriesIndex: 0,
-        dataIndex: params.dataIndex,
-      });
     }
     return;
   }

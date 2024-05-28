@@ -9,7 +9,7 @@ const data = {
           children: [
             { name: "1.1 Safe & affordable housing", value: 4 },
             { name: "1.2 Adequate affordable energy supply", value: 4 },
-            { name: "1.3 Inclusive access to safe drinking water", value: 4 },
+            { name: "1.3 Inclusive access to save drinking water", value: 4 },
             { name: "1.4 Effective sanitation", value: 4 },
           ],
         },
@@ -49,7 +49,7 @@ const data = {
           children: [
             {
               name: "11.3 Effective mechanisms for communities to engage with government",
-              value: 8,
+              value: 6,
             },
             { name: "4.1 Local community support", value: 4 },
             { name: "4.2 Cohesive communities", value: 4 },
@@ -245,9 +245,16 @@ export const mainOption = {
     },
     selectedMode: "multiple",
     levels: [
-      {},
       {
-        r0: 20,
+        r0: 0,
+        r: 30,
+        itemStyle: {
+          color: "white",
+          opacity: 0.4,
+        },
+      },
+      {
+        r0: 30,
         r: 80,
         label: {
           rotate: "tangential",
@@ -283,7 +290,7 @@ export const mainOption = {
         r0: 330,
         r: "100%",
         label: {
-          width: 90,
+          width: 170,
           padding: 0,
           silent: false,
         },
@@ -298,6 +305,17 @@ export const mainOption = {
       },
     ],
   },
+  color: [
+    // "#5470C6", // blue
+    "#91CC75", // green
+    "#FAC858", // yellow
+    "#EE6666", // red
+    "#73C0DE", // light blue
+    "#3BA272", // dark green
+    "#FC8452", // orange
+    "#9A60B4", // purple
+    "#EA7CCC", // pink
+  ],
   grid: {
     top: 0,
     bottom: 0,
