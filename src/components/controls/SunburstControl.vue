@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <div ref="chartContainer" class="chart-container"></div>
-  </div>
+  <button type="button" class="btn btn-success" @click="downloadImage">
+    <i class="fa fa-download" aria-hidden="true"></i> Download PNG
+  </button>
+  <div ref="chartContainer" class="chart-container"></div>
 </template>
 
 <script lang="ts" setup>
@@ -14,6 +15,18 @@ const chartContainer = ref<HTMLDivElement | null>(null);
 var chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
 // Methods
+const downloadImage = () => {
+  let img = new Image();
+  img.src = chart.getDataURL({
+    type: "png",
+    pixelRatio: 2,
+    backgroundColor: "#fff",
+  });
+  let link = document.createElement("a");
+  link.href = img.src;
+  link.download = "sunburst-chart.png";
+  link.click();
+};
 // Function to handle node clicks
 const handleClick = (params: any): void => {
   const level = params.treePathInfo.length;
