@@ -7,53 +7,53 @@ const data = {
         {
           name: "Basic Needs",
           children: [
-            { name: "1.1 Safe & affordable housing", value: 4 },
-            { name: "1.2 Adequate affordable energy supply", value: 4 },
-            { name: "1.3 Inclusive access to save drinking water", value: 4 },
-            { name: "1.4 Effective sanitation", value: 4 },
+            { name: "Safe & affordable housing", value: 4 },
+            { name: "Adequate affordable energy supply", value: 4 },
+            { name: "Inclusive access to save drinking water", value: 4 },
+            { name: "Effective sanitation", value: 4 },
           ],
         },
         {
           name: "Labor & livelihood",
           children: [
             {
-              name: "1.5 Sufficient affordable food supply",
-              children: [{ name: "2.1 Inclusive labour policies", value: 5 }],
+              name: "Sufficient affordable food supply",
+              children: [{ name: "Inclusive labour policies", value: 5 }],
             },
           ],
         },
         {
           name: "Health & Safety",
           children: [
-            { name: "2.2 Relevant skills & training", value: 5 },
-            { name: "3.1 Robust public health systems", value: 5 },
-            { name: "3.2 Adequate access to quality healthcare", value: 5 },
+            { name: "Relevant skills & training", value: 5 },
+            { name: "Robust public health systems", value: 5 },
+            { name: "Adequate access to quality healthcare", value: 5 },
             {
-              name: "3.3 Emergency medical care",
+              name: "Emergency medical care",
               children: [
-                { name: "5.1 Effective systems to deter crime", value: 4 },
-                { name: "5.2 Proactive corruption prevention ", value: 4 },
-                { name: "5.3 Competent policing", value: 4 },
-                { name: "5.4 Accessible criminal & civil justice", value: 4 },
+                { name: "Effective systems to deter crime", value: 4 },
+                { name: "Proactive corruption prevention ", value: 4 },
+                { name: "Competent policing", value: 4 },
+                { name: "Accessible criminal & civil justice", value: 4 },
                 {
-                  name: "11.2 Widespread community awareness & preparedness",
+                  name: "Widespread community awareness & preparedness",
                   value: 5,
                 },
               ],
             },
-            { name: "11.1 Adequate education for all", value: 5 },
+            { name: "Adequate education for all", value: 5 },
           ],
         },
         {
           name: "Community Engagement",
           children: [
             {
-              name: "11.3 Effective mechanisms for communities to engage with government",
+              name: "Effective mechanisms for communities to engage with government",
               value: 6,
             },
-            { name: "4.1 Local community support", value: 4 },
-            { name: "4.2 Cohesive communities", value: 4 },
-            { name: "4.4 Actively engaged citizens", value: 4 },
+            { name: "Local community support", value: 4 },
+            { name: "Cohesive communities", value: 4 },
+            { name: "Actively engaged citizens", value: 4 },
           ],
         },
       ],
@@ -64,26 +64,26 @@ const data = {
         {
           name: "Bussiness sector",
           children: [
-            { name: "2.3 Local business development & innovation", value: 5 },
-            { name: "2.4 Supportive financing mechanisms", value: 5 },
+            { name: "Local business development & innovation", value: 5 },
+            { name: "Supportive financing mechanisms", value: 5 },
             {
-              name: "6.2 Comprehensive business continuity planning",
+              name: "Comprehensive business continuity planning",
               value: 5,
             },
           ],
         },
         {
           name: "Diversity & Equality",
-          children: [{ name: "6.3 Diverse economic base", value: 6 }],
+          children: [{ name: "Diverse economic base", value: 6 }],
         },
         {
           name: "Economic Vitality",
           children: [
             {
-              name: "6.4 Attractive business environment",
+              name: "Attractive business environment",
               children: [
                 {
-                  name: "6.5 Strong integration with regional & global economies",
+                  name: "Strong integration with regional & global economies",
                   value: 5,
                 },
               ],
@@ -98,9 +98,9 @@ const data = {
         {
           name: "Governance & Regulation",
           children: [
-            { name: "10.1 Appropriate government decision-making", value: 6 },
+            { name: "Appropriate government decision-making", value: 6 },
             {
-              name: "10.4 Comprehensive hazard monitoring and risk assessment",
+              name: "Comprehensive hazard monitoring and risk assessment",
               value: 6,
             },
           ],
@@ -109,22 +109,20 @@ const data = {
           name: "Community Planning & Management",
           children: [
             {
-              name: "10.5 Comprehensive government emergency management",
-              children: [
-                { name: "12.2 Consultative planning process", value: 6 },
-              ],
+              name: "Comprehensive government emergency management",
+              children: [{ name: "Consultative planning process", value: 6 }],
             },
-            { name: "12.3 Appropriate land use & zoning", value: 6 },
+            { name: "Appropriate land use & zoning", value: 6 },
           ],
         },
         {
           name: "Public Finance & Support",
           children: [
             {
-              name: "12.4 Robust planning approval process",
+              name: "Robust planning approval process",
               children: [
-                { name: "6.1 Well-managed public finances ", value: 6 },
-                { name: "4.3 Strong city-wide identity & culture", value: 6 },
+                { name: "Well-managed public finances ", value: 6 },
+                { name: "Strong city-wide identity & culture", value: 6 },
               ],
             },
           ],
@@ -138,15 +136,15 @@ const data = {
           name: "Infrastructure Resilience",
           children: [
             {
-              name: "8.5 Adequate continuity for critical assets & services",
+              name: "Adequate continuity for critical assets & services",
               value: 5,
             },
-            { name: "7.4 Robust protective infrastructure", value: 5 },
+            { name: "Robust protective infrastructure", value: 5 },
             {
-              name: "3.4 Effective emergency response services",
+              name: "Effective emergency response services",
               children: [
                 {
-                  name: "7.3 Effectively managed protective ecosystems",
+                  name: "Effectively managed protective ecosystems",
                   value: 5,
                 },
               ],
@@ -156,10 +154,10 @@ const data = {
         {
           name: "Transport & Communitations",
           children: [
-            { name: "9.4 Secure technology networks", value: 5 },
-            { name: "9.3 Reliable communications technology", value: 5 },
+            { name: "Secure technology networks", value: 5 },
+            { name: "Reliable communications technology", value: 5 },
             {
-              name: "9.2 Effective transport operation & maintenance",
+              name: "Effective transport operation & maintenance",
               value: 5,
             },
             {
@@ -168,7 +166,7 @@ const data = {
               emphasis: { disabled: true },
               children: [
                 {
-                  name: "9.1 Diverse & affordable transport networks",
+                  name: "Diverse & affordable transport networks",
                   value: 5,
                 },
               ],
@@ -178,27 +176,27 @@ const data = {
         {
           name: "Data Management & Monitoring",
           children: [
-            { name: "8.2 Flexible infrastructure services", value: 5 },
+            { name: "Flexible infrastructure services", value: 5 },
             {
               tooltip: { show: false },
               itemStyle: { opacity: 0, color: "transparent" },
               emphasis: { disabled: true },
               children: [
-                { name: "8.1 Effective stewardship of ecosystems", value: 5 },
+                { name: "Effective stewardship of ecosystems", value: 5 },
                 {
-                  name: "7.2 Appropriate codes, standards & enforcement",
+                  name: "Appropriate codes, standards & enforcement",
                   value: 5,
                 },
               ],
             },
-            { name: "7.1 Comprehensive hazard & exposure mapping", value: 6 },
+            { name: "Comprehensive hazard & exposure mapping", value: 6 },
             {
               tooltip: { show: false },
               itemStyle: { opacity: 0, color: "transparent" },
               emphasis: { disabled: true },
               children: [
                 {
-                  name: "12.1 Comprehensive city monitoring & data management",
+                  name: "Comprehensive city monitoring & data management",
                   value: 5,
                 },
               ],
@@ -247,30 +245,30 @@ export const mainOption = {
     levels: [
       {
         r0: 0,
-        r: 30,
+        r: 20,
         itemStyle: {
           color: "white",
           opacity: 0.4,
         },
       },
       {
-        r0: 30,
-        r: 80,
+        r0: 20,
+        r: 70,
         label: {
           rotate: "tangential",
         },
       },
       {
-        r0: 80,
-        r: 180,
+        r0: 70,
+        r: 170,
         label: {
           align: "center",
           width: 100,
         },
       },
       {
-        r0: 180,
-        r: 330,
+        r0: 170,
+        r: 320,
         label: {
           align: "center",
           width: 150,
@@ -287,10 +285,10 @@ export const mainOption = {
         },
       },
       {
-        r0: 330,
-        r: "100%",
+        r0: 320,
+        r: 425,
         label: {
-          width: 170,
+          width: 100,
           padding: 0,
           silent: false,
         },
