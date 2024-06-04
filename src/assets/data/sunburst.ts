@@ -7,10 +7,54 @@ const data = {
         {
           name: "Basic Needs",
           children: [
-            { name: "Safe & affordable housing", value: 4 },
-            { name: "Adequate affordable energy supply", value: 4 },
-            { name: "Inclusive access to save drinking water", value: 4 },
-            { name: "Effective sanitation", value: 4 },
+            {
+              name: "Safe & affordable housing",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Adequate affordable energy supply",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Inclusive access to save drinking water",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Effective sanitation",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
           ],
         },
         {
@@ -25,9 +69,42 @@ const data = {
         {
           name: "Health & Safety",
           children: [
-            { name: "Relevant skills & training", value: 5 },
-            { name: "Robust public health systems", value: 5 },
-            { name: "Adequate access to quality healthcare", value: 5 },
+            {
+              name: "Relevant skills & training",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Robust public health systems",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Adequate access to quality healthcare",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               name: "Emergency medical care",
               children: [
@@ -41,7 +118,18 @@ const data = {
                 },
               ],
             },
-            { name: "Adequate education for all", value: 5 },
+            {
+              name: "Adequate education for all",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
           ],
         },
         {
@@ -50,10 +138,51 @@ const data = {
             {
               name: "Effective mechanisms for communities to engage with government",
               value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
-            { name: "Local community support", value: 4 },
-            { name: "Cohesive communities", value: 4 },
-            { name: "Actively engaged citizens", value: 4 },
+            {
+              name: "Local community support",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Cohesive communities",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Actively engaged citizens",
+              value: 4,
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
           ],
         },
       ],
@@ -64,17 +193,60 @@ const data = {
         {
           name: "Bussiness sector",
           children: [
-            { name: "Local business development & innovation", value: 5 },
-            { name: "Supportive financing mechanisms", value: 5 },
+            {
+              name: "Local business development & innovation",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Supportive financing mechanisms",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               name: "Comprehensive business continuity planning",
               value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
           ],
         },
         {
           name: "Diversity & Equality",
-          children: [{ name: "Diverse economic base", value: 6 }],
+          children: [
+            {
+              name: "Diverse economic base",
+              value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
         },
         {
           name: "Economic Vitality",
@@ -98,10 +270,29 @@ const data = {
         {
           name: "Governance & Regulation",
           children: [
-            { name: "Appropriate government decision-making", value: 6 },
+            {
+              name: "Appropriate government decision-making",
+              value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               name: "Comprehensive hazard monitoring and risk assessment",
               value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
           ],
         },
@@ -112,7 +303,18 @@ const data = {
               name: "Comprehensive government emergency management",
               children: [{ name: "Consultative planning process", value: 6 }],
             },
-            { name: "Appropriate land use & zoning", value: 6 },
+            {
+              name: "Appropriate land use & zoning",
+              value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
           ],
         },
         {
@@ -138,8 +340,27 @@ const data = {
             {
               name: "Adequate continuity for critical assets & services",
               value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
-            { name: "Robust protective infrastructure", value: 5 },
+            {
+              name: "Robust protective infrastructure",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               name: "Effective emergency response services",
               children: [
@@ -154,15 +375,45 @@ const data = {
         {
           name: "Transport & Communitations",
           children: [
-            { name: "Secure technology networks", value: 5 },
-            { name: "Reliable communications technology", value: 5 },
+            {
+              name: "Secure technology networks",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Reliable communications technology",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               name: "Effective transport operation & maintenance",
               value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
             {
               tooltip: { show: false },
-              itemStyle: { opacity: 0, color: "transparent" },
+              itemStyle: { opacity: 0.5 },
               emphasis: { disabled: true },
               children: [
                 {
@@ -176,10 +427,21 @@ const data = {
         {
           name: "Data Management & Monitoring",
           children: [
-            { name: "Flexible infrastructure services", value: 5 },
+            {
+              name: "Flexible infrastructure services",
+              value: 5,
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               tooltip: { show: false },
-              itemStyle: { opacity: 0, color: "transparent" },
+              itemStyle: { opacity: 0.5 },
               emphasis: { disabled: true },
               children: [
                 { name: "Effective stewardship of ecosystems", value: 5 },
@@ -187,12 +449,29 @@ const data = {
                   name: "Appropriate codes, standards & enforcement",
                   value: 5,
                 },
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
               ],
             },
-            { name: "Comprehensive hazard & exposure mapping", value: 6 },
+            {
+              name: "Comprehensive hazard & exposure mapping",
+              value: 6,
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.5 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
             {
               tooltip: { show: false },
-              itemStyle: { opacity: 0, color: "transparent" },
+              itemStyle: { opacity: 0.5 },
               emphasis: { disabled: true },
               children: [
                 {

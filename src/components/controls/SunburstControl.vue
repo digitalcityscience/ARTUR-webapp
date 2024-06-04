@@ -35,6 +35,12 @@ const handleClick = (params: any): void => {
       selected.value.delete(params.name);
     } else if (params.name) {
       selected.value.add(params.name);
+    } else {
+      chart.dispatchAction({
+        type: "unselect",
+        seriesIndex: 0,
+        dataIndex: params.dataIndex,
+      });
     }
     return;
   }

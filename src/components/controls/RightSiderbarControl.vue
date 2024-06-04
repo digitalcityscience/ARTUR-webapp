@@ -96,7 +96,58 @@ window.addEventListener("storage", (event: StorageEvent) => {
             ><i class="fa fa-caret-right"></i
           ></span>
         </h1>
-        <p>Some information about how to use this tool.</p>
+        <div class="info-content info-city" style="margin-top: 10px">
+          <strong class="info-title"
+            >1. <i class="fa fa-crosshairs"></i> Navigation Control
+          </strong>
+          <p class="info-content-text"><strong>Position: </strong>Top-left</p>
+          <p class="info-content-text">
+            The navigation control can navigate the user to different cities. By
+            simply clicking on the city name, the map view would fly to the city
+            and show the feature layers if we had the data.
+          </p>
+        </div>
+        <div class="info-content info-legend" style="margin-top: 10px">
+          <strong class="info-title"
+            >2. <i class="bi bi-map-fill"></i> Legend Control
+          </strong>
+          <p class="info-content-text">
+            <strong>Position: </strong>Bottom-left
+          </p>
+          <p class="info-content-text">
+            The legend control displays the legend of the feature layers. If a
+            feature layer is hidden, the legend for that layer is also hidden,
+            and vice versa. The toggle button of the legend control switches the
+            collapsed state of the legend.
+          </p>
+        </div>
+        <div class="info-content info-layer" style="margin-top: 10px">
+          <strong class="info-title"
+            >3. <i class="bi bi-stack"></i> Layers Information
+          </strong>
+          <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
+          <p class="info-content-text">
+            The "Layer Control" would display checkboxes for each feature layer
+            to toggle them on display or hidden. Information about each shelter
+            can be seen in the drop-down menu “Shelters Information”. Simply
+            click on the dot symbol of a shelter on the map and the address and
+            capacity of that shelter will be displayed.
+          </p>
+        </div>
+        <div class="info-content info-chart" style="margin-top: 10px">
+          <strong class="info-title"
+            >4. <i class="fa fa-bar-chart"></i> Dashboard
+          </strong>
+          <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
+          <p class="info-content-text">
+            The Dashboard provides indicator selection and results display. The
+            user can click on the "Select" button to view the Indicator Sunburst
+            Chart and click on the indicator to select it. Selected indicators
+            can be deleted by clicking the Cancel button in the sidebar or
+            re-click the indicator in sunburst. Click the "Run" button to
+            display the analysis results of the user-selected indicator.
+          </p>
+        </div>
       </div>
       <!-- Layers -->
       <div class="leaflet-sidebar-pane" id="layer">
@@ -123,7 +174,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
                 id="layer-control-collapse"
                 style="margin-left: 1em"
               >
-                <p>Base Layers</p>
+                <strong>Base Layers: </strong>
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -137,7 +188,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
                   </label>
                 </div>
                 <div class="border-top my-1"></div>
-                <p>Overlays</p>
+                <strong>Overlays: </strong>
                 <template v-for="overlay in overlays" :key="overlay.name">
                   <div class="form-check">
                     <input
@@ -270,17 +321,6 @@ p {
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
-/* .btn-toggle-nav a {
-  display: inline-flex;
-  padding: 0.1875rem 0.5rem;
-  margin-top: 0.125rem;
-  margin-left: 0;
-  text-decoration: none;
-} */
-/* .btn-toggle-nav a:hover,
-.btn-toggle-nav a:focus {
-  background-color: #d2f4ea;
-} */
 div {
   font-family: var(--bs-font-sans-serif);
   font-size: 1rem;
@@ -293,5 +333,17 @@ div {
 }
 .btn-close {
   right: 0;
+}
+div.info-content {
+  display: block;
+}
+strong.info-title {
+  padding-left: 5px;
+  padding-bottom: 10px;
+}
+p.info-content-text {
+  padding-left: 5px;
+  padding-top: 5px;
+  line-height: 1.5;
 }
 </style>

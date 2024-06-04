@@ -17,8 +17,12 @@ const btnLegendIconClass = computed(() => {
       @click="showLegend = !showLegend"
       class="btn btn-primary btn-sm legend-button"
     >
-      <i :class="btnLegendIconClass" style="float: left"></i>
+      <i
+        :class="btnLegendIconClass"
+        style="float: left; padding-right: 5px"
+      ></i>
       <strong>Legend</strong>
+      <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
     </button>
     <div class="legend" v-show="showLegend">
       <div v-show="sheltersLayer.visible.value">

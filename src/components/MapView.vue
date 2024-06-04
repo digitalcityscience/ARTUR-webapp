@@ -13,9 +13,9 @@ const cities: Array<City> = [
   { name: "Chernivtsi", latLng: [48.30933, 25.94639] },
 ];
 const city = ref<string>("");
-const shelters = ref();
-const boundary = ref();
-const isochrones = ref();
+const shelters = ref<any>();
+const boundary = ref<any>();
+const isochrones = ref<any>();
 const isJsonDataLoad = ref<boolean>(false);
 onBeforeMount(() => {
   city.value = cities[0].name;
