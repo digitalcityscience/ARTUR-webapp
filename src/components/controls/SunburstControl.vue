@@ -24,7 +24,7 @@ const downloadImage = () => {
   });
   let link = document.createElement("a");
   link.href = img.src;
-  link.download = "sunburst-chart.png";
+  link.download = "UR-indicators-sunburst-chart.png";
   link.click();
 };
 // Function to handle node clicks

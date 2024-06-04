@@ -17,7 +17,7 @@ const btnLegendIconClass = computed(() => {
       @click="showLegend = !showLegend"
       class="btn btn-primary btn-sm legend-button"
     >
-      <i :class="btnLegendIconClass"></i>
+      <i :class="btnLegendIconClass" style="float: left"></i>
       <strong>Legend</strong>
     </button>
     <div class="legend" v-show="showLegend">

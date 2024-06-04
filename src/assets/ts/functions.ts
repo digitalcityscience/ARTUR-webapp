@@ -13,7 +13,7 @@ export function getIsochroneColor(minute: number) {
       return "#82E0AA";
     default:
       alert(
-        "This Isochrone map has invalid range! The range should be a Name within 1-5 min.",
+        "This Isochrone map has invalid range! The range should be within the interval [1,5].",
       );
   }
 }
