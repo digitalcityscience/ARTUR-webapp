@@ -14,16 +14,16 @@ const indicators: Ref<Set<string>> = ref(new Set<string>());
 const overlays: Layer[] = [sheltersLayer, boundaryLayer, isochronesLayer];
 // Methods
 const openSunburstSelection = (): void => {
-  const mainWinWidth = window.innerWidth;
-  const mainWinHeight = window.innerHeight;
-  const newWinWidth = 1000;
-  const newWinHeight = 1000;
-  const leftOffset = (mainWinWidth - newWinWidth) / 2;
-  const topOffset = (mainWinHeight - newWinHeight) / 2;
+  let mainWinWidth = window.innerWidth;
+  let mainWinHeight = window.innerHeight;
+  let newWinWidth = 1000;
+  let newWinHeight = 1000;
+  let leftOffset = (mainWinWidth - newWinWidth) / 2;
+  let topOffset = (mainWinHeight - newWinHeight) / 2;
   window.open(
     "/sunburst-popup.html",
     "",
-    `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable,scrollbars=yes`,
+    `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
 };
 watch(
@@ -48,7 +48,7 @@ onMounted(() => {
       closebutton: true,
     })
     .addTo(map.value.leafletObject)
-    .open("layer");
+    .open("home");
 });
 // Watch for changes of sunburst selected indicators and update indicators
 window.addEventListener("storage", (event: StorageEvent) => {
@@ -64,7 +64,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
       <!-- top aligned tabs -->
       <ul role="tablist">
         <li>
-          <a href="#home" role="tab" title="Welcome Info"
+          <a href="#home" role="tab" title="Usage of this tool"
             ><i class="bi bi-info-circle"></i
           ></a>
         </li>
@@ -192,21 +192,6 @@ window.addEventListener("storage", (event: StorageEvent) => {
               Select Indicators
             </button>
             <div class="collapse show" id="sunburst-collapse">
-              <!-- <div
-                class="list-group"
-                v-for="indicator in indicators"
-                :key="indicator"
-              >
-                <label class="list-group-item">
-                  <input
-                    class="form-check-input me-1"
-                    type="checkbox"
-                    value="indicator"
-                    :checked="true"
-                  />
-                  {{ indicator }}
-                </label>
-              </div> -->
               <ul
                 class="list-group"
                 v-for="indicator in indicators"
