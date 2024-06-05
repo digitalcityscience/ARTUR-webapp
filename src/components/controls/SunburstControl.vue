@@ -26,6 +26,17 @@ const downloadImage = () => {
   link.href = img.src;
   link.download = "UR-indicators-sunburst-chart.png";
   link.click();
+  // let mainWinWidth = window.innerWidth;
+  // let mainWinHeight = window.innerHeight;
+  // let newWinWidth = 300;
+  // let newWinHeight = 300;
+  // let leftOffset = (mainWinWidth - newWinWidth) / 2;
+  // let topOffset = (mainWinHeight - newWinHeight) / 2;
+  // window.open(
+  //   "/sunburst-download.html",
+  //   "",
+  //   `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable=yes`,
+  // );
 };
 // Function to handle node clicks
 const handleClick = (params: any): void => {
