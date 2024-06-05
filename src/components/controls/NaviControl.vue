@@ -13,9 +13,7 @@ const btnNaviClick = (city: City) => {
   selectedCity!.value = city.name;
 };
 const selectedCity = inject<Ref<string>>("city");
-const isSelected = (cityName: string) => {
-  return selectedCity!.value === cityName;
-};
+const isSelected = (cityName: string) => selectedCity!.value === cityName;
 </script>
 
 <template>
