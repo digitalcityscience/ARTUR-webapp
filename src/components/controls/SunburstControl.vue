@@ -1,7 +1,94 @@
 <template>
-  <button type="button" class="btn btn-success" @click="downloadImage">
-    <i class="fa fa-download" aria-hidden="true"></i> Download PNG
+  <button
+    type="button"
+    class="btn btn-sm btn-success"
+    data-toggle="modal"
+    data-target="#downloadModal"
+    @click="showModal = true"
+  >
+    <i class="fa fa-download" aria-hidden="true"></i> Download Chart
   </button>
+  <!-- Download Chart Modal -->
+  <div
+    class="modal fade"
+    :class="{ show: showModal }"
+    tabindex="-1"
+    v-show="showModal"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Download Options</h5>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            @click="showModal = false"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group d-flex">
+              <label for="resolution" class="mr-2" style="padding-right: 10px"
+                >Resolution (Pixel Ratio):</label
+              >
+              <input
+                type="range"
+                class="form-control-range"
+                id="resolution"
+                v-model="resolution"
+                min="1"
+                max="10"
+                style="float: right"
+              />
+              <span>{{ resolution }}</span>
+            </div>
+            <div class="form-group d-flex">
+              <label
+                for="backgroundColor"
+                class="mr-2"
+                style="padding-right: 80px; padding-top: 10px"
+                >Background Color:</label
+              >
+              <input
+                type="color"
+                class="form-control"
+                id="backgroundColor"
+                v-model="backgroundColor"
+                style="width: 60px; margin-top: 10px"
+              />
+            </div>
+            <div class="form-group d-flex">
+              <label
+                for="imageFormat"
+                class="mr-2"
+                style="padding-right: 90px; padding-top: 20px"
+                >Image Format:</label
+              >
+              <select
+                class="form-select"
+                aria-label="Data Format"
+                id="imageFormat"
+                v-model="imageFormat"
+                style="width: 100px; height: 40px; margin-top: 10px"
+              >
+                <option value="png">PNG</option>
+                <option value="jpeg">JPEG</option>
+                <option value="svg">SVG</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" @click="downloadChart">
+            <i class="bi bi-download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade show" v-show="showModal"></div>
+  <!-- Chart -->
   <div ref="chartContainer" class="chart-container"></div>
 </template>
 
@@ -14,29 +101,22 @@ import { mainOption } from "@/assets/data/sunburst";
 const chartContainer = ref<HTMLDivElement | null>(null);
 var chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
+const showModal = ref<boolean>(false);
+const resolution = ref<number>(2);
+const backgroundColor = ref<string>("#ffffff");
+const imageFormat = ref<"png" | "jpeg" | "svg">("png");
 // Methods
-const downloadImage = () => {
-  let img = new Image();
+const downloadChart = () => {
+  const img = new Image();
   img.src = chart.getDataURL({
-    type: "png",
-    pixelRatio: 2,
-    backgroundColor: "#fff",
+    type: imageFormat.value,
+    pixelRatio: resolution.value,
+    backgroundColor: backgroundColor.value,
   });
-  let link = document.createElement("a");
+  const link = document.createElement("a");
   link.href = img.src;
-  link.download = "UR-indicators-sunburst-chart.png";
+  link.download = "UR-indicators-sunburst-chart." + imageFormat.value;
   link.click();
-  // let mainWinWidth = window.innerWidth;
-  // let mainWinHeight = window.innerHeight;
-  // let newWinWidth = 300;
-  // let newWinHeight = 300;
-  // let leftOffset = (mainWinWidth - newWinWidth) / 2;
-  // let topOffset = (mainWinHeight - newWinHeight) / 2;
-  // window.open(
-  //   "/sunburst-download.html",
-  //   "",
-  //   `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight},resizable=yes`,
-  // );
 };
 // Function to handle node clicks
 const handleClick = (params: any): void => {
@@ -105,5 +185,10 @@ onMounted(() => {
 .chart-container {
   width: 100%;
   height: 100vh;
+}
+.modal {
+  display: block;
+  left: 322.5px;
+  width: 355px;
 }
 </style>
