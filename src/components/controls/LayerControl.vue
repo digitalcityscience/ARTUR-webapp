@@ -7,7 +7,7 @@ import {
   LTooltip,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
-import RightSiderbarControl from "@/components/controls/RightSiderbarControl.vue";
+import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import { provide, ref, inject } from "vue";
 import type { Ref } from "vue";
@@ -135,11 +135,11 @@ provide<Layer>("isochronesLayer", {
     :options-style="isochroneStyle"
     pane="overlayPane"
   ></l-geo-json>
-  <LegendControl></LegendControl>
-  <RightSiderbarControl>
+  <legend-control></legend-control>
+  <sidebar-control>
     <template #popup>
       <h6 v-html="popup" style="margin-left: 1em"></h6>
     </template>
-  </RightSiderbarControl>
+  </sidebar-control>
 </template>
 <style scoped></style>

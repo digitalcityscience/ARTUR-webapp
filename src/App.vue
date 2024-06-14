@@ -3,7 +3,24 @@ import MapView from "./components/MapView.vue";
 </script>
 
 <template>
-  <MapView></MapView>
+  <div class="map-container">
+    <map-view></map-view>
+  </div>
+  <!-- <div class="right-placeholder"></div>
+  <div class="bottom-placeholder"></div> -->
 </template>
 
-<style scoped></style>
+<style scoped>
+.map-container {
+  flex: 0 0 100%;
+  height: 100%;
+}
+/* .right-placeholder {
+  flex: 1;
+  height: 60%;
+}
+.bottom-placeholder {
+  flex: 0 0 100%;
+  height: 40%;
+} */
+</style>
