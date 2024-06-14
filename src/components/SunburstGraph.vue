@@ -184,7 +184,7 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 100%;
-  height: 100vh;
+  height: 101vh;
 }
 .modal {
   display: block;

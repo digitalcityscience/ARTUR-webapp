@@ -3,7 +3,7 @@ import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, provide, watch, onBeforeMount } from "vue";
 import type { Ref } from "vue";
 import LayerControl from "./controls/LayerControl.vue";
-import NaviControl from "./controls/NaviControl.vue";
+import NavControl from "./controls/NavControl.vue";
 import { loadData } from "../assets/ts/functions";
 import type { City } from "../assets/ts/types.ts";
 const cities: Array<City> = [
@@ -28,10 +28,10 @@ watch(city, async (newValue) => {
 const map = ref();
 const zoom = 12;
 const firstZoom = 12;
-const mapOptions: object = {
+const mapOptions = {
   zoomControl: true,
   attributionControl: false,
-  minZoom: 3,
+  minZoom: 6,
   maxZoom: 18,
   center: cities[0].latLng,
 };
@@ -47,12 +47,11 @@ provide<Ref<any>>("isochrones", isochrones);
     v-model:zoom="zoom"
     :use-global-leaflet="false"
     :options="mapOptions"
-    style="width: 100vw; height: 100vh"
   >
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
-    <NaviControl :zoom="firstZoom" :cities="cities" />
-    <LayerControl v-if="isJsonDataLoad"></LayerControl>
+    <nav-control :zoom="firstZoom" :cities="cities"></nav-control>
+    <layer-control v-if="isJsonDataLoad"></layer-control>
   </l-map>
 </template>
 <style scoped></style>
