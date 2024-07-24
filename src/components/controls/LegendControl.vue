@@ -2,10 +2,15 @@
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import { inject, ref, computed } from "vue";
 import type { Ref } from "vue";
-import { getIsochroneColor } from "@/assets/ts/functions";
+import {
+  getIsochroneColor,
+  getPopulationColor,
+  populationRangeToString,
+} from "@/assets/ts/functions";
 const sheltersLayer = inject<Ref<any>>("sheltersLayer");
 const boundaryLayer = inject<Ref<any>>("boundaryLayer");
 const isochronesLayer = inject<Ref<any>>("isochronesLayer");
+const populationLayer = inject<Ref<any>>("populationLayer");
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -40,6 +45,24 @@ const btnLegendIconClass = computed(() => {
             :style="{ background: getIsochroneColor(range) }"
           ></i
           >Isochrone {{ range }} min<br />
+        </template>
+      </div>
+      <div v-show="populationLayer.visible.value">
+        <template v-for="range in populationLayer.color" :key="range">
+          <i
+            class="point"
+            :style="{ background: getPopulationColor(range, 1) }"
+          ></i
+          >Population accessibility in 5 min: {{ populationRangeToString(range)
+          }}<br />
+        </template>
+        <template v-for="range in populationLayer.color" :key="range">
+          <i
+            class="point"
+            :style="{ background: getPopulationColor(range, 0) }"
+          ></i
+          >Population not accessible in 5 min:
+          {{ populationRangeToString(range) }}<br />
         </template>
       </div>
     </div>
