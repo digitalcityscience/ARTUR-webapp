@@ -5,13 +5,21 @@ import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
+import PopulationChart from "@/components/controls/PopulationChart.vue";
+
 // Variables
 const map = inject("map") as Ref<any>;
 const sheltersLayer = inject("sheltersLayer") as Layer;
 const boundaryLayer = inject("boundaryLayer") as Layer;
 const isochronesLayer = inject("isochronesLayer") as Layer;
+const populationLayer = inject("populationLayer") as Layer;
 const indicators: Ref<Set<string>> = ref(new Set<string>());
-const overlays: Layer[] = [sheltersLayer, boundaryLayer, isochronesLayer];
+const overlays: Layer[] = [
+  sheltersLayer,
+  isochronesLayer,
+  boundaryLayer,
+  populationLayer,
+];
 // Methods
 const openSunburstSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -218,6 +226,23 @@ window.addEventListener("storage", (event: StorageEvent) => {
               </button>
               <div class="collapse show" id="popup-collapse">
                 <slot name="popup"></slot>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle rounded collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#population-collapse"
+                v-show="populationLayer.visible.value"
+                aria-expanded="true"
+                style="padding-left: 0"
+              >
+                Population Information
+              </button>
+              <div class="collapse show" id="population-collapse">
+                <population-chart
+                  v-if="populationLayer.visible.value"
+                ></population-chart>
               </div>
             </li>
           </ul>

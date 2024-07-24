@@ -8,10 +8,11 @@ import {
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
-import { getIsochroneColor } from "@/assets/ts/functions";
+import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { provide, ref, inject } from "vue";
 import type { Ref } from "vue";
 import type { Layer } from "@/assets/ts/types";
+
 // Tile Layers Settings
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Point Layer Settings
@@ -66,6 +67,25 @@ const isochroneStyle = (feature: any) => {
     opacity: 1,
   };
 };
+// Population Layer Settings
+const population = inject<Ref<any>>("population");
+const populationName = "Population";
+const showPopulation = ref<boolean>(false);
+const populationRange = [5, 15, 25, 35, 45];
+
+const populationStyle = (feature: any) => {
+  return {
+    fillColor: getPopulationColor(
+      feature.properties.VALUE,
+      feature.properties.access,
+    ),
+    color: "white",
+    weight: 1,
+    opacity: 0.8,
+    fillOpacity: 0.8,
+    radius: 3,
+  };
+};
 provide<Layer>("sheltersLayer", {
   name: sheltersName,
   visible: showShelters,
@@ -80,6 +100,11 @@ provide<Layer>("isochronesLayer", {
   name: isochronesName,
   visible: showIsochrones,
   color: isochroneRange,
+});
+provide<Layer>("populationLayer", {
+  name: populationName,
+  visible: showPopulation,
+  color: populationRange,
 });
 </script>
 
@@ -135,6 +160,26 @@ provide<Layer>("isochronesLayer", {
     :options-style="isochroneStyle"
     pane="overlayPane"
   ></l-geo-json>
+  <!-- Population -->
+  <l-feature-group
+    :name="sheltersName"
+    layer-type="overlay"
+    :visible="showPopulation"
+  >
+    <l-circle-marker
+      pane="markerPane"
+      v-for="(feature, index) in population.features"
+      :key="`${index}-${feature.properties.Name}`"
+      :name="feature.properties.Name"
+      :lat-lng="[
+        feature.geometry.coordinates[1],
+        feature.geometry.coordinates[0],
+      ]"
+      :options="populationStyle(feature)"
+      layer-type="overlay"
+    >
+    </l-circle-marker>
+  </l-feature-group>
   <legend-control></legend-control>
   <sidebar-control>
     <template #popup>

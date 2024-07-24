@@ -95,7 +95,7 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { mainOption } from "@/assets/data/sunburst";
+import { sunburstOption } from "@/assets/data/echarts_options";
 
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
@@ -163,7 +163,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
 });
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
-  chart.setOption(mainOption);
+  chart.setOption(sunburstOption);
   chart.on("click", (params: any) => handleClick(params));
 };
 onMounted(() => {
