@@ -1,13 +1,22 @@
 <template>
-  <button
-    type="button"
-    class="btn btn-sm btn-success"
-    data-toggle="modal"
-    data-target="#downloadModal"
-    @click="showModal = true"
-  >
-    <i class="fa fa-download" aria-hidden="true"></i> Download Chart
-  </button>
+  <div class="btn-group" role="group">
+    <button
+      type="button"
+      class="btn btn-sm btn-success"
+      data-toggle="modal"
+      data-target="#downloadModal"
+      @click="showModal = true"
+    >
+      <i class="fa fa-download" aria-hidden="true"></i> Download Chart
+    </button>
+    <button
+      type="button"
+      class="btn btn-m btn-warning"
+      @click="switchGraphType"
+    >
+      <i class="bi bi-arrow-repeat">{{ currentGraphView }}</i>
+    </button>
+  </div>
   <!-- Download Chart Modal -->
   <div
     class="modal fade"
@@ -95,7 +104,12 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { sunburstOption } from "@/assets/data/echarts_options";
+import {
+  sunburstData,
+  sunburstOption,
+  sunburstOption1,
+  sankeyOption,
+} from "@/assets/data/echarts_options";
 
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
@@ -105,7 +119,19 @@ const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);
 const backgroundColor = ref<string>("#ffffff");
 const imageFormat = ref<"png" | "jpeg" | "svg">("png");
+const currentGraphView = ref("View Sankey Graph");
 // Methods
+const switchGraphType = () => {
+  if (currentGraphView.value == "View Sankey Graph") {
+    currentGraphView.value = "View Sunburst Graph";
+    chart.clear();
+    chart.setOption(sankeyOption);
+  } else {
+    currentGraphView.value = "View Sankey Graph";
+    chart.clear();
+    chart.setOption(sunburstOption);
+  }
+};
 const downloadChart = () => {
   const img = new Image();
   img.src = chart.getDataURL({
@@ -121,7 +147,7 @@ const downloadChart = () => {
 // Function to handle node clicks
 const handleClick = (params: any): void => {
   const level = params.treePathInfo.length;
-  if (level === 4 || level === 5) {
+  if (level === 4) {
     if (params.name && selected.value.has(params.name)) {
       selected.value.delete(params.name);
     } else if (params.name) {
@@ -134,8 +160,46 @@ const handleClick = (params: any): void => {
       });
     }
     return;
+  } else if (level === 2 && params.value < 10) {
+    let color = params.color;
+    let data = sunburstData.children.find(
+      (node: any) => node.name === params.name,
+    );
+    reloadSunburst(sunburstOption1, data, color);
+  } else if (level === 2) {
+    chart.clear();
+    chart.setOption(sunburstOption);
   }
-  return;
+  // else if (level === 3 && params.value === 1) {
+  //   let color = params.color;
+  //   let dimension = sunburstData.children.find(
+  //     (node: any) => node.name === params.treePathInfo[1].name,
+  //   );
+  //   let data = dimension.children.find(
+  //     (node: any) => node.name === params.name,
+  //   );
+  //   reloadSunburst(sunburstOption1, data, color);
+  // }
+};
+// Reload sunburst option
+const reloadSunburst = (sunburstOption: any, data: any, color: string) => {
+  chart.clear();
+  sunburstOption.series.data = [data];
+  sunburstOption.color = color;
+  chart.setOption(sunburstOption);
+  loadSidebarIndicator();
+};
+// Synchronize the sidebar saved indicators to the reloaded sunburst chart
+const loadSidebarIndicator = () => {
+  const savedIndicators = localStorage.getItem("sidebarSaved");
+  if (savedIndicators) {
+    selected.value = new Set<string>(JSON.parse(savedIndicators));
+    chart.dispatchAction({
+      type: "select",
+      seriesIndex: 0,
+      name: JSON.parse(savedIndicators),
+    });
+  }
 };
 // Store the changes of sunburst selected indicators
 watch(
@@ -169,15 +233,6 @@ const initChart = (): void => {
 onMounted(() => {
   if (!chartContainer.value) return;
   initChart();
-  const savedIndicators = localStorage.getItem("sidebarSaved");
-  if (savedIndicators) {
-    selected.value = new Set<string>(JSON.parse(savedIndicators));
-    chart.dispatchAction({
-      type: "select",
-      seriesIndex: 0,
-      name: JSON.parse(savedIndicators),
-    });
-  }
 });
 </script>
 

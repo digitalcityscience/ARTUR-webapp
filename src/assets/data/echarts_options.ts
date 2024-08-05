@@ -1,19 +1,18 @@
-const sunburstData = {
+export const sunburstData: any = {
   name: "Urban Resilience",
   children: [
     {
       name: "SOCIAL",
       children: [
         {
-          name: "Basic Needs",
+          name: "Basic necessities",
           children: [
             {
               name: "Safe & affordable housing",
-              value: 4,
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -21,11 +20,10 @@ const sunburstData = {
             },
             {
               name: "Adequate affordable energy supply",
-              value: 4,
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -33,11 +31,10 @@ const sunburstData = {
             },
             {
               name: "Inclusive access to save drinking water",
-              value: 4,
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -45,86 +42,21 @@ const sunburstData = {
             },
             {
               name: "Effective sanitation",
-              value: 4,
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
-          ],
-        },
-        {
-          name: "Labor & livelihood",
-          children: [
             {
               name: "Sufficient affordable food supply",
-              children: [{ name: "Inclusive labour policies", value: 5 }],
-            },
-          ],
-        },
-        {
-          name: "Health & Safety",
-          children: [
-            {
-              name: "Relevant skills & training",
-              value: 5,
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Robust public health systems",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Adequate access to quality healthcare",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Emergency medical care",
-              children: [
-                { name: "Effective systems to deter crime", value: 4 },
-                { name: "Proactive corruption prevention", value: 4 },
-                { name: "Competent policing", value: 4 },
-                { name: "Accessible criminal & civil justice", value: 4 },
-                {
-                  name: "Widespread community awareness & preparedness",
-                  value: 5,
-                },
-              ],
-            },
-            {
-              name: "Adequate education for all",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -133,27 +65,63 @@ const sunburstData = {
           ],
         },
         {
-          name: "Community Engagement",
+          name: "Capacity building and public awareness",
           children: [
             {
-              name: "Effective mechanisms for communities to engage with government",
-              value: 6,
+              name: "access to all the skills and experience to respond/reduce risks and respond to disaster",
               children: [
                 {
                   value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
             {
-              name: "Local community support",
-              value: 4,
+              name: "accessibility to training materials (language)",
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "exchange knowledge and learn from other cities facing similar challenges",
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Community support",
+          children: [
+            {
+              name: "grassroots or community organizations participating in pre-event planning and post event response",
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Accessible criminal and civil justice",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -161,11 +129,89 @@ const sunburstData = {
             },
             {
               name: "Cohesive communities",
-              value: 4,
               children: [
                 {
-                  value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "training programmes provided to the most vulnerable and at need populations",
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "citizen engagement and communications in relation to disaster resilience and recovery",
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Widespread community awareness & preparedness",
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Main public facilities: university, schools, health centres, markets, etc.",
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Social services infrastructure, including schools, hospitals, and clinics",
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Local community support",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Strong city-wide identity & culture",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -173,11 +219,164 @@ const sunburstData = {
             },
             {
               name: "Actively engaged citizens",
-              value: 4,
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Practices and drills involving public and professionals",
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
                   value: 4,
-                  itemStyle: { opacity: 0.5 },
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Adequate education for all",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Major community buildings, religious buildings, and historic/cultural assets",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Relevant skills & training",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Ecosystem Services",
+          children: [
+            {
+              name: "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+              children: [
+                {
+                  value: 8,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "awareness of functions or services that natural capital provides for the city",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Planning Resilience",
+          children: [
+            {
+              name: "public education towards awareness of hazard, risk and disaster information",
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Safe places/havens and the evacuation routes",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+              children: [
+                {
+                  value: 8,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "awareness of equipment and supply needed + provision",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Security services",
+          children: [
+            {
+              name: "Effective systems to deter crime",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "High levels of crime are observed",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -191,15 +390,27 @@ const sunburstData = {
       name: "ECO-\nNOMIC",
       children: [
         {
-          name: "Bussiness sector",
+          name: "Economic activities",
           children: [
             {
-              name: "Local business development & innovation",
-              value: 5,
+              name: "Diverse economic base",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Industrial areas including ports, industrial zones, and factories",
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
                   value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -207,11 +418,110 @@ const sunburstData = {
             },
             {
               name: "Supportive financing mechanisms",
-              value: 5,
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Economic impact",
+          children: [
+            {
+              name: "businesses with a documented business continuity plan",
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Knowledge to funding opportunities (for local economy and recovery)",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Attractive business environment",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Economic impact",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Level of insurance cover exists in the city, across all sectors - business and community",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Incentives for business and society to support resilience building",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Planned investments",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -219,11 +529,59 @@ const sunburstData = {
             },
             {
               name: "Comprehensive business continuity planning",
-              value: 5,
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Inclusive labour policies",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Local business development and innovation",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Strong integration with regional & global economies",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -232,15 +590,39 @@ const sunburstData = {
           ],
         },
         {
-          name: "Diversity & Equality",
+          name: "Planning Resilience",
           children: [
             {
-              name: "Diverse economic base",
-              value: 6,
+              name: "Financial plan and budget for resilience, including contingency funds",
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Projected changes to population densities and economic activity",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Densities",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -249,14 +631,17 @@ const sunburstData = {
           ],
         },
         {
-          name: "Economic Vitality",
+          name: "Governance",
           children: [
             {
-              name: "Attractive business environment",
+              name: "Changes in the overall city’s boundaries",
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  name: "Strong integration with regional & global economies",
-                  value: 5,
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
                 },
               ],
             },
@@ -268,27 +653,192 @@ const sunburstData = {
       name: "INSTI-\nTUTIONAL",
       children: [
         {
-          name: "Governance & Regulation",
+          name: "Governance",
           children: [
             {
-              name: "Appropriate government decision-making",
-              value: 6,
+              name: "disaster management authority have sufficient staffing capacity  ",
               children: [
                 {
-                  value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
             {
-              name: "Comprehensive hazard monitoring and risk assessment",
-              value: 6,
+              name: "Consultative planning process",
               children: [
                 {
-                  value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Informal development areas",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Robust planning approval process",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Well-managed public finances",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Appropriate government decision-making",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Effective co-ordination with other government bodies",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Proactive multi-stakeholder collaboration",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 8,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "urban development to promote resilience",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Building codes or standards address hazards and risks",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "enforcement and virification of zoning bulding zoning and regulations",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "FAIR Data sharing to enhance resilience",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Proactive corruption prevention",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Comprehensive city monitoring & data management",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -297,19 +847,27 @@ const sunburstData = {
           ],
         },
         {
-          name: "Community Planning & Management",
+          name: "Land use",
           children: [
             {
-              name: "Comprehensive government emergency management",
-              children: [{ name: "Consultative planning process", value: 6 }],
+              name: "Land use designations",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
             },
             {
               name: "Appropriate land use & zoning",
-              value: 6,
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -318,13 +876,203 @@ const sunburstData = {
           ],
         },
         {
-          name: "Public Finance & Support",
+          name: "Planning for risk and disaster",
           children: [
             {
-              name: "Robust planning approval process",
+              name: "Disaster and risk reduction in urban planning instruments according to Sendai framework",
               children: [
-                { name: "Well-managed public finances ", value: 6 },
-                { name: "Strong city-wide identity & culture", value: 6 },
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects? ",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 10,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "early warning system and reaching level",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Comprehensive government emergency management",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Integration of resilience in city functions / portfolios",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "disaster management / preparedness / emergency response plan",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Appropriate land use and zoning",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "appropriately land use planning considering risk, hazards and vulnerability",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Projected changes in location of vulnerable populations",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Public health systems",
+          children: [
+            {
+              name: "Adequate access to quality healthcare",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Emergency medical care",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Effective emergency response services",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Robust public health systems",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Security services: fire services, police stations, etc.",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
               ],
             },
           ],
@@ -335,53 +1083,14 @@ const sunburstData = {
       name: "PHYSICAL",
       children: [
         {
-          name: "Infrastructure Resilience",
+          name: "Communication",
           children: [
             {
-              name: "Adequate continuity for critical assets & services",
-              value: 5,
+              name: "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Robust protective infrastructure",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Effective emergency response services",
-              children: [
-                {
-                  name: "Effectively managed protective ecosystems",
-                  value: 5,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "Transport & Communitations",
-          children: [
-            {
-              name: "Secure technology networks",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 7,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
@@ -389,94 +1098,423 @@ const sunburstData = {
             },
             {
               name: "Reliable communications technology",
-              value: 5,
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              name: "Effective transport operation & maintenance",
-              value: 5,
-              children: [
-                {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
-                  tooltip: { show: false },
-                  emphasis: { disabled: true },
-                },
-              ],
-            },
-            {
-              tooltip: { show: false },
-              itemStyle: { opacity: 0.5 },
-              emphasis: { disabled: true },
-              children: [
-                {
-                  name: "Diverse & affordable transport networks",
-                  value: 5,
                 },
               ],
             },
           ],
         },
         {
-          name: "Data Management & Monitoring",
+          name: "Ecosystem Services",
           children: [
             {
+              name: "Integration of green and blue infrastructure into city policy and projects  ",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Natural elements, mangrove, hills, rivers, plantations, among others",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Governance",
+          children: [
+            {
+              name: "Secure technology networks",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Land Use",
+          children: [
+            {
+              name: "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
+              children: [
+                {
+                  value: 10,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Major infrastructure",
+          children: [
+            {
+              name: "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+              children: [
+                {
+                  value: 8,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "critical infrastructure: mapping, planning and protection strategies",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Infrastructure and services damaged",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "protective infrastructure: well-designed and well-built based on risk information",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: 'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe"  disaster scenario',
+              children: [
+                {
+                  value: 9,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Major roads",
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
+              children: [
+                {
+                  value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Major Infrastructure & Planning Resilience",
+          children: [
+            {
+              name: "Diligent maintenance & continuity",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
               name: "Flexible infrastructure services",
-              value: 5,
+              itemStyle: { opacity: 0.6 },
               children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
             {
-              tooltip: { show: false },
-              itemStyle: { opacity: 0.5 },
-              emphasis: { disabled: true },
+              name: "Retained spare capacity",
+              itemStyle: { opacity: 0.6 },
               children: [
-                { name: "Effective stewardship of ecosystems", value: 5 },
                 {
-                  name: "Appropriate codes, standards & enforcement",
-                  value: 5,
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
                 },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Planning for risk and disaster",
+          children: [
+            {
+              name: "Housing destroyed and damaged",
+              children: [
                 {
-                  value: 5,
-                  itemStyle: { opacity: 0.5 },
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
             {
-              name: "Comprehensive hazard & exposure mapping",
-              value: 6,
+              name: "Affected areas",
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Topography: elevation, water bodies",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Hazard mapping and monitoring (common awareness)",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
               children: [
                 {
                   value: 6,
-                  itemStyle: { opacity: 0.5 },
+                  itemStyle: { opacity: 0.3 },
                   tooltip: { show: false },
                   emphasis: { disabled: true },
                 },
               ],
             },
             {
-              tooltip: { show: false },
-              itemStyle: { opacity: 0.5 },
-              emphasis: { disabled: true },
+              name: "Hazard mapping and monitoring (clear and regular mapping)",
               children: [
                 {
-                  name: "Comprehensive city monitoring & data management",
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Identification of cascading effects",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 8,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
                   value: 5,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "Planning Resilience",
+          children: [
+            {
+              name: '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
+              children: [
+                {
+                  value: 6,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Adequate continuity for critical assets & services",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Comprehensive hazard monitoring and risk assessment",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Comprehensive hazard monitoring and risk assessment",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "First responder equipment, with military or civilian back up",
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+              children: [
+                {
+                  value: 4,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Vulnerability and risk",
+              children: [
+                {
+                  value: 2,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
+                },
+              ],
+            },
+            {
+              name: "Diverse and affordable transport networks",
+              itemStyle: { opacity: 0.6 },
+              children: [
+                {
+                  value: 3,
+                  itemStyle: { opacity: 0.3 },
+                  tooltip: { show: false },
+                  emphasis: { disabled: true },
                 },
               ],
             },
@@ -486,6 +1524,13 @@ const sunburstData = {
     },
   ],
 };
+const initialSunburstData = sunburstData.children.map((level1: any) => ({
+  name: level1.name,
+  children: level1.children.map((level2: any) => ({
+    name: level2.name,
+    value: 1,
+  })),
+}));
 export const sunburstOption = {
   backgroundColor: "#fff",
   tooltip: {
@@ -501,9 +1546,90 @@ export const sunburstOption = {
   },
   series: {
     type: "sunburst",
-    data: sunburstData.children,
+    data: initialSunburstData,
     radius: [0, "100%"],
-    sort: null,
+    sort: undefined,
+    itemStyle: {
+      borderRadius: 7,
+      borderWidth: 2,
+    },
+    label: {
+      fontFamily: "Arial",
+      overflow: "break",
+      fontSize: "1rem",
+    },
+    emphasis: {
+      focus: "ancestor",
+      itemStyle: {
+        shadowBlur: 20,
+        shadowColor: "rgba(0, 0, 0, 0.8)",
+      },
+    },
+    selectedMode: "multiple",
+    levels: [
+      {
+        r0: 0,
+        r: 50,
+        itemStyle: {
+          color: "white",
+          opacity: 0.4,
+        },
+      },
+      {
+        r0: 50,
+        r: 120,
+        label: {
+          rotate: "tangential",
+        },
+      },
+      {
+        r0: 120,
+        r: 425,
+        label: {
+          align: "center",
+          width: 325,
+        },
+        nodeClick: false,
+      },
+    ],
+  },
+  color: [
+    // "#5470C6", // blue
+    "#91CC75", // green
+    "#FAC858", // yellow
+    "#EE6666", // red
+    "#73C0DE", // light blue
+    "#3BA272", // dark green
+    "#FC8452", // orange
+    "#9A60B4", // purple
+    "#EA7CCC", // pink
+  ],
+  grid: {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+};
+let level1Data: any[] = [];
+export let sunburstOption1 = {
+  backgroundColor: "#fff",
+  tooltip: {
+    show: true,
+    formatter: (params: any) => {
+      return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
+                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
+                    params.color,
+                  ]};"></span>
+                  ${params.name.replace(/-\n/g, "")}
+                </div>`;
+    },
+  },
+  series: {
+    type: "sunburst",
+    data: level1Data,
+    radius: [0, "100%"],
+    sort: undefined,
     itemStyle: {
       borderRadius: 7,
       borderWidth: 2,
@@ -523,8 +1649,6 @@ export const sunburstOption = {
     selectedMode: "multiple",
     levels: [
       {
-        r0: 0,
-        r: 20,
         itemStyle: {
           color: "white",
           opacity: 0.4,
@@ -547,10 +1671,10 @@ export const sunburstOption = {
       },
       {
         r0: 170,
-        r: 320,
+        r: 330,
         label: {
           align: "center",
-          width: 150,
+          width: 160,
           padding: 0,
           silent: false,
         },
@@ -564,7 +1688,7 @@ export const sunburstOption = {
         },
       },
       {
-        r0: 320,
+        r0: 330,
         r: 425,
         label: {
           width: 100,
@@ -572,27 +1696,10 @@ export const sunburstOption = {
           silent: false,
         },
         nodeClick: false,
-        select: {
-          itemStyle: {
-            borderColor: "#5d5d5d",
-            shadowBlur: 20,
-            shadowColor: "rgba(0, 0, 0, 5)",
-          },
-        },
       },
     ],
   },
-  color: [
-    // "#5470C6", // blue
-    "#91CC75", // green
-    "#FAC858", // yellow
-    "#EE6666", // red
-    "#73C0DE", // light blue
-    "#3BA272", // dark green
-    "#FC8452", // orange
-    "#9A60B4", // purple
-    "#EA7CCC", // pink
-  ],
+  color: "",
   grid: {
     top: 0,
     bottom: 0,
@@ -601,7 +1708,7 @@ export const sunburstOption = {
   },
 };
 // Sankey Graph Options
-const sankeyOption = {
+export const sankeyOption = {
   backgroundColor: "#fff",
   tooltip: {
     show: true,
