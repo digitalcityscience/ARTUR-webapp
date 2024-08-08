@@ -14,7 +14,7 @@
       class="btn btn-m btn-warning"
       @click="switchGraphType"
     >
-      <i class="bi bi-arrow-repeat">{{ currentGraphView }}</i>
+      <i class="bi bi-arrow-repeat">View {{ switchGraph }} Graph</i>
     </button>
   </div>
   <!-- Download Chart Modal -->
@@ -110,26 +110,25 @@ import {
   sunburstOption1,
   sankeyOption,
 } from "@/assets/data/echarts_options";
+import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
 
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
-var chart: echarts.ECharts;
+let chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
 const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);
 const backgroundColor = ref<string>("#ffffff");
-const imageFormat = ref<"png" | "jpeg" | "svg">("png");
-const currentGraphView = ref("View Sankey Graph");
+const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
+const switchGraph = ref<GraphTypes>(GraphTypes.SANKEY);
 // Methods
 const switchGraphType = () => {
-  if (currentGraphView.value == "View Sankey Graph") {
-    currentGraphView.value = "View Sunburst Graph";
-    chart.clear();
-    chart.setOption(sankeyOption);
+  if (switchGraph.value == "Sankey") {
+    switchGraph.value = GraphTypes.SUNBURST;
+    reloadChart(sankeyOption);
   } else {
-    currentGraphView.value = "View Sankey Graph";
-    chart.clear();
-    chart.setOption(sunburstOption);
+    switchGraph.value = GraphTypes.SANKEY;
+    reloadChart(sunburstOption);
   }
 };
 const downloadChart = () => {
@@ -141,57 +140,85 @@ const downloadChart = () => {
   });
   const link = document.createElement("a");
   link.href = img.src;
-  link.download = "UR-indicators-sunburst-chart." + imageFormat.value;
+  link.download =
+    `UR-${
+      switchGraph.value === GraphTypes.SANKEY
+        ? GraphTypes.SUNBURST
+        : GraphTypes.SANKEY
+    }-chart.` + imageFormat.value;
   link.click();
 };
 // Function to handle node clicks
 const handleClick = (params: any): void => {
-  const level = params.treePathInfo.length;
-  if (level === 4) {
-    if (params.name && selected.value.has(params.name)) {
-      selected.value.delete(params.name);
-    } else if (params.name) {
-      selected.value.add(params.name);
-    } else {
-      chart.dispatchAction({
-        type: "unselect",
-        seriesIndex: 0,
-        dataIndex: params.dataIndex,
-      });
+  if (params.data.depth) {
+    switch (params.data.depth) {
+      case 0:
+        return;
+      case 1:
+        if (selected.value.has(params.name)) {
+          selected.value.delete(params.name);
+        } else {
+          selected.value.add(params.name);
+        }
+        break;
+      case 2:
+        return;
     }
-    return;
-  } else if (level === 2 && params.value < 10) {
-    let color = params.color;
-    let data = sunburstData.children.find(
-      (node: any) => node.name === params.name,
-    );
-    reloadSunburst(sunburstOption1, data, color);
-  } else if (level === 2) {
-    chart.clear();
-    chart.setOption(sunburstOption);
+  } else {
+    const level = params.treePathInfo.length;
+    if (level === 4) {
+      if (params.name && selected.value.has(params.name)) {
+        selected.value.delete(params.name);
+      } else if (params.name) {
+        selected.value.add(params.name);
+      } else {
+        chart.dispatchAction({
+          type: "unselect",
+          seriesIndex: 0,
+          dataIndex: params.dataIndex,
+        });
+      }
+      return;
+    } else if (level === 2 && params.value < 10) {
+      let color = params.color;
+      let data = sunburstData.children.find(
+        (node: any) => node.name === params.name,
+      );
+      reloadChart(sunburstOption1, data, color);
+      return;
+    } else if (level === 2) {
+      chart.clear();
+      chart.setOption(sunburstOption);
+      return;
+    } else if (level === 3 && params.value > 5) {
+      console.log(selected.value);
+      console.log(params);
+    }
+    // else if (level === 3 && params.value === 1) {
+    //   let color = params.color;
+    //   let dimension = sunburstData.children.find(
+    //     (node: any) => node.name === params.treePathInfo[1].name,
+    //   );
+    //   let data = dimension.children.find(
+    //     (node: any) => node.name === params.name,
+    //   );
+    //   reloadSunburst(sunburstOption1, data, color);
+    // }
   }
-  // else if (level === 3 && params.value === 1) {
-  //   let color = params.color;
-  //   let dimension = sunburstData.children.find(
-  //     (node: any) => node.name === params.treePathInfo[1].name,
-  //   );
-  //   let data = dimension.children.find(
-  //     (node: any) => node.name === params.name,
-  //   );
-  //   reloadSunburst(sunburstOption1, data, color);
-  // }
 };
-// Reload sunburst option
-const reloadSunburst = (sunburstOption: any, data: any, color: string) => {
+// Reload chart option
+const reloadChart = (option: any, data?: any, color?: string) => {
+  if (data !== undefined && color !== undefined) {
+    option.series.data = [data];
+    option.color = color;
+  }
   chart.clear();
-  sunburstOption.series.data = [data];
-  sunburstOption.color = color;
-  chart.setOption(sunburstOption);
+  chart.setOption(option);
   loadSidebarIndicator();
 };
 // Synchronize the sidebar saved indicators to the reloaded sunburst chart
 const loadSidebarIndicator = () => {
-  const savedIndicators = localStorage.getItem("sidebarSaved");
+  let savedIndicators = localStorage.getItem("sidebarSaved");
   if (savedIndicators) {
     selected.value = new Set<string>(JSON.parse(savedIndicators));
     chart.dispatchAction({

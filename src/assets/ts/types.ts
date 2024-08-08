@@ -1,7 +1,8 @@
 import type { Ref } from "vue";
+import { CityName } from "./constants";
 
 export interface City {
-  name: string;
+  name: CityName;
   latLng: number[];
 }
 
