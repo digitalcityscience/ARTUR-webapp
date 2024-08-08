@@ -3,6 +3,8 @@ import { LControl } from "@vue-leaflet/vue-leaflet";
 import type { City } from "@/assets/ts/types";
 import { inject } from "vue";
 import type { Ref } from "vue";
+import { CityName } from "@/assets/ts/constants";
+
 const map = inject<Ref<any>>("map");
 const props = defineProps({
   zoom: Number,
@@ -12,8 +14,8 @@ const btnNaviClick = (city: City) => {
   map!.value.leafletObject.flyTo(city.latLng, props.zoom);
   selectedCity!.value = city.name;
 };
-const selectedCity = inject<Ref<string>>("city");
-const isSelected = (cityName: string) => selectedCity!.value === cityName;
+const selectedCity = inject<Ref<CityName>>("city");
+const isSelected = (cityName: CityName) => selectedCity!.value === cityName;
 </script>
 
 <template>
