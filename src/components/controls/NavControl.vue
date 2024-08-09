@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import type { City } from "@/assets/ts/types";
+import type { CityData } from "@/assets/ts/types";
 import { inject } from "vue";
 import type { Ref } from "vue";
-import { CityName } from "@/assets/ts/constants";
+import { CityName, InjectionKeyEnum } from "@/assets/ts/constants";
 
-const map = inject<Ref<any>>("map");
+const map = inject<Ref<any>>(InjectionKeyEnum.MAP);
 const props = defineProps({
   zoom: Number,
-  cities: Array<City>,
+  cities: Array<CityData>,
 });
-const btnNaviClick = (city: City) => {
+const btnNaviClick = (city: CityData) => {
   map!.value.leafletObject.flyTo(city.latLng, props.zoom);
   selectedCity!.value = city.name;
 };
-const selectedCity = inject<Ref<CityName>>("city");
+const selectedCity = inject<Ref<CityName>>(InjectionKeyEnum.CITY);
 const isSelected = (cityName: CityName) => selectedCity!.value === cityName;
 </script>
 

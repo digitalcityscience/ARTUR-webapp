@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import { inject, ref, computed } from "vue";
-import type { Ref } from "vue";
+import { InjectionKeyEnum } from "@/assets/ts/constants";
 import {
   getIsochroneColor,
   getPopulationColor,
   populationRangeToString,
 } from "@/assets/ts/functions";
-const sheltersLayer = inject<Ref<any>>("sheltersLayer");
-const boundaryLayer = inject<Ref<any>>("boundaryLayer");
-const isochronesLayer = inject<Ref<any>>("isochronesLayer");
-const populationLayer = inject<Ref<any>>("populationLayer");
+import type { Layer } from "@/assets/ts/types";
+
+const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
+const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
+const isochronesLayer = inject(InjectionKeyEnum.ISOCHRONE_LAYER) as Layer;
+const populationLayer = inject(InjectionKeyEnum.POPULATION_LAYER) as Layer;
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -18,51 +20,34 @@ const btnLegendIconClass = computed(() => {
 </script>
 <template>
   <l-control position="bottomleft">
-    <button
-      @click="showLegend = !showLegend"
-      class="btn btn-primary btn-sm legend-button"
-    >
-      <i
-        :class="btnLegendIconClass"
-        style="float: left; padding-right: 5px"
-      ></i>
+    <button @click="showLegend = !showLegend" class="btn btn-primary btn-sm legend-button">
+      <i :class="btnLegendIconClass" style="float: left; padding-right: 5px"></i>
       <strong>Legend</strong>
       <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
     </button>
     <div class="legend" v-show="showLegend">
       <div v-show="sheltersLayer.visible.value">
         <i class="point" :style="{ background: sheltersLayer.color }"></i>
-        Shelters
+        {{ sheltersLayer.name }}
       </div>
       <div v-show="boundaryLayer.visible.value">
         <i class="polyline" :style="{ background: boundaryLayer.color }"></i>
-        City Boundary
+        {{ boundaryLayer.name }}
       </div>
       <div v-show="isochronesLayer.visible.value">
-        <template v-for="range in isochronesLayer.color" :key="range">
-          <i
-            class="polygon"
-            :style="{ background: getIsochroneColor(range) }"
-          ></i
-          >Isochrone {{ range }} min<br />
+        <template v-for="range in isochronesLayer.range" :key="range">
+          <i class="polygon" :style="{ background: getIsochroneColor(range) }"></i>Isochrone
+          {{ range }} min<br />
         </template>
       </div>
       <div v-show="populationLayer.visible.value">
-        <template v-for="range in populationLayer.color" :key="range">
-          <i
-            class="point"
-            :style="{ background: getPopulationColor(range, 1) }"
-          ></i
-          >Population accessibility in 5 min: {{ populationRangeToString(range)
-          }}<br />
+        <template v-for="range in populationLayer.range" :key="range">
+          <i class="point" :style="{ background: getPopulationColor(range, 1) }"></i>Population
+          accessibility in 5 min: {{ populationRangeToString(range) }}<br />
         </template>
-        <template v-for="range in populationLayer.color" :key="range">
-          <i
-            class="point"
-            :style="{ background: getPopulationColor(range, 0) }"
-          ></i
-          >Population not accessible in 5 min:
-          {{ populationRangeToString(range) }}<br />
+        <template v-for="range in populationLayer.range" :key="range">
+          <i class="point" :style="{ background: getPopulationColor(range, 0) }"></i>Population not
+          accessible in 5 min: {{ populationRangeToString(range) }}<br />
         </template>
       </div>
     </div>

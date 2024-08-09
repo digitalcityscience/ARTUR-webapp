@@ -2,17 +2,21 @@
 import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, provide, watch, onBeforeMount } from "vue";
 import type { Ref } from "vue";
+import type { GeoJSON } from "geojson";
 import LayerControl from "./controls/LayerControl.vue";
 import NavControl from "./controls/NavControl.vue";
 import { loadData } from "../assets/ts/functions";
 import { cities, CityName } from "@/assets/ts/constants";
+import { InjectionKeyEnum } from "@/assets/ts/constants";
 
-const shelters = ref<any>();
-const boundary = ref<any>();
-const isochrones = ref<any>();
-const population = ref<any>();
-const isJsonDataLoad = ref<boolean>(false);
+// GeoJSON Constants
+const shelters = ref() as Ref<GeoJSON>;
+const boundary = ref() as Ref<GeoJSON>;
+const isochrones = ref() as Ref<GeoJSON>;
+const population = ref() as Ref<GeoJSON>;
+// City
 const city = ref() as Ref<CityName>;
+const isJsonDataLoad = ref<boolean>(false);
 onBeforeMount(() => {
   city.value = cities[0].name;
 });
@@ -32,24 +36,18 @@ const mapOptions = {
   center: cities[0].latLng,
   preferCanvas: true,
 };
-provide<Ref<any>>("map", map);
-provide<Ref<CityName>>("city", city);
-provide<Ref<any>>("shelters", shelters);
-provide<Ref<any>>("boundary", boundary);
-provide<Ref<any>>("isochrones", isochrones);
-provide<Ref<any>>("population", population);
+provide<Ref<GeoJSON>>(InjectionKeyEnum.MAP, map);
+provide<Ref<CityName>>(InjectionKeyEnum.CITY, city);
+provide<Ref<GeoJSON>>(InjectionKeyEnum.SHELTER_GEOJSON, shelters);
+provide<Ref<GeoJSON>>(InjectionKeyEnum.BOUNDARY_GEOJSON, boundary);
+provide<Ref<GeoJSON>>(InjectionKeyEnum.ISOCHRONE_GEOJSON, isochrones);
+provide<Ref<GeoJSON>>(InjectionKeyEnum.POPULATION_GEOJSON, population);
 </script>
 <template>
-  <l-map
-    ref="map"
-    v-model:zoom="zoom"
-    :use-global-leaflet="false"
-    :options="mapOptions"
-  >
+  <l-map ref="map" v-model:zoom="zoom" :use-global-leaflet="false" :options="mapOptions">
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
     <nav-control :zoom="firstZoom" :cities="cities"></nav-control>
     <layer-control v-if="isJsonDataLoad"></layer-control>
   </l-map>
 </template>
-<style scoped></style>

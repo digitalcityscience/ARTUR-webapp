@@ -7,9 +7,10 @@ import { onMounted, ref, inject, watch } from "vue";
 import type { Ref } from "vue";
 import * as echarts from "echarts";
 import { getTotalPopulation } from "@/assets/ts/functions";
+import { InjectionKeyEnum } from "@/assets/ts/constants";
 
 // Constants and reactive properties
-const city = inject("city") as Ref<string>;
+const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
 const population = ref<number[]>([]);
 
 // References and variables
