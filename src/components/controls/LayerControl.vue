@@ -9,15 +9,24 @@ import {
 import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
+import { LayerName } from "@/assets/ts/constants";
 import { provide, ref, inject } from "vue";
 import type { Ref } from "vue";
-import type { Layer } from "@/assets/ts/types";
+import type { FeatureCollection, Point, Polygon } from "geojson";
+import type {
+  Layer,
+  ShelterProperties,
+  IsochroneProperties,
+  PopulationProperties,
+} from "@/assets/ts/types";
+import { InjectionKeyEnum } from "@/assets/ts/constants";
 
 // Tile Layers Settings
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
-// Point Layer Settings
-const shelters = inject<Ref<any>>("shelters");
-const sheltersName: string = "Shelters";
+// Shelter Layer Settings
+const shelters = inject(InjectionKeyEnum.SHELTER_GEOJSON) as Ref<
+  FeatureCollection<Point, ShelterProperties>
+>;
 const showShelters = ref<boolean>(true);
 const markerOptions = {
   radius: 5,
@@ -43,9 +52,8 @@ const highlightPoint = (e: any) => {
 const resetHighlight = (e: any) => {
   e.target.setStyle(markerOptions);
 };
-// Polyline Layer Settings
-const boundary = inject<Ref<any>>("boundary");
-const boundaryName: string = "City Boundary";
+// Boundary Layer Settings
+const boundary = inject<Ref<FeatureCollection<Polygon>>>(InjectionKeyEnum.BOUNDARY_GEOJSON);
 const showBoundary = ref<boolean>(true);
 const boundaryStyle = () => {
   return {
@@ -54,8 +62,9 @@ const boundaryStyle = () => {
   };
 };
 // Isochrone Layer Settings
-const isochrones = inject<Ref<any>>("isochrones");
-const isochronesName = "Isochrones";
+const isochrones = inject<Ref<FeatureCollection<Polygon, IsochroneProperties>>>(
+  InjectionKeyEnum.ISOCHRONE_GEOJSON,
+);
 const showIsochrones = ref<boolean>(true);
 const isochroneRange = [1, 2, 3, 4, 5];
 const isochroneStyle = (feature: any) => {
@@ -68,17 +77,15 @@ const isochroneStyle = (feature: any) => {
   };
 };
 // Population Layer Settings
-const population = inject<Ref<any>>("population");
-const populationName = "Population";
+const population = inject(InjectionKeyEnum.POPULATION_GEOJSON) as Ref<
+  FeatureCollection<Point, PopulationProperties>
+>;
 const showPopulation = ref<boolean>(false);
 const populationRange = [5, 15, 25, 35, 45];
 
 const populationStyle = (feature: any) => {
   return {
-    fillColor: getPopulationColor(
-      feature.properties.VALUE,
-      feature.properties.access,
-    ),
+    fillColor: getPopulationColor(feature.properties.VALUE, feature.properties.access),
     color: "white",
     weight: 1,
     opacity: 0.8,
@@ -86,52 +93,39 @@ const populationStyle = (feature: any) => {
     radius: 3,
   };
 };
-provide<Layer>("sheltersLayer", {
-  name: sheltersName,
+provide<Layer>(InjectionKeyEnum.SHELTER_LAYER, {
+  name: LayerName.SHELTER,
   visible: showShelters,
   color: markerOptions.fillColor,
 });
-provide<Layer>("boundaryLayer", {
-  name: boundaryName,
+provide<Layer>(InjectionKeyEnum.BOUNDARY_LAYER, {
+  name: LayerName.BOUNDARY,
   visible: showBoundary,
   color: boundaryStyle().color,
 });
-provide<Layer>("isochronesLayer", {
-  name: isochronesName,
+provide<Layer>(InjectionKeyEnum.ISOCHRONE_LAYER, {
+  name: LayerName.ISOCHRONE,
   visible: showIsochrones,
-  color: isochroneRange,
+  range: isochroneRange,
 });
-provide<Layer>("populationLayer", {
-  name: populationName,
+provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
+  name: LayerName.POPULATION,
   visible: showPopulation,
-  color: populationRange,
+  range: populationRange,
 });
 </script>
 
 <template>
   <!-- Base Layers -->
-  <l-tile-layer
-    :url="url"
-    layer-type="base"
-    name="OpenStreetMap"
-    pane="tilePane"
-  >
-  </l-tile-layer>
+  <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap" pane="tilePane"></l-tile-layer>
   <!-- Shelters -->
-  <l-feature-group
-    :name="sheltersName"
-    layer-type="overlay"
-    :visible="showShelters"
-  >
+  <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker
       pane="markerPane"
       v-for="(feature, index) in shelters.features"
       :key="`${index}-${feature.properties.Name}`"
       :name="feature.properties.Name"
-      :lat-lng="[
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ]"
+      :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
       :options="markerOptions"
       @click="togglePopup(feature)"
       @mouseover="highlightPoint"
@@ -144,7 +138,7 @@ provide<Layer>("populationLayer", {
   </l-feature-group>
   <!-- Boundary -->
   <l-geo-json
-    :name="boundaryName"
+    :name="LayerName.BOUNDARY"
     :geojson="boundary"
     :visible="showBoundary"
     layer-type="overlay"
@@ -153,7 +147,7 @@ provide<Layer>("populationLayer", {
   ></l-geo-json>
   <!-- Isochrones -->
   <l-geo-json
-    :name="isochronesName"
+    :name="LayerName.ISOCHRONE"
     :geojson="isochrones"
     :visible="showIsochrones"
     layer-type="overlay"
@@ -161,20 +155,13 @@ provide<Layer>("populationLayer", {
     pane="overlayPane"
   ></l-geo-json>
   <!-- Population -->
-  <l-feature-group
-    :name="sheltersName"
-    layer-type="overlay"
-    :visible="showPopulation"
-  >
+  <l-feature-group :name="LayerName.POPULATION" layer-type="overlay" :visible="showPopulation">
     <l-circle-marker
       pane="markerPane"
       v-for="(feature, index) in population.features"
       :key="`${index}-${feature.properties.Name}`"
       :name="feature.properties.Name"
-      :lat-lng="[
-        feature.geometry.coordinates[1],
-        feature.geometry.coordinates[0],
-      ]"
+      :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
       :options="populationStyle(feature)"
       layer-type="overlay"
     >

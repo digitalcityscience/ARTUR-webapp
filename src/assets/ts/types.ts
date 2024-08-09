@@ -1,7 +1,7 @@
 import type { Ref } from "vue";
 import { CityName } from "./constants";
 
-export interface City {
+export interface CityData {
   name: CityName;
   latLng: number[];
 }
@@ -9,5 +9,21 @@ export interface City {
 export interface Layer {
   name: string;
   visible: Ref<boolean>;
-  color: string | number[];
+  color?: string;
+  range?: number[];
 }
+// Type definitions for feature properties
+export type ShelterProperties = {
+  Name: string;
+  description: string;
+};
+
+export type IsochroneProperties = {
+  range: number;
+};
+
+export type PopulationProperties = {
+  Name: string;
+  VALUE: number;
+  access: string;
+};

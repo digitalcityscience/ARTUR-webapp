@@ -9,21 +9,12 @@
     >
       <i class="fa fa-download" aria-hidden="true"></i> Download Chart
     </button>
-    <button
-      type="button"
-      class="btn btn-m btn-warning"
-      @click="switchGraphType"
-    >
+    <button type="button" class="btn btn-m btn-warning" @click="switchGraphType">
       <i class="bi bi-arrow-repeat">View {{ switchGraph }} Graph</i>
     </button>
   </div>
   <!-- Download Chart Modal -->
-  <div
-    class="modal fade"
-    :class="{ show: showModal }"
-    tabindex="-1"
-    v-show="showModal"
-  >
+  <div class="modal fade" :class="{ show: showModal }" tabindex="-1" v-show="showModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -68,10 +59,7 @@
               />
             </div>
             <div class="form-group d-flex">
-              <label
-                for="imageFormat"
-                class="mr-2"
-                style="padding-right: 90px; padding-top: 20px"
+              <label for="imageFormat" class="mr-2" style="padding-right: 90px; padding-top: 20px"
                 >Image Format:</label
               >
               <select
@@ -142,9 +130,7 @@ const downloadChart = () => {
   link.href = img.src;
   link.download =
     `UR-${
-      switchGraph.value === GraphTypes.SANKEY
-        ? GraphTypes.SUNBURST
-        : GraphTypes.SANKEY
+      switchGraph.value === GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY
     }-chart.` + imageFormat.value;
   link.click();
 };
@@ -181,18 +167,13 @@ const handleClick = (params: any): void => {
       return;
     } else if (level === 2 && params.value < 10) {
       let color = params.color;
-      let data = sunburstData.children.find(
-        (node: any) => node.name === params.name,
-      );
+      let data = sunburstData.children.find((node: any) => node.name === params.name);
       reloadChart(sunburstOption1, data, color);
       return;
     } else if (level === 2) {
       chart.clear();
       chart.setOption(sunburstOption);
       return;
-    } else if (level === 3 && params.value > 5) {
-      console.log(selected.value);
-      console.log(params);
     }
     // else if (level === 3 && params.value === 1) {
     //   let color = params.color;
@@ -233,10 +214,7 @@ watch(
   selected,
   (newValue) => {
     if (!chart) return;
-    localStorage.setItem(
-      "sunburstSelected",
-      JSON.stringify(Array.from(newValue)),
-    );
+    localStorage.setItem("sunburstSelected", JSON.stringify(Array.from(newValue)));
   },
   { deep: true },
 );
