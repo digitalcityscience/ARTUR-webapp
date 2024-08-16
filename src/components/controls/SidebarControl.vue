@@ -25,7 +25,7 @@ const openSunburstSelection = (): void => {
   let leftOffset = (mainWinWidth - newWinWidth) / 2;
   let topOffset = (mainWinHeight - newWinHeight) / 2;
   window.open(
-    "/sunburst-popup.html",
+    "/indicator-selection-popup.html",
     "",
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
