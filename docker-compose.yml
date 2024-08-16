@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  postgis:
+    image: postgis/postgis:latest
+    container_name: postgis
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      ALLOW_IP_RANGE: 0.0.0.0/0
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgis:/var/lib/postgresql
+      - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
+    networks:
+      - net_postgis
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    ports:
+      - "80:80"
+    depends_on:
+      - postgis
+
+networks:
+  net_postgis:
