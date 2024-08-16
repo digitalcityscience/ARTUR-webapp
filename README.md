@@ -6,9 +6,12 @@ This template should help get you started developing with Vue 3 in Vite.
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+## Prerequisites
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Before you begin, ensure you have the following installed on your machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Customize configuration
 
@@ -18,6 +21,24 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ```sh
 npm install
+```
+
+### Database Construct
+
+```sh
+docker-compose up -d
+```
+
+This command will:
+
+- Pull the PostgreSQL Docker image.
+- Start a PostgreSQL container.
+- Load the database schema and data from db_dump.sql.
+
+### Connect to the PostgreSQL
+
+```sh
+npm run dev
 ```
 
 ### Compile and Hot-Reload for Development
@@ -36,4 +57,5 @@ npm run build
 
 ```sh
 npm run lint
+``
 ```
