@@ -23,7 +23,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
-### Database Construct
+### Construct Database
 
 ```sh
 docker-compose up -d
