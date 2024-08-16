@@ -14,7 +14,7 @@ export interface Layer {
 }
 // Type definitions for feature properties
 export type ShelterProperties = {
-  Name: string;
+  name: string;
   description: string;
 };
 
@@ -23,7 +23,7 @@ export type IsochroneProperties = {
 };
 
 export type PopulationProperties = {
-  Name: string;
-  VALUE: number;
-  access: string;
+  value: number;
+  access: number;
+  name: string;
 };
