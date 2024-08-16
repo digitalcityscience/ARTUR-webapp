@@ -135,7 +135,7 @@ const downloadChart = () => {
   link.click();
 };
 // Function to handle node clicks
-const handleClick = (params: any): void => {
+function handleClick(params: any): void {
   if (params.data.depth) {
     switch (params.data.depth) {
       case 0:
@@ -186,9 +186,9 @@ const handleClick = (params: any): void => {
     //   reloadSunburst(sunburstOption1, data, color);
     // }
   }
-};
+}
 // Reload chart option
-const reloadChart = (option: any, data?: any, color?: string) => {
+function reloadChart(option: any, data?: any, color?: string): void {
   if (data !== undefined && color !== undefined) {
     option.series.data = [data];
     option.color = color;
@@ -196,9 +196,9 @@ const reloadChart = (option: any, data?: any, color?: string) => {
   chart.clear();
   chart.setOption(option);
   loadSidebarIndicator();
-};
+}
 // Synchronize the sidebar saved indicators to the reloaded sunburst chart
-const loadSidebarIndicator = () => {
+function loadSidebarIndicator(): void {
   let savedIndicators = localStorage.getItem("sidebarSaved");
   if (savedIndicators) {
     selected.value = new Set<string>(JSON.parse(savedIndicators));
@@ -208,7 +208,7 @@ const loadSidebarIndicator = () => {
       name: JSON.parse(savedIndicators),
     });
   }
-};
+}
 // Store the changes of sunburst selected indicators
 watch(
   selected,

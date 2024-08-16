@@ -1,4 +1,4 @@
-export const sunburstData: any = {
+export const sunburstData = {
   name: "Urban Resilience",
   children: [
     {
@@ -1513,9 +1513,9 @@ export const sunburstData: any = {
     },
   ],
 };
-const initialSunburstData = sunburstData.children.map((level1: any) => ({
+const initialSunburstData = sunburstData.children.map((level1) => ({
   name: level1.name,
-  children: level1.children.map((level2: any) => ({
+  children: level1.children.map((level2) => ({
     name: level2.name,
     value: 1,
   })),
@@ -2035,8 +2035,7 @@ export const sankeyOption = {
     links: [
       {
         source: "Physical",
-        target:
-          "Natural elements, mangrove, hills, rivers, plantations, among others",
+        target: "Natural elements, mangrove, hills, rivers, plantations, among others",
         value: 1,
       },
       {
@@ -2057,8 +2056,7 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target:
-          "Integration of green and blue infrastructure into city policy and projects",
+        target: "Integration of green and blue infrastructure into city policy and projects",
         value: 1,
       },
       {
@@ -2073,8 +2071,7 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target:
-          "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+        target: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
         value: 1,
       },
       {
@@ -2114,13 +2111,11 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target:
-          "Critical infrastructure: mapping, planning and protection strategies",
+        target: "Critical infrastructure: mapping, planning and protection strategies",
         value: 1,
       },
       {
-        source:
-          "Critical infrastructure: mapping, planning and protection strategies",
+        source: "Critical infrastructure: mapping, planning and protection strategies",
         target: "Robustness",
         value: 1,
       },
@@ -2136,13 +2131,11 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target:
-          "Protective infrastructure: well-designed and well-built based on risk information",
+        target: "Protective infrastructure: well-designed and well-built based on risk information",
         value: 1,
       },
       {
-        source:
-          "Protective infrastructure: well-designed and well-built based on risk information",
+        source: "Protective infrastructure: well-designed and well-built based on risk information",
         target: "Robustness",
         value: 1,
       },
@@ -2297,15 +2290,13 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        source: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
         target: "Redundancy",
         value: 1,
       },
       {
         source: "Physical",
-        target:
-          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
         value: 1,
       },
       {
@@ -2375,8 +2366,7 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+        source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
         target: "Robustness",
         value: 1,
       },
@@ -2391,8 +2381,7 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Integration of green and blue infrastructure into city policy and projects",
+        source: "Integration of green and blue infrastructure into city policy and projects",
         target: "Transparency",
         value: 1,
       },
@@ -2413,8 +2402,7 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Natural elements, mangrove, hills, rivers, plantations, among others",
+        source: "Natural elements, mangrove, hills, rivers, plantations, among others",
         target: "Transparency",
         value: 1,
       },
@@ -2445,8 +2433,7 @@ export const sankeyOption = {
       },
       {
         source: "Institutional",
-        target:
-          "Disaster management authority have sufficient staffing capacity",
+        target: "Disaster management authority have sufficient staffing capacity",
         value: 1,
       },
       {
@@ -2533,13 +2520,11 @@ export const sankeyOption = {
       },
       {
         source: "Institutional",
-        target:
-          "Enforcement and verification of zoning bulding zoning and regulations",
+        target: "Enforcement and verification of zoning bulding zoning and regulations",
         value: 1,
       },
       {
-        source:
-          "Enforcement and verification of zoning bulding zoning and regulations",
+        source: "Enforcement and verification of zoning bulding zoning and regulations",
         target: "Redundancy",
         value: 1,
       },
@@ -2675,13 +2660,11 @@ export const sankeyOption = {
       },
       {
         source: "Institutional",
-        target:
-          "Appropriately land use planning considering risk, hazards and vulnerability",
+        target: "Appropriately land use planning considering risk, hazards and vulnerability",
         value: 1,
       },
       {
-        source:
-          "Appropriately land use planning considering risk, hazards and vulnerability",
+        source: "Appropriately land use planning considering risk, hazards and vulnerability",
         target: "Robustness",
         value: 1,
       },
@@ -2768,8 +2751,7 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Disaster management authority have sufficient staffing capacity",
+        source: "Disaster management authority have sufficient staffing capacity",
         target: "Transparency",
         value: 1,
       },
@@ -2826,25 +2808,21 @@ export const sankeyOption = {
 
       {
         source: "Economic",
-        target:
-          "Industrial areas including ports, industrial zones, and factories",
+        target: "Industrial areas including ports, industrial zones, and factories",
         value: 1,
       },
       {
-        source:
-          "Industrial areas including ports, industrial zones, and factories",
+        source: "Industrial areas including ports, industrial zones, and factories",
         target: "Robustness",
         value: 1,
       },
       {
         source: "Economic",
-        target:
-          "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+        target: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
         value: 1,
       },
       {
-        source:
-          "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+        source: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
         target: "Transparency",
         value: 1,
       },
@@ -2860,13 +2838,11 @@ export const sankeyOption = {
       },
       {
         source: "Economic",
-        target:
-          "Knowledge to funding opportunities (for local economy and recovery)",
+        target: "Knowledge to funding opportunities (for local economy and recovery)",
         value: 1,
       },
       {
-        source:
-          "Knowledge to funding opportunities (for local economy and recovery)",
+        source: "Knowledge to funding opportunities (for local economy and recovery)",
         target: "Redundancy",
         value: 1,
       },
@@ -2895,13 +2871,11 @@ export const sankeyOption = {
 
       {
         source: "Economic",
-        target:
-          "Incentives for business and society to support resilience building",
+        target: "Incentives for business and society to support resilience building",
         value: 1,
       },
       {
-        source:
-          "Incentives for business and society to support resilience building",
+        source: "Incentives for business and society to support resilience building",
         target: "Redundancy",
         value: 1,
       },
@@ -2949,25 +2923,21 @@ export const sankeyOption = {
       },
       {
         source: "Economic",
-        target:
-          "Financial plan and budget for resilience, including contingency funds",
+        target: "Financial plan and budget for resilience, including contingency funds",
         value: 1,
       },
       {
-        source:
-          "Financial plan and budget for resilience, including contingency funds",
+        source: "Financial plan and budget for resilience, including contingency funds",
         target: "Transparency",
         value: 1,
       },
       {
         source: "Economic",
-        target:
-          "Projected changes to population densities and economic activity",
+        target: "Projected changes to population densities and economic activity",
         value: 1,
       },
       {
-        source:
-          "Projected changes to population densities and economic activity",
+        source: "Projected changes to population densities and economic activity",
         target: "Robustness",
         value: 1,
       },
@@ -3044,20 +3014,17 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target:
-          "Training programmes provided to the most vulnerable and at need populations",
+        target: "Training programmes provided to the most vulnerable and at need populations",
         value: 1,
       },
       {
         source: "Social",
-        target:
-          "Main public facilities: university, schools, health centres, markets, etc.",
+        target: "Main public facilities: university, schools, health centres, markets, etc.",
         value: 1,
       },
       {
         source: "Social",
-        target:
-          "Social services infrastructure, including schools, hospitals, and clinics",
+        target: "Social services infrastructure, including schools, hospitals, and clinics",
         value: 1,
       },
       {
@@ -3118,8 +3085,7 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target:
-          "Exchange knowledge and learn from other cities facing similar challenges",
+        target: "Exchange knowledge and learn from other cities facing similar challenges",
         value: 1,
       },
       {
@@ -3130,13 +3096,11 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target:
-          "Major community buildings, religious buildings, and historic/cultural assets",
+        target: "Major community buildings, religious buildings, and historic/cultural assets",
         value: 1,
       },
       {
-        source:
-          "Major community buildings, religious buildings, and historic/cultural assets",
+        source: "Major community buildings, religious buildings, and historic/cultural assets",
         target: "Robustness",
         value: 1,
       },
@@ -3216,25 +3180,21 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target:
-          "Awareness of functions or services that natural capital provides for the city",
+        target: "Awareness of functions or services that natural capital provides for the city",
         value: 1,
       },
       {
-        source:
-          "Awareness of functions or services that natural capital provides for the city",
+        source: "Awareness of functions or services that natural capital provides for the city",
         target: "Robustness",
         value: 1,
       },
       {
         source: "Social",
-        target:
-          "Public education towards awareness of hazard, risk and disaster information",
+        target: "Public education towards awareness of hazard, risk and disaster information",
         value: 1,
       },
       {
-        source:
-          "Public education towards awareness of hazard, risk and disaster information",
+        source: "Public education towards awareness of hazard, risk and disaster information",
         target: "Redundancy",
         value: 1,
       },
@@ -3245,8 +3205,7 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Exchange knowledge and learn from other cities facing similar challenges",
+        source: "Exchange knowledge and learn from other cities facing similar challenges",
         target: "Transparency",
         value: 1,
       },
@@ -3297,20 +3256,17 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source:
-          "Social services infrastructure, including schools, hospitals, and clinics",
+        source: "Social services infrastructure, including schools, hospitals, and clinics",
         target: "Robustness",
         value: 1,
       },
       {
-        source:
-          "Main public facilities: university, schools, health centres, markets, etc.",
+        source: "Main public facilities: university, schools, health centres, markets, etc.",
         target: "Robustness",
         value: 1,
       },
       {
-        source:
-          "Training programmes provided to the most vulnerable and at need populations",
+        source: "Training programmes provided to the most vulnerable and at need populations",
         target: "Robustness",
         value: 1,
       },

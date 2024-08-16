@@ -12,7 +12,7 @@ import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
 import { provide, ref, inject } from "vue";
 import type { Ref } from "vue";
-import type { FeatureCollection, Point, Polygon } from "geojson";
+import type { FeatureCollection, Point, Polygon, MultiPolygon, Feature } from "geojson";
 import type {
   Layer,
   ShelterProperties,
@@ -37,10 +37,10 @@ const markerOptions = {
   fillOpacity: 0.8,
 };
 const popup = ref<string>("");
-const togglePopup = (feature: any) => {
+const togglePopup = (feature: Feature<Point, ShelterProperties>) => {
   popup.value = feature.properties.description
     ? feature.properties.description
-    : feature.properties.Name;
+    : feature.properties.name;
 };
 const highlightPoint = (e: any) => {
   e.target.setStyle({
@@ -62,7 +62,7 @@ const boundaryStyle = () => {
   };
 };
 // Isochrone Layer Settings
-const isochrones = inject<Ref<FeatureCollection<Polygon, IsochroneProperties>>>(
+const isochrones = inject<Ref<FeatureCollection<MultiPolygon, IsochroneProperties>>>(
   InjectionKeyEnum.ISOCHRONE_GEOJSON,
 );
 const showIsochrones = ref<boolean>(true);
@@ -78,21 +78,20 @@ const isochroneStyle = (feature: any) => {
 };
 // Population Layer Settings
 const population = inject(InjectionKeyEnum.POPULATION_GEOJSON) as Ref<
-  FeatureCollection<Point, PopulationProperties>
+  FeatureCollection<MultiPolygon, PopulationProperties>
 >;
 const showPopulation = ref<boolean>(false);
 const populationRange = [5, 15, 25, 35, 45];
-
 const populationStyle = (feature: any) => {
   return {
-    fillColor: getPopulationColor(feature.properties.VALUE, feature.properties.access),
+    fillColor: getPopulationColor(feature.properties.value, feature.properties.access),
+    fillOpacity: 0.8,
     color: "white",
     weight: 1,
-    opacity: 0.8,
-    fillOpacity: 0.8,
-    radius: 3,
+    opacity: 0.95,
   };
 };
+// Provide layers
 provide<Layer>(InjectionKeyEnum.SHELTER_LAYER, {
   name: LayerName.SHELTER,
   visible: showShelters,
@@ -123,8 +122,8 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
     <l-circle-marker
       pane="markerPane"
       v-for="(feature, index) in shelters.features"
-      :key="`${index}-${feature.properties.Name}`"
-      :name="feature.properties.Name"
+      :key="`${index}-${feature.properties.name}`"
+      :name="feature.properties.name"
       :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
       :options="markerOptions"
       @click="togglePopup(feature)"
@@ -132,7 +131,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
       @mouseout="resetHighlight"
       layer-type="overlay"
       ><l-tooltip>
-        {{ feature.properties.Name }}
+        {{ feature.properties.name }}
       </l-tooltip>
     </l-circle-marker>
   </l-feature-group>
@@ -155,18 +154,14 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
     pane="overlayPane"
   ></l-geo-json>
   <!-- Population -->
-  <l-feature-group :name="LayerName.POPULATION" layer-type="overlay" :visible="showPopulation">
-    <l-circle-marker
-      pane="markerPane"
-      v-for="(feature, index) in population.features"
-      :key="`${index}-${feature.properties.Name}`"
-      :name="feature.properties.Name"
-      :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-      :options="populationStyle(feature)"
-      layer-type="overlay"
-    >
-    </l-circle-marker>
-  </l-feature-group>
+  <l-geo-json
+    :name="LayerName.POPULATION"
+    :geojson="population"
+    :visible="showPopulation"
+    layer-type="overlay"
+    :options-style="populationStyle"
+    pane="overlayPane"
+  ></l-geo-json>
   <legend-control></legend-control>
   <sidebar-control>
     <template #popup>
