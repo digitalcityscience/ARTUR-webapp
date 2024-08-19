@@ -74,21 +74,4 @@ router.get("/population/:city", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-router.get("/conflict-pop", async (req, res) => {
-  try {
-    const { rows } = await pool.query(
-      "SELECT ST_AsGeoJSON(wkb_geometry) as geometry, population_best FROM ukraine_conflict_population",
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      name: "ukraine_conflict_population",
-      properties: { population: row.population_best },
-      geometry: JSON.parse(row.geometry),
-    }));
-    res.json({ type: "FeatureCollection", features });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
-  }
-});
 export default router;
