@@ -38,7 +38,7 @@ This command will:
 ### Connect to the PostgreSQL
 
 ```sh
-npm run dev
+npm start
 ```
 
 ### Compile and Hot-Reload for Development
