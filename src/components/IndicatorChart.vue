@@ -102,6 +102,8 @@ import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
 
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
+const defaultWidth = 1000;
+const defaultHeight = 1000;
 let chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
 const showModal = ref<boolean>(false);
@@ -235,9 +237,23 @@ const initChart = (): void => {
   chart.setOption(sunburstOption);
   chart.on("click", (params: any) => handleClick(params));
 };
+const addResizeObserver = () => {
+  if (chartContainer.value) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > defaultWidth && height > defaultHeight) {
+          chart.resize();
+        }
+      }
+    });
+    resizeObserver.observe(chartContainer.value);
+  }
+};
 onMounted(() => {
   if (!chartContainer.value) return;
   initChart();
+  addResizeObserver();
 });
 </script>
 
