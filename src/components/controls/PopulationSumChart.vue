@@ -50,7 +50,7 @@ const initChart = (): void => {
         },
         data: [
           { value: population.value[0], name: "Accessible in 5 min" },
-          { value: population.value[1], name: "Not accessible in 5 min" },
+          { value: population.value[1], name: "Inaccessible in 5 min" },
         ],
       },
     ],
@@ -65,7 +65,7 @@ const updateChart = (): void => {
         {
           data: [
             { value: population.value[0], name: "Accessible in 5 min" },
-            { value: population.value[1], name: "Not accessible in 5 min" },
+            { value: population.value[1], name: "Inaccessible in 5 min" },
           ],
         },
       ],

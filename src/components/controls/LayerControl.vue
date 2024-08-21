@@ -172,4 +172,3 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
     </template>
   </sidebar-control>
 </template>
-<style scoped></style>
