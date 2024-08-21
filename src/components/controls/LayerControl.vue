@@ -10,7 +10,7 @@ import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
-import { provide, ref, inject } from "vue";
+import { provide, ref, inject, watch } from "vue";
 import type { Ref } from "vue";
 import type { FeatureCollection, Point, Polygon, MultiPolygon, Feature } from "geojson";
 import type {
@@ -21,6 +21,11 @@ import type {
 } from "@/assets/ts/types";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
 
+// Switch to another city, the popup content would be cleared
+const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
+watch(city, (newVal) => {
+  popup.value = "";
+});
 // Tile Layers Settings
 const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Shelter Layer Settings

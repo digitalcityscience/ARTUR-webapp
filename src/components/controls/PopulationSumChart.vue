@@ -54,7 +54,7 @@ const initChart = (): void => {
         ],
       },
     ],
-    color: [populationAccessibleColor[3], populationInaccessibleColor[3]],
+    color: [populationAccessibleColor[2], populationInaccessibleColor[2]],
   });
 };
 
