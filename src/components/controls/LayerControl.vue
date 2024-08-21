@@ -66,7 +66,6 @@ const isochrones = inject<Ref<FeatureCollection<MultiPolygon, IsochronePropertie
   InjectionKeyEnum.ISOCHRONE_GEOJSON,
 );
 const showIsochrones = ref<boolean>(true);
-const isochroneRange = [1, 2, 3, 4, 5];
 const isochroneStyle = (feature: any) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
@@ -81,7 +80,6 @@ const population = inject(InjectionKeyEnum.POPULATION_GEOJSON) as Ref<
   FeatureCollection<MultiPolygon, PopulationProperties>
 >;
 const showPopulation = ref<boolean>(false);
-const populationRange = [5, 15, 25, 35, 45];
 const populationStyle = (feature: any) => {
   return {
     fillColor: getPopulationColor(feature.properties.value, feature.properties.access),
@@ -105,12 +103,12 @@ provide<Layer>(InjectionKeyEnum.BOUNDARY_LAYER, {
 provide<Layer>(InjectionKeyEnum.ISOCHRONE_LAYER, {
   name: LayerName.ISOCHRONE,
   visible: showIsochrones,
-  range: isochroneRange,
+  range: [1, 2, 3, 4, 5],
 });
 provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   name: LayerName.POPULATION,
   visible: showPopulation,
-  range: populationRange,
+  range: [45, 35, 25, 15, 5],
 });
 </script>
 

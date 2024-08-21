@@ -5,7 +5,7 @@ import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
-import PopulationChart from "@/components/controls/PopulationChart.vue";
+import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
 
 // Variables
@@ -205,7 +205,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
                 Population Information
               </button>
               <div class="collapse show" id="population-collapse">
-                <population-chart v-if="populationLayer.visible.value"></population-chart>
+                <population-sum-chart v-if="populationLayer.visible.value"></population-sum-chart>
               </div>
             </li>
           </ul>

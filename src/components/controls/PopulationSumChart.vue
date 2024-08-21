@@ -8,6 +8,7 @@ import type { Ref } from "vue";
 import * as echarts from "echarts";
 import { getTotalPopulation } from "@/assets/ts/functions";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
+import { populationAccessibleColor, populationInaccessibleColor } from "@/assets/ts/constants";
 
 // Constants and reactive properties
 const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
@@ -53,6 +54,7 @@ const initChart = (): void => {
         ],
       },
     ],
+    color: [populationAccessibleColor[3], populationInaccessibleColor[3]],
   });
 };
 
