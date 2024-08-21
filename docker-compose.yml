@@ -6,9 +6,9 @@ services:
     container_name: postgis
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
-      ALLOW_IP_RANGE: 0.0.0.0/0
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      ALLOW_IP_RANGE: ${ALLOW_IP_RANGE}
     ports:
       - "5432:5432"
     volumes:
@@ -21,8 +21,8 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: 123456
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "80:80"
     depends_on:

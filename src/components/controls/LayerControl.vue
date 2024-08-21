@@ -23,7 +23,7 @@ import { InjectionKeyEnum } from "@/assets/ts/constants";
 
 // Switch to another city, the popup content would be cleared
 const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
-watch(city, (newVal) => {
+watch(city, () => {
   popup.value = "";
 });
 // Tile Layers Settings
