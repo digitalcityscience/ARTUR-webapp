@@ -43,3 +43,18 @@ export enum ImageFormat {
   JPEG = "jpeg",
   SVG = "svg",
 }
+
+export const populationAccessibleColor: string[] = [
+  "#eef7fe",
+  "#bae0fb",
+  "#84c9f7",
+  "#43b0f1",
+  "#266c95",
+];
+export const populationInaccessibleColor: string[] = [
+  "#ffede9",
+  "#ffb5a7",
+  "#ff7765",
+  "#ff0000",
+  "#9e0000",
+];

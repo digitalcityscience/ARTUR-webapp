@@ -1,4 +1,6 @@
 import { CityName } from "./constants";
+import { populationAccessibleColor, populationInaccessibleColor } from "./constants";
+
 export function getIsochroneColor(minute: number) {
   switch (minute) {
     case 1:
@@ -20,15 +22,15 @@ export function getPopulationColor(value: number, accessibility: number): string
   if (accessibility === 1)
     switch (true) {
       case value <= 5:
-        return "#eef7fe";
+        return populationAccessibleColor[0];
       case value <= 15:
-        return "#bae0fb";
+        return populationAccessibleColor[1];
       case value <= 25:
-        return "#84c9f7";
+        return populationAccessibleColor[2];
       case value <= 35:
-        return "#43b0f1";
+        return populationAccessibleColor[3];
       case value > 35:
-        return "#266c95";
+        return populationAccessibleColor[4];
       default:
         console.log("wrong value");
         return "";
@@ -36,57 +38,20 @@ export function getPopulationColor(value: number, accessibility: number): string
   else
     switch (true) {
       case value <= 5:
-        return "#ffede9";
+        return populationInaccessibleColor[0];
       case value <= 15:
-        return "#ffb5a7";
+        return populationInaccessibleColor[1];
       case value <= 25:
-        return "#ff7765";
+        return populationInaccessibleColor[2];
       case value <= 35:
-        return "#ff0000";
+        return populationInaccessibleColor[3];
       case value > 35:
-        return "#9e0000";
+        return populationInaccessibleColor[4];
       default:
         console.log("wrong value");
         return "";
     }
 }
-
-export function populationRangeToString(value: number): string {
-  switch (value) {
-    case 5:
-      return "<= 5";
-    case 15:
-      return "<= 15";
-    case 25:
-      return "<= 25";
-    case 35:
-      return "<= 35";
-    case 45:
-      return "> 35";
-    default:
-      return "";
-  }
-}
-
-// export async function loadData(
-//   cityValue: string | null | undefined,
-//   shelters: Ref<any>,
-//   boundary: Ref<any>,
-//   isochrones: Ref<any>,
-//   population: Ref<any>,
-// ) {
-//   const [sheltersData, boundaryData, isochronesData, populationData] = await Promise.all([
-//     import(`@/assets/data/${cityValue}_Shelters.geojson?raw`),
-//     import(`@/assets/data/${cityValue}_Boundary.geojson?raw`),
-//     import(`@/assets/data/${cityValue}_Isochrone_Geoapify.geojson?raw`),
-//     import(`@/assets/data/${cityValue}_population_accessvalues_shelter_5min.geojson?raw`),
-//   ]);
-//   shelters.value = JSON.parse(sheltersData.default);
-//   boundary.value = JSON.parse(boundaryData.default);
-//   isochrones.value = JSON.parse(isochronesData.default);
-//   isochrones.value.features.sort((a: any, b: any) => b.properties.range - a.properties.range);
-//   population.value = JSON.parse(populationData.default);
-// }
 
 const accessiblePopulation = [134682, 55789, 114450, 80288, 34905];
 const inaccessiblePopulation = [785457, 197988, 119261, 527271, 116081];

@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
+import PopulationLegendGrid from "@/components/controls/PopulationLegendGrid.vue";
 import { inject, ref, computed } from "vue";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
-import {
-  getIsochroneColor,
-  getPopulationColor,
-  populationRangeToString,
-} from "@/assets/ts/functions";
+import { getIsochroneColor } from "@/assets/ts/functions";
 import type { Layer } from "@/assets/ts/types";
 
 const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
@@ -40,15 +37,8 @@ const btnLegendIconClass = computed(() => {
           {{ range }} min<br />
         </template>
       </div>
-      <div v-show="populationLayer.visible.value">
-        <template v-for="range in populationLayer.range" :key="range">
-          <i class="point" :style="{ background: getPopulationColor(range, 1) }"></i>Population
-          accessibility in 5 min: {{ populationRangeToString(range) }}<br />
-        </template>
-        <template v-for="range in populationLayer.range" :key="range">
-          <i class="point" :style="{ background: getPopulationColor(range, 0) }"></i>Population not
-          accessible in 5 min: {{ populationRangeToString(range) }}<br />
-        </template>
+      <div v-show="populationLayer.visible.value" class="population-grid">
+        <population-legend-grid></population-legend-grid>
       </div>
     </div>
   </l-control>
@@ -87,5 +77,8 @@ const btnLegendIconClass = computed(() => {
 .legend .polygon {
   width: 12px;
   height: 12px;
+}
+.population-grid {
+  width: 160px;
 }
 </style>
