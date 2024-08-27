@@ -59,7 +59,7 @@ const city = [
   CityName.DNIPRO,
   CityName.SUMY,
   CityName.ZHYTOMYR,
-  CityName.KHRYVYIRIH,
+  CityName.KRYVYIRIH,
   CityName.NIKOPOL,
 ];
 export function getTotalPopulation(currentCity: string): number[] {
