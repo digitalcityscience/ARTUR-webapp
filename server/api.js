@@ -74,4 +74,21 @@ router.get("/population/:city", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+router.get("/population-split/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_population_clip_merge`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { value: row.value, access: row.access, name: `${city}_population` },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
 export default router;
