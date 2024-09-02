@@ -119,7 +119,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
 
 <template>
   <!-- Base Layers -->
-  <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap" pane="tilePane"></l-tile-layer>
+  <!-- <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap" pane="tilePane"></l-tile-layer> -->
   <!-- Shelters -->
   <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker
