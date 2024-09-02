@@ -97,6 +97,7 @@ import {
   sunburstOption,
   sunburstOption1,
   sankeyOption,
+  SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
 import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
 
@@ -140,19 +141,19 @@ const downloadChart = () => {
 function handleClick(params: any): void {
   if (params.data.depth) {
     switch (params.data.depth) {
-      case 0:
+      case SANKEYLEVELS.LEVEL1:
         return;
-      case 1:
+      case SANKEYLEVELS.LEVEL2:
         if (selected.value.has(params.name)) {
           selected.value.delete(params.name);
         } else {
           selected.value.add(params.name);
         }
         break;
-      case 2:
+      case SANKEYLEVELS.LEVEL3:
         return;
     }
-  } else {
+  } else if (params.data) {
     const level = params.treePathInfo.length;
     if (level === 4) {
       if (params.name && selected.value.has(params.name)) {
@@ -177,16 +178,6 @@ function handleClick(params: any): void {
       chart.setOption(sunburstOption);
       return;
     }
-    // else if (level === 3 && params.value === 1) {
-    //   let color = params.color;
-    //   let dimension = sunburstData.children.find(
-    //     (node: any) => node.name === params.treePathInfo[1].name,
-    //   );
-    //   let data = dimension.children.find(
-    //     (node: any) => node.name === params.name,
-    //   );
-    //   reloadSunburst(sunburstOption1, data, color);
-    // }
   }
 }
 // Reload chart option

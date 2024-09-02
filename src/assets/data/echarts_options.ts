@@ -1699,6 +1699,11 @@ export let sunburstOption1 = {
   },
 };
 // Sankey Graph Options
+export enum SANKEYLEVELS {
+  LEVEL1 = 0,
+  LEVEL2 = 0.5,
+  LEVEL3 = 2,
+}
 export const sankeyOption = {
   backgroundColor: "#fff",
   tooltip: {
@@ -3460,12 +3465,12 @@ export const sankeyOption = {
       },
     ],
     levels: [
-      { depth: 0 },
+      { depth: SANKEYLEVELS.LEVEL1 },
       {
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
         select: { itemStyle: { borderColor: "green", borderWidth: 5 } },
       },
-      { depth: 2 },
+      { depth: SANKEYLEVELS.LEVEL3 },
     ],
   },
   color: [
