@@ -68,9 +68,75 @@ provide<Ref<FeatureCollection<MultiPolygon, PopulationProperties>>>(
   InjectionKeyEnum.POPULATION_GEOJSON,
   population,
 );
+import "@maplibre/maplibre-gl-leaflet";
+import * as L from "leaflet";
+const onReady = async () => {
+  const response = await axios.get("http://localhost:3000/api/population-split/KryvyiRih");
+  const geojsonData = response.data;
+  const gl = L.maplibreGL({
+    style: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+    pitch: 0,
+    bearing: 0,
+  }).addTo(map.value.leafletObject);
+  gl.getMaplibreMap().on("load", () => {
+    gl.getMaplibreMap().addSource("KryvyiRih_Pop", { type: "geojson", data: geojsonData });
+    gl.getMaplibreMap().addLayer({
+      id: "KryvyiRih",
+      type: "fill",
+      source: "KryvyiRih_Pop",
+      paint: {
+        "fill-color": [
+          "case",
+          ["==", ["get", "access"], 6],
+          [
+            "step",
+            ["get", "value"],
+            "#ffcccc",
+            5,
+            "#ff9999",
+            15,
+            "#ff6666",
+            25,
+            "#ff3333",
+            35,
+            "#ff0000",
+          ],
+          [
+            "interpolate",
+            ["linear"],
+            ["get", "access"],
+            0,
+            [
+              "step",
+              ["get", "value"],
+              "#ccccff",
+              5,
+              "#9999ff",
+              15,
+              "#6666ff",
+              25,
+              "#3333ff",
+              35,
+              "#0000ff",
+            ],
+            6,
+            "#ffcccc",
+          ],
+        ],
+        "fill-opacity": 0.8,
+      },
+    });
+  });
+};
 </script>
 <template>
-  <l-map ref="map" v-model:zoom="zoom" :use-global-leaflet="false" :options="mapOptions">
+  <l-map
+    ref="map"
+    v-model:zoom="zoom"
+    :use-global-leaflet="false"
+    :options="mapOptions"
+    @ready="onReady()"
+  >
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
     <nav-control :zoom="firstZoom" :cities="cities"></nav-control>
