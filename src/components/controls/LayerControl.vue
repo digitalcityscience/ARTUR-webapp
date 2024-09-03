@@ -58,7 +58,9 @@ const resetHighlight = (e: any) => {
   e.target.setStyle(markerOptions);
 };
 // Boundary Layer Settings
-const boundary = inject<Ref<FeatureCollection<Polygon>>>(InjectionKeyEnum.BOUNDARY_GEOJSON);
+const boundary = inject<Ref<FeatureCollection<Polygon>>>(
+  InjectionKeyEnum.BOUNDARY_GEOJSON,
+);
 const showBoundary = ref<boolean>(true);
 const boundaryStyle = () => {
   return {
@@ -119,7 +121,12 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
 
 <template>
   <!-- Base Layers -->
-  <!-- <l-tile-layer :url="url" layer-type="base" name="OpenStreetMap" pane="tilePane"></l-tile-layer> -->
+  <l-tile-layer
+    :url="url"
+    layer-type="base"
+    name="OpenStreetMap"
+    pane="tilePane"
+  ></l-tile-layer>
   <!-- Shelters -->
   <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker
