@@ -16,5 +16,5 @@ Before you begin, ensure you have the following installed on your machine:
 ## Project Setup
 
 ```sh
-docker-compose up -d
+docker-compose up
 ```
