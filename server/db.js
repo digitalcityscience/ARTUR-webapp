@@ -3,8 +3,8 @@ const { Pool } = pkg;
 
 const pool = new Pool({
   user: "postgres",
-  //host: "host.docker.internal",
-  host: "localhost",
+  //host: "localhost",
+  host: "host.docker.internal",
   database: "ARTUR",
   password: "123456",
   port: 5432,

@@ -45,10 +45,10 @@ export enum ImageFormat {
 }
 
 export const populationAccessibleColor: string[] = [
-  "#9ed4f9",
+  "#bce1fb",
   "#84c9f7",
   "#5cb8f3",
-  "#3999d2",
+  "#52a3d7",
   "#266c95",
 ];
 export const populationInaccessibleColor: string[] = [
