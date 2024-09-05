@@ -16,7 +16,7 @@ Before you begin, ensure you have the following installed on your machine:
 ## Project Setup
 
 ```sh
-docker compose up
+docker compose up --build
 ```
 
 Once the container is running successfully, visit http://localhost:5173/ to browse this web tool.

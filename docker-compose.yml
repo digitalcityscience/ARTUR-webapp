@@ -1,8 +1,7 @@
-version: "3.8"
 services:
   db:
     image: postgis/postgis:latest
-    container_name: artur_db
+    container_name: artur-db
     environment:
       POSTGRES_USER: ${POSTGIS_USER}
       POSTGRES_PASSWORD: ${POSTGIS_PASSWORD}
@@ -20,7 +19,8 @@ services:
 
   server:
     build: .
-    container_name: artur_server
+    image: artur/server
+    container_name: artur-server
     depends_on:
       db:
         condition: service_healthy
@@ -29,21 +29,17 @@ services:
     environment:
       DATABASE_URL: "postgres://postgres:123456@db:5432/ARTUR"
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./server:/app/server
     command: sh -c "npm start"
 
   dev:
     build: .
-    container_name: artur_dev
+    image: artur/webapp
+    container_name: artur-dev
     depends_on:
       - server
     ports:
       - "5173:5173"
     volumes:
       - .:/app
-      - /app/node_modules
     command: sh -c "npm run dev"
-
-volumes:
-  db_data:

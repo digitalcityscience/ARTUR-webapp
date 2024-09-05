@@ -7,7 +7,7 @@ const port = 3000;
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the Geo Points API");
+  res.send("Welcome to the ARTUR Geodata API");
 });
 
 app.use("/api", apiRoutes);
