@@ -1,6 +1,6 @@
 # ARTUR
 
-A web platform that supports the decision-making in Urban Resilience topics.
+A web platform to support decision-making on the theme of urban resilience.
 
 ## Recommended IDE Setup
 
