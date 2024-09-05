@@ -1,6 +1,6 @@
 # ARTUR
 
-This template should help get you started developing with Vue 3 in Vite.
+A web platform that supports the decision-making in Urban Resilience topics.
 
 ## Recommended IDE Setup
 
@@ -16,5 +16,7 @@ Before you begin, ensure you have the following installed on your machine:
 ## Project Setup
 
 ```sh
-docker-compose up
+docker compose up
 ```
+
+Once the container is running successfully, visit http://localhost:5173/ to browse this web tool.
