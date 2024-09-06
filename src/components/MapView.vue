@@ -129,7 +129,7 @@ provide<Ref<FeatureCollection<MultiPolygon, PopulationProperties>>>(
 //               populationAccessibleColor[4],
 //             ],
 //             6,
-//             populationInaccessibleColor[0],
+//             "white",
 //           ],
 //         ],
 //         "fill-opacity": 0.8,
