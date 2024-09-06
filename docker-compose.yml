@@ -10,6 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      - db_data:/var/lib/postgresql/data
       - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d ARTUR"]
@@ -43,3 +44,6 @@ services:
     volumes:
       - .:/app
     command: sh -c "npm run dev"
+
+volumes:
+  db_data:
