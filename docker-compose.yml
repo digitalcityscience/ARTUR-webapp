@@ -19,7 +19,10 @@ services:
       retries: 5
 
   server:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: server
     image: artur/server
     container_name: artur-server
     depends_on:
@@ -34,8 +37,11 @@ services:
     command: sh -c "npm start"
 
   dev:
-    build: .
-    image: artur/webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: artur/dev
     container_name: artur-dev
     depends_on:
       - server
