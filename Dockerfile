@@ -1,10 +1,15 @@
-FROM node
+FROM node AS base
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm install
 
-EXPOSE 5173
+FROM base AS server
+
 EXPOSE 3000
+
+FROM base AS dev
+
+EXPOSE 5173
