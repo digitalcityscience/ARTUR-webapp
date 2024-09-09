@@ -32,6 +32,10 @@ services:
       - "3000:3000"
     environment:
       DATABASE_URL: "postgres://postgres:${POSTGIS_PASSWORD}@db:5432/ARTUR"
+      POSTGIS_USER: ${POSTGIS_USER}
+      POSTGIS_PASSWORD: ${POSTGIS_PASSWORD}
+      POSTGIS_DB: ${POSTGIS_DB}
+
     volumes:
       - ./server:/app/server
     command: sh -c "npm start"
