@@ -31,7 +31,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: "postgres://postgres:123456@db:5432/ARTUR"
+      DATABASE_URL: "postgres://postgres:${POSTGIS_PASSWORD}@db:5432/ARTUR"
     volumes:
       - ./server:/app/server
     command: sh -c "npm start"
