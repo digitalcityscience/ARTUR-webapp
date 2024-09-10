@@ -4,7 +4,9 @@ import cors from "cors";
 
 const app = express();
 const port = 3000;
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 app.get("/", (req, res) => {
   res.send("Welcome to the ARTUR Geodata API");
@@ -12,6 +14,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", apiRoutes);
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${port}`);
 });

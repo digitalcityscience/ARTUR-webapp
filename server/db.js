@@ -1,12 +1,15 @@
 import pkg from "pg";
 const { Pool } = pkg;
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const pool = new Pool({
-  user: "postgres",
-  //host: "localhost",
-  host: "host.docker.internal",
-  database: "ARTUR",
-  password: "123456",
+  user: process.env.POSTGIS_USER,
+  host: "artur-db",
+  database: process.env.POSTGIS_DB,
+  password: process.env.POSTGIS_PASSWORD,
   port: 5432,
 });
 

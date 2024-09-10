@@ -20,6 +20,7 @@
     "bootstrap-icons": "^1.11.3",
     "cors": "^2.8.5",
     "deck.gl": "^9.0.28",
+    "dotenv": "^16.4.5",
     "echarts": "^5.5.0",
     "express": "^4.19.2",
     "leaflet-sidebar-v2": "github:noerw/leaflet-sidebar-v2",

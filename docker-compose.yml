@@ -8,15 +8,17 @@ services:
       ALLOW_IP_RANGE: ${ALLOW_IP_RANGE}
       POSTGRES_DB: ${POSTGIS_DB}
     ports:
-      - "5432:5432"
+      - "5452:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      # - db_data:/var/lib/postgresql/data
       - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d ARTUR"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - artur_net
 
   server:
     build:
@@ -29,12 +31,16 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "3000:3000"
+      - "3003:3000"
     environment:
-      DATABASE_URL: "postgres://postgres:123456@db:5432/ARTUR"
-    volumes:
-      - ./server:/app/server
+      DATABASE_URL: "postgres://postgres:${POSTGIS_PASSWORD}@db:5432/ARTUR"
+      POSTGIS_USER: ${POSTGIS_USER}
+      POSTGIS_PASSWORD: ${POSTGIS_PASSWORD}
+      POSTGIS_DB: ${POSTGIS_DB}
+
     command: sh -c "npm start"
+    networks:
+      - artur_net
 
   dev:
     build:
@@ -46,10 +52,14 @@ services:
     depends_on:
       - server
     ports:
-      - "5173:5173"
-    volumes:
-      - .:/app
-    command: sh -c "npm run dev"
+      - "5193:5173"
 
-volumes:
-  db_data:
+    command: sh -c "npm run dev"
+    networks:
+      - artur_net
+
+# volumes:
+#   db_data:
+
+networks:
+  artur_net:
