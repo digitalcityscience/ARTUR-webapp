@@ -30,19 +30,19 @@ onBeforeMount(() => {
   city.value = cities[0].name;
 });
 watch(city, async (newValue) => {
-  await axios.get(`http://localhost:3000/api/shelter/${newValue}`).then((response) => {
+  await axios.get(`/api/shelter/${newValue}`).then((response) => {
     shelters.value = response.data;
   });
-  await axios.get(`http://localhost:3000/api/boundary/${newValue}`).then((response) => {
+  await axios.get(`/api/boundary/${newValue}`).then((response) => {
     boundary.value = response.data;
   });
-  await axios.get(`http://localhost:3000/api/isochrone/${newValue}`).then((response) => {
+  await axios.get(`/api/isochrone/${newValue}`).then((response) => {
     isochrones.value = response.data;
     isochrones.value.features.sort(
       (a: any, b: any) => b.properties.range - a.properties.range,
     );
   });
-  await axios.get(`http://localhost:3000/api/population/${newValue}`).then((res) => {
+  await axios.get(`/api/population/${newValue}`).then((res) => {
     population.value = res.data;
   });
   isJsonDataLoad.value = true;
