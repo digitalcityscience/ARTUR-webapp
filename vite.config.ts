@@ -1,6 +1,10 @@
 import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
@@ -10,7 +14,7 @@ export default defineConfig({
     host: "0.0.0.0",
     proxy: {
       '/api': {
-        target: 'http://server:3000', 
+        target: `http://${process.env.SERVER_HOST}:3000`, 
         changeOrigin: true,
         configure: (proxy, options) => {
           proxy.on('proxyReq', (proxyReq) => {
