@@ -2,10 +2,9 @@ import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
 import dotenv from "dotenv";
-
-dotenv.config();
-
 import vue from "@vitejs/plugin-vue";
+
+dotenv.config({ path: "../.env" });
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,14 +12,14 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     proxy: {
-      '/api': {
-        target: `http://${process.env.SERVER_HOST}:3000`, 
+      "/api": {
+        target: `http://${process.env.SERVER_HOST}:3000`,
         changeOrigin: true,
         configure: (proxy, options) => {
-          proxy.on('proxyReq', (proxyReq) => {
+          proxy.on("proxyReq", (proxyReq) => {
             console.log(`Proxying request to: ${proxyReq.path}`);
           });
-        }
+        },
       },
     },
   },
@@ -28,5 +27,5 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-  },  
+  },
 });

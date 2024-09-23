@@ -21,6 +21,12 @@ export enum LayerName {
   POPULATION = "Population",
 }
 
+export enum LocalStorageEvent {
+  SIDEBARSAVED = "sidebarSaved",
+  SIDEBARDELETED = "sidebarDeleted",
+  CHARTSELECTED = "chartSelected",
+}
+
 export enum InjectionKeyEnum {
   MAP = "Map",
   CITY = "City",

@@ -6,7 +6,7 @@ import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { InjectionKeyEnum } from "@/assets/ts/constants";
+import { InjectionKeyEnum, LocalStorageEvent } from "@/assets/ts/constants";
 
 // Variables
 const map = inject(InjectionKeyEnum.MAP) as Ref<any>;
@@ -14,8 +14,13 @@ const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
 const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
 const isochronesLayer = inject(InjectionKeyEnum.ISOCHRONE_LAYER) as Layer;
 const populationLayer = inject(InjectionKeyEnum.POPULATION_LAYER) as Layer;
-const indicators: Ref<Set<string>> = ref(new Set<string>());
-const overlays: Layer[] = [sheltersLayer, isochronesLayer, boundaryLayer, populationLayer];
+const indicators: Ref<Record<string, string>> = ref({});
+const overlays: Layer[] = [
+  sheltersLayer,
+  isochronesLayer,
+  boundaryLayer,
+  populationLayer,
+];
 // Methods
 const openSunburstSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -34,15 +39,23 @@ watch(
   indicators,
   (newValue) => {
     // Save the selection of sidebar and store in the local storage
-    localStorage.setItem("sidebarSaved", JSON.stringify(Array.from(newValue)));
+    localStorage.setItem(
+      LocalStorageEvent.SIDEBARSAVED,
+      JSON.stringify(Object.keys(newValue)),
+    );
   },
   { deep: true },
 );
 const deleteSelection = (indicator: string): void => {
-  indicators.value.delete(indicator);
-  // Pass the deleted indicator to sunburst graph to unselect the indicator
-  localStorage.setItem("sidebarDeleted", indicator);
+  delete indicators.value[indicator];
+  // Pass the deleted indicator to chart to unselect the indicator
+  localStorage.setItem(LocalStorageEvent.SIDEBARDELETED, indicator);
 };
+// Watch for changes of chart selected indicators and update indicators
+window.addEventListener("storage", (event: StorageEvent) => {
+  if (event.key === LocalStorageEvent.CHARTSELECTED)
+    indicators.value = JSON.parse(event.newValue!) as Record<string, string>;
+});
 const analyzeResults = () => {};
 onMounted(() => {
   let sidebar = L.control
@@ -53,12 +66,6 @@ onMounted(() => {
     })
     .addTo(map.value.leafletObject)
     .open("home");
-});
-// Watch for changes of sunburst selected indicators and update indicators
-window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === "sunburstSelected") {
-    indicators.value = new Set<string>(JSON.parse(event.newValue!));
-  }
 });
 </script>
 <template>
@@ -73,10 +80,14 @@ window.addEventListener("storage", (event: StorageEvent) => {
           ></a>
         </li>
         <li>
-          <a href="#layer" role="tab" title="Layers Information"><i class="bi bi-stack"></i></a>
+          <a href="#layer" role="tab" title="Layers Information"
+            ><i class="bi bi-stack"></i
+          ></a>
         </li>
         <li>
-          <a href="#dashboard" role="tab" title="Dashboard"><i class="fa fa-bar-chart"></i></a>
+          <a href="#dashboard" role="tab" title="Dashboard"
+            ><i class="fa fa-bar-chart"></i
+          ></a>
         </li>
       </ul>
       <!-- bottom tabs -->
@@ -100,39 +111,47 @@ window.addEventListener("storage", (event: StorageEvent) => {
           </strong>
           <p class="info-content-text"><strong>Position: </strong>Top-left</p>
           <p class="info-content-text">
-            The navigation control can navigate the user to different cities. By simply clicking on
-            the city name, the map view would fly to the city and show the feature layers if we had
-            the data.
+            The navigation control can navigate the user to different cities. By simply
+            clicking on the city name, the map view would fly to the city and show the
+            feature layers if we had the data.
           </p>
         </div>
         <div class="info-content info-legend" style="margin-top: 10px">
-          <strong class="info-title">2. <i class="bi bi-map-fill"></i> Legend Control </strong>
+          <strong class="info-title"
+            >2. <i class="bi bi-map-fill"></i> Legend Control
+          </strong>
           <p class="info-content-text"><strong>Position: </strong>Bottom-left</p>
           <p class="info-content-text">
-            The legend control displays the legend of the feature layers. If a feature layer is
-            hidden, the legend for that layer is also hidden, and vice versa. The toggle button of
-            the legend control switches the collapsed state of the legend.
+            The legend control displays the legend of the feature layers. If a feature
+            layer is hidden, the legend for that layer is also hidden, and vice versa. The
+            toggle button of the legend control switches the collapsed state of the
+            legend.
           </p>
         </div>
         <div class="info-content info-layer" style="margin-top: 10px">
-          <strong class="info-title">3. <i class="bi bi-stack"></i> Layers Information </strong>
+          <strong class="info-title"
+            >3. <i class="bi bi-stack"></i> Layers Information
+          </strong>
           <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
           <p class="info-content-text">
-            The "Layer Control" would display checkboxes for each feature layer to toggle them on
-            display or hidden. Information about each shelter can be seen in the drop-down menu
-            “Shelters Information”. Simply click on the dot symbol of a shelter on the map and the
-            address and capacity of that shelter will be displayed.
+            The "Layer Control" would display checkboxes for each feature layer to toggle
+            them on display or hidden. Information about each shelter can be seen in the
+            drop-down menu “Shelters Information”. Simply click on the dot symbol of a
+            shelter on the map and the address and capacity of that shelter will be
+            displayed.
           </p>
         </div>
         <div class="info-content info-chart" style="margin-top: 10px">
-          <strong class="info-title">4. <i class="fa fa-bar-chart"></i> Dashboard </strong>
+          <strong class="info-title"
+            >4. <i class="fa fa-bar-chart"></i> Dashboard
+          </strong>
           <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
           <p class="info-content-text">
-            The Dashboard provides indicator selection and results display. The user can click on
-            the "Select" button to view the Indicator Sunburst Chart and click on the indicator to
-            select it. Selected indicators can be deleted by clicking the Cancel button in the
-            sidebar or re-click the indicator in sunburst. Click the "Run" button to display the
-            analysis results of the user-selected indicator.
+            The Dashboard provides indicator selection and results display. The user can
+            click on the "Select" button to view the Indicator Sunburst Chart and click on
+            the indicator to select it. Selected indicators can be deleted by clicking the
+            Cancel button in the sidebar or re-click the indicator in sunburst. Click the
+            "Run" button to display the analysis results of the user-selected indicator.
           </p>
         </div>
       </div>
@@ -154,10 +173,20 @@ window.addEventListener("storage", (event: StorageEvent) => {
               >
                 Layer Control
               </button>
-              <div class="collapse show" id="layer-control-collapse" style="margin-left: 1em">
+              <div
+                class="collapse show"
+                id="layer-control-collapse"
+                style="margin-left: 1em"
+              >
                 <strong>Base Layers: </strong>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="osm" id="osm" checked />
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="osm"
+                    id="osm"
+                    checked
+                  />
                   <label class="form-check-label" for="osm"> Open Street Map </label>
                 </div>
                 <div class="border-top my-1"></div>
@@ -205,7 +234,9 @@ window.addEventListener("storage", (event: StorageEvent) => {
                 Population Information
               </button>
               <div class="collapse show" id="population-collapse">
-                <population-sum-chart v-if="populationLayer.visible.value"></population-sum-chart>
+                <population-sum-chart
+                  v-if="populationLayer.visible.value"
+                ></population-sum-chart>
               </div>
             </li>
           </ul>
@@ -229,19 +260,31 @@ window.addEventListener("storage", (event: StorageEvent) => {
               Select Indicators
             </button>
             <div class="collapse show" id="sunburst-collapse">
-              <ul class="list-group" v-for="indicator in indicators" :key="indicator">
-                <li class="list-group-item list-group-item-secondary">
-                  {{ indicator }}
+              <ul
+                class="list-group"
+                v-for="indicator in Object.entries(indicators).map(([key, value]) => ({
+                  key,
+                  value,
+                }))"
+                :key="indicator.key"
+              >
+                <li
+                  class="list-group-item list-group-item-secondary"
+                  :style="{ backgroundColor: indicator.value }"
+                >
+                  {{ indicator.key }}
                   <button
                     class="btn-close"
                     aria-label="Close"
-                    @click="deleteSelection(indicator)"
+                    @click="deleteSelection(indicator.key)"
                     style="float: right"
                   ></button>
                 </li>
               </ul>
               <div class="btn-group" role="group" aria-label="select-and-run">
-                <button class="btn btn-primary" @click="openSunburstSelection">Select</button>
+                <button class="btn btn-primary" @click="openSunburstSelection">
+                  Select
+                </button>
                 <button class="btn btn-success" @click="analyzeResults">Run</button>
               </div>
             </div>

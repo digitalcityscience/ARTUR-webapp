@@ -12,6 +12,7 @@ export interface Layer {
   color?: string;
   range?: number[];
 }
+
 // Type definitions for feature properties
 export type ShelterProperties = {
   name: string;

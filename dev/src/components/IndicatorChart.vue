@@ -59,7 +59,10 @@
               />
             </div>
             <div class="form-group d-flex">
-              <label for="imageFormat" class="mr-2" style="padding-right: 90px; padding-top: 20px"
+              <label
+                for="imageFormat"
+                class="mr-2"
+                style="padding-right: 90px; padding-top: 20px"
                 >Image Format:</label
               >
               <select
@@ -99,14 +102,14 @@ import {
   sankeyOption,
   SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
-import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
-
+import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
 const defaultWidth = 1000;
 const defaultHeight = 1000;
 let chart: echarts.ECharts;
 const selected = ref<Set<string>>(new Set<string>());
+let selectedIndicator: Record<string, string> = {};
 const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);
 const backgroundColor = ref<string>("#ffffff");
@@ -114,7 +117,7 @@ const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
 const switchGraph = ref<GraphTypes>(GraphTypes.SANKEY);
 // Methods
 const switchGraphType = () => {
-  if (switchGraph.value == "Sankey") {
+  if (switchGraph.value == GraphTypes.SANKEY) {
     switchGraph.value = GraphTypes.SUNBURST;
     reloadChart(sankeyOption);
   } else {
@@ -145,9 +148,9 @@ function handleClick(params: any): void {
         return;
       case SANKEYLEVELS.LEVEL2:
         if (selected.value.has(params.name)) {
-          selected.value.delete(params.name);
+          deleteSelection(params.name);
         } else {
-          selected.value.add(params.name);
+          addSelection(params.name, params.color);
         }
         break;
       case SANKEYLEVELS.LEVEL3:
@@ -157,9 +160,9 @@ function handleClick(params: any): void {
     const level = params.treePathInfo.length;
     if (level === 4) {
       if (params.name && selected.value.has(params.name)) {
-        selected.value.delete(params.name);
+        deleteSelection(params.name);
       } else if (params.name) {
-        selected.value.add(params.name);
+        addSelection(params.name, params.color);
       } else {
         chart.dispatchAction({
           type: "unselect",
@@ -192,7 +195,7 @@ function reloadChart(option: any, data?: any, color?: string): void {
 }
 // Synchronize the sidebar saved indicators to the reloaded sunburst chart
 function loadSidebarIndicator(): void {
-  let savedIndicators = localStorage.getItem("sidebarSaved");
+  let savedIndicators = localStorage.getItem(LocalStorageEvent.SIDEBARSAVED);
   if (savedIndicators) {
     selected.value = new Set<string>(JSON.parse(savedIndicators));
     chart.dispatchAction({
@@ -202,20 +205,32 @@ function loadSidebarIndicator(): void {
     });
   }
 }
+function addSelection(name: string, color: string) {
+  selected.value.add(name);
+  selectedIndicator[name] = color;
+}
+function deleteSelection(name: string) {
+  selected.value.delete(name);
+  delete selectedIndicator[name];
+}
 // Store the changes of sunburst selected indicators
 watch(
   selected,
-  (newValue) => {
+  (newVal) => {
     if (!chart) return;
-    localStorage.setItem("sunburstSelected", JSON.stringify(Array.from(newValue)));
+    localStorage.setItem(
+      LocalStorageEvent.CHARTSELECTED,
+      JSON.stringify(selectedIndicator),
+    );
   },
   { deep: true },
 );
-// Watch for changes in localStorage and update sidebar Selected indicators
+// Watch for deletion in sidebar and update sidebar Selected indicators
 window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === "sidebarDeleted") {
+  if (event.key === LocalStorageEvent.SIDEBARDELETED) {
     let deletedIndicator = event.newValue!;
     selected.value.delete(deletedIndicator);
+    delete selectedIndicator[deletedIndicator];
     chart.dispatchAction({
       type: "unselect",
       seriesIndex: 0,

@@ -2,8 +2,7 @@ import pkg from "pg";
 const { Pool } = pkg;
 import dotenv from "dotenv";
 
-dotenv.config();
-
+dotenv.config({ path: "../.env" });
 
 const pool = new Pool({
   user: process.env.POSTGIS_USER,
