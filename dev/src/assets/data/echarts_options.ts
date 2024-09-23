@@ -30,7 +30,7 @@ export const sunburstData = {
               ],
             },
             {
-              name: "Inclusive access to save drinking water",
+              name: "Inclusive access to safe drinking water",
               children: [
                 {
                   value: 3,
@@ -1702,7 +1702,8 @@ export let sunburstOption1 = {
 export enum SANKEYLEVELS {
   LEVEL1 = 0,
   LEVEL2 = 0.5,
-  LEVEL3 = 2,
+  LEVEL3 = 1.8,
+  LEVEL4 = 2,
 }
 export const sankeyOption = {
   backgroundColor: "#fff",
@@ -1713,6 +1714,7 @@ export const sankeyOption = {
   },
   series: {
     type: "sankey",
+    layoutIterations: 40,
     layout: "none",
     emphasis: {
       focus: "adjacency",
@@ -1731,457 +1733,632 @@ export const sankeyOption = {
     nodeGap: 12,
     selectedMode: "multiple",
     data: [
-      { name: "Robustness", depth: 2 },
-      { name: "Redundancy", depth: 2 },
-      { name: "Transparency", depth: 2 },
-      { name: "Social", itemStyle: { color: "#91CC75" }, depth: 0 },
-      { name: "Safe & affordable housing", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      { name: "Robustness", depth: SANKEYLEVELS.LEVEL4 },
+      { name: "Redundancy", depth: SANKEYLEVELS.LEVEL4 },
+
+      { name: "Diversity", depth: SANKEYLEVELS.LEVEL4 },
+      { name: "Integration", depth: SANKEYLEVELS.LEVEL3 },
+      { name: "Transparent", depth: SANKEYLEVELS.LEVEL3 },
+      { name: "Resourcefulness", depth: SANKEYLEVELS.LEVEL4 },
+      { name: "Inclusive", depth: SANKEYLEVELS.LEVEL3 },
+      { name: "Reflective", depth: SANKEYLEVELS.LEVEL3 },
+      { name: "Flexible", depth: SANKEYLEVELS.LEVEL3 },
+      { name: "Social", itemStyle: { color: "#91CC75" }, depth: SANKEYLEVELS.LEVEL1 },
       {
-        name: "Inclusive access to save drinking water",
+        name: "Safe & affordable housing",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Effective sanitation", itemStyle: { color: "#91CC75" }, depth: 0.5 },
-      { name: "Adequate affordable energy supply", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Inclusive access to safe drinking water",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Effective sanitation",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Adequate affordable energy supply",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Access to all the skills and experience to respond/reduce risks and respond to disaster",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Accessible criminal & civil justice", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Accessible criminal & civil justice",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Accessibility to training materials (language)",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Sufficient affordable food supply", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Sufficient affordable food supply",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Exchange knowledge and learn from other cities facing similar challenges",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Grassroots or community organizations participating in pre-event planning and post event response",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Accessible criminal and civil justice",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Cohesive communities", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Cohesive communities",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Training programmes provided to the most vulnerable and at need populations",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Citizen engagement and communications in relation to disaster resilience and recovery",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Widespread community awareness & preparedness",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Main public facilities: university, schools, health centres, markets, etc.",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Social services infrastructure, including schools, hospitals, and clinics",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Local community support", itemStyle: { color: "#91CC75" }, depth: 0.5 },
-      { name: "Strong city-wide identity & culture", itemStyle: { color: "#91CC75" }, depth: 0.5 },
-      { name: "Actively engaged citizens", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Local community support",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Strong city-wide identity & culture",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Actively engaged citizens",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Practices and drills involving public and professionals",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Adequate education for all", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Adequate education for all",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Major community buildings, religious buildings, and historic/cultural assets",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Relevant skills & training", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Relevant skills & training",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Awareness of functions or services that natural capital provides for the city",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Public education towards awareness of hazard, risk and disaster information",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Safe places/havens and the evacuation routes",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Awareness of equipment and supply needed + provision",
         itemStyle: { color: "#91CC75" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Effective systems to deter crime", itemStyle: { color: "#91CC75" }, depth: 0.5 },
-      { name: "High levels of crime are observed", itemStyle: { color: "#91CC75" }, depth: 0.5 },
+      {
+        name: "Effective systems to deter crime",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "High levels of crime are observed",
+        itemStyle: { color: "#91CC75" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
 
-      { name: "Economic", itemStyle: { color: "#FAC858" }, depth: 0 },
-      { name: "Diverse economic base", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      { name: "Economic", itemStyle: { color: "#FAC858" }, depth: SANKEYLEVELS.LEVEL1 },
+      {
+        name: "Diverse economic base",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Inclusive labour policies",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Local business development and innovation",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Supportive financing mechanisms", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      {
+        name: "Supportive financing mechanisms",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Comprehensive business continuity planning",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Attractive business environment", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      {
+        name: "Attractive business environment",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Strong integration with regional & global economies",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Industrial areas including ports, industrial zones, and factories",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Businesses with a documented business continuity plan",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Knowledge to funding opportunities (for local economy and recovery)",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Economic impact", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      {
+        name: "Economic impact",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Level of insurance cover exists in the city, across all sectors - business and community",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Incentives for business and society to support resilience building",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Planned investments", itemStyle: { color: "#FAC858" }, depth: 0.5 },
-      { name: "Inclusive labour policies", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      {
+        name: "Planned investments",
+        itemStyle: { color: "#FAC858" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Changes in the overall city's boundaries",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Financial plan and budget for resilience, including contingency funds",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Densities", itemStyle: { color: "#FAC858" }, depth: 0.5 },
+      { name: "Densities", itemStyle: { color: "#FAC858" }, depth: SANKEYLEVELS.LEVEL2 },
       {
         name: "Projected changes to population densities and economic activity",
         itemStyle: { color: "#FAC858" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Institutional", itemStyle: { color: "#EE6666" }, depth: 0 },
+      {
+        name: "Institutional",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL1,
+      },
       {
         name: "Disaster management authority have sufficient staffing capacity",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Appropriate government decision-making",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Effective co-ordination with other government bodies",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Proactive multi-stakeholder collaboration",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Comprehensive government emergency management",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Consultative planning process", itemStyle: { color: "#EE6666" }, depth: 0.5 },
-      { name: "Appropriate land use and zoning", itemStyle: { color: "#EE6666" }, depth: 0.5 },
-      { name: "Robust planning approval process", itemStyle: { color: "#EE6666" }, depth: 0.5 },
-      { name: "Well-managed public finances", itemStyle: { color: "#EE6666" }, depth: 0.5 },
-      { name: "Informal development areas", itemStyle: { color: "#EE6666" }, depth: 0.5 },
+      {
+        name: "Consultative planning process",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Appropriate land use and zoning",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Robust planning approval process",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Well-managed public finances",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Informal development areas",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Urban development to promote resilience",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Building codes or standards address hazards and risks",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Enforcement and verification of zoning bulding zoning and regulations",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "FAIR Data sharing to enhance resilience",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Proactive corruption prevention", itemStyle: { color: "#EE6666" }, depth: 0.5 },
+      {
+        name: "Proactive corruption prevention",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Comprehensive city monitoring & data management",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Land use designations", itemStyle: { color: "#EE6666" }, depth: 0.5 },
-      { name: "Changes in land use designations", itemStyle: { color: "#EE6666" }, depth: 0.5 },
+      {
+        name: "Land use designations",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Changes in land use designations",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Disaster and risk reduction in urban planning instruments according to Sendai framework",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Early warning system and reaching level",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Integration of resilience in city functions / portfolios",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Emergency operations centre: interoperability and inter-agency implementation and coordination",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Disaster management / preparedness / emergency response plan",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Appropriately land use planning considering risk, hazards and vulnerability",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Projected changes in location of vulnerable populations",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Adequate access to quality healthcare",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Emergency medical care", itemStyle: { color: "#EE6666" }, depth: 0.5 },
+      {
+        name: "Emergency medical care",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Effective emergency response services",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Robust public health systems", itemStyle: { color: "#EE6666" }, depth: 0.5 },
+      {
+        name: "Robust public health systems",
+        itemStyle: { color: "#EE6666" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Security services: fire services, police stations, etc.",
         itemStyle: { color: "#EE6666" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
 
-      { name: "Physical", itemStyle: { color: "#73C0DE" }, depth: 0 },
+      { name: "Physical", itemStyle: { color: "#73C0DE" }, depth: SANKEYLEVELS.LEVEL1 },
       {
         name: "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Integration of green and blue infrastructure into city policy and projects",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Reliable communications technology", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Reliable communications technology",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Adequate continuity for critical assets & services",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Diverse and affordable transport networks",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Natural elements, mangrove, hills, rivers, plantations, among others",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Secure technology networks", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Secure technology networks",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Flexible infrastructure services", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Flexible infrastructure services",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Critical infrastructure: mapping, planning and protection strategies",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Infrastructure and services damaged", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Infrastructure and services damaged",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Protective infrastructure: well-designed and well-built based on risk information",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: 'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Major roads", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Major roads",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Diligent maintenance & continuity", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
-      { name: "Retained spare capacity", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
-      { name: "Housing destroyed and damaged", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
-      { name: "Affected areas", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
-      { name: "Topography: elevation, water bodies", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Diligent maintenance & continuity",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Retained spare capacity",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Housing destroyed and damaged",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Affected areas",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
+      {
+        name: "Topography: elevation, water bodies",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Hazard mapping and monitoring (common awareness)",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Hazard mapping and monitoring (clear and regular mapping)",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Identification of cascading effects", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Identification of cascading effects",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
       {
         name: "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Comprehensive hazard monitoring and risk assessment",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "First responder equipment, with military or civilian back up",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
       {
         name: "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
         itemStyle: { color: "#73C0DE" },
-        depth: 0.5,
+        depth: SANKEYLEVELS.LEVEL2,
       },
-      { name: "Vulnerability and risk", itemStyle: { color: "#73C0DE" }, depth: 0.5 },
+      {
+        name: "Vulnerability and risk",
+        itemStyle: { color: "#73C0DE" },
+        depth: SANKEYLEVELS.LEVEL2,
+      },
     ],
     links: [
       {
@@ -2207,7 +2384,8 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target: "Integration of green and blue infrastructure into city policy and projects",
+        target:
+          "Integration of green and blue infrastructure into city policy and projects",
         value: 1,
       },
       {
@@ -2244,10 +2422,14 @@ export const sankeyOption = {
       },
       {
         source: "Flexible infrastructure services",
-        target: "Robustness",
-        value: 1,
+        target: "Redundancy",
+        value: 0.5,
       },
-
+      {
+        source: "Flexible infrastructure services",
+        target: "Flexible",
+        value: 0.5,
+      },
       {
         source: "Physical",
         target:
@@ -2258,7 +2440,19 @@ export const sankeyOption = {
         source:
           "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
         target: "Robustness",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source:
+          "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+        target: "Redundancy",
+        value: 0.33,
+      },
+      {
+        source:
+          "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+        target: "Integration",
+        value: 0.33,
       },
       {
         source: "Physical",
@@ -2268,7 +2462,12 @@ export const sankeyOption = {
       {
         source: "Critical infrastructure: mapping, planning and protection strategies",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Critical infrastructure: mapping, planning and protection strategies",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2282,11 +2481,13 @@ export const sankeyOption = {
       },
       {
         source: "Physical",
-        target: "Protective infrastructure: well-designed and well-built based on risk information",
+        target:
+          "Protective infrastructure: well-designed and well-built based on risk information",
         value: 1,
       },
       {
-        source: "Protective infrastructure: well-designed and well-built based on risk information",
+        source:
+          "Protective infrastructure: well-designed and well-built based on risk information",
         target: "Robustness",
         value: 1,
       },
@@ -2300,7 +2501,13 @@ export const sankeyOption = {
         source:
           'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
+        target: "Redundancy",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2332,7 +2539,12 @@ export const sankeyOption = {
       {
         source: "Diligent maintenance & continuity",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Diligent maintenance & continuity",
+        target: "Redundancy",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2341,7 +2553,7 @@ export const sankeyOption = {
       },
       {
         source: "Retained spare capacity",
-        target: "Robustness",
+        target: "Redundancy",
         value: 1,
       },
       {
@@ -2369,11 +2581,11 @@ export const sankeyOption = {
         target: "Topography: elevation, water bodies",
         value: 1,
       },
-      {
-        source: "Topography: elevation, water bodies",
-        target: "Transparency",
-        value: 1,
-      },
+      // {
+      //   source: "Topography: elevation, water bodies",
+      //   target: "Transparent",
+      //   value: 1,
+      // },
       {
         source: "Physical",
         target: "Hazard mapping and monitoring (common awareness)",
@@ -2381,8 +2593,13 @@ export const sankeyOption = {
       },
       {
         source: "Hazard mapping and monitoring (common awareness)",
-        target: "Redundancy",
-        value: 1,
+        target: "Integration",
+        value: 0.5,
+      },
+      {
+        source: "Hazard mapping and monitoring (common awareness)",
+        target: "Reflective",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2393,7 +2610,7 @@ export const sankeyOption = {
       {
         source:
           "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-        target: "Robustness",
+        target: "Integration",
         value: 1,
       },
       {
@@ -2403,8 +2620,13 @@ export const sankeyOption = {
       },
       {
         source: "Hazard mapping and monitoring (clear and regular mapping)",
-        target: "Redundancy",
-        value: 1,
+        target: "Integration",
+        value: 0.5,
+      },
+      {
+        source: "Hazard mapping and monitoring (clear and regular mapping)",
+        target: "Reflective",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2416,7 +2638,13 @@ export const sankeyOption = {
         source:
           "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2425,8 +2653,13 @@ export const sankeyOption = {
       },
       {
         source: "Identification of cascading effects",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Identification of cascading effects",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Physical",
@@ -2441,19 +2674,39 @@ export const sankeyOption = {
         value: 1,
       },
       {
-        source: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-        target: "Redundancy",
-        value: 1,
+        source:
+          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source:
+          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source:
+          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target: "Reflective",
+        value: 0.25,
+      },
+      {
+        source:
+          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Physical",
-        target: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+        target:
+          "Changes in intensity, frequency, and location of hazards based on hazard modeling",
         value: 1,
       },
       {
         source:
           '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
-        target: "Redundancy",
+        target: "Robustness",
         value: 1,
       },
       {
@@ -2464,8 +2717,18 @@ export const sankeyOption = {
       },
       {
         source: "Comprehensive hazard monitoring and risk assessment",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source: "Comprehensive hazard monitoring and risk assessment",
+        target: "Integration",
+        value: 0.33,
+      },
+      {
+        source: "Comprehensive hazard monitoring and risk assessment",
+        target: "Reflective",
+        value: 0.33,
       },
       {
         source: "Physical",
@@ -2474,8 +2737,23 @@ export const sankeyOption = {
       },
       {
         source: "First responder equipment, with military or civilian back up",
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "First responder equipment, with military or civilian back up",
         target: "Redundancy",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source: "First responder equipment, with military or civilian back up",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "First responder equipment, with military or civilian back up",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Physical",
@@ -2485,8 +2763,20 @@ export const sankeyOption = {
       {
         source:
           "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source:
+          "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+        target: "Resourcefulness",
+        value: 0.33,
+      },
+      {
+        source:
+          "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+        target: "Flexible",
+        value: 0.33,
       },
       {
         source: "Physical",
@@ -2496,65 +2786,117 @@ export const sankeyOption = {
       },
       {
         source: "Vulnerability and risk",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Vulnerability and risk",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source: "Vulnerability and risk",
+        target: "Reflective",
+        value: 0.25,
       },
       {
         source: "Physical",
         target: "Vulnerability and risk",
-        value: 1,
+        value: 0.25,
       },
       {
         source:
           "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source:
           "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-        target: "Robustness",
+        target: "Diversity",
         value: 1,
       },
       {
         source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
-        target: "Robustness",
-        value: 1,
+        target: "Integration",
+        value: 0.5,
+      },
+      {
+        source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+        target: "Transparent",
+        value: 0.5,
       },
       {
         source: "Secure technology networks",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Secure technology networks",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Reliable communications technology",
-        target: "Transparency",
-        value: 1,
-      },
-      {
-        source: "Integration of green and blue infrastructure into city policy and projects",
-        target: "Transparency",
-        value: 1,
-      },
-      {
-        source: "Diverse and affordable transport networks",
-        target: "Transparency",
-        value: 1,
-      },
-      {
-        source: "Adequate continuity for critical assets & services",
-        target: "Transparency",
+        target: "Robustness",
         value: 1,
       },
       {
         source:
+          "Integration of green and blue infrastructure into city policy and projects",
+        target: "Integration",
+        value: 1,
+      },
+      {
+        source: "Diverse and affordable transport networks",
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Diverse and affordable transport networks",
+        target: "Diversity",
+        value: 0.25,
+      },
+      {
+        source: "Diverse and affordable transport networks",
+        target: "Inclusive",
+        value: 0.25,
+      },
+      {
+        source: "Diverse and affordable transport networks",
+        target: "Flexible",
+        value: 0.25,
+      },
+      {
+        source: "Adequate continuity for critical assets & services",
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source: "Adequate continuity for critical assets & services",
+        target: "Redundancy",
+        value: 0.33,
+      },
+      {
+        source: "Adequate continuity for critical assets & services",
+        target: "Flexible",
+        value: 0.33,
+      },
+      {
+        source:
           "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-        target: "Transparency",
+        target: "Robustness",
         value: 1,
       },
       {
         source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-        target: "Transparency",
+        target: "Integration",
         value: 1,
       },
       {
@@ -2579,8 +2921,23 @@ export const sankeyOption = {
       },
       {
         source: "Effective emergency response services",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Effective emergency response services",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Effective emergency response services",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Effective emergency response services",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2605,7 +2962,12 @@ export const sankeyOption = {
       {
         source: "Comprehensive city monitoring & data management",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Comprehensive city monitoring & data management",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2625,7 +2987,12 @@ export const sankeyOption = {
       {
         source: "Well-managed public finances",
         target: "Redundancy",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Well-managed public finances",
+        target: "Transparent",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2634,8 +3001,13 @@ export const sankeyOption = {
       },
       {
         source: "Informal development areas",
-        target: "Redundancy",
-        value: 1,
+        target: "Integration",
+        value: 0.33,
+      },
+      {
+        source: "Informal development areas",
+        target: "Inclusive",
+        value: 0.33,
       },
       {
         source: "Institutional",
@@ -2646,8 +3018,26 @@ export const sankeyOption = {
       {
         source:
           "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source:
+          "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
         target: "Redundancy",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source:
+          "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source:
+          "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+        target: "Integration",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2656,8 +3046,18 @@ export const sankeyOption = {
       },
       {
         source: "Urban development to promote resilience",
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source: "Urban development to promote resilience",
         target: "Redundancy",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source: "Urban development to promote resilience",
+        target: "Integration",
+        value: 0.33,
       },
       {
         source: "Institutional",
@@ -2666,8 +3066,13 @@ export const sankeyOption = {
       },
       {
         source: "Building codes or standards address hazards and risks",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Building codes or standards address hazards and risks",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2676,7 +3081,7 @@ export const sankeyOption = {
       },
       {
         source: "Enforcement and verification of zoning bulding zoning and regulations",
-        target: "Redundancy",
+        target: "Robustness",
         value: 1,
       },
       {
@@ -2686,7 +3091,7 @@ export const sankeyOption = {
       },
       {
         source: "FAIR Data sharing to enhance resilience",
-        target: "Redundancy",
+        target: "Transparent",
         value: 1,
       },
       {
@@ -2698,8 +3103,20 @@ export const sankeyOption = {
       {
         source:
           "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source:
+          "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
         target: "Redundancy",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source:
+          "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+        target: "Reflective",
+        value: 0.33,
       },
       {
         source: "Institutional",
@@ -2708,7 +3125,7 @@ export const sankeyOption = {
       },
       {
         source: "Proactive corruption prevention",
-        target: "Redundancy",
+        target: "Transparent",
         value: 1,
       },
       {
@@ -2718,8 +3135,13 @@ export const sankeyOption = {
       },
       {
         source: "Land use designations",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Land use designations",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2728,8 +3150,13 @@ export const sankeyOption = {
       },
       {
         source: "Changes in land use designations",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Changes in land use designations",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2741,7 +3168,13 @@ export const sankeyOption = {
         source:
           "Disaster and risk reduction in urban planning instruments according to Sendai framework",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2753,7 +3186,13 @@ export const sankeyOption = {
         source:
           "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+        target: "Reflective",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2765,7 +3204,13 @@ export const sankeyOption = {
         source:
           "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+        target: "Reflective",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2775,7 +3220,12 @@ export const sankeyOption = {
       {
         source: "Early warning system and reaching level",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Early warning system and reaching level",
+        target: "Reflective",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2785,7 +3235,12 @@ export const sankeyOption = {
       {
         source: "Integration of resilience in city functions / portfolios",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Integration of resilience in city functions / portfolios",
+        target: "Integration",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2797,7 +3252,25 @@ export const sankeyOption = {
         source:
           "Emergency operations centre: interoperability and inter-agency implementation and coordination",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source:
+          "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source:
+          "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source:
+          "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        target: "Reflective",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2807,17 +3280,52 @@ export const sankeyOption = {
       {
         source: "Disaster management / preparedness / emergency response plan",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source: "Disaster management / preparedness / emergency response plan",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source: "Disaster management / preparedness / emergency response plan",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Disaster management / preparedness / emergency response plan",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Institutional",
-        target: "Appropriately land use planning considering risk, hazards and vulnerability",
+        target:
+          "Appropriately land use planning considering risk, hazards and vulnerability",
         value: 1,
       },
       {
-        source: "Appropriately land use planning considering risk, hazards and vulnerability",
+        source:
+          "Appropriately land use planning considering risk, hazards and vulnerability",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source:
+          "Appropriately land use planning considering risk, hazards and vulnerability",
+        target: "Diversity",
+        value: 0.25,
+      },
+      {
+        source:
+          "Appropriately land use planning considering risk, hazards and vulnerability",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source:
+          "Appropriately land use planning considering risk, hazards and vulnerability",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2829,7 +3337,25 @@ export const sankeyOption = {
         source:
           "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source:
+          "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source:
+          "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source:
+          "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2838,8 +3364,13 @@ export const sankeyOption = {
       },
       {
         source: "Projected changes in location of vulnerable populations",
-        target: "Robustness",
-        value: 1,
+        target: "Inclusive",
+        value: 0.5,
+      },
+      {
+        source: "Projected changes in location of vulnerable populations",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Institutional",
@@ -2849,7 +3380,22 @@ export const sankeyOption = {
       {
         source: "Adequate access to quality healthcare",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source: "Adequate access to quality healthcare",
+        target: "Diversity",
+        value: 0.25,
+      },
+      {
+        source: "Adequate access to quality healthcare",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Adequate access to quality healthcare",
+        target: "Inclusive",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2859,7 +3405,22 @@ export const sankeyOption = {
       {
         source: "Emergency medical care",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source: "Emergency medical care",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Emergency medical care",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Emergency medical care",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Institutional",
@@ -2869,7 +3430,17 @@ export const sankeyOption = {
       {
         source: "Robust public health systems",
         target: "Robustness",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source: "Robust public health systems",
+        target: "Redundancy",
+        value: 0.33,
+      },
+      {
+        source: "Robust public health systems",
+        target: "Flexible",
+        value: 0.33,
       },
       {
         source: "Institutional",
@@ -2879,7 +3450,22 @@ export const sankeyOption = {
       {
         source: "Security services: fire services, police stations, etc.",
         target: "Robustness",
-        value: 1,
+        value: 0.25,
+      },
+      {
+        source: "Security services: fire services, police stations, etc.",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Security services: fire services, police stations, etc.",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Security services: fire services, police stations, etc.",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Robust planning approval process",
@@ -2888,38 +3474,103 @@ export const sankeyOption = {
       },
       {
         source: "Appropriate land use and zoning",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source: "Appropriate land use and zoning",
+        target: "Diversity",
+        value: 0.33,
+      },
+      {
+        source: "Appropriate land use and zoning",
+        target: "Integration",
+        value: 0.33,
       },
       {
         source: "Comprehensive government emergency management",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Comprehensive government emergency management",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Comprehensive government emergency management",
+        target: "Resourcefulness",
+        value: 0.25,
+      },
+      {
+        source: "Comprehensive government emergency management",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Consultative planning process",
-        target: "Transparency",
-        value: 1,
+        target: "Integration",
+        value: 0.33,
+      },
+      {
+        source: "Consultative planning process",
+        target: "Inclusive",
+        value: 0.33,
+      },
+      {
+        source: "Consultative planning process",
+        target: "Transparent",
+        value: 0.33,
       },
       {
         source: "Disaster management authority have sufficient staffing capacity",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Disaster management authority have sufficient staffing capacity",
+        target: "Resourcefulness",
+        value: 0.5,
       },
       {
         source: "Proactive multi-stakeholder collaboration",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Proactive multi-stakeholder collaboration",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Proactive multi-stakeholder collaboration",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source: "Proactive multi-stakeholder collaboration",
+        target: "Inclusive",
+        value: 0.25,
       },
       {
         source: "Effective co-ordination with other government bodies",
-        target: "Transparency",
+        target: "Integration",
         value: 1,
       },
       {
         source: "Appropriate government decision-making",
-        target: "Transparency",
-        value: 1,
+        target: "Redundancy",
+        value: 0.33,
+      },
+      {
+        source: "Appropriate government decision-making",
+        target: "Integration",
+        value: 0.33,
+      },
+      {
+        source: "Appropriate government decision-making",
+        target: "Transparent",
+        value: 0.33,
       },
       {
         source: "Economic",
@@ -2953,7 +3604,7 @@ export const sankeyOption = {
       },
       {
         source: "Strong integration with regional & global economies",
-        target: "Redundancy",
+        target: "Integration",
         value: 1,
       },
 
@@ -2964,17 +3615,19 @@ export const sankeyOption = {
       },
       {
         source: "Industrial areas including ports, industrial zones, and factories",
-        target: "Robustness",
+        target: "Diversity",
         value: 1,
       },
       {
         source: "Economic",
-        target: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+        target:
+          "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
         value: 1,
       },
       {
-        source: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
-        target: "Transparency",
+        source:
+          "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+        target: "Redundancy",
         value: 1,
       },
       {
@@ -2984,8 +3637,13 @@ export const sankeyOption = {
       },
       {
         source: "Businesses with a documented business continuity plan",
-        target: "Redundancy",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Businesses with a documented business continuity plan",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Economic",
@@ -3007,7 +3665,13 @@ export const sankeyOption = {
         source:
           "Level of insurance cover exists in the city, across all sectors - business and community",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Level of insurance cover exists in the city, across all sectors - business and community",
+        target: "Redundancy",
+        value: 0.5,
       },
       {
         source: "Economic",
@@ -3016,7 +3680,7 @@ export const sankeyOption = {
       },
       {
         source: "Economic impact",
-        target: "Redundancy",
+        target: "Rebustness",
         value: 1,
       },
 
@@ -3027,8 +3691,13 @@ export const sankeyOption = {
       },
       {
         source: "Incentives for business and society to support resilience building",
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Incentives for business and society to support resilience building",
         target: "Redundancy",
-        value: 1,
+        value: 0.51,
       },
       {
         source: "Economic",
@@ -3038,7 +3707,12 @@ export const sankeyOption = {
       {
         source: "Planned investments",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Planned investments",
+        target: "Redundancy",
+        value: 0.5,
       },
       {
         source: "Economic",
@@ -3047,7 +3721,7 @@ export const sankeyOption = {
       },
       {
         source: "Inclusive labour policies",
-        target: "Redundancy",
+        target: "Inclusive",
         value: 1,
       },
       {
@@ -3059,7 +3733,7 @@ export const sankeyOption = {
       {
         source:
           "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-        target: "Redundancy",
+        target: "Diversity",
         value: 1,
       },
       {
@@ -3069,7 +3743,7 @@ export const sankeyOption = {
       },
       {
         source: "Changes in the overall city's boundaries",
-        target: "Redundancy",
+        target: "Flexible",
         value: 1,
       },
       {
@@ -3079,8 +3753,23 @@ export const sankeyOption = {
       },
       {
         source: "Financial plan and budget for resilience, including contingency funds",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.25,
+      },
+      {
+        source: "Financial plan and budget for resilience, including contingency funds",
+        target: "Redundancy",
+        value: 0.25,
+      },
+      {
+        source: "Financial plan and budget for resilience, including contingency funds",
+        target: "Integration",
+        value: 0.25,
+      },
+      {
+        source: "Financial plan and budget for resilience, including contingency funds",
+        target: "Flexible",
+        value: 0.25,
       },
       {
         source: "Economic",
@@ -3089,7 +3778,7 @@ export const sankeyOption = {
       },
       {
         source: "Projected changes to population densities and economic activity",
-        target: "Robustness",
+        target: "Flexible",
         value: 1,
       },
       {
@@ -3099,23 +3788,38 @@ export const sankeyOption = {
       },
       {
         source: "Densities",
-        target: "Robustness",
+        target: "Flexible",
         value: 1,
       },
       {
         source: "Attractive business environment",
         target: "Redundancy",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Attractive business environment",
+        target: "Diversity",
+        value: 0.5,
       },
       {
         source: "Diverse economic base",
-        target: "Redundancy",
+        target: "Diversity",
         value: 1,
       },
       {
         source: "Comprehensive business continuity planning",
+        target: "Robustness",
+        value: 0.33,
+      },
+      {
+        source: "Comprehensive business continuity planning",
         target: "Redundancy",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source: "Comprehensive business continuity planning",
+        target: "Flexible",
+        value: 0.33,
       },
       {
         source: "Supportive financing mechanisms",
@@ -3124,7 +3828,7 @@ export const sankeyOption = {
       },
       {
         source: "Local business development and innovation",
-        target: "Redundancy",
+        target: "Diversity",
         value: 1,
       },
       {
@@ -3134,7 +3838,7 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target: "Inclusive access to save drinking water",
+        target: "Inclusive access to safe drinking water",
         value: 1,
       },
       {
@@ -3165,17 +3869,20 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target: "Training programmes provided to the most vulnerable and at need populations",
+        target:
+          "Training programmes provided to the most vulnerable and at need populations",
         value: 1,
       },
       {
         source: "Social",
-        target: "Main public facilities: university, schools, health centres, markets, etc.",
+        target:
+          "Main public facilities: university, schools, health centres, markets, etc.",
         value: 1,
       },
       {
         source: "Social",
-        target: "Social services infrastructure, including schools, hospitals, and clinics",
+        target:
+          "Social services infrastructure, including schools, hospitals, and clinics",
         value: 1,
       },
       {
@@ -3200,7 +3907,7 @@ export const sankeyOption = {
       },
       {
         source: "Strong city-wide identity & culture",
-        target: "Transparency",
+        target: "Inclusive",
         value: 1,
       },
       {
@@ -3236,7 +3943,8 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target: "Exchange knowledge and learn from other cities facing similar challenges",
+        target:
+          "Exchange knowledge and learn from other cities facing similar challenges",
         value: 1,
       },
       {
@@ -3247,12 +3955,14 @@ export const sankeyOption = {
       },
       {
         source: "Social",
-        target: "Major community buildings, religious buildings, and historic/cultural assets",
+        target:
+          "Major community buildings, religious buildings, and historic/cultural assets",
         value: 1,
       },
       {
-        source: "Major community buildings, religious buildings, and historic/cultural assets",
-        target: "Robustness",
+        source:
+          "Major community buildings, religious buildings, and historic/cultural assets",
+        target: "Inclusive",
         value: 1,
       },
       {
@@ -3262,7 +3972,7 @@ export const sankeyOption = {
       },
       {
         source: "Safe places/havens and the evacuation routes",
-        target: "Transparency",
+        target: "Transparent",
         value: 1,
       },
       {
@@ -3275,7 +3985,13 @@ export const sankeyOption = {
         source:
           "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source:
+          "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+        target: "Resourcefulness",
+        value: 0.5,
       },
       {
         source: "Social",
@@ -3285,7 +4001,12 @@ export const sankeyOption = {
       {
         source: "Awareness of equipment and supply needed + provision",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "Awareness of equipment and supply needed + provision",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Social",
@@ -3295,7 +4016,17 @@ export const sankeyOption = {
       {
         source: "Effective systems to deter crime",
         target: "Robustness",
-        value: 1,
+        value: 0.33,
+      },
+      {
+        source: "Effective systems to deter crime",
+        target: "Redundancy",
+        value: 0.33,
+      },
+      {
+        source: "Effective systems to deter crime",
+        target: "Flexible",
+        value: 0.33,
       },
       {
         source: "Social",
@@ -3305,7 +4036,12 @@ export const sankeyOption = {
       {
         source: "High levels of crime are observed",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
+      },
+      {
+        source: "High levels of crime are observed",
+        target: "Flexible",
+        value: 0.5,
       },
       {
         source: "Social",
@@ -3314,7 +4050,7 @@ export const sankeyOption = {
       },
       {
         source: "Relevant skills & training",
-        target: "Robustness",
+        target: "Resourcefulness",
         value: 1,
       },
       {
@@ -3326,141 +4062,166 @@ export const sankeyOption = {
       {
         source:
           "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-        target: "Robustness",
+        target: "Integration",
         value: 1,
       },
       {
         source: "Social",
-        target: "Awareness of functions or services that natural capital provides for the city",
+        target:
+          "Awareness of functions or services that natural capital provides for the city",
         value: 1,
       },
       {
-        source: "Awareness of functions or services that natural capital provides for the city",
-        target: "Robustness",
+        source:
+          "Awareness of functions or services that natural capital provides for the city",
+        target: "Integration",
         value: 1,
       },
       {
         source: "Social",
-        target: "Public education towards awareness of hazard, risk and disaster information",
+        target:
+          "Public education towards awareness of hazard, risk and disaster information",
         value: 1,
       },
       {
-        source: "Public education towards awareness of hazard, risk and disaster information",
-        target: "Redundancy",
+        source:
+          "Public education towards awareness of hazard, risk and disaster information",
+        target: "Inclusive",
         value: 1,
       },
       {
         source:
           "Citizen engagement and communications in relation to disaster resilience and recovery",
-        target: "Robustness",
+        target: "Inclusive",
         value: 1,
       },
       {
-        source: "Exchange knowledge and learn from other cities facing similar challenges",
-        target: "Transparency",
+        source:
+          "Exchange knowledge and learn from other cities facing similar challenges",
+        target: "Reflective",
         value: 1,
       },
       {
         source: "Actively engaged citizens",
-        target: "Transparency",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Cohesive communities",
-        target: "Redundancy",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Local community support",
-        target: "Transparency",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Effective sanitation",
-        target: "Transparency",
-        value: 1,
+        target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source: "Effective sanitation",
+        target: "Inclusive",
+        value: 0.5,
       },
       {
         source: "Adequate education for all",
-        target: "Transparency",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Widespread community awareness & preparedness",
-        target: "Transparency",
-        value: 1,
+        target: "Inclusive",
+        value: 0.5,
+      },
+      {
+        source: "Widespread community awareness & preparedness",
+        target: "Robustness",
+        value: 0.5,
       },
       {
         source: "Accessible criminal & civil justice",
-        target: "Transparency",
+        target: "Transparent",
         value: 1,
       },
       {
         source: "Practices and drills involving public and professionals",
-        target: "Transparency",
+        target: "Robustness",
         value: 1,
       },
       {
         source:
           "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-        target: "Transparency",
+        target: "Resourcefulness",
         value: 1,
       },
       {
-        source: "Social services infrastructure, including schools, hospitals, and clinics",
+        source:
+          "Social services infrastructure, including schools, hospitals, and clinics",
         target: "Robustness",
-        value: 1,
+        value: 0.5,
       },
       {
-        source: "Main public facilities: university, schools, health centres, markets, etc.",
-        target: "Robustness",
-        value: 1,
+        source:
+          "Social services infrastructure, including schools, hospitals, and clinics",
+        target: "Inclusive",
+        value: 0.5,
       },
       {
-        source: "Training programmes provided to the most vulnerable and at need populations",
+        source:
+          "Main public facilities: university, schools, health centres, markets, etc.",
         target: "Robustness",
+        value: 0.5,
+      },
+      {
+        source:
+          "Main public facilities: university, schools, health centres, markets, etc.",
+        target: "Inclusive",
+        value: 0.5,
+      },
+      {
+        source:
+          "Training programmes provided to the most vulnerable and at need populations",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Accessible criminal and civil justice",
-        target: "Robustness",
+        target: "Inclusive",
         value: 1,
       },
       {
         source:
           "Grassroots or community organizations participating in pre-event planning and post event response",
-        target: "Robustness",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Sufficient affordable food supply",
-        target: "Robustness",
+        target: "Inclusive",
         value: 1,
       },
       {
         source: "Accessibility to training materials (language)",
-        target: "Robustness",
+        target: "Inclusive",
         value: 1,
       },
 
       {
         source: "Safe & affordable housing",
-        target: "Robustness",
-        value: 0.5,
-      },
-      {
-        source: "Safe & affordable housing",
-        target: "Redundancy",
-        value: 0.5,
-      },
-      {
-        source: "Adequate affordable energy supply",
-        target: "Transparency",
+        target: "Inclusive",
         value: 1,
       },
       {
-        source: "Inclusive access to save drinking water",
-        target: "Transparency",
+        source: "Adequate affordable energy supply",
+        target: "Inclusive",
+        value: 1,
+      },
+      {
+        source: "Inclusive access to safe drinking water",
+        target: "Inclusive",
         value: 1,
       },
     ],
@@ -3471,6 +4232,7 @@ export const sankeyOption = {
         select: { itemStyle: { borderColor: "green", borderWidth: 5 } },
       },
       { depth: SANKEYLEVELS.LEVEL3 },
+      { depth: SANKEYLEVELS.LEVEL4 },
     ],
   },
   color: [
