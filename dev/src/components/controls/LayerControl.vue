@@ -20,14 +20,13 @@ import type {
   PopulationProperties,
 } from "@/assets/ts/types";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
+import { basemaps } from "@/assets/ts/constants";
 
 // Switch to another city, the popup content would be cleared
 const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
 watch(city, () => {
   popup.value = "";
 });
-// Tile Layers Settings
-const url = "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png";
 // Shelter Layer Settings
 const shelters = inject(InjectionKeyEnum.SHELTER_GEOJSON) as Ref<
   FeatureCollection<Point, ShelterProperties>
@@ -121,12 +120,16 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
 
 <template>
   <!-- Base Layers -->
-  <l-tile-layer
-    :url="url"
-    layer-type="base"
-    name="OpenStreetMap"
-    pane="tilePane"
-  ></l-tile-layer>
+  <template v-for="basemap in basemaps" :key="basemap.name">
+    <l-tile-layer
+      :url="basemap.url"
+      layer-type="base"
+      :name="basemap.name"
+      :visible="basemap.visible.value"
+      pane="tilePane"
+    ></l-tile-layer>
+  </template>
+
   <!-- Shelters -->
   <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker

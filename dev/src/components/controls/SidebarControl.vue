@@ -7,9 +7,13 @@ import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { InjectionKeyEnum, LocalStorageEvent } from "@/assets/ts/constants";
+import { basemaps } from "@/assets/ts/constants";
+import type { TileLayer } from "@/assets/ts/types";
 
 // Variables
+// Map
 const map = inject(InjectionKeyEnum.MAP) as Ref<any>;
+// Overlays
 const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
 const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
 const isochronesLayer = inject(InjectionKeyEnum.ISOCHRONE_LAYER) as Layer;
@@ -21,8 +25,17 @@ const overlays: Layer[] = [
   boundaryLayer,
   populationLayer,
 ];
+// Track the currently selected base map by its name, default is the first
+const selectedBasemap = ref(basemaps[0].name);
 // Methods
-const openSunburstSelection = (): void => {
+// Function to change the visible base map
+watch(selectedBasemap, (newBasemap) => {
+  basemaps.forEach((basemap) => {
+    basemap.visible.value = basemap.name === newBasemap;
+  });
+});
+// Open the Indicator Selection Window
+const openIndicatorSelection = (): void => {
   let mainWinWidth = window.innerWidth;
   let mainWinHeight = window.innerHeight;
   let newWinWidth = 1000;
@@ -179,15 +192,18 @@ onMounted(() => {
                 style="margin-left: 1em"
               >
                 <strong>Base Layers: </strong>
-                <div class="form-check">
+                <div v-for="basemap in basemaps" :key="basemap.name" class="form-check">
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="osm"
-                    id="osm"
-                    checked
+                    name="basemap"
+                    :id="basemap.name"
+                    :value="basemap.name"
+                    v-model="selectedBasemap"
                   />
-                  <label class="form-check-label" for="osm"> Open Street Map </label>
+                  <label class="form-check-label" :for="basemap.name">
+                    {{ basemap.name }}
+                  </label>
                 </div>
                 <div class="border-top my-1"></div>
                 <strong>Overlays: </strong>
@@ -282,7 +298,7 @@ onMounted(() => {
                 </li>
               </ul>
               <div class="btn-group" role="group" aria-label="select-and-run">
-                <button class="btn btn-primary" @click="openSunburstSelection">
+                <button class="btn btn-primary" @click="openIndicatorSelection">
                   Select
                 </button>
                 <button class="btn btn-success" @click="analyzeResults">Run</button>

@@ -13,6 +13,12 @@ export interface Layer {
   range?: number[];
 }
 
+export interface TileLayer {
+  name: string;
+  url: string;
+  visible: Ref<boolean>;
+}
+
 // Type definitions for feature properties
 export type ShelterProperties = {
   name: string;

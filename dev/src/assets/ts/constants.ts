@@ -1,4 +1,6 @@
 import type { CityData } from "./types";
+import type { TileLayer } from "./types";
+import { ref } from "vue";
 
 export enum CityName {
   ZHYTOMYR = "Zhytomyr",
@@ -20,6 +22,34 @@ export enum LayerName {
   ISOCHRONE = "Isochrone",
   POPULATION = "Population",
 }
+
+export const basemaps: Array<TileLayer> = [
+  {
+    name: "CartoCDN Voyager",
+    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+    visible: ref(true),
+  },
+  {
+    name: "CartoCDN Positron",
+    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    visible: ref(false),
+  },
+  {
+    name: "CartoCDN Dark Matter",
+    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+    visible: ref(false),
+  },
+  {
+    name: "OpenStreetMap",
+    url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    visible: ref(false),
+  },
+  {
+    name: "Esri World Imagery",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    visible: ref(false),
+  },
+];
 
 export enum LocalStorageEvent {
   SIDEBARSAVED = "sidebarSaved",
