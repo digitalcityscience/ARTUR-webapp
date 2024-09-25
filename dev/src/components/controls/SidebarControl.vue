@@ -8,7 +8,6 @@ import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { InjectionKeyEnum, LocalStorageEvent } from "@/assets/ts/constants";
 import { basemaps } from "@/assets/ts/constants";
-import type { TileLayer } from "@/assets/ts/types";
 
 // Variables
 // Map
@@ -82,242 +81,273 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div id="rightsidebar" class="leaflet-sidebar collapsed">
-    <!-- nav tabs -->
-    <div class="leaflet-sidebar-tabs">
-      <!-- top aligned tabs -->
-      <ul role="tablist">
-        <li>
-          <a href="#home" role="tab" title="Usage of this tool"
-            ><i class="bi bi-info-circle"></i
-          ></a>
-        </li>
-        <li>
-          <a href="#layer" role="tab" title="Layers Information"
-            ><i class="bi bi-stack"></i
-          ></a>
-        </li>
-        <li>
-          <a href="#dashboard" role="tab" title="Dashboard"
-            ><i class="fa fa-bar-chart"></i
-          ></a>
-        </li>
-      </ul>
-      <!-- bottom tabs -->
-      <ul role="tablist">
-        <li>
-          <a href="#settings" title="Settings"><i class="fa fa-gear"></i></a>
-        </li>
-      </ul>
-    </div>
-    <!-- panel content -->
-    <div class="leaflet-sidebar-content">
-      <!-- home -->
-      <div class="leaflet-sidebar-pane" id="home">
-        <h1 class="leaflet-sidebar-header">
-          Info
-          <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
-        </h1>
-        <div class="info-content info-city" style="margin-top: 10px">
-          <strong class="info-title"
-            >1. <i class="fa fa-crosshairs"></i> Navigation Control
-          </strong>
-          <p class="info-content-text"><strong>Position: </strong>Top-left</p>
-          <p class="info-content-text">
-            The navigation control can navigate the user to different cities. By simply
-            clicking on the city name, the map view would fly to the city and show the
-            feature layers if we had the data.
-          </p>
-        </div>
-        <div class="info-content info-legend" style="margin-top: 10px">
-          <strong class="info-title"
-            >2. <i class="bi bi-map-fill"></i> Legend Control
-          </strong>
-          <p class="info-content-text"><strong>Position: </strong>Bottom-left</p>
-          <p class="info-content-text">
-            The legend control displays the legend of the feature layers. If a feature
-            layer is hidden, the legend for that layer is also hidden, and vice versa. The
-            toggle button of the legend control switches the collapsed state of the
-            legend.
-          </p>
-        </div>
-        <div class="info-content info-layer" style="margin-top: 10px">
-          <strong class="info-title"
-            >3. <i class="bi bi-stack"></i> Layers Information
-          </strong>
-          <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
-          <p class="info-content-text">
-            The "Layer Control" would display checkboxes for each feature layer to toggle
-            them on display or hidden. Information about each shelter can be seen in the
-            drop-down menu “Shelters Information”. Simply click on the dot symbol of a
-            shelter on the map and the address and capacity of that shelter will be
-            displayed.
-          </p>
-        </div>
-        <div class="info-content info-chart" style="margin-top: 10px">
-          <strong class="info-title"
-            >4. <i class="fa fa-bar-chart"></i> Dashboard
-          </strong>
-          <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
-          <p class="info-content-text">
-            The Dashboard provides indicator selection and results display. The user can
-            click on the "Select" button to view the Indicator Sunburst Chart and click on
-            the indicator to select it. Selected indicators can be deleted by clicking the
-            Cancel button in the sidebar or re-click the indicator in sunburst. Click the
-            "Run" button to display the analysis results of the user-selected indicator.
-          </p>
-        </div>
+  <div class="sidebar-container">
+    <div id="rightsidebar" class="leaflet-sidebar collapsed">
+      <!-- nav tabs -->
+      <div class="leaflet-sidebar-tabs">
+        <!-- top aligned tabs -->
+        <ul role="tablist">
+          <li>
+            <a href="#home" role="tab" title="Usage of this tool"
+              ><i class="bi bi-info-circle"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#layer" role="tab" title="Layers Information"
+              ><i class="bi bi-stack"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#dashboard" role="tab" title="Dashboard"
+              ><i class="fa fa-bar-chart"></i
+            ></a>
+          </li>
+        </ul>
+        <!-- bottom tabs -->
+        <ul role="tablist">
+          <li>
+            <a href="#settings" title="Settings"><i class="fa fa-gear"></i></a>
+          </li>
+        </ul>
       </div>
-      <!-- Layers -->
-      <div class="leaflet-sidebar-pane" id="layer">
-        <h1 class="leaflet-sidebar-header">
-          Layers
-          <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
-        </h1>
-        <div class="layer-control-content" style="margin-top: 10px">
+      <!-- panel content -->
+      <div class="leaflet-sidebar-content">
+        <!-- home -->
+        <div class="leaflet-sidebar-pane" id="home">
+          <h1 class="leaflet-sidebar-header">
+            Info
+            <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
+          </h1>
+          <div class="info-content info-city" style="margin-top: 10px">
+            <strong class="info-title"
+              >1. <i class="fa fa-crosshairs"></i> Navigation Control
+            </strong>
+            <p class="info-content-text"><strong>Position: </strong>Top-left</p>
+            <p class="info-content-text">
+              The navigation control can navigate the user to different cities. By simply
+              clicking on the city name, the map view would fly to the city and show the
+              feature layers if we had the data.
+            </p>
+          </div>
+          <div class="info-content info-legend" style="margin-top: 10px">
+            <strong class="info-title"
+              >2. <i class="bi bi-map-fill"></i> Legend Control
+            </strong>
+            <p class="info-content-text"><strong>Position: </strong>Bottom-left</p>
+            <p class="info-content-text">
+              The legend control displays the legend of the feature layers. If a feature
+              layer is hidden, the legend for that layer is also hidden, and vice versa.
+              The toggle button of the legend control switches the collapsed state of the
+              legend.
+            </p>
+          </div>
+          <div class="info-content info-layer" style="margin-top: 10px">
+            <strong class="info-title"
+              >3. <i class="bi bi-stack"></i> Layers Information
+            </strong>
+            <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
+            <p class="info-content-text">
+              The "Layer Control" would display checkboxes for each feature layer to
+              toggle them on display or hidden. Information about each shelter can be seen
+              in the drop-down menu “Shelters Information”. Simply click on the dot symbol
+              of a shelter on the map and the address and capacity of that shelter will be
+              displayed.
+            </p>
+          </div>
+          <div class="info-content info-chart" style="margin-top: 10px">
+            <strong class="info-title"
+              >4. <i class="fa fa-bar-chart"></i> Dashboard
+            </strong>
+            <p class="info-content-text"><strong>Position: </strong>Sidebar</p>
+            <p class="info-content-text">
+              The Dashboard provides indicator selection and results display. The user can
+              click on the "Select" button to view the Indicator Sunburst / Sankey Chart
+              and click on the indicator to select it. Selected indicators can be deleted
+              by clicking the Cancel button in the sidebar or re-click the indicator in
+              the chart. Click the "Run" button to display the analysis results of the
+              user-selected indicator.
+            </p>
+          </div>
+        </div>
+        <!-- Layers -->
+        <div class="leaflet-sidebar-pane" id="layer">
+          <h1 class="leaflet-sidebar-header">
+            Layers
+            <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
+          </h1>
+          <div class="layer-control-content" style="margin-top: 10px">
+            <ul class="list-unstyled ps-0">
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#layer-control-collapse"
+                  aria-expanded="true"
+                  style="padding-left: 0"
+                >
+                  Layer Control
+                </button>
+                <div
+                  class="collapse show"
+                  id="layer-control-collapse"
+                  style="margin-left: 1em"
+                >
+                  <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                      <button
+                        class="btn btn-toggle rounded collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#basemap-switch"
+                        aria-expanded="true"
+                        style="padding-left: 0"
+                      >
+                        Basemap
+                      </button>
+                      <div
+                        v-for="basemap in basemaps"
+                        :key="basemap.name"
+                        class="form-check collapse show"
+                        id="basemap-switch"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="basemap"
+                          :id="basemap.name"
+                          :value="basemap.name"
+                          v-model="selectedBasemap"
+                        />
+                        <label class="form-check-label" :for="basemap.name">
+                          {{ basemap.name }}
+                        </label>
+                      </div>
+                    </li>
+                    <li class="mb-1">
+                      <button
+                        class="btn btn-toggle rounded collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#overlay-switch"
+                        aria-expanded="true"
+                        style="padding-left: 0"
+                      >
+                        Overlays
+                      </button>
+                      <div
+                        class="form-check collapse show"
+                        v-for="overlay in overlays"
+                        :key="overlay.name"
+                        id="overlay-switch"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible.value"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ overlay.name }}
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#popup-collapse"
+                  aria-expanded="true"
+                  style="padding-left: 0"
+                >
+                  Shelters Information
+                </button>
+                <div class="collapse show" id="popup-collapse">
+                  <slot name="popup"></slot>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#population-collapse"
+                  v-show="populationLayer.visible.value"
+                  aria-expanded="true"
+                  style="padding-left: 0"
+                >
+                  Population Information
+                </button>
+                <div class="collapse show" id="population-collapse">
+                  <population-sum-chart
+                    v-if="populationLayer.visible.value"
+                  ></population-sum-chart>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Dashboard -->
+        <div class="leaflet-sidebar-pane" id="dashboard">
+          <h1 class="leaflet-sidebar-header">
+            Dashboard
+            <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
+          </h1>
           <ul class="list-unstyled ps-0">
             <li class="mb-1">
               <button
                 class="btn btn-toggle rounded collapsed"
                 data-bs-toggle="collapse"
-                data-bs-target="#layer-control-collapse"
+                data-bs-target="#indicator-collapse"
                 aria-expanded="true"
                 style="padding-left: 0"
               >
-                Layer Control
+                Select Indicators
               </button>
-              <div
-                class="collapse show"
-                id="layer-control-collapse"
-                style="margin-left: 1em"
-              >
-                <strong>Base Layers: </strong>
-                <div v-for="basemap in basemaps" :key="basemap.name" class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="basemap"
-                    :id="basemap.name"
-                    :value="basemap.name"
-                    v-model="selectedBasemap"
-                  />
-                  <label class="form-check-label" :for="basemap.name">
-                    {{ basemap.name }}
-                  </label>
+              <div class="collapse show" id="indicator-collapse">
+                <ul
+                  class="list-group"
+                  v-for="indicator in Object.entries(indicators).map(([key, value]) => ({
+                    key,
+                    value,
+                  }))"
+                  :key="indicator.key"
+                >
+                  <li
+                    class="list-group-item list-group-item-secondary"
+                    :style="{ backgroundColor: indicator.value }"
+                  >
+                    {{ indicator.key }}
+                    <button
+                      class="btn-close"
+                      aria-label="Close"
+                      @click="deleteSelection(indicator.key)"
+                      style="float: right"
+                    ></button>
+                  </li>
+                </ul>
+                <div class="btn-group" role="group" aria-label="select-and-run">
+                  <button class="btn btn-primary" @click="openIndicatorSelection">
+                    Select
+                  </button>
+                  <button class="btn btn-success" @click="analyzeResults">Run</button>
                 </div>
-                <div class="border-top my-1"></div>
-                <strong>Overlays: </strong>
-                <template v-for="overlay in overlays" :key="overlay.name">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible.value"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ overlay.name }}
-                    </label>
-                  </div>
-                </template>
-              </div>
-            </li>
-            <li class="border-top my-3"></li>
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle rounded collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#popup-collapse"
-                aria-expanded="true"
-                style="padding-left: 0"
-              >
-                Shelters Information
-              </button>
-              <div class="collapse show" id="popup-collapse">
-                <slot name="popup"></slot>
               </div>
             </li>
             <li class="mb-1">
               <button
                 class="btn btn-toggle rounded collapsed"
                 data-bs-toggle="collapse"
-                data-bs-target="#population-collapse"
-                v-show="populationLayer.visible.value"
+                data-bs-target="#results-collapse"
                 aria-expanded="true"
                 style="padding-left: 0"
               >
-                Population Information
+                Results
               </button>
-              <div class="collapse show" id="population-collapse">
-                <population-sum-chart
-                  v-if="populationLayer.visible.value"
-                ></population-sum-chart>
-              </div>
+              <div class="collapse show" id="results-collapse"></div>
             </li>
           </ul>
         </div>
-      </div>
-      <!-- Dashboard -->
-      <div class="leaflet-sidebar-pane" id="dashboard">
-        <h1 class="leaflet-sidebar-header">
-          Dashboard
-          <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
-        </h1>
-        <ul class="list-unstyled ps-0">
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#sunburst-collapse"
-              aria-expanded="true"
-              style="padding-left: 0"
-            >
-              Select Indicators
-            </button>
-            <div class="collapse show" id="sunburst-collapse">
-              <ul
-                class="list-group"
-                v-for="indicator in Object.entries(indicators).map(([key, value]) => ({
-                  key,
-                  value,
-                }))"
-                :key="indicator.key"
-              >
-                <li
-                  class="list-group-item list-group-item-secondary"
-                  :style="{ backgroundColor: indicator.value }"
-                >
-                  {{ indicator.key }}
-                  <button
-                    class="btn-close"
-                    aria-label="Close"
-                    @click="deleteSelection(indicator.key)"
-                    style="float: right"
-                  ></button>
-                </li>
-              </ul>
-              <div class="btn-group" role="group" aria-label="select-and-run">
-                <button class="btn btn-primary" @click="openIndicatorSelection">
-                  Select
-                </button>
-                <button class="btn btn-success" @click="analyzeResults">Run</button>
-              </div>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#results-collapse"
-              aria-expanded="true"
-              style="padding-left: 0"
-            >
-              Results
-            </button>
-            <div class="collapse show" id="results-collapse"></div>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -364,7 +394,7 @@ div {
   font-weight: 400;
   line-height: 1.2;
 }
-#sunburst-collapse li {
+#indicator-collapse li {
   padding: 5px;
   font-size: 15px;
 }
