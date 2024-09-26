@@ -1,3 +1,175 @@
+<script lang="ts" setup>
+import { onMounted, ref, watch } from "vue";
+import * as echarts from "echarts";
+import {
+  sunburstData,
+  sunburstOption,
+  sunburstOption1,
+  sankeyOption,
+  SANKEYLEVELS,
+} from "@/assets/data/echarts_options";
+import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
+
+// Constant
+const chartContainer = ref<HTMLDivElement | null>(null);
+const defaultWidth = 1000;
+const defaultHeight = 1000;
+let chart: echarts.ECharts;
+const selectedIndicatorName = ref<Set<string>>(new Set<string>());
+let selectedIndicator: Record<string, string> = {};
+const showModal = ref<boolean>(false);
+const resolution = ref<number>(2);
+const backgroundColor = ref<string>("#ffffff");
+const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
+const switchGraph = ref<GraphTypes>(GraphTypes.SANKEY);
+// Methods
+const switchGraphType = () => {
+  if (switchGraph.value == GraphTypes.SANKEY) {
+    switchGraph.value = GraphTypes.SUNBURST;
+    reloadChart(sankeyOption);
+  } else {
+    switchGraph.value = GraphTypes.SANKEY;
+    reloadChart(sunburstOption);
+  }
+};
+const downloadChart = () => {
+  const img = new Image();
+  img.src = chart.getDataURL({
+    type: imageFormat.value,
+    pixelRatio: resolution.value,
+    backgroundColor: backgroundColor.value,
+  });
+  const link = document.createElement("a");
+  link.href = img.src;
+  link.download =
+    `UR-${
+      switchGraph.value === GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY
+    }-chart.` + imageFormat.value;
+  link.click();
+};
+// Function to handle node clicks
+function handleClick(params: any): void {
+  if (params.data.depth) {
+    switch (params.data.depth) {
+      case SANKEYLEVELS.LEVEL1:
+        return;
+      case SANKEYLEVELS.LEVEL2:
+        if (selectedIndicatorName.value.has(params.name)) {
+          deleteSelection(params.name);
+        } else {
+          addSelection(params.name, params.color);
+        }
+        break;
+      case SANKEYLEVELS.LEVEL3:
+        return;
+    }
+  } else if (params.data) {
+    const level = params.treePathInfo.length;
+    if (level === 4) {
+      if (params.name && selectedIndicatorName.value.has(params.name)) {
+        deleteSelection(params.name);
+      } else if (params.name) {
+        addSelection(params.name, params.color);
+      } else {
+        chart.dispatchAction({
+          type: "unselect",
+          seriesIndex: 0,
+          dataIndex: params.dataIndex,
+        });
+      }
+      return;
+    } else if (level === 2 && params.value < 10) {
+      let color = params.color;
+      let data = sunburstData.children.find((node: any) => node.name === params.name);
+      reloadChart(sunburstOption1, data, color);
+      return;
+    } else if (level === 2) {
+      chart.clear();
+      chart.setOption(sunburstOption);
+      return;
+    }
+  }
+}
+// Reload chart option
+function reloadChart(option: any, data?: any, color?: string): void {
+  if (data !== undefined && color !== undefined) {
+    option.series.data = [data];
+    option.color = color;
+  }
+  chart.clear();
+  chart.setOption(option);
+  loadSidebarIndicator();
+}
+// Synchronize the sidebar saved indicators to the reloaded sunburst chart
+function loadSidebarIndicator(): void {
+  let savedIndicators = localStorage.getItem(LocalStorageEvent.SIDEBARSAVED);
+  if (savedIndicators) {
+    selectedIndicatorName.value = new Set<string>(JSON.parse(savedIndicators));
+    chart.dispatchAction({
+      type: "select",
+      seriesIndex: 0,
+      name: JSON.parse(savedIndicators),
+    });
+  }
+}
+function addSelection(name: string, color: string) {
+  selectedIndicatorName.value.add(name);
+  selectedIndicator[name] = color;
+}
+function deleteSelection(name: string) {
+  selectedIndicatorName.value.delete(name);
+  delete selectedIndicator[name];
+}
+// Store the changes of sunburst selected indicators
+watch(
+  selectedIndicatorName,
+  (newVal) => {
+    if (!chart) return;
+    localStorage.setItem(
+      LocalStorageEvent.CHARTSELECTED,
+      JSON.stringify(selectedIndicator),
+    );
+  },
+  { deep: true },
+);
+// Watch for deletion in sidebar and update sidebar Selected indicators
+window.addEventListener("storage", (event: StorageEvent) => {
+  if (event.key === LocalStorageEvent.SIDEBARDELETED) {
+    let deletedIndicator = event.newValue!;
+    selectedIndicatorName.value.delete(deletedIndicator);
+    delete selectedIndicator[deletedIndicator];
+    chart.dispatchAction({
+      type: "unselect",
+      seriesIndex: 0,
+      name: deletedIndicator,
+    });
+  }
+});
+const initChart = (): void => {
+  chart = echarts.init(chartContainer.value);
+  chart.setOption(sunburstOption);
+  chart.on("click", (params: any) => handleClick(params));
+};
+// Make the chart resizable
+const addResizeObserver = () => {
+  if (chartContainer.value) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > defaultWidth && height > defaultHeight) {
+          chart.resize();
+        }
+      }
+    });
+    resizeObserver.observe(chartContainer.value);
+  }
+};
+onMounted(() => {
+  if (!chartContainer.value) return;
+  initChart();
+  addResizeObserver();
+});
+</script>
 <template>
   <div class="btn-group" role="group">
     <button
@@ -91,178 +263,6 @@
   <!-- Chart -->
   <div ref="chartContainer" class="chart-container"></div>
 </template>
-
-<script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
-import * as echarts from "echarts";
-import {
-  sunburstData,
-  sunburstOption,
-  sunburstOption1,
-  sankeyOption,
-  SANKEYLEVELS,
-} from "@/assets/data/echarts_options";
-import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
-// Constant
-const chartContainer = ref<HTMLDivElement | null>(null);
-const defaultWidth = 1000;
-const defaultHeight = 1000;
-let chart: echarts.ECharts;
-const selected = ref<Set<string>>(new Set<string>());
-let selectedIndicator: Record<string, string> = {};
-const showModal = ref<boolean>(false);
-const resolution = ref<number>(2);
-const backgroundColor = ref<string>("#ffffff");
-const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
-const switchGraph = ref<GraphTypes>(GraphTypes.SANKEY);
-// Methods
-const switchGraphType = () => {
-  if (switchGraph.value == GraphTypes.SANKEY) {
-    switchGraph.value = GraphTypes.SUNBURST;
-    reloadChart(sankeyOption);
-  } else {
-    switchGraph.value = GraphTypes.SANKEY;
-    reloadChart(sunburstOption);
-  }
-};
-const downloadChart = () => {
-  const img = new Image();
-  img.src = chart.getDataURL({
-    type: imageFormat.value,
-    pixelRatio: resolution.value,
-    backgroundColor: backgroundColor.value,
-  });
-  const link = document.createElement("a");
-  link.href = img.src;
-  link.download =
-    `UR-${
-      switchGraph.value === GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY
-    }-chart.` + imageFormat.value;
-  link.click();
-};
-// Function to handle node clicks
-function handleClick(params: any): void {
-  if (params.data.depth) {
-    switch (params.data.depth) {
-      case SANKEYLEVELS.LEVEL1:
-        return;
-      case SANKEYLEVELS.LEVEL2:
-        if (selected.value.has(params.name)) {
-          deleteSelection(params.name);
-        } else {
-          addSelection(params.name, params.color);
-        }
-        break;
-      case SANKEYLEVELS.LEVEL3:
-        return;
-    }
-  } else if (params.data) {
-    const level = params.treePathInfo.length;
-    if (level === 4) {
-      if (params.name && selected.value.has(params.name)) {
-        deleteSelection(params.name);
-      } else if (params.name) {
-        addSelection(params.name, params.color);
-      } else {
-        chart.dispatchAction({
-          type: "unselect",
-          seriesIndex: 0,
-          dataIndex: params.dataIndex,
-        });
-      }
-      return;
-    } else if (level === 2 && params.value < 10) {
-      let color = params.color;
-      let data = sunburstData.children.find((node: any) => node.name === params.name);
-      reloadChart(sunburstOption1, data, color);
-      return;
-    } else if (level === 2) {
-      chart.clear();
-      chart.setOption(sunburstOption);
-      return;
-    }
-  }
-}
-// Reload chart option
-function reloadChart(option: any, data?: any, color?: string): void {
-  if (data !== undefined && color !== undefined) {
-    option.series.data = [data];
-    option.color = color;
-  }
-  chart.clear();
-  chart.setOption(option);
-  loadSidebarIndicator();
-}
-// Synchronize the sidebar saved indicators to the reloaded sunburst chart
-function loadSidebarIndicator(): void {
-  let savedIndicators = localStorage.getItem(LocalStorageEvent.SIDEBARSAVED);
-  if (savedIndicators) {
-    selected.value = new Set<string>(JSON.parse(savedIndicators));
-    chart.dispatchAction({
-      type: "select",
-      seriesIndex: 0,
-      name: JSON.parse(savedIndicators),
-    });
-  }
-}
-function addSelection(name: string, color: string) {
-  selected.value.add(name);
-  selectedIndicator[name] = color;
-}
-function deleteSelection(name: string) {
-  selected.value.delete(name);
-  delete selectedIndicator[name];
-}
-// Store the changes of sunburst selected indicators
-watch(
-  selected,
-  (newVal) => {
-    if (!chart) return;
-    localStorage.setItem(
-      LocalStorageEvent.CHARTSELECTED,
-      JSON.stringify(selectedIndicator),
-    );
-  },
-  { deep: true },
-);
-// Watch for deletion in sidebar and update sidebar Selected indicators
-window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === LocalStorageEvent.SIDEBARDELETED) {
-    let deletedIndicator = event.newValue!;
-    selected.value.delete(deletedIndicator);
-    delete selectedIndicator[deletedIndicator];
-    chart.dispatchAction({
-      type: "unselect",
-      seriesIndex: 0,
-      name: deletedIndicator,
-    });
-  }
-});
-const initChart = (): void => {
-  chart = echarts.init(chartContainer.value);
-  chart.setOption(sunburstOption);
-  chart.on("click", (params: any) => handleClick(params));
-};
-const addResizeObserver = () => {
-  if (chartContainer.value) {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        const { width, height } = entry.contentRect;
-        if (width > defaultWidth && height > defaultHeight) {
-          chart.resize();
-        }
-      }
-    });
-    resizeObserver.observe(chartContainer.value);
-  }
-};
-onMounted(() => {
-  if (!chartContainer.value) return;
-  initChart();
-  addResizeObserver();
-});
-</script>
-
 <style scoped>
 .chart-container {
   width: 100%;

@@ -10,27 +10,23 @@ import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
-import { provide, ref, inject, watch } from "vue";
-import type { Ref } from "vue";
-import type { FeatureCollection, Point, Polygon, MultiPolygon, Feature } from "geojson";
-import type {
-  Layer,
-  ShelterProperties,
-  IsochroneProperties,
-  PopulationProperties,
-} from "@/assets/ts/types";
+import { onMounted, provide, ref, watch } from "vue";
+import type { Point, Feature } from "geojson";
+import type { Layer, ShelterProperties } from "@/assets/ts/types";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
+import { useMapStore } from "@/stores/useMapStore";
 import { basemaps } from "@/assets/ts/constants";
 
+// Pinia Store
+const mapStore = useMapStore();
 // Switch to another city, the popup content would be cleared
-const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
-watch(city, () => {
-  popup.value = "";
-});
+watch(
+  () => mapStore.city,
+  () => {
+    popup.value = "";
+  },
+);
 // Shelter Layer Settings
-const shelters = inject(InjectionKeyEnum.SHELTER_GEOJSON) as Ref<
-  FeatureCollection<Point, ShelterProperties>
->;
 const showShelters = ref<boolean>(true);
 const markerOptions = {
   radius: 5,
@@ -57,9 +53,6 @@ const resetHighlight = (e: any) => {
   e.target.setStyle(markerOptions);
 };
 // Boundary Layer Settings
-const boundary = inject<Ref<FeatureCollection<Polygon>>>(
-  InjectionKeyEnum.BOUNDARY_GEOJSON,
-);
 const showBoundary = ref<boolean>(true);
 const boundaryStyle = () => {
   return {
@@ -68,9 +61,6 @@ const boundaryStyle = () => {
   };
 };
 // Isochrone Layer Settings
-const isochrones = inject<Ref<FeatureCollection<MultiPolygon, IsochroneProperties>>>(
-  InjectionKeyEnum.ISOCHRONE_GEOJSON,
-);
 const showIsochrones = ref<boolean>(true);
 const isochroneStyle = (feature: any) => {
   return {
@@ -82,9 +72,6 @@ const isochroneStyle = (feature: any) => {
   };
 };
 // Population Layer Settings
-const population = inject(InjectionKeyEnum.POPULATION_GEOJSON) as Ref<
-  FeatureCollection<MultiPolygon, PopulationProperties>
->;
 const showPopulation = ref<boolean>(false);
 const populationStyle = (feature: any) => {
   return {
@@ -95,6 +82,10 @@ const populationStyle = (feature: any) => {
     opacity: 0.95,
   };
 };
+const isLayerLoad = ref(false);
+onMounted(() => {
+  isLayerLoad.value = true;
+});
 // Provide layers
 provide<Layer>(InjectionKeyEnum.SHELTER_LAYER, {
   name: LayerName.SHELTER,
@@ -129,12 +120,11 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
       pane="tilePane"
     ></l-tile-layer>
   </template>
-
   <!-- Shelters -->
   <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker
       pane="markerPane"
-      v-for="(feature, index) in shelters.features"
+      v-for="(feature, index) in mapStore.shelters.features"
       :key="`${index}-${feature.properties.name}`"
       :name="feature.properties.name"
       :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
@@ -151,7 +141,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Boundary -->
   <l-geo-json
     :name="LayerName.BOUNDARY"
-    :geojson="boundary"
+    :geojson="mapStore.boundary"
     :visible="showBoundary"
     layer-type="overlay"
     :options-style="boundaryStyle"
@@ -160,7 +150,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Isochrones -->
   <l-geo-json
     :name="LayerName.ISOCHRONE"
-    :geojson="isochrones"
+    :geojson="mapStore.isochrones"
     :visible="showIsochrones"
     layer-type="overlay"
     :options-style="isochroneStyle"
@@ -169,7 +159,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Population -->
   <l-geo-json
     :name="LayerName.POPULATION"
-    :geojson="population"
+    :geojson="mapStore.population"
     :visible="showPopulation"
     layer-type="overlay"
     :options-style="populationStyle"

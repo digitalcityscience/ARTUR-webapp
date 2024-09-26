@@ -26,17 +26,17 @@ export enum LayerName {
 export const basemaps: Array<TileLayer> = [
   {
     name: "CartoCDN Voyager",
-    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png",
     visible: ref(true),
   },
   {
     name: "CartoCDN Positron",
-    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
     visible: ref(false),
   },
   {
     name: "CartoCDN Dark Matter",
-    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
     visible: ref(false),
   },
   {
@@ -59,11 +59,6 @@ export enum LocalStorageEvent {
 
 export enum InjectionKeyEnum {
   MAP = "Map",
-  CITY = "City",
-  SHELTER_GEOJSON = "ShelterGeoJSON",
-  BOUNDARY_GEOJSON = "BoundaryGeoJSON",
-  ISOCHRONE_GEOJSON = "IsochroneGeoJSON",
-  POPULATION_GEOJSON = "PopulationGeoJSON",
   SHELTER_LAYER = "ShelterLayer",
   BOUNDARY_LAYER = "BoundaryLayer",
   ISOCHRONE_LAYER = "IsochroneLayer",

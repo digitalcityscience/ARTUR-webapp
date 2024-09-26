@@ -1,20 +1,15 @@
-<template>
-  <div ref="chartContainer" class="chart-container"></div>
-</template>
-
 <script setup lang="ts">
-import { onMounted, ref, inject, watch } from "vue";
-import type { Ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import { getTotalPopulation } from "@/assets/ts/functions";
-import { InjectionKeyEnum } from "@/assets/ts/constants";
-import { populationAccessibleColor, populationInaccessibleColor } from "@/assets/ts/constants";
+import {
+  populationAccessibleColor,
+  populationInaccessibleColor,
+} from "@/assets/ts/constants";
+import { useMapStore } from "@/stores/useMapStore";
 
-// Constants and reactive properties
-const city = inject(InjectionKeyEnum.CITY) as Ref<string>;
+const mapStore = useMapStore();
 const population = ref<number[]>([]);
-
-// References and variables
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
 
@@ -75,7 +70,7 @@ const updateChart = (): void => {
 
 // Watchers
 watch(
-  city,
+  () => mapStore.city,
   (newCity) => {
     if (newCity) {
       population.value = getTotalPopulation(newCity);
@@ -89,7 +84,9 @@ onMounted(() => {
   initChart();
 });
 </script>
-
+<template>
+  <div ref="chartContainer" class="chart-container"></div>
+</template>
 <style scoped>
 .chart-container {
   width: 400px;

@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import type { CityData } from "@/assets/ts/types";
-import { inject } from "vue";
-import type { Ref } from "vue";
-import { CityName, InjectionKeyEnum } from "@/assets/ts/constants";
+import { CityName } from "@/assets/ts/constants";
+import { useMapStore } from "@/stores/useMapStore";
+import { cities } from "@/assets/ts/constants";
 
-const map = inject<Ref<any>>(InjectionKeyEnum.MAP);
-const props = defineProps({
-  zoom: Number,
-  cities: Array<CityData>,
-});
+const mapStore = useMapStore();
+const map = mapStore.map;
 const btnNaviClick = (city: CityData) => {
-  map!.value.leafletObject.flyTo(city.latLng, props.zoom);
-  selectedCity!.value = city.name;
+  map.flyTo(city.latLng, 12);
+  mapStore.setCity(city.name);
 };
-const selectedCity = inject<Ref<CityName>>(InjectionKeyEnum.CITY);
-const isSelected = (cityName: CityName) => selectedCity!.value === cityName;
+const isSelected = (cityName: CityName) => mapStore.city === cityName;
 </script>
 
 <template>
@@ -31,7 +27,7 @@ const isSelected = (cityName: CityName) => selectedCity!.value === cityName;
         Cities
       </button>
       <ul class="dropdown-menu show">
-        <template v-for="city in props.cities" :key="city.name">
+        <template v-for="city in cities" :key="city.name">
           <li>
             <button
               class="dropdown-item"

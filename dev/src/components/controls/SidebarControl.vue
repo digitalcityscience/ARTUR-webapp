@@ -8,10 +8,11 @@ import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { InjectionKeyEnum, LocalStorageEvent } from "@/assets/ts/constants";
 import { basemaps } from "@/assets/ts/constants";
-
+import { useMapStore } from "@/stores/useMapStore";
 // Variables
+const mapStore = useMapStore();
 // Map
-const map = inject(InjectionKeyEnum.MAP) as Ref<any>;
+const map = mapStore.map;
 // Overlays
 const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
 const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
@@ -68,6 +69,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
   if (event.key === LocalStorageEvent.CHARTSELECTED)
     indicators.value = JSON.parse(event.newValue!) as Record<string, string>;
 });
+// The Analysis
 const analyzeResults = () => {};
 onMounted(() => {
   let sidebar = L.control
@@ -76,7 +78,7 @@ onMounted(() => {
       position: "right",
       closebutton: true,
     })
-    .addTo(map.value.leafletObject)
+    .addTo(map)
     .open("home");
 });
 </script>

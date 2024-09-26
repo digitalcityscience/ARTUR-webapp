@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import PopulationLegendGrid from "@/components/controls/PopulationLegendGrid.vue";
-import { inject, ref, computed } from "vue";
+import { populationLegendOption } from "@/assets/data/echarts_options";
+import * as echarts from "echarts";
+import { inject, ref, computed, onMounted } from "vue";
 import { InjectionKeyEnum } from "@/assets/ts/constants";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import type { Layer } from "@/assets/ts/types";
@@ -14,10 +15,23 @@ const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
 });
+// Population Legend Chart
+const chartContainer = ref<HTMLDivElement | null>(null);
+let chart: echarts.ECharts;
+const initChart = () => {
+  chart = echarts.init(chartContainer.value!);
+  chart.setOption(populationLegendOption);
+};
+onMounted(() => {
+  initChart();
+});
 </script>
 <template>
   <l-control position="bottomleft">
-    <button @click="showLegend = !showLegend" class="btn btn-primary btn-sm legend-button">
+    <button
+      @click="showLegend = !showLegend"
+      class="btn btn-primary btn-sm legend-button"
+    >
       <i :class="btnLegendIconClass" style="float: left; padding-right: 5px"></i>
       <strong>Legend</strong>
       <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
@@ -33,12 +47,12 @@ const btnLegendIconClass = computed(() => {
       </div>
       <div v-show="isochronesLayer.visible.value">
         <template v-for="range in isochronesLayer.range" :key="range">
-          <i class="polygon" :style="{ background: getIsochroneColor(range) }"></i>Isochrone
-          {{ range }} min<br />
+          <i class="polygon" :style="{ background: getIsochroneColor(range) }"></i
+          >Isochrone {{ range }} min<br />
         </template>
       </div>
       <div v-show="populationLayer.visible.value" class="population-grid">
-        <population-legend-grid></population-legend-grid>
+        <div ref="chartContainer" class="chartContainer"></div>
       </div>
     </div>
   </l-control>
@@ -80,5 +94,9 @@ const btnLegendIconClass = computed(() => {
 }
 .population-grid {
   width: 160px;
+}
+.chartContainer {
+  width: 100px;
+  height: 180px;
 }
 </style>
