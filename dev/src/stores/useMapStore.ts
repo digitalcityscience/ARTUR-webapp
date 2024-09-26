@@ -9,39 +9,55 @@ import type {
   IsochroneProperties,
   PopulationProperties,
 } from "@/assets/ts/types";
-
+// Define a common structure for all layer data
+type LayerData = {
+  shelters?: FeatureCollection<Point, ShelterProperties>;
+  boundary?: FeatureCollection<Polygon>;
+  isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;
+  population?: FeatureCollection<MultiPolygon, PopulationProperties>;
+};
 export const useMapStore = defineStore("city", () => {
   // State
   const map = ref();
   const city = ref(cities[0].name);
-  const shelters = ref() as Ref<FeatureCollection<Point, ShelterProperties>>;
-  const boundary = ref() as Ref<FeatureCollection<Polygon>>;
-  const isochrones = ref() as Ref<FeatureCollection<MultiPolygon, IsochroneProperties>>;
-  const population = ref() as Ref<FeatureCollection<MultiPolygon, PopulationProperties>>;
+  const layerData = ref<LayerData>({});
   const isJsonDataLoad = ref<boolean>(false);
+  // Cache for all cities' data
+  const dataCache = ref<Record<string, LayerData>>({});
 
   // Actions
   const fetchGeoData = async (cityName: CityName) => {
+    // Check if data for the city is cached
+    if (dataCache.value[cityName]) {
+      layerData.value = dataCache.value[cityName];
+      isJsonDataLoad.value = true;
+      return;
+    }
+
     try {
-      // Create an array of promises
-      const requests = [
+      // Create an array of promises for API requests
+      const [shelterRes, boundaryRes, isochroneRes, populationRes] = await Promise.all([
         axios.get(`/api/shelter/${cityName}`),
         axios.get(`/api/boundary/${cityName}`),
         axios.get(`/api/isochrone/${cityName}`),
         axios.get(`/api/population/${cityName}`),
-      ];
+      ]);
 
-      // Use Promise.all to fetch all data concurrently
-      const [shelterRes, boundaryRes, isochroneRes, populationRes] = await Promise.all(
-        requests,
+      // Assign data to layerData
+      layerData.value = {
+        shelters: shelterRes.data,
+        boundary: boundaryRes.data,
+        isochrones: isochroneRes.data,
+        population: populationRes.data,
+      };
+
+      // Sort isochrones by range
+      layerData.value.isochrones?.features.sort(
+        (a, b) => b.properties.range - a.properties.range,
       );
 
-      // Assign data to state
-      shelters.value = shelterRes.data;
-      boundary.value = boundaryRes.data;
-      isochrones.value = isochroneRes.data;
-      isochrones.value.features.sort((a, b) => b.properties.range - a.properties.range);
-      population.value = populationRes.data;
+      // Cache the fetched data
+      dataCache.value[cityName] = layerData.value;
 
       isJsonDataLoad.value = true; // Set loading state to true after all data is loaded
     } catch (error) {
@@ -58,10 +74,7 @@ export const useMapStore = defineStore("city", () => {
   return {
     map,
     city,
-    shelters,
-    boundary,
-    isochrones,
-    population,
+    layerData,
     isJsonDataLoad,
     setCity,
     fetchGeoData,
