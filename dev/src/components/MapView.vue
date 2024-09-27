@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, onBeforeMount } from "vue";
-import { useMapStore } from "@/stores/useMapStore";
+import useMapStore from "@/stores/mapStore";
 import LayerControl from "./controls/LayerControl.vue";
 import NavControl from "./controls/NavControl.vue";
 import { cities } from "@/assets/ts/constants";

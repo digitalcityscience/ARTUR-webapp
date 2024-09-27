@@ -13,8 +13,8 @@ import { LayerName } from "@/assets/ts/constants";
 import { onMounted, ref, watch } from "vue";
 import type { Point, Feature } from "geojson";
 import type { ShelterProperties } from "@/assets/ts/types";
-import { useMapStore } from "@/stores/useMapStore";
 import { basemaps } from "@/assets/ts/constants";
+import useMapStore from "@/stores/mapStore";
 
 // Pinia Store
 const mapStore = useMapStore();

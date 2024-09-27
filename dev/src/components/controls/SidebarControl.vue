@@ -7,7 +7,8 @@ import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { LocalStorageEvent } from "@/assets/ts/constants";
 import { basemaps } from "@/assets/ts/constants";
-import { useMapStore } from "@/stores/useMapStore";
+import useMapStore from "@/stores/mapStore";
+
 // Variables
 const mapStore = useMapStore();
 // Map

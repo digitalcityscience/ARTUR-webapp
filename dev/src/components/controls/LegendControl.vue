@@ -4,7 +4,7 @@ import { populationLegendOption } from "@/assets/data/echarts_options";
 import * as echarts from "echarts";
 import { ref, computed, onMounted } from "vue";
 import { getIsochroneColor } from "@/assets/ts/functions";
-import { useMapStore } from "@/stores/useMapStore";
+import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
 const showLegend = ref(true);

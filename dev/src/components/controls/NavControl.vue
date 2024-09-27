@@ -2,7 +2,7 @@
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import type { CityData } from "@/assets/ts/types";
 import { CityName } from "@/assets/ts/constants";
-import { useMapStore } from "@/stores/useMapStore";
+import useMapStore from "@/stores/mapStore";
 import { cities } from "@/assets/ts/constants";
 
 const mapStore = useMapStore();

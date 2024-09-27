@@ -6,7 +6,7 @@ import {
   populationAccessibleColor,
   populationInaccessibleColor,
 } from "@/assets/ts/constants";
-import { useMapStore } from "@/stores/useMapStore";
+import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
 const population = ref<number[]>([]);

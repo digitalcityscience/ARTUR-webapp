@@ -3,26 +3,14 @@ import { ref } from "vue";
 import axios from "axios";
 import { cities, CityName, LayerName } from "@/assets/ts/constants";
 import type { VectorLayer } from "@/assets/ts/types";
-import type { FeatureCollection, Point, Polygon, MultiPolygon } from "geojson";
-import type {
-  ShelterProperties,
-  IsochroneProperties,
-  PopulationProperties,
-} from "@/assets/ts/types";
-// Define a common structure for all layer data
-type GeoJSONData = {
-  shelters?: FeatureCollection<Point, ShelterProperties>;
-  boundary?: FeatureCollection<Polygon>;
-  isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;
-  population?: FeatureCollection<MultiPolygon, PopulationProperties>;
-};
-export const useMapStore = defineStore("city", () => {
+import type { GeoJSONData } from "@/assets/ts/types";
+
+const useMapStore = defineStore("city", () => {
   // State
   const map = ref();
   const city = ref(cities[0].name);
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
-  // Cache for all cities' data
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const vectorLayers: Record<string, VectorLayer> = {
     shelterLayer: { name: LayerName.SHELTER, visible: ref(true), color: "orange" },
@@ -98,3 +86,4 @@ export const useMapStore = defineStore("city", () => {
     fetchGeoData,
   };
 });
+export default useMapStore;
