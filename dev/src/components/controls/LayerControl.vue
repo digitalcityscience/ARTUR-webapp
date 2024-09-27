@@ -124,7 +124,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
     <l-circle-marker
       pane="markerPane"
-      v-for="(feature, index) in mapStore.layerData.shelters!.features"
+      v-for="(feature, index) in mapStore.geojsonData.shelters!.features"
       :key="`${index}-${feature.properties.name}`"
       :name="feature.properties.name"
       :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
@@ -141,7 +141,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Boundary -->
   <l-geo-json
     :name="LayerName.BOUNDARY"
-    :geojson="mapStore.layerData.boundary"
+    :geojson="mapStore.geojsonData.boundary"
     :visible="showBoundary"
     layer-type="overlay"
     :options-style="boundaryStyle"
@@ -150,7 +150,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Isochrones -->
   <l-geo-json
     :name="LayerName.ISOCHRONE"
-    :geojson="mapStore.layerData.isochrones"
+    :geojson="mapStore.geojsonData.isochrones"
     :visible="showIsochrones"
     layer-type="overlay"
     :options-style="isochroneStyle"
@@ -159,7 +159,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <!-- Population -->
   <l-geo-json
     :name="LayerName.POPULATION"
-    :geojson="mapStore.layerData.population"
+    :geojson="mapStore.geojsonData.population"
     :visible="showPopulation"
     layer-type="overlay"
     :options-style="populationStyle"

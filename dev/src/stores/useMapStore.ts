@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { Ref } from "vue";
 import axios from "axios";
 import { cities, CityName } from "@/assets/ts/constants";
 import type { FeatureCollection, Point, Polygon, MultiPolygon } from "geojson";
@@ -10,7 +9,7 @@ import type {
   PopulationProperties,
 } from "@/assets/ts/types";
 // Define a common structure for all layer data
-type LayerData = {
+type GeoJSONData = {
   shelters?: FeatureCollection<Point, ShelterProperties>;
   boundary?: FeatureCollection<Polygon>;
   isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;
@@ -20,16 +19,16 @@ export const useMapStore = defineStore("city", () => {
   // State
   const map = ref();
   const city = ref(cities[0].name);
-  const layerData = ref<LayerData>({});
+  const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
   // Cache for all cities' data
-  const dataCache = ref<Record<string, LayerData>>({});
+  const dataCache = ref<Record<string, GeoJSONData>>({});
 
   // Actions
   const fetchGeoData = async (cityName: CityName) => {
     // Check if data for the city is cached
     if (dataCache.value[cityName]) {
-      layerData.value = dataCache.value[cityName];
+      geojsonData.value = dataCache.value[cityName];
       isJsonDataLoad.value = true;
       return;
     }
@@ -43,8 +42,8 @@ export const useMapStore = defineStore("city", () => {
         axios.get(`/api/population/${cityName}`),
       ]);
 
-      // Assign data to layerData
-      layerData.value = {
+      // Assign data to geojsonData
+      geojsonData.value = {
         shelters: shelterRes.data,
         boundary: boundaryRes.data,
         isochrones: isochroneRes.data,
@@ -52,12 +51,12 @@ export const useMapStore = defineStore("city", () => {
       };
 
       // Sort isochrones by range
-      layerData.value.isochrones?.features.sort(
+      geojsonData.value.isochrones?.features.sort(
         (a, b) => b.properties.range - a.properties.range,
       );
 
       // Cache the fetched data
-      dataCache.value[cityName] = layerData.value;
+      dataCache.value[cityName] = geojsonData.value;
 
       isJsonDataLoad.value = true; // Set loading state to true after all data is loaded
     } catch (error) {
@@ -74,7 +73,7 @@ export const useMapStore = defineStore("city", () => {
   return {
     map,
     city,
-    layerData,
+    geojsonData,
     isJsonDataLoad,
     setCity,
     fetchGeoData,

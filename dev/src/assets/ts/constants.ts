@@ -58,7 +58,6 @@ export enum LocalStorageEvent {
 }
 
 export enum InjectionKeyEnum {
-  MAP = "Map",
   SHELTER_LAYER = "ShelterLayer",
   BOUNDARY_LAYER = "BoundaryLayer",
   ISOCHRONE_LAYER = "IsochroneLayer",

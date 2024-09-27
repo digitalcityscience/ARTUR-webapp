@@ -72,7 +72,7 @@ window.addEventListener("storage", (event: StorageEvent) => {
 // The Analysis
 const analyzeResults = () => {};
 onMounted(() => {
-  let sidebar = L.control
+  L.control
     .sidebar({
       container: "rightsidebar",
       position: "right",
@@ -203,7 +203,7 @@ onMounted(() => {
                         aria-expanded="true"
                         style="padding-left: 0"
                       >
-                        Basemap
+                        Basemaps
                       </button>
                       <div
                         v-for="basemap in basemaps"
