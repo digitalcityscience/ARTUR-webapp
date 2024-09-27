@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
-import { cities, CityName } from "@/assets/ts/constants";
+import { cities, CityName, LayerName } from "@/assets/ts/constants";
+import type { VectorLayer } from "@/assets/ts/types";
 import type { FeatureCollection, Point, Polygon, MultiPolygon } from "geojson";
 import type {
   ShelterProperties,
@@ -23,7 +24,24 @@ export const useMapStore = defineStore("city", () => {
   const isJsonDataLoad = ref<boolean>(false);
   // Cache for all cities' data
   const dataCache = ref<Record<string, GeoJSONData>>({});
-
+  const vectorLayers: Record<string, VectorLayer> = {
+    shelterLayer: { name: LayerName.SHELTER, visible: ref(true), color: "orange" },
+    boundaryLayer: {
+      name: LayerName.BOUNDARY,
+      visible: ref(true),
+      color: "black",
+    },
+    isochroneLayer: {
+      name: LayerName.ISOCHRONE,
+      visible: ref(true),
+      range: [1, 2, 3, 4, 5],
+    },
+    populationLayer: {
+      name: LayerName.POPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
+  };
   // Actions
   const fetchGeoData = async (cityName: CityName) => {
     // Check if data for the city is cached
@@ -74,6 +92,7 @@ export const useMapStore = defineStore("city", () => {
     map,
     city,
     geojsonData,
+    vectorLayers,
     isJsonDataLoad,
     setCity,
     fetchGeoData,

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { onMounted, inject, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import type { Ref } from "vue";
-import type { Layer } from "@/assets/ts/types";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { InjectionKeyEnum, LocalStorageEvent } from "@/assets/ts/constants";
+import { LocalStorageEvent } from "@/assets/ts/constants";
 import { basemaps } from "@/assets/ts/constants";
 import { useMapStore } from "@/stores/useMapStore";
 // Variables
@@ -14,17 +13,7 @@ const mapStore = useMapStore();
 // Map
 const map = mapStore.map;
 // Overlays
-const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
-const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
-const isochronesLayer = inject(InjectionKeyEnum.ISOCHRONE_LAYER) as Layer;
-const populationLayer = inject(InjectionKeyEnum.POPULATION_LAYER) as Layer;
 const indicators: Ref<Record<string, string>> = ref({});
-const overlays: Layer[] = [
-  sheltersLayer,
-  isochronesLayer,
-  boundaryLayer,
-  populationLayer,
-];
 // Track the currently selected base map by its name, default is the first
 const selectedBasemap = ref(basemaps[0].name);
 // Methods
@@ -236,7 +225,7 @@ onMounted(() => {
                       </button>
                       <div
                         class="form-check collapse show"
-                        v-for="overlay in overlays"
+                        v-for="overlay in mapStore.vectorLayers"
                         :key="overlay.name"
                         id="overlay-switch"
                       >
@@ -245,7 +234,7 @@ onMounted(() => {
                           type="checkbox"
                           :id="overlay.name"
                           :name="overlay.name"
-                          v-model="overlay.visible.value"
+                          v-model="overlay.visible"
                         />
                         <label class="form-check-label" :for="overlay.name">
                           {{ overlay.name }}
@@ -274,7 +263,7 @@ onMounted(() => {
                   class="btn btn-toggle rounded collapsed"
                   data-bs-toggle="collapse"
                   data-bs-target="#population-collapse"
-                  v-show="populationLayer.visible.value"
+                  v-show="mapStore.vectorLayers.populationLayer.visible"
                   aria-expanded="true"
                   style="padding-left: 0"
                 >
@@ -282,7 +271,7 @@ onMounted(() => {
                 </button>
                 <div class="collapse show" id="population-collapse">
                   <population-sum-chart
-                    v-if="populationLayer.visible.value"
+                    v-if="mapStore.vectorLayers.populationLayer.visible"
                   ></population-sum-chart>
                 </div>
               </li>

@@ -1,5 +1,4 @@
-import type { CityData } from "./types";
-import type { TileLayer } from "./types";
+import type { CityData, TileLayer } from "./types";
 import { ref } from "vue";
 
 export enum CityName {
@@ -16,6 +15,7 @@ export const cities: Array<CityData> = [
   { name: CityName.DNIPRO, latLng: [48.467953, 35.041797] },
   { name: CityName.SUMY, latLng: [50.911913, 34.80279] },
 ];
+
 export enum LayerName {
   SHELTER = "Shelters",
   BOUNDARY = "Boundary",

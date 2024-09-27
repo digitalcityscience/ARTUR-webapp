@@ -2,15 +2,11 @@
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import { populationLegendOption } from "@/assets/data/echarts_options";
 import * as echarts from "echarts";
-import { inject, ref, computed, onMounted } from "vue";
-import { InjectionKeyEnum } from "@/assets/ts/constants";
+import { ref, computed, onMounted } from "vue";
 import { getIsochroneColor } from "@/assets/ts/functions";
-import type { Layer } from "@/assets/ts/types";
+import { useMapStore } from "@/stores/useMapStore";
 
-const sheltersLayer = inject(InjectionKeyEnum.SHELTER_LAYER) as Layer;
-const boundaryLayer = inject(InjectionKeyEnum.BOUNDARY_LAYER) as Layer;
-const isochronesLayer = inject(InjectionKeyEnum.ISOCHRONE_LAYER) as Layer;
-const populationLayer = inject(InjectionKeyEnum.POPULATION_LAYER) as Layer;
+const mapStore = useMapStore();
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -37,21 +33,30 @@ onMounted(() => {
       <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
     </button>
     <div class="legend" v-show="showLegend">
-      <div v-show="sheltersLayer.visible.value">
-        <i class="point" :style="{ background: sheltersLayer.color }"></i>
-        {{ sheltersLayer.name }}
+      <div v-show="mapStore.vectorLayers.shelterLayer.visible">
+        <i
+          class="point"
+          :style="{ background: mapStore.vectorLayers.shelterLayer.color }"
+        ></i>
+        {{ mapStore.vectorLayers.shelterLayer.name }}
       </div>
-      <div v-show="boundaryLayer.visible.value">
-        <i class="polyline" :style="{ background: boundaryLayer.color }"></i>
-        {{ boundaryLayer.name }}
+      <div v-show="mapStore.vectorLayers.boundaryLayer.visible">
+        <i
+          class="polyline"
+          :style="{ background: mapStore.vectorLayers.boundaryLayer.color }"
+        ></i>
+        {{ mapStore.vectorLayers.boundaryLayer.name }}
       </div>
-      <div v-show="isochronesLayer.visible.value">
-        <template v-for="range in isochronesLayer.range" :key="range">
+      <div v-show="mapStore.vectorLayers.isochroneLayer.visible">
+        <template
+          v-for="range in mapStore.vectorLayers.isochroneLayer.range"
+          :key="range"
+        >
           <i class="polygon" :style="{ background: getIsochroneColor(range) }"></i
           >Isochrone {{ range }} min<br />
         </template>
       </div>
-      <div v-show="populationLayer.visible.value" class="population-grid">
+      <div v-show="mapStore.vectorLayers.populationLayer.visible" class="population-grid">
         <div ref="chartContainer" class="chartContainer"></div>
       </div>
     </div>

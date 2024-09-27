@@ -6,7 +6,7 @@ export interface CityData {
   latLng: number[];
 }
 
-export interface Layer {
+export interface VectorLayer {
   name: string;
   visible: Ref<boolean>;
   color?: string;

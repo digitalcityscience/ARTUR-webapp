@@ -10,10 +10,9 @@ import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
-import { onMounted, provide, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import type { Point, Feature } from "geojson";
-import type { Layer, ShelterProperties } from "@/assets/ts/types";
-import { InjectionKeyEnum } from "@/assets/ts/constants";
+import type { ShelterProperties } from "@/assets/ts/types";
 import { useMapStore } from "@/stores/useMapStore";
 import { basemaps } from "@/assets/ts/constants";
 
@@ -27,10 +26,9 @@ watch(
   },
 );
 // Shelter Layer Settings
-const showShelters = ref<boolean>(true);
 const markerOptions = {
   radius: 5,
-  fillColor: "orange",
+  fillColor: mapStore.vectorLayers.shelterLayer.color!,
   color: "white",
   weight: 1,
   opacity: 0.8,
@@ -53,15 +51,13 @@ const resetHighlight = (e: any) => {
   e.target.setStyle(markerOptions);
 };
 // Boundary Layer Settings
-const showBoundary = ref<boolean>(true);
 const boundaryStyle = () => {
   return {
     fillOpacity: 0,
-    color: "black",
+    color: mapStore.vectorLayers.boundaryLayer.color,
   };
 };
 // Isochrone Layer Settings
-const showIsochrones = ref<boolean>(true);
 const isochroneStyle = (feature: any) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range),
@@ -72,7 +68,6 @@ const isochroneStyle = (feature: any) => {
   };
 };
 // Population Layer Settings
-const showPopulation = ref<boolean>(false);
 const populationStyle = (feature: any) => {
   return {
     fillColor: getPopulationColor(feature.properties.value, feature.properties.access),
@@ -85,27 +80,6 @@ const populationStyle = (feature: any) => {
 const isLayerLoad = ref(false);
 onMounted(() => {
   isLayerLoad.value = true;
-});
-// Provide layers
-provide<Layer>(InjectionKeyEnum.SHELTER_LAYER, {
-  name: LayerName.SHELTER,
-  visible: showShelters,
-  color: markerOptions.fillColor,
-});
-provide<Layer>(InjectionKeyEnum.BOUNDARY_LAYER, {
-  name: LayerName.BOUNDARY,
-  visible: showBoundary,
-  color: boundaryStyle().color,
-});
-provide<Layer>(InjectionKeyEnum.ISOCHRONE_LAYER, {
-  name: LayerName.ISOCHRONE,
-  visible: showIsochrones,
-  range: [1, 2, 3, 4, 5],
-});
-provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
-  name: LayerName.POPULATION,
-  visible: showPopulation,
-  range: [45, 35, 25, 15, 5],
 });
 </script>
 
@@ -121,7 +95,11 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
     ></l-tile-layer>
   </template>
   <!-- Shelters -->
-  <l-feature-group :name="LayerName.SHELTER" layer-type="overlay" :visible="showShelters">
+  <l-feature-group
+    :name="LayerName.SHELTER"
+    layer-type="overlay"
+    :visible="mapStore.vectorLayers.shelterLayer.visible as unknown as boolean"
+  >
     <l-circle-marker
       pane="markerPane"
       v-for="(feature, index) in mapStore.geojsonData.shelters!.features"
@@ -142,7 +120,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <l-geo-json
     :name="LayerName.BOUNDARY"
     :geojson="mapStore.geojsonData.boundary"
-    :visible="showBoundary"
+    :visible="mapStore.vectorLayers.boundaryLayer.visible as unknown as boolean"
     layer-type="overlay"
     :options-style="boundaryStyle"
     pane="overlayPane"
@@ -151,7 +129,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <l-geo-json
     :name="LayerName.ISOCHRONE"
     :geojson="mapStore.geojsonData.isochrones"
-    :visible="showIsochrones"
+    :visible="mapStore.vectorLayers.isochroneLayer.visible as unknown as boolean"
     layer-type="overlay"
     :options-style="isochroneStyle"
     pane="overlayPane"
@@ -160,7 +138,7 @@ provide<Layer>(InjectionKeyEnum.POPULATION_LAYER, {
   <l-geo-json
     :name="LayerName.POPULATION"
     :geojson="mapStore.geojsonData.population"
-    :visible="showPopulation"
+    :visible="mapStore.vectorLayers.populationLayer.visible as unknown as boolean"
     layer-type="overlay"
     :options-style="populationStyle"
     pane="overlayPane"
