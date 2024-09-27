@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import type { Ref } from "vue";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { LocalStorageEvent } from "@/assets/ts/constants";
 import { basemaps } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";
+import useIndicatorStore from "@/stores/indicatorStore";
 
-// Variables
+// Stores
 const mapStore = useMapStore();
+const indicatorStore = useIndicatorStore();
 // Map
 const map = mapStore.map;
-// Overlays
-const indicators: Ref<Record<string, string>> = ref({});
 // Track the currently selected base map by its name, default is the first
 const selectedBasemap = ref(basemaps[0].name);
 // Methods
@@ -24,6 +22,14 @@ watch(selectedBasemap, (newBasemap) => {
     basemap.visible.value = basemap.name === newBasemap;
   });
 });
+watch(
+  indicatorStore.selectedIndicator,
+  (newVal) => {
+    console.log(newVal);
+  },
+  { deep: true },
+);
+
 // Open the Indicator Selection Window
 const openIndicatorSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -38,27 +44,6 @@ const openIndicatorSelection = (): void => {
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
 };
-watch(
-  indicators,
-  (newValue) => {
-    // Save the selection of sidebar and store in the local storage
-    localStorage.setItem(
-      LocalStorageEvent.SIDEBARSAVED,
-      JSON.stringify(Object.keys(newValue)),
-    );
-  },
-  { deep: true },
-);
-const deleteSelection = (indicator: string): void => {
-  delete indicators.value[indicator];
-  // Pass the deleted indicator to chart to unselect the indicator
-  localStorage.setItem(LocalStorageEvent.SIDEBARDELETED, indicator);
-};
-// Watch for changes of chart selected indicators and update indicators
-window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === LocalStorageEvent.CHARTSELECTED)
-    indicators.value = JSON.parse(event.newValue!) as Record<string, string>;
-});
 // The Analysis
 const analyzeResults = () => {};
 onMounted(() => {
@@ -299,7 +284,9 @@ onMounted(() => {
               <div class="collapse show" id="indicator-collapse">
                 <ul
                   class="list-group"
-                  v-for="indicator in Object.entries(indicators).map(([key, value]) => ({
+                  v-for="indicator in Object.entries(
+                    indicatorStore.selectedIndicator,
+                  ).map(([key, value]) => ({
                     key,
                     value,
                   }))"
@@ -313,7 +300,7 @@ onMounted(() => {
                     <button
                       class="btn-close"
                       aria-label="Close"
-                      @click="deleteSelection(indicator.key)"
+                      @click="indicatorStore.deleteIndicator(indicator.key)"
                       style="float: right"
                     ></button>
                   </li>

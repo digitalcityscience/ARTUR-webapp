@@ -8,15 +8,15 @@ import {
   sankeyOption,
   SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
-import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
+import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
+import useIndicatorStore from "@/stores/indicatorStore";
 
+const indicatorStore = useIndicatorStore();
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
 const defaultWidth = 1000;
 const defaultHeight = 1000;
 let chart: echarts.ECharts;
-const selectedIndicatorName = ref<Set<string>>(new Set<string>());
-let selectedIndicator: Record<string, string> = {};
 const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);
 const backgroundColor = ref<string>("#ffffff");
@@ -47,6 +47,13 @@ const downloadChart = () => {
     }-chart.` + imageFormat.value;
   link.click();
 };
+watch(
+  indicatorStore.selectedIndicator,
+  (newVal) => {
+    console.log(newVal);
+  },
+  { deep: true },
+);
 // Function to handle node clicks
 function handleClick(params: any): void {
   if (params.data.depth) {
@@ -54,7 +61,7 @@ function handleClick(params: any): void {
       case SANKEYLEVELS.LEVEL1:
         return;
       case SANKEYLEVELS.LEVEL2:
-        if (selectedIndicatorName.value.has(params.name)) {
+        if (indicatorStore.selectedIndicator[params.name]) {
           deleteSelection(params.name);
         } else {
           addSelection(params.name, params.color);
@@ -66,7 +73,7 @@ function handleClick(params: any): void {
   } else if (params.data) {
     const level = params.treePathInfo.length;
     if (level === 4) {
-      if (params.name && selectedIndicatorName.value.has(params.name)) {
+      if (params.name && indicatorStore.selectedIndicator[params.name]) {
         deleteSelection(params.name);
       } else if (params.name) {
         addSelection(params.name, params.color);
@@ -98,53 +105,27 @@ function reloadChart(option: any, data?: any, color?: string): void {
   }
   chart.clear();
   chart.setOption(option);
-  loadSidebarIndicator();
+  let savedIndicatorNames = Object.keys(indicatorStore.selectedIndicator);
+  chartDispatchSelection("select", savedIndicatorNames);
 }
 // Synchronize the sidebar saved indicators to the reloaded sunburst chart
-function loadSidebarIndicator(): void {
-  let savedIndicators = localStorage.getItem(LocalStorageEvent.SIDEBARSAVED);
-  if (savedIndicators) {
-    selectedIndicatorName.value = new Set<string>(JSON.parse(savedIndicators));
-    chart.dispatchAction({
-      type: "select",
-      seriesIndex: 0,
-      name: JSON.parse(savedIndicators),
-    });
-  }
-}
 function addSelection(name: string, color: string) {
-  selectedIndicatorName.value.add(name);
-  selectedIndicator[name] = color;
+  indicatorStore.addIndicator(name, color);
+  let indicatorNames = Object.keys(indicatorStore.selectedIndicator);
+  chartDispatchSelection("select", indicatorNames);
 }
 function deleteSelection(name: string) {
-  selectedIndicatorName.value.delete(name);
-  delete selectedIndicator[name];
+  indicatorStore.deleteIndicator(name);
+  chartDispatchSelection("unselect", name);
 }
-// Store the changes of sunburst selected indicators
-watch(
-  selectedIndicatorName,
-  (newVal) => {
-    if (!chart) return;
-    localStorage.setItem(
-      LocalStorageEvent.CHARTSELECTED,
-      JSON.stringify(selectedIndicator),
-    );
-  },
-  { deep: true },
-);
-// Watch for deletion in sidebar and update sidebar Selected indicators
-window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === LocalStorageEvent.SIDEBARDELETED) {
-    let deletedIndicator = event.newValue!;
-    selectedIndicatorName.value.delete(deletedIndicator);
-    delete selectedIndicator[deletedIndicator];
+function chartDispatchSelection(type: string, indicator: string[] | string) {
+  if (indicator)
     chart.dispatchAction({
-      type: "unselect",
+      type: type,
       seriesIndex: 0,
-      name: deletedIndicator,
+      name: indicator,
     });
-  }
-});
+}
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
   chart.setOption(sunburstOption);
