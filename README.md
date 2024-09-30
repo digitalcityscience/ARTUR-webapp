@@ -20,7 +20,7 @@ Before you begin, ensure you have the following installed on your machine:
 2. Get DB running
    - start the postgis database on your local computer, preferrably via docker using the following command: `docker compose up db -d --build`
 3. Start the two node apps locally:
-   - use npm run dev to start the frontend and npm start to use the server
+   - go to the `dev` folder and use `npm run dev` to start the frontend, go to the `server` folder and use `npm start` to use the server.
 
 ## Preparing for docker and deployment
 
