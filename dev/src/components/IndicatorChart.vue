@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import * as echarts from "echarts";
 import {
   sunburstData,
   sunburstOption,
   sunburstOption1,
+  sunburstOption2,
+  sunburstDimension,
+  sunburstIndicator,
+  sunburstColorSet,
   sankeyOption,
   SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
@@ -47,15 +51,9 @@ const downloadChart = () => {
     }-chart.` + imageFormat.value;
   link.click();
 };
-watch(
-  indicatorStore.selectedIndicator,
-  (newVal) => {
-    console.log(newVal);
-  },
-  { deep: true },
-);
 // Function to handle node clicks
 function handleClick(params: any): void {
+  // Sankey Chart Click
   if (params.data.depth) {
     switch (params.data.depth) {
       case SANKEYLEVELS.LEVEL1:
@@ -71,8 +69,10 @@ function handleClick(params: any): void {
         return;
     }
   } else if (params.data) {
+    // Sunburst Chart Click
     const level = params.treePathInfo.length;
-    if (level === 4) {
+    // Sunburst Indicator Level Click
+    if (sunburstIndicator.has(params.name)) {
       if (params.name && indicatorStore.selectedIndicator[params.name]) {
         deleteSelection(params.name);
       } else if (params.name) {
@@ -85,14 +85,35 @@ function handleClick(params: any): void {
         });
       }
       return;
+    } else if (level === 2 && sunburstDimension.has(params.name)) {
+      console.log(params);
+      // Sunburst Second Graph Level 2 Go to Level 1
+      let color = params.color;
+      let dimensionData = sunburstData.children.find(
+        (node: any) => node.name === sunburstColorSet[params.color],
+      );
+      console.log(dimensionData);
+      reloadChart(sunburstOption1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
+      // Sunburst First Graph Click Level 2
       let color = params.color;
       let data = sunburstData.children.find((node: any) => node.name === params.name);
       reloadChart(sunburstOption1, data, color);
       return;
     } else if (level === 2) {
+      // Sunburst Second Graph Click Level 2
       chart.clear();
       chart.setOption(sunburstOption);
+      return;
+    } else if (level === 3 && params.value === 1) {
+      // Sunburst First Graph Click Level 3
+      let color = params.color;
+      let dimension = params.treePathInfo[1];
+      let dimensionData = sunburstData.children.find(
+        (node: any) => node.name === dimension.name,
+      );
+      let data = dimensionData?.children.find((node: any) => node.name === params.name);
+      reloadChart(sunburstOption2, data, color);
       return;
     }
   }

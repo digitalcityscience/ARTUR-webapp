@@ -1520,6 +1520,26 @@ const initialSunburstData = sunburstData.children.map((level1) => ({
     value: 1,
   })),
 }));
+export const sunburstDimension = new Set();
+sunburstData.children.forEach((level1: any) => {
+  level1.children.forEach((level2: any) => {
+    sunburstDimension.add(level2.name);
+  });
+});
+export const sunburstIndicator = new Set();
+sunburstData.children.forEach((level1: any) => {
+  level1.children.forEach((level2: any) => {
+    level2.children.forEach((level3: any) => {
+      sunburstIndicator.add(level3.name);
+    });
+  });
+});
+export const sunburstColorSet: Record<string, string> = {
+  "rgba(172,216,151,1)": "SOCIAL",
+  "rgba(251,213,129,1)": "ECO-\nNOMIC",
+  "rgba(242,140,140,1)": "INSTI-\nTUTIONAL",
+  "rgba(150,207,230,1)": "PHYSICAL",
+};
 export const sunburstOption = {
   backgroundColor: "#fff",
   tooltip: {
@@ -1602,6 +1622,7 @@ export const sunburstOption = {
   },
 };
 let level1Data: any[] = [];
+let level2Data: any[] = [];
 export let sunburstOption1 = {
   backgroundColor: "#fff",
   tooltip: {
@@ -1659,6 +1680,92 @@ export let sunburstOption1 = {
           align: "center",
           width: 100,
         },
+      },
+      {
+        r0: 170,
+        r: 330,
+        label: {
+          align: "center",
+          width: 160,
+          padding: 0,
+          silent: false,
+        },
+        nodeClick: false,
+        select: {
+          itemStyle: {
+            borderColor: "#5d5d5d",
+            shadowBlur: 20,
+            shadowColor: "rgba(0, 0, 0, 5)",
+          },
+        },
+      },
+      {
+        r0: 330,
+        r: 425,
+        label: {
+          width: 100,
+          padding: 0,
+          silent: false,
+        },
+        nodeClick: false,
+      },
+    ],
+  },
+  color: "",
+  grid: {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+};
+export let sunburstOption2 = {
+  backgroundColor: "#fff",
+  tooltip: {
+    show: true,
+    formatter: (params: any) => {
+      return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
+                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
+                    params.color,
+                  ]};"></span>
+                  ${params.name.replace(/-\n/g, "")}
+                </div>`;
+    },
+    confine: true,
+  },
+  series: {
+    type: "sunburst",
+    data: level2Data,
+    radius: [0, "100%"],
+    sort: undefined,
+    itemStyle: {
+      borderRadius: 7,
+      borderWidth: 2,
+    },
+    label: {
+      fontFamily: "Arial",
+      overflow: "break",
+      fontSize: "0.7rem",
+    },
+    emphasis: {
+      focus: "ancestor",
+      itemStyle: {
+        shadowBlur: 20,
+        shadowColor: "rgba(0, 0, 0, 0.8)",
+      },
+    },
+    selectedMode: "multiple",
+    levels: [
+      {
+        itemStyle: {
+          color: "white",
+          opacity: 0.4,
+        },
+      },
+      {
+        r0: 70,
+        r: 170,
+        label: { rotate: "tangential" },
       },
       {
         r0: 170,
