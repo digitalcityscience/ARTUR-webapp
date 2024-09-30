@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import {
   sunburstData,
@@ -12,7 +12,7 @@ import {
   sankeyOption,
   SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
-import { GraphTypes, ImageFormat } from "@/assets/ts/constants";
+import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
 
 const indicatorStore = useIndicatorStore();
@@ -86,13 +86,11 @@ function handleClick(params: any): void {
       }
       return;
     } else if (level === 2 && sunburstDimension.has(params.name)) {
-      console.log(params);
       // Sunburst Second Graph Level 2 Go to Level 1
       let color = params.color;
       let dimensionData = sunburstData.children.find(
         (node: any) => node.name === sunburstColorSet[params.color],
       );
-      console.log(dimensionData);
       reloadChart(sunburstOption1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
       // Sunburst First Graph Click Level 2
@@ -139,6 +137,13 @@ function deleteSelection(name: string) {
   indicatorStore.deleteIndicator(name);
   chartDispatchSelection("unselect", name);
 }
+// Listen to the indicator delete event of sidebar
+window.addEventListener("storage", (event: StorageEvent) => {
+  if (event.key === LocalStorageEvent.DELETE) {
+    let data = localStorage.getItem(LocalStorageEvent.DELETE);
+    chartDispatchSelection("unselect", JSON.parse(data!));
+  }
+});
 function chartDispatchSelection(type: string, indicator: string[] | string) {
   if (indicator)
     chart.dispatchAction({

@@ -4,7 +4,7 @@ import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { basemaps } from "@/assets/ts/constants";
+import { basemaps, LocalStorageEvent } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";
 import useIndicatorStore from "@/stores/indicatorStore";
 
@@ -22,14 +22,6 @@ watch(selectedBasemap, (newBasemap) => {
     basemap.visible.value = basemap.name === newBasemap;
   });
 });
-watch(
-  indicatorStore.selectedIndicator,
-  (newVal) => {
-    console.log(newVal);
-  },
-  { deep: true },
-);
-
 // Open the Indicator Selection Window
 const openIndicatorSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -44,6 +36,11 @@ const openIndicatorSelection = (): void => {
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
 };
+function deleteSelection(indicator: string) {
+  indicatorStore.deleteIndicator(indicator);
+  localStorage.setItem(LocalStorageEvent.DELETE, JSON.stringify(indicator));
+}
+
 // The Analysis
 const analyzeResults = () => {};
 onMounted(() => {
@@ -300,7 +297,7 @@ onMounted(() => {
                     <button
                       class="btn-close"
                       aria-label="Close"
-                      @click="indicatorStore.deleteIndicator(indicator.key)"
+                      @click="deleteSelection(indicator.key)"
                       style="float: right"
                     ></button>
                   </li>

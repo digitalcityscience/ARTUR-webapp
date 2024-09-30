@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, watch, type Ref } from "vue";
+import { LocalStorageEvent } from "@/assets/ts/constants";
 
 const useIndicatorStore = defineStore("selected indicators", () => {
   const selectedIndicator: Ref<Record<string, string>> = ref({});
@@ -7,18 +8,15 @@ const useIndicatorStore = defineStore("selected indicators", () => {
   const channel = new BroadcastChannel("indicator-channel");
   let isLocalUpdate = false; // Prevent feedback loops
 
-  // 1. Load the initial state from localStorage
   const loadFromLocalStorage = () => {
-    const storedData = localStorage.getItem("selectedIndicators");
+    const storedData = localStorage.getItem(LocalStorageEvent.UPDATE);
     if (storedData) {
       selectedIndicator.value = JSON.parse(storedData);
     }
   };
 
-  // Call it when store is initialized
   loadFromLocalStorage();
 
-  // 2. Watch for changes and sync across windows + persist in localStorage
   watch(
     selectedIndicator,
     (newValue) => {
@@ -30,17 +28,17 @@ const useIndicatorStore = defineStore("selected indicators", () => {
         });
       }
       // Always save the changes to localStorage
-      localStorage.setItem("selectedIndicators", JSON.stringify(newValue));
-      isLocalUpdate = false; // Reset the flag after broadcasting
+      localStorage.setItem(LocalStorageEvent.UPDATE, JSON.stringify(newValue));
+      console.log(selectedIndicator.value);
+      isLocalUpdate = false;
     },
-    { deep: true }, // Deep watch to detect changes inside the object
+    { deep: true },
   );
 
-  // 3. Listen for messages from other tabs/windows
   channel.onmessage = (event) => {
     if (event.data && event.data.type === "update-indicator") {
-      isLocalUpdate = true; // Set flag to prevent rebroadcasting
-      selectedIndicator.value = JSON.parse(event.data.payload); // Sync the data
+      isLocalUpdate = true;
+      selectedIndicator.value = JSON.parse(event.data.payload);
     }
   };
 

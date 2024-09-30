@@ -52,9 +52,8 @@ export const basemaps: Array<TileLayer> = [
 ];
 
 export enum LocalStorageEvent {
-  SIDEBARSAVED = "sidebarSaved",
-  SIDEBARDELETED = "sidebarDeleted",
-  CHARTSELECTED = "chartSelected",
+  DELETE = "indicatorDelete",
+  UPDATE = "indicatorUpdate",
 }
 
 export enum InjectionKeyEnum {
