@@ -1540,6 +1540,12 @@ export const sunburstColorSet: Record<string, string> = {
   "rgba(242,140,140,1)": "INSTI-\nTUTIONAL",
   "rgba(150,207,230,1)": "PHYSICAL",
 };
+export const sunburstColorConvertion: Record<string, string> = {
+  "rgba(172,216,151,1)": "#91CC75",
+  "rgba(251,213,129,1)": "#FAC858",
+  "rgba(242,140,140,1)": "#EE6666",
+  "rgba(150,207,230,1)": "#73C0DE",
+};
 export const sunburstOption = {
   backgroundColor: "#fff",
   tooltip: {

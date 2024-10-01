@@ -5,6 +5,7 @@ import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
 import { basemaps, LocalStorageEvent } from "@/assets/ts/constants";
+import { sunburstColorConvertion } from "@/assets/data/echarts_options";
 import useMapStore from "@/stores/mapStore";
 import useIndicatorStore from "@/stores/indicatorStore";
 
@@ -36,11 +37,16 @@ const openIndicatorSelection = (): void => {
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
 };
+// Delete the selected indicator and save the delted indicator name in Local Storage
 function deleteSelection(indicator: string) {
   indicatorStore.deleteIndicator(indicator);
   localStorage.setItem(LocalStorageEvent.DELETE, JSON.stringify(indicator));
 }
-
+// Convert the color
+function indicatorColor(color: string): string {
+  if (color in sunburstColorConvertion) return sunburstColorConvertion[color];
+  return color;
+}
 // The Analysis
 const analyzeResults = () => {};
 onMounted(() => {
@@ -291,7 +297,7 @@ onMounted(() => {
                 >
                   <li
                     class="list-group-item list-group-item-secondary"
-                    :style="{ backgroundColor: indicator.value }"
+                    :style="{ backgroundColor: indicatorColor(indicator.value) }"
                   >
                     {{ indicator.key }}
                     <button

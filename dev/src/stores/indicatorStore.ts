@@ -29,7 +29,7 @@ const useIndicatorStore = defineStore("selected indicators", () => {
       }
       // Always save the changes to localStorage
       localStorage.setItem(LocalStorageEvent.UPDATE, JSON.stringify(newValue));
-      console.log(selectedIndicator.value);
+
       isLocalUpdate = false;
     },
     { deep: true },
