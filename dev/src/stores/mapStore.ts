@@ -13,12 +13,12 @@ const useMapStore = defineStore("city", () => {
   const isJsonDataLoad = ref<boolean>(false);
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const vectorLayers: Record<string, VectorLayer> = {
-    shelterLayer: { name: LayerName.SHELTER, visible: ref(true), color: "orange" },
     boundaryLayer: {
       name: LayerName.BOUNDARY,
       visible: ref(true),
       color: "black",
     },
+    shelterLayer: { name: LayerName.SHELTER, visible: ref(true), color: "orange" },
     isochroneLayer: {
       name: LayerName.ISOCHRONE,
       visible: ref(true),
@@ -47,7 +47,6 @@ const useMapStore = defineStore("city", () => {
         axios.get(`/api/isochrone/${cityName}`),
         axios.get(`/api/population/${cityName}`),
       ]);
-
       // Assign data to geojsonData
       geojsonData.value = {
         shelters: shelterRes.data,
@@ -55,16 +54,14 @@ const useMapStore = defineStore("city", () => {
         isochrones: isochroneRes.data,
         population: populationRes.data,
       };
-
       // Sort isochrones by range
       geojsonData.value.isochrones?.features.sort(
         (a, b) => b.properties.range - a.properties.range,
       );
-
       // Cache the fetched data
       dataCache.value[cityName] = geojsonData.value;
-
-      isJsonDataLoad.value = true; // Set loading state to true after all data is loaded
+      // Set loading state to true after all data is loaded
+      isJsonDataLoad.value = true;
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
