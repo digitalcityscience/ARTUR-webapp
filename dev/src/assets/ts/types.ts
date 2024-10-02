@@ -1,6 +1,12 @@
 import type { Ref } from "vue";
 import { CityName } from "./constants";
-import type { FeatureCollection, Point, Polygon, MultiPolygon } from "geojson";
+import type {
+  FeatureCollection,
+  Point,
+  Polygon,
+  MultiPolygon,
+  MultiPoint,
+} from "geojson";
 
 export type CityData = {
   name: CityName;
@@ -33,9 +39,13 @@ export type PopulationProperties = {
   access: number;
   name: string;
 };
+export type HealthSitePointProperties = {
+  name: string;
+};
 export type GeoJSONData = {
   shelters?: FeatureCollection<Point, ShelterProperties>;
   boundary?: FeatureCollection<Polygon>;
   isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;
   population?: FeatureCollection<MultiPolygon, PopulationProperties>;
+  healthSitePoint?: FeatureCollection<MultiPoint, HealthSitePointProperties>;
 };

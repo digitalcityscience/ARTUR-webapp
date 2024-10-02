@@ -19,8 +19,10 @@ export const cities: Array<CityData> = [
 export enum LayerName {
   SHELTER = "Shelters",
   BOUNDARY = "Boundary",
-  ISOCHRONE = "Isochrone",
+  ISOCHRONE = "Shelters' Isochrone",
   POPULATION = "Population",
+  HEALTHSITEPOINT = "Health Sites",
+  HEALTHSITEISOCHRONE = "Health Sites' Isochrones",
 }
 
 export const basemaps: Array<TileLayer> = [
@@ -54,13 +56,6 @@ export const basemaps: Array<TileLayer> = [
 export enum LocalStorageEvent {
   DELETE = "indicatorDelete",
   UPDATE = "indicatorUpdate",
-}
-
-export enum InjectionKeyEnum {
-  SHELTER_LAYER = "ShelterLayer",
-  BOUNDARY_LAYER = "BoundaryLayer",
-  ISOCHRONE_LAYER = "IsochroneLayer",
-  POPULATION_LAYER = "PopulationLayer",
 }
 
 export enum GraphTypes {

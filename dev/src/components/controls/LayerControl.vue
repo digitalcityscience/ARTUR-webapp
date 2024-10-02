@@ -48,7 +48,7 @@ const highlightPoint = (e: any) => {
   });
 };
 const resetHighlight = (e: any) => {
-  e.target.setStyle(markerOptions);
+  e.target.setStyle({ color: "white", weight: 1 });
 };
 // Boundary Layer Settings
 const boundaryStyle = () => {
@@ -76,6 +76,15 @@ const populationStyle = (feature: any) => {
     weight: 1,
     opacity: 0.95,
   };
+};
+// Health Site Point Layer Settings
+const healthSiteOptions = {
+  radius: 5,
+  fillColor: mapStore.vectorLayers.healthSiteLayer.color!,
+  color: "white",
+  weight: 1,
+  opacity: 0.8,
+  fillOpacity: 0.8,
 };
 const isLayerLoad = ref(false);
 onMounted(() => {
@@ -143,6 +152,24 @@ onMounted(() => {
     :options-style="populationStyle"
     pane="overlayPane"
   ></l-geo-json>
+  <!-- Health Site Point -->
+  <l-feature-group
+    :name="LayerName.HEALTHSITEPOINT"
+    layer-type="overlay"
+    :visible="mapStore.vectorLayers.healthSiteLayer.visible as unknown as boolean"
+  >
+    <l-circle-marker
+      pane="markerPane"
+      v-for="(feature, index) in mapStore.geojsonData.healthSitePoint!.features"
+      :key="`${index}-${feature.properties.name}`"
+      :lat-lng="[feature.geometry.coordinates[0][1], feature.geometry.coordinates[0][0]]"
+      :options="healthSiteOptions"
+      @mouseover="highlightPoint"
+      @mouseout="resetHighlight"
+      layer-type="overlay"
+      ><l-tooltip>{{ feature.properties.name }}</l-tooltip>
+    </l-circle-marker>
+  </l-feature-group>
   <legend-control></legend-control>
   <sidebar-control>
     <template #popup>

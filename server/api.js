@@ -20,8 +20,7 @@ router.get("/shelter/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send("" + err);
   }
 });
 router.get("/boundary/:city", async (req, res) => {
@@ -36,8 +35,7 @@ router.get("/boundary/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send("" + err);
   }
 });
 router.get("/isochrone/:city", async (req, res) => {
@@ -53,8 +51,7 @@ router.get("/isochrone/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send("" + err);
   }
 });
 router.get("/population/:city", async (req, res) => {
@@ -70,8 +67,7 @@ router.get("/population/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send("" + err);
   }
 });
 router.get("/population-split/:city", async (req, res) => {
@@ -87,8 +83,23 @@ router.get("/population-split/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send("" + err);
+  }
+});
+router.get("/health-site-point/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, name FROM ${city}_healthsite`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { name: row.name },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
   }
 });
 export default router;

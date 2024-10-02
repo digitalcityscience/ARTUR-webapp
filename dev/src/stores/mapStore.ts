@@ -29,6 +29,11 @@ const useMapStore = defineStore("city", () => {
       visible: ref(false),
       range: [45, 35, 25, 15, 5],
     },
+    healthSiteLayer: {
+      name: LayerName.HEALTHSITEPOINT,
+      visible: ref(false),
+      color: "#EE6666",
+    },
   };
   // Actions
   const fetchGeoData = async (cityName: CityName) => {
@@ -41,18 +46,21 @@ const useMapStore = defineStore("city", () => {
 
     try {
       // Create an array of promises for API requests
-      const [shelterRes, boundaryRes, isochroneRes, populationRes] = await Promise.all([
-        axios.get(`/api/shelter/${cityName}`),
-        axios.get(`/api/boundary/${cityName}`),
-        axios.get(`/api/isochrone/${cityName}`),
-        axios.get(`/api/population/${cityName}`),
-      ]);
+      const [shelterRes, boundaryRes, isochroneRes, populationRes, healthSitePointRes] =
+        await Promise.all([
+          axios.get(`/api/shelter/${cityName}`),
+          axios.get(`/api/boundary/${cityName}`),
+          axios.get(`/api/isochrone/${cityName}`),
+          axios.get(`/api/population/${cityName}`),
+          axios.get(`/api/health-site-point/${cityName}`),
+        ]);
       // Assign data to geojsonData
       geojsonData.value = {
         shelters: shelterRes.data,
         boundary: boundaryRes.data,
         isochrones: isochroneRes.data,
         population: populationRes.data,
+        healthSitePoint: healthSitePointRes.data,
       };
       // Sort isochrones by range
       geojsonData.value.isochrones?.features.sort(
