@@ -34,6 +34,11 @@ const useMapStore = defineStore("city", () => {
       visible: ref(false),
       color: "#EE6666",
     },
+    healthSiteIsochroneLayer: {
+      name: LayerName.HEALTHSITEISOCHRONE,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    },
   };
   // Actions
   const fetchGeoData = async (cityName: CityName) => {
@@ -46,14 +51,21 @@ const useMapStore = defineStore("city", () => {
 
     try {
       // Create an array of promises for API requests
-      const [shelterRes, boundaryRes, isochroneRes, populationRes, healthSitePointRes] =
-        await Promise.all([
-          axios.get(`/api/shelter/${cityName}`),
-          axios.get(`/api/boundary/${cityName}`),
-          axios.get(`/api/isochrone/${cityName}`),
-          axios.get(`/api/population/${cityName}`),
-          axios.get(`/api/health-site-point/${cityName}`),
-        ]);
+      const [
+        shelterRes,
+        boundaryRes,
+        isochroneRes,
+        populationRes,
+        healthSitePointRes,
+        healthSiteIsochroneRes,
+      ] = await Promise.all([
+        axios.get(`/api/shelter/${cityName}`),
+        axios.get(`/api/boundary/${cityName}`),
+        axios.get(`/api/isochrone/${cityName}`),
+        axios.get(`/api/population/${cityName}`),
+        axios.get(`/api/health-site-point/${cityName}`),
+        axios.get(`/api/health-site-isochrone-auto/${cityName}`),
+      ]);
       // Assign data to geojsonData
       geojsonData.value = {
         shelters: shelterRes.data,
@@ -61,9 +73,13 @@ const useMapStore = defineStore("city", () => {
         isochrones: isochroneRes.data,
         population: populationRes.data,
         healthSitePoint: healthSitePointRes.data,
+        healthSiteIsochrone: healthSiteIsochroneRes.data,
       };
       // Sort isochrones by range
       geojsonData.value.isochrones?.features.sort(
+        (a, b) => b.properties.range - a.properties.range,
+      );
+      geojsonData.value.healthSiteIsochrone?.features.sort(
         (a, b) => b.properties.range - a.properties.range,
       );
       // Cache the fetched data

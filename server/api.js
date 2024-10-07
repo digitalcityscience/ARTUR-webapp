@@ -20,6 +20,7 @@ router.get("/shelter/:city", async (req, res) => {
     }));
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
+    console.error(err);
     res.status(500).send("" + err);
   }
 });
@@ -95,6 +96,22 @@ router.get("/health-site-point/:city", async (req, res) => {
     const features = rows.map((row) => ({
       type: "Feature",
       properties: { name: row.name },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/health-site-isochrone-auto/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, contour FROM ${city}_healthsite_auto_isochrone`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { range: row.contour },
       geometry: JSON.parse(row.geometry),
     }));
     res.json({ type: "FeatureCollection", features });

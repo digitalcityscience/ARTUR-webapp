@@ -40,6 +40,13 @@ onMounted(() => {
         ></i>
         {{ mapStore.vectorLayers.shelterLayer.name }}
       </div>
+      <div v-show="mapStore.vectorLayers.healthSiteLayer.visible">
+        <i
+          class="point"
+          :style="{ background: mapStore.vectorLayers.healthSiteLayer.color }"
+        ></i>
+        {{ mapStore.vectorLayers.healthSiteLayer.name }}
+      </div>
       <div v-show="mapStore.vectorLayers.boundaryLayer.visible">
         <i
           class="polyline"
@@ -52,8 +59,17 @@ onMounted(() => {
           v-for="range in mapStore.vectorLayers.isochroneLayer.range"
           :key="range"
         >
-          <i class="polygon" :style="{ background: getIsochroneColor(range) }"></i
+          <i class="polygon" :style="{ background: getIsochroneColor(range, 5) }"></i
           >Isochrone {{ range }} min<br />
+        </template>
+      </div>
+      <div v-show="mapStore.vectorLayers.healthSiteIsochroneLayer.visible">
+        <template
+          v-for="range in mapStore.vectorLayers.healthSiteIsochroneLayer.range"
+          :key="range"
+        >
+          <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
+          >Health Site Isochrone {{ range }} min<br />
         </template>
       </div>
       <div v-show="mapStore.vectorLayers.populationLayer.visible" class="population-grid">

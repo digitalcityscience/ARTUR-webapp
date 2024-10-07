@@ -1,21 +1,14 @@
 import { CityName } from "./constants";
 import { populationAccessibleColor, populationInaccessibleColor } from "./constants";
+import chroma from "chroma-js";
 
-export function getIsochroneColor(minute: number) {
-  switch (minute) {
-    case 1:
-      return "#005a32";
-    case 2:
-      return "#238b45";
-    case 3:
-      return "#41ab5d";
-    case 4:
-      return "#74c476";
-    case 5:
-      return "#82E0AA";
-    default:
-      alert("This Isochrone map has invalid range! The range should be within the interval [1,5].");
-  }
+export function getIsochroneColor(minute: number, maxMinutes: number) {
+  const startColor = "#005a32";
+  const endColor = "#82E0AA";
+
+  const colorScale = chroma.scale([startColor, endColor]).mode("lab").colors(maxMinutes);
+
+  return colorScale[minute - 1] || colorScale[maxMinutes - 1];
 }
 
 export function getPopulationColor(value: number, accessibility: number): string {
@@ -64,7 +57,8 @@ const city = [
 ];
 export function getTotalPopulation(currentCity: string): number[] {
   for (let i = 0; i < 5; i++) {
-    if (currentCity === city[i]) return [accessiblePopulation[i], inaccessiblePopulation[i]];
+    if (currentCity === city[i])
+      return [accessiblePopulation[i], inaccessiblePopulation[i]];
   }
   return [0, 0];
 }

@@ -60,7 +60,7 @@ const boundaryStyle = () => {
 // Isochrone Layer Settings
 const isochroneStyle = (feature: any) => {
   return {
-    fillColor: getIsochroneColor(feature.properties.range),
+    fillColor: getIsochroneColor(feature.properties.range, 5),
     fillOpacity: 0.5,
     color: "white",
     weight: 0.5,
@@ -85,6 +85,15 @@ const healthSiteOptions = {
   weight: 1,
   opacity: 0.8,
   fillOpacity: 0.8,
+};
+const healthSiteIsochroneStyle = (feature: any) => {
+  return {
+    fillColor: getIsochroneColor(feature.properties.range, 10),
+    fillOpacity: 0.5,
+    color: "white",
+    weight: 0.5,
+    opacity: 1,
+  };
 };
 const isLayerLoad = ref(false);
 onMounted(() => {
@@ -170,6 +179,15 @@ onMounted(() => {
       ><l-tooltip>{{ feature.properties.name }}</l-tooltip>
     </l-circle-marker>
   </l-feature-group>
+  <!-- Isochrones -->
+  <l-geo-json
+    :name="LayerName.HEALTHSITEISOCHRONE"
+    :geojson="mapStore.geojsonData.healthSiteIsochrone"
+    :visible="mapStore.vectorLayers.healthSiteIsochroneLayer.visible as unknown as boolean"
+    layer-type="overlay"
+    :options-style="healthSiteIsochroneStyle"
+    pane="overlayPane"
+  ></l-geo-json>
   <legend-control></legend-control>
   <sidebar-control>
     <template #popup>
