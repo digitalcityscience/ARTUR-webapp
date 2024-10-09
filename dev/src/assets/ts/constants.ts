@@ -82,3 +82,10 @@ export const populationInaccessibleColor: string[] = [
   "#ff0000",
   "#9e0000",
 ];
+
+export const healthSiteIsochroneType: Record<string, string> = {
+  auto: "Car",
+  bus: "Bus",
+  bicycle: "Bicycle",
+  pedestrian: "Pedestrian",
+};

@@ -19,7 +19,7 @@ const indicatorStore = useIndicatorStore();
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
 const defaultWidth = 1000;
-const defaultHeight = 1000;
+const defaultHeight = 600;
 let chart: echarts.ECharts;
 const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);

@@ -1,7 +1,12 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
-import { cities, CityName, LayerName } from "@/assets/ts/constants";
+import {
+  cities,
+  CityName,
+  LayerName,
+  healthSiteIsochroneType,
+} from "@/assets/ts/constants";
 import type { VectorLayer } from "@/assets/ts/types";
 import type { GeoJSONData } from "@/assets/ts/types";
 
@@ -12,6 +17,7 @@ const useMapStore = defineStore("city", () => {
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
   const dataCache = ref<Record<string, GeoJSONData>>({});
+  const isochroneCache = ref<Record<string, Record<string, any>>>({});
   const vectorLayers: Record<string, VectorLayer> = {
     boundaryLayer: {
       name: LayerName.BOUNDARY,
@@ -40,61 +46,141 @@ const useMapStore = defineStore("city", () => {
       range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
   };
+  const isochroneType = ref("auto");
+  const isIsochroneChanged = ref(false);
+  // Track which layers have been loaded per city (excluding isochrones)
+  const layerLoaded = ref<Record<string, Record<string, boolean>>>({});
+
+  // Initialize or reset the loading state for the given city
+  const resetLayerLoaded = (cityName: string) => {
+    layerLoaded.value[cityName] = {
+      shelters: false,
+      boundary: false,
+      isochrones: false,
+      population: false,
+      healthSitePoint: false,
+    };
+  };
+
   // Actions
-  const fetchGeoData = async (cityName: CityName) => {
-    // Check if data for the city is cached
-    if (dataCache.value[cityName]) {
-      geojsonData.value = dataCache.value[cityName];
+  const fetchGeoData = async (cityName: CityName, isochroneTypeParam = "") => {
+    isochroneTypeParam = isochroneType.value;
+
+    // Check if city data is fully cached (including isochrone for the current type)
+    if (
+      dataCache.value[cityName] &&
+      isochroneCache.value[cityName]?.[isochroneTypeParam]
+    ) {
+      geojsonData.value = {
+        ...dataCache.value[cityName],
+        healthSiteIsochrone: isochroneCache.value[cityName][isochroneTypeParam],
+      };
       isJsonDataLoad.value = true;
-      return;
+      return; // No need to refetch anything
     }
 
     try {
-      // Create an array of promises for API requests
-      const [
-        shelterRes,
-        boundaryRes,
-        isochroneRes,
-        populationRes,
-        healthSitePointRes,
-        healthSiteIsochroneRes,
-      ] = await Promise.all([
-        axios.get(`/api/shelter/${cityName}`),
-        axios.get(`/api/boundary/${cityName}`),
-        axios.get(`/api/isochrone/${cityName}`),
-        axios.get(`/api/population/${cityName}`),
-        axios.get(`/api/health-site-point/${cityName}`),
-        axios.get(`/api/health-site-isochrone-auto/${cityName}`),
-      ]);
-      // Assign data to geojsonData
-      geojsonData.value = {
-        shelters: shelterRes.data,
-        boundary: boundaryRes.data,
-        isochrones: isochroneRes.data,
-        population: populationRes.data,
-        healthSitePoint: healthSitePointRes.data,
-        healthSiteIsochrone: healthSiteIsochroneRes.data,
-      };
-      // Sort isochrones by range
-      geojsonData.value.isochrones?.features.sort(
-        (a, b) => b.properties.range - a.properties.range,
-      );
-      geojsonData.value.healthSiteIsochrone?.features.sort(
-        (a, b) => b.properties.range - a.properties.range,
-      );
-      // Cache the fetched data
-      dataCache.value[cityName] = geojsonData.value;
-      // Set loading state to true after all data is loaded
+      const promises: Promise<any>[] = [];
+      // Fetch other city data only if it's not already cached
+      if (!dataCache.value[cityName]) {
+        promises.push(
+          axios.get(`/api/shelter/${cityName}`).then((res) => {
+            geojsonData.value.shelters = res.data;
+          }),
+        );
+        promises.push(
+          axios.get(`/api/boundary/${cityName}`).then((res) => {
+            geojsonData.value.boundary = res.data;
+          }),
+        );
+        promises.push(
+          axios.get(`/api/population/${cityName}`).then((res) => {
+            geojsonData.value.population = res.data;
+          }),
+        );
+        promises.push(
+          axios.get(`/api/isochrone/${cityName}`).then((res) => {
+            geojsonData.value.isochrones = res.data;
+            geojsonData.value.isochrones!.features.sort(
+              (a, b) => b.properties.range - a.properties.range,
+            );
+          }),
+        );
+        promises.push(
+          axios.get(`/api/health-site-point/${cityName}`).then((res) => {
+            geojsonData.value.healthSitePoint = res.data;
+          }),
+        );
+      } else {
+        // If city data is cached, load it from the cache
+        geojsonData.value = { ...dataCache.value[cityName] };
+      }
+
+      // Fetch isochrone data if not cached for the current city and type
+      if (
+        !isochroneCache.value[cityName]?.[isochroneTypeParam] ||
+        isIsochroneChanged.value
+      ) {
+        promises.push(
+          axios
+            .get(`/api/health-site-isochrone-${isochroneTypeParam}/${cityName}`)
+            .then((res) => {
+              geojsonData.value.healthSiteIsochrone = res.data;
+              geojsonData.value.healthSiteIsochrone!.features.sort(
+                (a, b) => b.properties.range - a.properties.range,
+              );
+
+              // Cache the isochrone data for this city and type
+              if (!isochroneCache.value[cityName]) {
+                isochroneCache.value[cityName] = {};
+              }
+              isochroneCache.value[cityName][isochroneTypeParam] = res.data;
+
+              isIsochroneChanged.value = false; // Reset the flag after fetching
+            }),
+        );
+      } else {
+        // Load isochrone data from cache if available
+        geojsonData.value.healthSiteIsochrone =
+          isochroneCache.value[cityName][isochroneTypeParam];
+      }
+
+      // Wait for all fetches to complete
+      await Promise.all(promises);
+
+      // Cache all non-isochrone data for the city (if not already cached)
+      if (!dataCache.value[cityName]) {
+        dataCache.value[cityName] = {
+          ...geojsonData.value,
+        };
+      }
+
       isJsonDataLoad.value = true;
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
   };
 
+  const setIsochroneType = (newType: string) => {
+    isIsochroneChanged.value = true;
+    isochroneType.value = newType;
+
+    // Only fetch the new isochrone data (others remain unchanged)
+    fetchGeoData(city.value, newType);
+  };
+
   // Actions to change city and refetch data
   const setCity = (newCity: CityName) => {
+    // Reset the layer loading state for the new city
+    resetLayerLoaded(newCity);
     city.value = newCity;
+
+    // Fetch all data for the new city
     fetchGeoData(newCity);
+  };
+
+  const getIsochroneType = () => {
+    return healthSiteIsochroneType[isochroneType.value];
   };
 
   return {
@@ -104,6 +190,8 @@ const useMapStore = defineStore("city", () => {
     vectorLayers,
     isJsonDataLoad,
     setCity,
+    setIsochroneType,
+    getIsochroneType,
     fetchGeoData,
   };
 });

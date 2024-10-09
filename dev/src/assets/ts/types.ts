@@ -41,6 +41,7 @@ export type PopulationProperties = {
 };
 export type HealthSitePointProperties = {
   name: string;
+  amenity: string;
 };
 export type GeoJSONData = {
   shelters?: FeatureCollection<Point, ShelterProperties>;

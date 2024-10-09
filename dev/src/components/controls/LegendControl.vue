@@ -60,7 +60,7 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 5) }"></i
-          >Isochrone {{ range }} min<br />
+          >Shelters' Isochrone {{ range }} min<br />
         </template>
       </div>
       <div v-show="mapStore.vectorLayers.healthSiteIsochroneLayer.visible">
@@ -69,7 +69,7 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >Health Site Isochrone {{ range }} min<br />
+          >Health Site Isochrone - {{ mapStore.getIsochroneType() }} {{ range }} min<br />
         </template>
       </div>
       <div v-show="mapStore.vectorLayers.populationLayer.visible" class="population-grid">

@@ -4,7 +4,7 @@ import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { basemaps, LocalStorageEvent } from "@/assets/ts/constants";
+import { basemaps, LayerName, LocalStorageEvent } from "@/assets/ts/constants";
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
 import useMapStore from "@/stores/mapStore";
 import useIndicatorStore from "@/stores/indicatorStore";
@@ -23,6 +23,12 @@ watch(selectedBasemap, (newBasemap) => {
     basemap.visible.value = basemap.name === newBasemap;
   });
 });
+// Local state to store the selected isochrone type
+const selectedIsochroneType = ref("auto");
+// Function to change the isochrone type and fetch the corresponding data
+const changeIsochroneType = () => {
+  mapStore.setIsochroneType(selectedIsochroneType.value);
+};
 // Open the Indicator Selection Window
 const openIndicatorSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -228,6 +234,24 @@ onMounted(() => {
                         <label class="form-check-label" :for="overlay.name">
                           {{ overlay.name }}
                         </label>
+                        <!-- Isochrone switcher for healthSiteIsochroneLayer -->
+                        <div
+                          v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
+                          class="mt-2"
+                        >
+                          <select
+                            v-model="selectedIsochroneType"
+                            @change="changeIsochroneType"
+                            class="form-select"
+                            id="isochroneType"
+                            aria-label="Isochrone Type Select"
+                          >
+                            <option value="auto">Car</option>
+                            <option value="bus">Bus</option>
+                            <option value="bicycle">Bicycle</option>
+                            <option value="pedestrian">Pedestrian</option>
+                          </select>
+                        </div>
                       </div>
                     </li>
                   </ul>

@@ -6,7 +6,8 @@ const useIndicatorStore = defineStore("selected indicators", () => {
   const selectedIndicator: Ref<Record<string, string>> = ref({});
   // Initialize BroadcastChannel
   const channel = new BroadcastChannel("indicator-channel");
-  let isLocalUpdate = false; // Prevent feedback loops
+  // Prevent feedback loops
+  let isLocalUpdate = false;
 
   const loadFromLocalStorage = () => {
     const storedData = localStorage.getItem(LocalStorageEvent.UPDATE);

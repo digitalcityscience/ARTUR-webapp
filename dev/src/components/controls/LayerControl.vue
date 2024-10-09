@@ -5,6 +5,7 @@ import {
   LFeatureGroup,
   LTileLayer,
   LTooltip,
+  LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
@@ -176,10 +177,11 @@ onMounted(() => {
       @mouseover="highlightPoint"
       @mouseout="resetHighlight"
       layer-type="overlay"
-      ><l-tooltip>{{ feature.properties.name }}</l-tooltip>
+      ><l-tooltip>{{ feature.properties.amenity }}</l-tooltip>
+      <l-popup>{{ feature.properties.name }}</l-popup>
     </l-circle-marker>
   </l-feature-group>
-  <!-- Isochrones -->
+  <!-- Health Site Isochrones -->
   <l-geo-json
     :name="LayerName.HEALTHSITEISOCHRONE"
     :geojson="mapStore.geojsonData.healthSiteIsochrone"
