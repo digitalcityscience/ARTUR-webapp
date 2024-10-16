@@ -45,6 +45,11 @@ const useMapStore = defineStore("city", () => {
       visible: ref(false),
       range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
+    healthSitePopulationLayer: {
+      name: LayerName.HEALTHSITEPOPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
   };
   const isochroneType = ref("auto");
   const isIsochroneChanged = ref(false);
@@ -59,6 +64,7 @@ const useMapStore = defineStore("city", () => {
       isochrones: false,
       population: false,
       healthSitePoint: false,
+      healthSitePopualtion: false,
     };
   };
 
@@ -76,7 +82,7 @@ const useMapStore = defineStore("city", () => {
         healthSiteIsochrone: isochroneCache.value[cityName][isochroneTypeParam],
       };
       isJsonDataLoad.value = true;
-      return; // No need to refetch anything
+      return;
     }
 
     try {
@@ -111,6 +117,11 @@ const useMapStore = defineStore("city", () => {
             geojsonData.value.healthSitePoint = res.data;
           }),
         );
+        promises.push(
+          axios.get(`/api/hospital-auto-population/${cityName}`).then((res) => {
+            geojsonData.value.healthSitePopulation = res.data;
+          }),
+        );
       } else {
         // If city data is cached, load it from the cache
         geojsonData.value = { ...dataCache.value[cityName] };
@@ -136,7 +147,7 @@ const useMapStore = defineStore("city", () => {
               }
               isochroneCache.value[cityName][isochroneTypeParam] = res.data;
 
-              isIsochroneChanged.value = false; // Reset the flag after fetching
+              isIsochroneChanged.value = false;
             }),
         );
       } else {
@@ -179,9 +190,7 @@ const useMapStore = defineStore("city", () => {
     fetchGeoData(newCity);
   };
 
-  const getIsochroneType = () => {
-    return healthSiteIsochroneType[isochroneType.value];
-  };
+  const getIsochroneType = (): string => healthSiteIsochroneType[isochroneType.value];
 
   return {
     map,

@@ -64,7 +64,7 @@ const isochroneStyle = (feature: any) => {
     fillColor: getIsochroneColor(feature.properties.range, 5),
     fillOpacity: 0.5,
     color: "white",
-    weight: 0.5,
+    weight: 0.3,
     opacity: 1,
   };
 };
@@ -74,7 +74,7 @@ const populationStyle = (feature: any) => {
     fillColor: getPopulationColor(feature.properties.value, feature.properties.access),
     fillOpacity: 0.8,
     color: "white",
-    weight: 1,
+    weight: 0.5,
     opacity: 0.95,
   };
 };
@@ -117,7 +117,7 @@ onMounted(() => {
   <l-feature-group
     :name="LayerName.SHELTER"
     layer-type="overlay"
-    :visible="mapStore.vectorLayers.shelterLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.shelterLayer.visible"
   >
     <l-circle-marker
       pane="markerPane"
@@ -139,7 +139,7 @@ onMounted(() => {
   <l-geo-json
     :name="LayerName.BOUNDARY"
     :geojson="mapStore.geojsonData.boundary"
-    :visible="mapStore.vectorLayers.boundaryLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.boundaryLayer.visible"
     layer-type="overlay"
     :options-style="boundaryStyle"
     pane="overlayPane"
@@ -148,7 +148,7 @@ onMounted(() => {
   <l-geo-json
     :name="LayerName.ISOCHRONE"
     :geojson="mapStore.geojsonData.isochrones"
-    :visible="mapStore.vectorLayers.isochroneLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.isochroneLayer.visible"
     layer-type="overlay"
     :options-style="isochroneStyle"
     pane="overlayPane"
@@ -157,7 +157,7 @@ onMounted(() => {
   <l-geo-json
     :name="LayerName.POPULATION"
     :geojson="mapStore.geojsonData.population"
-    :visible="mapStore.vectorLayers.populationLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.populationLayer.visible"
     layer-type="overlay"
     :options-style="populationStyle"
     pane="overlayPane"
@@ -166,7 +166,7 @@ onMounted(() => {
   <l-feature-group
     :name="LayerName.HEALTHSITEPOINT"
     layer-type="overlay"
-    :visible="mapStore.vectorLayers.healthSiteLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.healthSiteLayer.visible"
   >
     <l-circle-marker
       pane="markerPane"
@@ -185,9 +185,18 @@ onMounted(() => {
   <l-geo-json
     :name="LayerName.HEALTHSITEISOCHRONE"
     :geojson="mapStore.geojsonData.healthSiteIsochrone"
-    :visible="mapStore.vectorLayers.healthSiteIsochroneLayer.visible as unknown as boolean"
+    :visible="mapStore.vectorLayers.healthSiteIsochroneLayer.visible"
     layer-type="overlay"
     :options-style="healthSiteIsochroneStyle"
+    pane="overlayPane"
+  ></l-geo-json>
+  <!-- Population -->
+  <l-geo-json
+    :name="LayerName.HEALTHSITEPOPULATION"
+    :geojson="mapStore.geojsonData.healthSitePopulation"
+    :visible="mapStore.vectorLayers.healthSitePopulationLayer.visible"
+    layer-type="overlay"
+    :options-style="populationStyle"
     pane="overlayPane"
   ></l-geo-json>
   <legend-control></legend-control>

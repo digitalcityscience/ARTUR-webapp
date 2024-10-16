@@ -50,4 +50,5 @@ export type GeoJSONData = {
   population?: FeatureCollection<MultiPolygon, PopulationProperties>;
   healthSitePoint?: FeatureCollection<MultiPoint, HealthSitePointProperties>;
   healthSiteIsochrone?: FeatureCollection<MultiPolygon, IsochroneProperties>;
+  healthSitePopulation?: FeatureCollection<MultiPolygon, PopulationProperties>;
 };

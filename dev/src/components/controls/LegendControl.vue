@@ -72,7 +72,13 @@ onMounted(() => {
           >Health Site Isochrone - {{ mapStore.getIsochroneType() }} {{ range }} min<br />
         </template>
       </div>
-      <div v-show="mapStore.vectorLayers.populationLayer.visible" class="population-grid">
+      <div
+        v-show="
+          mapStore.vectorLayers.populationLayer.visible ||
+          mapStore.vectorLayers.healthSitePopulationLayer.visible
+        "
+        class="population-grid"
+      >
         <div ref="chartContainer" class="chartContainer"></div>
       </div>
     </div>

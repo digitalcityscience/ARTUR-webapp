@@ -167,4 +167,20 @@ router.get("/health-site-isochrone-pedestrian/:city", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.get("/hospital-auto-population/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_hospital_auto_population`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { value: row.value, access: row.access, name: `${city}_population` },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
 export default router;

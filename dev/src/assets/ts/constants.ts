@@ -20,9 +20,10 @@ export enum LayerName {
   SHELTER = "Shelters",
   BOUNDARY = "Boundary",
   ISOCHRONE = "Shelters' Isochrone",
-  POPULATION = "Population",
+  POPULATION = "Shelter Access: Population within/outside 5 min",
   HEALTHSITEPOINT = "Health Sites",
   HEALTHSITEISOCHRONE = "Health Sites' Isochrones",
+  HEALTHSITEPOPULATION = "Health Site Access: Population within/outside 10 min",
 }
 
 export const basemaps: Array<TileLayer> = [
