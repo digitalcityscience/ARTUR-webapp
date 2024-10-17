@@ -19,11 +19,11 @@ export const cities: Array<CityData> = [
 export enum LayerName {
   SHELTER = "Shelters",
   BOUNDARY = "Boundary",
-  ISOCHRONE = "Shelters' Isochrone",
-  POPULATION = "Shelter Access: Population within/outside 5 min",
+  ISOCHRONE = "Shelters' Isochrone (Pedestrian)",
+  POPULATION = "Shelter Access (Pedestrian): Population within/outside 5 min",
   HEALTHSITEPOINT = "Health Sites",
   HEALTHSITEISOCHRONE = "Health Sites' Isochrones",
-  HEALTHSITEPOPULATION = "Health Site Access: Population within/outside 10 min",
+  HEALTHSITEPOPULATION = "Health Site Access (Car): Population within/outside 10 min",
 }
 
 export const basemaps: Array<TileLayer> = [

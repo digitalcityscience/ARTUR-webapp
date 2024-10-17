@@ -175,7 +175,11 @@ router.get("/hospital-auto-population/:city", async (req, res) => {
     );
     const features = rows.map((row) => ({
       type: "Feature",
-      properties: { value: row.value, access: row.access, name: `${city}_population` },
+      properties: {
+        value: row.value,
+        access: row.access,
+        name: `${city}_HealthSite_population`,
+      },
       geometry: JSON.parse(row.geometry),
     }));
     res.json({ type: "FeatureCollection", features });

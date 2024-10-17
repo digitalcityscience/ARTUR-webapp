@@ -280,11 +280,28 @@ onMounted(() => {
                   aria-expanded="true"
                   style="padding-left: 0"
                 >
-                  Population Information
+                  Shelter Access Population Information
                 </button>
                 <div class="collapse show" id="population-collapse">
                   <population-sum-chart
                     v-if="mapStore.vectorLayers.populationLayer.visible"
+                  ></population-sum-chart>
+                </div>
+              </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-toggle rounded collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#population-collapse"
+                  v-show="mapStore.vectorLayers.healthSitePopulationLayer.visible"
+                  aria-expanded="true"
+                  style="padding-left: 0"
+                >
+                  Health Site Access Population Information
+                </button>
+                <div class="collapse show" id="population-collapse">
+                  <population-sum-chart
+                    v-if="mapStore.vectorLayers.healthSitePopulationLayer.visible"
                   ></population-sum-chart>
                 </div>
               </li>
