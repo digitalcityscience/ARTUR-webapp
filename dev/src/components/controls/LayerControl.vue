@@ -153,7 +153,7 @@ onMounted(() => {
     :options-style="isochroneStyle"
     pane="overlayPane"
   ></l-geo-json>
-  <!-- Population -->
+  <!-- Shelter Population -->
   <l-geo-json
     :name="LayerName.POPULATION"
     :geojson="mapStore.geojsonData.population"

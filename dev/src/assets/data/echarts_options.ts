@@ -1546,6 +1546,17 @@ export const sunburstColorConvertion: Record<string, string> = {
   "rgba(242,140,140,1)": "#EE6666",
   "rgba(150,207,230,1)": "#73C0DE",
 };
+const color = [
+  // "#5470C6", // blue
+  "#91CC75", // green
+  "#FAC858", // yellow
+  "#EE6666", // red
+  "#73C0DE", // light blue
+  "#3BA272", // dark green
+  "#FC8452", // orange
+  "#9A60B4", // purple
+  "#EA7CCC", // pink
+];
 export const sunburstOption = {
   backgroundColor: "#fff",
   tooltip: {
@@ -1609,17 +1620,7 @@ export const sunburstOption = {
       },
     ],
   },
-  color: [
-    // "#5470C6", // blue
-    "#91CC75", // green
-    "#FAC858", // yellow
-    "#EE6666", // red
-    "#73C0DE", // light blue
-    "#3BA272", // dark green
-    "#FC8452", // orange
-    "#9A60B4", // purple
-    "#EA7CCC", // pink
-  ],
+  color: color,
   grid: {
     top: 0,
     bottom: 0,
@@ -1717,7 +1718,7 @@ export let sunburstOption1 = {
       },
     ],
   },
-  color: "",
+  color: color,
   grid: {
     top: 0,
     bottom: 0,
@@ -1803,7 +1804,7 @@ export let sunburstOption2 = {
       },
     ],
   },
-  color: "",
+  color: color,
   grid: {
     top: 0,
     bottom: 0,

@@ -4,7 +4,12 @@ import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { basemaps, LayerName, LocalStorageEvent } from "@/assets/ts/constants";
+import {
+  basemaps,
+  LayerName,
+  LocalStorageEvent,
+  populationType,
+} from "@/assets/ts/constants";
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
 import useMapStore from "@/stores/mapStore";
 import useIndicatorStore from "@/stores/indicatorStore";
@@ -275,16 +280,20 @@ onMounted(() => {
                 <button
                   class="btn btn-toggle rounded collapsed"
                   data-bs-toggle="collapse"
-                  data-bs-target="#population-collapse"
+                  data-bs-target="#shelter-population-collapse"
                   v-show="mapStore.vectorLayers.populationLayer.visible"
                   aria-expanded="true"
                   style="padding-left: 0"
                 >
                   Shelter Access Population Information
                 </button>
-                <div class="collapse show" id="population-collapse">
+                <div class="collapse show" id="shelter-population-collapse">
                   <population-sum-chart
-                    v-if="mapStore.vectorLayers.populationLayer.visible"
+                    v-if="
+                      mapStore.vectorLayers.populationLayer.visible &&
+                      mapStore.shelterPopulation
+                    "
+                    :type="populationType.SHELTER"
                   ></population-sum-chart>
                 </div>
               </li>
@@ -292,16 +301,20 @@ onMounted(() => {
                 <button
                   class="btn btn-toggle rounded collapsed"
                   data-bs-toggle="collapse"
-                  data-bs-target="#population-collapse"
+                  data-bs-target="#healthsite-population-collapse"
                   v-show="mapStore.vectorLayers.healthSitePopulationLayer.visible"
                   aria-expanded="true"
                   style="padding-left: 0"
                 >
                   Health Site Access Population Information
                 </button>
-                <div class="collapse show" id="population-collapse">
+                <div class="collapse show" id="healthsite-population-collapse">
                   <population-sum-chart
-                    v-if="mapStore.vectorLayers.healthSitePopulationLayer.visible"
+                    v-if="
+                      mapStore.vectorLayers.healthSitePopulationLayer.visible &&
+                      mapStore.healthSitePopulation
+                    "
+                    :type="populationType.HEALTHSITE"
                   ></population-sum-chart>
                 </div>
               </li>

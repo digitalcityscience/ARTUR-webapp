@@ -55,10 +55,3 @@ const city = [
   CityName.KRYVYIRIH,
   CityName.NIKOPOL,
 ];
-export function getTotalPopulation(currentCity: string): number[] {
-  for (let i = 0; i < 5; i++) {
-    if (currentCity === city[i])
-      return [accessiblePopulation[i], inaccessiblePopulation[i]];
-  }
-  return [0, 0];
-}

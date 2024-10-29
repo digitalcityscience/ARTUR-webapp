@@ -11,7 +11,9 @@ const btnNaviClick = (city: CityData) => {
   map.flyTo(city.latLng, 12);
   mapStore.setCity(city.name);
 };
-const isSelected = (cityName: CityName) => mapStore.city === cityName;
+const isSelected = (city: CityName) => mapStore.city === city;
+const hasData = (city: CityName) =>
+  city !== CityName.KRYVYIRIH && city !== CityName.NIKOPOL;
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const isSelected = (cityName: CityName) => mapStore.city === cityName;
             <button
               class="dropdown-item"
               @click="btnNaviClick(city)"
-              :class="{ active: isSelected(city.name) }"
+              :class="{ active: isSelected(city.name), disabled: hasData(city.name) }"
             >
               {{ city.name }}
             </button>

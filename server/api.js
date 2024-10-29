@@ -66,7 +66,17 @@ router.get("/population/:city", async (req, res) => {
       properties: { value: row.value, access: row.access, name: `${city}_population` },
       geometry: JSON.parse(row.geometry),
     }));
-    res.json({ type: "FeatureCollection", features });
+    let accessible = 0,
+      inaccessible = 0;
+    rows.forEach((row) => {
+      if (row.access) accessible += row.value;
+      else inaccessible += row.value;
+    });
+    res.json({
+      type: "FeatureCollection",
+      properties: { accessible: accessible, inaccessible: inaccessible },
+      features,
+    });
   } catch (err) {
     res.status(500).send("" + err);
   }
@@ -182,7 +192,17 @@ router.get("/hospital-auto-population/:city", async (req, res) => {
       },
       geometry: JSON.parse(row.geometry),
     }));
-    res.json({ type: "FeatureCollection", features });
+    let accessible = 0,
+      inaccessible = 0;
+    rows.forEach((row) => {
+      if (row.access) accessible += row.value;
+      else inaccessible += row.value;
+    });
+    res.json({
+      type: "FeatureCollection",
+      properties: { accessible: accessible, inaccessible: inaccessible },
+      features,
+    });
   } catch (err) {
     res.status(500).send("" + err);
   }

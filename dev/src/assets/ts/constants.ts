@@ -26,6 +26,11 @@ export enum LayerName {
   HEALTHSITEPOPULATION = "Health Site Access (Car): Population within/outside 10 min",
 }
 
+export enum populationType {
+  SHELTER = "shelter",
+  HEALTHSITE = "health site",
+}
+
 export const basemaps: Array<TileLayer> = [
   {
     name: "CartoCDN Voyager",

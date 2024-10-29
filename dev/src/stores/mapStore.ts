@@ -7,8 +7,7 @@ import {
   LayerName,
   healthSiteIsochroneType,
 } from "@/assets/ts/constants";
-import type { VectorLayer } from "@/assets/ts/types";
-import type { GeoJSONData } from "@/assets/ts/types";
+import type { VectorLayer, GeoJSONData, Population } from "@/assets/ts/types";
 
 const useMapStore = defineStore("city", () => {
   // State
@@ -18,6 +17,8 @@ const useMapStore = defineStore("city", () => {
   const isJsonDataLoad = ref<boolean>(false);
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
+  const shelterPopulation = ref<Record<string, Population>>({});
+  const healthSitePopulation = ref<Record<string, Population>>({});
   const vectorLayers: Record<string, VectorLayer> = {
     boundaryLayer: {
       name: LayerName.BOUNDARY,
@@ -102,6 +103,10 @@ const useMapStore = defineStore("city", () => {
         promises.push(
           axios.get(`/api/population/${cityName}`).then((res) => {
             geojsonData.value.population = res.data;
+            shelterPopulation.value[cityName] = {
+              accessible: res.data.properties.accessible,
+              inaccessible: res.data.properties.inaccessible,
+            };
           }),
         );
         promises.push(
@@ -120,6 +125,10 @@ const useMapStore = defineStore("city", () => {
         promises.push(
           axios.get(`/api/hospital-auto-population/${cityName}`).then((res) => {
             geojsonData.value.healthSitePopulation = res.data;
+            healthSitePopulation.value[cityName] = {
+              accessible: res.data.properties.accessible,
+              inaccessible: res.data.properties.inaccessible,
+            };
           }),
         );
       } else {
@@ -198,6 +207,8 @@ const useMapStore = defineStore("city", () => {
     geojsonData,
     vectorLayers,
     isJsonDataLoad,
+    shelterPopulation,
+    healthSitePopulation,
     setCity,
     setIsochroneType,
     getIsochroneType,

@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { getTotalPopulation } from "@/assets/ts/functions";
-import {
-  populationAccessibleColor,
-  populationInaccessibleColor,
-} from "@/assets/ts/constants";
+import { populationType } from "@/assets/ts/constants";
+import type { Population } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
-const population = ref<number[]>([]);
+const props = defineProps<{ type: string }>();
+let population = ref<Population | null>(null);
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
 
-// Methods
+// Update population based on the type prop and current city
+const updatePopulation = () => {
+  if (props.type === populationType.SHELTER) {
+    population.value = mapStore.shelterPopulation[mapStore.city];
+  } else if (props.type === populationType.HEALTHSITE) {
+    population.value = mapStore.healthSitePopulation[mapStore.city];
+  }
+  console.log(mapStore.healthSitePopulation[mapStore.city]);
+};
+// Initialize the chart
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
+  setChartOptions();
+};
+// Set the options for the chart
+const setChartOptions = (): void => {
   chart.setOption({
     legend: {
       orient: "vertical",
@@ -43,50 +54,48 @@ const initChart = (): void => {
             formatter: "{b}: {c}",
           },
         },
-        data: [
-          { value: population.value[0], name: "Accessible in 5 min" },
-          { value: population.value[1], name: "Inaccessible in 5 min" },
-        ],
+        data: population.value
+          ? [
+              {
+                value: population.value.accessible,
+                name: "Accessible in 5 min",
+              },
+              {
+                value: population.value.inaccessible,
+                name: "Inaccessible in 5 min",
+              },
+            ]
+          : [],
       },
     ],
-    color: [populationAccessibleColor[2], populationInaccessibleColor[2]],
+    color: ["#3999d2", "#c23531"],
   });
 };
 
-const updateChart = (): void => {
-  if (chart) {
-    chart.setOption({
-      series: [
-        {
-          data: [
-            { value: population.value[0], name: "Accessible in 5 min" },
-            { value: population.value[1], name: "Inaccessible in 5 min" },
-          ],
-        },
-      ],
-    });
-  }
-};
-
-// Watchers
+// Update chart when city changed
 watch(
-  () => mapStore.city,
-  (newCity) => {
-    if (newCity) {
-      population.value = getTotalPopulation(newCity);
-      updateChart();
-    }
+  () => {
+    return props.type === populationType.SHELTER
+      ? mapStore.shelterPopulation[mapStore.city]
+      : mapStore.healthSitePopulation[mapStore.city];
   },
-  { immediate: true },
+  (newPopulation) => {
+    population.value = newPopulation;
+    if (chart) chart.clear();
+    setChartOptions();
+  },
 );
 
 onMounted(() => {
+  updatePopulation();
   initChart();
 });
 </script>
+
 <template>
   <div ref="chartContainer" class="chart-container"></div>
 </template>
+
 <style scoped>
 .chart-container {
   width: 400px;
