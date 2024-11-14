@@ -8,10 +8,9 @@ import {
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
-import SidebarControl from "@/components/controls/SidebarControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import type { Point, Feature } from "geojson";
 import type { ShelterProperties } from "@/assets/ts/types";
 import { basemaps } from "@/assets/ts/constants";
@@ -19,13 +18,6 @@ import useMapStore from "@/stores/mapStore";
 
 // Pinia Store
 const mapStore = useMapStore();
-// Switch to another city, the popup content would be cleared
-watch(
-  () => mapStore.city,
-  () => {
-    popup.value = "";
-  },
-);
 // Shelter Layer Settings
 const markerOptions = {
   radius: 5,
@@ -35,9 +27,8 @@ const markerOptions = {
   opacity: 0.8,
   fillOpacity: 0.8,
 };
-const popup = ref<string>("");
 const togglePopup = (feature: Feature<Point, ShelterProperties>) => {
-  popup.value = feature.properties.description
+  mapStore.popup = feature.properties.description
     ? feature.properties.description
     : feature.properties.name;
 };
@@ -77,6 +68,17 @@ const populationStyle = (feature: any) => {
     weight: 0.05,
     opacity: 0.95,
   };
+};
+const onEachFeatureFunction = () => {
+  return (feature: any, layer: any) => {
+    layer.bindTooltip(`<div>${feature.properties.value}</div>`, {
+      permanent: true,
+      sticky: true,
+    });
+  };
+};
+const populationOptions = {
+  onEachFeature: onEachFeatureFunction,
 };
 // Health Site Point Layer Settings
 const healthSiteOptions = {
@@ -197,12 +199,8 @@ onMounted(() => {
     :visible="mapStore.vectorLayers.healthSitePopulationLayer.visible as unknown as boolean"
     layer-type="overlay"
     :options-style="populationStyle"
+    :options="populationOptions"
     pane="overlayPane"
   ></l-geo-json>
   <legend-control></legend-control>
-  <sidebar-control>
-    <template #popup>
-      <h6 v-html="popup" style="margin-left: 1em"></h6>
-    </template>
-  </sidebar-control>
 </template>

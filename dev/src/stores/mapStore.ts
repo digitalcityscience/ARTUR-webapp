@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import axios from "axios";
 import {
   cities,
@@ -15,6 +15,7 @@ const useMapStore = defineStore("city", () => {
   const city = ref(cities[0].name);
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
+  const popup = ref<string>("");
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
   const shelterPopulation = ref<Record<string, Population>>({});
@@ -200,11 +201,14 @@ const useMapStore = defineStore("city", () => {
   };
 
   const getIsochroneType = (): string => healthSiteIsochroneType[isochroneType.value];
-
+  watch(city, () => {
+    popup.value = "";
+  });
   return {
     map,
     city,
     geojsonData,
+    popup,
     vectorLayers,
     isJsonDataLoad,
     shelterPopulation,

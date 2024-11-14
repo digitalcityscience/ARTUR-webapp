@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
 import { ref, onBeforeMount } from "vue";
+import { cities } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";
 import LayerControl from "./controls/LayerControl.vue";
 import NavControl from "./controls/NavControl.vue";
-import { cities } from "@/assets/ts/constants";
+import SidebarControl from "@/components/controls/SidebarControl.vue";
 
 // Map Settings
 const map = ref();
@@ -39,5 +40,6 @@ const onReady = () => {
     <l-control-scale :imperial="false"></l-control-scale>
     <nav-control :zoom="firstZoom" v-if="isReady"></nav-control>
     <layer-control v-if="isReady && mapStore.isJsonDataLoad"></layer-control>
+    <sidebar-control v-if="isReady"></sidebar-control>
   </l-map>
 </template>

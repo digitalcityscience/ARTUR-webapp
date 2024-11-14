@@ -273,7 +273,7 @@ onMounted(() => {
                   Shelters Information
                 </button>
                 <div class="collapse show" id="popup-collapse">
-                  <slot name="popup"></slot>
+                  <h6 v-html="mapStore.popup"></h6>
                 </div>
               </li>
               <li class="mb-1">
