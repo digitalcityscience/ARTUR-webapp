@@ -13,12 +13,11 @@ import {
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
 import useMapStore from "@/stores/mapStore";
 import useIndicatorStore from "@/stores/indicatorStore";
-
+import useSidebarStore from "@/stores/sidebarStore";
 // Stores
 const mapStore = useMapStore();
 const indicatorStore = useIndicatorStore();
 // Map
-const map = mapStore.map;
 // Track the currently selected base map by its name, default is the first
 const selectedBasemap = ref(basemaps[0].name);
 // Methods
@@ -60,14 +59,16 @@ function indicatorColor(color: string): string {
 }
 // The Analysis
 const analyzeResults = () => {};
+const sidebarStore = useSidebarStore();
+let sidebar: L.Control.Sidebar;
 onMounted(() => {
-  L.control
+  sidebar = L.control
     .sidebar({
       container: "rightsidebar",
       position: "right",
       closebutton: true,
     })
-    .addTo(map)
+    .addTo(mapStore.map)
     .open("home");
 });
 </script>
@@ -105,7 +106,56 @@ onMounted(() => {
       <div class="leaflet-sidebar-content">
         <!-- home -->
         <div class="leaflet-sidebar-pane" id="home">
-          <h1 class="leaflet-sidebar-header">
+          <!-- Language Switch Butoon -->
+          <div class="btn-group btn-group-sm" style="float: right; margin-top: 10px">
+            <button
+              class="btn btn-outline-primary"
+              :class="{ active: sidebarStore.activeLang === 'EN' }"
+              @click="sidebarStore.setActiveLang('EN')"
+            >
+              EN
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              :class="{ active: sidebarStore.activeLang === 'UA' }"
+              @click="sidebarStore.setActiveLang('UA')"
+            >
+              UA
+            </button>
+          </div>
+          <!-- Start Page -->
+          <div class="info-content" style="margin-top: 80px">
+            <strong class="info-title">Objective of the tool:</strong>
+            <p class="info-content-text">
+              The ARTUR Tool has been designed as an interactive platform which serves as
+              a resilience checker for Ukrainian cities. The specific tasks within this
+              tool include:
+            </p>
+            <p class="info-content-text">1. Dissect the challenges of a city;</p>
+            <p class="info-content-text">
+              2. Diagnose the causes and effects of its challenges;
+            </p>
+            <p class="info-content-text">3. Relate these to specific locations;</p>
+            <p class="info-content-text">
+              4. Understand which resilience capacities perform poorly, and where are the
+              areas of action where measures can be designed for.
+            </p>
+            <p class="info-content-text">
+              <strong
+                >To continue please click "<i class="fa fa-caret-right"> Next</i
+                >"!</strong
+              >
+            </p>
+            <button
+              type="button"
+              class="btn btn-sm btn-primary"
+              @click="sidebarStore.goToSetting(sidebar)"
+              style="float: right"
+            >
+              <i class="fa fa-caret-right"> Next</i>
+            </button>
+          </div>
+          <!-- <h1 class="leaflet-sidebar-header">
             Info
             <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
           </h1>
@@ -158,7 +208,7 @@ onMounted(() => {
               the chart. Click the "Run" button to display the analysis results of the
               user-selected indicator.
             </p>
-          </div>
+          </div> -->
         </div>
         <!-- Layers -->
         <div class="leaflet-sidebar-pane" id="layer">
@@ -383,6 +433,80 @@ onMounted(() => {
               <div class="collapse show" id="results-collapse"></div>
             </li>
           </ul>
+        </div>
+        <!-- Settings -->
+        <div class="leaflet-sidebar-pane" id="settings">
+          <h1 class="leaflet-sidebar-header">
+            Settings<span class="leaflet-sidebar-close"
+              ><i class="fa fa-caret-right"></i
+            ></span>
+          </h1>
+          <div class="info-content"></div>
+          <!-- Step 1 -->
+          <div
+            v-if="sidebarStore.currentStep === 1"
+            class="info-content"
+            style="margin-top: 80px"
+          >
+            <strong class="info-title">Step 1</strong>
+            <p class="info-content-text">1.</p>
+          </div>
+          <!-- Step 2 -->
+          <div
+            v-if="sidebarStore.currentStep === 2"
+            class="info-content"
+            style="margin-top: 80px"
+          >
+            <strong class="info-title">Step 2</strong>
+            <p class="info-content-text">2.</p>
+          </div>
+          <!-- Step 3 -->
+          <div
+            v-if="sidebarStore.currentStep === 3"
+            class="info-content"
+            style="margin-top: 80px"
+          >
+            <strong class="info-title">Step 3</strong>
+            <p class="info-content-text">3.</p>
+          </div>
+          <!-- Step 4 -->
+          <div
+            v-if="sidebarStore.currentStep === 4"
+            class="info-content"
+            style="margin-top: 80px"
+          >
+            <strong class="info-title">Step 4</strong>
+            <p class="info-content-text">You have reached the end.</p>
+          </div>
+          <button
+            type="button"
+            class="btn btn-sm btn-success"
+            @click="sidebarStore.goToFirstStep"
+            style="float: left"
+            v-if="sidebarStore.currentStep === 4"
+          >
+            <i class="fa fa-chevron-circle-left"> Go to Step 1</i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-primary"
+            @click="sidebarStore.goToPreviousPage(sidebar)"
+            style="float: left"
+            v-if="sidebarStore.currentStep > 0"
+          >
+            <i class="fa fa-caret-left"> Back</i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-primary"
+            @click="sidebarStore.goToNextPage(sidebar)"
+            style="float: right"
+            v-if="sidebarStore.currentStep > 0"
+          >
+            <i class="fa fa-caret-right">{{
+              sidebarStore.currentStep < 4 ? " Next" : " Finish"
+            }}</i>
+          </button>
         </div>
       </div>
     </div>
