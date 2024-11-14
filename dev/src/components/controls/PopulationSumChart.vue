@@ -9,6 +9,7 @@ const mapStore = useMapStore();
 const props = defineProps<{ type: string }>();
 let population = ref<Population | null>(null);
 const chartContainer = ref<HTMLDivElement | null>(null);
+let minute = props.type === populationType.HEALTHSITE ? 10 : 5;
 let chart: echarts.ECharts;
 
 // Update population based on the type prop and current city
@@ -18,7 +19,6 @@ const updatePopulation = () => {
   } else if (props.type === populationType.HEALTHSITE) {
     population.value = mapStore.healthSitePopulation[mapStore.city];
   }
-  console.log(mapStore.healthSitePopulation[mapStore.city]);
 };
 // Initialize the chart
 const initChart = (): void => {
@@ -58,11 +58,11 @@ const setChartOptions = (): void => {
           ? [
               {
                 value: population.value.accessible,
-                name: "Accessible in 5 min",
+                name: `Accessible in ${minute} min`,
               },
               {
                 value: population.value.inaccessible,
-                name: "Inaccessible in 5 min",
+                name: `Inaccessible in ${minute} min`,
               },
             ]
           : [],
