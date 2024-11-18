@@ -1,32 +1,26 @@
 <script setup lang="ts">
-import { LMap, LControlScale } from "@vue-leaflet/vue-leaflet";
-import { ref, onBeforeMount } from "vue";
-import { cities } from "@/assets/ts/constants";
+import { LMap, LControlScale, LTileLayer } from "@vue-leaflet/vue-leaflet";
+import { ref } from "vue";
 import useMapStore from "@/stores/mapStore";
-import LayerControl from "./controls/LayerControl.vue";
-import NavControl from "./controls/NavControl.vue";
+import { basemaps } from "@/assets/ts/constants";
+import OverlayControl from "./controls/OverlayControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 
+// Pinia Store
+const mapStore = useMapStore();
 // Map Settings
 const map = ref();
-const firstZoom = 12;
 const mapOptions = {
   zoomControl: true,
   attributionControl: true,
-  zoom: firstZoom,
+  zoom: 6,
   minZoom: 6,
   maxZoom: 18,
-  center: cities[0].latLng,
+  center: [49.35910584900799, 32.49031727913723],
   preferCanvas: true,
   interactive: false,
 };
 
-// Pinia Store
-const mapStore = useMapStore();
-// Initialize city data before mount
-onBeforeMount(() => {
-  mapStore.fetchGeoData(mapStore.city);
-});
 const isReady = ref(false);
 const onReady = () => {
   mapStore.map = map.value.leafletObject;
@@ -36,10 +30,19 @@ const onReady = () => {
 
 <template>
   <l-map ref="map" :use-global-leaflet="false" :options="mapOptions" @ready="onReady">
+    <!-- Base Layers -->
+    <template v-for="basemap in basemaps" :key="basemap.name">
+      <l-tile-layer
+        :url="basemap.url"
+        layer-type="base"
+        :name="basemap.name"
+        :visible="basemap.visible.value"
+        pane="tilePane"
+      ></l-tile-layer>
+    </template>
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
-    <nav-control :zoom="firstZoom" v-if="isReady"></nav-control>
-    <layer-control v-if="isReady && mapStore.isJsonDataLoad"></layer-control>
+    <overlay-control v-if="isReady"></overlay-control>
     <sidebar-control v-if="isReady"></sidebar-control>
   </l-map>
 </template>

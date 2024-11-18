@@ -13,6 +13,7 @@ const useMapStore = defineStore("city", () => {
   // State
   const map = ref();
   const city = ref(cities[0].name);
+  const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
   const popup = ref<string>("");
@@ -207,6 +208,7 @@ const useMapStore = defineStore("city", () => {
   return {
     map,
     city,
+    zoom,
     geojsonData,
     popup,
     vectorLayers,
