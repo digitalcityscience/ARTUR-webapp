@@ -15,9 +15,9 @@ let chart: echarts.ECharts;
 // Update population based on the type prop and current city
 const updatePopulation = () => {
   if (props.type === populationType.SHELTER) {
-    population.value = mapStore.shelterPopulation[mapStore.city];
+    population.value = mapStore.shelterPopulation[mapStore.city!];
   } else if (props.type === populationType.HEALTHSITE) {
-    population.value = mapStore.healthSitePopulation[mapStore.city];
+    population.value = mapStore.healthSitePopulation[mapStore.city!];
   }
 };
 // Initialize the chart
@@ -76,8 +76,8 @@ const setChartOptions = (): void => {
 watch(
   () => {
     return props.type === populationType.SHELTER
-      ? mapStore.shelterPopulation[mapStore.city]
-      : mapStore.healthSitePopulation[mapStore.city];
+      ? mapStore.shelterPopulation[mapStore.city!]
+      : mapStore.healthSitePopulation[mapStore.city!];
   },
   (newPopulation) => {
     population.value = newPopulation;

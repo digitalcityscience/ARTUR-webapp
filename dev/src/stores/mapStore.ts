@@ -1,18 +1,13 @@
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 import axios from "axios";
-import {
-  cities,
-  CityName,
-  LayerName,
-  healthSiteIsochroneType,
-} from "@/assets/ts/constants";
+import { CityName, LayerName, healthSiteIsochroneType } from "@/assets/ts/constants";
 import type { VectorLayer, GeoJSONData, Population } from "@/assets/ts/types";
 
 const useMapStore = defineStore("city", () => {
   // State
   const map = ref();
-  const city = ref(cities[0].name);
+  const city = ref<CityName | null>(null);
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
@@ -188,7 +183,7 @@ const useMapStore = defineStore("city", () => {
     isochroneType.value = newType;
 
     // Only fetch the new isochrone data (others remain unchanged)
-    fetchGeoData(city.value, newType);
+    if (city.value) fetchGeoData(city.value, newType);
   };
 
   // Actions to change city and refetch data

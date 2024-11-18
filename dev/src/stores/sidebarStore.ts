@@ -1,17 +1,17 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import * as L from "leaflet";
-import SidebarControl from "@/components/controls/SidebarControl.vue";
 
 const useSidebarStore = defineStore("sidebar", () => {
+  const sidebar = ref<L.Control.Sidebar | null>(null);
   const currentStep = ref(1);
   const activeLang = ref<"EN" | "UA">("EN");
   // Methods
-  const goToSetting = (sidebar: L.Control.Sidebar) => sidebar.open("settings");
-  const goToNextPage = (sidebar: L.Control.Sidebar) =>
-    currentStep.value < 4 ? currentStep.value++ : sidebar.open("layer");
-  const goToPreviousPage = (sidebar: L.Control.Sidebar) =>
-    currentStep.value === 1 ? sidebar.open("home") : currentStep.value--;
+  const goToSetting = () => sidebar.value!.open("settings");
+  const goToNextPage = () =>
+    currentStep.value < 4 ? currentStep.value++ : sidebar.value!.open("layer");
+  const goToPreviousPage = () =>
+    currentStep.value === 1 ? sidebar.value!.open("info") : currentStep.value--;
   const goToFirstStep = () => (currentStep.value = 1);
   const setActiveLang = (lang: "EN" | "UA") => {
     activeLang.value = lang;
@@ -19,6 +19,7 @@ const useSidebarStore = defineStore("sidebar", () => {
   };
 
   return {
+    sidebar,
     currentStep,
     activeLang,
     goToNextPage,
