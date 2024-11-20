@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LMap, LControlScale, LTileLayer } from "@vue-leaflet/vue-leaflet";
+import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
 import { ref } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
@@ -14,13 +14,26 @@ const mapOptions = {
   zoomControl: true,
   attributionControl: true,
   zoom: 6,
-  minZoom: 6,
+  minZoom: 4,
   maxZoom: 18,
   center: [49.35910584900799, 32.49031727913723],
   preferCanvas: true,
   interactive: false,
+  maxBounds: [
+    // South-West corner of the bounding box
+    [35.0, 20.0],
+    // North-East corner of the bounding box
+    [55.0, 40.0],
+  ],
+  maxBoundsViscosity: 1.0,
 };
-
+// Boundary Style
+const boundaryStyle = () => {
+  return {
+    fillOpacity: 0,
+    color: "#43b0f1",
+  };
+};
 const isReady = ref(false);
 const onReady = () => {
   mapStore.map = map.value.leafletObject;
@@ -40,6 +53,13 @@ const onReady = () => {
         pane="tilePane"
       ></l-tile-layer>
     </template>
+    <!-- <l-geo-json
+      name="Ukraine Boundary"
+      :geojson="mapStore.geojsonData.boundary"
+      layer-type="overlay"
+      :options-style="boundaryStyle"
+      pane="overlayPane"
+    ></l-geo-json> -->
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
     <overlay-control v-if="isReady"></overlay-control>

@@ -40,13 +40,3 @@ const hasData = (city: CityName) =>
     </select>
   </div>
 </template>
-
-<style scoped>
-.form-group .form-select option:disabled {
-  background-color: var(--bs-gray-300);
-  color: var(--bs-gray-600);
-}
-.form-select {
-  max-width: 300px;
-}
-</style>

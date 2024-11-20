@@ -26,7 +26,7 @@ const sidebarStore = useSidebarStore();
         UA
       </button>
     </div>
-    <div class="info-content" style="margin-top: 80px">
+    <div class="info-content">
       <strong class="info-title">Objective of the tool:</strong>
       <p class="info-content-text">
         The ARTUR Tool has been designed as an interactive platform which serves as a

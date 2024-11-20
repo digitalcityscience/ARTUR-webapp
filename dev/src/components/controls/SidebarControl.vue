@@ -3,11 +3,11 @@ import { onMounted } from "vue";
 import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
-import SidebarTabs from "../sidebar/SidebarTabs.vue";
-import InfoPanel from "../sidebar/InfoPanel.vue";
-import SettingsPanel from "../sidebar/SettingsPanel.vue";
-import DashboardPanel from "../sidebar/DashboardPanel.vue";
-import LayerPanel from "../sidebar/LayerPanel.vue";
+import SidebarTabs from "./sidebar/SidebarTabs.vue";
+import InfoPanel from "./sidebar/InfoPanel.vue";
+import SettingsPanel from "./sidebar/SettingsPanel.vue";
+import DashboardPanel from "./sidebar/DashboardPanel.vue";
+import LayerPanel from "./sidebar/LayerPanel.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
 
@@ -46,7 +46,7 @@ onMounted(() => {
     </div>
   </div>
 </template>
-<style scoped>
+<style>
 /* .leaflet-sidebar:not(.collapsed) {
   width: 380px;
 } */
@@ -95,14 +95,16 @@ div {
 .btn-close {
   right: 0;
 }
-div.info-content {
-  display: block;
-}
-strong.info-title {
+.info-content {
   padding-left: 5px;
-  padding-bottom: 10px;
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
-p.info-content-text {
+.info-title {
+  padding-left: 5px;
+  padding-bottom: 30px;
+}
+.info-content-text {
   padding-left: 5px;
   padding-top: 5px;
   line-height: 1.5;

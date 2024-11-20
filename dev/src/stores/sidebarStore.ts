@@ -9,7 +9,7 @@ const useSidebarStore = defineStore("sidebar", () => {
   // Methods
   const goToSetting = () => sidebar.value!.open("settings");
   const goToNextPage = () =>
-    currentStep.value < 4 ? currentStep.value++ : sidebar.value!.open("layer");
+    currentStep.value < 3 ? currentStep.value++ : sidebar.value!.open("layer");
   const goToPreviousPage = () =>
     currentStep.value === 1 ? sidebar.value!.open("info") : currentStep.value--;
   const goToFirstStep = () => (currentStep.value = 1);
