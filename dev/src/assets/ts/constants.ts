@@ -18,17 +18,23 @@ export const cities: Array<CityData> = [
 
 export enum LayerName {
   SHELTER = "Shelters",
-  BOUNDARY = "Boundary",
+  BOUNDARY = "City Boundary",
   ISOCHRONE = "Shelters' Isochrone (Pedestrian)",
   POPULATION = "Shelter Access (Pedestrian): Population within/outside 5 min",
   HEALTHSITEPOINT = "Health Sites",
   HEALTHSITEISOCHRONE = "Health Sites' Isochrones",
   HEALTHSITEPOPULATION = "Health Site Access (Car): Population within/outside 10 min",
+  WATERSOURCE = "Water Source (fake)",
+  WATERSOURCECATCHMENT = "Catchment Area of water source",
+  WATERSOURCEPOPULATION = "Catchment area of Water Source: Population within/outside a certain kilometres according to the transport network",
+  ENERGYSUPPLY = "Energy Plant (fake)",
+  ENERGYSUPPLYCATCHMENT = "Catchment area of Energy Plant: Population within/outside a certain kilometres according to the transport network",
 }
 
 export enum populationType {
   SHELTER = "shelter",
   HEALTHSITE = "health site",
+  WATERSOURCE = "water source",
 }
 
 export const basemaps: Array<TileLayer> = [
@@ -98,4 +104,14 @@ export const healthSiteIsochroneType: Record<string, string> = {
 
 export enum Challenge {
   WATER = "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
+  ENERGY = "",
+}
+
+export enum PopulationChartText {
+  SHELTERACCESS = "Accessible in 5 min",
+  SHELTERINACCESS = "Inaccessible in 5 min",
+  HEALTHSITEACCESS = "Accessible in 10 min",
+  HEALTHSITEINACCESS = "Inaccessible in 10 min",
+  WATERSOURCEACCESS = "In Catchment Area",
+  WATERSOURCEINACCESS = "Out of Catchment Area",
 }

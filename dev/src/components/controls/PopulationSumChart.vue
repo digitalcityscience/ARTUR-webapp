@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { populationType } from "@/assets/ts/constants";
+import { populationType, PopulationChartText } from "@/assets/ts/constants";
 import type { Population } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
 
@@ -9,17 +9,18 @@ const mapStore = useMapStore();
 const props = defineProps<{ type: string }>();
 let population = ref<Population | null>(null);
 const chartContainer = ref<HTMLDivElement | null>(null);
-let minute = props.type === populationType.HEALTHSITE ? 10 : 5;
+let text = props.type === populationType.HEALTHSITE ? 10 : 5;
 let chart: echarts.ECharts;
 
 // Update population based on the type prop and current city
-const updatePopulation = () => {
-  if (props.type === populationType.SHELTER) {
-    population.value = mapStore.shelterPopulation[mapStore.city!];
-  } else if (props.type === populationType.HEALTHSITE) {
-    population.value = mapStore.healthSitePopulation[mapStore.city!];
-  }
-};
+const updatePopulation = () =>
+  (population.value =
+    props.type === populationType.SHELTER
+      ? mapStore.shelterPopulation[mapStore.city!]
+      : props.type === populationType.HEALTHSITE
+      ? mapStore.healthSitePopulation[mapStore.city!]
+      : mapStore.waterSourcePopulation[mapStore.city!]);
+
 // Initialize the chart
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
@@ -58,11 +59,21 @@ const setChartOptions = (): void => {
           ? [
               {
                 value: population.value.accessible,
-                name: `Accessible in ${minute} min`,
+                name:
+                  props.type === populationType.HEALTHSITE
+                    ? PopulationChartText.HEALTHSITEACCESS
+                    : props.type === populationType.SHELTER
+                    ? PopulationChartText.SHELTERACCESS
+                    : PopulationChartText.WATERSOURCEACCESS,
               },
               {
                 value: population.value.inaccessible,
-                name: `Inaccessible in ${minute} min`,
+                name:
+                  props.type === populationType.HEALTHSITE
+                    ? PopulationChartText.HEALTHSITEINACCESS
+                    : props.type === populationType.SHELTER
+                    ? PopulationChartText.SHELTERINACCESS
+                    : PopulationChartText.WATERSOURCEINACCESS,
               },
             ]
           : [],

@@ -10,6 +10,7 @@ dotenv.config({ path: "../.env" });
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  publicDir: "public",
   server: {
     host: "0.0.0.0",
     proxy: {

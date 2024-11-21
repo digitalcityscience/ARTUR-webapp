@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
 import CitySelector from "./CitySelector.vue";
@@ -7,6 +8,9 @@ import { Challenge } from "@/assets/ts/constants";
 
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
+const summary = ref("");
+summary.value =
+  sidebarStore.selectedTopic === "Water" ? Challenge.WATER : Challenge.ENERGY;
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="settings">
@@ -43,7 +47,7 @@ const mapStore = useMapStore();
         <select id="city-select" class="form-select" v-model="sidebarStore.selectedTopic">
           <option value="" disabled selected>Select a topic</option>
           <option value="Water">Water</option>
-          <option value="Energy" disabled>Energy</option>
+          <option value="Energy">Energy</option>
           <option value="Evacuation" disabled>Evacuation</option>
           <option value="Heating" disabled>Heating</option>
           <option value="Ecology" disabled>Ecology</option>
@@ -79,7 +83,7 @@ const mapStore = useMapStore();
           </tr>
           <tr>
             <th scope="row"><strong>Summary:</strong></th>
-            <td>{{ Challenge.WATER }}</td>
+            <td>{{ summary }}</td>
           </tr>
         </tbody>
       </table>

@@ -214,4 +214,110 @@ router.get("/buildings/:city", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.get("/water-source/:city", async (req, res) => {
+  // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [m*3]" capacity, usage FROM generated_${city}_water_source`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: {
+        name: row.id,
+        capacity: row.capacity,
+        usage: row.usage,
+      },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
+router.get("/water-source-catchment/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_water_source_catchment`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { range: row.range },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/water-source-population/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM generated_${city}_water_source_catchment_population`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: {
+        value: row.value,
+        access: row.access,
+        name: `${city}_HealthSite_population`,
+      },
+      geometry: JSON.parse(row.geometry),
+    }));
+    let accessible = 0,
+      inaccessible = 0;
+    rows.forEach((row) => {
+      if (row.access) accessible += row.value;
+      else inaccessible += row.value;
+    });
+    res.json({
+      type: "FeatureCollection",
+      properties: { accessible: accessible, inaccessible: inaccessible },
+      features,
+    });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/energy-supply/:city", async (req, res) => {
+  // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [kw]" capacity, user_type FROM generated_${city}_energy_supply`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: {
+        name: row.id,
+        capacity: row.capacity,
+        userType: row.user_type,
+      },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
+router.get("/energy-supply-catchment/:city", async (req, res) => {
+  const city = req.params.city.replace(/ /g, "");
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_energy_supply_catchment`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: { range: row.range },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
 export default router;

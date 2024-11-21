@@ -33,49 +33,79 @@ onMounted(() => {
       <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
     </button>
     <div class="legend" v-show="showLegend">
-      <div v-show="mapStore.vectorLayers.shelterLayer.visible">
+      <div v-show="mapStore.shelterLayers.shelterLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.vectorLayers.shelterLayer.color }"
+          :style="{ background: mapStore.shelterLayers.shelterLayer.color }"
         ></i>
-        {{ mapStore.vectorLayers.shelterLayer.name }}
+        {{ mapStore.shelterLayers.shelterLayer.name }}
       </div>
-      <div v-show="mapStore.vectorLayers.healthSiteLayer.visible">
+      <div v-show="mapStore.healthsiteLayers.healthSiteLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.vectorLayers.healthSiteLayer.color }"
+          :style="{ background: mapStore.healthsiteLayers.healthSiteLayer.color }"
         ></i>
-        {{ mapStore.vectorLayers.healthSiteLayer.name }}
+        {{ mapStore.healthsiteLayers.healthSiteLayer.name }}
       </div>
-      <div v-show="mapStore.vectorLayers.boundaryLayer.visible">
+      <div v-show="mapStore.waterSourceLayers.waterSourceLayer.visible">
         <i
-          class="polyline"
-          :style="{ background: mapStore.vectorLayers.boundaryLayer.color }"
+          class="point"
+          :style="{ background: mapStore.waterSourceLayers.waterSourceLayer.color }"
         ></i>
-        {{ mapStore.vectorLayers.boundaryLayer.name }}
+        {{ mapStore.waterSourceLayers.waterSourceLayer.name }}
       </div>
-      <div v-show="mapStore.vectorLayers.isochroneLayer.visible">
+      <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
+        <i
+          class="point"
+          :style="{ background: mapStore.energySupplyLayers.energySupplyLayer.color }"
+        ></i>
+        {{ mapStore.energySupplyLayers.energySupplyLayer.name }}
+      </div>
+      <div v-show="mapStore.boundaryLayer.visible">
+        <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
+        {{ mapStore.boundaryLayer.name }}
+      </div>
+      <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
         <template
-          v-for="range in mapStore.vectorLayers.isochroneLayer.range"
+          v-for="range in mapStore.shelterLayers.isochroneLayer.range"
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 5) }"></i
           >Shelters' Isochrone {{ range }} min<br />
         </template>
       </div>
-      <div v-show="mapStore.vectorLayers.healthSiteIsochroneLayer.visible">
+      <div v-show="mapStore.healthsiteLayers.healthSiteIsochroneLayer.visible">
         <template
-          v-for="range in mapStore.vectorLayers.healthSiteIsochroneLayer.range"
+          v-for="range in mapStore.healthsiteLayers.healthSiteIsochroneLayer.range"
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
           >Health Site Isochrone - {{ mapStore.getIsochroneType() }} {{ range }} min<br />
         </template>
       </div>
+      <div v-show="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible">
+        <template
+          v-for="range in mapStore.waterSourceLayers.waterSourceCatchmentLayer.range"
+          :key="range"
+        >
+          <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
+          >Water Source Catchment Area {{ range }} km<br />
+        </template>
+      </div>
+      <div v-show="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible">
+        <template
+          v-for="range in mapStore.energySupplyLayers.energySupplyCatchmentLayer.range"
+          :key="range"
+        >
+          <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
+          >Energy Supply Catchment Area {{ range }} km<br />
+        </template>
+      </div>
       <div
         v-show="
-          mapStore.vectorLayers.populationLayer.visible ||
-          mapStore.vectorLayers.healthSitePopulationLayer.visible
+          mapStore.shelterLayers.populationLayer.visible ||
+          mapStore.healthsiteLayers.healthSitePopulationLayer.visible ||
+          mapStore.waterSourceLayers.waterSourcePopulationLayer.visible
         "
         class="population-grid"
       >

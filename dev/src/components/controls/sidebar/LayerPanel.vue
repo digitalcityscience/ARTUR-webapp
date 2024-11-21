@@ -80,36 +80,148 @@ const changeIsochroneType = () => {
                 >
                   Overlays
                 </button>
-                <div
-                  class="form-check collapse show"
-                  v-for="overlay in mapStore.vectorLayers"
-                  :key="overlay.name"
-                  id="overlay-switch"
-                >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    :id="overlay.name"
-                    :name="overlay.name"
-                    v-model="overlay.visible"
-                  />
-                  <label class="form-check-label" :for="overlay.name">
-                    {{ overlay.name }}
-                  </label>
-                  <!-- Isochrone switcher for healthSiteIsochroneLayer -->
-                  <div v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE" class="mt-2">
-                    <select
-                      v-model="selectedIsochroneType"
-                      @change="changeIsochroneType"
-                      class="form-select"
-                      id="isochroneType"
-                      aria-label="Isochrone Type Select"
+                <div id="overlay-switch" class="container">
+                  <div class="mb-1 form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="mapStore.boundaryLayer.name"
+                      :name="mapStore.boundaryLayer.name"
+                      v-model="mapStore.boundaryLayer.visible"
+                    />
+                    <label class="form-check-label" :for="mapStore.boundaryLayer.name">
+                      {{ mapStore.boundaryLayer.name }}
+                    </label>
+                  </div>
+                  <div class="mb-1">
+                    <button
+                      class="btn btn-outline-success"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#shelter-layer-set"
+                      aria-expanded="false"
+                      aria-controls="shelter-layer-set"
                     >
-                      <option value="auto">Car</option>
-                      <option value="bus">Bus</option>
-                      <option value="bicycle">Bicycle</option>
-                      <option value="pedestrian">Pedestrian</option>
-                    </select>
+                      Layer Set: Shelter
+                    </button>
+                    <div
+                      class="form-check collapse"
+                      v-for="overlay in mapStore.shelterLayers"
+                      :key="overlay.name"
+                      id="shelter-layer-set"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ overlay.name }}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-1">
+                    <button
+                      class="btn btn-outline-success"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#healthsite-layer-set"
+                      aria-expanded="false"
+                      aria-controls="healthsite-layer-set"
+                    >
+                      Layer Set: Health Site
+                    </button>
+                    <div
+                      class="form-check collapse"
+                      v-for="overlay in mapStore.healthsiteLayers"
+                      :key="overlay.name"
+                      id="healthsite-layer-set"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ overlay.name }}
+                      </label>
+                      <!-- Isochrone switcher for healthSiteIsochroneLayer -->
+                      <div
+                        v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
+                        class="mt-2"
+                      >
+                        <select
+                          v-model="selectedIsochroneType"
+                          @change="changeIsochroneType"
+                          class="form-select"
+                          id="isochroneType"
+                          aria-label="Isochrone Type Select"
+                        >
+                          <option value="auto">Car</option>
+                          <option value="bus">Bus</option>
+                          <option value="bicycle">Bicycle</option>
+                          <option value="pedestrian">Pedestrian</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-1">
+                    <button
+                      class="btn btn-outline-success"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#watersource-layer-set"
+                      aria-expanded="false"
+                      aria-controls="watersource-layer-set"
+                    >
+                      Layer Set: Water Source
+                    </button>
+                    <div
+                      class="form-check collapse"
+                      v-for="overlay in mapStore.waterSourceLayers"
+                      :key="overlay.name"
+                      id="watersource-layer-set"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ overlay.name }}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="mb-1">
+                    <button
+                      class="btn btn-outline-success"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#energysupply-layer-set"
+                      aria-expanded="false"
+                      aria-controls="energysupply-layer-set"
+                    >
+                      Layer Set: Energy Supply
+                    </button>
+                    <div
+                      class="form-check collapse"
+                      v-for="overlay in mapStore.energySupplyLayers"
+                      :key="overlay.name"
+                      id="energysupply-layer-set"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ overlay.name }}
+                      </label>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -123,6 +235,7 @@ const changeIsochroneType = () => {
             data-bs-target="#popup-collapse"
             aria-expanded="true"
             style="padding-left: 0"
+            v-if="mapStore.shelterLayers.shelterLayer.visible"
           >
             Shelters Information
           </button>
@@ -135,7 +248,7 @@ const changeIsochroneType = () => {
             class="btn btn-toggle rounded collapsed"
             data-bs-toggle="collapse"
             data-bs-target="#shelter-population-collapse"
-            v-show="mapStore.vectorLayers.populationLayer.visible"
+            v-show="mapStore.shelterLayers.populationLayer.visible"
             aria-expanded="true"
             style="padding-left: 0"
           >
@@ -144,7 +257,7 @@ const changeIsochroneType = () => {
           <div class="collapse show" id="shelter-population-collapse">
             <population-sum-chart
               v-if="
-                mapStore.vectorLayers.populationLayer.visible &&
+                mapStore.shelterLayers.populationLayer.visible &&
                 mapStore.shelterPopulation
               "
               :type="populationType.SHELTER"
@@ -156,7 +269,7 @@ const changeIsochroneType = () => {
             class="btn btn-toggle rounded collapsed"
             data-bs-toggle="collapse"
             data-bs-target="#healthsite-population-collapse"
-            v-show="mapStore.vectorLayers.healthSitePopulationLayer.visible"
+            v-show="mapStore.healthsiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
             style="padding-left: 0"
           >
@@ -165,10 +278,31 @@ const changeIsochroneType = () => {
           <div class="collapse show" id="healthsite-population-collapse">
             <population-sum-chart
               v-if="
-                mapStore.vectorLayers.healthSitePopulationLayer.visible &&
+                mapStore.healthsiteLayers.healthSitePopulationLayer.visible &&
                 mapStore.healthSitePopulation
               "
               :type="populationType.HEALTHSITE"
+            ></population-sum-chart>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button
+            class="btn btn-toggle rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#watersource-population-collapse"
+            v-show="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
+            aria-expanded="true"
+            style="padding-left: 0"
+          >
+            Water Source Catchment Area Population
+          </button>
+          <div class="collapse show" id="watersource-population-collapse">
+            <population-sum-chart
+              v-if="
+                mapStore.waterSourceLayers.waterSourcePopulationLayer.visible &&
+                mapStore.waterSourcePopulation
+              "
+              :type="populationType.WATERSOURCE"
             ></population-sum-chart>
           </div>
         </li>

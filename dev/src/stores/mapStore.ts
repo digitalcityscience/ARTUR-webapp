@@ -16,16 +16,17 @@ const useMapStore = defineStore("city", () => {
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
   const shelterPopulation = ref<Record<string, Population>>({});
   const healthSitePopulation = ref<Record<string, Population>>({});
-  const vectorLayers: Record<string, VectorLayer> = {
-    boundaryLayer: {
-      name: LayerName.BOUNDARY,
-      visible: ref(true),
-      color: "black",
-    },
-    shelterLayer: { name: LayerName.SHELTER, visible: ref(true), color: "orange" },
+  const waterSourcePopulation = ref<Record<string, Population>>({});
+  const boundaryLayer: VectorLayer = {
+    name: LayerName.BOUNDARY,
+    visible: ref(true),
+    color: "#057dcd",
+  };
+  const shelterLayers: Record<string, VectorLayer> = {
+    shelterLayer: { name: LayerName.SHELTER, visible: ref(false), color: "orange" },
     isochroneLayer: {
       name: LayerName.ISOCHRONE,
-      visible: ref(true),
+      visible: ref(false),
       range: [1, 2, 3, 4, 5],
     },
     populationLayer: {
@@ -33,6 +34,8 @@ const useMapStore = defineStore("city", () => {
       visible: ref(false),
       range: [45, 35, 25, 15, 5],
     },
+  };
+  const healthsiteLayers: Record<string, VectorLayer> = {
     healthSiteLayer: {
       name: LayerName.HEALTHSITEPOINT,
       visible: ref(false),
@@ -49,6 +52,35 @@ const useMapStore = defineStore("city", () => {
       range: [45, 35, 25, 15, 5],
     },
   };
+  const waterSourceLayers: Record<string, VectorLayer> = {
+    waterSourceLayer: {
+      name: LayerName.WATERSOURCE,
+      visible: ref(false),
+      color: "#660e60",
+    },
+    waterSourceCatchmentLayer: {
+      name: LayerName.WATERSOURCECATCHMENT,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 8, 10],
+    },
+    waterSourcePopulationLayer: {
+      name: LayerName.WATERSOURCEPOPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
+  };
+  const energySupplyLayers: Record<string, VectorLayer> = {
+    energySupplyLayer: {
+      name: LayerName.ENERGYSUPPLY,
+      visible: ref(false),
+      color: "red",
+    },
+    energySupplyCatchmentLayer: {
+      name: LayerName.ENERGYSUPPLYCATCHMENT,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 8, 10],
+    },
+  };
   const isochroneType = ref("auto");
   const isIsochroneChanged = ref(false);
   // Track which layers have been loaded per city (excluding isochrones)
@@ -63,6 +95,11 @@ const useMapStore = defineStore("city", () => {
       population: false,
       healthSitePoint: false,
       healthSitePopualtion: false,
+      waterSource: false,
+      waterSourceCatchment: false,
+      waterSourcePopulation: false,
+      energySupply: false,
+      energySupplyCatchment: false,
     };
   };
 
@@ -128,12 +165,47 @@ const useMapStore = defineStore("city", () => {
             };
           }),
         );
+        promises.push(
+          axios.get(`/api/water-source/${cityName}`).then((res) => {
+            geojsonData.value.waterSourcePoint = res.data;
+          }),
+        );
+        promises.push(
+          axios.get(`/api/water-source-catchment/${cityName}`).then((res) => {
+            geojsonData.value.waterSourceCatchment = res.data;
+            geojsonData.value.waterSourceCatchment!.features.sort(
+              (a, b) => b.properties.range - a.properties.range,
+            );
+          }),
+        );
+        promises.push(
+          axios.get(`/api/water-source-population/${cityName}`).then((res) => {
+            geojsonData.value.waterSourcePopulation = res.data;
+            waterSourcePopulation.value[cityName] = {
+              accessible: res.data.properties.accessible,
+              inaccessible: res.data.properties.inaccessible,
+            };
+          }),
+        );
+        promises.push(
+          axios.get(`/api/energy-supply/${cityName}`).then((res) => {
+            geojsonData.value.energySupplyPoint = res.data;
+          }),
+        );
+        promises.push(
+          axios.get(`/api/energy-supply-catchment/${cityName}`).then((res) => {
+            geojsonData.value.energySupplyCatchment = res.data;
+            geojsonData.value.energySupplyCatchment!.features.sort(
+              (a, b) => b.properties.range - a.properties.range,
+            );
+          }),
+        );
       } else {
         // If city data is cached, load it from the cache
         geojsonData.value = { ...dataCache.value[cityName] };
       }
 
-      // Fetch isochrone data if not cached for the current city and type
+      // Fetch Health Site isochrone data if not cached for the current city and type
       if (
         !isochroneCache.value[cityName]?.[isochroneTypeParam] ||
         isIsochroneChanged.value
@@ -206,10 +278,15 @@ const useMapStore = defineStore("city", () => {
     zoom,
     geojsonData,
     popup,
-    vectorLayers,
+    shelterLayers,
+    boundaryLayer,
+    healthsiteLayers,
+    waterSourceLayers,
+    energySupplyLayers,
     isJsonDataLoad,
     shelterPopulation,
     healthSitePopulation,
+    waterSourcePopulation,
     setCity,
     setIsochroneType,
     getIsochroneType,

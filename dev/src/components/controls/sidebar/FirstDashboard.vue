@@ -56,7 +56,7 @@ const downloadfirstDashboard = () => {
                   <iframe
                     frameborder="0"
                     style="width: 100%; height: 300px"
-                    src="/water source disruptions.drawio.html"
+                    src="/water-source-disruptions.html"
                   ></iframe>
                 </div>
                 <div id="affected-indicators" style="margin-top: 20px">
@@ -86,7 +86,7 @@ const downloadfirstDashboard = () => {
                     class="btn btn-primary"
                     style="margin-top: 20px; margin-bottom: 20px"
                   >
-                    go to
+                    Go to Water Source Layer Set
                   </button>
                 </div>
                 <div id="affected-diagram" style="height: 80%">
@@ -94,7 +94,7 @@ const downloadfirstDashboard = () => {
                   <iframe
                     frameborder="0"
                     style="width: 100%; height: 100%"
-                    src="/affected component.drawio.html"
+                    src="/affected-component.html"
                   ></iframe>
                 </div>
               </div>

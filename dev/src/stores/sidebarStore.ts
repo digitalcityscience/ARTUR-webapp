@@ -8,6 +8,7 @@ const useSidebarStore = defineStore("sidebar", () => {
   const activeLang = ref<"EN" | "UA">("EN");
   const selectedTopic = ref("");
   // Methods
+  const getSidebar = () => sidebar.value;
   const goToSetting = () => sidebar.value!.open("settings");
   const goToNextPage = () =>
     currentStep.value < 3 ? currentStep.value++ : sidebar.value!.open("layer");
@@ -28,6 +29,7 @@ const useSidebarStore = defineStore("sidebar", () => {
     goToPreviousPage,
     goToFirstStep,
     goToSetting,
+    getSidebar,
     setActiveLang,
   };
 });
