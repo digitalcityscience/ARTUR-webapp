@@ -17,6 +17,9 @@
           ><i class="fa fa-bar-chart"></i
         ></a>
       </li>
+      <li>
+        <a href="#knowledge" role="tab" title="Description"><i class="bi bi-gem"></i></a>
+      </li>
     </ul>
     <!-- bottom tabs -->
     <ul role="tablist">
