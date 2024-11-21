@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { ref } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
 import CitySelector from "./CitySelector.vue";
+import FirstDashboard from "./FirstDashboard.vue";
 import { Challenge } from "@/assets/ts/constants";
 
-const selectedTopic = ref("");
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
 </script>
@@ -41,7 +40,7 @@ const mapStore = useMapStore();
         would like to consult. Afterwards, click "<i class="fa fa-caret-right"> Next</i>"!
       </p>
       <div class="form-group" style="padding-top: 20px">
-        <select id="city-select" class="form-select" v-model="selectedTopic">
+        <select id="city-select" class="form-select" v-model="sidebarStore.selectedTopic">
           <option value="" disabled selected>Select a topic</option>
           <option value="Water">Water</option>
           <option value="Energy" disabled>Energy</option>
@@ -58,8 +57,8 @@ const mapStore = useMapStore();
       <p class="info-content-text">
         Please open the dashborad and then select one type of disruption in the top
         diagram to evaluate in the map. Afterwards, click "<i class="fa fa-caret-right">
-          Next</i
-        >".
+          Go to Layer Control</i
+        >" to toggle the layers and see more information.
       </p>
       <table class="table table-light">
         <thead>
@@ -72,11 +71,11 @@ const mapStore = useMapStore();
         <tbody>
           <tr>
             <th scope="row"><strong>City:</strong></th>
-            <td>Nikopol</td>
+            <td>{{ mapStore.city }}</td>
           </tr>
           <tr>
             <th scope="row"><strong>Challenge:</strong></th>
-            <td>{{ selectedTopic }}</td>
+            <td>{{ sidebarStore.selectedTopic }}</td>
           </tr>
           <tr>
             <th scope="row"><strong>Summary:</strong></th>
@@ -84,53 +83,7 @@ const mapStore = useMapStore();
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-primary" data-bs-target="#report" data-bs-toggle="modal">
-        Open Dashboard
-      </button>
-      <div id="report" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Challenge {{ selectedTopic }}</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-target="#report"
-                data-bs-toggle="modal"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <table>
-                <tbody>
-                  <tr id="disruption-types">
-                    <p><strong>disruptions tyes:</strong> water supply chain</p>
-                  </tr>
-                  <tr>
-                    <td id="affected-indicators">
-                      <p><strong>affected urban resilience capacities</strong></p>
-                    </td>
-                    <td id="affected-diagram">
-                      <p>
-                        <strong>other affected components in the urban system</strong>
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-target="#report"
-                data-bs-toggle="modal"
-              >
-                <i class="bi bi-x-lg"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <first-dashboard></first-dashboard>
     </div>
     <!-- Step 4 -->
     <!-- <div v-if="sidebarStore.currentStep === 4" class="info-content">

@@ -97,5 +97,5 @@ export const healthSiteIsochroneType: Record<string, string> = {
 };
 
 export enum Challenge {
-  WATER = "Water provision in Nikopol is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
+  WATER = "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
 }

@@ -8,6 +8,7 @@ import InfoPanel from "./sidebar/InfoPanel.vue";
 import SettingsPanel from "./sidebar/SettingsPanel.vue";
 import DashboardPanel from "./sidebar/DashboardPanel.vue";
 import LayerPanel from "./sidebar/LayerPanel.vue";
+import KnowledgePanel from "./sidebar/KnowledgePanel.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
 
@@ -42,6 +43,8 @@ onMounted(() => {
         <dashboard-panel />
         <!-- Settings -->
         <settings-panel />
+        <!-- Knowledge -->
+        <knowledge-panel />
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@ const mapOptions = {
     // South-West corner of the bounding box
     [35.0, 20.0],
     // North-East corner of the bounding box
-    [55.0, 40.0],
+    [55.0, 50.0],
   ],
   maxBoundsViscosity: 1.0,
 };
