@@ -29,13 +29,7 @@ const downloadfirstDashboard = () => {
   <button class="btn btn-primary" data-bs-target="#first-analysis" data-bs-toggle="modal">
     Open Dashboard
   </button>
-  <div
-    id="first-analysis"
-    class="modal fade"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-  >
+  <div id="first-analysis" class="modal fade" aria-hidden="false">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,13 +45,13 @@ const downloadfirstDashboard = () => {
           <div class="container-fluid">
             <div class="row mb-3">
               <div class="col-md-4">
-                <div id="disruption-types">
+                <div id="disruption-types" style="height: 30%">
                   <p><strong>Disruption Types:</strong> Water supply chain</p>
-                  <iframe
-                    frameborder="0"
-                    style="width: 100%; height: 300px"
-                    src="/water-source-disruptions.html"
-                  ></iframe>
+                  <img
+                    style="width: 100%; height: 100%"
+                    src="@/assets/img/water-source-disruptions.jpg"
+                    alt="water-source-disruptions"
+                  />
                 </div>
                 <div id="affected-indicators" style="margin-top: 20px">
                   <p><strong>Affected Urban Resilience Capacities</strong></p>
@@ -91,11 +85,11 @@ const downloadfirstDashboard = () => {
                 </div>
                 <div id="affected-diagram" style="height: 80%">
                   <p><strong>Other Affected Components in the Urban System</strong></p>
-                  <iframe
-                    frameborder="0"
-                    style="width: 100%; height: 100%"
-                    src="/affected-component.html"
-                  ></iframe>
+                  <img
+                    style="width: 100%; height: 80%"
+                    src="@/assets/img/affected-component.png"
+                    alt="affected-component"
+                  />
                 </div>
               </div>
             </div>

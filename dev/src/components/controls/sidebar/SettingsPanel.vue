@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
 import CitySelector from "./CitySelector.vue";
@@ -9,8 +9,12 @@ import { Challenge } from "@/assets/ts/constants";
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
 const summary = ref("");
-summary.value =
-  sidebarStore.selectedTopic === "Water" ? Challenge.WATER : Challenge.ENERGY;
+watch(
+  () => sidebarStore.selectedTopic,
+  (newVal) => {
+    summary.value = newVal === "Water" ? Challenge.WATER : Challenge.ENERGY;
+  },
+);
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="settings">
