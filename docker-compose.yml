@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgis/postgis:latest
+    image: postgis/postgis:16-master
     container_name: artur-db
     environment:
       POSTGRES_USER: ${POSTGIS_USER}
@@ -11,11 +11,7 @@ services:
       - "5432:5432"
     volumes:
       # store the data in volumn
-      - db_data:/var/lib/postgresql/data
-      # Initialize the databse via dump file
-      - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
-      # Override PostGIS initialization script to avoid POSTGIS schema re-creation error
-      - /dev/null:/docker-entrypoint-initdb.d/10_postgis.sh
+      - artur_db_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGIS_USER} -d ${POSTGIS_DB}"]
     networks:
@@ -62,7 +58,7 @@ services:
       - artur_net
 
 volumes:
-  db_data:
+  artur_db_data:
 
 networks:
   artur_net:
