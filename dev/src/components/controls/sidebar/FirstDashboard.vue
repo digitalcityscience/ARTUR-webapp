@@ -1,9 +1,28 @@
 <script lang="ts" setup>
+import { ref, computed } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const sidebarStore = useSidebarStore();
+
+// Reactive cache-busting timestamps
+const cacheBuster = ref(Date.now());
+
+// Methods to update the cacheBuster
+const refreshIframe = () => {
+  cacheBuster.value = Date.now();
+};
+
+// Dynamic iframe src with cache-busting
+const waterSourceDisruptionsSrc = computed(() => {
+  return `./water-source-disruptions.html?cacheBust=${cacheBuster.value}`;
+});
+const affectedComponentSrc = computed(() => {
+  return `./affected-component.html?cacheBust=${cacheBuster.value}`;
+});
+
+// Method to download the modal content as PDF
 const downloadfirstDashboard = () => {
   const modalContent = document.getElementById("first-analysis");
   if (!modalContent) {
@@ -26,10 +45,15 @@ const downloadfirstDashboard = () => {
 };
 </script>
 <template>
-  <button class="btn btn-primary" data-bs-target="#first-analysis" data-bs-toggle="modal">
+  <button
+    class="btn btn-primary"
+    data-bs-target="#first-analysis"
+    data-bs-toggle="modal"
+    @click="refreshIframe"
+  >
     Open Dashboard
   </button>
-  <div id="first-analysis" class="modal fade" aria-hidden="false">
+  <div id="first-analysis" class="modal fade" :aria-hidden="false">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
@@ -41,19 +65,15 @@ const downloadfirstDashboard = () => {
             data-bs-toggle="modal"
           ></button>
         </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row mb-3">
-              <div class="col-md-4">
-                <div id="disruption-types" style="height: 30%">
+        <div class="modal-body d-flex flex-column">
+          <div class="container-fluid flex-grow-1">
+            <div class="row mb-3 h-100">
+              <div class="col-md-4 d-flex flex-column" style="height: 100%">
+                <div id="disruption-types" style="height: 40%">
                   <p><strong>Disruption Types:</strong> Water supply chain</p>
-                  <img
-                    style="width: 100%; height: 100%"
-                    src="@/assets/img/water-source-disruptions.jpg"
-                    alt="water-source-disruptions"
-                  />
+                  <iframe :src="waterSourceDisruptionsSrc" frameborder="0"></iframe>
                 </div>
-                <div id="affected-indicators" style="margin-top: 20px">
+                <div id="affected-indicators" style="margin-top: 20px; flex: 1">
                   <p><strong>Affected Urban Resilience Capacities</strong></p>
                   <ul class="list-group" style="padding-top: 12%; width: 300px">
                     <li class="list-group-item list-group-item-success">+ Robustness</li>
@@ -71,9 +91,8 @@ const downloadfirstDashboard = () => {
                   </ul>
                 </div>
               </div>
-              <!-- Right Column: Affected Diagram -->
-              <div class="col-md-8">
-                <div id="navigate-map" style="height: 20%">
+              <div class="col-md-8 d-flex flex-column" style="height: 100%">
+                <div id="navigate-map" style="height: 15%">
                   <p><strong>Navigate to the map</strong></p>
                   <button
                     type="button"
@@ -83,13 +102,9 @@ const downloadfirstDashboard = () => {
                     Go to Water Source Layer Set
                   </button>
                 </div>
-                <div id="affected-diagram" style="height: 80%">
+                <div id="affected-diagram" style="flex: 1">
                   <p><strong>Other Affected Components in the Urban System</strong></p>
-                  <img
-                    style="width: 100%; height: 80%"
-                    src="@/assets/img/affected-component.png"
-                    alt="affected-component"
-                  />
+                  <iframe :src="affectedComponentSrc" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
@@ -108,3 +123,17 @@ const downloadfirstDashboard = () => {
     </div>
   </div>
 </template>
+<style scoped>
+.modal-body {
+  flex: 1;
+  overflow: hidden; /* Prevent scrolling */
+}
+.row.mb-3 {
+  height: 100%;
+}
+iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+</style>
