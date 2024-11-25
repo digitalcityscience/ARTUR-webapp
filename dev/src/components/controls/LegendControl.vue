@@ -110,6 +110,8 @@ onMounted(() => {
         class="population-grid"
       >
         <div ref="chartContainer" class="chartContainer"></div>
+        <i class="polygon" style="background: #9e0000"></i>Most populated areas but not in
+        the Catchment area<br />
       </div>
     </div>
   </l-control>
