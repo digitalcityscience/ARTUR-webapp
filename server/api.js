@@ -3,6 +3,24 @@ import pool from "./db.js";
 
 const router = express.Router();
 
+router.get("/country-boundary", async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, int_name name FROM ukraine_boundary`,
+    );
+    const features = rows.map((row) => ({
+      type: "Feature",
+      properties: {
+        name: row.name,
+      },
+      geometry: JSON.parse(row.geometry),
+    }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
 router.get("/shelter/:city", async (req, res) => {
   // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
   const city = req.params.city.replace(/ /g, "");

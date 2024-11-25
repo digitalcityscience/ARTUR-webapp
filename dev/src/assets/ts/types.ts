@@ -54,6 +54,7 @@ export type EnergySupplyProperties = {
   userType: string;
 };
 export type GeoJSONData = {
+  countryBoundary?: FeatureCollection<Polygon>;
   boundary?: FeatureCollection<Polygon>;
   shelters?: FeatureCollection<Point, ShelterProperties>;
   isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;

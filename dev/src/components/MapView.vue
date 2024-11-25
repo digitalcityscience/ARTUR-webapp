@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
+import {
+  LMap,
+  LControlScale,
+  LTileLayer,
+  LGeoJson,
+  LControlAttribution,
+} from "@vue-leaflet/vue-leaflet";
 import { ref } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
 import OverlayControl from "./controls/OverlayControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
-
 // Pinia Store
 const mapStore = useMapStore();
 // Map Settings
 const map = ref();
 const mapOptions = {
-  zoomControl: true,
+  zoomControl: false,
   attributionControl: true,
   zoom: 6,
   minZoom: 4,
@@ -34,15 +39,24 @@ const boundaryStyle = () => {
     color: "#43b0f1",
   };
 };
+
 const isReady = ref(false);
 const onReady = () => {
   mapStore.map = map.value.leafletObject;
   isReady.value = true;
+  // const attributionControl = map.value.leafletObject.attributionControl;
+  // attributionControl.addAttribution = `<img src= "/public/giz-logo.png"`;
 };
 </script>
 
 <template>
-  <l-map ref="map" :use-global-leaflet="false" :options="mapOptions" @ready="onReady">
+  <l-map
+    ref="map"
+    :use-global-leaflet="false"
+    :options="mapOptions"
+    @ready="onReady"
+    attributionControl="false"
+  >
     <!-- Base Layers -->
     <template v-for="basemap in basemaps" :key="basemap.name">
       <l-tile-layer
@@ -53,13 +67,13 @@ const onReady = () => {
         pane="tilePane"
       ></l-tile-layer>
     </template>
-    <!-- <l-geo-json
+    <l-geo-json
       name="Ukraine Boundary"
-      :geojson="mapStore.geojsonData.boundary"
+      :geojson="mapStore.geojsonData.countryBoundary"
       layer-type="overlay"
       :options-style="boundaryStyle"
       pane="overlayPane"
-    ></l-geo-json> -->
+    ></l-geo-json>
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
     <overlay-control v-if="isReady"></overlay-control>

@@ -85,7 +85,6 @@ const useMapStore = defineStore("city", () => {
   const isIsochroneChanged = ref(false);
   // Track which layers have been loaded per city (excluding isochrones)
   const layerLoaded = ref<Record<string, Record<string, boolean>>>({});
-
   // Initialize or reset the loading state for the given city
   const resetLayerLoaded = (cityName: string) => {
     layerLoaded.value[cityName] = {
@@ -102,8 +101,9 @@ const useMapStore = defineStore("city", () => {
       energySupplyCatchment: false,
     };
   };
-
-  // Actions
+  axios
+    .get("/api/country-boundary")
+    .then((res) => (geojsonData.value.countryBoundary = res.data));
   const fetchGeoData = async (cityName: CityName, isochroneTypeParam = "") => {
     isochroneTypeParam = isochroneType.value;
 
