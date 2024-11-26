@@ -3,24 +3,89 @@ import MapView from "./components/MapView.vue";
 </script>
 
 <template>
-  <div class="map-container">
-    <map-view></map-view>
+  <div class="app-container">
+    <header class="custom-header">
+      <div class="container-fluid d-flex align-items-center justify-content-start gap-5">
+        <div class="text-light">
+          <h4 class="header-title">ARTUR tool</h4>
+          <p class="header-subtitle">Resilience Checker</p>
+        </div>
+        <div class="input-group search-bar">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search Address..."
+            aria-label="Search"
+          />
+          <button class="btn btn-primary" type="button">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="map-container">
+      <map-view></map-view>
+    </div>
+    <footer class="custom-footer">
+      <div class="footer-logo-container">
+        <img src="/giz_logo.png" alt="GIZLogo" class="footer-logo" />
+        <img src="/hcu_logo.png" alt="HCULogo" class="footer-logo" />
+        <img src="/dcs-logo.png" alt="DCSLogo" class="footer-logo" />
+      </div>
+    </footer>
   </div>
-  <!-- <div class="right-placeholder"></div>
-  <div class="bottom-placeholder"></div> -->
 </template>
 
 <style scoped>
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
 .map-container {
-  flex: 0 0 100%;
+  width: 100%;
   height: 100%;
 }
-/* .right-placeholder {
-  flex: 1;
-  height: 60%;
+
+.custom-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 10px 0 0;
+  background-color: rgba(70, 70, 70, 0.5);
+  z-index: 900;
 }
-.bottom-placeholder {
-  flex: 0 0 100%;
-  height: 40%;
-} */
+.header-title {
+  margin: 0;
+}
+.header-subtitle {
+  margin: 0 0 8px 0;
+}
+.search-bar {
+  max-width: 300px;
+}
+
+.custom-footer {
+  position: fixed;
+  bottom: 0;
+  left: 85px;
+  width: 100%;
+  height: 35px;
+  background-color: transparent;
+  z-index: 900;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  pointer-events: none;
+}
+.footer-logo-container {
+  pointer-events: none;
+}
+.footer-logo {
+  height: 30px;
+  object-fit: contain;
+  opacity: 0.5;
+}
 </style>

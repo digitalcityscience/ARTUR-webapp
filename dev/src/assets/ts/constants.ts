@@ -18,7 +18,7 @@ export const cities: Array<CityData> = [
 
 export enum LayerName {
   SHELTER = "Shelters",
-  BOUNDARY = "City Boundary",
+  BOUNDARY = "Boundary",
   ISOCHRONE = "Shelters' Isochrone (Pedestrian)",
   POPULATION = "Shelter Access (Pedestrian): Population within/outside 5 min",
   HEALTHSITEPOINT = "Health Sites",

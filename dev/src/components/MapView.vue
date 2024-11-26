@@ -17,7 +17,7 @@ const mapStore = useMapStore();
 const map = ref();
 const mapOptions = {
   zoomControl: false,
-  attributionControl: true,
+  attributionControl: false,
   zoom: 6,
   minZoom: 4,
   maxZoom: 18,
@@ -36,7 +36,7 @@ const mapOptions = {
 const boundaryStyle = () => {
   return {
     fillOpacity: 0,
-    color: "#43b0f1",
+    color: mapStore.boundaryLayer.color,
   };
 };
 
