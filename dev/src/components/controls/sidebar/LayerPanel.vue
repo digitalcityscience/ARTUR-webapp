@@ -80,8 +80,8 @@ const changeIsochroneType = () => {
                 >
                   Overlays
                 </button>
-                <div id="overlay-switch" class="container">
-                  <div class="mb-1 form-check">
+                <ul class="list-unstyled ps-0" id="overlay-switch">
+                  <li class="mb-1 form-check">
                     <input
                       class="form-check-input"
                       type="checkbox"
@@ -92,138 +92,147 @@ const changeIsochroneType = () => {
                     <label class="form-check-label" :for="mapStore.boundaryLayer.name">
                       {{ mapStore.boundaryLayer.name }}
                     </label>
-                  </div>
-                  <div class="mb-1">
+                  </li>
+                  <li class="mb-1">
                     <button
-                      class="btn btn-outline-success"
+                      class="btn btn-outline-success btn-layer-set"
                       data-bs-toggle="collapse"
                       data-bs-target="#shelter-layer-set"
                       aria-expanded="false"
-                      aria-controls="shelter-layer-set"
                     >
                       Layer Set: Shelter
                     </button>
-                    <div
-                      class="form-check collapse"
-                      v-for="overlay in mapStore.shelterLayers"
-                      :key="overlay.name"
-                      id="shelter-layer-set"
-                    >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        :id="overlay.name"
-                        :name="overlay.name"
-                        v-model="overlay.visible"
-                      />
-                      <label class="form-check-label" :for="overlay.name">
-                        {{ overlay.name }}
-                      </label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
+                    <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
+                      <li
+                        class="mb-1"
+                        v-for="overlay in mapStore.shelterLayers"
+                        :key="overlay.name"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ overlay.name }}
+                        </label>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="mb-1">
                     <button
-                      class="btn btn-outline-success"
+                      class="btn btn-outline-success btn-layer-set"
                       data-bs-toggle="collapse"
                       data-bs-target="#healthsite-layer-set"
                       aria-expanded="false"
-                      aria-controls="healthsite-layer-set"
                     >
                       Layer Set: Health Site
                     </button>
-                    <div
-                      class="form-check collapse"
-                      v-for="overlay in mapStore.healthsiteLayers"
-                      :key="overlay.name"
+                    <ul
+                      class="form-check collapse list-unstyled"
                       id="healthsite-layer-set"
                     >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        :id="overlay.name"
-                        :name="overlay.name"
-                        v-model="overlay.visible"
-                      />
-                      <label class="form-check-label" :for="overlay.name">
-                        {{ overlay.name }}
-                      </label>
-                      <!-- Isochrone switcher for healthSiteIsochroneLayer -->
-                      <div
-                        v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
-                        class="mt-2"
+                      <li
+                        class="mb-1"
+                        v-for="overlay in mapStore.healthsiteLayers"
+                        :key="overlay.name"
                       >
-                        <select
-                          v-model="selectedIsochroneType"
-                          @change="changeIsochroneType"
-                          class="form-select"
-                          id="isochroneType"
-                          aria-label="Isochrone Type Select"
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ overlay.name }}
+                        </label>
+                        <!-- Isochrone switcher for healthSiteIsochroneLayer -->
+                        <div
+                          v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
+                          class="mt-2"
                         >
-                          <option value="auto">Car</option>
-                          <option value="bus">Bus</option>
-                          <option value="bicycle">Bicycle</option>
-                          <option value="pedestrian">Pedestrian</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-1">
+                          <select
+                            v-model="selectedIsochroneType"
+                            @change="changeIsochroneType"
+                            class="form-select"
+                            id="isochroneType"
+                            aria-label="Isochrone Type Select"
+                          >
+                            <option value="auto">Car</option>
+                            <option value="bus">Bus</option>
+                            <option value="bicycle">Bicycle</option>
+                            <option value="pedestrian">Pedestrian</option>
+                          </select>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="mb-1">
                     <button
-                      class="btn btn-outline-success"
+                      class="btn btn-outline-success btn-layer-set"
                       data-bs-toggle="collapse"
                       data-bs-target="#watersource-layer-set"
                       aria-expanded="false"
-                      aria-controls="watersource-layer-set"
                     >
                       Layer Set: Water Source
                     </button>
-                    <div
-                      class="form-check collapse"
-                      v-for="overlay in mapStore.waterSourceLayers"
-                      :key="overlay.name"
+                    <ul
+                      class="form-check collapse list-unstyled"
                       id="watersource-layer-set"
                     >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        :id="overlay.name"
-                        :name="overlay.name"
-                        v-model="overlay.visible"
-                      />
-                      <label class="form-check-label" :for="overlay.name">
-                        {{ overlay.name }}
-                      </label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
+                      <li
+                        class="mb-1"
+                        v-for="overlay in mapStore.waterSourceLayers"
+                        :key="overlay.name"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ overlay.name }}
+                        </label>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="mb-1">
                     <button
-                      class="btn btn-outline-success"
+                      class="btn btn-outline-success btn-layer-set"
                       data-bs-toggle="collapse"
                       data-bs-target="#energysupply-layer-set"
                       aria-expanded="false"
-                      aria-controls="energysupply-layer-set"
                     >
                       Layer Set: Energy Supply
                     </button>
-                    <div
-                      class="form-check collapse"
-                      v-for="overlay in mapStore.energySupplyLayers"
-                      :key="overlay.name"
+                    <ul
+                      class="form-check list-unstyled collapse"
                       id="energysupply-layer-set"
                     >
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        :id="overlay.name"
-                        :name="overlay.name"
-                        v-model="overlay.visible"
-                      />
-                      <label class="form-check-label" :for="overlay.name">
-                        {{ overlay.name }}
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                      <li
+                        class="mb-1"
+                        v-for="overlay in mapStore.energySupplyLayers"
+                        :key="overlay.name"
+                      >
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ overlay.name }}
+                        </label>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>

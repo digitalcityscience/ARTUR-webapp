@@ -26,8 +26,8 @@ const sidebarStore = useSidebarStore();
         UA
       </button>
     </div>
-    <div class="info-content">
-      <strong class="info-title">Capacities</strong>
+    <div class="sidebar-content">
+      <strong class="sidebar-title">Capacities</strong>
     </div>
   </div>
 </template>

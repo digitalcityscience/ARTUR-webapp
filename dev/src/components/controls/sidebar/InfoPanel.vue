@@ -13,36 +13,36 @@ const sidebarStore = useSidebarStore();
     <div class="btn-group btn-group-sm" style="float: right; margin-top: 10px">
       <button
         class="btn btn-outline-primary"
-        :class="{ active: sidebarStore.activeLang === 'EN' }"
-        @click="sidebarStore.setActiveLang('EN')"
-      >
-        EN
-      </button>
-      <button
-        class="btn btn-outline-primary"
         :class="{ active: sidebarStore.activeLang === 'UA' }"
         @click="sidebarStore.setActiveLang('UA')"
       >
         UA
       </button>
+      <button
+        class="btn btn-outline-primary"
+        :class="{ active: sidebarStore.activeLang === 'EN' }"
+        @click="sidebarStore.setActiveLang('EN')"
+      >
+        EN
+      </button>
     </div>
-    <div class="info-content">
-      <strong class="info-title">Objective of the tool:</strong>
-      <p class="info-content-text">
+    <div class="sidebar-content">
+      <strong class="sidebar-title">Objective of the tool:</strong>
+      <p class="sidebar-content-text">
         The ARTUR Tool has been designed as an interactive platform which serves as a
         resilience checker for Ukrainian cities. The specific tasks within this tool
         include:
       </p>
-      <p class="info-content-text">1. Dissect the challenges of a city;</p>
-      <p class="info-content-text">
+      <p class="sidebar-content-text">1. Dissect the challenges of a city;</p>
+      <p class="sidebar-content-text">
         2. Diagnose the causes and effects of its challenges;
       </p>
-      <p class="info-content-text">3. Relate these to specific locations;</p>
-      <p class="info-content-text">
+      <p class="sidebar-content-text">3. Relate these to specific locations;</p>
+      <p class="sidebar-content-text">
         4. Understand which resilience capacities perform poorly, and where are the areas
         of action where measures can be designed for.
       </p>
-      <p class="info-content-text">
+      <p class="sidebar-content-text">
         <strong
           >To continue please click "<i class="fa fa-caret-right"> Next</i>"!</strong
         >

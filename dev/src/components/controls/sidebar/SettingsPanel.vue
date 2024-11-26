@@ -2,12 +2,12 @@
 import { ref, watch } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
-import CitySelector from "./CitySelector.vue";
+import { CityName, cities, Challenge } from "@/assets/ts/constants";
 import FirstDashboard from "./FirstDashboard.vue";
-import { Challenge } from "@/assets/ts/constants";
 
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
+const map = mapStore.map;
 const summary = ref("");
 watch(
   () => sidebarStore.selectedTopic,
@@ -15,6 +15,23 @@ watch(
     summary.value = newVal === "Water" ? Challenge.WATER : Challenge.ENERGY;
   },
 );
+// City Select bar
+// Navigate to the selected city
+const btnNaviClick = (e: Event) => {
+  const target = e.target as HTMLSelectElement;
+  const selectedCityName = target.value;
+  const city = cities.find((c) => c.name === selectedCityName);
+
+  if (city) {
+    map.flyTo(city.latLng, 12);
+    mapStore.setCity(city.name);
+  }
+};
+// Check if a city is already selected
+const isSelected = (city: CityName) => mapStore.city === city;
+// Check if data is available for a city
+const hasData = (city: CityName) =>
+  city !== CityName.KRYVYIRIH && city !== CityName.NIKOPOL;
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="settings">
@@ -22,28 +39,41 @@ watch(
       Settings<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <!-- Step 1 -->
-    <div v-if="sidebarStore.currentStep === 1" class="info-content">
-      <p class="info-title"><strong>Step 1</strong></p>
-      <p class="info-content-text">
-        <strong>Please select your city:</strong>
-      </p>
-      <city-selector
-        class="info-content-text"
-        style="margin-bottom: 100px"
-      ></city-selector>
+    <div v-if="sidebarStore.currentStep === 1" class="sidebar-content">
+      <p class="sidebar-title">Step 1</p>
+      <p class="sidebar-content-text">Please select your city:</p>
+      <div class="form-group">
+        <select
+          id="city-select"
+          class="form-select"
+          @change="btnNaviClick"
+          aria-label="Select a city"
+        >
+          <option value="" disabled selected>Select a city</option>
+          <option
+            v-for="city in cities"
+            :key="city.name"
+            :value="city.name"
+            :disabled="hasData(city.name)"
+            :selected="isSelected(city.name)"
+          >
+            {{ city.name }}
+          </option>
+        </select>
+      </div>
     </div>
     <!-- Step 2 -->
-    <div v-if="sidebarStore.currentStep === 2" class="info-content">
+    <div v-if="sidebarStore.currentStep === 2" class="sidebar-content">
       <table class="table table-light">
         <tbody>
           <tr>
-            <th scope="row"><strong>City:</strong></th>
+            <th scope="row">City:</th>
             <td>{{ mapStore.city }}</td>
           </tr>
         </tbody>
       </table>
-      <p class="info-title"><strong>Step 2</strong></p>
-      <p class="info-content-text">
+      <p class="sidebar-title">Step 2</p>
+      <p class="sidebar-content-text">
         From the identified types of challenges in this city, please select the one you
         would like to consult. Afterwards, click "<i class="fa fa-caret-right"> Next</i>"!
       </p>
@@ -60,9 +90,9 @@ watch(
       </div>
     </div>
     <!-- Step 3 -->
-    <div v-if="sidebarStore.currentStep === 3" class="info-content">
-      <p class="info-title"><strong>Step 3</strong></p>
-      <p class="info-content-text">
+    <div v-if="sidebarStore.currentStep === 3" class="sidebar-content">
+      <p class="sidebar-title">Step 3</p>
+      <p class="sidebar-content-text">
         Please open the dashborad and then select one type of disruption in the top
         diagram to evaluate in the map. Afterwards, click "<i class="fa fa-caret-right">
           Go to Layer Control</i
@@ -71,65 +101,59 @@ watch(
       <table class="table table-light">
         <thead>
           <tr>
-            <th colspan="2">
-              <strong>First Diagnose Dashboard</strong>
-            </th>
+            <th colspan="2">First Diagnose Dashboard</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row"><strong>City:</strong></th>
+            <th scope="row">City:</th>
             <td>{{ mapStore.city }}</td>
           </tr>
           <tr>
-            <th scope="row"><strong>Challenge:</strong></th>
+            <th scope="row">Challenge:</th>
             <td>{{ sidebarStore.selectedTopic }}</td>
           </tr>
           <tr>
-            <th scope="row"><strong>Summary:</strong></th>
+            <th scope="row">Summary:</th>
             <td>{{ summary }}</td>
           </tr>
         </tbody>
       </table>
       <first-dashboard></first-dashboard>
     </div>
-    <!-- Step 4 -->
-    <!-- <div v-if="sidebarStore.currentStep === 4" class="info-content">
-      <p class="info-title"><strong>Step 4</strong></p>
-      <p class="info-content-text">You have reached the end.</p>
-    </div> -->
-    <button
-      type="button"
-      class="btn btn-sm btn-success"
-      @click="sidebarStore.goToFirstStep"
-      style="float: left"
-      v-if="sidebarStore.currentStep === 3"
-    >
-      <i class="fa fa-chevron-circle-left"> Go to Step 1</i>
-    </button>
-    <button
-      type="button"
-      class="btn btn-sm btn-primary"
-      @click="sidebarStore.goToPreviousPage()"
-      style="float: left"
-      v-if="sidebarStore.currentStep > 0"
-    >
-      <i class="fa fa-caret-left"> Back</i>
-    </button>
-    <button
-      type="button"
-      class="btn btn-sm btn-primary"
-      @click="sidebarStore.goToNextPage()"
-      style="float: right"
-      v-if="sidebarStore.currentStep > 0"
-    >
-      <i class="fa fa-caret-right">{{
-        sidebarStore.currentStep < 3 ? " Next" : " Go to Layer Control"
-      }}</i>
-    </button>
+    <div class="d-flex justify-content-between">
+      <div>
+        <button
+          type="button"
+          class="btn btn-sm btn-success"
+          @click="sidebarStore.goToFirstStep"
+          v-if="sidebarStore.currentStep === 3"
+        >
+          <i class="fa fa-chevron-circle-left"> Go to Step 1</i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-primary"
+          @click="sidebarStore.goToPreviousPage()"
+          v-if="sidebarStore.currentStep > 0"
+        >
+          <i class="fa fa-caret-left"> Back</i>
+        </button>
+      </div>
+      <button
+        type="button"
+        class="btn btn-sm btn-primary"
+        @click="sidebarStore.goToNextPage()"
+        v-if="sidebarStore.currentStep > 0"
+      >
+        <i class="fa fa-caret-right">{{
+          sidebarStore.currentStep < 3 ? " Next" : " Go to Layer Control"
+        }}</i>
+      </button>
+    </div>
   </div>
 </template>
-<style>
+<style scoped>
 .form-group .form-select option:disabled {
   background-color: var(--bs-gray-300);
   color: var(--bs-gray-600);

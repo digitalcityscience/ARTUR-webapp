@@ -95,3 +95,9 @@ const analyzeResults = () => {};
     </ul>
   </div>
 </template>
+<style scoped>
+#indicator-collapse li {
+  padding: 5px;
+  font-size: 15px;
+}
+</style>
