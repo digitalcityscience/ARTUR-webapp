@@ -27,27 +27,25 @@ const changeIsochroneType = () => {
       Layers
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
-    <div class="layer-control-content" style="margin-top: 10px">
+    <div class="layer-control-content mt-2">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
           <button
-            class="btn btn-toggle rounded collapsed"
+            class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#layer-control-collapse"
             aria-expanded="true"
-            style="padding-left: 0"
           >
             Layer Control
           </button>
-          <div class="collapse show" id="layer-control-collapse" style="margin-left: 1em">
+          <div class="collapse show ms-1" id="layer-control-collapse">
             <ul class="list-unstyled ps-0">
               <li class="mb-1">
                 <button
-                  class="btn btn-toggle rounded collapsed"
+                  class="btn btn-toggle rounded collapsed ps-0"
                   data-bs-toggle="collapse"
                   data-bs-target="#basemap-switch"
                   aria-expanded="true"
-                  style="padding-left: 0"
                 >
                   Basemaps
                 </button>
@@ -72,11 +70,10 @@ const changeIsochroneType = () => {
               </li>
               <li class="mb-1">
                 <button
-                  class="btn btn-toggle rounded collapsed"
+                  class="btn btn-toggle rounded collapsed ps-0"
                   data-bs-toggle="collapse"
                   data-bs-target="#overlay-switch"
                   aria-expanded="true"
-                  style="padding-left: 0"
                 >
                   Overlays
                 </button>
@@ -239,11 +236,10 @@ const changeIsochroneType = () => {
         </li>
         <li class="mb-1">
           <button
-            class="btn btn-toggle rounded collapsed"
+            class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#popup-collapse"
             aria-expanded="true"
-            style="padding-left: 0"
             v-if="mapStore.shelterLayers.shelterLayer.visible"
           >
             Shelters Information
@@ -254,12 +250,11 @@ const changeIsochroneType = () => {
         </li>
         <li class="mb-1">
           <button
-            class="btn btn-toggle rounded collapsed"
+            class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#shelter-population-collapse"
             v-show="mapStore.shelterLayers.populationLayer.visible"
             aria-expanded="true"
-            style="padding-left: 0"
           >
             Shelter Access Population Information
           </button>
@@ -275,12 +270,11 @@ const changeIsochroneType = () => {
         </li>
         <li class="mb-1">
           <button
-            class="btn btn-toggle rounded collapsed"
+            class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#healthsite-population-collapse"
             v-show="mapStore.healthsiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
-            style="padding-left: 0"
           >
             Health Site Access Population Information
           </button>
@@ -296,12 +290,11 @@ const changeIsochroneType = () => {
         </li>
         <li class="mb-1">
           <button
-            class="btn btn-toggle rounded collapsed"
+            class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#watersource-population-collapse"
             v-show="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
             aria-expanded="true"
-            style="padding-left: 0"
           >
             Water Source Catchment Area Population
           </button>

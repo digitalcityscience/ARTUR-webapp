@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed } from "vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import { LocalStorageEvent } from "@/assets/ts/constants";
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
@@ -37,19 +38,18 @@ const analyzeResults = () => {};
       Dashboard
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
-    <ul class="list-unstyled ps-0">
+    <ul class="list-unstyled ps-0 mt-2">
       <li class="mb-1">
         <button
-          class="btn btn-toggle rounded collapsed"
+          class="btn btn-toggle rounded collapsed ps-0"
           data-bs-toggle="collapse"
           data-bs-target="#indicator-collapse"
           aria-expanded="true"
-          style="padding-left: 0"
         >
           Select Indicators
         </button>
         <div class="collapse show" id="indicator-collapse">
-          <ul
+          <div
             class="list-group"
             v-for="indicator in Object.entries(indicatorStore.selectedIndicator).map(
               ([key, value]) => ({
@@ -59,20 +59,19 @@ const analyzeResults = () => {};
             )"
             :key="indicator.key"
           >
-            <li
-              class="list-group-item list-group-item-secondary"
+            <span
+              class="list-group-item list-group-item-secondary px-2 py-1"
               :style="{ backgroundColor: indicatorColor(indicator.value) }"
             >
               {{ indicator.key }}
               <button
-                class="btn-close"
+                class="btn-close float-end"
                 aria-label="Close"
                 @click="deleteSelection(indicator.key)"
-                style="float: right"
               ></button>
-            </li>
-          </ul>
-          <div class="btn-group" role="group" aria-label="select-and-run">
+            </span>
+          </div>
+          <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
             <button class="btn btn-primary" @click="openIndicatorSelection">
               Select
             </button>
@@ -82,11 +81,10 @@ const analyzeResults = () => {};
       </li>
       <li class="mb-1">
         <button
-          class="btn btn-toggle rounded collapsed"
+          class="btn btn-toggle rounded collapsed ps-0"
           data-bs-toggle="collapse"
           data-bs-target="#results-collapse"
           aria-expanded="true"
-          style="padding-left: 0"
         >
           Results
         </button>
@@ -95,9 +93,3 @@ const analyzeResults = () => {};
     </ul>
   </div>
 </template>
-<style scoped>
-#indicator-collapse li {
-  padding: 5px;
-  font-size: 15px;
-}
-</style>

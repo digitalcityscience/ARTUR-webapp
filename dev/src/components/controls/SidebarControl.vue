@@ -12,10 +12,7 @@ import KnowledgePanel from "./sidebar/KnowledgePanel.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
 
-// Stores
 const mapStore = useMapStore();
-// Map
-
 const sidebarStore = useSidebarStore();
 onMounted(() => {
   sidebarStore.sidebar = L.control
@@ -50,12 +47,12 @@ onMounted(() => {
   </div>
 </template>
 <style scoped>
-/* .leaflet-sidebar:not(.collapsed) {
-  width: 420px;
-} */
+.leaflet-sidebar:not(.collapsed) {
+  width: 27rem;
+}
 @media (min-width: 1200px) {
   .leaflet-sidebar-pane {
-    min-width: 420px;
+    min-width: 23.9rem;
   }
 }
 ::v-deep(div) {
@@ -90,18 +87,14 @@ onMounted(() => {
   right: 0;
 }
 ::v-deep(.sidebar-content) {
-  padding-left: 5px;
-  padding-top: 60px;
-  padding-bottom: 40px;
+  padding: 3.75rem 0.3rem 2.5rem;
 }
 ::v-deep(.sidebar-title) {
-  padding-left: 5px;
-  padding-bottom: 30px;
+  padding: 0 0 1.875rem 0.3rem;
   font-weight: bold;
 }
 ::v-deep(.sidebar-content-text) {
-  padding-left: 5px;
-  padding-top: 5px;
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   line-height: 1.5;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="leaflet-sidebar-tabs">
-    <!-- top aligned tabs -->
+    <!-- top tabs -->
     <ul role="tablist">
       <li>
         <a href="#info" role="tab" title="Usage of this tool"

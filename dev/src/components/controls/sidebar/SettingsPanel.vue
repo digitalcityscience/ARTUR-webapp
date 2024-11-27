@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
 import { CityName, cities, Challenge } from "@/assets/ts/constants";
@@ -8,6 +8,7 @@ import FirstDashboard from "./FirstDashboard.vue";
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
 const map = mapStore.map;
+// Reactive summary value
 const summary = ref("");
 watch(
   () => sidebarStore.selectedTopic,
@@ -15,9 +16,25 @@ watch(
     summary.value = newVal === "Water" ? Challenge.WATER : Challenge.ENERGY;
   },
 );
-// City Select bar
-// Navigate to the selected city
-const btnNaviClick = (e: Event) => {
+// Cities and topics for dropdowns
+const cityOptions = computed(() =>
+  cities.map((city) => ({
+    name: city.name,
+    latLng: city.latLng,
+    isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
+    isSelected: mapStore.city === city.name,
+  })),
+);
+const topics = computed(() => [
+  { value: "Water" },
+  { value: "Energy" },
+  { value: "Evacuation", disabled: true },
+  { value: "Heating", disabled: true },
+  { value: "Ecology", disabled: true },
+  { value: "Physical Safety", disabled: true },
+]);
+// Event handlers
+const handleCityChange = (e: Event) => {
   const target = e.target as HTMLSelectElement;
   const selectedCityName = target.value;
   const city = cities.find((c) => c.name === selectedCityName);
@@ -27,16 +44,15 @@ const btnNaviClick = (e: Event) => {
     mapStore.setCity(city.name);
   }
 };
-// Check if a city is already selected
-const isSelected = (city: CityName) => mapStore.city === city;
-// Check if data is available for a city
-const hasData = (city: CityName) =>
-  city !== CityName.KRYVYIRIH && city !== CityName.NIKOPOL;
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="settings">
-    <h1 class="leaflet-sidebar-header">
-      Settings<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
+    <!-- Header -->
+    <h1 class="leaflet-sidebar-header d-flex justify-content-between align-items-center">
+      Settings
+      <button class="leaflet-sidebar-close btn p-0">
+        <i class="fa fa-caret-right"></i>
+      </button>
     </h1>
     <!-- Step 1 -->
     <div v-if="sidebarStore.currentStep === 1" class="sidebar-content">
@@ -46,16 +62,16 @@ const hasData = (city: CityName) =>
         <select
           id="city-select"
           class="form-select"
-          @change="btnNaviClick"
+          @change="handleCityChange"
           aria-label="Select a city"
         >
           <option value="" disabled selected>Select a city</option>
           <option
-            v-for="city in cities"
+            v-for="city in cityOptions"
             :key="city.name"
             :value="city.name"
-            :disabled="hasData(city.name)"
-            :selected="isSelected(city.name)"
+            :disabled="city.isDisabled"
+            :selected="city.isSelected"
           >
             {{ city.name }}
           </option>
@@ -77,15 +93,22 @@ const hasData = (city: CityName) =>
         From the identified types of challenges in this city, please select the one you
         would like to consult. Afterwards, click "<i class="fa fa-caret-right"> Next</i>"!
       </p>
-      <div class="form-group" style="padding-top: 20px">
-        <select id="city-select" class="form-select" v-model="sidebarStore.selectedTopic">
+      <div class="form-group pt-3">
+        <select
+          id="topic-select"
+          class="form-select"
+          v-model="sidebarStore.selectedTopic"
+          aria-label="Select a topic"
+        >
           <option value="" disabled selected>Select a topic</option>
-          <option value="Water">Water</option>
-          <option value="Energy">Energy</option>
-          <option value="Evacuation" disabled>Evacuation</option>
-          <option value="Heating" disabled>Heating</option>
-          <option value="Ecology" disabled>Ecology</option>
-          <option value="Physical Safety" disabled>Physical Safety</option>
+          <option
+            v-for="topic in topics"
+            :key="topic.value"
+            :value="topic.value"
+            :disabled="topic.disabled"
+          >
+            {{ topic.value }}
+          </option>
         </select>
       </div>
     </div>
@@ -93,7 +116,7 @@ const hasData = (city: CityName) =>
     <div v-if="sidebarStore.currentStep === 3" class="sidebar-content">
       <p class="sidebar-title">Step 3</p>
       <p class="sidebar-content-text">
-        Please open the dashborad and then select one type of disruption in the top
+        Please open the dashboard and then select one type of disruption in the top
         diagram to evaluate in the map. Afterwards, click "<i class="fa fa-caret-right">
           Go to Layer Control</i
         >" to toggle the layers and see more information.
@@ -119,9 +142,10 @@ const hasData = (city: CityName) =>
           </tr>
         </tbody>
       </table>
-      <first-dashboard></first-dashboard>
+      <first-dashboard />
     </div>
-    <div class="d-flex justify-content-between">
+    <!-- Navigation Buttons -->
+    <div class="d-flex justify-content-between mt-3">
       <div>
         <button
           type="button"
@@ -135,7 +159,7 @@ const hasData = (city: CityName) =>
           type="button"
           class="btn btn-sm btn-primary"
           @click="sidebarStore.goToPreviousPage()"
-          v-if="sidebarStore.currentStep > 0"
+          v-if="sidebarStore.currentStep > 1"
         >
           <i class="fa fa-caret-left"> Back</i>
         </button>
@@ -160,5 +184,9 @@ const hasData = (city: CityName) =>
 }
 .form-select {
   max-width: 300px;
+}
+.table-light {
+  width: 100%;
+  margin-top: 15px;
 }
 </style>

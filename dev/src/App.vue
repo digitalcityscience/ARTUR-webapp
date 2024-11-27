@@ -35,44 +35,47 @@ import MapView from "./components/MapView.vue";
     </footer>
   </div>
 </template>
-
+<
 <style scoped>
 .app-container {
   position: relative;
   width: 100%;
   height: 100vh;
 }
-
 .map-container {
   width: 100%;
   height: 100%;
 }
-
 .custom-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 8px 10px 0 0;
+  padding: 0.5rem 0.625rem 0 0;
   background-color: rgba(70, 70, 70, 0.5);
   z-index: 900;
 }
 .header-title {
   margin: 0;
+  font-size: 1.25rem;
 }
 .header-subtitle {
-  margin: 0 0 8px 0;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
 }
 .search-bar {
-  max-width: 300px;
+  max-width: 18.75rem;
+  font-size: 1rem;
 }
-
+.search-bar input {
+  font-size: 0.875rem;
+}
 .custom-footer {
   position: fixed;
   bottom: 0;
-  left: 85px;
+  left: 5.3125rem;
   width: 100%;
-  height: 35px;
+  height: 2.1875rem;
   background-color: transparent;
   z-index: 900;
   display: flex;
@@ -84,7 +87,7 @@ import MapView from "./components/MapView.vue";
   pointer-events: none;
 }
 .footer-logo {
-  height: 30px;
+  height: 1.875rem;
   object-fit: contain;
   opacity: 0.5;
 }
