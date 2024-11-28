@@ -9,18 +9,20 @@ const mapStore = useMapStore();
 const props = defineProps<{ type: string }>();
 let population = ref<Population | null>(null);
 const chartContainer = ref<HTMLDivElement | null>(null);
-let text = props.type === populationType.HEALTHSITE ? 10 : 5;
 let chart: echarts.ECharts;
 
-// Update population based on the type prop and current city
-const updatePopulation = () =>
-  (population.value =
-    props.type === populationType.SHELTER
-      ? mapStore.shelterPopulation[mapStore.city!]
-      : props.type === populationType.HEALTHSITE
-      ? mapStore.healthSitePopulation[mapStore.city!]
-      : mapStore.waterSourcePopulation[mapStore.city!]);
-
+// get population based on the type prop and current city
+const getPopulationData = () => {
+  switch (props.type) {
+    case populationType.SHELTER:
+      return mapStore.shelterPopulation[mapStore.city!];
+    case populationType.HEALTHSITE:
+      return mapStore.healthSitePopulation[mapStore.city!];
+    default:
+    case populationType.WATERSOURCE:
+      return mapStore.waterSourcePopulation[mapStore.city!];
+  }
+};
 // Initialize the chart
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
@@ -98,7 +100,7 @@ watch(
 );
 
 onMounted(() => {
-  updatePopulation();
+  population.value = getPopulationData();
   initChart();
 });
 </script>
@@ -109,7 +111,7 @@ onMounted(() => {
 
 <style scoped>
 .chart-container {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
 }
 </style>
