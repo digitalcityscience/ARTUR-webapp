@@ -4,9 +4,9 @@ import MapView from "./components/MapView.vue";
 
 <template>
   <div class="app-container">
-    <header class="custom-header">
-      <div class="container-fluid d-flex align-items-center justify-content-start gap-5">
-        <div class="text-light">
+    <header class="custom-header rounded p-0">
+      <div class="container-fluid d-flex align-items-center justify-content-start gap-2">
+        <div class="header-text text-light text-nowrap rounded px-2 py-1">
           <h4 class="header-title">ARTUR tool</h4>
           <p class="header-subtitle">Resilience Checker</p>
         </div>
@@ -50,17 +50,19 @@ import MapView from "./components/MapView.vue";
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   padding: 0.5rem 0.625rem 0 0;
-  background-color: rgba(70, 70, 70, 0.5);
   z-index: 900;
+}
+.header-text {
+  background-color: rgba(130, 130, 130, 0.5);
 }
 .header-title {
   margin: 0;
   font-size: 1.25rem;
 }
 .header-subtitle {
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-size: 1rem;
 }
 .search-bar {
