@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { computed } from "vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import { LocalStorageEvent } from "@/assets/ts/constants";
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
@@ -49,8 +48,7 @@ const analyzeResults = () => {};
           Select Indicators
         </button>
         <div class="collapse show" id="indicator-collapse">
-          <div
-            class="list-group"
+          <template
             v-for="indicator in Object.entries(indicatorStore.selectedIndicator).map(
               ([key, value]) => ({
                 key,
@@ -59,8 +57,8 @@ const analyzeResults = () => {};
             )"
             :key="indicator.key"
           >
-            <span
-              class="list-group-item list-group-item-secondary px-2 py-1"
+            <div
+              class="rounded border px-2 py-1"
               :style="{ backgroundColor: indicatorColor(indicator.value) }"
             >
               {{ indicator.key }}
@@ -69,8 +67,8 @@ const analyzeResults = () => {};
                 aria-label="Close"
                 @click="deleteSelection(indicator.key)"
               ></button>
-            </span>
-          </div>
+            </div>
+          </template>
           <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
             <button class="btn btn-primary" @click="openIndicatorSelection">
               Select
