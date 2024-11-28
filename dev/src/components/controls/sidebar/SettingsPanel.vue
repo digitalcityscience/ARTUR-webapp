@@ -40,6 +40,7 @@ const handleCityChange = (e: Event) => {
   const city = cities.find((c) => c.name === selectedCityName);
 
   if (city) {
+    mapStore.isSilent = false;
     map.flyTo(city.latLng, 12);
     mapStore.setCity(city.name);
   }

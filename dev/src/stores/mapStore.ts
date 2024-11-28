@@ -4,13 +4,14 @@ import axios from "axios";
 import { CityName, LayerName, healthSiteIsochroneType } from "@/assets/ts/constants";
 import type { VectorLayer, GeoJSONData, Population } from "@/assets/ts/types";
 
-const useMapStore = defineStore("city", () => {
+const useMapStore = defineStore("map", () => {
   // State
   const map = ref();
   const city = ref<CityName | null>(null);
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
+  const isSilent = ref(true);
   const popup = ref<string>("");
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
@@ -276,6 +277,7 @@ const useMapStore = defineStore("city", () => {
     map,
     city,
     zoom,
+    isSilent,
     geojsonData,
     popup,
     shelterLayers,

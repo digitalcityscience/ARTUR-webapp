@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-  LMap,
-  LControlScale,
-  LTileLayer,
-  LGeoJson,
-  LControlAttribution,
-} from "@vue-leaflet/vue-leaflet";
+import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
 import { ref } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
@@ -44,12 +38,12 @@ const isReady = ref(false);
 const onReady = () => {
   mapStore.map = map.value.leafletObject;
   isReady.value = true;
-  // const attributionControl = map.value.leafletObject.attributionControl;
-  // attributionControl.addAttribution = `<img src= "/public/giz-logo.png"`;
 };
 </script>
 
 <template>
+  <!-- Map Shadow Overlay -->
+  <div v-if="mapStore.isSilent" class="map-overlay"></div>
   <l-map
     ref="map"
     :use-global-leaflet="false"
@@ -80,3 +74,15 @@ const onReady = () => {
     <sidebar-control v-if="isReady"></sidebar-control>
   </l-map>
 </template>
+<style scoped>
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+  pointer-events: all;
+}
+</style>
