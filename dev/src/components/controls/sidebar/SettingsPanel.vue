@@ -160,7 +160,7 @@ const handleCityChange = (e: Event) => {
           type="button"
           class="btn btn-sm btn-primary"
           @click="sidebarStore.goToPreviousPage()"
-          v-if="sidebarStore.currentStep > 1"
+          v-if="sidebarStore.currentStep > 0"
         >
           <i class="fa fa-caret-left"> Back</i>
         </button>
