@@ -14,7 +14,6 @@
   "dependencies": {
     "@maplibre/maplibre-gl-leaflet": "^0.0.22",
     "@popperjs/core": "^2.11.8",
-    "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "chroma-js": "^3.1.1",

@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
-import axios from "axios";
 import { CityName, LayerName, healthSiteIsochroneType } from "@/assets/ts/constants";
 import type { VectorLayer, GeoJSONData, Population } from "@/assets/ts/types";
 
@@ -102,9 +101,14 @@ const useMapStore = defineStore("map", () => {
       energySupplyCatchment: false,
     };
   };
-  axios
-    .get("/api/country-boundary")
-    .then((res) => (geojsonData.value.countryBoundary = res.data));
+  fetch("/api/country-boundary")
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return res.json();
+    })
+    .then((data) => {
+      geojsonData.value.countryBoundary = data;
+    });
   const fetchGeoData = async (cityName: CityName, isochroneTypeParam = "") => {
     isochroneTypeParam = isochroneType.value;
 
@@ -126,80 +130,145 @@ const useMapStore = defineStore("map", () => {
       // Fetch other city data only if it's not already cached
       if (!dataCache.value[cityName]) {
         promises.push(
-          axios.get(`/api/shelter/${cityName}`).then((res) => {
-            geojsonData.value.shelters = res.data;
-          }),
+          fetch(`/api/shelter/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.shelters = data;
+            }),
         );
+
         promises.push(
-          axios.get(`/api/boundary/${cityName}`).then((res) => {
-            geojsonData.value.boundary = res.data;
-          }),
+          fetch(`/api/boundary/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.boundary = data;
+            }),
         );
+
         promises.push(
-          axios.get(`/api/population/${cityName}`).then((res) => {
-            geojsonData.value.population = res.data;
-            shelterPopulation.value[cityName] = {
-              accessible: res.data.properties.accessible,
-              inaccessible: res.data.properties.inaccessible,
-            };
-          }),
+          fetch(`/api/population/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.population = data;
+              shelterPopulation.value[cityName] = {
+                accessible: data.properties.accessible,
+                inaccessible: data.properties.inaccessible,
+              };
+            }),
         );
+
         promises.push(
-          axios.get(`/api/isochrone/${cityName}`).then((res) => {
-            geojsonData.value.isochrones = res.data;
-            geojsonData.value.isochrones!.features.sort(
-              (a, b) => b.properties.range - a.properties.range,
-            );
-          }),
+          fetch(`/api/isochrone/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.isochrones = data;
+              geojsonData.value.isochrones!.features.sort(
+                (a, b) => b.properties.range - a.properties.range,
+              );
+            }),
         );
+
         promises.push(
-          axios.get(`/api/health-site-point/${cityName}`).then((res) => {
-            geojsonData.value.healthSitePoint = res.data;
-          }),
+          fetch(`/api/health-site-point/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.healthSitePoint = data;
+            }),
         );
+
         promises.push(
-          axios.get(`/api/hospital-auto-population/${cityName}`).then((res) => {
-            geojsonData.value.healthSitePopulation = res.data;
-            healthSitePopulation.value[cityName] = {
-              accessible: res.data.properties.accessible,
-              inaccessible: res.data.properties.inaccessible,
-            };
-          }),
+          fetch(`/api/hospital-auto-population/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.healthSitePopulation = data;
+              healthSitePopulation.value[cityName] = {
+                accessible: data.properties.accessible,
+                inaccessible: data.properties.inaccessible,
+              };
+            }),
         );
+
         promises.push(
-          axios.get(`/api/water-source/${cityName}`).then((res) => {
-            geojsonData.value.waterSourcePoint = res.data;
-          }),
+          fetch(`/api/water-source/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.waterSourcePoint = data;
+            }),
         );
+
         promises.push(
-          axios.get(`/api/water-source-catchment/${cityName}`).then((res) => {
-            geojsonData.value.waterSourceCatchment = res.data;
-            geojsonData.value.waterSourceCatchment!.features.sort(
-              (a, b) => b.properties.range - a.properties.range,
-            );
-          }),
+          fetch(`/api/water-source-catchment/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.waterSourceCatchment = data;
+              geojsonData.value.waterSourceCatchment!.features.sort(
+                (a, b) => b.properties.range - a.properties.range,
+              );
+            }),
         );
+
         promises.push(
-          axios.get(`/api/water-source-population/${cityName}`).then((res) => {
-            geojsonData.value.waterSourcePopulation = res.data;
-            waterSourcePopulation.value[cityName] = {
-              accessible: res.data.properties.accessible,
-              inaccessible: res.data.properties.inaccessible,
-            };
-          }),
+          fetch(`/api/water-source-population/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.waterSourcePopulation = data;
+              waterSourcePopulation.value[cityName] = {
+                accessible: data.properties.accessible,
+                inaccessible: data.properties.inaccessible,
+              };
+            }),
         );
+
         promises.push(
-          axios.get(`/api/energy-supply/${cityName}`).then((res) => {
-            geojsonData.value.energySupplyPoint = res.data;
-          }),
+          fetch(`/api/energy-supply/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.energySupplyPoint = data;
+            }),
         );
+
         promises.push(
-          axios.get(`/api/energy-supply-catchment/${cityName}`).then((res) => {
-            geojsonData.value.energySupplyCatchment = res.data;
-            geojsonData.value.energySupplyCatchment!.features.sort(
-              (a, b) => b.properties.range - a.properties.range,
-            );
-          }),
+          fetch(`/api/energy-supply-catchment/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.energySupplyCatchment = data;
+              geojsonData.value.energySupplyCatchment!.features.sort(
+                (a, b) => b.properties.range - a.properties.range,
+              );
+            }),
         );
       } else {
         // If city data is cached, load it from the cache
@@ -212,10 +281,13 @@ const useMapStore = defineStore("map", () => {
         isIsochroneChanged.value
       ) {
         promises.push(
-          axios
-            .get(`/api/health-site-isochrone-${isochroneTypeParam}/${cityName}`)
+          fetch(`/api/health-site-isochrone-${isochroneTypeParam}/${cityName}`)
             .then((res) => {
-              geojsonData.value.healthSiteIsochrone = res.data;
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.healthSiteIsochrone = data;
               geojsonData.value.healthSiteIsochrone!.features.sort(
                 (a, b) => b.properties.range - a.properties.range,
               );
@@ -224,7 +296,7 @@ const useMapStore = defineStore("map", () => {
               if (!isochroneCache.value[cityName]) {
                 isochroneCache.value[cityName] = {};
               }
-              isochroneCache.value[cityName][isochroneTypeParam] = res.data;
+              isochroneCache.value[cityName][isochroneTypeParam] = data;
 
               isIsochroneChanged.value = false;
             }),
