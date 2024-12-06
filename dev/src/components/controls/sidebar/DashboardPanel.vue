@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import LanguageSwitcher from "./LanguageSwitcher.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import { LocalStorageEvent } from "@/assets/ts/constants";
 import { sunburstColorConvertion } from "@/assets/data/echarts_options";
@@ -34,9 +35,10 @@ const analyzeResults = () => {};
 <template>
   <div class="leaflet-sidebar-pane" id="dashboard">
     <h1 class="leaflet-sidebar-header">
-      Dashboard
+      {{ $t("sidebar.DashboardPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
+    <language-switcher></language-switcher>
     <ul class="list-unstyled ps-0 mt-2">
       <li class="mb-1">
         <button
@@ -45,7 +47,7 @@ const analyzeResults = () => {};
           data-bs-target="#indicator-collapse"
           aria-expanded="true"
         >
-          Select Indicators
+          {{ $t("sidebar.DashboardPanel.indicator") }}
         </button>
         <div class="collapse show" id="indicator-collapse">
           <template
@@ -71,9 +73,11 @@ const analyzeResults = () => {};
           </template>
           <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
             <button class="btn btn-primary" @click="openIndicatorSelection">
-              Select
+              {{ $t("sidebar.DashboardPanel.button.select") }}
             </button>
-            <button class="btn btn-success" @click="analyzeResults">Run</button>
+            <button class="btn btn-success" @click="analyzeResults">
+              {{ $t("sidebar.DashboardPanel.button.run") }}
+            </button>
           </div>
         </div>
       </li>
@@ -84,7 +88,7 @@ const analyzeResults = () => {};
           data-bs-target="#results-collapse"
           aria-expanded="true"
         >
-          Results
+          {{ $t("sidebar.DashboardPanel.result") }}
         </button>
         <div class="collapse show" id="results-collapse"></div>
       </li>

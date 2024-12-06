@@ -2,18 +2,22 @@
 import { ref, computed, watch } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
-import { CityName, cities, Challenge } from "@/assets/ts/constants";
+import { CityName, cities } from "@/assets/ts/constants";
 import FirstDashboard from "./FirstDashboard.vue";
+import LanguageSwitcher from "./LanguageSwitcher.vue";
+import { useI18n } from "vue-i18n";
 
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
+const { t } = useI18n();
 const map = mapStore.map;
+
 // Reactive summary value
-const summary = ref("");
+const topic = ref("");
 watch(
   () => sidebarStore.selectedTopic,
   (newVal) => {
-    summary.value = newVal === "Water" ? Challenge.WATER : Challenge.ENERGY;
+    topic.value = newVal === "water" ? "water" : "energy";
   },
 );
 // Cities and topics for dropdowns
@@ -21,17 +25,17 @@ const cityOptions = computed(() =>
   cities.map((city) => ({
     name: city.name,
     latLng: city.latLng,
-    isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
+    isDisabled: !(city.name === CityName.KRYVYIRIH || CityName.NIKOPOL),
     isSelected: mapStore.city === city.name,
   })),
 );
 const topics = computed(() => [
-  { value: "Water" },
-  { value: "Energy" },
-  { value: "Evacuation", disabled: true },
-  { value: "Heating", disabled: true },
-  { value: "Ecology", disabled: true },
-  { value: "Physical Safety", disabled: true },
+  { value: "water" },
+  { value: "energy" },
+  { value: "evacuation", disabled: true },
+  { value: "heating", disabled: true },
+  { value: "ecology", disabled: true },
+  { value: "physicalSafety", disabled: true },
 ]);
 // Event handlers
 const handleCityChange = (e: Event) => {
@@ -50,15 +54,16 @@ const handleCityChange = (e: Event) => {
   <div class="leaflet-sidebar-pane" id="settings">
     <!-- Header -->
     <h1 class="leaflet-sidebar-header d-flex justify-content-between align-items-center">
-      Settings
+      {{ $t("sidebar.SettingsPanel.header") }}
       <button class="leaflet-sidebar-close btn p-0">
         <i class="fa fa-caret-right"></i>
       </button>
     </h1>
+    <language-switcher></language-switcher>
     <!-- Step 1 -->
     <div v-if="sidebarStore.currentStep === 1" class="sidebar-content">
-      <p class="sidebar-title">Step 1</p>
-      <p class="sidebar-content-text">Please select your city:</p>
+      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step1.title") }}</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.SettingsPanel.step1.content") }}</p>
       <div class="form-group">
         <select
           id="city-select"
@@ -66,7 +71,9 @@ const handleCityChange = (e: Event) => {
           @change="handleCityChange"
           aria-label="Select a city"
         >
-          <option value="" disabled selected>Select a city</option>
+          <option value="" disabled selected>
+            {{ $t("sidebar.SettingsPanel.step1.selectDefault") }}
+          </option>
           <option
             v-for="city in cityOptions"
             :key="city.name"
@@ -74,7 +81,7 @@ const handleCityChange = (e: Event) => {
             :disabled="city.isDisabled"
             :selected="city.isSelected"
           >
-            {{ city.name }}
+            {{ $t("cityNames." + city.name) }}
           </option>
         </select>
       </div>
@@ -84,16 +91,16 @@ const handleCityChange = (e: Event) => {
       <table class="table table-light">
         <tbody>
           <tr>
-            <th scope="row">City:</th>
-            <td>{{ mapStore.city }}</td>
+            <th scope="row">{{ $t("sidebar.SettingsPanel.step3.tableHeaders.city") }}</th>
+            <td>{{ $t("cityNames." + mapStore.city) }}</td>
           </tr>
         </tbody>
       </table>
-      <p class="sidebar-title">Step 2</p>
-      <p class="sidebar-content-text">
-        From the identified types of challenges in this city, please select the one you
-        would like to consult. Afterwards, click "<i class="fa fa-caret-right"> Next</i>"!
-      </p>
+      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step2.title") }}</p>
+      <p
+        class="sidebar-content-text"
+        v-html="$t('sidebar.SettingsPanel.step2.content')"
+      ></p>
       <div class="form-group pt-3">
         <select
           id="topic-select"
@@ -101,45 +108,51 @@ const handleCityChange = (e: Event) => {
           v-model="sidebarStore.selectedTopic"
           aria-label="Select a topic"
         >
-          <option value="" disabled selected>Select a topic</option>
+          <option value="" disabled selected>
+            {{ $t("sidebar.SettingsPanel.step2.selectDefault") }}
+          </option>
           <option
             v-for="topic in topics"
             :key="topic.value"
             :value="topic.value"
             :disabled="topic.disabled"
           >
-            {{ topic.value }}
+            {{ $t("topics." + topic.value) }}
           </option>
         </select>
       </div>
     </div>
     <!-- Step 3 -->
     <div v-if="sidebarStore.currentStep === 3" class="sidebar-content">
-      <p class="sidebar-title">Step 3</p>
-      <p class="sidebar-content-text">
-        Please open the dashboard and then select one type of disruption in the top
-        diagram to evaluate in the map. Afterwards, click "<i class="fa fa-caret-right">
-          Go to Layer Control</i
-        >" to toggle the layers and see more information.
-      </p>
+      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step3.title") }}</p>
+      <p
+        class="sidebar-content-text"
+        v-html="$t('sidebar.SettingsPanel.step3.content')"
+      ></p>
       <table class="table table-light">
         <thead>
           <tr>
-            <th colspan="2">First Diagnose Dashboard</th>
+            <th colspan="2">
+              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.diagnoseDashboard") }}
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">City:</th>
-            <td>{{ mapStore.city }}</td>
+            <th scope="row">{{ $t("sidebar.SettingsPanel.step3.tableHeaders.city") }}</th>
+            <td>{{ $t("cityNames." + mapStore.city) }}</td>
           </tr>
           <tr>
-            <th scope="row">Challenge:</th>
-            <td>{{ sidebarStore.selectedTopic }}</td>
+            <th scope="row">
+              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.challenge") }}
+            </th>
+            <td>{{ $t("topics." + sidebarStore.selectedTopic) }}</td>
           </tr>
           <tr>
-            <th scope="row">Summary:</th>
-            <td>{{ summary }}</td>
+            <th scope="row">
+              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.summary") }}
+            </th>
+            <td>{{ $t("summary." + topic) }}</td>
           </tr>
         </tbody>
       </table>
@@ -154,7 +167,7 @@ const handleCityChange = (e: Event) => {
           @click="sidebarStore.goToFirstStep"
           v-if="sidebarStore.currentStep === 3"
         >
-          <i class="fa fa-chevron-circle-left"> Go to Step 1</i>
+          <i class="fa fa-chevron-circle-left"> {{ $t("sidebar.buttons.goToStep1") }}</i>
         </button>
         <button
           type="button"
@@ -162,7 +175,7 @@ const handleCityChange = (e: Event) => {
           @click="sidebarStore.goToPreviousPage()"
           v-if="sidebarStore.currentStep > 0"
         >
-          <i class="fa fa-caret-left"> Back</i>
+          <i class="fa fa-caret-left">{{ $t("sidebar.buttons.back") }}</i>
         </button>
       </div>
       <button
@@ -172,7 +185,9 @@ const handleCityChange = (e: Event) => {
         v-if="sidebarStore.currentStep > 0"
       >
         <i class="fa fa-caret-right">{{
-          sidebarStore.currentStep < 3 ? " Next" : " Go to Layer Control"
+          sidebarStore.currentStep < 3
+            ? $t("sidebar.buttons.next")
+            : $t("sidebar.buttons.goToLayerControl")
         }}</i>
       </button>
     </div>

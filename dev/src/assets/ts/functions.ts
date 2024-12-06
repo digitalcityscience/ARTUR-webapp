@@ -1,4 +1,3 @@
-import { CityName } from "./constants";
 import { populationAccessibleColor, populationInaccessibleColor } from "./constants";
 import chroma from "chroma-js";
 
@@ -45,13 +44,3 @@ export function getPopulationColor(value: number, accessibility: number): string
         return "";
     }
 }
-
-const accessiblePopulation = [134682, 55789, 114450, 80288, 34905];
-const inaccessiblePopulation = [785457, 197988, 119261, 527271, 116081];
-const city = [
-  CityName.DNIPRO,
-  CityName.SUMY,
-  CityName.ZHYTOMYR,
-  CityName.KRYVYIRIH,
-  CityName.NIKOPOL,
-];

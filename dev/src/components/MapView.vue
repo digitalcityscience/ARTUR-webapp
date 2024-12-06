@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
 import OverlayControl from "./controls/OverlayControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
+
 // Pinia Store
 const mapStore = useMapStore();
 // Map Settings

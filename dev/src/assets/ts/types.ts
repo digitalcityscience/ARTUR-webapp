@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import { CityName, LayerName, populationType } from "./constants";
+import { CityName } from "./constants";
 import type {
   FeatureCollection,
   Point,
@@ -13,8 +13,10 @@ export type CityData = {
   latLng: number[];
 };
 
+export type IsochroneTypeKey = "auto" | "bus" | "bicycle" | "pedestrian";
+
 export type VectorLayer = {
-  name: LayerName;
+  name: string;
   visible: Ref<boolean>;
   color?: string;
   range?: number[];
@@ -72,3 +74,5 @@ export type Population = {
   accessible: number;
   inaccessible: number;
 };
+
+export type Language = "EN" | "УКР";

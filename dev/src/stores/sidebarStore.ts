@@ -1,12 +1,15 @@
 import { defineStore } from "pinia";
+import { useI18n } from "vue-i18n";
 import { ref } from "vue";
 import * as L from "leaflet";
 
 const useSidebarStore = defineStore("sidebar", () => {
+  const { locale } = useI18n();
   const sidebar = ref<L.Control.Sidebar | null>(null);
   const currentStep = ref(1);
-  const activeLang = ref<"EN" | "UA">("EN");
   const selectedTopic = ref("");
+  const currentLanguage = ref<"EN" | "УКР">("EN");
+
   // Methods
   const getSidebar = () => sidebar.value;
   const goToSetting = () => sidebar.value!.open("settings");
@@ -15,22 +18,23 @@ const useSidebarStore = defineStore("sidebar", () => {
   const goToPreviousPage = () =>
     currentStep.value === 1 ? sidebar.value!.open("info") : currentStep.value--;
   const goToFirstStep = () => (currentStep.value = 1);
-  const setActiveLang = (lang: "EN" | "UA") => {
-    activeLang.value = lang;
-    //.....
+  // Update the active language and i18n locale
+  const setLanguage = (lang: "EN" | "УКР") => {
+    currentLanguage.value = lang;
+    locale.value = lang == "EN" ? "en" : "ua";
+    localStorage.setItem("language", lang);
   };
-
   return {
     sidebar,
     currentStep,
-    activeLang,
     selectedTopic,
+    currentLanguage,
     goToNextPage,
     goToPreviousPage,
     goToFirstStep,
     goToSetting,
     getSidebar,
-    setActiveLang,
+    setLanguage,
   };
 });
 export default useSidebarStore;

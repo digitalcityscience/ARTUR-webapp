@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import PopulationSumChart from "@/components/controls/PopulationSumChart.vue";
-import { basemaps, LayerName, populationType } from "@/assets/ts/constants";
+import LanguageSwitcher from "./LanguageSwitcher.vue";
+import { basemaps, populationType, LayerName } from "@/assets/ts/constants";
+import type { IsochroneTypeKey } from "@/assets/ts/types";
 import { ref, watch } from "vue";
 import useMapStore from "@/stores/mapStore";
 
@@ -15,7 +17,7 @@ watch(selectedBasemap, (newBasemap) => {
   });
 });
 // Local state to store the selected isochrone type
-const selectedIsochroneType = ref("auto");
+const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 // Function to change the isochrone type and fetch the corresponding data
 const changeIsochroneType = () => {
   mapStore.setIsochroneType(selectedIsochroneType.value);
@@ -24,9 +26,10 @@ const changeIsochroneType = () => {
 <template>
   <div class="leaflet-sidebar-pane" id="layer">
     <h1 class="leaflet-sidebar-header">
-      Layers
+      {{ $t("sidebar.LayerPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
+    <language-switcher></language-switcher>
     <div class="layer-control-content mt-2">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
@@ -36,7 +39,7 @@ const changeIsochroneType = () => {
             data-bs-target="#layer-control-collapse"
             aria-expanded="true"
           >
-            Layer Control
+            {{ $t("sidebar.LayerPanel.control.header") }}
           </button>
           <div class="collapse show ms-1" id="layer-control-collapse">
             <ul class="list-unstyled ps-0">
@@ -47,7 +50,7 @@ const changeIsochroneType = () => {
                   data-bs-target="#basemap-switch"
                   aria-expanded="true"
                 >
-                  Basemaps
+                  {{ $t("sidebar.LayerPanel.control.basemaps") }}
                 </button>
                 <div
                   v-for="basemap in basemaps"
@@ -75,7 +78,7 @@ const changeIsochroneType = () => {
                   data-bs-target="#overlay-switch"
                   aria-expanded="true"
                 >
-                  Overlays
+                  {{ $t("sidebar.LayerPanel.control.overlays") }}
                 </button>
                 <ul class="list-unstyled ps-0" id="overlay-switch">
                   <li class="mb-1 form-check">
@@ -87,7 +90,7 @@ const changeIsochroneType = () => {
                       v-model="mapStore.boundaryLayer.visible"
                     />
                     <label class="form-check-label" :for="mapStore.boundaryLayer.name">
-                      {{ mapStore.boundaryLayer.name }}
+                      {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
                     </label>
                   </li>
                   <li class="mb-1">
@@ -97,7 +100,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#shelter-layer-set"
                       aria-expanded="false"
                     >
-                      Layer Set: Shelter
+                      {{ $t("sidebar.LayerPanel.sets.shelter") }}
                     </button>
                     <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
                       <li
@@ -113,7 +116,7 @@ const changeIsochroneType = () => {
                           v-model="overlay.visible"
                         />
                         <label class="form-check-label" :for="overlay.name">
-                          {{ overlay.name }}
+                          {{ $t("layerNames." + overlay.name) }}
                         </label>
                       </li>
                     </ul>
@@ -125,7 +128,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#healthsite-layer-set"
                       aria-expanded="false"
                     >
-                      Layer Set: Health Site
+                      {{ $t("sidebar.LayerPanel.sets.healthSite") }}
                     </button>
                     <ul
                       class="form-check collapse list-unstyled"
@@ -144,7 +147,7 @@ const changeIsochroneType = () => {
                           v-model="overlay.visible"
                         />
                         <label class="form-check-label" :for="overlay.name">
-                          {{ overlay.name }}
+                          {{ $t("layerNames." + overlay.name) }}
                         </label>
                         <!-- Isochrone switcher for healthSiteIsochroneLayer -->
                         <div
@@ -158,10 +161,18 @@ const changeIsochroneType = () => {
                             id="isochroneType"
                             aria-label="Isochrone Type Select"
                           >
-                            <option value="auto">Car</option>
-                            <option value="bus">Bus</option>
-                            <option value="bicycle">Bicycle</option>
-                            <option value="pedestrian">Pedestrian</option>
+                            <option value="auto">
+                              {{ $t("healthSiteIsochroneType.auto") }}
+                            </option>
+                            <option value="bus">
+                              {{ $t("healthSiteIsochroneType.bus") }}
+                            </option>
+                            <option value="bicycle">
+                              {{ $t("healthSiteIsochroneType.bicycle") }}
+                            </option>
+                            <option value="pedestrian">
+                              {{ $t("healthSiteIsochroneType.pedestrian") }}
+                            </option>
                           </select>
                         </div>
                       </li>
@@ -174,7 +185,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#watersource-layer-set"
                       aria-expanded="false"
                     >
-                      Layer Set: Water Source
+                      {{ $t("sidebar.LayerPanel.sets.waterSource") }}
                     </button>
                     <ul
                       class="form-check collapse list-unstyled"
@@ -193,7 +204,7 @@ const changeIsochroneType = () => {
                           v-model="overlay.visible"
                         />
                         <label class="form-check-label" :for="overlay.name">
-                          {{ overlay.name }}
+                          {{ $t("layerNames." + overlay.name) }}
                         </label>
                       </li>
                     </ul>
@@ -205,7 +216,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#energysupply-layer-set"
                       aria-expanded="false"
                     >
-                      Layer Set: Energy Supply
+                      {{ $t("sidebar.LayerPanel.sets.energySupply") }}
                     </button>
                     <ul
                       class="form-check list-unstyled collapse"
@@ -224,7 +235,7 @@ const changeIsochroneType = () => {
                           v-model="overlay.visible"
                         />
                         <label class="form-check-label" :for="overlay.name">
-                          {{ overlay.name }}
+                          {{ $t("layerNames." + overlay.name) }}
                         </label>
                       </li>
                     </ul>
@@ -242,7 +253,7 @@ const changeIsochroneType = () => {
             aria-expanded="true"
             v-if="mapStore.shelterLayers.shelterLayer.visible"
           >
-            Shelters Information
+            {{ $t("sidebar.LayerPanel.popups.sheltersInfo") }}
           </button>
           <div class="collapse show" id="popup-collapse">
             <h6 v-html="mapStore.popup"></h6>
@@ -256,7 +267,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.shelterLayers.populationLayer.visible"
             aria-expanded="true"
           >
-            Shelter Access Population Information
+            {{ $t("sidebar.LayerPanel.popups.shelterPopulationInfo") }}
           </button>
           <div class="collapse show" id="shelter-population-collapse">
             <population-sum-chart
@@ -276,7 +287,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.healthsiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
           >
-            Health Site Access Population Information
+            {{ $t("sidebar.LayerPanel.popups.healthSitePopulationInfo") }}
           </button>
           <div class="collapse show" id="healthsite-population-collapse">
             <population-sum-chart
@@ -296,7 +307,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
             aria-expanded="true"
           >
-            Water Source Catchment Area Population
+            {{ $t("sidebar.LayerPanel.popups.waterSourcePopulation") }}
           </button>
           <div class="collapse show" id="watersource-population-collapse">
             <population-sum-chart

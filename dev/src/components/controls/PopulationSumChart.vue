@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import { populationType, PopulationChartText } from "@/assets/ts/constants";
+import { populationType } from "@/assets/ts/constants";
 import type { Population } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
+import { useI18n } from "vue-i18n";
 
 const mapStore = useMapStore();
+const { t } = useI18n();
 const props = defineProps<{ type: string }>();
 let population = ref<Population | null>(null);
 const chartContainer = ref<HTMLDivElement | null>(null);
@@ -63,19 +65,19 @@ const setChartOptions = (): void => {
                 value: population.value.accessible,
                 name:
                   props.type === populationType.HEALTHSITE
-                    ? PopulationChartText.HEALTHSITEACCESS
+                    ? t("populationChartText.healthSiteAccess")
                     : props.type === populationType.SHELTER
-                    ? PopulationChartText.SHELTERACCESS
-                    : PopulationChartText.WATERSOURCEACCESS,
+                    ? t("populationChartText.shelterAccess")
+                    : t("populationChartText.waterSourceAccess"),
               },
               {
                 value: population.value.inaccessible,
                 name:
                   props.type === populationType.HEALTHSITE
-                    ? PopulationChartText.HEALTHSITEINACCESS
+                    ? t("populationChartText.healthSiteInAccess")
                     : props.type === populationType.SHELTER
-                    ? PopulationChartText.SHELTERINACCESS
-                    : PopulationChartText.WATERSOURCEINACCESS,
+                    ? t("populationChartText.shelterInAccess")
+                    : t("populationChartText.waterSourceInAccess"),
               },
             ]
           : [],

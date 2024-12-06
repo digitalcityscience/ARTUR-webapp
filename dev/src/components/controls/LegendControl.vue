@@ -22,6 +22,7 @@ onMounted(() => {
   initChart();
 });
 </script>
+
 <template>
   <l-control position="bottomleft">
     <button
@@ -29,7 +30,7 @@ onMounted(() => {
       class="btn btn-primary btn-sm legend-button"
     >
       <i :class="btnLegendIconClass" style="float: left; padding-right: 5px"></i>
-      <strong>Legend</strong>
+      <strong>{{ $t("legend.title") }}</strong>
       <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
     </button>
     <div class="legend" v-show="showLegend">
@@ -38,32 +39,32 @@ onMounted(() => {
           class="point"
           :style="{ background: mapStore.shelterLayers.shelterLayer.color }"
         ></i>
-        {{ mapStore.shelterLayers.shelterLayer.name }}
+        {{ $t("layerNames." + mapStore.shelterLayers.shelterLayer.name) }}
       </div>
       <div v-show="mapStore.healthsiteLayers.healthSiteLayer.visible">
         <i
           class="point"
           :style="{ background: mapStore.healthsiteLayers.healthSiteLayer.color }"
         ></i>
-        {{ mapStore.healthsiteLayers.healthSiteLayer.name }}
+        {{ $t("layerNames." + mapStore.healthsiteLayers.healthSiteLayer.name) }}
       </div>
       <div v-show="mapStore.waterSourceLayers.waterSourceLayer.visible">
         <i
           class="point"
           :style="{ background: mapStore.waterSourceLayers.waterSourceLayer.color }"
         ></i>
-        {{ mapStore.waterSourceLayers.waterSourceLayer.name }}
+        {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
       </div>
       <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
         <i
           class="point"
           :style="{ background: mapStore.energySupplyLayers.energySupplyLayer.color }"
         ></i>
-        {{ mapStore.energySupplyLayers.energySupplyLayer.name }}
+        {{ $t("layerNames." + mapStore.energySupplyLayers.energySupplyLayer.name) }}
       </div>
       <div v-show="mapStore.boundaryLayer.visible">
         <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
-        {{ mapStore.boundaryLayer.name }}
+        {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
       </div>
       <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
         <template
@@ -71,7 +72,8 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 5) }"></i
-          >Shelters' Isochrone {{ range }} min<br />
+          >{{ $t("legend.isochrone.shelter") }} {{ range }} {{ $t("legend.minute")
+          }}<br />
         </template>
       </div>
       <div v-show="mapStore.healthsiteLayers.healthSiteIsochroneLayer.visible">
@@ -80,7 +82,9 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >Health Site Isochrone - {{ mapStore.getIsochroneType() }} {{ range }} min<br />
+          >{{ $t("legend.isochrone.healthSite")
+          }}{{ $t("healthSiteIsochroneType." + mapStore.getIsochroneType()) }}
+          {{ range }} {{ $t("legend.minute") }}<br />
         </template>
       </div>
       <div v-show="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible">
@@ -89,7 +93,8 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >Water Source Catchment Area {{ range }} km<br />
+          >{{ $t("legend.isochrone.water") }}{{ range }} {{ $t("legend.kilometer")
+          }}<br />
         </template>
       </div>
       <div v-show="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible">
@@ -98,7 +103,8 @@ onMounted(() => {
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >Energy Supply Catchment Area {{ range }} km<br />
+          >{{ $t("legend.isochrone.energy") }}{{ range }} {{ $t("legend.kilometer")
+          }}<br />
         </template>
       </div>
       <div
@@ -110,12 +116,13 @@ onMounted(() => {
         class="population-grid"
       >
         <div ref="chartContainer" class="chartContainer"></div>
-        <i class="polygon" style="background: #9e0000"></i>Most populated areas but not in
-        the Catchment area<br />
+        <i class="polygon" style="background: #9e0000"></i>{{ $t("legend.population")
+        }}<br />
       </div>
     </div>
   </l-control>
 </template>
+
 <style scoped>
 .legend-button {
   position: relative;

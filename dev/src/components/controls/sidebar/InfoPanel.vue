@@ -1,47 +1,34 @@
 <script lang="ts" setup>
 import useSidebarStore from "@/stores/sidebarStore";
+import languageSwitcher from "./LanguageSwitcher.vue";
 
 const sidebarStore = useSidebarStore();
-const languages = ["UA", "EN"] as const;
-const buttonClass = (lang: "EN" | "UA") =>
-  sidebarStore.activeLang === lang
-    ? "btn btn-outline-primary active"
-    : "btn btn-outline-primary";
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="info">
     <h1 class="leaflet-sidebar-header">
-      Info
+      {{ $t("sidebar.InfoPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
-    <div class="btn-group btn-group-sm float-end mt-2">
-      <button
-        v-for="lang in languages"
-        :key="lang"
-        :class="buttonClass(lang)"
-        @click="sidebarStore.setActiveLang(lang)"
-      >
-        {{ lang }}
-      </button>
-    </div>
+    <language-switcher></language-switcher>
     <div class="sidebar-content">
-      <strong class="sidebar-title">Objective of the tool:</strong>
+      <strong class="sidebar-title">{{ $t("sidebar.InfoPanel.content.title") }}</strong>
       <p class="sidebar-content-text">
-        The ARTUR Tool has been designed as an interactive platform that serves as a
-        resilience checker for Ukrainian cities. The specific tasks within this tool
-        include:
+        {{ $t("sidebar.InfoPanel.content.description") }}
       </p>
-      <p class="sidebar-content-text">1. Dissect the challenges of a city.</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.InfoPanel.content.step1") }}</p>
       <p class="sidebar-content-text">
-        2. Diagnose the causes and effects of its challenges.
+        {{ $t("sidebar.InfoPanel.content.step2") }}
       </p>
-      <p class="sidebar-content-text">3. Relate these to specific locations.</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.InfoPanel.content.step3") }}</p>
       <p class="sidebar-content-text">
-        4. Understand poorly performing resilience capacities.
+        {{ $t("sidebar.InfoPanel.content.step4") }}
       </p>
       <p class="sidebar-content-text">
         <strong
-          >To continue please click "<i class="fa fa-caret-right"> Next</i>"!</strong
+          >{{ $t("sidebar.InfoPanel.content.continue") }} "<i class="fa fa-caret-right">
+            {{ $t("sidebar.buttons.next") }}</i
+          >"!</strong
         >
       </p>
       <button
@@ -49,7 +36,7 @@ const buttonClass = (lang: "EN" | "UA") =>
         class="btn btn-sm btn-primary float-end"
         @click="sidebarStore.goToSetting()"
       >
-        <i class="fa fa-caret-right"> Next</i>
+        <i class="fa fa-caret-right"> {{ $t("sidebar.buttons.next") }}</i>
       </button>
     </div>
   </div>

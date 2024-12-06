@@ -6,6 +6,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { createI18n } from "vue-i18n";
+import messages from "@intlify/unplugin-vue-i18n/messages";
 import App from "./App.vue";
 
 const app = createApp(App);
@@ -14,4 +16,17 @@ const app = createApp(App);
 const pinia = createPinia();
 app.use(pinia);
 
-createApp(App).mount("#app");
+// Get the browser language
+const browserLanguage = navigator.language.split("-")[0];
+const locale = browserLanguage === "ua" ? "ua" : "en";
+// Create I18n instance
+const i18n = createI18n({
+  legacy: false,
+  missingWarn: false,
+  locale,
+  messages,
+  allowHtml: true,
+});
+app.use(i18n);
+
+app.mount("#app");

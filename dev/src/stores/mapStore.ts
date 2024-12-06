@@ -1,17 +1,22 @@
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
-import { CityName, LayerName, healthSiteIsochroneType } from "@/assets/ts/constants";
-import type { VectorLayer, GeoJSONData, Population } from "@/assets/ts/types";
-
+import type {
+  VectorLayer,
+  GeoJSONData,
+  Population,
+  IsochroneTypeKey,
+} from "@/assets/ts/types";
+import { LayerName } from "@/assets/ts/constants";
 const useMapStore = defineStore("map", () => {
   // State
   const map = ref();
-  const city = ref<CityName | null>(null);
+  const city = ref<string>("");
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
   const isSilent = ref(true);
   const popup = ref<string>("");
+  const isochroneType = ref<IsochroneTypeKey>("auto");
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
   const shelterPopulation = ref<Record<string, Population>>({});
@@ -23,21 +28,25 @@ const useMapStore = defineStore("map", () => {
     color: "#057dcd",
   };
   const shelterLayers: Record<string, VectorLayer> = {
-    shelterLayer: { name: LayerName.SHELTER, visible: ref(false), color: "orange" },
+    shelterLayer: {
+      name: LayerName.SHELTER,
+      visible: ref(false),
+      color: "orange",
+    },
     isochroneLayer: {
-      name: LayerName.ISOCHRONE,
+      name: LayerName.SHELTERISOCHRONE,
       visible: ref(false),
       range: [1, 2, 3, 4, 5],
     },
     populationLayer: {
-      name: LayerName.POPULATION,
+      name: LayerName.SHELTERPOPULATION,
       visible: ref(false),
       range: [45, 35, 25, 15, 5],
     },
   };
   const healthsiteLayers: Record<string, VectorLayer> = {
     healthSiteLayer: {
-      name: LayerName.HEALTHSITEPOINT,
+      name: LayerName.HEALTHSITE,
       visible: ref(false),
       color: "#EE6666",
     },
@@ -81,7 +90,6 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   };
-  const isochroneType = ref("auto");
   const isIsochroneChanged = ref(false);
   // Track which layers have been loaded per city (excluding isochrones)
   const layerLoaded = ref<Record<string, Record<string, boolean>>>({});
@@ -109,7 +117,7 @@ const useMapStore = defineStore("map", () => {
     .then((data) => {
       geojsonData.value.countryBoundary = data;
     });
-  const fetchGeoData = async (cityName: CityName, isochroneTypeParam = "") => {
+  const fetchGeoData = async (cityName: string, isochroneTypeParam = "") => {
     isochroneTypeParam = isochroneType.value;
 
     // Check if city data is fully cached (including isochrone for the current type)
@@ -323,7 +331,7 @@ const useMapStore = defineStore("map", () => {
     }
   };
 
-  const setIsochroneType = (newType: string) => {
+  const setIsochroneType = (newType: IsochroneTypeKey) => {
     isIsochroneChanged.value = true;
     isochroneType.value = newType;
 
@@ -332,7 +340,7 @@ const useMapStore = defineStore("map", () => {
   };
 
   // Actions to change city and refetch data
-  const setCity = (newCity: CityName) => {
+  const setCity = (newCity: string) => {
     // Reset the layer loading state for the new city
     resetLayerLoaded(newCity);
     city.value = newCity;
@@ -341,7 +349,7 @@ const useMapStore = defineStore("map", () => {
     fetchGeoData(newCity);
   };
 
-  const getIsochroneType = (): string => healthSiteIsochroneType[isochroneType.value];
+  const getIsochroneType = (): string => isochroneType.value;
   watch(city, () => {
     popup.value = "";
   });

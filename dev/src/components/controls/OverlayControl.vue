@@ -155,7 +155,7 @@ onMounted(() => {
     ></l-geo-json>
     <!-- Isochrones -->
     <l-geo-json
-      :name="LayerName.ISOCHRONE"
+      :name="LayerName.SHELTERISOCHRONE"
       :geojson="mapStore.geojsonData.isochrones"
       :visible="mapStore.shelterLayers.isochroneLayer.visible as unknown as boolean"
       layer-type="overlay"
@@ -164,7 +164,7 @@ onMounted(() => {
     ></l-geo-json>
     <!-- Shelter Population -->
     <l-geo-json
-      :name="LayerName.POPULATION"
+      :name="LayerName.SHELTERPOPULATION"
       :geojson="mapStore.geojsonData.population"
       :visible="mapStore.shelterLayers.populationLayer.visible as unknown as boolean"
       layer-type="overlay"
@@ -173,7 +173,7 @@ onMounted(() => {
     ></l-geo-json>
     <!-- Health Site Point -->
     <l-feature-group
-      :name="LayerName.HEALTHSITEPOINT"
+      :name="LayerName.HEALTHSITE"
       layer-type="overlay"
       :visible="mapStore.healthsiteLayers.healthSiteLayer.visible as unknown as boolean"
     >

@@ -1,35 +1,5 @@
-import type { CityData, TileLayer } from "./types";
+import type { TileLayer, CityData } from "./types";
 import { ref } from "vue";
-
-export enum CityName {
-  ZHYTOMYR = "Zhytomyr",
-  KRYVYIRIH = "Kryvyi Rih",
-  NIKOPOL = "Nikopol",
-  DNIPRO = "Dnipro",
-  SUMY = "Sumy",
-}
-export const cities: Array<CityData> = [
-  { name: CityName.KRYVYIRIH, latLng: [47.9264, 33.4253] },
-  { name: CityName.NIKOPOL, latLng: [47.57608, 34.3843] },
-  { name: CityName.ZHYTOMYR, latLng: [50.26453, 28.67374] },
-  { name: CityName.DNIPRO, latLng: [48.467953, 35.041797] },
-  { name: CityName.SUMY, latLng: [50.911913, 34.80279] },
-];
-
-export enum LayerName {
-  SHELTER = "Shelters",
-  BOUNDARY = "Boundary",
-  ISOCHRONE = "Shelters' Isochrone (Pedestrian)",
-  POPULATION = "Shelter Access (Pedestrian): Population within/outside 5 min",
-  HEALTHSITEPOINT = "Health Sites",
-  HEALTHSITEISOCHRONE = "Health Sites' Isochrones",
-  HEALTHSITEPOPULATION = "Health Site Access (Car): Population within/outside 10 min",
-  WATERSOURCE = "Water Source (fake)",
-  WATERSOURCECATCHMENT = "Catchment Area of water source",
-  WATERSOURCEPOPULATION = "Catchment area of Water Source: Population within/outside a certain kilometres according to the transport network",
-  ENERGYSUPPLY = "Energy Plant (fake)",
-  ENERGYSUPPLYCATCHMENT = "Catchment area of Energy Plant: Population within/outside a certain kilometres according to the transport network",
-}
 
 export enum populationType {
   SHELTER = "shelter",
@@ -70,10 +40,6 @@ export enum LocalStorageEvent {
   UPDATE = "indicatorUpdate",
 }
 
-export enum GraphTypes {
-  SANKEY = "Sankey",
-  SUNBURST = "Sunburst",
-}
 export enum ImageFormat {
   PNG = "png",
   JPEG = "jpeg",
@@ -95,23 +61,35 @@ export const populationInaccessibleColor: string[] = [
   "#9e0000",
 ];
 
-export const healthSiteIsochroneType: Record<string, string> = {
-  auto: "Car",
-  bus: "Bus",
-  bicycle: "Bicycle",
-  pedestrian: "Pedestrian",
-};
-
-export enum Challenge {
-  WATER = "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
-  ENERGY = "",
+export enum LayerName {
+  SHELTER = "shelter",
+  BOUNDARY = "boundary",
+  SHELTERISOCHRONE = "isochrone",
+  SHELTERPOPULATION = "population",
+  HEALTHSITE = "healthSitePoint",
+  HEALTHSITEISOCHRONE = "healthSiteIsochrone",
+  HEALTHSITEPOPULATION = "healthSitePopulation",
+  WATERSOURCE = "waterSource",
+  WATERSOURCECATCHMENT = "waterSourceCatchment",
+  WATERSOURCEPOPULATION = "waterSourcePopulation",
+  ENERGYSUPPLY = "energySupply",
+  ENERGYSUPPLYCATCHMENT = "energySupplyCatchment",
 }
-
-export enum PopulationChartText {
-  SHELTERACCESS = "Accessible in 5 min",
-  SHELTERINACCESS = "Inaccessible in 5 min",
-  HEALTHSITEACCESS = "Accessible in 10 min",
-  HEALTHSITEINACCESS = "Inaccessible in 10 min",
-  WATERSOURCEACCESS = "In Catchment Area",
-  WATERSOURCEINACCESS = "Out of Catchment Area",
+export enum CityName {
+  ZHYTOMYR = "zhytomyr",
+  KRYVYIRIH = "kryvyiRih",
+  NIKOPOL = "nikopol",
+  DNIPRO = "dnipro",
+  SUMY = "sumy",
+}
+export const cities: Array<CityData> = [
+  { name: CityName.KRYVYIRIH, latLng: [47.9264, 33.4253] },
+  { name: CityName.NIKOPOL, latLng: [47.57608, 34.3843] },
+  { name: CityName.ZHYTOMYR, latLng: [50.26453, 28.67374] },
+  { name: CityName.DNIPRO, latLng: [48.467953, 35.041797] },
+  { name: CityName.SUMY, latLng: [50.911913, 34.80279] },
+];
+export enum GraphTypes {
+  SANKEY = "Sankey",
+  SUNBURST = "Sunburst",
 }

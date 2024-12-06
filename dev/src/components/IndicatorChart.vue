@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import * as echarts from "echarts";
 import {
   sunburstData,
@@ -12,7 +12,7 @@ import {
   sankeyOption,
   SANKEYLEVELS,
 } from "@/assets/data/echarts_options";
-import { GraphTypes, ImageFormat, LocalStorageEvent } from "@/assets/ts/constants";
+import { ImageFormat, LocalStorageEvent, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
 
 const indicatorStore = useIndicatorStore();
@@ -25,7 +25,7 @@ const showModal = ref<boolean>(false);
 const resolution = ref<number>(2);
 const backgroundColor = ref<string>("#ffffff");
 const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
-const switchGraph = ref<GraphTypes>(GraphTypes.SANKEY);
+const switchGraph = ref<string>(GraphTypes.SANKEY);
 // Methods
 const switchGraphType = () => {
   if (switchGraph.value == GraphTypes.SANKEY) {

@@ -1,0 +1,139 @@
+{
+  "cityNames": {
+    "zhytomyr": "Zhytomyr",
+    "kryvyiRih": "Kryvyi Rih",
+    "nikopol": "Nikopol",
+    "dnipro": "Dnipro",
+    "sumy": "Sumy"
+  },
+  "layerNames": {
+    "shelter": "Shelters",
+    "boundary": "Boundary",
+    "isochrone": "Shelters' Isochrone (Pedestrian)",
+    "population": "Shelter Access (Pedestrian): Population within/outside 5 min",
+    "healthSitePoint": "Health Sites",
+    "healthSiteIsochrone": "Health Sites' Isochrones",
+    "healthSitePopulation": "Health Site Access (Car): Population within/outside 10 min",
+    "waterSource": "Water Source (fake)",
+    "waterSourceCatchment": "Catchment Area of water source",
+    "waterSourcePopulation": "Catchment area of Water Source: Population within/outside a certain kilometers according to the transport network",
+    "energySupply": "Energy Plant (fake)",
+    "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network"
+  },
+  "graphTypes": {
+    "sankey": "Sankey",
+    "sunburst": "Sunburst"
+  },
+  "healthSiteIsochroneType": {
+    "auto": "Car",
+    "bus": "Bus",
+    "bicycle": "Bicycle",
+    "pedestrian": "Pedestrian"
+  },
+  "summary": {
+    "water": "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
+    "energy": "Energy provision is challenged by various factors, including supply and demand disruptions."
+  },
+  "topics": {
+    "water": "Water",
+    "energy": "Energy",
+    "evacuation": "Evacuation",
+    "heating": "Heating",
+    "ecology": "Ecology",
+    "physicalSafety": "Physical Safety"
+  },
+  "populationChartText": {
+    "shelterAccess": "Accessible in 5 min",
+    "shelterInaccess": "Inaccessible in 5 min",
+    "healthSiteAccess": "Accessible in 10 min",
+    "healthSiteInaccess": "Inaccessible in 10 min",
+    "waterSourceAccess": "In Catchment Area",
+    "waterSourceInaccess": "Out of Catchment Area"
+  },
+  "legend": {
+    "title": "Legend",
+    "isochrone": {
+      "shelter": "Shelters' Isochrone ",
+      "healthSite": "Health Site Isochrone - ",
+      "water": "Water Source Catchment Area ",
+      "energy": "Energy Supply Catchment Area "
+    },
+    "minute": "min",
+    "kilometer": "km",
+    "population": "Most populated areas but not in the Catchment/Isochrone area"
+  },
+  "sidebar": {
+    "DashboardPanel": {
+      "header": "Dashboard",
+      "indicator": "Select Indicators",
+      "result": "Results",
+      "button": { "select": "Select", "run": "Run" }
+    },
+    "InfoPanel": {
+      "header": "Information",
+      "content": {
+        "title": "Objective of the tool:",
+        "description": "The ARTUR Tool has been designed as an interactive platform that serves as a resilience checker for Ukrainian cities. The specific tasks within this tool include:",
+        "step1": "1. Dissect the challenges of a city.",
+        "step2": "2. Diagnose the causes and effects of its challenges.",
+        "step3": "3. Relate these to specific locations.",
+        "step4": "4. Understand poorly performing resilience capacities.",
+        "continue": "To continue please click "
+      }
+    },
+    "LayerPanel": {
+      "header": "Layers",
+      "close": "Close",
+      "control": {
+        "header": "Layer Control",
+        "basemaps": "Basemaps",
+        "overlays": "Overlays"
+      },
+      "sets": {
+        "shelter": "Layer Set: Shelter",
+        "healthSite": "Layer Set: Health Site",
+        "waterSource": "Layer Set: Water Source",
+        "energySupply": "Layer Set: Energy Supply"
+      },
+      "popups": {
+        "sheltersInfo": "Shelters Information",
+        "shelterPopulationInfo": "Shelter Access Population Information",
+        "healthSitePopulationInfo": "Health Site Access Population Information",
+        "waterSourcePopulation": "Water Source Catchment Area Population"
+      }
+    },
+    "SettingsPanel": {
+      "header": "Settings",
+      "step1": {
+        "title": "Step 1",
+        "content": "Please select your city:",
+        "selectDefault": "Select a city"
+      },
+      "step2": {
+        "title": "Step 2",
+        "content": "From the identified types of challenges in this city, please select the one you would like to consult. Afterwards, click ",
+        "selectDefault": "Select a topic"
+      },
+      "step3": {
+        "title": "Step 3",
+        "content": "Please open the dashboard and then select one type of disruption in the top diagram to evaluate in the map. Afterwards, click ",
+        "tableHeaders": {
+          "diagnoseDashboard": "First Diagnose Dashboard",
+          "city": "City:",
+          "challenge": "Challenge:",
+          "summary": "Summary:"
+        }
+      }
+    },
+    "KnowledgePanel": {
+      "title": "Knowledge Base",
+      "subtitle": "Capacities"
+    },
+    "buttons": {
+      "goToStep1": " Go to Step 1",
+      "back": " Back",
+      "next": " Next",
+      "goToLayerControl": " Go to Layer Control"
+    }
+  }
+}
