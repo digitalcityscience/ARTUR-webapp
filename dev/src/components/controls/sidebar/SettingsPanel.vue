@@ -5,11 +5,9 @@ import useMapStore from "@/stores/mapStore";
 import { CityName, cities } from "@/assets/ts/constants";
 import FirstDashboard from "./FirstDashboard.vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
-import { useI18n } from "vue-i18n";
 
 const sidebarStore = useSidebarStore();
 const mapStore = useMapStore();
-const { t } = useI18n();
 const map = mapStore.map;
 
 // Reactive summary value
@@ -29,8 +27,6 @@ const cityOptions = computed(() =>
     isSelected: mapStore.city === city.name,
   })),
 );
-console.log(cities);
-console.log(cityOptions.value);
 const topics = computed(() => [
   { value: "water" },
   { value: "energy" },

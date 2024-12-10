@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
-import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { useI18n } from "vue-i18n";
 
 const sidebarStore = useSidebarStore();
-
+const { t } = useI18n();
 // Dynamic iframe sources with cache-busting
 const cacheBuster = ref(Date.now());
 const refreshIframe = () => {
@@ -29,7 +29,7 @@ const urbanResilienceIndicators = [
   { name: "Transparency", isHighlighted: false },
 ];
 
-// Download modal content as PDF
+// Download modal content as PNG
 const downloadfirstDashboard = () => {
   const modalContent = document.getElementById("first-analysis");
   if (!modalContent) {
@@ -39,14 +39,12 @@ const downloadfirstDashboard = () => {
 
   html2canvas(modalContent, { scale: 2 }).then((canvas) => {
     const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
 
-    // Fit canvas image into A4 dimensions
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("dashboard.pdf");
+    const link = document.createElement("a");
+    link.href = imgData;
+    link.download =
+      t("sidebar.settingsPanel.step3.tableHeaders.diagnoseDashboard") + ".png";
+    link.click();
   });
 };
 </script>
