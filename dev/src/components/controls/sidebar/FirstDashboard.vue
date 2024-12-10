@@ -57,7 +57,7 @@ const downloadfirstDashboard = () => {
   >
     {{ $t("sidebar.analysisDashboard.open") }}
   </button>
-  <div id="first-analysis" class="modal fade" :aria-hidden="false">
+  <div id="first-analysis" class="modal fade">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header p-2">
@@ -65,12 +65,7 @@ const downloadfirstDashboard = () => {
             {{ $t("sidebar.analysisDashboard.challenge") }}
             {{ sidebarStore.selectedTopic }}
           </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-1 overflow-hidden">
           <div class="container-fluid h-100">
