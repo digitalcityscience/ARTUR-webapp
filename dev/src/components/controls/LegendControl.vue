@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import { populationLegendOption } from "@/assets/data/echarts_options";
+import useEchartsStore from "@/stores/echatsStore";
 import * as echarts from "echarts";
 import { ref, computed, onMounted } from "vue";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
+const echartsStore = useEchartsStore();
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -16,7 +17,7 @@ const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
 const initChart = () => {
   chart = echarts.init(chartContainer.value!);
-  chart.setOption(populationLegendOption);
+  chart.setOption(echartsStore.populationLegendOption);
 };
 onMounted(() => {
   initChart();

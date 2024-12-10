@@ -25,10 +25,12 @@ const cityOptions = computed(() =>
   cities.map((city) => ({
     name: city.name,
     latLng: city.latLng,
-    isDisabled: !(city.name === CityName.KRYVYIRIH || CityName.NIKOPOL),
+    isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
     isSelected: mapStore.city === city.name,
   })),
 );
+console.log(cities);
+console.log(cityOptions.value);
 const topics = computed(() => [
   { value: "water" },
   { value: "energy" },
@@ -54,7 +56,7 @@ const handleCityChange = (e: Event) => {
   <div class="leaflet-sidebar-pane" id="settings">
     <!-- Header -->
     <h1 class="leaflet-sidebar-header d-flex justify-content-between align-items-center">
-      {{ $t("sidebar.SettingsPanel.header") }}
+      {{ $t("sidebar.settingsPanel.header") }}
       <button class="leaflet-sidebar-close btn p-0">
         <i class="fa fa-caret-right"></i>
       </button>
@@ -62,8 +64,8 @@ const handleCityChange = (e: Event) => {
     <language-switcher></language-switcher>
     <!-- Step 1 -->
     <div v-if="sidebarStore.currentStep === 1" class="sidebar-content">
-      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step1.title") }}</p>
-      <p class="sidebar-content-text">{{ $t("sidebar.SettingsPanel.step1.content") }}</p>
+      <p class="sidebar-title">{{ $t("sidebar.settingsPanel.step1.title") }}</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.settingsPanel.step1.content") }}</p>
       <div class="form-group">
         <select
           id="city-select"
@@ -72,7 +74,7 @@ const handleCityChange = (e: Event) => {
           aria-label="Select a city"
         >
           <option value="" disabled selected>
-            {{ $t("sidebar.SettingsPanel.step1.selectDefault") }}
+            {{ $t("sidebar.settingsPanel.step1.selectDefault") }}
           </option>
           <option
             v-for="city in cityOptions"
@@ -91,15 +93,15 @@ const handleCityChange = (e: Event) => {
       <table class="table table-light">
         <tbody>
           <tr>
-            <th scope="row">{{ $t("sidebar.SettingsPanel.step3.tableHeaders.city") }}</th>
+            <th scope="row">{{ $t("sidebar.settingsPanel.step3.tableHeaders.city") }}</th>
             <td>{{ $t("cityNames." + mapStore.city) }}</td>
           </tr>
         </tbody>
       </table>
-      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step2.title") }}</p>
+      <p class="sidebar-title">{{ $t("sidebar.settingsPanel.step2.title") }}</p>
       <p
         class="sidebar-content-text"
-        v-html="$t('sidebar.SettingsPanel.step2.content')"
+        v-html="$t('sidebar.settingsPanel.step2.content')"
       ></p>
       <div class="form-group pt-3">
         <select
@@ -109,7 +111,7 @@ const handleCityChange = (e: Event) => {
           aria-label="Select a topic"
         >
           <option value="" disabled selected>
-            {{ $t("sidebar.SettingsPanel.step2.selectDefault") }}
+            {{ $t("sidebar.settingsPanel.step2.selectDefault") }}
           </option>
           <option
             v-for="topic in topics"
@@ -124,33 +126,33 @@ const handleCityChange = (e: Event) => {
     </div>
     <!-- Step 3 -->
     <div v-if="sidebarStore.currentStep === 3" class="sidebar-content">
-      <p class="sidebar-title">{{ $t("sidebar.SettingsPanel.step3.title") }}</p>
+      <p class="sidebar-title">{{ $t("sidebar.settingsPanel.step3.title") }}</p>
       <p
         class="sidebar-content-text"
-        v-html="$t('sidebar.SettingsPanel.step3.content')"
+        v-html="$t('sidebar.settingsPanel.step3.content')"
       ></p>
       <table class="table table-light">
         <thead>
           <tr>
             <th colspan="2">
-              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.diagnoseDashboard") }}
+              {{ $t("sidebar.settingsPanel.step3.tableHeaders.diagnoseDashboard") }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">{{ $t("sidebar.SettingsPanel.step3.tableHeaders.city") }}</th>
+            <th scope="row">{{ $t("sidebar.settingsPanel.step3.tableHeaders.city") }}</th>
             <td>{{ $t("cityNames." + mapStore.city) }}</td>
           </tr>
           <tr>
             <th scope="row">
-              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.challenge") }}
+              {{ $t("sidebar.settingsPanel.step3.tableHeaders.challenge") }}
             </th>
             <td>{{ $t("topics." + sidebarStore.selectedTopic) }}</td>
           </tr>
           <tr>
             <th scope="row">
-              {{ $t("sidebar.SettingsPanel.step3.tableHeaders.summary") }}
+              {{ $t("sidebar.settingsPanel.step3.tableHeaders.summary") }}
             </th>
             <td>{{ $t("summary." + topic) }}</td>
           </tr>

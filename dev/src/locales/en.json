@@ -21,8 +21,8 @@
     "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network"
   },
   "graphTypes": {
-    "sankey": "Sankey",
-    "sunburst": "Sunburst"
+    "sankey": "Sankey Graph",
+    "sunburst": "Sunburst Graph"
   },
   "healthSiteIsochroneType": {
     "auto": "Car",
@@ -63,13 +63,13 @@
     "population": "Most populated areas but not in the Catchment/Isochrone area"
   },
   "sidebar": {
-    "DashboardPanel": {
+    "dashboardPanel": {
       "header": "Dashboard",
       "indicator": "Select Indicators",
       "result": "Results",
       "button": { "select": "Select", "run": "Run" }
     },
-    "InfoPanel": {
+    "infoPanel": {
       "header": "Information",
       "content": {
         "title": "Objective of the tool:",
@@ -81,7 +81,7 @@
         "continue": "To continue please click "
       }
     },
-    "LayerPanel": {
+    "layerPanel": {
       "header": "Layers",
       "close": "Close",
       "control": {
@@ -102,7 +102,7 @@
         "waterSourcePopulation": "Water Source Catchment Area Population"
       }
     },
-    "SettingsPanel": {
+    "settingsPanel": {
       "header": "Settings",
       "step1": {
         "title": "Step 1",
@@ -125,7 +125,18 @@
         }
       }
     },
-    "KnowledgePanel": {
+    "analysisDashboard": {
+      "open": "Open Dashboard",
+      "challenge": "Challenge",
+      "disruption_types": "Disruption Types:",
+      "water_supply_chain": "Water supply chain",
+      "affected_urban_resilience_capacities": "Affected Urban Resilience Capacities",
+      "navigate_to_the_map": "Navigate to the map",
+      "go_to_layer_set": "Go to Water Source Layer Set",
+      "other_components": "Other Affected Components in the Urban System",
+      "download": "Download"
+    },
+    "knowledgePanel": {
       "title": "Knowledge Base",
       "subtitle": "Capacities"
     },
@@ -134,6 +145,219 @@
       "back": " Back",
       "next": " Next",
       "goToLayerControl": " Go to Layer Control"
+    }
+  },
+  "indicatorChart": {
+    "buttons": {
+      "download": " Download Chart",
+      "switch": " View"
+    },
+    "modal": {
+      "title": "Download Options",
+      "resolution": "Resolution (Pixel Ratio):",
+      "color": "Background Color:",
+      "format": "Image Format:"
+    }
+  },
+  "echarts": {
+    "name": "Urban Resilience",
+    "social": {
+      "name": "SOCIAL",
+      "1": {
+        "name": "Basic necessities",
+        "1": "Safe & affordable housing",
+        "2": "Adequate affordable energy supply",
+        "3": "Inclusive access to safe drinking water",
+        "4": "Effective sanitation",
+        "5": "Sufficient affordable food supply"
+      },
+      "2": {
+        "name": "Capacity building and public awareness",
+        "1": "Access to all the skills and experience to respond/reduce risks and respond to disaster",
+        "2": "Accessibility to training materials (language)",
+        "3": "Exchange knowledge and learn from other cities facing similar challenges"
+      },
+      "3": {
+        "name": "Community support",
+        "1": "Grassroots or community organizations participating in pre-event planning and post event response",
+        "2": "Accessible criminal and civil justice",
+        "3": "Cohesive communities",
+        "4": "Training programmes provided to the most vulnerable and at need populations",
+        "5": "Citizen engagement and communications in relation to disaster resilience and recovery",
+        "6": "Widespread community awareness & preparedness",
+        "7": "Main public facilities: university, schools, health centres, markets, etc.",
+        "8": "Social services infrastructure, including schools, hospitals, and clinics",
+        "9": "Local community support",
+        "10": "Strong city-wide identity & culture",
+        "11": "Actively engaged citizens",
+        "12": "Practices and drills involving public and professionals",
+        "13": "Adequate education for all",
+        "14": "Major community buildings, religious buildings, and historic/cultural assets",
+        "15": "Relevant skills & training"
+      },
+      "4": {
+        "name": "Ecosystem Services",
+        "1": "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+        "2": "Awareness of functions or services that natural capital provides for the city"
+      },
+      "5": {
+        "name": "Planning Resilience",
+        "1": "Public education towards awareness of hazard, risk and disaster information",
+        "2": "Safe places/havens and the evacuation routes",
+        "3": "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+        "4": "Awareness of equipment and supply needed + provision"
+      },
+      "6": {
+        "name": "Security services",
+        "1": "Effective systems to deter crime",
+        "2": "High levels of crime are observed"
+      }
+    },
+    "economic": {
+      "name": "ECO-\nNOMIC",
+      "1": {
+        "name": "Economic activities",
+        "1": "Diverse economic base",
+        "2": "Industrial areas including ports, industrial zones, and factories",
+        "3": "Supportive financing mechanisms",
+        "4": "Economic facilities (banks, business centres, shopping malls, markets, etc.)"
+      },
+      "2": {
+        "name": "Economic Impact",
+        "1": "Businesses with a documented business continuity plan",
+        "2": "Knowledge to funding opportunities (for local economy and recovery)",
+        "3": "Attractive business environment",
+        "4": "Economic impact",
+        "5": "Level of insurance cover exists in the city, across all sectors - business and community",
+        "6": "Incentives for business and society to support resilience building",
+        "7": "Planned investments",
+        "8": "Comprehensive business continuity planning",
+        "9": "Inclusive labour policies",
+        "10": "Local business development and innovation",
+        "11": "Strong integration with regional & global economies",
+        "12": "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities"
+      },
+      "3": {
+        "name": "Planning Resilience",
+        "1": "Financial plan and budget for resilience, including contingency funds",
+        "2": "Projected changes to population densities and economic activity",
+        "3": "Densities"
+      },
+      "4": {
+        "name": "Governance",
+        "1": "Changes in the overall city's boundaries"
+      }
+    },
+    "institutional": {
+      "name": "INSTI-\nTUTIONAL",
+      "1": {
+        "name": "Governance",
+        "1": "Disaster management authority have sufficient staffing capacity",
+        "2": "Consultative planning process",
+        "3": "Informal development areas",
+        "4": "Robust planning approval process",
+        "5": "Well-managed public finances",
+        "6": "Appropriate government decision-making",
+        "7": "Effective co-ordination with other government bodies",
+        "8": "Proactive multi-stakeholder collaboration",
+        "9": "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+        "10": "Urban development to promote resilience",
+        "11": "Building codes or standards address hazards and risks",
+        "12": "Enforcement and verification of zoning bulding zoning and regulations",
+        "13": "FAIR Data sharing to enhance resilience",
+        "14": "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+        "15": "Proactive corruption prevention",
+        "16": "Comprehensive city monitoring & data management"
+      },
+      "2": {
+        "name": "Land use",
+        "1": "Land use designations",
+        "2": "Changes in land use designations"
+      },
+      "3": {
+        "name": "Planning for risk and disaster",
+        "1": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+        "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+        "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+        "4": "Early warning system and reaching level",
+        "5": "Comprehensive government emergency management",
+        "6": "Integration of resilience in city functions / portfolios",
+        "7": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        "8": "Disaster management / preparedness / emergency response plan",
+        "9": "Appropriate land use and zoning",
+        "10": "Appropriately land use planning considering risk, hazards and vulnerability",
+        "11": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+        "12": "Projected changes in location of vulnerable populations"
+      },
+      "4": {
+        "name": "Public health systems",
+        "1": "Adequate access to quality healthcare",
+        "2": "Emergency medical care",
+        "3": "Effective emergency response services",
+        "4": "Robust public health systems",
+        "5": "Security services: fire services, police stations, etc."
+      }
+    },
+    "physical": {
+      "name": "PHYSICAL",
+      "1": {
+        "name": "Communication",
+        "1": "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
+        "2": "Reliable communications technology"
+      },
+      "2": {
+        "name": "Ecosystem Services",
+        "1": "Integration of green and blue infrastructure into city policy and projects",
+        "2": "Natural elements, mangrove, hills, rivers, plantations, among others"
+      },
+      "3": {
+        "name": "Governance",
+        "1": "Secure technology networks",
+        "2": "City boundaries and sub-municipal boundaries (e.g., districts, wards)"
+      },
+      "4": {
+        "name": "Land Use",
+        "1": "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses"
+      },
+      "5": {
+        "name": "Major infrastructure",
+        "1": "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+        "2": "Critical infrastructure: mapping, planning and protection strategies",
+        "3": "Infrastructure and services damaged",
+        "4": "Protective infrastructure: well-designed and well-built based on risk information",
+        "5": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
+        "6": "Major roads",
+        "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc."
+      },
+      "6": {
+        "name": "Major Infrastructure & Planning Resilience",
+        "1": "Diligent maintenance & continuity",
+        "2": "Flexible infrastructure services",
+        "3": "Retained spare capacity"
+      },
+      "7": {
+        "name": "Planning for risk and disaster",
+        "1": "Housing destroyed and damaged",
+        "2": "Affected areas",
+        "3": "Topography: elevation, water bodies",
+        "4": "Hazard mapping and monitoring (common awareness)",
+        "5": "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
+        "6": "Hazard mapping and monitoring (clear and regular mapping)",
+        "7": "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+        "8": "Identification of cascading effects",
+        "9": "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+        "10": "Changes in intensity, frequency, and location of hazards based on hazard modeling"
+      },
+      "8": {
+        "name": "Planning Resilience",
+        "1": "% of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
+        "2": "Adequate continuity for critical assets & services",
+        "3": "Comprehensive hazard monitoring and risk assessment",
+        "4": "First responder equipment, with military or civilian back up",
+        "5": "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+        "6": "Vulnerability and risk",
+        "7": "Diverse and affordable transport networks"
+      }
     }
   }
 }

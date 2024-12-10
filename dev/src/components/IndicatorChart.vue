@@ -1,21 +1,13 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import * as echarts from "echarts";
-import {
-  sunburstData,
-  sunburstOption,
-  sunburstOption1,
-  sunburstOption2,
-  sunburstDimension,
-  sunburstIndicator,
-  sunburstColorSet,
-  sankeyOption,
-  SANKEYLEVELS,
-} from "@/assets/data/echarts_options";
+import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
 import { ImageFormat, LocalStorageEvent, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
+import useEchartsStore from "@/stores/echatsStore";
 
 const indicatorStore = useIndicatorStore();
+const echartsStore = useEchartsStore();
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
 const defaultWidth = 1000;
@@ -30,10 +22,10 @@ const switchGraph = ref<string>(GraphTypes.SANKEY);
 const switchGraphType = () => {
   if (switchGraph.value == GraphTypes.SANKEY) {
     switchGraph.value = GraphTypes.SUNBURST;
-    reloadChart(sankeyOption);
+    reloadChart(echartsStore.sankeyOption);
   } else {
     switchGraph.value = GraphTypes.SANKEY;
-    reloadChart(sunburstOption);
+    reloadChart(echartsStore.sunburstOption);
   }
 };
 const downloadChart = () => {
@@ -56,23 +48,23 @@ function handleClick(params: any): void {
   // Sankey Chart Click
   if (params.data.depth) {
     switch (params.data.depth) {
-      case SANKEYLEVELS.LEVEL1:
+      case echartsStore.SANKEYLEVELS.LEVEL1:
         return;
-      case SANKEYLEVELS.LEVEL2:
+      case echartsStore.SANKEYLEVELS.LEVEL2:
         if (indicatorStore.selectedIndicator[params.name]) {
           deleteSelection(params.name);
         } else {
           addSelection(params.name, params.color);
         }
         break;
-      case SANKEYLEVELS.LEVEL3:
+      case echartsStore.SANKEYLEVELS.LEVEL3:
         return;
     }
   } else if (params.data) {
     // Sunburst Chart Click
     const level = params.treePathInfo.length;
     // Sunburst Indicator Level Click
-    if (sunburstIndicator.has(params.name)) {
+    if (echartsStore.sunburstIndicator.has(params.name)) {
       if (params.name && indicatorStore.selectedIndicator[params.name]) {
         deleteSelection(params.name);
       } else if (params.name) {
@@ -85,33 +77,35 @@ function handleClick(params: any): void {
         });
       }
       return;
-    } else if (level === 2 && sunburstDimension.has(params.name)) {
+    } else if (level === 2 && echartsStore.sunburstDimension.has(params.name)) {
       // Sunburst Second Graph Level 2 Go to Level 1
       let color = params.color;
-      let dimensionData = sunburstData.children.find(
-        (node: any) => node.name === sunburstColorSet[params.color],
+      let dimensionData = echartsStore.sunburstData.children.find(
+        (node: any) => node.name === echartsStore.sunburstColorSet[params.color],
       );
-      reloadChart(sunburstOption1, dimensionData, color);
+      reloadChart(echartsStore.sunburstOption1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
       // Sunburst First Graph Click Level 2
       let color = params.color;
-      let data = sunburstData.children.find((node: any) => node.name === params.name);
-      reloadChart(sunburstOption1, data, color);
+      let data = echartsStore.sunburstData.children.find(
+        (node: any) => node.name === params.name,
+      );
+      reloadChart(echartsStore.sunburstOption1, data, color);
       return;
     } else if (level === 2) {
       // Sunburst Second Graph Click Level 2
       chart.clear();
-      chart.setOption(sunburstOption);
+      chart.setOption(echartsStore.sunburstOption);
       return;
     } else if (level === 3 && params.value === 1) {
       // Sunburst First Graph Click Level 3
       let color = params.color;
       let dimension = params.treePathInfo[1];
-      let dimensionData = sunburstData.children.find(
+      let dimensionData = echartsStore.sunburstData.children.find(
         (node: any) => node.name === dimension.name,
       );
       let data = dimensionData?.children.find((node: any) => node.name === params.name);
-      reloadChart(sunburstOption2, data, color);
+      reloadChart(echartsStore.sunburstOption2, data, color);
       return;
     }
   }
@@ -154,7 +148,7 @@ function chartDispatchSelection(type: string, indicator: string[] | string) {
 }
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
-  chart.setOption(sunburstOption);
+  chart.setOption(echartsStore.sunburstOption);
   chart.on("click", (params: any) => handleClick(params));
 };
 // Make the chart resizable
@@ -179,25 +173,34 @@ onMounted(() => {
 </script>
 <template>
   <div class="btn-group" role="group">
-    <button
-      type="button"
-      class="btn btn-sm btn-success"
-      data-toggle="modal"
-      data-target="#downloadModal"
-      @click="showModal = true"
-    >
-      <i class="fa fa-download" aria-hidden="true"></i> Download Chart
-    </button>
-    <button type="button" class="btn btn-m btn-warning" @click="switchGraphType">
-      <i class="bi bi-arrow-repeat">View {{ switchGraph }} Graph</i>
-    </button>
+    <div class="d-flex align-items-center gap-2">
+      <div class="btn-group btn-group-sm float-end">
+        <button
+          class="btn btn-sm btn-success"
+          data-toggle="modal"
+          data-target="#downloadModal"
+          @click="showModal = true"
+        >
+          <i class="fa fa-download" aria-hidden="true">{{
+            $t("indicatorChart.buttons.download")
+          }}</i>
+        </button>
+        <button class="btn btn-sm btn-warning" @click="switchGraphType">
+          <i class="bi bi-arrow-repeat">
+            {{ $t("indicatorChart.buttons.switch") }}
+            {{ $t("graphTypes." + switchGraph) }}</i
+          >
+        </button>
+      </div>
+      <language-switcher></language-switcher>
+    </div>
   </div>
   <!-- Download Chart Modal -->
   <div class="modal fade" :class="{ show: showModal }" tabindex="-1" v-show="showModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Download Options</h5>
+          <h5 class="modal-title">{{ $t("indicatorChart.modal.title") }}</h5>
           <button
             type="button"
             class="btn-close"
@@ -208,9 +211,9 @@ onMounted(() => {
         <div class="modal-body">
           <form>
             <div class="form-group d-flex">
-              <label for="resolution" class="mr-2" style="padding-right: 10px"
-                >Resolution (Pixel Ratio):</label
-              >
+              <label for="resolution" class="mr-2" style="padding-right: 10px">{{
+                $t("indicatorChart.modal.resolution")
+              }}</label>
               <input
                 type="range"
                 class="form-control-range"
@@ -227,7 +230,7 @@ onMounted(() => {
                 for="backgroundColor"
                 class="mr-2"
                 style="padding-right: 80px; padding-top: 10px"
-                >Background Color:</label
+                >{{ $t("indicatorChart.modal.color") }}</label
               >
               <input
                 type="color"
@@ -242,7 +245,7 @@ onMounted(() => {
                 for="imageFormat"
                 class="mr-2"
                 style="padding-right: 90px; padding-top: 20px"
-                >Image Format:</label
+                >{{ $t("indicatorChart.modal.format") }}</label
               >
               <select
                 class="form-select"

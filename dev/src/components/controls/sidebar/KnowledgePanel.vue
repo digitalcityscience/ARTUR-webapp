@@ -7,12 +7,12 @@ const sidebarStore = useSidebarStore();
   <div class="leaflet-sidebar-pane" id="knowledge">
     <!-- Start Page -->
     <h1 class="leaflet-sidebar-header">
-      {{ $t("sidebar.KnowledgePanel.title") }}
+      {{ $t("sidebar.knowledgePanel.title") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <language-switcher></language-switcher>
     <div class="sidebar-content">
-      <strong class="sidebar-title"> {{ $t("sidebar.KnowledgePanel.subtitle") }}</strong>
+      <strong class="sidebar-title"> {{ $t("sidebar.knowledgePanel.subtitle") }}</strong>
     </div>
   </div>
 </template>

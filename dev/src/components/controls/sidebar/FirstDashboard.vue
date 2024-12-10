@@ -57,13 +57,16 @@ const downloadfirstDashboard = () => {
     data-bs-toggle="modal"
     @click="refreshIframe"
   >
-    Open Dashboard
+    {{ $t("sidebar.analysisDashboard.open") }}
   </button>
   <div id="first-analysis" class="modal fade" :aria-hidden="false">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header p-2">
-          <h5 class="modal-title">Challenge {{ sidebarStore.selectedTopic }}</h5>
+          <h5 class="modal-title">
+            {{ $t("sidebar.analysisDashboard.challenge") }}
+            {{ sidebarStore.selectedTopic }}
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -77,7 +80,12 @@ const downloadfirstDashboard = () => {
               <!-- Left Column -->
               <div class="col-md-4 d-flex flex-column">
                 <div id="disruption-types" class="flex-grow-2 overflow-hidden mb-3">
-                  <p class="m-1"><strong>Disruption Types:</strong> Water supply chain</p>
+                  <p class="m-1">
+                    <strong>{{
+                      $t("sidebar.analysisDashboard.disruption_types")
+                    }}</strong>
+                    {{ $t("sidebar.analysisDashboard.water_supply_chain") }}
+                  </p>
                   <iframe
                     :src="iframeSources.waterSourceDisruptions"
                     frameborder="0"
@@ -85,7 +93,11 @@ const downloadfirstDashboard = () => {
                   ></iframe>
                 </div>
                 <div id="affected-indicators" class="flex-grow-1 overflow-auto">
-                  <p class="fw-bold">Affected Urban Resilience Capacities</p>
+                  <p class="fw-bold">
+                    {{
+                      $t("sidebar.analysisDashboard.affected_urban_resilience_capacities")
+                    }}
+                  </p>
                   <ul class="list-group w-75">
                     <li
                       v-for="(indicator, index) in urbanResilienceIndicators"
@@ -103,13 +115,17 @@ const downloadfirstDashboard = () => {
               <!-- Right Column -->
               <div class="col-md-8 d-flex flex-column">
                 <div id="navigate-map" class="mb-3">
-                  <p class="fw-bold">Navigate to the map</p>
+                  <p class="fw-bold">
+                    {{ $t("sidebar.analysisDashboard.navigate_to_the_map") }}
+                  </p>
                   <button class="btn btn-primary mb-2">
-                    Go to Water Source Layer Set
+                    {{ $t("sidebar.analysisDashboard.go_to_layer_set") }}
                   </button>
                 </div>
                 <div id="affected-diagram" class="flex-grow-1">
-                  <p class="m-1 fw-bold">Other Affected Components in the Urban System</p>
+                  <p class="m-1 fw-bold">
+                    {{ $t("sidebar.analysisDashboard.other_components") }}
+                  </p>
                   <iframe
                     :src="iframeSources.affectedComponent"
                     frameborder="0"
@@ -126,13 +142,14 @@ const downloadfirstDashboard = () => {
             class="btn btn-sm btn-success"
             @click="downloadfirstDashboard"
           >
-            <i class="bi bi-download"></i> Download
+            <i class="bi bi-download"></i> {{ $t("sidebar.analysisDashboard.download") }}
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 .flex-grow-2 {
   flex-grow: 2;

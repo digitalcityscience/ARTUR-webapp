@@ -26,7 +26,7 @@ const changeIsochroneType = () => {
 <template>
   <div class="leaflet-sidebar-pane" id="layer">
     <h1 class="leaflet-sidebar-header">
-      {{ $t("sidebar.LayerPanel.header") }}
+      {{ $t("sidebar.layerPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <language-switcher></language-switcher>
@@ -39,7 +39,7 @@ const changeIsochroneType = () => {
             data-bs-target="#layer-control-collapse"
             aria-expanded="true"
           >
-            {{ $t("sidebar.LayerPanel.control.header") }}
+            {{ $t("sidebar.layerPanel.control.header") }}
           </button>
           <div class="collapse show ms-1" id="layer-control-collapse">
             <ul class="list-unstyled ps-0">
@@ -50,7 +50,7 @@ const changeIsochroneType = () => {
                   data-bs-target="#basemap-switch"
                   aria-expanded="true"
                 >
-                  {{ $t("sidebar.LayerPanel.control.basemaps") }}
+                  {{ $t("sidebar.layerPanel.control.basemaps") }}
                 </button>
                 <div
                   v-for="basemap in basemaps"
@@ -78,7 +78,7 @@ const changeIsochroneType = () => {
                   data-bs-target="#overlay-switch"
                   aria-expanded="true"
                 >
-                  {{ $t("sidebar.LayerPanel.control.overlays") }}
+                  {{ $t("sidebar.layerPanel.control.overlays") }}
                 </button>
                 <ul class="list-unstyled ps-0" id="overlay-switch">
                   <li class="mb-1 form-check">
@@ -100,7 +100,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#shelter-layer-set"
                       aria-expanded="false"
                     >
-                      {{ $t("sidebar.LayerPanel.sets.shelter") }}
+                      {{ $t("sidebar.layerPanel.sets.shelter") }}
                     </button>
                     <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
                       <li
@@ -128,7 +128,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#healthsite-layer-set"
                       aria-expanded="false"
                     >
-                      {{ $t("sidebar.LayerPanel.sets.healthSite") }}
+                      {{ $t("sidebar.layerPanel.sets.healthSite") }}
                     </button>
                     <ul
                       class="form-check collapse list-unstyled"
@@ -185,7 +185,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#watersource-layer-set"
                       aria-expanded="false"
                     >
-                      {{ $t("sidebar.LayerPanel.sets.waterSource") }}
+                      {{ $t("sidebar.layerPanel.sets.waterSource") }}
                     </button>
                     <ul
                       class="form-check collapse list-unstyled"
@@ -216,7 +216,7 @@ const changeIsochroneType = () => {
                       data-bs-target="#energysupply-layer-set"
                       aria-expanded="false"
                     >
-                      {{ $t("sidebar.LayerPanel.sets.energySupply") }}
+                      {{ $t("sidebar.layerPanel.sets.energySupply") }}
                     </button>
                     <ul
                       class="form-check list-unstyled collapse"
@@ -250,13 +250,16 @@ const changeIsochroneType = () => {
             class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#popup-collapse"
+            v-show="mapStore.shelterLayers.shelterLayer.visible"
             aria-expanded="true"
-            v-if="mapStore.shelterLayers.shelterLayer.visible"
           >
-            {{ $t("sidebar.LayerPanel.popups.sheltersInfo") }}
+            {{ $t("sidebar.layerPanel.popups.sheltersInfo") }}
           </button>
           <div class="collapse show" id="popup-collapse">
-            <h6 v-html="mapStore.popup"></h6>
+            <h6
+              v-html="mapStore.popup"
+              v-show="mapStore.shelterLayers.shelterLayer.visible"
+            ></h6>
           </div>
         </li>
         <li class="mb-1">
@@ -267,7 +270,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.shelterLayers.populationLayer.visible"
             aria-expanded="true"
           >
-            {{ $t("sidebar.LayerPanel.popups.shelterPopulationInfo") }}
+            {{ $t("sidebar.layerPanel.popups.shelterPopulationInfo") }}
           </button>
           <div class="collapse show" id="shelter-population-collapse">
             <population-sum-chart
@@ -287,7 +290,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.healthsiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
           >
-            {{ $t("sidebar.LayerPanel.popups.healthSitePopulationInfo") }}
+            {{ $t("sidebar.layerPanel.popups.healthSitePopulationInfo") }}
           </button>
           <div class="collapse show" id="healthsite-population-collapse">
             <population-sum-chart
@@ -307,7 +310,7 @@ const changeIsochroneType = () => {
             v-show="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
             aria-expanded="true"
           >
-            {{ $t("sidebar.LayerPanel.popups.waterSourcePopulation") }}
+            {{ $t("sidebar.layerPanel.popups.waterSourcePopulation") }}
           </button>
           <div class="collapse show" id="watersource-population-collapse">
             <population-sum-chart

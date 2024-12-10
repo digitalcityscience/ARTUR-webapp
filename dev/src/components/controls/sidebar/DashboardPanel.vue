@@ -2,9 +2,10 @@
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import { LocalStorageEvent } from "@/assets/ts/constants";
-import { sunburstColorConvertion } from "@/assets/data/echarts_options";
+import useEchartsStore from "@/stores/echatsStore";
 
 const indicatorStore = useIndicatorStore();
+const echartsStore = useEchartsStore();
 // Open the Indicator Selection Window
 const openIndicatorSelection = (): void => {
   let mainWinWidth = window.innerWidth;
@@ -26,7 +27,8 @@ function deleteSelection(indicator: string) {
 }
 // Convert the color
 function indicatorColor(color: string): string {
-  if (color in sunburstColorConvertion) return sunburstColorConvertion[color];
+  if (color in echartsStore.sunburstColorConvertion)
+    return echartsStore.sunburstColorConvertion[color];
   return color;
 }
 // The Analysis
@@ -35,7 +37,7 @@ const analyzeResults = () => {};
 <template>
   <div class="leaflet-sidebar-pane" id="dashboard">
     <h1 class="leaflet-sidebar-header">
-      {{ $t("sidebar.DashboardPanel.header") }}
+      {{ $t("sidebar.dashboardPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <language-switcher></language-switcher>
@@ -47,7 +49,7 @@ const analyzeResults = () => {};
           data-bs-target="#indicator-collapse"
           aria-expanded="true"
         >
-          {{ $t("sidebar.DashboardPanel.indicator") }}
+          {{ $t("sidebar.dashboardPanel.indicator") }}
         </button>
         <div class="collapse show" id="indicator-collapse">
           <template
@@ -73,10 +75,10 @@ const analyzeResults = () => {};
           </template>
           <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
             <button class="btn btn-primary" @click="openIndicatorSelection">
-              {{ $t("sidebar.DashboardPanel.button.select") }}
+              {{ $t("sidebar.dashboardPanel.button.select") }}
             </button>
             <button class="btn btn-success" @click="analyzeResults">
-              {{ $t("sidebar.DashboardPanel.button.run") }}
+              {{ $t("sidebar.dashboardPanel.button.run") }}
             </button>
           </div>
         </div>
@@ -88,7 +90,7 @@ const analyzeResults = () => {};
           data-bs-target="#results-collapse"
           aria-expanded="true"
         >
-          {{ $t("sidebar.DashboardPanel.result") }}
+          {{ $t("sidebar.dashboardPanel.result") }}
         </button>
         <div class="collapse show" id="results-collapse"></div>
       </li>

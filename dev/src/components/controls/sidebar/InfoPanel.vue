@@ -7,26 +7,26 @@ const sidebarStore = useSidebarStore();
 <template>
   <div class="leaflet-sidebar-pane" id="info">
     <h1 class="leaflet-sidebar-header">
-      {{ $t("sidebar.InfoPanel.header") }}
+      {{ $t("sidebar.infoPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <language-switcher></language-switcher>
     <div class="sidebar-content">
-      <strong class="sidebar-title">{{ $t("sidebar.InfoPanel.content.title") }}</strong>
+      <strong class="sidebar-title">{{ $t("sidebar.infoPanel.content.title") }}</strong>
       <p class="sidebar-content-text">
-        {{ $t("sidebar.InfoPanel.content.description") }}
+        {{ $t("sidebar.infoPanel.content.description") }}
       </p>
-      <p class="sidebar-content-text">{{ $t("sidebar.InfoPanel.content.step1") }}</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.infoPanel.content.step1") }}</p>
       <p class="sidebar-content-text">
-        {{ $t("sidebar.InfoPanel.content.step2") }}
+        {{ $t("sidebar.infoPanel.content.step2") }}
       </p>
-      <p class="sidebar-content-text">{{ $t("sidebar.InfoPanel.content.step3") }}</p>
+      <p class="sidebar-content-text">{{ $t("sidebar.infoPanel.content.step3") }}</p>
       <p class="sidebar-content-text">
-        {{ $t("sidebar.InfoPanel.content.step4") }}
+        {{ $t("sidebar.infoPanel.content.step4") }}
       </p>
       <p class="sidebar-content-text">
         <strong
-          >{{ $t("sidebar.InfoPanel.content.continue") }} "<i class="fa fa-caret-right">
+          >{{ $t("sidebar.infoPanel.content.continue") }} "<i class="fa fa-caret-right">
             {{ $t("sidebar.buttons.next") }}</i
           >"!</strong
         >

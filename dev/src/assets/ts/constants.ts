@@ -90,6 +90,6 @@ export const cities: Array<CityData> = [
   { name: CityName.SUMY, latLng: [50.911913, 34.80279] },
 ];
 export enum GraphTypes {
-  SANKEY = "Sankey",
-  SUNBURST = "Sunburst",
+  SANKEY = "sankey",
+  SUNBURST = "sunburst",
 }
