@@ -62,12 +62,12 @@ const analyzeResults = () => {};
             :key="indicator.key"
           >
             <div
-              class="rounded border px-2 py-1"
+              class="rounded border ps-2 pe-0 py-1 clearfix"
               :style="{ backgroundColor: indicatorColor(indicator.value) }"
             >
               {{ indicator.key }}
               <button
-                class="btn-close float-end"
+                class="btn btn-close float-end"
                 aria-label="Close"
                 @click="deleteSelection(indicator.key)"
               ></button>
@@ -97,3 +97,10 @@ const analyzeResults = () => {};
     </ul>
   </div>
 </template>
+<style scoped>
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
