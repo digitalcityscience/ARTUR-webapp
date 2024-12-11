@@ -5,6 +5,7 @@ import { populationType } from "@/assets/ts/constants";
 import type { Population } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
 import { useI18n } from "vue-i18n";
+import _default from "echarts/types/src/echarts.js";
 
 const mapStore = useMapStore();
 const { t } = useI18n();
@@ -25,41 +26,39 @@ const getPopulationData = () => {
       return mapStore.waterSourcePopulation[mapStore.city!];
   }
 };
-// Initialize the chart
-const initChart = (): void => {
-  chart = echarts.init(chartContainer.value!);
-  setChartOptions();
-};
+// Reactive computation of translated names
+const chartData = computed(() => {
+  const accessibleName =
+    props.type === populationType.HEALTHSITE
+      ? t("populationChartText.healthSiteAccess")
+      : props.type === populationType.SHELTER
+      ? t("populationChartText.shelterAccess")
+      : t("populationChartText.waterSourceAccess");
+
+  const inaccessibleName =
+    props.type === populationType.HEALTHSITE
+      ? t("populationChartText.healthSiteInaccess")
+      : props.type === populationType.SHELTER
+      ? t("populationChartText.shelterInaccess")
+      : t("populationChartText.waterSourceInaccess");
+
+  return [
+    {
+      value: population.value!.accessible,
+      name: accessibleName,
+    },
+    {
+      value: population.value!.inaccessible,
+      name: inaccessibleName,
+    },
+  ];
+});
 // Set the options for the chart
 const setChartOptions = (): void => {
-  if (!population.value) return;
-  // Reactive computation of translated names
-  const chartData = computed(() => {
-    const accessibleName =
-      props.type === populationType.HEALTHSITE
-        ? t("populationChartText.healthSiteAccess")
-        : props.type === populationType.SHELTER
-        ? t("populationChartText.shelterAccess")
-        : t("populationChartText.waterSourceAccess");
-
-    const inaccessibleName =
-      props.type === populationType.HEALTHSITE
-        ? t("populationChartText.healthSiteInaccess")
-        : props.type === populationType.SHELTER
-        ? t("populationChartText.shelterInaccess")
-        : t("populationChartText.waterSourceInaccess");
-
-    return [
-      {
-        value: population.value!.accessible,
-        name: accessibleName,
-      },
-      {
-        value: population.value!.inaccessible,
-        name: inaccessibleName,
-      },
-    ];
-  });
+  if (!chartData.value.length) {
+    chart.clear();
+    return;
+  }
   // Function to update chart options
   const updateChartOptions = () => {
     chart.setOption({
@@ -100,21 +99,23 @@ const setChartOptions = (): void => {
     immediate: true,
   });
 };
-
 // Update chart when city changed
 watch(
-  () => {
-    return props.type === populationType.SHELTER
-      ? mapStore.shelterPopulation[mapStore.city!]
-      : mapStore.healthSitePopulation[mapStore.city!];
-  },
-  (newPopulation) => {
-    population.value = newPopulation;
-    if (chart) chart.clear();
+  () => mapStore.isJsonDataLoad,
+  (newVal) => {
+    console.log(newVal);
+    if (!newVal) return;
+    chart.clear();
+    population.value = getPopulationData();
     setChartOptions();
   },
 );
-
+// Initialize the chart
+const initChart = (): void => {
+  chart = echarts.init(chartContainer.value!);
+  setChartOptions();
+};
+// Init Chart on mounted
 onMounted(() => {
   population.value = getPopulationData();
   initChart();

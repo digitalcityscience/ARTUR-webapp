@@ -6,7 +6,8 @@ import type {
   Population,
   IsochroneTypeKey,
 } from "@/assets/ts/types";
-import { LayerName } from "@/assets/ts/constants";
+import { CityName, LayerName, populationType } from "@/assets/ts/constants";
+
 const useMapStore = defineStore("map", () => {
   // State
   const map = ref();
@@ -90,25 +91,8 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   };
+
   const isIsochroneChanged = ref(false);
-  // Track which layers have been loaded per city (excluding isochrones)
-  const layerLoaded = ref<Record<string, Record<string, boolean>>>({});
-  // Initialize or reset the loading state for the given city
-  const resetLayerLoaded = (cityName: string) => {
-    layerLoaded.value[cityName] = {
-      shelters: false,
-      boundary: false,
-      isochrones: false,
-      population: false,
-      healthSitePoint: false,
-      healthSitePopualtion: false,
-      waterSource: false,
-      waterSourceCatchment: false,
-      waterSourcePopulation: false,
-      energySupply: false,
-      energySupplyCatchment: false,
-    };
-  };
   fetch("/api/country-boundary")
     .then((res) => {
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -119,7 +103,6 @@ const useMapStore = defineStore("map", () => {
     });
   const fetchGeoData = async (cityName: string, isochroneTypeParam = "") => {
     isochroneTypeParam = isochroneType.value;
-
     // Check if city data is fully cached (including isochrone for the current type)
     if (
       dataCache.value[cityName] &&
@@ -129,10 +112,8 @@ const useMapStore = defineStore("map", () => {
         ...dataCache.value[cityName],
         healthSiteIsochrone: isochroneCache.value[cityName][isochroneTypeParam],
       };
-      isJsonDataLoad.value = true;
       return;
     }
-
     try {
       const promises: Promise<any>[] = [];
       // Fetch other city data only if it's not already cached
@@ -282,7 +263,6 @@ const useMapStore = defineStore("map", () => {
         // If city data is cached, load it from the cache
         geojsonData.value = { ...dataCache.value[cityName] };
       }
-
       // Fetch Health Site isochrone data if not cached for the current city and type
       if (
         !isochroneCache.value[cityName]?.[isochroneTypeParam] ||
@@ -314,18 +294,14 @@ const useMapStore = defineStore("map", () => {
         geojsonData.value.healthSiteIsochrone =
           isochroneCache.value[cityName][isochroneTypeParam];
       }
-
       // Wait for all fetches to complete
       await Promise.all(promises);
-
       // Cache all non-isochrone data for the city (if not already cached)
       if (!dataCache.value[cityName]) {
         dataCache.value[cityName] = {
           ...geojsonData.value,
         };
       }
-
-      isJsonDataLoad.value = true;
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -334,25 +310,23 @@ const useMapStore = defineStore("map", () => {
   const setIsochroneType = (newType: IsochroneTypeKey) => {
     isIsochroneChanged.value = true;
     isochroneType.value = newType;
-
     // Only fetch the new isochrone data (others remain unchanged)
     if (city.value) fetchGeoData(city.value, newType);
   };
+  const setJsonDataLoad = () => (isJsonDataLoad.value = false);
 
   // Actions to change city and refetch data
-  const setCity = (newCity: string) => {
+  const setCity = async (newCity: string) => {
     // Reset the layer loading state for the new city
-    resetLayerLoaded(newCity);
+    setJsonDataLoad();
     city.value = newCity;
-
     // Fetch all data for the new city
-    fetchGeoData(newCity);
-  };
-
-  const getIsochroneType = (): string => isochroneType.value;
-  watch(city, () => {
+    await fetchGeoData(newCity);
+    isJsonDataLoad.value = true;
     popup.value = "";
-  });
+  };
+  const getIsochroneType = (): string => isochroneType.value;
+  watch(isJsonDataLoad, (newVal) => console.log(newVal));
   return {
     map,
     city,
