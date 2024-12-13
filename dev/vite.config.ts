@@ -16,7 +16,6 @@ export default defineConfig({
       include: [path.resolve(__dirname, "./src/locales/**")],
     }),
   ],
-  // publicDir: "public",
   server: {
     host: "0.0.0.0",
     proxy: {
