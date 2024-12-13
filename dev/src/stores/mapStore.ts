@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import type {
   VectorLayer,
   GeoJSONData,
   Population,
   IsochroneTypeKey,
 } from "@/assets/ts/types";
-import { CityName, LayerName, populationType } from "@/assets/ts/constants";
+import { LayerName } from "@/assets/ts/constants";
 
 const useMapStore = defineStore("map", () => {
   // State
@@ -326,7 +326,7 @@ const useMapStore = defineStore("map", () => {
     popup.value = "";
   };
   const getIsochroneType = (): string => isochroneType.value;
-  watch(isJsonDataLoad, (newVal) => console.log(newVal));
+
   return {
     map,
     city,

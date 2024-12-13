@@ -358,6 +358,18 @@
         "6": "Вразливість та ризик",
         "7": "Різноманітні та доступні транспортні мережі"
       }
+    },
+    "capacities": {
+      "Robustness": "Міцність",
+      "Redundancy": "Резервування",
+      "Diversity": "Різноманітність",
+      "Integration": "Інтеграція",
+      "Transparency": "Прозорість",
+      "Resourcefulness": "Ресурсність",
+      "Inclusiveness": "Інклюзивність",
+      "Reflectiveness": "Рефлексивність",
+      "Flexiblity": "Гнучкість"
     }
-  }
+  },
+  "website": { "subtitle": "Перевірка стійкості", "searchBar": "Адреса пошуку......" }
 }

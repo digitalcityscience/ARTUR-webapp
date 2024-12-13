@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import MapView from "./components/MapView.vue";
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 </script>
 
 <template>
@@ -8,13 +10,13 @@ import MapView from "./components/MapView.vue";
       <div class="container-fluid d-flex align-items-center justify-content-start gap-2">
         <div class="header-text text-light text-nowrap rounded px-2 py-1">
           <h4 class="header-title">ARTUR tool</h4>
-          <p class="header-subtitle">Resilience Checker</p>
+          <p class="header-subtitle">{{ $t("website.subtitle") }}</p>
         </div>
         <div class="input-group search-bar">
           <input
             type="text"
             class="form-control"
-            placeholder="Search Address..."
+            :placeholder="`${t('website.searchBar')}`"
             aria-label="Search"
           />
           <button class="btn btn-primary" type="button">

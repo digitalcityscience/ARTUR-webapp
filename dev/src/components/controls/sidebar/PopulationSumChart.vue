@@ -5,7 +5,6 @@ import { populationType } from "@/assets/ts/constants";
 import type { Population } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
 import { useI18n } from "vue-i18n";
-import _default from "echarts/types/src/echarts.js";
 
 const mapStore = useMapStore();
 const { t } = useI18n();
@@ -103,7 +102,6 @@ const setChartOptions = (): void => {
 watch(
   () => mapStore.isJsonDataLoad,
   (newVal) => {
-    console.log(newVal);
     if (!newVal) return;
     chart.clear();
     population.value = getPopulationData();

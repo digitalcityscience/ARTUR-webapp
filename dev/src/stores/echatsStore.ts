@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
+import { computed, watch } from "vue";
 import {
   populationAccessibleColor,
   populationInaccessibleColor,
@@ -14,10 +15,10 @@ enum SANKEYLEVELS {
 const useEchartsStore = defineStore("echarts-options", () => {
   const { t } = useI18n();
   const sunburstData = {
-    name: t("ecahrts.name"),
+    name: computed(() => t("echarts.name")),
     children: [
       {
-        name: t("echarts.social.name"),
+        name: computed(() => t("echarts.social.name")),
         children: [
           {
             name: t("echarts.social.1.name"),
@@ -1866,7 +1867,11 @@ const useEchartsStore = defineStore("echarts-options", () => {
         { name: "Inclusive", depth: SANKEYLEVELS.LEVEL3 },
         { name: "Reflective", depth: SANKEYLEVELS.LEVEL3 },
         { name: "Flexible", depth: SANKEYLEVELS.LEVEL3 },
-        { name: "Social", itemStyle: { color: "#91CC75" }, depth: SANKEYLEVELS.LEVEL1 },
+        {
+          name: computed(() => t("echarts.social.name")),
+          itemStyle: { color: "#91CC75" },
+          depth: SANKEYLEVELS.LEVEL1,
+        },
         {
           name: "Safe & affordable housing",
           itemStyle: { color: "#91CC75" },
@@ -3959,76 +3964,76 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Safe & affordable housing",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Inclusive access to safe drinking water",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Adequate affordable energy supply",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Accessibility to training materials (language)",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Sufficient affordable food supply",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Grassroots or community organizations participating in pre-event planning and post event response",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Accessible criminal and civil justice",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Training programmes provided to the most vulnerable and at need populations",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Main public facilities: university, schools, health centres, markets, etc.",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Social services infrastructure, including schools, hospitals, and clinics",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Practices and drills involving public and professionals",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Accessible criminal & civil justice",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Widespread community awareness & preparedness",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Strong city-wide identity & culture",
           value: 1,
         },
@@ -4038,50 +4043,50 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Adequate education for all",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Effective sanitation",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Local community support",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Cohesive communities",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Actively engaged citizens",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Access to all the skills and experience to respond/reduce risks and respond to disaster",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Exchange knowledge and learn from other cities facing similar challenges",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Citizen engagement and communications in relation to disaster resilience and recovery",
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Major community buildings, religious buildings, and historic/cultural assets",
           value: 1,
@@ -4093,7 +4098,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Safe places/havens and the evacuation routes",
           value: 1,
         },
@@ -4103,7 +4108,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
           value: 1,
@@ -4121,7 +4126,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 0.5,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Awareness of equipment and supply needed + provision",
           value: 1,
         },
@@ -4136,7 +4141,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 0.5,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Effective systems to deter crime",
           value: 1,
         },
@@ -4156,7 +4161,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 0.33,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "High levels of crime are observed",
           value: 1,
         },
@@ -4171,7 +4176,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 0.5,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target: "Relevant skills & training",
           value: 1,
         },
@@ -4181,7 +4186,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
           value: 1,
@@ -4193,7 +4198,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Awareness of functions or services that natural capital provides for the city",
           value: 1,
@@ -4205,7 +4210,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           value: 1,
         },
         {
-          source: "Social",
+          source: computed(() => t("echarts.social.name")),
           target:
             "Public education towards awareness of hazard, risk and disaster information",
           value: 1,
@@ -4362,16 +4367,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
         { depth: SANKEYLEVELS.LEVEL4 },
       ],
     },
-    color: [
-      "#91CC75", // green
-      "#FAC858", // yellow
-      "#EE6666", // red
-      "#73C0DE", // light blue
-      "#3BA272", // dark green
-      "#FC8452", // orange
-      "#9A60B4", // purple
-      "#EA7CCC", // pink
-    ],
   };
   // Population Legend Grid Option
   const gridData = [
@@ -4461,6 +4456,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
       },
     ],
   };
+
   return {
     SANKEYLEVELS,
     sunburstData,

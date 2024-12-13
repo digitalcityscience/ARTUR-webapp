@@ -1,26 +1,24 @@
 <script lang="ts" setup>
-import { ref, computed, onMounted } from "vue";
+import { ref } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import { useI18n } from "vue-i18n";
 import html2canvas from "html2canvas";
+import LanguageSwitcher from "./LanguageSwitcher.vue";
 
 const sidebarStore = useSidebarStore();
 const { t } = useI18n();
-// Dynamic iframe sources with cache-busting
-const cacheBuster = ref(Date.now());
-const isModalOpen = ref(false);
 
 // Urban resilience indicators
 const urbanResilienceIndicators = [
-  { name: "Robustness", isHighlighted: true },
-  { name: "Redundancy", isHighlighted: false },
-  { name: "Diversity", isHighlighted: false },
-  { name: "Flexibility", isHighlighted: true },
-  { name: "Integration", isHighlighted: false },
-  { name: "Inclusiveness", isHighlighted: false },
-  { name: "Reflectiveness", isHighlighted: false },
-  { name: "Resourcefulness", isHighlighted: true },
-  { name: "Transparency", isHighlighted: false },
+  { name: "echarts.capacities.Robustness", isHighlighted: true },
+  { name: "echarts.capacities.Redundancy", isHighlighted: false },
+  { name: "echarts.capacities.Diversity", isHighlighted: false },
+  { name: "echarts.capacities.Flexiblity", isHighlighted: true },
+  { name: "echarts.capacities.Integration", isHighlighted: false },
+  { name: "echarts.capacities.Inclusiveness", isHighlighted: false },
+  { name: "echarts.capacities.Reflectiveness", isHighlighted: false },
+  { name: "echarts.capacities.Resourcefulness", isHighlighted: true },
+  { name: "echarts.capacities.Transparency", isHighlighted: false },
 ];
 
 // References for modal content and iframes
@@ -54,6 +52,7 @@ const downloadFirstDashboard = () => {
             {{ $t("sidebar.analysisDashboard.challenge") }}
             {{ sidebarStore.selectedTopic }}
           </h5>
+          <language-switcher class="ms-4"></language-switcher>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body p-1 overflow-hidden">
@@ -90,7 +89,7 @@ const downloadFirstDashboard = () => {
                         indicator.isHighlighted ? 'list-group-item-success' : '',
                       ]"
                     >
-                      {{ indicator.isHighlighted ? "+ " : "" }}{{ indicator.name }}
+                      {{ indicator.isHighlighted ? "+ " : "" }}{{ $t(indicator.name) }}
                     </li>
                   </ul>
                 </div>

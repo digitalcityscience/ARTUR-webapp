@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
 import { ImageFormat, LocalStorageEvent, GraphTypes } from "@/assets/ts/constants";
@@ -165,6 +165,14 @@ const addResizeObserver = () => {
     resizeObserver.observe(chartContainer.value);
   }
 };
+// watch the changes of language
+watch(
+  () => echartsStore.sunburstData.name,
+  () => {
+    chart.setOption(echartsStore.sunburstOption);
+    switchGraph.value = GraphTypes.SANKEY;
+  },
+);
 onMounted(() => {
   if (!chartContainer.value) return;
   initChart();
@@ -174,9 +182,9 @@ onMounted(() => {
 <template>
   <div class="btn-group" role="group">
     <div class="d-flex align-items-center gap-2">
-      <div class="btn-group btn-group-sm float-end">
+      <div class="btn-group btn-group-sm float-end mt-2 ms-2">
         <button
-          class="btn btn-sm btn-success"
+          class="btn btn-success"
           data-toggle="modal"
           data-target="#downloadModal"
           @click="showModal = true"
@@ -185,7 +193,7 @@ onMounted(() => {
             $t("indicatorChart.buttons.download")
           }}</i>
         </button>
-        <button class="btn btn-sm btn-warning" @click="switchGraphType">
+        <button class="btn btn-warning" @click="switchGraphType">
           <i class="bi bi-arrow-repeat">
             {{ $t("indicatorChart.buttons.switch") }}
             {{ $t("graphTypes." + switchGraph) }}</i

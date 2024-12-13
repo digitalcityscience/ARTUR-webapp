@@ -358,6 +358,18 @@
         "6": "Vulnerability and risk",
         "7": "Diverse and affordable transport networks"
       }
+    },
+    "capacities": {
+      "Robustness": "Robustness",
+      "Redundancy": "Redundancy",
+      "Diversity": "Diversity",
+      "Integration": "Integration",
+      "Transparency": "Transparency",
+      "Resourcefulness": "Resourcefulness",
+      "Inclusiveness": "Inclusiveness",
+      "Reflectiveness": "Reflectiveness",
+      "Flexiblity": "Flexiblity"
     }
-  }
+  },
+  "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" }
 }
