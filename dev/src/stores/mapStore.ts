@@ -288,7 +288,7 @@ const useMapStore = defineStore("map", () => {
   const vulnerabilityLayer: VectorLayer = {
     name: LayerName.VULNERABILITY,
     visible: ref(true),
-    range: [0.2, 0.4, 0.6, 0.8, 1],
+    range: [500, 1000, 1500, 2000],
   };
   const shelterLayers: Record<string, VectorLayer> = {
     shelterLayer: {

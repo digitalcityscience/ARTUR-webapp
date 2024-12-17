@@ -5,6 +5,7 @@ import * as echarts from "echarts";
 import { ref, computed, onMounted } from "vue";
 import { getIsochroneColor, getVulnerabilityColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
+import { LayerName } from "@/assets/ts/constants";
 
 const mapStore = useMapStore();
 const echartsStore = useEchartsStore();
@@ -38,9 +39,10 @@ onMounted(() => {
       <div v-show="mapStore.vulnerabilityLayer.visible">
         <template v-for="range in mapStore.vulnerabilityLayer.range" :key="range">
           <i class="point" :style="{ background: getVulnerabilityColor(range) }"></i>
-          {{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }} <= {{ range }}<br />
+          {{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}:
+          {{ $t("legend.vulnerability.alarm") }} <= {{ range }}<br />
         </template>
-        {{ $t("legend.vulnerability") }}
+        {{ $t("legend.vulnerability.size") }}
       </div>
       <div v-show="mapStore.shelterLayers.shelterLayer.visible">
         <i

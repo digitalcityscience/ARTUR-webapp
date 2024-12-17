@@ -86,13 +86,14 @@ const onReady = () => {
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
           mapStore.getMarkerOptions(
-            getVulnerabilityColor(feature.properties.vulnerab_index_),
+            getVulnerabilityColor(feature.properties.alarm_hours_2024),
             getVulnerabilityRadius(feature.properties.population_),
           )
         "
         layer-type="overlay"
         ><l-tooltip
-          ><span>Vulnerability Index: {{ feature.properties.vulnerab_index_ }}</span
+          ><span
+            >Total Alarm Hours in 2024: {{ feature.properties.alarm_hours_2024 }}</span
           ><br /><span>Population: {{ feature.properties.population_ }}</span></l-tooltip
         ><l-popup>
           <div style="max-height: 200px" class="overflow-auto">

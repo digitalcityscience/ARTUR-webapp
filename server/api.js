@@ -31,7 +31,8 @@ router.get("/vulnerability", async (req, res) => {
     const { rows: columns } = await pool.query(
       `SELECT column_name
        FROM information_schema.columns
-       WHERE table_name = 'vulnerability_index_city' AND column_name != 'wkb_geometry'`,
+       WHERE table_name = 'vulnerability_index_city' AND column_name != 'wkb_geometry' 
+       AND column_name != 'duration of alarms, hours in 2024'`,
     );
 
     // Build the SELECT query dynamically
@@ -39,7 +40,7 @@ router.get("/vulnerability", async (req, res) => {
       .map((row) => `"${row.column_name}"`) // Quote each column name to avoid error
       .join(", ");
     const query = `
-      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) AS geometry
+      SELECT "duration of alarms, hours in 2024" alarm_hours_2024, ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry
       FROM vulnerability_index_city
     `;
     const { rows } = await pool.query(query);

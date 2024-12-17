@@ -45,17 +45,15 @@ export function getPopulationColor(value: number, accessibility: number): string
     }
 }
 
-export function getVulnerabilityColor(index: number): string {
+export function getVulnerabilityColor(hours: number): string {
   switch (true) {
-    case index <= 0.2:
+    case hours <= 500:
       return "#ffbb00"; // Yellow
-    case index <= 0.4:
-      return "#ffaa00"; // Orange-yellow
-    case index <= 0.6:
+    case hours <= 1000:
       return "#ff7700"; // Orange
-    case index <= 0.8:
+    case hours <= 1500:
       return "#ff4400"; // Red-orange
-    case index <= 1.0:
+    case hours > 1500:
       return "#ff0000"; // Red
     default:
       return "#ffffff"; // Fallback color (white) if something goes wrong

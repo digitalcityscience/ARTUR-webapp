@@ -8,7 +8,7 @@
   },
   "layerNames": {
     "shelter": "Shelters",
-    "vulnerability": "Vulnerability Index",
+    "vulnerability": "Vulnerability",
     "boundary": "Boundary",
     "isochrone": "Shelters' Isochrone (Pedestrian)",
     "population": "Shelter Access (Pedestrian): Population within/outside 5 min",
@@ -62,7 +62,10 @@
     "minute": "min",
     "kilometer": "km",
     "population": "Most populated areas but not in the Catchment/Isochrone area",
-    "vulnerability": "The more population the city has, the larger the radius of the dot is"
+    "vulnerability": {
+      "alarm": "Alarm Hours",
+      "size": "The more population the city has, the larger the radius of the dot is."
+    }
   },
   "sidebar": {
     "dashboardPanel": {
