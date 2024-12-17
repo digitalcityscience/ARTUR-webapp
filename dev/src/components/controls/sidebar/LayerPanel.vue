@@ -93,6 +93,21 @@ const changeIsochroneType = () => {
                       {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
                     </label>
                   </li>
+                  <li class="mb-1 form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="mapStore.vulnerabilityLayer.name"
+                      :name="mapStore.vulnerabilityLayer.name"
+                      v-model="mapStore.vulnerabilityLayer.visible"
+                    />
+                    <label
+                      class="form-check-label"
+                      :for="mapStore.vulnerabilityLayer.name"
+                      >{{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}</label
+                    >
+                  </li>
+
                   <li class="mb-1">
                     <button
                       class="btn btn-outline-success btn-layer-set"
@@ -136,7 +151,7 @@ const changeIsochroneType = () => {
                     >
                       <li
                         class="mb-1"
-                        v-for="overlay in mapStore.healthsiteLayers"
+                        v-for="overlay in mapStore.healthSiteLayers"
                         :key="overlay.name"
                       >
                         <input
@@ -287,7 +302,7 @@ const changeIsochroneType = () => {
             class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#healthsite-population-collapse"
-            v-show="mapStore.healthsiteLayers.healthSitePopulationLayer.visible"
+            v-show="mapStore.healthSiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
           >
             {{ $t("sidebar.layerPanel.popups.healthSitePopulationInfo") }}
@@ -295,7 +310,7 @@ const changeIsochroneType = () => {
           <div class="collapse show" id="healthsite-population-collapse">
             <population-sum-chart
               v-if="
-                mapStore.healthsiteLayers.healthSitePopulationLayer.visible &&
+                mapStore.healthSiteLayers.healthSitePopulationLayer.visible &&
                 mapStore.healthSitePopulation
               "
               :type="populationType.HEALTHSITE"

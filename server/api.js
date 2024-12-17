@@ -8,22 +8,60 @@ router.get("/country-boundary", async (req, res) => {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, int_name name FROM ukraine_boundary`,
     );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: {
-        name: row.name,
-      },
-      geometry: JSON.parse(row.geometry),
-    }));
+
+    const features = rows.map((row) => {
+      delete row.wkb_geometry;
+      return {
+        type: "Feature",
+        properties: {
+          name: row.name,
+        },
+        geometry: JSON.parse(row.geometry),
+      };
+    });
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
     console.error(err);
     res.status(500).send("" + err);
   }
 });
+router.get("/vulnerability", async (req, res) => {
+  try {
+    // Get all column names excluding the 'wkb_geometry' column
+    const { rows: columns } = await pool.query(
+      `SELECT column_name
+       FROM information_schema.columns
+       WHERE table_name = 'vulnerability_index_city' AND column_name != 'wkb_geometry'`,
+    );
+
+    // Build the SELECT query dynamically
+    const columnNames = columns
+      .map((row) => `"${row.column_name}"`) // Quote each column name to avoid error
+      .join(", ");
+    const query = `
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) AS geometry
+      FROM vulnerability_index_city
+    `;
+    const { rows } = await pool.query(query);
+
+    const features = rows.map((row) => {
+      const { geometry, ...properties } = row;
+      return {
+        type: "Feature",
+        properties,
+        geometry: JSON.parse(geometry),
+      };
+    });
+
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+
 router.get("/shelter/:city", async (req, res) => {
   // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, name, description FROM ${city}_shelters`,
@@ -43,7 +81,7 @@ router.get("/shelter/:city", async (req, res) => {
   }
 });
 router.get("/boundary/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry FROM ${city}_boundary`,
@@ -58,7 +96,7 @@ router.get("/boundary/:city", async (req, res) => {
   }
 });
 router.get("/isochrone/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range FROM ${city}_isochrone`,
@@ -74,7 +112,7 @@ router.get("/isochrone/:city", async (req, res) => {
   }
 });
 router.get("/population/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_population_polygon`,
@@ -100,7 +138,7 @@ router.get("/population/:city", async (req, res) => {
   }
 });
 router.get("/health-site-point/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, name, amenity FROM ${city}_healthsite WHERE amenity = 'clinic' OR amenity = 'hospital'`,
@@ -116,7 +154,7 @@ router.get("/health-site-point/:city", async (req, res) => {
   }
 });
 router.get("/health-site-isochrone-auto/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, contour FROM ${city}_hospital_auto_isochrone`,
@@ -132,7 +170,7 @@ router.get("/health-site-isochrone-auto/:city", async (req, res) => {
   }
 });
 router.get("/health-site-isochrone-bus/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range FROM ${city}_hospital_bus_isochrone`,
@@ -148,7 +186,7 @@ router.get("/health-site-isochrone-bus/:city", async (req, res) => {
   }
 });
 router.get("/health-site-isochrone-bicycle/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, contour FROM ${city}_hospital_bicycle_isochrone`,
@@ -164,7 +202,7 @@ router.get("/health-site-isochrone-bicycle/:city", async (req, res) => {
   }
 });
 router.get("/health-site-isochrone-pedestrian/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, contour FROM ${city}_hospital_pedestrian_isochrone`,
@@ -180,7 +218,7 @@ router.get("/health-site-isochrone-pedestrian/:city", async (req, res) => {
   }
 });
 router.get("/hospital-auto-population/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_hospital_auto_population`,
@@ -210,7 +248,7 @@ router.get("/hospital-auto-population/:city", async (req, res) => {
   }
 });
 router.get("/buildings/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) geometry, id, name, building_type, level, housenumber, street from ${city}_buildings`,
@@ -233,8 +271,8 @@ router.get("/buildings/:city", async (req, res) => {
   }
 });
 router.get("/water-source/:city", async (req, res) => {
+  const city = req.params.city;
   // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
-  const city = req.params.city.replace(/ /g, "");
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [m*3]" capacity, usage FROM generated_${city}_water_source`,
@@ -255,7 +293,7 @@ router.get("/water-source/:city", async (req, res) => {
   }
 });
 router.get("/water-source-catchment/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_water_source_catchment`,
@@ -271,7 +309,7 @@ router.get("/water-source-catchment/:city", async (req, res) => {
   }
 });
 router.get("/water-source-population/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM generated_${city}_water_source_catchment_population`,
@@ -301,8 +339,8 @@ router.get("/water-source-population/:city", async (req, res) => {
   }
 });
 router.get("/energy-supply/:city", async (req, res) => {
+  const city = req.params.city;
   // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
-  const city = req.params.city.replace(/ /g, "");
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [kw]" capacity, user_type FROM generated_${city}_energy_supply`,
@@ -323,7 +361,7 @@ router.get("/energy-supply/:city", async (req, res) => {
   }
 });
 router.get("/energy-supply-catchment/:city", async (req, res) => {
-  const city = req.params.city.replace(/ /g, "");
+  const city = req.params.city;
   try {
     const { rows } = await pool.query(
       `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_energy_supply_catchment`,

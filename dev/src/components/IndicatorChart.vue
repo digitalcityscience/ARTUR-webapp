@@ -4,7 +4,7 @@ import * as echarts from "echarts";
 import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
 import { ImageFormat, LocalStorageEvent, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
-import useEchartsStore from "@/stores/echatsStore";
+import useEchartsStore from "@/stores/chartStore";
 
 const indicatorStore = useIndicatorStore();
 const echartsStore = useEchartsStore();

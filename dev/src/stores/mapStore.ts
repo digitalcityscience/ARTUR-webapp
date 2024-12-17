@@ -7,9 +7,11 @@ import type {
   IsochroneTypeKey,
 } from "@/assets/ts/types";
 import { LayerName } from "@/assets/ts/constants";
+import type { Point, Feature } from "geojson";
+import type { ShelterProperties } from "@/assets/ts/types";
 
 const useMapStore = defineStore("map", () => {
-  // State
+  // Geojson Data Settings
   const map = ref();
   const city = ref<string>("");
   const zoom = 12;
@@ -23,84 +25,36 @@ const useMapStore = defineStore("map", () => {
   const shelterPopulation = ref<Record<string, Population>>({});
   const healthSitePopulation = ref<Record<string, Population>>({});
   const waterSourcePopulation = ref<Record<string, Population>>({});
-  const boundaryLayer: VectorLayer = {
-    name: LayerName.BOUNDARY,
-    visible: ref(true),
-    color: "#057dcd",
-  };
-  const shelterLayers: Record<string, VectorLayer> = {
-    shelterLayer: {
-      name: LayerName.SHELTER,
-      visible: ref(false),
-      color: "orange",
-    },
-    isochroneLayer: {
-      name: LayerName.SHELTERISOCHRONE,
-      visible: ref(false),
-      range: [1, 2, 3, 4, 5],
-    },
-    populationLayer: {
-      name: LayerName.SHELTERPOPULATION,
-      visible: ref(false),
-      range: [45, 35, 25, 15, 5],
-    },
-  };
-  const healthsiteLayers: Record<string, VectorLayer> = {
-    healthSiteLayer: {
-      name: LayerName.HEALTHSITE,
-      visible: ref(false),
-      color: "#EE6666",
-    },
-    healthSiteIsochroneLayer: {
-      name: LayerName.HEALTHSITEISOCHRONE,
-      visible: ref(false),
-      range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    },
-    healthSitePopulationLayer: {
-      name: LayerName.HEALTHSITEPOPULATION,
-      visible: ref(false),
-      range: [45, 35, 25, 15, 5],
-    },
-  };
-  const waterSourceLayers: Record<string, VectorLayer> = {
-    waterSourceLayer: {
-      name: LayerName.WATERSOURCE,
-      visible: ref(false),
-      color: "#660e60",
-    },
-    waterSourceCatchmentLayer: {
-      name: LayerName.WATERSOURCECATCHMENT,
-      visible: ref(false),
-      range: [1, 2, 3, 4, 5, 6, 8, 10],
-    },
-    waterSourcePopulationLayer: {
-      name: LayerName.WATERSOURCEPOPULATION,
-      visible: ref(false),
-      range: [45, 35, 25, 15, 5],
-    },
-  };
-  const energySupplyLayers: Record<string, VectorLayer> = {
-    energySupplyLayer: {
-      name: LayerName.ENERGYSUPPLY,
-      visible: ref(false),
-      color: "red",
-    },
-    energySupplyCatchmentLayer: {
-      name: LayerName.ENERGYSUPPLYCATCHMENT,
-      visible: ref(false),
-      range: [1, 2, 3, 4, 5, 6, 8, 10],
-    },
-  };
-
   const isIsochroneChanged = ref(false);
-  fetch("/api/country-boundary")
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
-    .then((data) => {
-      geojsonData.value.countryBoundary = data;
-    });
+  // Fetch Data
+  const fetchCountrywideData = async () => {
+    try {
+      const promises: Promise<any>[] = [];
+      promises.push(
+        fetch("api/vulnerability")
+          .then((res) => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.json();
+          })
+          .then((data) => {
+            geojsonData.value.vulnerabilityPoint = data;
+          }),
+      );
+      promises.push(
+        fetch("/api/country-boundary")
+          .then((res) => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.json();
+          })
+          .then((data) => {
+            geojsonData.value.countryBoundary = data;
+          }),
+      );
+      await Promise.all(promises);
+    } catch (error) {
+      console.error("Fail to load initial data: ", error);
+    }
+  };
   const fetchGeoData = async (cityName: string, isochroneTypeParam = "") => {
     isochroneTypeParam = isochroneType.value;
     // Check if city data is fully cached (including isochrone for the current type)
@@ -306,27 +260,133 @@ const useMapStore = defineStore("map", () => {
       console.error("Failed to fetch data", error);
     }
   };
-
-  const setIsochroneType = (newType: IsochroneTypeKey) => {
-    isIsochroneChanged.value = true;
-    isochroneType.value = newType;
-    // Only fetch the new isochrone data (others remain unchanged)
-    if (city.value) fetchGeoData(city.value, newType);
-  };
-  const setJsonDataLoad = () => (isJsonDataLoad.value = false);
-
   // Actions to change city and refetch data
   const setCity = async (newCity: string) => {
     // Reset the layer loading state for the new city
-    setJsonDataLoad();
+    isJsonDataLoad.value = false;
     city.value = newCity;
     // Fetch all data for the new city
     await fetchGeoData(newCity);
     isJsonDataLoad.value = true;
     popup.value = "";
   };
+  // Get/Set isochrone types
+  const setIsochroneType = (newType: IsochroneTypeKey) => {
+    isIsochroneChanged.value = true;
+    isochroneType.value = newType;
+    // Only fetch the new isochrone data (others remain unchanged)
+    if (city.value) fetchGeoData(city.value, newType);
+  };
   const getIsochroneType = (): string => isochroneType.value;
 
+  // Overlay Visualisation Settings
+  const boundaryLayer: VectorLayer = {
+    name: LayerName.BOUNDARY,
+    visible: ref(true),
+    color: "#057dcd",
+  };
+  const vulnerabilityLayer: VectorLayer = {
+    name: LayerName.VULNERABILITY,
+    visible: ref(true),
+    range: [0.2, 0.4, 0.6, 0.8, 1],
+  };
+  const shelterLayers: Record<string, VectorLayer> = {
+    shelterLayer: {
+      name: LayerName.SHELTER,
+      visible: ref(false),
+      color: "orange",
+    },
+    isochroneLayer: {
+      name: LayerName.SHELTERISOCHRONE,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5],
+    },
+    populationLayer: {
+      name: LayerName.SHELTERPOPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
+  };
+  const healthSiteLayers: Record<string, VectorLayer> = {
+    healthSiteLayer: {
+      name: LayerName.HEALTHSITE,
+      visible: ref(false),
+      color: "#EE6666",
+    },
+    healthSiteIsochroneLayer: {
+      name: LayerName.HEALTHSITEISOCHRONE,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    },
+    healthSitePopulationLayer: {
+      name: LayerName.HEALTHSITEPOPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
+  };
+  const waterSourceLayers: Record<string, VectorLayer> = {
+    waterSourceLayer: {
+      name: LayerName.WATERSOURCE,
+      visible: ref(false),
+      color: "#660e60",
+    },
+    waterSourceCatchmentLayer: {
+      name: LayerName.WATERSOURCECATCHMENT,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 8, 10],
+    },
+    waterSourcePopulationLayer: {
+      name: LayerName.WATERSOURCEPOPULATION,
+      visible: ref(false),
+      range: [45, 35, 25, 15, 5],
+    },
+  };
+  const energySupplyLayers: Record<string, VectorLayer> = {
+    energySupplyLayer: {
+      name: LayerName.ENERGYSUPPLY,
+      visible: ref(false),
+      color: "red",
+    },
+    energySupplyCatchmentLayer: {
+      name: LayerName.ENERGYSUPPLYCATCHMENT,
+      visible: ref(false),
+      range: [1, 2, 3, 4, 5, 6, 8, 10],
+    },
+  };
+  // Shelter Layer Settings
+  // points
+  const getMarkerOptions = (color: string, radius = 5) => {
+    return {
+      radius: radius,
+      fillColor: color,
+      color: "white",
+      weight: 1,
+      opacity: 0.8,
+      fillOpacity: 0.8,
+    };
+  };
+  const togglePopup = (feature: Feature<Point, ShelterProperties>) => {
+    popup.value = feature.properties.description
+      ? feature.properties.description
+      : feature.properties.name;
+  };
+  const highlightPoint = (e: any) => {
+    e.target.setStyle({
+      weight: 3,
+      dashArray: "",
+      color: "black",
+    });
+  };
+  const resetHighlight = (e: any) => {
+    e.target.setStyle({ color: "white", weight: 1 });
+  };
+  // boundary
+  const boundaryStyle = () => {
+    return {
+      fillOpacity: 0,
+      color: boundaryLayer.color,
+    };
+  };
   return {
     map,
     city,
@@ -334,19 +394,26 @@ const useMapStore = defineStore("map", () => {
     isSilent,
     geojsonData,
     popup,
-    shelterLayers,
-    boundaryLayer,
-    healthsiteLayers,
-    waterSourceLayers,
-    energySupplyLayers,
     isJsonDataLoad,
     shelterPopulation,
     healthSitePopulation,
     waterSourcePopulation,
+    shelterLayers,
+    boundaryLayer,
+    vulnerabilityLayer,
+    healthSiteLayers,
+    waterSourceLayers,
+    energySupplyLayers,
     setCity,
+    fetchCountrywideData,
+    fetchGeoData,
     setIsochroneType,
     getIsochroneType,
-    fetchGeoData,
+    getMarkerOptions,
+    togglePopup,
+    highlightPoint,
+    resetHighlight,
+    boundaryStyle,
   };
 });
 export default useMapStore;

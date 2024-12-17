@@ -21,6 +21,7 @@
     "dotenv": "^16.4.5",
     "echarts": "^5.5.0",
     "html2canvas": "^1.4.1",
+    "leaflet-draw": "^1.0.4",
     "leaflet-sidebar-v2": "github:noerw/leaflet-sidebar-v2",
     "pinia": "^2.2.2",
     "vue": "^3.4.21",

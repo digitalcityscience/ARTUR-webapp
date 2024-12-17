@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import useEchartsStore from "@/stores/echatsStore";
+import useEchartsStore from "@/stores/chartStore";
 import * as echarts from "echarts";
 import { ref, computed, onMounted } from "vue";
-import { getIsochroneColor } from "@/assets/ts/functions";
+import { getIsochroneColor, getVulnerabilityColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
@@ -28,13 +28,20 @@ onMounted(() => {
   <l-control position="bottomleft">
     <button
       @click="showLegend = !showLegend"
-      class="btn btn-primary btn-sm legend-button"
+      class="btn btn-primary btn-sm w-100 d-flex justify-content-between"
     >
-      <i :class="btnLegendIconClass" style="float: left; padding-right: 5px"></i>
+      <i :class="btnLegendIconClass" class="pe-2"></i>
       <strong>{{ $t("legend.title") }}</strong>
-      <i class="bi bi-map" style="float: right; padding-left: 5px"></i>
+      <i class="bi bi-map ps-2"></i>
     </button>
     <div class="legend" v-show="showLegend">
+      <div v-show="mapStore.vulnerabilityLayer.visible">
+        <template v-for="range in mapStore.vulnerabilityLayer.range" :key="range">
+          <i class="point" :style="{ background: getVulnerabilityColor(range) }"></i>
+          {{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }} <= {{ range }}<br />
+        </template>
+        {{ $t("legend.vulnerability") }}
+      </div>
       <div v-show="mapStore.shelterLayers.shelterLayer.visible">
         <i
           class="point"
@@ -42,12 +49,12 @@ onMounted(() => {
         ></i>
         {{ $t("layerNames." + mapStore.shelterLayers.shelterLayer.name) }}
       </div>
-      <div v-show="mapStore.healthsiteLayers.healthSiteLayer.visible">
+      <div v-show="mapStore.healthSiteLayers.healthSiteLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.healthsiteLayers.healthSiteLayer.color }"
+          :style="{ background: mapStore.healthSiteLayers.healthSiteLayer.color }"
         ></i>
-        {{ $t("layerNames." + mapStore.healthsiteLayers.healthSiteLayer.name) }}
+        {{ $t("layerNames." + mapStore.healthSiteLayers.healthSiteLayer.name) }}
       </div>
       <div v-show="mapStore.waterSourceLayers.waterSourceLayer.visible">
         <i
@@ -77,9 +84,9 @@ onMounted(() => {
           }}<br />
         </template>
       </div>
-      <div v-show="mapStore.healthsiteLayers.healthSiteIsochroneLayer.visible">
+      <div v-show="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible">
         <template
-          v-for="range in mapStore.healthsiteLayers.healthSiteIsochroneLayer.range"
+          v-for="range in mapStore.healthSiteLayers.healthSiteIsochroneLayer.range"
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
@@ -111,7 +118,7 @@ onMounted(() => {
       <div
         v-show="
           mapStore.shelterLayers.populationLayer.visible ||
-          mapStore.healthsiteLayers.healthSitePopulationLayer.visible ||
+          mapStore.healthSiteLayers.healthSitePopulationLayer.visible ||
           mapStore.waterSourceLayers.waterSourcePopulationLayer.visible
         "
         class="population-grid"
@@ -125,10 +132,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.legend-button {
-  position: relative;
-  width: 100%;
-}
 .legend {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;

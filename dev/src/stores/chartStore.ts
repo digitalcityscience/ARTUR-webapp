@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
-import { computed, watch } from "vue";
+import { computed } from "vue";
 import {
   populationAccessibleColor,
   populationInaccessibleColor,

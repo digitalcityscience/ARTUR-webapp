@@ -1,8 +1,18 @@
 <script setup lang="ts">
-import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
-import { ref, provide } from "vue";
+import {
+  LMap,
+  LControlScale,
+  LTileLayer,
+  LGeoJson,
+  LFeatureGroup,
+  LCircleMarker,
+  LTooltip,
+  LPopup,
+} from "@vue-leaflet/vue-leaflet";
+import { ref } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
+import { getVulnerabilityColor, getVulnerabilityRadius } from "@/assets/ts/functions";
 import OverlayControl from "./controls/OverlayControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 
@@ -34,6 +44,7 @@ const boundaryStyle = () => {
     color: mapStore.boundaryLayer.color,
   };
 };
+mapStore.fetchCountrywideData();
 
 const isReady = ref(false);
 const onReady = () => {
@@ -62,6 +73,44 @@ const onReady = () => {
         pane="tilePane"
       ></l-tile-layer>
     </template>
+    <l-feature-group
+      name="Cities' Vulnerability"
+      layer-type="overlay"
+      v-if="mapStore.geojsonData.vulnerabilityPoint"
+    >
+      <l-circle-marker
+        pane="markerPane"
+        v-for="(feature, index) in mapStore.geojsonData.vulnerabilityPoint!.features"
+        :key="`${index}-${feature.properties.name}`"
+        :name="feature.properties.city"
+        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
+        :options="
+          mapStore.getMarkerOptions(
+            getVulnerabilityColor(feature.properties.vulnerab_index_),
+            getVulnerabilityRadius(feature.properties.population_),
+          )
+        "
+        layer-type="overlay"
+        ><l-tooltip
+          ><span>Vulnerability Index: {{ feature.properties.vulnerab_index_ }}</span
+          ><br /><span>Population: {{ feature.properties.population_ }}</span></l-tooltip
+        ><l-popup>
+          <div style="max-height: 200px" class="overflow-auto">
+            <h5 class="text-center mb-2">{{ feature.properties.name }}</h5>
+            <table class="table table-bordered table-striped table-sm mb-0">
+              <tbody>
+                <tr v-for="(value, key) in feature.properties" :key="key">
+                  <th scope="row" class="text-capitalize">
+                    {{ key }}
+                  </th>
+                  <td>{{ value }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </l-popup>
+      </l-circle-marker>
+    </l-feature-group>
     <l-geo-json
       name="Ukraine Boundary"
       :geojson="mapStore.geojsonData.countryBoundary"

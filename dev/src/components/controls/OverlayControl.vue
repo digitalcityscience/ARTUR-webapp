@@ -10,43 +10,11 @@ import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
 import { onMounted, ref } from "vue";
-import type { Point, Feature } from "geojson";
-import type { ShelterProperties } from "@/assets/ts/types";
 import useMapStore from "@/stores/mapStore";
 
 // Pinia Store
 const mapStore = useMapStore();
-// Shelter Layer Settings
-const markerOptions = {
-  radius: 5,
-  fillColor: mapStore.shelterLayers.shelterLayer.color!,
-  color: "white",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.8,
-};
-const togglePopup = (feature: Feature<Point, ShelterProperties>) => {
-  mapStore.popup = feature.properties.description
-    ? feature.properties.description
-    : feature.properties.name;
-};
-const highlightPoint = (e: any) => {
-  e.target.setStyle({
-    weight: 3,
-    dashArray: "",
-    color: "black",
-  });
-};
-const resetHighlight = (e: any) => {
-  e.target.setStyle({ color: "white", weight: 1 });
-};
-// Boundary Layer Settings
-const boundaryStyle = () => {
-  return {
-    fillOpacity: 0,
-    color: mapStore.boundaryLayer.color,
-  };
-};
+
 // Isochrone Layer Settings
 const isochroneStyle = (feature: any) => {
   return {
@@ -79,14 +47,6 @@ const populationOptions = {
   onEachFeature: onEachFeatureFunction,
 };
 // Health Site Point Layer Settings
-const healthSiteOptions = {
-  radius: 5,
-  fillColor: mapStore.healthsiteLayers.healthSiteLayer.color!,
-  color: "white",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.8,
-};
 const healthSiteIsochroneStyle = (feature: any) => {
   return {
     fillColor: getIsochroneColor(feature.properties.range, 10),
@@ -95,24 +55,6 @@ const healthSiteIsochroneStyle = (feature: any) => {
     weight: 0.5,
     opacity: 1,
   };
-};
-// Water Source Point Layer Settings
-const waterSourceMarkerOptions = {
-  radius: 5,
-  fillColor: mapStore.waterSourceLayers.waterSourceLayer.color!,
-  color: "white",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.8,
-};
-// Energy Supply Point Layer Settings
-const energySupplyMarkerOptions = {
-  radius: 5,
-  fillColor: mapStore.energySupplyLayers.energySupplyLayer.color!,
-  color: "white",
-  weight: 1,
-  opacity: 0.8,
-  fillOpacity: 0.8,
 };
 const isLayerLoad = ref(false);
 onMounted(() => {
@@ -134,10 +76,10 @@ onMounted(() => {
         :key="`${index}-${feature.properties.name}`"
         :name="feature.properties.name"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="markerOptions"
-        @click="togglePopup(feature)"
-        @mouseover="highlightPoint"
-        @mouseout="resetHighlight"
+        :options="mapStore.getMarkerOptions(mapStore.shelterLayers.shelterLayer.color!)"
+        @click="mapStore.togglePopup(feature)"
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip>
           {{ feature.properties.name }}
@@ -150,7 +92,7 @@ onMounted(() => {
       :geojson="mapStore.geojsonData.boundary"
       :visible="mapStore.boundaryLayer.visible as unknown as boolean"
       layer-type="overlay"
-      :options-style="boundaryStyle"
+      :options-style="mapStore.boundaryStyle"
       pane="overlayPane"
     ></l-geo-json>
     <!-- Isochrones -->
@@ -175,7 +117,7 @@ onMounted(() => {
     <l-feature-group
       :name="LayerName.HEALTHSITE"
       layer-type="overlay"
-      :visible="mapStore.healthsiteLayers.healthSiteLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSiteLayer.visible as unknown as boolean"
     >
       <l-circle-marker
         pane="markerPane"
@@ -185,9 +127,9 @@ onMounted(() => {
           feature.geometry.coordinates[0][1],
           feature.geometry.coordinates[0][0],
         ]"
-        :options="healthSiteOptions"
-        @mouseover="highlightPoint"
-        @mouseout="resetHighlight"
+        :options="mapStore.getMarkerOptions(mapStore.healthSiteLayers.healthSiteLayer.color!)"
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip>{{ feature.properties.amenity }}</l-tooltip>
         <l-popup>{{ feature.properties.name }}</l-popup>
@@ -197,7 +139,7 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.HEALTHSITEISOCHRONE"
       :geojson="mapStore.geojsonData.healthSiteIsochrone"
-      :visible="mapStore.healthsiteLayers.healthSiteIsochroneLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible as unknown as boolean"
       layer-type="overlay"
       :options-style="healthSiteIsochroneStyle"
       pane="overlayPane"
@@ -206,7 +148,7 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.HEALTHSITEPOPULATION"
       :geojson="mapStore.geojsonData.healthSitePopulation"
-      :visible="mapStore.healthsiteLayers.healthSitePopulationLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSitePopulationLayer.visible as unknown as boolean"
       layer-type="overlay"
       :options-style="populationStyle"
       :options="populationOptions"
@@ -223,9 +165,9 @@ onMounted(() => {
         v-for="(feature, index) in mapStore.geojsonData.waterSourcePoint!.features"
         :key="`${index}-${feature.properties.id}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="waterSourceMarkerOptions"
-        @mouseover="highlightPoint"
-        @mouseout="resetHighlight"
+        :options="mapStore.getMarkerOptions(mapStore.waterSourceLayers.waterSourceLayer.color!)"
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip> {{ feature.properties.capacity }} m^3 </l-tooltip>
       </l-circle-marker>
@@ -260,9 +202,11 @@ onMounted(() => {
         v-for="(feature, index) in mapStore.geojsonData.energySupplyPoint!.features"
         :key="`${index}-${feature.properties.id}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="energySupplyMarkerOptions"
-        @mouseover="highlightPoint"
-        @mouseout="resetHighlight"
+        :options="
+          mapStore.getMarkerOptions(mapStore.energySupplyLayers.energySupplyLayer.color!)
+        "
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip> {{ feature.properties.capacity }} kw </l-tooltip>
       </l-circle-marker>

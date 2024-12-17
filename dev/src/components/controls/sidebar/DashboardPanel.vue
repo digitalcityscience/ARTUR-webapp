@@ -2,7 +2,7 @@
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import { LocalStorageEvent } from "@/assets/ts/constants";
-import useEchartsStore from "@/stores/echatsStore";
+import useEchartsStore from "@/stores/chartStore";
 
 const indicatorStore = useIndicatorStore();
 const echartsStore = useEchartsStore();
