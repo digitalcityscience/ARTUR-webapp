@@ -4381,6 +4381,8 @@ const useEchartsStore = defineStore("echarts-options", () => {
     [1, 3, populationAccessibleColor[3]],
     [1, 4, populationAccessibleColor[4]],
   ];
+  const xAxisName = computed(() => t("legend.population.accessible"));
+  const yAxisName = computed(() => t("legend.population.population") + " / km\u00B2");
   const populationLegendOption = {
     grid: {
       left: "10%",
@@ -4391,7 +4393,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
     },
     xAxis: {
       type: "category",
-      name: "Accessible",
+      name: xAxisName,
       nameLocation: "middle",
       nameGap: 20,
       data: ["No", "Yes"],
@@ -4411,7 +4413,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
     },
     yAxis: {
       type: "category",
-      name: "Population / km\u00B2",
+      name: yAxisName,
       nameLocation: "middle",
       nameGap: 25,
       data: ["5", "15", "25", "35", ">35"],

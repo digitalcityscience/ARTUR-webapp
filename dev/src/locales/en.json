@@ -61,10 +61,14 @@
     },
     "minute": "min",
     "kilometer": "km",
-    "population": "Most populated areas but not in the Catchment/Isochrone area",
     "vulnerability": {
       "alarm": "Alarm Hours",
-      "size": "The more population the city has, the larger the radius of the dot is."
+      "size": "The more population, the larger the dot."
+    },
+    "population": {
+      "accessible": "Accessible",
+      "population": "Population",
+      "text": "Most populated areas but not in the Catchment/Isochrone area"
     }
   },
   "sidebar": {

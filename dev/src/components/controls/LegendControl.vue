@@ -2,10 +2,9 @@
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import useEchartsStore from "@/stores/chartStore";
 import * as echarts from "echarts";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { getIsochroneColor, getVulnerabilityColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
-import { LayerName } from "@/assets/ts/constants";
 
 const mapStore = useMapStore();
 const echartsStore = useEchartsStore();
@@ -20,6 +19,12 @@ const initChart = () => {
   chart = echarts.init(chartContainer.value!);
   chart.setOption(echartsStore.populationLegendOption);
 };
+watch(
+  () => echartsStore.sunburstData.name,
+  () => {
+    chart.setOption(echartsStore.populationLegendOption);
+  },
+);
 onMounted(() => {
   initChart();
 });
@@ -126,8 +131,8 @@ onMounted(() => {
         class="population-grid"
       >
         <div ref="chartContainer" class="chartContainer"></div>
-        <i class="polygon" style="background: #9e0000"></i>{{ $t("legend.population")
-        }}<br />
+        <i class="polygon" style="background: #9e0000"></i
+        >{{ $t("legend.population.text") }}<br />
       </div>
     </div>
   </l-control>
