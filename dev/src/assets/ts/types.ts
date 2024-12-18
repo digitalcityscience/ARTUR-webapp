@@ -57,7 +57,7 @@ export type EnergySupplyProperties = {
 };
 export type GeoJSONData = {
   countryBoundary?: FeatureCollection<Polygon>;
-  vulnerabilityPoint?: FeatureCollection<Point, any>;
+  vulnerabilityPoint?: any;
   boundary?: FeatureCollection<Polygon>;
   shelters?: FeatureCollection<Point, ShelterProperties>;
   isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;

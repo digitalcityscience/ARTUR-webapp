@@ -22,6 +22,9 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 const changeIsochroneType = () => {
   mapStore.setIsochroneType(selectedIsochroneType.value);
 };
+function logKey(key: any, index: number) {
+  console.log(`Key: ${key}, Index: ${index}`);
+}
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="layer">
@@ -43,6 +46,7 @@ const changeIsochroneType = () => {
           </button>
           <div class="collapse show ms-1" id="layer-control-collapse">
             <ul class="list-unstyled ps-0">
+              <!-- basemaps -->
               <li class="mb-1">
                 <button
                   class="btn btn-toggle rounded collapsed ps-0"
@@ -71,6 +75,7 @@ const changeIsochroneType = () => {
                   </label>
                 </div>
               </li>
+              <!-- overlays -->
               <li class="mb-1">
                 <button
                   class="btn btn-toggle rounded collapsed ps-0"
@@ -81,6 +86,7 @@ const changeIsochroneType = () => {
                   {{ $t("sidebar.layerPanel.control.overlays") }}
                 </button>
                 <ul class="list-unstyled ps-0" id="overlay-switch">
+                  <!-- initial presence layer -->
                   <li class="mb-1 form-check">
                     <input
                       class="form-check-input"
@@ -94,20 +100,40 @@ const changeIsochroneType = () => {
                     </label>
                   </li>
                   <li class="mb-1 form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="mapStore.vulnerabilityLayer.name"
-                      :name="mapStore.vulnerabilityLayer.name"
-                      v-model="mapStore.vulnerabilityLayer.visible"
-                    />
-                    <label
-                      class="form-check-label"
-                      :for="mapStore.vulnerabilityLayer.name"
-                      >{{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}</label
+                    <div class="mb-1">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="mapStore.vulnerabilityLayer.name"
+                        :name="mapStore.vulnerabilityLayer.name"
+                        v-model="mapStore.vulnerabilityLayer.visible"
+                      />
+                      <label
+                        class="form-check-label"
+                        :for="mapStore.vulnerabilityLayer.name"
+                        >{{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}</label
+                      >
+                    </div>
+                    <select
+                      id="vulnerable-property-select"
+                      class="form-select"
+                      v-model="mapStore.selectedVulnerableProperty"
                     >
+                      <option
+                        v-for="(value, key) in mapStore.geojsonData.vulnerabilityPoint
+                          .properties"
+                        :key="key"
+                        :value="key"
+                      >
+                        {{ $t(`${key}`) }}
+                        <!-- {{ $t("propertyNames." + key) }} -->
+                      </option>
+                    </select>
+                    <!-- <label for="vulnerable-property-select" class="form-label">
+                      {{ $t("Select Property") }}
+                    </label> -->
                   </li>
-
+                  <!-- layer sets -->
                   <li class="mb-1">
                     <button
                       class="btn btn-outline-success btn-layer-set"

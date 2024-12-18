@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import chroma from "chroma-js";
 import type {
   VectorLayer,
   GeoJSONData,
@@ -27,6 +28,52 @@ const useMapStore = defineStore("map", () => {
   const waterSourcePopulation = ref<Record<string, Population>>({});
   const isIsochroneChanged = ref(false);
   // Fetch Data
+  // vulnerability layer
+  const selectedVulnerableProperty = ref("duration of alarms, hours in 2024");
+  const vulnerabilityLayer: VectorLayer = {
+    name: LayerName.VULNERABILITY,
+    visible: ref(true),
+    range: [], // Store breaks here
+  };
+  // calculate class breaks dynamically
+  const calculateClassBreaks = (
+    minValue: number,
+    maxValue: number,
+    numClasses: number = 5,
+  ): number[] => {
+    const breaks: number[] = [];
+    const step = (maxValue - minValue) / numClasses;
+
+    for (let i = 0; i <= numClasses; i++) {
+      breaks.push(parseFloat((minValue + i * step).toFixed(2))); // Equal interval breaks
+    }
+
+    return breaks;
+  };
+  // assign color based on value and pre-calculated breaks
+  const getVulnerabilityColor = (value: number, breaks: number[]): string => {
+    const colorScale = chroma.scale(["#ffcd00", "#f03b20"]).classes(breaks);
+    // Match the value to its appropriate break range
+    for (let i = 0; i < breaks.length - 1; i++) {
+      if (value >= breaks[i] && value <= breaks[i + 1]) {
+        return colorScale(breaks[i]).hex(); // Return HEX color
+      }
+    }
+    // Default to white if value doesn't fall in any range
+    return "#fff";
+  };
+  const initializeVulnerabilityLayer = (): void => {
+    const minValue: number =
+      geojsonData.value.vulnerabilityPoint.properties[
+        selectedVulnerableProperty.value
+      ][0];
+    const maxValue: number =
+      geojsonData.value.vulnerabilityPoint.properties[
+        selectedVulnerableProperty.value
+      ][1];
+    // Calculate and store breaks in the range
+    vulnerabilityLayer.range = calculateClassBreaks(minValue, maxValue, 5); // 5 is default numClasses
+  };
   const fetchCountrywideData = async () => {
     try {
       const promises: Promise<any>[] = [];
@@ -285,11 +332,6 @@ const useMapStore = defineStore("map", () => {
     visible: ref(true),
     color: "#057dcd",
   };
-  const vulnerabilityLayer: VectorLayer = {
-    name: LayerName.VULNERABILITY,
-    visible: ref(true),
-    range: [500, 1000, 1500, 2000],
-  };
   const shelterLayers: Record<string, VectorLayer> = {
     shelterLayer: {
       name: LayerName.SHELTER,
@@ -353,7 +395,6 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   };
-  // Shelter Layer Settings
   // points
   const getMarkerOptions = (color: string, radius = 5) => {
     return {
@@ -404,6 +445,8 @@ const useMapStore = defineStore("map", () => {
     healthSiteLayers,
     waterSourceLayers,
     energySupplyLayers,
+    selectedVulnerableProperty,
+    initializeVulnerabilityLayer,
     setCity,
     fetchCountrywideData,
     fetchGeoData,
@@ -414,6 +457,7 @@ const useMapStore = defineStore("map", () => {
     highlightPoint,
     resetHighlight,
     boundaryStyle,
+    getVulnerabilityColor,
   };
 });
 export default useMapStore;

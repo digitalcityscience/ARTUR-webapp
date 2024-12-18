@@ -9,10 +9,10 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
-import { ref } from "vue";
+import { ref, watch, computed, onBeforeMount } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
-import { getVulnerabilityColor, getVulnerabilityRadius } from "@/assets/ts/functions";
+import { getVulnerabilityRadius } from "@/assets/ts/functions";
 import OverlayControl from "./controls/OverlayControl.vue";
 import SidebarControl from "@/components/controls/SidebarControl.vue";
 
@@ -44,18 +44,40 @@ const boundaryStyle = () => {
     color: mapStore.boundaryLayer.color,
   };
 };
-mapStore.fetchCountrywideData();
+const vulDataReady = ref(false);
+onBeforeMount(async () => {
+  await mapStore.fetchCountrywideData();
+  vulDataReady.value = true; // Set vulDataReady after fetching
+});
+// Watch for data readiness to initialize the vulnerability layer
+watch(
+  () => vulDataReady.value,
+  (ready) => {
+    if (ready) {
+      mapStore.initializeVulnerabilityLayer();
+    }
+  },
+);
+watch(
+  () => mapStore.selectedVulnerableProperty,
+  () => {
+    if (vulDataReady.value) {
+      mapStore.initializeVulnerabilityLayer();
+    }
+  },
+);
 
-const isReady = ref(false);
+const vulnerabilityKey = computed(() => mapStore.selectedVulnerableProperty);
+const mapIsReady = ref(false);
 const onReady = () => {
   mapStore.map = map.value.leafletObject;
-  isReady.value = true;
+  mapIsReady.value = true;
 };
 </script>
 
 <template>
   <!-- Map Shadow Overlay -->
-  <div v-if="mapStore.isSilent" class="map-overlay"></div>
+  <div v-if="mapStore.isSilent" class="shadow-fullscreen"></div>
   <l-map
     ref="map"
     :use-global-leaflet="false"
@@ -74,33 +96,38 @@ const onReady = () => {
       ></l-tile-layer>
     </template>
     <l-feature-group
+      :key="vulnerabilityKey"
       name="Cities' Vulnerability"
       layer-type="overlay"
-      v-if="mapStore.geojsonData.vulnerabilityPoint"
+      v-if="vulDataReady"
     >
       <l-circle-marker
         pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.vulnerabilityPoint!.features"
-        :key="`${index}-${feature.properties.name}`"
-        :name="feature.properties.city"
+        :key="`${index}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
           mapStore.getMarkerOptions(
-            getVulnerabilityColor(feature.properties.alarm_hours_2024),
-            getVulnerabilityRadius(feature.properties.population_),
+            mapStore.getVulnerabilityColor(
+              feature.properties[mapStore.selectedVulnerableProperty],mapStore.vulnerabilityLayer.range as number[]
+            ),
+            getVulnerabilityRadius(feature.properties.population_2022),
           )
         "
         layer-type="overlay"
         ><l-tooltip
           ><span
-            >Total Alarm Hours in 2024: {{ feature.properties.alarm_hours_2024 }}</span
-          ><br /><span>Population: {{ feature.properties.population_ }}</span></l-tooltip
+            >{{ mapStore.selectedVulnerableProperty }}:
+            {{ feature.properties[mapStore.selectedVulnerableProperty] }}</span
+          ><br /><span
+            >Population: {{ feature.properties.population_2022 }}</span
+          ></l-tooltip
         ><l-popup>
           <div style="max-height: 200px" class="overflow-auto">
             <h5 class="text-center mb-2">{{ feature.properties.name }}</h5>
             <table class="table table-bordered table-striped table-sm mb-0">
               <tbody>
-                <tr v-for="(value, key) in feature.properties" :key="key">
+                <tr v-for="(value, key) in feature.properties" :key="`${key} - ${value}`">
                   <th scope="row" class="text-capitalize">
                     {{ key }}
                   </th>
@@ -121,12 +148,12 @@ const onReady = () => {
     ></l-geo-json>
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
-    <overlay-control v-if="isReady"></overlay-control>
-    <sidebar-control v-if="isReady"></sidebar-control>
+    <overlay-control v-if="vulDataReady && mapIsReady"></overlay-control>
+    <sidebar-control v-if="vulDataReady && mapIsReady"></sidebar-control>
   </l-map>
 </template>
 <style scoped>
-.map-overlay {
+.shadow-fullscreen {
   position: absolute;
   top: 0;
   left: 0;

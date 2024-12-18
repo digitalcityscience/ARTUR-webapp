@@ -27,24 +27,37 @@ router.get("/country-boundary", async (req, res) => {
 });
 router.get("/vulnerability", async (req, res) => {
   try {
-    // Get all column names excluding the 'wkb_geometry' column
+    // Step 1: Get all column names excluding 'wkb_geometry' and the specific column to alias
     const { rows: columns } = await pool.query(
-      `SELECT column_name
+      `SELECT column_name, data_type
        FROM information_schema.columns
-       WHERE table_name = 'vulnerability_index_city' AND column_name != 'wkb_geometry' 
-       AND column_name != 'duration of alarms, hours in 2024'`,
+       WHERE table_name = 'vulnerability_index_city'
+       AND column_name NOT IN ('wkb_geometry', 'fid','ogc_fid')`,
     );
-
-    // Build the SELECT query dynamically
-    const columnNames = columns
-      .map((row) => `"${row.column_name}"`) // Quote each column name to avoid error
+    // Filter numeric columns (data_type could be 'integer', 'numeric', 'double precision', etc.)
+    const numericColumns = columns.filter((col) =>
+      ["integer", "numeric", "double precision", "real", "bigint", "smallint"].includes(
+        col.data_type,
+      ),
+    );
+    // Step 2: Query to get min and max for each numeric column
+    const minMaxQueries = numericColumns
+      .map(
+        (col) =>
+          `MIN("${col.column_name}") "${col.column_name}_min", ` +
+          `MAX("${col.column_name}") "${col.column_name}_max"`,
+      )
       .join(", ");
+    const minMaxQuery = `SELECT ${minMaxQueries} FROM vulnerability_index_city`;
+    const { rows: minMaxResults } = await pool.query(minMaxQuery);
+    const minMaxValues = minMaxResults[0];
+    // Step 3: Dynamically build the SELECT query for features
+    const columnNames = columns.map((row) => `"${row.column_name}"`).join(", ");
     const query = `
-      SELECT "duration of alarms, hours in 2024" alarm_hours_2024, ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry
-      FROM vulnerability_index_city
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry FROM vulnerability_index_city
     `;
     const { rows } = await pool.query(query);
-
+    // Step 4: Map the results to GeoJSON features
     const features = rows.map((row) => {
       const { geometry, ...properties } = row;
       return {
@@ -53,8 +66,19 @@ router.get("/vulnerability", async (req, res) => {
         geometry: JSON.parse(geometry),
       };
     });
-
-    res.json({ type: "FeatureCollection", features });
+    // Step 5: Create a global properties object with min/max for numeric columns
+    const globalProperties = numericColumns.reduce((acc, col) => {
+      const minKey = `${col.column_name}_min`;
+      const maxKey = `${col.column_name}_max`;
+      acc[col.column_name] = [minMaxValues[minKey], minMaxValues[maxKey]];
+      return acc;
+    }, {});
+    // Step 6: Return the FeatureCollection with global properties
+    res.json({
+      type: "FeatureCollection",
+      properties: globalProperties,
+      features,
+    });
   } catch (err) {
     res.status(500).send("" + err);
   }

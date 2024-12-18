@@ -3,7 +3,7 @@ import { LControl } from "@vue-leaflet/vue-leaflet";
 import useEchartsStore from "@/stores/chartStore";
 import * as echarts from "echarts";
 import { ref, computed, watch, onMounted } from "vue";
-import { getIsochroneColor, getVulnerabilityColor } from "@/assets/ts/functions";
+import { getIsochroneColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
@@ -42,10 +42,20 @@ onMounted(() => {
     </button>
     <div class="legend" v-show="showLegend">
       <div v-show="mapStore.vulnerabilityLayer.visible">
-        <template v-for="range in mapStore.vulnerabilityLayer.range" :key="range">
-          <i class="point" :style="{ background: getVulnerabilityColor(range) }"></i>
-          {{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}:
-          {{ $t("legend.vulnerability.alarm") }} <= {{ range }}<br />
+        <template
+          v-for="range in mapStore.vulnerabilityLayer.range?.slice(1)"
+          :key="range"
+        >
+          <i
+            class="point"
+            :style="{
+              background: mapStore.getVulnerabilityColor(
+                range,
+                mapStore.vulnerabilityLayer.range as number[],
+              ),
+            }"
+          ></i>
+          {{ mapStore.selectedVulnerableProperty }} <= {{ range }}<br />
         </template>
         {{ $t("legend.vulnerability.size") }}
       </div>

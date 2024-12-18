@@ -45,20 +45,6 @@ export function getPopulationColor(value: number, accessibility: number): string
     }
 }
 
-export function getVulnerabilityColor(hours: number): string {
-  switch (true) {
-    case hours <= 500:
-      return "#ffbb00"; // Yellow
-    case hours <= 1000:
-      return "#ff7700"; // Orange
-    case hours <= 1500:
-      return "#ff4400"; // Red-orange
-    case hours > 1500:
-      return "#ff0000"; // Red
-    default:
-      return "#ffffff"; // Fallback color (white) if something goes wrong
-  }
-}
 export function getVulnerabilityRadius(population: number) {
   const minRadius = 3; // Minimum point size
   const maxRadius = 25; // Maximum point size
