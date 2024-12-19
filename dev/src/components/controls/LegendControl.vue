@@ -55,7 +55,8 @@ onMounted(() => {
               ),
             }"
           ></i>
-          {{ mapStore.selectedVulnerableProperty }} <= {{ range }}<br />
+          {{ $t("vulnerabilityProperties." + mapStore.selectedVulnerableProperty) }} <=
+          {{ range }}<br />
         </template>
         {{ $t("legend.vulnerability.size") }}
       </div>

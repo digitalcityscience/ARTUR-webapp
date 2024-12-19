@@ -50,7 +50,7 @@ const downloadFirstDashboard = () => {
         <div class="modal-header p-2">
           <h5 class="modal-title">
             {{ $t("sidebar.analysisDashboard.challenge") }}
-            {{ sidebarStore.selectedTopic }}
+            {{ $t("sidebar.topics." + sidebarStore.selectedTopic) }}
           </h5>
           <language-switcher class="ms-4"></language-switcher>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

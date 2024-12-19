@@ -115,7 +115,7 @@ const handleCityChange = (e: Event) => {
             :value="topic.value"
             :disabled="topic.disabled"
           >
-            {{ $t("topics." + topic.value) }}
+            {{ $t("sidebar.topics." + topic.value) }}
           </option>
         </select>
       </div>
@@ -144,7 +144,7 @@ const handleCityChange = (e: Event) => {
             <th scope="row">
               {{ $t("sidebar.settingsPanel.step3.tableHeaders.challenge") }}
             </th>
-            <td>{{ $t("topics." + sidebarStore.selectedTopic) }}</td>
+            <td>{{ $t("sidebar.topics." + sidebarStore.selectedTopic) }}</td>
           </tr>
           <tr>
             <th scope="row">

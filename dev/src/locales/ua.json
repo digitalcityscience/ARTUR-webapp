@@ -1,4 +1,5 @@
 {
+  "website": { "subtitle": "Перевірка стійкості", "searchBar": "Адреса пошуку......" },
   "cityNames": {
     "zhytomyr": "Житомир",
     "kryvyiRih": "Кривий Ріг",
@@ -34,14 +35,6 @@
   "summary": {
     "water": "Водопостачання стикається з численними викликами, які впливають на збір, розподіл та санітарні заходи. У наступних діаграмах пояснюються конкретні типи загроз.",
     "energy": "Енергопостачання стикається з різними викликами, включаючи перебої в постачанні та попиті."
-  },
-  "topics": {
-    "water": "Вода",
-    "energy": "Енергія",
-    "evacuation": "Евакуація",
-    "heating": "Опалення",
-    "ecology": "Екологія",
-    "physicalSafety": "Фізична безпека"
   },
   "populationChartText": {
     "shelterAccess": "Доступно за 5 хв",
@@ -154,6 +147,14 @@
       "back": " Назад",
       "next": " Далі",
       "goToLayerControl": " Перейти до контролю шарів"
+    },
+    "topics": {
+      "water": "Вода",
+      "energy": "Енергія",
+      "evacuation": "Евакуація",
+      "heating": "Опалення",
+      "ecology": "Екологія",
+      "physicalSafety": "Фізична безпека"
     }
   },
   "indicatorChart": {
@@ -380,5 +381,30 @@
       "Flexiblity": "Гнучкість"
     }
   },
-  "website": { "subtitle": "Перевірка стійкості", "searchBar": "Адреса пошуку......" }
+  "vulnerabilityProperties": {
+    "region": "регіон",
+    "district of region": "район регіону",
+    "hromada (territorial community)_1": "громада (територіальна громада)_1",
+    "city": "місто",
+    "city status (administrative center of the region, city of regio": "статус міста (адміністративний центр регіону, місто регіону)",
+    "city_area": "площа міста, кв. км",
+    "males, %": "чоловіки, %",
+    "females, %": "жінки, %",
+    "0_17 age, %": "0-17 років, %",
+    "18_44 age, %": "18-44 роки, %",
+    "45_60 age, %": "45-60 років, %",
+    "61_64 age, %": "61-64 роки, %",
+    "65+ age,  %": "65+ років,  %",
+    "median monthly income per person, uah": "медіанний щомісячний дохід на особу, грн",
+    "is the city was under occupation?": "чи було місто під окупацією?",
+    "active hostilities / occupied territory": "активні бойові дії / окупована територія",
+    "number of alarms in the region in 2024": "кількість тривог у регіоні у 2024 році",
+    "duration of alarms, hours in 2024": "тривалість тривог, години у 2024 році",
+    "number of alarms in the region in 2024 / per day": "кількість тривог у регіоні у 2024 році / на день",
+    "num_idps_oblast": "Кількість ВПО в області",
+    "population_2022": "Населення міста (перепис 2022 року)",
+    "number of idps_1": "Кількість ВПО на рівні міста",
+    "working_age individuals unemployment rate, %": "Рівень безробіття серед осіб працездатного віку в місті",
+    "distance from the border with rf / rb / front line": "Відстань від міста до зони конфлікту або під контролем ворога"
+  }
 }

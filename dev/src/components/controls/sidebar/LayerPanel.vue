@@ -125,7 +125,7 @@ function logKey(key: any, index: number) {
                         :key="key"
                         :value="key"
                       >
-                        {{ $t(`${key}`) }}
+                        {{ $t("vulnerabilityProperties." + key) }}
                         <!-- {{ $t("propertyNames." + key) }} -->
                       </option>
                     </select>

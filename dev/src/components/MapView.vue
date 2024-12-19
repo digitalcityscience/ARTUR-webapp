@@ -116,20 +116,20 @@ const onReady = () => {
         "
         layer-type="overlay"
         ><l-tooltip
-          ><span
-            >{{ mapStore.selectedVulnerableProperty }}:
+          ><span>
+            {{ $t("vulnerabilityProperties." + mapStore.selectedVulnerableProperty) }} :
             {{ feature.properties[mapStore.selectedVulnerableProperty] }}</span
           ><br /><span
-            >Population: {{ feature.properties.population_2022 }}</span
+            >{{ $t("vulnerabilityProperties.population_2022") }}:
+            {{ feature.properties.population_2022 }}</span
           ></l-tooltip
         ><l-popup>
           <div style="max-height: 200px" class="overflow-auto">
-            <h5 class="text-center mb-2">{{ feature.properties.name }}</h5>
             <table class="table table-bordered table-striped table-sm mb-0">
               <tbody>
                 <tr v-for="(value, key) in feature.properties" :key="`${key} - ${value}`">
-                  <th scope="row" class="text-capitalize">
-                    {{ key }}
+                  <th scope="row">
+                    {{ $t("vulnerabilityProperties." + key) }}
                   </th>
                   <td>{{ value }}</td>
                 </tr>

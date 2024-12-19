@@ -1,4 +1,5 @@
 {
+  "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" },
   "cityNames": {
     "zhytomyr": "Zhytomyr",
     "kryvyiRih": "Kryvyi Rih",
@@ -34,14 +35,6 @@
   "summary": {
     "water": "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
     "energy": "Energy provision is challenged by various factors, including supply and demand disruptions."
-  },
-  "topics": {
-    "water": "Water",
-    "energy": "Energy",
-    "evacuation": "Evacuation",
-    "heating": "Heating",
-    "ecology": "Ecology",
-    "physicalSafety": "Physical Safety"
   },
   "populationChartText": {
     "shelterAccess": "Accessible in 5 min",
@@ -154,6 +147,14 @@
       "back": " Back",
       "next": " Next",
       "goToLayerControl": " Go to Layer Control"
+    },
+    "topics": {
+      "water": "Water",
+      "energy": "Energy",
+      "evacuation": "Evacuation",
+      "heating": "Heating",
+      "ecology": "Ecology",
+      "physicalSafety": "Physical Safety"
     }
   },
   "indicatorChart": {
@@ -380,5 +381,30 @@
       "Flexiblity": "Flexiblity"
     }
   },
-  "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" }
+  "vulnerabilityProperties": {
+    "region": "region",
+    "district of region": "district of region",
+    "hromada (territorial community)_1": "hromada (territorial community)_1",
+    "city": "city",
+    "city status (administrative center of the region, city of regio": "city status (administrative center of the region, city of regio",
+    "city_area": "city area, sq. km",
+    "males, %": "males, %",
+    "females, %": "females, %",
+    "0_17 age, %": "0_17 age, %",
+    "18_44 age, %": "18_44 age, %",
+    "45_60 age, %": "45_60 age, %",
+    "61_64 age, %": "61_64 age, %",
+    "65+ age,  %": "65+ age,  %",
+    "median monthly income per person, uah": "median monthly income per person, uah",
+    "is the city was under occupation?": "is the city was under occupation?",
+    "active hostilities / occupied territory": "active hostilities / occupied territory",
+    "number of alarms in the region in 2024": "number of alarms in the region in 2024",
+    "duration of alarms, hours in 2024": "duration of alarms, hours in 2024",
+    "number of alarms in the region in 2024 / per day": "number of alarms in the region in 2024 / per day",
+    "num_idps_oblast": "Number of IDPs in the Oblast",
+    "population_2022": "Population in city (census 2022)",
+    "number of idps_1": "Number of IDPs at the city level",
+    "working_age individuals unemployment rate, %": "Unemployment of the working-age population in the city",
+    "distance from the border with rf / rb / front line": "Distance from city to conflict zone or under enemy control"
+  }
 }
