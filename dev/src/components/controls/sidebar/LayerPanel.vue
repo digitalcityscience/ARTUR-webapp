@@ -100,38 +100,37 @@ function logKey(key: any, index: number) {
                     </label>
                   </li>
                   <li class="mb-1 form-check">
-                    <div class="mb-1">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        :id="mapStore.vulnerabilityLayer.name"
-                        :name="mapStore.vulnerabilityLayer.name"
-                        v-model="mapStore.vulnerabilityLayer.visible"
-                      />
-                      <label
-                        class="form-check-label"
-                        :for="mapStore.vulnerabilityLayer.name"
-                        >{{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}</label
-                      >
-                    </div>
-                    <select
-                      id="vulnerable-property-select"
-                      class="form-select"
-                      v-model="mapStore.selectedVulnerableProperty"
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="mapStore.vulnerabilityLayer.name"
+                      :name="mapStore.vulnerabilityLayer.name"
+                      v-model="mapStore.vulnerabilityLayer.visible"
+                    />
+                    <label
+                      class="form-check-label"
+                      :for="mapStore.vulnerabilityLayer.name"
+                      >{{ $t("layerNames." + mapStore.vulnerabilityLayer.name) }}</label
                     >
-                      <option
-                        v-for="(value, key) in mapStore.geojsonData.vulnerabilityPoint
-                          .properties"
-                        :key="key"
-                        :value="key"
+                    <div class="form-floating mt-1">
+                      <label for="vulnerable-property-select">
+                        {{ $t("vulnerability.selectLabel") }}
+                      </label>
+                      <select
+                        id="vulnerable-property-select"
+                        class="form-select form-select-sm rounded"
+                        v-model="mapStore.selectedVulnerableProperty"
                       >
-                        {{ $t("vulnerabilityProperties." + key) }}
-                        <!-- {{ $t("propertyNames." + key) }} -->
-                      </option>
-                    </select>
-                    <!-- <label for="vulnerable-property-select" class="form-label">
-                      {{ $t("Select Property") }}
-                    </label> -->
+                        <option
+                          v-for="(value, key) in mapStore.geojsonData.vulnerabilityPoint
+                            .properties"
+                          :key="key"
+                          :value="key"
+                        >
+                          {{ $t("vulnerability.properties." + key) }}
+                        </option>
+                      </select>
+                    </div>
                   </li>
                   <!-- layer sets -->
                   <li class="mb-1">
@@ -367,3 +366,10 @@ function logKey(key: any, index: number) {
     </div>
   </div>
 </template>
+<style scoped>
+.form-floating label {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0.375rem 0 0 0.375rem;
+}
+</style>
