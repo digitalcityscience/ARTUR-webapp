@@ -22,28 +22,6 @@
     "energySupply": "Energy Plant (fake)",
     "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network"
   },
-  "graphTypes": {
-    "sankey": "Sankey Graph",
-    "sunburst": "Sunburst Graph"
-  },
-  "healthSiteIsochroneType": {
-    "auto": "Car",
-    "bus": "Bus",
-    "bicycle": "Bicycle",
-    "pedestrian": "Pedestrian"
-  },
-  "summary": {
-    "water": "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
-    "energy": "Energy provision is challenged by various factors, including supply and demand disruptions."
-  },
-  "populationChartText": {
-    "shelterAccess": "Accessible in 5 min",
-    "shelterInaccess": "Inaccessible in 5 min",
-    "healthSiteAccess": "Accessible in 10 min",
-    "healthSiteInaccess": "Inaccessible in 10 min",
-    "waterSourceAccess": "In Catchment Area",
-    "waterSourceInaccess": "Out of Catchment Area"
-  },
   "legend": {
     "title": "Legend",
     "isochrone": {
@@ -102,6 +80,21 @@
         "shelterPopulationInfo": "Shelter Access Population Information",
         "healthSitePopulationInfo": "Health Site Access Population Information",
         "waterSourcePopulation": "Water Source Catchment Area Population"
+      },
+      "healthSiteIsochroneType": {
+        "label": "select isochrone type",
+        "auto": "Car",
+        "bus": "Bus",
+        "bicycle": "Bicycle",
+        "pedestrian": "Pedestrian"
+      },
+      "populationChartText": {
+        "shelterAccess": "Accessible in 5 min",
+        "shelterInaccess": "Inaccessible in 5 min",
+        "healthSiteAccess": "Accessible in 10 min",
+        "healthSiteInaccess": "Inaccessible in 10 min",
+        "waterSourceAccess": "In Catchment Area",
+        "waterSourceInaccess": "Out of Catchment Area"
       }
     },
     "settingsPanel": {
@@ -124,6 +117,10 @@
           "city": "City:",
           "challenge": "Challenge:",
           "summary": "Summary:"
+        },
+        "summary": {
+          "water": "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
+          "energy": "Energy provision is challenged by various factors, including supply and demand disruptions."
         }
       }
     },
@@ -167,6 +164,10 @@
       "resolution": "Resolution (Pixel Ratio):",
       "color": "Background Color:",
       "format": "Image Format:"
+    },
+    "graphTypes": {
+      "sankey": "Sankey Graph",
+      "sunburst": "Sunburst Graph"
     }
   },
   "echarts": {
@@ -273,7 +274,7 @@
         "9": "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
         "10": "Urban development to promote resilience",
         "11": "Building codes or standards address hazards and risks",
-        "12": "Enforcement and verification of zoning bulding zoning and regulations",
+        "12": "Enforcement and verification of zoning building zoning and regulations",
         "13": "FAIR Data sharing to enhance resilience",
         "14": "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
         "15": "Proactive corruption prevention",
@@ -287,7 +288,7 @@
       "3": {
         "name": "Planning for risk and disaster",
         "1": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-        "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+        "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
         "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
         "4": "Early warning system and reaching level",
         "5": "Comprehensive government emergency management",
@@ -378,7 +379,7 @@
       "Resourcefulness": "Resourcefulness",
       "Inclusiveness": "Inclusiveness",
       "Reflectiveness": "Reflectiveness",
-      "Flexiblity": "Flexiblity"
+      "Flexiblity": "Flexibility"
     }
   },
   "vulnerability": {

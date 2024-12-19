@@ -22,9 +22,6 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 const changeIsochroneType = () => {
   mapStore.setIsochroneType(selectedIsochroneType.value);
 };
-function logKey(key: any, index: number) {
-  console.log(`Key: ${key}, Index: ${index}`);
-}
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="layer">
@@ -192,26 +189,35 @@ function logKey(key: any, index: number) {
                         <!-- Isochrone switcher for healthSiteIsochroneLayer -->
                         <div
                           v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
-                          class="mt-2"
+                          class="form-floating mt-1"
                         >
+                          <label for="isochroneType">{{
+                            $t("sidebar.layerPanel.healthSiteIsochroneType.label")
+                          }}</label>
                           <select
                             v-model="selectedIsochroneType"
                             @change="changeIsochroneType"
-                            class="form-select"
+                            class="form-select form-select-sm rounded"
                             id="isochroneType"
                             aria-label="Isochrone Type Select"
                           >
                             <option value="auto">
-                              {{ $t("healthSiteIsochroneType.auto") }}
+                              {{ $t("sidebar.layerPanel.healthSiteIsochroneType.auto") }}
                             </option>
                             <option value="bus">
-                              {{ $t("healthSiteIsochroneType.bus") }}
+                              {{ $t("sidebar.layerPanel.healthSiteIsochroneType.bus") }}
                             </option>
                             <option value="bicycle">
-                              {{ $t("healthSiteIsochroneType.bicycle") }}
+                              {{
+                                $t("sidebar.layerPanel.healthSiteIsochroneType.bicycle")
+                              }}
                             </option>
                             <option value="pedestrian">
-                              {{ $t("healthSiteIsochroneType.pedestrian") }}
+                              {{
+                                $t(
+                                  "sidebar.layerPanel.healthSiteIsochroneType.pedestrian",
+                                )
+                              }}
                             </option>
                           </select>
                         </div>

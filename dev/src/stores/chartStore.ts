@@ -801,7 +801,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: "Enforcement and verification of zoning bulding zoning and regulations",
+                name: "Enforcement and verification of zoning building zoning and regulations",
                 itemStyle: { opacity: 0.6 },
                 children: [
                   {
@@ -906,7 +906,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+                name: "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
                 children: [
                   {
                     value: 7,
@@ -2205,7 +2205,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           depth: SANKEYLEVELS.LEVEL2,
         },
         {
-          name: "Enforcement and verification of zoning bulding zoning and regulations",
+          name: "Enforcement and verification of zoning building zoning and regulations",
           itemStyle: { color: "#EE6666" },
           depth: SANKEYLEVELS.LEVEL2,
         },
@@ -2245,7 +2245,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
           depth: SANKEYLEVELS.LEVEL2,
         },
         {
-          name: "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+          name: "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
           itemStyle: { color: "#EE6666" },
           depth: SANKEYLEVELS.LEVEL2,
         },
@@ -3208,11 +3208,13 @@ const useEchartsStore = defineStore("echarts-options", () => {
         },
         {
           source: "Institutional",
-          target: "Enforcement and verification of zoning bulding zoning and regulations",
+          target:
+            "Enforcement and verification of zoning building zoning and regulations",
           value: 1,
         },
         {
-          source: "Enforcement and verification of zoning bulding zoning and regulations",
+          source:
+            "Enforcement and verification of zoning building zoning and regulations",
           target: "Robustness",
           value: 1,
         },
@@ -3311,18 +3313,18 @@ const useEchartsStore = defineStore("echarts-options", () => {
         {
           source: "Institutional",
           target:
-            "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+            "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
           value: 1,
         },
         {
           source:
-            "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+            "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
           target: "Robustness",
           value: 0.5,
         },
         {
           source:
-            "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+            "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
           target: "Reflective",
           value: 0.5,
         },

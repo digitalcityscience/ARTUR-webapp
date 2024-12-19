@@ -196,7 +196,7 @@ onMounted(() => {
         <button class="btn btn-warning" @click="switchGraphType">
           <i class="bi bi-arrow-repeat">
             {{ $t("indicatorChart.buttons.switch") }}
-            {{ $t("graphTypes." + switchGraph) }}</i
+            {{ $t("indicatorChart.graphTypes." + switchGraph) }}</i
           >
         </button>
       </div>

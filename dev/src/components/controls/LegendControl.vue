@@ -109,7 +109,11 @@ onMounted(() => {
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
           >{{ $t("legend.isochrone.healthSite")
-          }}{{ $t("healthSiteIsochroneType." + mapStore.getIsochroneType()) }}
+          }}{{
+            $t(
+              "sidebar.layerPanel.healthSiteIsochroneType." + mapStore.getIsochroneType(),
+            )
+          }}
           {{ range }} {{ $t("legend.minute") }}<br />
         </template>
       </div>

@@ -150,7 +150,7 @@ const handleCityChange = (e: Event) => {
             <th scope="row">
               {{ $t("sidebar.settingsPanel.step3.tableHeaders.summary") }}
             </th>
-            <td>{{ $t("summary." + topic) }}</td>
+            <td>{{ $t("sidebar.settingsPanel.step3.summary." + topic) }}</td>
           </tr>
         </tbody>
       </table>
