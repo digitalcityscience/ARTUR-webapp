@@ -62,8 +62,10 @@ const analyzeResults = () => {};
             :key="indicator.key"
           >
             <div
-              class="rounded border ps-2 pe-0 py-1 clearfix"
+              class="rounded border ps-2 py-1 m-0 clearfix"
               :style="{ backgroundColor: indicatorColor(indicator.value) }"
+              data-bs-toggle="modal"
+              data-bs-target="#questionnaire"
             >
               {{ indicator.key }}
               <button
@@ -96,11 +98,31 @@ const analyzeResults = () => {};
       </li>
     </ul>
   </div>
+  <!-- Questionnaire Modal -->
+  <div class="modal fade" id="questionnaire" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="questionnaire-title">
+            {{ $t("sidebar.dashboardPanel.questionnaire.title") }}
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.close") }}
+          </button>
+          <button type="button" class="btn btn-primary">
+            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.save") }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-<style scoped>
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>

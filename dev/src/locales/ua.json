@@ -47,7 +47,11 @@
       "header": "Панель керування",
       "indicator": "Виберіть індикатори",
       "result": "Результати",
-      "button": { "select": "Вибрати", "run": "Запустити" }
+      "button": { "select": "Вибрати", "run": "Запустити" },
+      "questionnaire": {
+        "title": "Опитувальник",
+        "buttons": { "save": "Відправити", "close": "Закрити" }
+      }
     },
     "infoPanel": {
       "header": "Інформація",

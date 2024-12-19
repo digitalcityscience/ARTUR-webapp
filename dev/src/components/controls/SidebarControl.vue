@@ -11,10 +11,13 @@ import LayerPanel from "./sidebar/LayerPanel.vue";
 import KnowledgePanel from "./sidebar/KnowledgePanel.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
+import useIndicatorStore from "@/stores/indicatorStore";
 
 const mapStore = useMapStore();
 const sidebarStore = useSidebarStore();
+const indicatorStore = useIndicatorStore();
 onMounted(() => {
+  indicatorStore.initializeSelectedIndicator();
   sidebarStore.sidebar = L.control
     .sidebar({
       container: "rightsidebar",
@@ -47,7 +50,7 @@ onMounted(() => {
   </div>
 </template>
 <style scoped>
-.leaflet-sidebar:not(.collapsed) {
+::v-deep(.leaflet-sidebar:not(.collapsed)) {
   width: 27rem;
 }
 @media (min-width: 1200px) {

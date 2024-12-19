@@ -47,7 +47,11 @@
       "header": "Dashboard",
       "indicator": "Select Indicators",
       "result": "Results",
-      "button": { "select": "Select", "run": "Run" }
+      "button": { "select": "Select", "run": "Run" },
+      "questionnaire": {
+        "title": "Questionnaire",
+        "buttons": { "save": "Save Changes", "close": "Close" }
+      }
     },
     "infoPanel": {
       "header": "Information",
