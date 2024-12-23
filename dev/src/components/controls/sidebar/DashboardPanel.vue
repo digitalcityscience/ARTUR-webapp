@@ -1,26 +1,32 @@
 <script lang="ts" setup>
+import { ref, watch, reactive, computed } from "vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
-import { LocalStorageEvent } from "@/assets/ts/constants";
 import useEchartsStore from "@/stores/chartStore";
+import { useI18n } from "vue-i18n";
+import { LocalStorageEvent } from "@/assets/ts/constants";
 
 const indicatorStore = useIndicatorStore();
 const echartsStore = useEchartsStore();
+const { t, messages, locale } = useI18n();
+const translations = computed(() => messages.value[locale.value].initialIndicators);
+const showedIndicator = ref("");
+
 // Open the Indicator Selection Window
 const openIndicatorSelection = (): void => {
-  let mainWinWidth = window.innerWidth;
-  let mainWinHeight = window.innerHeight;
-  let newWinWidth = 1000;
-  let newWinHeight = 1000;
-  let leftOffset = (mainWinWidth - newWinWidth) / 2;
-  let topOffset = (mainWinHeight - newWinHeight) / 2;
+  const mainWinWidth = window.innerWidth;
+  const mainWinHeight = window.innerHeight;
+  const newWinWidth = 1000;
+  const newWinHeight = 1000;
+  const leftOffset = (mainWinWidth - newWinWidth) / 2;
+  const topOffset = (mainWinHeight - newWinHeight) / 2;
   window.open(
     "/indicator-selection-popup.html",
     "",
     `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
   );
 };
-// Delete the selected indicator and save the delted indicator name in Local Storage
+// Delete the selected indicator and save the deleted indicator name in Local Storage
 function deleteSelection(indicator: string) {
   indicatorStore.deleteIndicator(indicator);
   localStorage.setItem(LocalStorageEvent.DELETE, JSON.stringify(indicator));
@@ -31,9 +37,77 @@ function indicatorColor(color: string): string {
     return echartsStore.sunburstColorConvertion[color];
   return color;
 }
+
+function indicatorNameToKey(name: string): string | null {
+  const findKeyRecursively = (obj: any, text: string): any => {
+    for (const key in obj) {
+      if (typeof obj[key] === "object") {
+        const result = findKeyRecursively(obj[key], text);
+        if (result) return `${key}.${result}`; // For nested translations, concatenate the keys
+      } else if (obj[key] === text) {
+        return key;
+      }
+    }
+    return null; // Return null if no match is found
+  };
+  // Find the full key
+  const fullKey = findKeyRecursively(translations.value, name);
+  // Remove .name.loc.source from the end of the key
+  if (fullKey) {
+    return fullKey.replace(/\.name\.loc\.source$/, "");
+  }
+  return null;
+}
+const questionNumber = ref<number[]>([]);
+const questionKey = ref<string>("");
+// Handle indicator selection
+function indicatorClick(indicator: string) {
+  showedIndicator.value = indicator;
+  const indicatorKey = indicatorNameToKey(indicator);
+  questionKey.value = `${indicatorKey}.questions.`;
+  const questionKeys = indicatorKey!.split(".");
+  const length = Object.keys(
+    translations.value[questionKeys[0]][questionKeys[1]][questionKeys[2]].questions,
+  ).length;
+  questionNumber.value = Array.from({ length: length }, (_, i) => i + 1);
+}
+interface Answer {
+  questions: { [key: number]: number | null };
+}
+// Answers object to store scores for questionsconst answers = reactive({
+const answers = reactive<{ [indicator: string]: Answer }>({});
+watch(
+  showedIndicator,
+  (newIndicator) => {
+    if (!answers[newIndicator]) {
+      // Initialize the questions object for this indicator
+      answers[newIndicator] = { questions: {} };
+      // Set default for all questions
+      for (let i = 1; i <= questionNumber.value.length; i++) {
+        answers[newIndicator].questions[i] = null; // Default score
+      }
+      if (answers[""]) delete answers[""];
+    }
+  },
+  { immediate: true },
+);
+// submit and check the answers
+const submitResults = () => {
+  const unansweredQuestions = Object.values(
+    answers[showedIndicator.value].questions,
+  ).includes(null);
+  if (unansweredQuestions) {
+    // Show an alert or a warning to the user
+    alert(t("sidebar.dashboardPanel.questionnaire.warning"));
+    return;
+  }
+  // Placeholder for analysis logic
+  console.log("Answers:", JSON.stringify(answers, null, 2));
+};
 // The Analysis
 const analyzeResults = () => {};
 </script>
+
 <template>
   <div class="leaflet-sidebar-pane" id="dashboard">
     <h1 class="leaflet-sidebar-header">
@@ -44,6 +118,7 @@ const analyzeResults = () => {};
     <ul class="list-unstyled ps-0 mt-2">
       <li class="mb-1">
         <button
+          type="button"
           class="btn btn-toggle rounded collapsed ps-0"
           data-bs-toggle="collapse"
           data-bs-target="#indicator-collapse"
@@ -64,22 +139,28 @@ const analyzeResults = () => {};
             <div
               class="rounded border ps-2 py-1 m-0 clearfix"
               :style="{ backgroundColor: indicatorColor(indicator.value) }"
-              data-bs-toggle="modal"
-              data-bs-target="#questionnaire"
             >
-              {{ indicator.key }}
+              <span
+                type="button"
+                @click="indicatorClick(indicator.key)"
+                data-bs-toggle="modal"
+                data-bs-target="#questionnaire"
+              >
+                {{ indicator.key }}
+              </span>
               <button
+                type="button"
                 class="btn btn-close float-end"
                 aria-label="Close"
-                @click="deleteSelection(indicator.key)"
+                @click.stop="deleteSelection(indicator.key)"
               ></button>
             </div>
           </template>
           <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
-            <button class="btn btn-primary" @click="openIndicatorSelection">
+            <button type="button" class="btn btn-primary" @click="openIndicatorSelection">
               {{ $t("sidebar.dashboardPanel.button.select") }}
             </button>
-            <button class="btn btn-success" @click="analyzeResults">
+            <button type="button" class="btn btn-success" @click="analyzeResults">
               {{ $t("sidebar.dashboardPanel.button.run") }}
             </button>
           </div>
@@ -87,6 +168,7 @@ const analyzeResults = () => {};
       </li>
       <li class="mb-1">
         <button
+          type="button"
           class="btn btn-toggle rounded collapsed ps-0"
           data-bs-toggle="collapse"
           data-bs-target="#results-collapse"
@@ -100,11 +182,11 @@ const analyzeResults = () => {};
   </div>
   <!-- Questionnaire Modal -->
   <div class="modal fade" id="questionnaire" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="questionnaire-title">
-            {{ $t("sidebar.dashboardPanel.questionnaire.title") }}
+            {{ $t("sidebar.dashboardPanel.questionnaire.title") }}: {{ showedIndicator }}
           </h1>
           <button
             type="button"
@@ -113,13 +195,30 @@ const analyzeResults = () => {};
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">...</div>
+        <div class="modal-body">
+          <div v-for="i in questionNumber">
+            <h6>{{ i }}. {{ $t("initialIndicators." + questionKey + i + ".text") }}</h6>
+            <div class="form-check" v-for="score in [0, 1, 2, 3]" :key="score">
+              <input
+                class="form-check-input"
+                type="radio"
+                :name="'question-' + i"
+                :id="'question-' + i + '-score-' + score"
+                :value="score"
+                v-model="answers[showedIndicator].questions[i]"
+              />
+              <label class="form-check-label" :for="'question-' + i + '-score-' + score">
+                {{ $t("initialIndicators." + questionKey + i + `.score ${score}`) }}
+              </label>
+            </div>
+          </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             {{ $t("sidebar.dashboardPanel.questionnaire.buttons.close") }}
           </button>
-          <button type="button" class="btn btn-primary">
-            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.save") }}
+          <button type="button" class="btn btn-primary" @click="submitResults">
+            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.submit") }}
           </button>
         </div>
       </div>

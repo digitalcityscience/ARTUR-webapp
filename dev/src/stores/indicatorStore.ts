@@ -1,8 +1,10 @@
 import { defineStore } from "pinia";
-import { ref, watch, type Ref } from "vue";
+import { ref, watch, computed, type Ref } from "vue";
 import { LocalStorageEvent } from "@/assets/ts/constants";
+import { useI18n } from "vue-i18n";
 
 const useIndicatorStore = defineStore("selected indicators", () => {
+  const { t, locale } = useI18n();
   const selectedIndicator: Ref<Record<string, string>> = ref({});
   // Initialize BroadcastChannel
   const channel = new BroadcastChannel("indicator-channel");
@@ -42,37 +44,41 @@ const useIndicatorStore = defineStore("selected indicators", () => {
       selectedIndicator.value = JSON.parse(event.data.payload);
     }
   };
-
+  // Initialize the selectedIndicator with translated keys
+  const initialSelection: Record<string, string> = {
+    "initialIndicators.social.1.1.name": "#91CC75",
+    "initialIndicators.social.1.2.name": "#91CC75",
+    "initialIndicators.social.1.3.name": "#91CC75",
+    "initialIndicators.social.2.1.name": "#91CC75",
+    "initialIndicators.social.3.1.name": "#91CC75",
+    "initialIndicators.social.3.2.name": "#91CC75",
+    "initialIndicators.social.3.3.name": "#91CC75",
+    "initialIndicators.economic.1.1.name": "#FAC858",
+    "initialIndicators.economic.1.2.name": "#FAC858",
+    "initialIndicators.economic.2.1.name": "#FAC858",
+    "initialIndicators.institutional.1.1.name": "#EE6666",
+    "initialIndicators.institutional.2.1.name": "#EE6666",
+    "initialIndicators.institutional.3.1.name": "#EE6666",
+    "initialIndicators.institutional.3.2.name": "#EE6666",
+    "initialIndicators.institutional.3.3.name": "#EE6666",
+    "initialIndicators.physical.1.1.name": "#73C0DE",
+    "initialIndicators.physical.1.2.name": "#73C0DE",
+    "initialIndicators.physical.1.3.name": "#73C0DE",
+    "initialIndicators.physical.2.1.name": "#73C0DE",
+    "initialIndicators.physical.3.1.name": "#73C0DE",
+  };
   function initializeSelectedIndicator() {
-    /* Update Need: change the selectedIndicator.value based on the locale language setting */
-    selectedIndicator.value = {
-      "Safe & affordable housing": "#91CC75",
-      "Effective sanitation": "#91CC75",
-      "Sufficient affordable food supply": "#91CC75",
-      "Grassroots or community organizations participating in pre-event planning and post event response":
-        "#91CC75",
-      "Public education towards awareness of hazard, risk and disaster information":
-        "#91CC75",
-      "Risk and resilience training to all sectors of the city including government, business, NGOs and community":
-        "#91CC75",
-      "Awareness of equipment and supply needed + provision": "#91CC75",
-      "Businesses with a documented business continuity plan": "#FAC858",
-      "Knowledge to funding opportunities (for local economy and recovery)": "#FAC858",
-      "Financial plan and budget for resilience, including contingency funds": "#FAC858",
-      "Adequate access to quality healthcare": "#EE6666",
-      "Effective emergency response services": "#EE6666",
-      "Disaster management authority have sufficient staffing capacity": "#EE6666",
-      "Early warning system and reaching level": "#EE6666",
-      'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario':
-        "#73C0DE",
-      "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others":
-        "#73C0DE",
-      "Housing destroyed and damaged": "#73C0DE",
-      "Critical infrastructure: mapping, planning and protection strategies": "#73C0DE",
-      '% of education structures at risk of damage from "most probable" and "most severe" scenarios':
-        "#73C0DE",
-    };
+    selectedIndicator.value = Object.fromEntries(
+      Object.keys(initialSelection).map((key) => {
+        const translatedKey = t(`${key}`);
+        return [translatedKey, initialSelection[key]];
+      }),
+    );
   }
+  watch(locale, () => {
+    initializeSelectedIndicator(); // Reinitialize the indicators when the locale changes
+  });
+
   function addIndicator(name: string, color: string) {
     selectedIndicator.value[name] = color;
   }

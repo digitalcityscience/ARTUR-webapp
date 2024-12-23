@@ -50,7 +50,8 @@
       "button": { "select": "Select", "run": "Run" },
       "questionnaire": {
         "title": "Questionnaire",
-        "buttons": { "save": "Save Changes", "close": "Close" }
+        "buttons": { "submit": "Submit", "close": "Close" },
+        "warning": "Please answer all the questions!"
       }
     },
     "infoPanel": {
@@ -384,6 +385,153 @@
       "Inclusiveness": "Inclusiveness",
       "Reflectiveness": "Reflectiveness",
       "Flexiblity": "Flexibility"
+    }
+  },
+  "initialIndicators": {
+    "name": "Urban Resilience",
+    "social": {
+      "name": "SOCIAL",
+      "1": {
+        "name": "Basic necessities",
+        "1": {
+          "name": "Safe & affordable housing",
+          "questions": {}
+        },
+        "2": { "name": "Effective sanitation" },
+        "3": { "name": "Sufficient affordable food supply" }
+      },
+      "2": {
+        "name": "Community support",
+        "1": {
+          "name": "Grassroots or community organizations participating in pre-event planning and post event response"
+        }
+      },
+      "3": {
+        "name": "Planning Resilience",
+        "1": {
+          "name": "Public education towards awareness of hazard, risk and disaster information"
+        },
+        "2": {
+          "name": "Risk and resilience training to all sectors of the city including government, business, NGOs and community"
+        },
+        "3": { "name": "Awareness of equipment and supply needed + provision" }
+      }
+    },
+    "economic": {
+      "name": "ECO-\nNOMIC",
+      "1": {
+        "name": "Economic Impact",
+        "1": { "name": "Businesses with a documented business continuity plan" },
+        "2": {
+          "name": "Knowledge to funding opportunities (for local economy and recovery)"
+        }
+      },
+      "2": {
+        "name": "Planning Resilience",
+        "1": {
+          "name": "Financial plan and budget for resilience, including contingency funds"
+        }
+      }
+    },
+    "institutional": {
+      "name": "INSTI-\nTUTIONAL",
+      "1": {
+        "name": "Governance",
+        "1": {
+          "name": "Disaster management authority have sufficient staffing capacity"
+        }
+      },
+      "2": {
+        "name": "Planning for risk and disaster",
+        "1": {
+          "name": "Early warning system and reaching level"
+        }
+      },
+      "3": {
+        "name": "Public health systems",
+        "1": {
+          "name": "Adequate access to quality healthcare",
+          "questions": {
+            "1": {
+              "text": "To what extent do general healthcare services operate within capacity at all times and provide adequate and affordable healthcare to all?",
+              "score 0": "There are no mechanisms in place to ensure that general healthcare services across the city are affordable for all. Some population groups find it hard to access affordable healthcare. Staff shortages are very common within general healthcare services across the city and there are severe shortages of skilled and motivated healthcare practitioners within the city. There is no spare capacity, and no mechanisms in place to draft in additional resources, to cope with surges in demand (e.g., during an epidemic or extreme weather conditions), and there is typically a significant negative impact on the health outcomes of patients seeking treatment from healthcare services at these time.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "General healthcare services are accessible for all and there are mechanisms in place to ensure it is affordable for all. No population groups find it hard to access affordable healthcare. Staff shortages are rare within general healthcare services across the city and there are adequate resources of qualified, skilled, motivated healthcare practitioners within the city. There are mechanisms in place to ensure that the system is able to cope with surges in demand (e.g., during an epidemic or extreme weather conditions) and there is typically no significant negative impact on the health outcomes of patients seeking treatment from healthcare services at these times."
+            },
+            "2": {
+              "text": "To what extent is effective maternal care and family planning available and affordable to all?",
+              "score 0": "Maternal care, family planning education, facilities and resources are severely under-funded and are not readily available or are unaffordable to many within the city. Minority and vulnerable groups are frequently unable to access these services.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "Maternal care, family planning education, facilities and resources are well-funded, widely available and free at the point of service. Specific initiatives to reach minority and vulnerable groups are in place. Good level of professional healthcare and support provided to mother and baby during and after pregnancy."
+            },
+            "3": {
+              "text": "To what extent are healthcare services for non-communicable diseases (NCDs) available and affordable to all?",
+              "score 0": "There is a lack of quality facilities and personnel to NCDs. Resources are stretched and people are not getting access to appropriate and affordable treatment in a timely fashion. There is a lack of specialist treatment within the city for key NCDs such as cancer, cardiovascular issues, respiratory issues, diabetes, kidney problems etc.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "There are quality, well-funded facilities and personnel to manage NCD cases within the city. People receive timely, affordable and quality treatment. Specialist units, facilities and experts exist for specific NCDs such as cancer, cardiovascular issues, respiratory issues, diabetes, kidney problems etc."
+            },
+            "4": {
+              "text": "To what extent are mental healthcare services affordable and accessible to all?",
+              "score 0": "Mental health services are severely under-resourced within the city and are unable to meet demand for these services. There is a severe shortage of health and psychological support available for: • Victims of crime and violence • Immigrants • Addiction patients The city’s emergency planning does not consider a surge in demand for mental health support post-shock.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "There are free mental health services available within the city and they are accessible to all. There is sufficient health and psychological support available for: • Victims of crime and violence • Immigrants • Addiction patients Additionally, the city’s emergency planning has considered a surge in demand for mental health support post-shock."
+            }
+          }
+        },
+        "2": {
+          "name": "Emergency medical care",
+          "questions": {
+            "1": {
+              "text": "To what extent are emergency medical services adequately resourced to deal with major events?",
+              "score 0": "There are very few emergency medical facilities across the city. These are not effectively distributed spatially. There are not enough emergency physicians (surgeons, doctors) and nurses to deal with surges in causalities from major incidents. There are no agreements with neighbouring hospitals to accept certain casualties in a major incident.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "There is a good distribution of well-resourced emergency medical facilities across the city meaning all citizens are within appropriate proximity of a hospital. There are enough emergency physicians and nurses to deal with surges in causalities from major incidents. There are sufficient specialist skills / training within this pool of staff to deal with specialist emergency cases (e.g., burns, pandemic cases) and appropriate medical equipment and facilities. There are formal arrangements between networks of hospitals and health organisations (including NGOs) to help manage surge incidents."
+            },
+            "2": {
+              "text": "To what extent are emergency medical services adequately prepared to deal with major events?",
+              "score 0": "Emergency planning within the healthcare system to deal with major events is non-existent or severely limited. There is no city-wide plan for co-ordinating medical resources following a major event. Roles and responsibilities for dealing with a major event have not been defined. Disaster preparedness drills are rarely, if ever, undertaken at the individual facility level or the city-wide level.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "There is effective, integrated emergency planning within the healthcare system to deal with major events. All emergency medical facilities have business continuity plans in place and plans for dealing with major disasters. A city-wide plan exists for co-ordinating medical resources following a major event and roles and responsibilities are clearly defined within this. Disaster preparedness drills are routinely undertaken at the individual facility level (at least annually) and the city-wide level (at least every 3 years)."
+            }
+          }
+        },
+        "3": {
+          "name": "Effective emergency response services"
+        }
+      }
+    },
+    "physical": {
+      "name": "PHYSICAL",
+      "1": {
+        "name": "Major infrastructure",
+        "1": {
+          "name": "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others"
+        },
+        "2": {
+          "name": "Critical infrastructure: mapping, planning and protection strategies"
+        },
+        "3": {
+          "name": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario"
+        }
+      },
+      "2": {
+        "name": "Planning for risk and disaster",
+        "1": {
+          "name": "Housing destroyed and damaged"
+        }
+      },
+      "3": {
+        "name": "Planning Resilience",
+        "1": {
+          "name": "% of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios"
+        }
+      }
     }
   },
   "vulnerability": {
