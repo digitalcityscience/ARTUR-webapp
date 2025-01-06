@@ -49,6 +49,7 @@ const useIndicatorStore = defineStore("selected indicators", () => {
     "initialIndicators.social.1.1.name": "#91CC75",
     "initialIndicators.social.1.2.name": "#91CC75",
     "initialIndicators.social.1.3.name": "#91CC75",
+    "initialIndicators.social.1.4.name": "#91CC75",
     "initialIndicators.social.2.1.name": "#91CC75",
     "initialIndicators.social.3.1.name": "#91CC75",
     "initialIndicators.social.3.2.name": "#91CC75",

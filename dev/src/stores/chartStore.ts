@@ -1231,6 +1231,17 @@ const useEchartsStore = defineStore("echarts-options", () => {
                   },
                 ],
               },
+              {
+                name: computed(() => t("echarts.physical.5.8")),
+                children: [
+                  {
+                    value: 6,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
             ],
           },
           {
