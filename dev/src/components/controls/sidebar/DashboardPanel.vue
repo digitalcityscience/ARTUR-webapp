@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, watch, reactive, computed } from "vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
+import RadarChart from "./RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useEchartsStore from "@/stores/chartStore";
 import { useI18n } from "vue-i18n";
@@ -156,12 +157,12 @@ const analyzeResults = () => {};
               ></button>
             </div>
           </template>
-          <div class="btn-group mt-1" role="group" aria-label="Indicator actions">
+          <div class="btn-group mt-1" role="group">
             <button type="button" class="btn btn-primary" @click="openIndicatorSelection">
-              {{ $t("sidebar.dashboardPanel.button.select") }}
+              {{ $t("sidebar.dashboardPanel.button.graph1") }}
             </button>
-            <button type="button" class="btn btn-success" @click="analyzeResults">
-              {{ $t("sidebar.dashboardPanel.button.run") }}
+            <button type="button" class="btn btn-dark" @click="openIndicatorSelection">
+              {{ $t("sidebar.dashboardPanel.button.graph2") }}
             </button>
           </div>
         </div>
@@ -176,9 +177,49 @@ const analyzeResults = () => {};
         >
           {{ $t("sidebar.dashboardPanel.result") }}
         </button>
-        <div class="collapse show" id="results-collapse"></div>
+        <div class="collapse show" id="results-collapse">
+          <div class="btn-group" role="group">
+            <button
+              type="button"
+              class="btn btn-warning"
+              data-bs-toggle="modal"
+              data-bs-target="#radarbydimension"
+            >
+              {{ $t("sidebar.dashboardPanel.radarChart.type.dimension") }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-toggle="modal"
+              data-bs-target="#radartotal"
+            >
+              {{ $t("sidebar.dashboardPanel.radarChart.type.total") }}
+            </button>
+          </div>
+        </div>
       </li>
     </ul>
+  </div>
+  <!-- Radar Modal -->
+  <div class="modal fade" id="radarbydimension" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="questionnaire-title">
+            {{ $t("sidebar.dashboardPanel.radarChart.name") }}
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <radar-chart></radar-chart>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Questionnaire Modal -->
   <div class="modal fade" id="questionnaire" tabindex="-1">

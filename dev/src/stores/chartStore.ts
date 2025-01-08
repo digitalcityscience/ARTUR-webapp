@@ -4414,6 +4414,49 @@ const useEchartsStore = defineStore("echarts-options", () => {
       },
     ],
   };
+  // Resilience Score
+  const radarOption = {
+    legend: {},
+    tooltip: {},
+    radar: {
+      splitNumber: 10,
+      indicator: [
+        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
+      ],
+    },
+    series: [
+      {
+        name: computed(() => t("sidebar.dashboardPanel.radarChart.name")),
+        type: "radar",
+        data: [
+          {
+            value: [4, 3, 20, 35, 50, 18, 46, 50, 30],
+            name: computed(() => t("sidebar.dashboardPanel.radarChart.social")),
+          },
+          {
+            value: [14, 23, 60, 35, 75, 36, 88, 65, 88],
+            name: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+          },
+          {
+            value: [35, 26, 87, 12, 97, 74, 45, 23, 55],
+            name: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+          },
+          {
+            value: [5, 14, 28, 26, 42, 21, 23, 12, 36],
+            name: computed(() => t("sidebar.dashboardPanel.radarChart.physical")),
+          },
+        ],
+      },
+    ],
+  };
 
   return {
     SANKEYLEVELS,
@@ -4427,6 +4470,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
     sunburstOption2,
     sankeyOption,
     populationLegendOption,
+    radarOption,
   };
 });
 export default useEchartsStore;

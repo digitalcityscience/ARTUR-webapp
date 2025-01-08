@@ -45,13 +45,24 @@
   "sidebar": {
     "dashboardPanel": {
       "header": "Панель керування",
-      "indicator": "Виберіть індикатори",
-      "result": "Результати",
-      "button": { "select": "Вибрати", "run": "Запустити" },
+      "indicator": "індикатори",
+      "result": "Показник стійкості",
+      "button": {
+        "graph1": "Показати графік індикаторів",
+        "graph2": "Показати всі індикатори (включаючи ті, що не використовуються)"
+      },
       "questionnaire": {
         "title": "Опитувальник",
         "buttons": { "submit": "Надіслати", "close": "Закрити" },
         "warning": "Будь ласка, дайте відповідь на всі запитання!"
+      },
+      "radarChart": {
+        "name": "Оцінка стійкості за вимірами",
+        "type": { "dimension": "За виміром", "total": "Всього" },
+        "social": "Соціальний",
+        "economic": "економічний",
+        "institutional": "Інституційний",
+        "physical": "Фізичний"
       }
     },
     "infoPanel": {
@@ -385,7 +396,7 @@
       "Resourcefulness": "Ресурсність",
       "Inclusiveness": "Інклюзивність",
       "Reflectiveness": "Рефлексивність",
-      "Flexiblity": "Гнучкість"
+      "Flexibility": "Гнучкість"
     }
   },
   "initialIndicators": {

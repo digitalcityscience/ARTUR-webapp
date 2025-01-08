@@ -45,13 +45,24 @@
   "sidebar": {
     "dashboardPanel": {
       "header": "Dashboard",
-      "indicator": "Select Indicators",
-      "result": "Results",
-      "button": { "select": "Select", "run": "Run" },
+      "indicator": "Indicators",
+      "result": "Resilience Score",
+      "button": {
+        "graph1": "Indicator Charts",
+        "graph2": "All indicators"
+      },
       "questionnaire": {
         "title": "Questionnaire",
         "buttons": { "submit": "Submit", "close": "Close" },
         "warning": "Please answer all the questions!"
+      },
+      "radarChart": {
+        "name": "Resilience Score by Dimensions",
+        "type": { "dimension": "By Dimension", "total": "Total" },
+        "social": "Social",
+        "economic": "Economic",
+        "institutional": "Institutional",
+        "physical": "Physical"
       }
     },
     "infoPanel": {
@@ -181,7 +192,7 @@
       "name": "SOCIAL",
       "1": {
         "name": "Basic necessities",
-        "1": "Safe & affordable housing",
+        "1": "Safe and affordable housing",
         "2": "Adequate affordable energy supply",
         "3": "Inclusive access to safe drinking water",
         "4": "Effective sanitation",
@@ -226,7 +237,7 @@
       "6": {
         "name": "Security services",
         "1": "Effective systems to deter crime",
-        "2": "High levels of crime are observed"
+        "2": "High levels of crime are observed."
       }
     },
     "economic": {
@@ -302,7 +313,7 @@
         "8": "Disaster management / preparedness / emergency response plan",
         "9": "Appropriate land use and zoning",
         "10": "Appropriately land use planning considering risk, hazards and vulnerability",
-        "11": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+        "11": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
         "12": "Projected changes in location of vulnerable populations"
       },
       "4": {
@@ -311,7 +322,7 @@
         "2": "Emergency medical care",
         "3": "Effective emergency response services",
         "4": "Robust public health systems",
-        "5": "Security services: fire services, police stations, etc."
+        "5": "Security services: fire services, police stations, etc.;"
       }
     },
     "physical": {
@@ -343,7 +354,7 @@
         "4": "Protective infrastructure: well-designed and well-built based on risk information",
         "5": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
         "6": "Major roads",
-        "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
+        "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
         "8": "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.;"
       },
       "6": {
@@ -385,7 +396,7 @@
       "Resourcefulness": "Resourcefulness",
       "Inclusiveness": "Inclusiveness",
       "Reflectiveness": "Reflectiveness",
-      "Flexiblity": "Flexibility"
+      "Flexibility": "Flexibility"
     }
   },
   "initialIndicators": {

@@ -3,6 +3,20 @@ import pool from "./db.js";
 
 const router = express.Router();
 
+router.get("/capacity", async (req, res) => {
+  try {
+    const { rows } = await pool.query("SELECT * FROM capacity");
+    const data = rows.reduce((acc, item) => {
+      const { indicator, ...rest } = item; // Extract the indicator and the rest of the properties
+      acc[indicator] = rest; // Use the indicator as the key
+      return acc;
+    }, {});
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
 router.get("/country-boundary", async (req, res) => {
   try {
     const { rows } = await pool.query(

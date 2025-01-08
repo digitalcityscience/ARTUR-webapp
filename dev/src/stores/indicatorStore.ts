@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, watch, computed, type Ref } from "vue";
+import { ref, watch, type Ref } from "vue";
 import { LocalStorageEvent } from "@/assets/ts/constants";
 import { useI18n } from "vue-i18n";
 
