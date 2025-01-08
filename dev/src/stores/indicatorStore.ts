@@ -68,10 +68,16 @@ const useIndicatorStore = defineStore("selected indicators", () => {
     "initialIndicators.physical.2.1.name": "#73C0DE",
     "initialIndicators.physical.3.1.name": "#73C0DE",
   };
+  const reverseMapping: Record<string, string> = {};
+  const indicatorEN: Record<string, string> = {};
+  Object.keys(initialSelection).filter((key) => {
+    indicatorEN[t(`${key}`, 1, { locale: "ua" })] = t(`${key}`, 1, { locale: "en" });
+  });
   function initializeSelectedIndicator() {
     selectedIndicator.value = Object.fromEntries(
       Object.keys(initialSelection).map((key) => {
         const translatedKey = t(`${key}`);
+        reverseMapping[translatedKey] = key;
         return [translatedKey, initialSelection[key]];
       }),
     );
@@ -87,6 +93,8 @@ const useIndicatorStore = defineStore("selected indicators", () => {
     delete selectedIndicator.value[name];
   }
   return {
+    indicatorEN,
+    reverseMapping,
     selectedIndicator,
     addIndicator,
     deleteIndicator,

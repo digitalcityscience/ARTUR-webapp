@@ -10,7 +10,10 @@ import { LocalStorageEvent } from "@/assets/ts/constants";
 const indicatorStore = useIndicatorStore();
 const echartsStore = useEchartsStore();
 const { t, messages, locale } = useI18n();
-const translations = computed(() => messages.value[locale.value].initialIndicators);
+const translations = computed(
+  () => messages.value[locale.value].initialIndicators as any,
+);
+const selectedIndicator = ref("");
 const showedIndicator = ref("");
 
 // Open the Indicator Selection Window
@@ -39,63 +42,62 @@ function indicatorColor(color: string): string {
   return color;
 }
 
-function indicatorNameToKey(name: string): string | null {
-  const findKeyRecursively = (obj: any, text: string): any => {
-    for (const key in obj) {
-      if (typeof obj[key] === "object") {
-        const result = findKeyRecursively(obj[key], text);
-        if (result) return `${key}.${result}`; // For nested translations, concatenate the keys
-      } else if (obj[key] === text) {
-        return key;
-      }
-    }
-    return null; // Return null if no match is found
-  };
-  // Find the full key
-  const fullKey = findKeyRecursively(translations.value, name);
-  // Remove .name.loc.source from the end of the key
-  if (fullKey) {
-    return fullKey.replace(/\.name\.loc\.source$/, "");
-  }
-  return null;
-}
 const questionNumber = ref<number[]>([]);
 const questionKey = ref<string>("");
 // Handle indicator selection
-function indicatorClick(indicator: string) {
-  showedIndicator.value = indicator;
-  const indicatorKey = indicatorNameToKey(indicator);
+function indicatorClick(showIndicator: string) {
+  showedIndicator.value = showIndicator;
+  let indicator: string;
+  if (locale.value == "ua") indicator = indicatorStore.indicatorEN[showIndicator];
+  else indicator = showIndicator;
+  selectedIndicator.value = indicator;
+  const indicatorKey = indicatorStore.reverseMapping[showIndicator].slice(0, -5);
   questionKey.value = `${indicatorKey}.questions.`;
   const questionKeys = indicatorKey!.split(".");
-  const length = Object.keys(
-    translations.value[questionKeys[0]][questionKeys[1]][questionKeys[2]].questions,
-  ).length;
-  questionNumber.value = Array.from({ length: length }, (_, i) => i + 1);
+  const questions =
+    translations.value?.[questionKeys[1]]?.[questionKeys[2]]?.[questionKeys[3]]
+      ?.questions;
+
+  if (questions) {
+    const length = Object.keys(questions).length;
+    questionNumber.value = Array.from({ length: length }, (_, i) => i + 1);
+  } else {
+    console.warn("Questions not found for the selected indicator");
+    questionNumber.value = [];
+  }
 }
+
+// Answers object to store scores for questions
 interface Answer {
   questions: { [key: number]: number | null };
 }
-// Answers object to store scores for questionsconst answers = reactive({
 const answers = reactive<{ [indicator: string]: Answer }>({});
 watch(
   showedIndicator,
-  (newIndicator) => {
-    if (!answers[newIndicator]) {
+  (newVal) => {
+    let indicator: string;
+    if (locale.value == "ua") indicator = indicatorStore.indicatorEN[newVal];
+    else indicator = newVal;
+    selectedIndicator.value = indicator;
+    if (!answers[indicator]) {
       // Initialize the questions object for this indicator
-      answers[newIndicator] = { questions: {} };
+      answers[indicator] = { questions: {} };
       // Set default for all questions
       for (let i = 1; i <= questionNumber.value.length; i++) {
-        answers[newIndicator].questions[i] = null; // Default score
+        answers[indicator].questions[i] = null; // Default score
       }
       if (answers[""]) delete answers[""];
     }
   },
   { immediate: true },
 );
+watch(locale, () => {
+  questionNumber.value = [];
+});
 // submit and check the answers
 const submitResults = () => {
   const unansweredQuestions = Object.values(
-    answers[showedIndicator.value].questions,
+    answers[selectedIndicator.value].questions,
   ).includes(null);
   if (unansweredQuestions) {
     // Show an alert or a warning to the user
@@ -105,8 +107,6 @@ const submitResults = () => {
   // Placeholder for analysis logic
   console.log("Answers:", JSON.stringify(answers, null, 2));
 };
-// The Analysis
-const analyzeResults = () => {};
 </script>
 
 <template>
@@ -227,7 +227,8 @@ const analyzeResults = () => {};
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="questionnaire-title">
-            {{ $t("sidebar.dashboardPanel.questionnaire.title") }}: {{ showedIndicator }}
+            {{ $t("sidebar.dashboardPanel.questionnaire.title") }}:
+            {{ showedIndicator }}
           </h1>
           <button
             type="button"
@@ -238,7 +239,7 @@ const analyzeResults = () => {};
         </div>
         <div class="modal-body">
           <div v-for="i in questionNumber">
-            <h6>{{ i }}. {{ $t("initialIndicators." + questionKey + i + ".text") }}</h6>
+            <h6>{{ i }}. {{ $t(questionKey + i + ".text") }}</h6>
             <div class="form-check" v-for="score in [0, 1, 2, 3]" :key="score">
               <input
                 class="form-check-input"
@@ -246,10 +247,10 @@ const analyzeResults = () => {};
                 :name="'question-' + i"
                 :id="'question-' + i + '-score-' + score"
                 :value="score"
-                v-model="answers[showedIndicator].questions[i]"
+                v-model="answers[selectedIndicator].questions[i]"
               />
               <label class="form-check-label" :for="'question-' + i + '-score-' + score">
-                {{ $t("initialIndicators." + questionKey + i + `.score ${score}`) }}
+                {{ $t(questionKey + i + `.score ${score}`) }}
               </label>
             </div>
           </div>
