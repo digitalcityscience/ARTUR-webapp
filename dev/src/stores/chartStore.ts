@@ -14,6 +14,285 @@ enum SANKEYLEVELS {
 }
 const useEchartsStore = defineStore("echarts-options", () => {
   const { t } = useI18n();
+  const basicSunburstData = {
+    name: computed(() => t("initialIndicators.name")),
+    children: [
+      // Social
+      {
+        name: computed(() => t("initialIndicators.social.name")),
+        children: [
+          {
+            name: computed(() => t("initialIndicators.social.1.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.social.1.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.social.1.2.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.social.1.3.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.social.1.4.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.social.2.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.social.2.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.social.3.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.social.3.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.social.3.2.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.social.3.3.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+        ],
+      },
+      //Economic
+      {
+        name: computed(() => t("initialIndicators.economic.name")),
+        children: [
+          {
+            name: computed(() => t("initialIndicators.economic.1.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.economic.1.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.economic.1.2.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.economic.2.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.economic.2.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+        ],
+      },
+      //Institutional
+      {
+        name: computed(() => t("initialIndicators.institutional.name")),
+        children: [
+          {
+            name: computed(() => t("initialIndicators.institutional.1.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.institutional.1.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.institutional.2.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.institutional.2.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.institutional.3.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.institutional.3.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.institutional.3.2.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.institutional.3.3.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+        ],
+      },
+      //Physical
+      {
+        name: computed(() => t("initialIndicators.physical.name")),
+        children: [
+          {
+            name: computed(() => t("initialIndicators.physical.1.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.physical.1.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.physical.1.2.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+              {
+                name: computed(() => t("initialIndicators.physical.1.3.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.physical.2.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.physical.2.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+          {
+            name: computed(() => t("initialIndicators.physical.3.name")),
+            children: [
+              {
+                name: computed(() => t("initialIndicators.physical.3.1.name")),
+                value: 1,
+                itemStyle: { opacity: 0.8 },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  const color = [
+    // "#5470C6", // blue
+    "#91CC75", // green
+    "#FAC858", // yellow
+    "#EE6666", // red
+    "#73C0DE", // light blue
+    "#3BA272", // dark green
+    "#FC8452", // orange
+    "#9A60B4", // purple
+    "#EA7CCC", // pink
+  ];
+  const basicSunburstOption = {
+    backgroundColor: "#fff",
+    tooltip: {
+      show: true,
+      formatter: (params: any) => {
+        return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
+                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
+                    params.color,
+                  ]};"></span>
+                  ${params.name.replace(/-\n/g, "")}
+                </div>`;
+      },
+      confine: true,
+    },
+    series: {
+      type: "sunburst",
+      data: basicSunburstData.children,
+      radius: [0, "100%"],
+      itemStyle: {
+        borderRadius: 7,
+        borderWidth: 2,
+      },
+      label: {
+        fontFamily: "Arial",
+        overflow: "break",
+        fontSize: "0.7rem",
+      },
+      emphasis: {
+        focus: "ancestor",
+        itemStyle: {
+          shadowBlur: 20,
+          shadowColor: "rgba(0, 0, 0, 0.8)",
+        },
+      },
+      levels: [
+        {
+          r0: 0,
+          r: 30,
+          itemStyle: {
+            color: "transparent",
+            opacity: 0,
+          },
+        },
+        {
+          r0: 30,
+          r: 70,
+          label: {
+            rotate: "tangential",
+          },
+        },
+        {
+          r0: 70,
+          r: 190,
+          label: {
+            align: "center",
+            width: 100,
+          },
+        },
+        {
+          r0: 190,
+          r: "100%",
+          label: {
+            align: "center",
+            width: 200,
+            padding: 0,
+            silent: false,
+          },
+          nodeClick: false,
+        },
+      ],
+    },
+    color: color,
+    grid: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+  };
   const sunburstData = {
     name: computed(() => t("echarts.name")),
     children: [
@@ -1516,17 +1795,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
     "rgba(242,140,140,1)": "#EE6666",
     "rgba(150,207,230,1)": "#73C0DE",
   };
-  const color = [
-    // "#5470C6", // blue
-    "#91CC75", // green
-    "#FAC858", // yellow
-    "#EE6666", // red
-    "#73C0DE", // light blue
-    "#3BA272", // dark green
-    "#FC8452", // orange
-    "#9A60B4", // purple
-    "#EA7CCC", // pink
-  ];
   const sunburstOption = {
     backgroundColor: "#fff",
     tooltip: {
@@ -1562,7 +1830,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
           shadowColor: "rgba(0, 0, 0, 0.8)",
         },
       },
-      selectedMode: "multiple",
       levels: [
         {
           r0: 0,
@@ -1635,7 +1902,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
           shadowColor: "rgba(0, 0, 0, 0.8)",
         },
       },
-      selectedMode: "multiple",
       levels: [
         {
           itemStyle: {
@@ -1668,13 +1934,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
             silent: false,
           },
           nodeClick: false,
-          select: {
-            itemStyle: {
-              borderColor: "#5d5d5d",
-              shadowBlur: 20,
-              shadowColor: "rgba(0, 0, 0, 5)",
-            },
-          },
         },
         {
           r0: 330,
@@ -1731,7 +1990,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
           shadowColor: "rgba(0, 0, 0, 0.8)",
         },
       },
-      selectedMode: "multiple",
       levels: [
         {
           itemStyle: {
@@ -1754,13 +2012,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
             silent: false,
           },
           nodeClick: false,
-          select: {
-            itemStyle: {
-              borderColor: "#5d5d5d",
-              shadowBlur: 20,
-              shadowColor: "rgba(0, 0, 0, 5)",
-            },
-          },
         },
         {
           r0: 330,
@@ -1809,7 +2060,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
       },
       nodeWidth: 15,
       nodeGap: 12,
-      selectedMode: "multiple",
       data: [
         { name: "Robustness", depth: SANKEYLEVELS.LEVEL4 },
         { name: "Redundancy", depth: SANKEYLEVELS.LEVEL4 },
@@ -4317,7 +4567,6 @@ const useEchartsStore = defineStore("echarts-options", () => {
         { depth: SANKEYLEVELS.LEVEL1 },
         {
           depth: SANKEYLEVELS.LEVEL2,
-          select: { itemStyle: { borderColor: "green", borderWidth: 5 } },
         },
         { depth: SANKEYLEVELS.LEVEL3 },
         { depth: SANKEYLEVELS.LEVEL4 },
@@ -4504,6 +4753,7 @@ const useEchartsStore = defineStore("echarts-options", () => {
 
   return {
     SANKEYLEVELS,
+    basicSunburstOption,
     sunburstData,
     sunburstDimension,
     sunburstIndicator,

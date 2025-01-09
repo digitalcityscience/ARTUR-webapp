@@ -1,49 +1,20 @@
 import { defineStore } from "pinia";
 import { ref, watch, type Ref } from "vue";
-import { LocalStorageEvent } from "@/assets/ts/constants";
 import { useI18n } from "vue-i18n";
 
 const useIndicatorStore = defineStore("selected indicators", () => {
   const { t, locale } = useI18n();
+  const indicatorType = ref<"basic" | "total">("basic");
+  // Watch for changes in indicatorType and update localStorage
+  watch(indicatorType, (newValue) => {
+    localStorage.setItem("indicatorType", newValue); // Save the updated value to localStorage
+  });
+  // Initialize the store with the value from localStorage if available
+  if (localStorage.getItem("indicatorType")) {
+    indicatorType.value = localStorage.getItem("indicatorType") as "basic" | "total";
+  }
+
   const selectedIndicator: Ref<Record<string, string>> = ref({});
-  // Initialize BroadcastChannel
-  const channel = new BroadcastChannel("indicator-channel");
-  // Prevent feedback loops
-  let isLocalUpdate = false;
-
-  const loadFromLocalStorage = () => {
-    const storedData = localStorage.getItem(LocalStorageEvent.UPDATE);
-    if (storedData) {
-      selectedIndicator.value = JSON.parse(storedData);
-    }
-  };
-
-  loadFromLocalStorage();
-
-  watch(
-    selectedIndicator,
-    (newValue) => {
-      if (!isLocalUpdate) {
-        // Broadcast the changes to other windows
-        channel.postMessage({
-          type: "update-indicator",
-          payload: JSON.stringify(newValue),
-        });
-      }
-      // Always save the changes to localStorage
-      localStorage.setItem(LocalStorageEvent.UPDATE, JSON.stringify(newValue));
-
-      isLocalUpdate = false;
-    },
-    { deep: true },
-  );
-
-  channel.onmessage = (event) => {
-    if (event.data && event.data.type === "update-indicator") {
-      isLocalUpdate = true;
-      selectedIndicator.value = JSON.parse(event.data.payload);
-    }
-  };
   // Initialize the selectedIndicator with translated keys
   const initialSelection: Record<string, string> = {
     "initialIndicators.social.1.1.name": "#91CC75",
@@ -86,18 +57,11 @@ const useIndicatorStore = defineStore("selected indicators", () => {
     initializeSelectedIndicator(); // Reinitialize the indicators when the locale changes
   });
 
-  function addIndicator(name: string, color: string) {
-    selectedIndicator.value[name] = color;
-  }
-  function deleteIndicator(name: string) {
-    delete selectedIndicator.value[name];
-  }
   return {
     indicatorEN,
+    indicatorType,
     reverseMapping,
     selectedIndicator,
-    addIndicator,
-    deleteIndicator,
     initializeSelectedIndicator,
   };
 });

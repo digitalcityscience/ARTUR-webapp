@@ -5,7 +5,6 @@ import RadarChart from "./RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useEchartsStore from "@/stores/chartStore";
 import { useI18n } from "vue-i18n";
-import { LocalStorageEvent } from "@/assets/ts/constants";
 
 const indicatorStore = useIndicatorStore();
 const echartsStore = useEchartsStore();
@@ -17,13 +16,15 @@ const selectedIndicator = ref("");
 const showedIndicator = ref("");
 
 // Open the Indicator Selection Window
-const openIndicatorSelection = (): void => {
+const openIndicatorSelection = (type: "basic" | "total"): void => {
   const mainWinWidth = window.innerWidth;
   const mainWinHeight = window.innerHeight;
   const newWinWidth = 1000;
   const newWinHeight = 1000;
   const leftOffset = (mainWinWidth - newWinWidth) / 2;
   const topOffset = (mainWinHeight - newWinHeight) / 2;
+  indicatorStore.indicatorType = type;
+  console.log(indicatorStore.indicatorType);
   window.open(
     "/indicator-selection-popup.html",
     "",
@@ -31,10 +32,7 @@ const openIndicatorSelection = (): void => {
   );
 };
 // Delete the selected indicator and save the deleted indicator name in Local Storage
-function deleteSelection(indicator: string) {
-  indicatorStore.deleteIndicator(indicator);
-  localStorage.setItem(LocalStorageEvent.DELETE, JSON.stringify(indicator));
-}
+function deleteSelection(indicator: string) {}
 // Convert the color
 function indicatorColor(color: string): string {
   if (color in echartsStore.sunburstColorConvertion)
@@ -162,10 +160,18 @@ function setChartType(type: "dimension" | "total") {
             </div>
           </template>
           <div class="btn-group mt-1" role="group">
-            <button type="button" class="btn btn-primary" @click="openIndicatorSelection">
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="openIndicatorSelection('basic')"
+            >
               {{ $t("sidebar.dashboardPanel.button.graph1") }}
             </button>
-            <button type="button" class="btn btn-dark" @click="openIndicatorSelection">
+            <button
+              type="button"
+              class="btn btn-dark"
+              @click="openIndicatorSelection('total')"
+            >
               {{ $t("sidebar.dashboardPanel.button.graph2") }}
             </button>
           </div>

@@ -48,7 +48,7 @@
       "indicator": "Indicators",
       "result": "Resilience Score",
       "button": {
-        "graph1": "Indicator Charts",
+        "graph1": "Basic Indicators",
         "graph2": "All indicators"
       },
       "questionnaire": {

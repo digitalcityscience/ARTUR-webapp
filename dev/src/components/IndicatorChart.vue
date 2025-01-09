@@ -2,7 +2,7 @@
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
-import { ImageFormat, LocalStorageEvent, GraphTypes } from "@/assets/ts/constants";
+import { ImageFormat, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useEchartsStore from "@/stores/chartStore";
 
@@ -46,38 +46,10 @@ const downloadChart = () => {
 // Function to handle node clicks
 function handleClick(params: any): void {
   // Sankey Chart Click
-  if (params.data.depth) {
-    switch (params.data.depth) {
-      case echartsStore.SANKEYLEVELS.LEVEL1:
-        return;
-      case echartsStore.SANKEYLEVELS.LEVEL2:
-        if (indicatorStore.selectedIndicator[params.name]) {
-          deleteSelection(params.name);
-        } else {
-          addSelection(params.name, params.color);
-        }
-        break;
-      case echartsStore.SANKEYLEVELS.LEVEL3:
-        return;
-    }
-  } else if (params.data) {
+  if (params.data) {
     // Sunburst Chart Click
     const level = params.treePathInfo.length;
-    // Sunburst Indicator Level Click
-    if (echartsStore.sunburstIndicator.has(params.name)) {
-      if (params.name && indicatorStore.selectedIndicator[params.name]) {
-        deleteSelection(params.name);
-      } else if (params.name) {
-        addSelection(params.name, params.color);
-      } else {
-        chart.dispatchAction({
-          type: "unselect",
-          seriesIndex: 0,
-          dataIndex: params.dataIndex,
-        });
-      }
-      return;
-    } else if (level === 2 && echartsStore.sunburstDimension.has(params.name)) {
+    if (level === 2 && echartsStore.sunburstDimension.has(params.name)) {
       // Sunburst Second Graph Level 2 Go to Level 1
       let color = params.color;
       let dimensionData = echartsStore.sunburstData.children.find(
@@ -118,38 +90,16 @@ function reloadChart(option: any, data?: any, color?: string): void {
   }
   chart.clear();
   chart.setOption(option);
-  let savedIndicatorNames = Object.keys(indicatorStore.selectedIndicator);
-  chartDispatchSelection("select", savedIndicatorNames);
-}
-// Synchronize the sidebar saved indicators to the reloaded sunburst chart
-function addSelection(name: string, color: string) {
-  indicatorStore.addIndicator(name, color);
-  let indicatorNames = Object.keys(indicatorStore.selectedIndicator);
-  chartDispatchSelection("select", indicatorNames);
-}
-function deleteSelection(name: string) {
-  indicatorStore.deleteIndicator(name);
-  chartDispatchSelection("unselect", name);
-}
-// Listen to the indicator delete event of sidebar
-window.addEventListener("storage", (event: StorageEvent) => {
-  if (event.key === LocalStorageEvent.DELETE) {
-    let data = localStorage.getItem(LocalStorageEvent.DELETE);
-    chartDispatchSelection("unselect", JSON.parse(data!));
-  }
-});
-function chartDispatchSelection(type: string, indicator: string[] | string) {
-  if (indicator)
-    chart.dispatchAction({
-      type: type,
-      seriesIndex: 0,
-      name: indicator,
-    });
 }
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
-  chart.setOption(echartsStore.sunburstOption);
-  chart.on("click", (params: any) => handleClick(params));
+  if (indicatorStore.indicatorType === "basic")
+    chart.setOption(echartsStore.basicSunburstOption);
+  else {
+    console.log(indicatorStore.indicatorType);
+    chart.setOption(echartsStore.sunburstOption);
+    chart.on("click", (params: any) => handleClick(params));
+  }
 };
 // Make the chart resizable
 const addResizeObserver = () => {
@@ -169,12 +119,19 @@ const addResizeObserver = () => {
 watch(
   () => echartsStore.sunburstData.name,
   () => {
+    chart.clear();
     chart.setOption(echartsStore.sunburstOption);
     switchGraph.value = GraphTypes.SANKEY;
   },
 );
 onMounted(() => {
   if (!chartContainer.value) return;
+  window.addEventListener("storage", (event) => {
+    if (event.key === "indicatorType") {
+      // Update the indicatorType in the store when it changes in localStorage
+      indicatorStore.indicatorType = event.newValue as "basic" | "total";
+    }
+  });
   initChart();
   addResizeObserver();
 });
