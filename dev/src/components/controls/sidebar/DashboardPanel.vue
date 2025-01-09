@@ -107,6 +107,10 @@ const submitResults = () => {
   // Placeholder for analysis logic
   console.log("Answers:", JSON.stringify(answers, null, 2));
 };
+// Radar Chart
+function setChartType(type: "dimension" | "total") {
+  echartsStore.radarChartType = type;
+}
 </script>
 
 <template>
@@ -183,7 +187,8 @@ const submitResults = () => {
               type="button"
               class="btn btn-warning"
               data-bs-toggle="modal"
-              data-bs-target="#radarbydimension"
+              data-bs-target="#radar"
+              @click="setChartType('dimension')"
             >
               {{ $t("sidebar.dashboardPanel.radarChart.type.dimension") }}
             </button>
@@ -191,7 +196,8 @@ const submitResults = () => {
               type="button"
               class="btn btn-success"
               data-bs-toggle="modal"
-              data-bs-target="#radartotal"
+              data-bs-target="#radar"
+              @click="setChartType('total')"
             >
               {{ $t("sidebar.dashboardPanel.radarChart.type.total") }}
             </button>
@@ -201,12 +207,14 @@ const submitResults = () => {
     </ul>
   </div>
   <!-- Radar Modal -->
-  <div class="modal fade" id="radarbydimension" tabindex="-1">
+  <div class="modal fade" id="radar" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="questionnaire-title">
-            {{ $t("sidebar.dashboardPanel.radarChart.name") }}
+            {{
+              $t(`sidebar.dashboardPanel.radarChart.name.${echartsStore.radarChartType}`)
+            }}
           </h1>
           <button
             type="button"
@@ -256,11 +264,16 @@ const submitResults = () => {
           </div>
         </div>
         <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            @click="submitResults"
+          >
+            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.submit") }}
+          </button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             {{ $t("sidebar.dashboardPanel.questionnaire.buttons.close") }}
-          </button>
-          <button type="button" class="btn btn-primary" @click="submitResults">
-            {{ $t("sidebar.dashboardPanel.questionnaire.buttons.submit") }}
           </button>
         </div>
       </div>

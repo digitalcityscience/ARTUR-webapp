@@ -9,13 +9,26 @@ const { locale } = useI18n();
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
 
+const setOption = () => {
+  if (chartStore.radarChartType === "dimension") {
+    chart.setOption(chartStore.radarOptionDimension);
+  } else {
+    chart.setOption(chartStore.radarOptionTotal);
+  }
+};
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
-  chart.setOption(chartStore.radarOption);
+  setOption();
 };
 watch(locale, () => {
-  chart.setOption(chartStore.radarOption);
+  setOption();
 });
+watch(
+  () => chartStore.radarChartType,
+  () => {
+    setOption();
+  },
+);
 // Init Chart on mounted
 onMounted(() => {
   initChart();

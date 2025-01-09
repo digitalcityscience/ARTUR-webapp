@@ -57,8 +57,11 @@
         "warning": "Please answer all the questions!"
       },
       "radarChart": {
-        "name": "Resilience Score by Dimensions",
-        "type": { "dimension": "By Dimension", "total": "Total" },
+        "name": {
+          "dimension": "Resilience Score by Dimensions",
+          "total": "Resilience Score: Essential Indicators"
+        },
+        "type": { "dimension": "By Dimensions", "total": "Total" },
         "social": "Social",
         "economic": "Economic",
         "institutional": "Institutional",

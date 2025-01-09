@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
   populationAccessibleColor,
   populationInaccessibleColor,
@@ -4415,7 +4415,16 @@ const useEchartsStore = defineStore("echarts-options", () => {
     ],
   };
   // Resilience Score
-  const radarOption = {
+  const socialScore = [4, 3, 20, 35, 50, 18, 46, 50, 30];
+  const economicScore = [14, 23, 60, 35, 75, 36, 88, 65, 88];
+  const institutionalScore = [35, 26, 87, 12, 97, 74, 45, 23, 55];
+  const physicalScore = [5, 14, 28, 26, 42, 21, 23, 12, 36];
+  const averageArray = socialScore.map(
+    (_, i) =>
+      (socialScore[i] + economicScore[i] + institutionalScore[i] + physicalScore[i]) / 4,
+  );
+  const radarChartType = ref<"dimension" | "total">("dimension");
+  const radarOptionDimension = {
     legend: {},
     tooltip: {},
     radar: {
@@ -4434,24 +4443,59 @@ const useEchartsStore = defineStore("echarts-options", () => {
     },
     series: [
       {
-        name: computed(() => t("sidebar.dashboardPanel.radarChart.name")),
+        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.dimension")),
         type: "radar",
         data: [
           {
-            value: [4, 3, 20, 35, 50, 18, 46, 50, 30],
+            value: socialScore,
             name: computed(() => t("sidebar.dashboardPanel.radarChart.social")),
+            itemStyle: { color: "#91CC75" },
           },
           {
-            value: [14, 23, 60, 35, 75, 36, 88, 65, 88],
+            value: economicScore,
             name: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+            itemStyle: { color: "#FAC858" },
           },
           {
-            value: [35, 26, 87, 12, 97, 74, 45, 23, 55],
+            value: institutionalScore,
             name: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+            itemStyle: { color: "#EE6666" },
           },
           {
-            value: [5, 14, 28, 26, 42, 21, 23, 12, 36],
+            value: physicalScore,
             name: computed(() => t("sidebar.dashboardPanel.radarChart.physical")),
+            itemStyle: { color: "#73C0DE" },
+          },
+        ],
+      },
+    ],
+  };
+  const radarOptionTotal = {
+    legend: {},
+    tooltip: {},
+    radar: {
+      splitNumber: 10,
+      indicator: [
+        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
+        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
+      ],
+    },
+    series: [
+      {
+        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.total")),
+        type: "radar",
+        data: [
+          {
+            value: averageArray,
+            name: computed(() => t("sidebar.dashboardPanel.radarChart.type.total")),
+            itemStyle: { color: "#9A60B4" },
           },
         ],
       },
@@ -4470,7 +4514,9 @@ const useEchartsStore = defineStore("echarts-options", () => {
     sunburstOption2,
     sankeyOption,
     populationLegendOption,
-    radarOption,
+    radarOptionDimension,
+    radarOptionTotal,
+    radarChartType,
   };
 });
 export default useEchartsStore;
