@@ -24,7 +24,6 @@ const openIndicatorSelection = (type: "basic" | "total"): void => {
   const leftOffset = (mainWinWidth - newWinWidth) / 2;
   const topOffset = (mainWinHeight - newWinHeight) / 2;
   indicatorStore.indicatorType = type;
-  console.log(indicatorStore.indicatorType);
   window.open(
     "/indicator-selection-popup.html",
     "",

@@ -4,10 +4,12 @@ import * as echarts from "echarts";
 import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
 import { ImageFormat, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
-import useEchartsStore from "@/stores/chartStore";
+import useChartStore from "@/stores/chartStore";
+import { useI18n } from "vue-i18n";
 
 const indicatorStore = useIndicatorStore();
-const echartsStore = useEchartsStore();
+const chartStore = useChartStore();
+const { locale } = useI18n();
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
 const defaultWidth = 1000;
@@ -19,14 +21,28 @@ const backgroundColor = ref<string>("#ffffff");
 const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
 const switchGraph = ref<string>(GraphTypes.SANKEY);
 // Methods
-const switchGraphType = () => {
-  if (switchGraph.value == GraphTypes.SANKEY) {
-    switchGraph.value = GraphTypes.SUNBURST;
-    reloadChart(echartsStore.sankeyOption);
+const getChartOption = () => {
+  let option;
+  if (indicatorStore.indicatorType === "basic") {
+    option =
+      switchGraph.value == GraphTypes.SANKEY
+        ? chartStore.sunburstBasicOption
+        : chartStore.sankeyBasicOption;
   } else {
-    switchGraph.value = GraphTypes.SANKEY;
-    reloadChart(echartsStore.sunburstOption);
+    option =
+      switchGraph.value == GraphTypes.SANKEY
+        ? chartStore.sankeyOption
+        : chartStore.sunburstOption;
   }
+  return option;
+};
+
+const switchGraphType = () => {
+  switchGraph.value =
+    switchGraph.value == GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY;
+  const option = getChartOption();
+  chart.clear();
+  reloadChart(option);
 };
 const downloadChart = () => {
   const img = new Image();
@@ -49,35 +65,35 @@ function handleClick(params: any): void {
   if (params.data) {
     // Sunburst Chart Click
     const level = params.treePathInfo.length;
-    if (level === 2 && echartsStore.sunburstDimension.has(params.name)) {
+    if (level === 2 && chartStore.sunburstDimension.has(params.name)) {
       // Sunburst Second Graph Level 2 Go to Level 1
       let color = params.color;
-      let dimensionData = echartsStore.sunburstData.children.find(
-        (node: any) => node.name === echartsStore.sunburstColorSet[params.color],
+      let dimensionData = chartStore.sunburstData.children.find(
+        (node: any) => node.name === chartStore.sunburstColorSet[params.color],
       );
-      reloadChart(echartsStore.sunburstOption1, dimensionData, color);
+      reloadChart(chartStore.sunburstOption1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
       // Sunburst First Graph Click Level 2
       let color = params.color;
-      let data = echartsStore.sunburstData.children.find(
+      let data = chartStore.sunburstData.children.find(
         (node: any) => node.name === params.name,
       );
-      reloadChart(echartsStore.sunburstOption1, data, color);
+      reloadChart(chartStore.sunburstOption1, data, color);
       return;
     } else if (level === 2) {
       // Sunburst Second Graph Click Level 2
       chart.clear();
-      chart.setOption(echartsStore.sunburstOption);
+      chart.setOption(chartStore.sunburstOption);
       return;
     } else if (level === 3 && params.value === 1) {
       // Sunburst First Graph Click Level 3
       let color = params.color;
       let dimension = params.treePathInfo[1];
-      let dimensionData = echartsStore.sunburstData.children.find(
+      let dimensionData = chartStore.sunburstData.children.find(
         (node: any) => node.name === dimension.name,
       );
       let data = dimensionData?.children.find((node: any) => node.name === params.name);
-      reloadChart(echartsStore.sunburstOption2, data, color);
+      reloadChart(chartStore.sunburstOption2, data, color);
       return;
     }
   }
@@ -91,15 +107,18 @@ function reloadChart(option: any, data?: any, color?: string): void {
   chart.clear();
   chart.setOption(option);
 }
-const initChart = (): void => {
-  chart = echarts.init(chartContainer.value);
+function setBasicOption() {
   if (indicatorStore.indicatorType === "basic")
-    chart.setOption(echartsStore.basicSunburstOption);
+    chart.setOption(chartStore.sunburstBasicOption);
   else {
     console.log(indicatorStore.indicatorType);
-    chart.setOption(echartsStore.sunburstOption);
+    chart.setOption(chartStore.sunburstOption);
     chart.on("click", (params: any) => handleClick(params));
   }
+}
+const initChart = (): void => {
+  chart = echarts.init(chartContainer.value);
+  setBasicOption();
 };
 // Make the chart resizable
 const addResizeObserver = () => {
@@ -116,14 +135,11 @@ const addResizeObserver = () => {
   }
 };
 // watch the changes of language
-watch(
-  () => echartsStore.sunburstData.name,
-  () => {
-    chart.clear();
-    chart.setOption(echartsStore.sunburstOption);
-    switchGraph.value = GraphTypes.SANKEY;
-  },
-);
+watch(locale, () => {
+  const option = getChartOption();
+  chart.clear();
+  reloadChart(option);
+});
 onMounted(() => {
   if (!chartContainer.value) return;
   window.addEventListener("storage", (event) => {
@@ -241,7 +257,7 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 100%;
-  height: 101vh;
+  height: 98vh;
 }
 .modal {
   display: block;
