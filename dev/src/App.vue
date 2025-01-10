@@ -23,18 +23,14 @@ const { t } = useI18n();
             <i class="bi bi-search"></i>
           </button>
         </div>
+        <div class="logo-container">
+          <img src="/logos.png" alt="logos" class="logo" />
+        </div>
       </div>
     </header>
     <div class="map-container">
       <map-view></map-view>
     </div>
-    <footer class="custom-footer">
-      <div class="footer-logo-container">
-        <img src="/giz_logo.png" alt="GIZLogo" class="footer-logo" />
-        <img src="/hcu_logo.png" alt="HCULogo" class="footer-logo" />
-        <img src="/dcs-logo.png" alt="DCSLogo" class="footer-logo" />
-      </div>
-    </footer>
   </div>
 </template>
 <
@@ -52,7 +48,6 @@ const { t } = useI18n();
   position: fixed;
   top: 0;
   left: 0;
-  width: auto;
   padding: 0.5rem 0.625rem 0 0;
   z-index: 900;
 }
@@ -68,31 +63,18 @@ const { t } = useI18n();
   font-size: 1rem;
 }
 .search-bar {
-  max-width: 18.75rem;
+  width: 12rem;
   font-size: 1rem;
 }
 .search-bar input {
   font-size: 0.875rem;
 }
-.custom-footer {
-  position: fixed;
-  bottom: 0;
-  left: 5.3125rem;
-  width: 100%;
-  height: 2.1875rem;
-  background-color: transparent;
-  z-index: 900;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+.logo-container {
   pointer-events: none;
 }
-.footer-logo-container {
-  pointer-events: none;
-}
-.footer-logo {
-  height: 1.875rem;
+.logo {
+  height: 4rem;
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 </style>
