@@ -275,7 +275,7 @@ const useChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 190,
-          r: "80%",
+          r: 385,
           label: {
             align: "center",
             width: 200,
@@ -1824,7 +1824,7 @@ const useChartStore = defineStore("echarts-options", () => {
       label: {
         fontFamily: "Arial",
         overflow: "break",
-        fontSize: "1rem",
+        fontSize: 15,
       },
       emphasis: {
         focus: "ancestor",
@@ -1851,7 +1851,7 @@ const useChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 120,
-          r: 425,
+          r: 410,
           label: {
             align: "center",
             width: 325,

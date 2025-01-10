@@ -31,8 +31,8 @@ const getChartOption = () => {
   } else {
     option =
       switchGraph.value == GraphTypes.SANKEY
-        ? chartStore.sankeyOption
-        : chartStore.sunburstOption;
+        ? chartStore.sunburstOption
+        : chartStore.sankeyOption;
   }
   return option;
 };
