@@ -267,14 +267,14 @@ const useChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 70,
-          r: 190,
+          r: 185,
           label: {
             align: "center",
             width: 100,
           },
         },
         {
-          r0: 190,
+          r0: 185,
           r: 385,
           label: {
             align: "center",

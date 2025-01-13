@@ -34,7 +34,7 @@
     "kilometer": "km",
     "vulnerability": {
       "alarm": "Alarm Hours",
-      "size": "The more population, the larger the dot."
+      "size": "The more population, the larger the vulnerability dot."
     },
     "population": {
       "accessible": "Accessible",
@@ -156,7 +156,211 @@
     },
     "knowledgePanel": {
       "title": "Knowledge Base",
-      "subtitle": "Capacities"
+      "content": {
+        "title": "Urban Resilience",
+        "description": [
+          "For which phase of development: resilience can be understood as a constantly changing state of a system. In this sense it can be assessed and monitored periodically at different stages of development.",
+          "This is especially important when considering as part of the theoretical framework, that systems under pressure or failure return to a stable state, through the phases of: 1) recovery, 2) adaptation and 3) transformation.",
+          "The 9 considered capacities of a resilient urban system can, in this sense, relate more strongly to a certain phase, whether it is more relevant to assess in the short-term (recovery), in the mid-term (adaptation) or in the long-term (transformation)."
+        ],
+        "capacities": {
+          "class": {
+            "1": "During recovery (short-term)",
+            "2": "During adaptation (mid-term)",
+            "3": "During transformation (long-term)"
+          },
+          "title": {
+            "definition": "Definition",
+            "practice": "Best Practices in the Urban Form",
+            "example": "Examples for the case of Ukrainian Cities:"
+          },
+          "Robustness": {
+            "definition": "Property of being strong in its constitution. Ability to tolerate disturbances without collapsing the rest of the system, despite the frequency and complexity of triggering factors. They are self-sufficient parts of the system in an emergency and overcome crises independently.",
+            "practice": [
+              "Resistant new building infrastructure (anti-seismic, flood-resistant)",
+              "Multiple and redundant water and energy supply",
+              "Compact and well-connected neighborhoods",
+              "Transport network with multiple and alternative routes",
+              "Green infrastructure integrated into the urban form to reduce environmental stresses"
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Distributed and decentralized energy systems to prevent widespread blackouts.",
+                "Public spaces which are also water storage basins for storm events.",
+                "Having redundant and decentralized utility supply stations, while also pairing them with dependent services (electricity, water and heating) to close locations to avoid disruptions in distant distribution networks.",
+                "Capable of receiving IDPs. Underground spaces",
+                "Dispersal of critical infrastructure facilities.",
+                "Decentralisation in general (of services, of crowds, of resources, of economy)."
+              ]
+            }
+          },
+          "Redundancy": {
+            "definition": "The same function or part of the system is provided multiple times, so that spare capacities (areas and infrastructures) are kept free to be able to react to unforeseeable risks and are accessible if needed.",
+            "practice": [
+              "Having a backup systems for utilities (water, energy, heat, transport)",
+              "Having alternate pathways for transport systems."
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Having a backup systems for utilities (water, energy, heat, transport)",
+                "Having alternate pathways for transport systems.",
+                "Having multiple sources of power, e.g. solar, hydroelectric, gas.",
+                "Underground sources of distribution e.g. Gas is less fragile than solar panels due to bombings.",
+                "Proximity of utility sources to avoid disruptions by longer distances of distributions."
+              ]
+            }
+          },
+          "Inclusiveness": {
+            "definition": "Social: the capacity of people to respond together, to change any disturbance, will depend on its social capital.\nPhysical: considering ecological engineering, as a means to predict, design, construct or restore, and manage ecosystems that integrate \"human society with its natural environment for the benefit of both\".",
+            "practice": [
+              "Social: mixed-use developments, shared courtyards, public spaces designed with accessibility in mind (ramps, tactile paths), local community hubs and centers, public libraries, more public spaces.",
+              "Physical: ecological urbanism as a principle where the urban design is defined by the natural elements intrinsic to its fabric."
+            ],
+            "example": {
+              "type": "grouped",
+              "data": {
+                "Social": [
+                  "Public space appropriate for people with disabilities after war.",
+                  "Local community hubs and centers."
+                ],
+                "Physical": [
+                  "Physical infrastructure thought as multi-purpose use, program (e.g. housing units are thought as combined with educational, cultural or recreational spaces for higher social cohesion).",
+                  "Design based on the pre-existence of water bodies, green reservoirs, topography, without cancelling the natural environment in the urban plans.",
+                  "Consideration of the geographical condition of cities (closeness to water as a resource)",
+                  "Ensuring a balance in land-use planning (housing, agriculture, industry)"
+                ]
+              }
+            }
+          },
+          "Diversity": {
+            "definition": "A major source of future options. The more diversity, the better the capacity of a system to adapt to a wide range of different and unpredictable circumstances (Walker & Salt, 2006).",
+            "practice": [
+              "Mixed use",
+              "Multi-functional spaces",
+              "Short blocks",
+              "Variety of buildings' age and density",
+              "Spatial heterogeneity"
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Level of diversity in land-use types per District, within the city (e.g. need for large spaces for alternative use in the case of an emergency, such as a sport hall for sheltering)",
+                "Parks which are also water collection basins",
+                "Local economic diversity",
+                "Diversification of energy, water and heat supply sources.",
+                "A diversified public transport system (in distribution and modes)"
+              ]
+            }
+          },
+          "Integration": {
+            "definition": "The ability of different systems, sectors, and stakeholders within a city to work together cohesively to address challenges,  collaborate across social, economic, environmental, and governance dimensions and to create a unified approach to anticipate, respond and recover from stresses and shocks.",
+            "practice": [
+              "Physical: intermodal transportation, mixed-use districts, new districts closer to BRT lines, green-blue infrastructure, integration of utilities with urban design, smart city integration",
+              "Social / Institutional: cross-sectoral collaboration, multi-level governance, bottom-up approaches in local governance, policies based on systems thinking."
+            ],
+            "example": {
+              "type": "grouped",
+              "data": {
+                "Physical": [
+                  "Interconnected transport networks",
+                  "Making sure isolated communities are considered in the planning",
+                  "Under and above ground connectivity in cities.",
+                  "Built and natural spaces integrated for mental health and efficiency of space. ",
+                  "Accessibility in cities, meaning short distances, enhancing pedestrian movement.",
+                  "Improved navigation and alerts."
+                ],
+                "Social": [
+                  "Community integrated into local planning decisions.",
+                  "Local knowledge collection for empowerment of the population and sense of belonging (to prevent shrinking cities).",
+                  "Cohesive emergency operations."
+                ]
+              }
+            }
+          },
+          "Transparency": {
+            "definition": "Clear, open, and accessible communication of information about risks, decisions, policies, and actions, ensuring that all stakeholders—including residents, governments, and organizations—understand and can participate in resilience-building processes. Transparency fosters trust, accountability, and collaboration, which are essential for effective urban resilience.",
+            "practice": [
+              "Informing the population to raise awareness.",
+              "Institutional accountability for expenditures and investments on urban development."
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Informed population in measures such as energy saving.",
+                "Institutional accountability for expenditures and investments on urban recovery.",
+                "Informed population on emergency measures in their own cities.",
+                "Improved navigation, alerts and early warning systems.",
+                "Ensuring access to information to more vulnerable population (elderly, single parents, people suffering from digital divide)."
+              ]
+            }
+          },
+          "Resourcefulness": {
+            "definition": " The capacity of a city to effectively hold, mobilize, manage, and allocate resources to respond to, recover from, and adapt to shocks and stresses.",
+            "practice": [
+              "Mobilising human resources effectively (emergency operators)",
+              "Capacity to acquire and mobilise financial funds",
+              "Proper administration of natural resources, as renewable energy generation resources, water reservoirs, or public space for mental health of the population"
+            ],
+            "example": {
+              "type": "grouped",
+              "data": {
+                "Resourcefulness of space": [
+                  "Capacity to set-up additional sheltering infrastructure for displaced people.",
+                  "Using parks as water storage basins.",
+                  "Re-using leftover materials from destroyed building and structures.",
+                  "Having well conditioned underground space."
+                ],
+                "Resourcefulness of human capital": [
+                  "Having a population with a high level of awareness and capacity to react to an emergency.",
+                  "Having storage capacity of energy sources for several days.",
+                  "Support of small, local businesses."
+                ]
+              }
+            }
+          },
+          "Reflectiveness": {
+            "definition": "An urban framework or mechanism that actively learns from past experiences, anticipates future challenges, and adapts its structures, policies, and behaviors accordingly to improve resilience. It integrates feedback loops, collective learning, and adaptive strategies to ensure its capacity to respond to and recover from stresses and shocks.",
+            "practice": [
+              "Existence of campaigns informing about awareness.",
+              "Engaged local research institutions combined with local planners to think ahead in view of climate uncertainty.",
+              "Agile urban planning."
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Learning from peer cities in the region about recovery measures, ensuring proper communication to its citizens.",
+                "Learning from history of European cities facing war.",
+                "Capable of having flexible planning measures in view of uncertainty of war.",
+                "Taking advantage of higher influx of funding into the country to plan for a new reconstruction (build back better motto).",
+                "Planning proper evacuation plans from previous experiences."
+              ]
+            }
+          },
+          "Flexibility": {
+            "definition": "(adapted from variability) embrace flexibility rather than attempting to control or reduce it (Walker & Salt, 2006). / a flexible system can change and evolve against changing circumstances.",
+            "practice": [
+              "Street layouts with frequent intersections for re-routing",
+              "Adaptive land-use",
+              "Modular or incremental housing design",
+              "Multi-functional spaces",
+              "Infrastructure accommodating evolving technologies or capacities without needing complete replacement (wireless tech)"
+            ],
+            "example": {
+              "type": "list",
+              "data": [
+                "Interchangeability: buildings capable of holding an alternative temporary use (shelters for IDP).",
+                "Additional infrastructure adaptable as healthcare facilities in emergencies.",
+                "Capacity to assemble quickly additional sheltering for unexpected IDP.",
+                "Multifunctional use of buildings.",
+                "Transformable design.",
+                "Building new infrastructure with consideration of evolving technologies without needing complete replacement (e.g. wireless tech)."
+              ]
+            }
+          }
+        }
+      }
     },
     "buttons": {
       "goToStep1": " Go to Step 1",
