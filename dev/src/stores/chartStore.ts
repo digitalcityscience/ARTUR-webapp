@@ -28,22 +28,18 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.social.1.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.social.1.2.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.social.1.3.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.social.1.4.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -53,7 +49,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.social.2.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -63,17 +58,14 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.social.3.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.social.3.2.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.social.3.3.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -89,12 +81,10 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.economic.1.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.economic.1.2.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -104,7 +94,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.economic.2.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -120,7 +109,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.institutional.1.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -130,7 +118,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.institutional.2.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -140,17 +127,14 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.institutional.3.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.institutional.3.2.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.institutional.3.3.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -166,17 +150,14 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.physical.1.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.physical.1.2.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
               {
                 name: computed(() => t("initialIndicators.physical.1.3.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -186,7 +167,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.physical.2.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -196,7 +176,6 @@ const useChartStore = defineStore("echarts-options", () => {
               {
                 name: computed(() => t("initialIndicators.physical.3.1.name")),
                 value: 1,
-                itemStyle: { opacity: 0.8 },
               },
             ],
           },
@@ -204,17 +183,6 @@ const useChartStore = defineStore("echarts-options", () => {
       },
     ],
   };
-  const color = [
-    // "#5470C6", // blue
-    "#91CC75", // green
-    "#FAC858", // yellow
-    "#EE6666", // red
-    "#73C0DE", // light blue
-    "#3BA272", // dark green
-    "#FC8452", // orange
-    "#9A60B4", // purple
-    "#EA7CCC", // pink
-  ];
   const sunburstBasicOption = {
     backgroundColor: "#fff",
     tooltip: {
@@ -267,14 +235,14 @@ const useChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 70,
-          r: 185,
+          r: 180,
           label: {
             align: "center",
             width: 100,
           },
         },
         {
-          r0: 185,
+          r0: 180,
           r: 385,
           label: {
             align: "center",
@@ -286,7 +254,7 @@ const useChartStore = defineStore("echarts-options", () => {
         },
       ],
     },
-    color: color,
+    color: ["#91CC75", "#EE6666", "#73C0DE", "#FAC858"],
     grid: {
       top: 0,
       bottom: 0,
@@ -1798,6 +1766,17 @@ const useChartStore = defineStore("echarts-options", () => {
     "rgba(150,207,230,1)": "#73C0DE",
   };
   // Sunburst Option
+  const color = [
+    // "#5470C6", // blue
+    "#91CC75", // green
+    "#FAC858", // yellow
+    "#EE6666", // red
+    "#73C0DE", // light blue
+    "#3BA272", // dark green
+    "#FC8452", // orange
+    "#9A60B4", // purple
+    "#EA7CCC", // pink
+  ];
   const sunburstOption = {
     backgroundColor: "#fff",
     tooltip: {
