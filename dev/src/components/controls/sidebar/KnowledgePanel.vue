@@ -75,20 +75,9 @@ const reloadOptions = () => {
   chart.clear();
   chart.setOption(chartStore.sankeyOptionCapacity);
 };
-watch(locale, () => {
-  reloadOptions();
-});
-watch(
-  () => chartStore.capacitySelected,
-  () => {
-    chart.clear();
-    chart.setOption(chartStore.sankeyOptionCapacity);
-  },
-);
-onMounted(() => {
-  if (!chartContainer.value) return;
-  initChart();
-});
+watch(locale, reloadOptions);
+watch(() => chartStore.capacitySelected, reloadOptions);
+onMounted(initChart);
 </script>
 <template>
   <!-- Knowledge Panel -->
@@ -120,7 +109,12 @@ onMounted(() => {
           >
             {{ $t(section.title) }}
           </h6>
-          <ul class="list-group p-0 collapse show" :id="`capacities-${index}`">
+          <ul
+            class="list-group p-0 collapse show"
+            :id="`capacities-${index}`"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+          >
             <li
               v-for="(item, itemIndex) in section.items"
               :key="itemIndex"
@@ -140,19 +134,20 @@ onMounted(() => {
     </div>
   </div>
   <!-- Capacity Modal -->
-  <div class="modal fade" id="capacityModal" tabindex="-1">
+  <div
+    class="modal fade"
+    id="capacityModal"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5">
             <i></i>{{ $t("echarts.capacities." + chartStore.capacitySelected) }}
           </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <!-- Modal Body -->
         <div class="modal-body bg-light p-4">
@@ -238,7 +233,7 @@ onMounted(() => {
               </div>
             </div>
             <div v-else>
-              <p>...</p>
+              <h1>NODATA ERROR</h1>
             </div>
           </div>
         </div>
@@ -256,7 +251,13 @@ onMounted(() => {
     </div>
   </div>
   <!-- Sankey Modal -->
-  <div class="modal fade" id="sankeyModal" tabindex="-1">
+  <div
+    class="modal fade"
+    id="sankeyModal"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -264,12 +265,7 @@ onMounted(() => {
             {{ $t("echarts.capacities." + chartStore.capacitySelected) }}
             - {{ $t("indicatorChart.graphTypes.sankey") }}
           </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <!-- Chart -->
@@ -277,9 +273,7 @@ onMounted(() => {
         </div>
         <div class="modal-footer">
           <button class="btn btn-success" @click="downloadChart">
-            <i class="fa fa-download" aria-hidden="true">{{
-              $t("indicatorChart.buttons.download")
-            }}</i>
+            <i class="fa fa-download">{{ $t("indicatorChart.buttons.download") }}</i>
           </button>
           <button
             class="btn btn-primary"

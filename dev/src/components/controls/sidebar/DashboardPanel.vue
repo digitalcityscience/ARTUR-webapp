@@ -212,7 +212,13 @@ function setChartType(type: "dimension" | "total") {
     </ul>
   </div>
   <!-- Radar Modal -->
-  <div class="modal fade" id="radar" tabindex="-1">
+  <div
+    class="modal fade"
+    id="radar"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -235,7 +241,13 @@ function setChartType(type: "dimension" | "total") {
     </div>
   </div>
   <!-- Questionnaire Modal -->
-  <div class="modal fade" id="questionnaire" tabindex="-1">
+  <div
+    class="modal fade"
+    id="questionnaire"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+  >
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
