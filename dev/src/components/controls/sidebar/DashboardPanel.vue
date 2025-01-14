@@ -3,11 +3,13 @@ import { ref, watch, reactive, computed } from "vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import RadarChart from "./RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
-import useEchartsStore from "@/stores/chartStore";
+import useIndicatorChartStore from "@/stores/indicatorChartStore";
+import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
 
 const indicatorStore = useIndicatorStore();
-const echartsStore = useEchartsStore();
+const indicatorChartStore = useIndicatorChartStore();
+const radarChartStore = useRadarChartStore();
 const { t, messages, locale } = useI18n();
 const translations = computed(
   () => messages.value[locale.value].initialIndicators as any,
@@ -34,11 +36,11 @@ const openIndicatorSelection = (type: "basic" | "total"): void => {
 function deleteSelection(indicator: string) {}
 // Convert the color
 function indicatorColor(color: string): string {
-  if (color in echartsStore.sunburstColorConvertion)
-    return echartsStore.sunburstColorConvertion[color];
+  if (color in indicatorChartStore.sunburstColorConvertion)
+    return indicatorChartStore.sunburstColorConvertion[color];
   return color;
 }
-
+// Questionnaire
 const questionNumber = ref<number[]>([]);
 const questionKey = ref<string>("");
 // Handle indicator selection
@@ -106,7 +108,7 @@ const submitResults = () => {
 };
 // Radar Chart
 function setChartType(type: "dimension" | "total") {
-  echartsStore.radarChartType = type;
+  radarChartStore.radarChartType = type;
 }
 </script>
 
@@ -224,7 +226,9 @@ function setChartType(type: "dimension" | "total") {
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="questionnaire-title">
             {{
-              $t(`sidebar.dashboardPanel.radarChart.name.${echartsStore.radarChartType}`)
+              $t(
+                `sidebar.dashboardPanel.radarChart.name.${radarChartStore.radarChartType}`,
+              )
             }}
           </h1>
           <button

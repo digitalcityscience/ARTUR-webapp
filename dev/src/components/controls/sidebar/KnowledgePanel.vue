@@ -3,7 +3,7 @@ import { onMounted, ref, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import * as echarts from "echarts";
 import { ImageFormat } from "@/assets/ts/constants";
-import useChartStore from "@/stores/chartStore";
+import useChartStore from "@/stores/indicatorChartStore";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 
 // Text data

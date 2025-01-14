@@ -1,18 +1,13 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
 import { computed, ref, watch } from "vue";
-import {
-  populationAccessibleColor,
-  populationInaccessibleColor,
-} from "../assets/ts/constants";
 
 enum SANKEYLEVELS {
   LEVEL1 = 0,
   LEVEL2 = 0.5,
-  LEVEL3 = 1.8,
-  LEVEL4 = 2,
+  LEVEL3 = 1.9,
 }
-const useChartStore = defineStore("echarts-options", () => {
+const useIndicatorChartStore = defineStore("echarts-options", () => {
   const { t } = useI18n();
   // Basic Sunburst Data
   const basicSunburstData = {
@@ -2017,21 +2012,18 @@ const useChartStore = defineStore("echarts-options", () => {
   };
   // Sankey Data
   const sankeyData = [
-    { name: "Robustness", depth: SANKEYLEVELS.LEVEL4 },
-    { name: "Redundancy", depth: SANKEYLEVELS.LEVEL4 },
-
-    { name: "Diversity", depth: SANKEYLEVELS.LEVEL4 },
-    { name: "Integration", depth: SANKEYLEVELS.LEVEL3 },
-    { name: "Transparency", depth: SANKEYLEVELS.LEVEL3 },
-    { name: "Resourcefulness", depth: SANKEYLEVELS.LEVEL4 },
-    { name: "Inclusiveness", depth: SANKEYLEVELS.LEVEL3 },
-    { name: "Reflectiveness", depth: SANKEYLEVELS.LEVEL3 },
-    { name: "Flexibility", depth: SANKEYLEVELS.LEVEL3 },
     {
       name: "Social",
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL1,
     },
+    { name: "Economic", itemStyle: { color: "#FAC858" }, depth: SANKEYLEVELS.LEVEL1 },
+    {
+      name: "Institutional",
+      itemStyle: { color: "#EE6666" },
+      depth: SANKEYLEVELS.LEVEL1,
+    },
+    { name: "Physical", itemStyle: { color: "#73C0DE" }, depth: SANKEYLEVELS.LEVEL1 },
     {
       name: "Safe & affordable housing",
       itemStyle: { color: "#91CC75" },
@@ -2187,8 +2179,6 @@ const useChartStore = defineStore("echarts-options", () => {
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
-
-    { name: "Economic", itemStyle: { color: "#FAC858" }, depth: SANKEYLEVELS.LEVEL1 },
     {
       name: "Diverse economic base",
       itemStyle: { color: "#FAC858" },
@@ -2288,11 +2278,6 @@ const useChartStore = defineStore("echarts-options", () => {
       name: "Projected changes to population densities and economic activity",
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
-    },
-    {
-      name: "Institutional",
-      itemStyle: { color: "#EE6666" },
-      depth: SANKEYLEVELS.LEVEL1,
     },
     {
       name: "Disaster management authority have sufficient staffing capacity",
@@ -2469,8 +2454,6 @@ const useChartStore = defineStore("echarts-options", () => {
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
-
-    { name: "Physical", itemStyle: { color: "#73C0DE" }, depth: SANKEYLEVELS.LEVEL1 },
     {
       name: "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
       itemStyle: { color: "#73C0DE" },
@@ -2646,6 +2629,27 @@ const useChartStore = defineStore("echarts-options", () => {
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
+    { name: "Robustness", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#1abc9c" } },
+    { name: "Redundancy", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#2ecc71" } },
+    {
+      name: "Inclusiveness",
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#d35400" },
+    },
+    { name: "Diversity", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#3498db" } },
+    { name: "Flexibility", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#95a5a6" } },
+    {
+      name: "Resourcefulness",
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#f39c12" },
+    },
+    { name: "Integration", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#9b59b6" } },
+    {
+      name: "Reflectiveness",
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#e74c3c" },
+    },
+    { name: "Transparency", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#7d6b57" } },
   ];
   const sankeyLinks = [
     {
@@ -4851,13 +4855,13 @@ const useChartStore = defineStore("echarts-options", () => {
       source:
         "Appropriately land use planning considering risk, hazards and vulnerability",
       target: "Integration",
-      value: 0.25,
+      value: 0.16,
     },
     {
       source:
         "Appropriately land use planning considering risk, hazards and vulnerability",
       target: "Inclusiveness",
-      value: 0.25,
+      value: 0.16,
     },
     {
       source:
@@ -6784,43 +6788,6 @@ const useChartStore = defineStore("echarts-options", () => {
   const basicSankeyData = [
     // Social
     {
-      name: computed(() => t("echarts.capacities.Robustness")),
-      depth: SANKEYLEVELS.LEVEL4,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Redundancy")),
-      depth: SANKEYLEVELS.LEVEL4,
-    },
-
-    {
-      name: computed(() => t("echarts.capacities.Diversity")),
-      depth: SANKEYLEVELS.LEVEL4,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Integration")),
-      depth: SANKEYLEVELS.LEVEL3,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Transparency")),
-      depth: SANKEYLEVELS.LEVEL3,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Resourcefulness")),
-      depth: SANKEYLEVELS.LEVEL4,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Inclusiveness")),
-      depth: SANKEYLEVELS.LEVEL3,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Reflectiveness")),
-      depth: SANKEYLEVELS.LEVEL3,
-    },
-    {
-      name: computed(() => t("echarts.capacities.Flexibility")),
-      depth: SANKEYLEVELS.LEVEL3,
-    },
-    {
       name: computed(() => t("initialIndicators.social.name")),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL1,
@@ -6948,6 +6915,51 @@ const useChartStore = defineStore("echarts-options", () => {
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
+    {
+      name: computed(() => t("echarts.capacities.Robustness")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#1abc9c" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Redundancy")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#2ecc71" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Inclusiveness")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#d35400" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Diversity")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#3498db" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Flexibility")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#95a5a6" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Resourcefulness")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#f39c12" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Integration")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#9b59b6" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Reflectiveness")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#e74c3c" },
+    },
+    {
+      name: computed(() => t("echarts.capacities.Transparency")),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#7d6b57" },
+    },
   ];
   const basicSankeyLinks = [
     {
@@ -6987,7 +6999,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.2,
     },
     {
@@ -7007,7 +7019,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.14,
     },
     {
@@ -7047,7 +7059,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.2,
     },
     {
@@ -7138,7 +7150,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.institutional.1.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.25,
     },
     {
@@ -7158,7 +7170,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.institutional.2.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.25,
     },
     {
@@ -7289,7 +7301,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.economic.1.2.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.25,
     },
     {
@@ -7319,7 +7331,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.14,
     },
     {
@@ -7385,7 +7397,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.2,
     },
     {
@@ -7420,7 +7432,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.16,
     },
     {
@@ -7440,7 +7452,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.16,
     },
     {
@@ -7490,7 +7502,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.2,
     },
     {
@@ -7510,7 +7522,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.2,
     },
     {
@@ -7540,7 +7552,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Integration")),
       value: 0.16,
     },
     {
@@ -7636,7 +7648,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     series: {
       type: "sankey",
-      layoutIterations: 40,
+      layoutIterations: 0, // toggle this to keep the sequence of nodes
       layout: "none",
       emphasis: {
         focus: "adjacency",
@@ -7652,7 +7664,7 @@ const useChartStore = defineStore("echarts-options", () => {
         fontSize: 9,
       },
       nodeWidth: 15,
-      nodeGap: 12,
+      nodeGap: 2, // Toggle this to avoid link junction
       data: sankeyData,
       links: sankeyLinks,
       levels: [
@@ -7661,9 +7673,41 @@ const useChartStore = defineStore("echarts-options", () => {
           depth: SANKEYLEVELS.LEVEL2,
         },
         { depth: SANKEYLEVELS.LEVEL3 },
-        { depth: SANKEYLEVELS.LEVEL4 },
       ],
     },
+    // Add subtitles for each column
+    graphic: [
+      {
+        type: "text",
+        left: 20,
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.dimension")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "30%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.indicator")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "85%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.capacity")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+    ],
   };
   const sankeyBasicOption = {
     backgroundColor: "#fff",
@@ -7674,7 +7718,7 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     series: {
       type: "sankey",
-      layoutIterations: 40,
+      layoutIterations: 0,
       layout: "none",
       emphasis: {
         focus: "adjacency",
@@ -7699,9 +7743,40 @@ const useChartStore = defineStore("echarts-options", () => {
           depth: SANKEYLEVELS.LEVEL2,
         },
         { depth: SANKEYLEVELS.LEVEL3 },
-        { depth: SANKEYLEVELS.LEVEL4 },
       ],
     },
+    graphic: [
+      {
+        type: "text",
+        left: 20,
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.dimension")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "30%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.indicator")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "85%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.capacity")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+    ],
   };
   const sankeyOptionCapacity = {
     backgroundColor: "#fff",
@@ -7712,13 +7787,13 @@ const useChartStore = defineStore("echarts-options", () => {
     },
     series: {
       type: "sankey",
-      layoutIterations: 40,
+      layoutIterations: 0,
       layout: "none",
       emphasis: {
         focus: "adjacency",
       },
       left: 5,
-      top: 8,
+      top: 25,
       right: 50,
       bottom: 8,
       lineStyle: {
@@ -7727,8 +7802,8 @@ const useChartStore = defineStore("echarts-options", () => {
       label: {
         fontSize: 10,
       },
-      nodeWidth: 15,
-      nodeGap: 12,
+      nodeWidth: 10,
+      nodeGap: 5,
       data: filteredNodes,
       links: filteredLinks,
       levels: [
@@ -7737,184 +7812,38 @@ const useChartStore = defineStore("echarts-options", () => {
           depth: SANKEYLEVELS.LEVEL2,
         },
         { depth: SANKEYLEVELS.LEVEL3 },
-        { depth: SANKEYLEVELS.LEVEL4 },
       ],
-    },
-  };
-  // Population Legend Grid Option
-  const gridData = [
-    [0, 0, populationInaccessibleColor[0]],
-    [0, 1, populationInaccessibleColor[1]],
-    [0, 2, populationInaccessibleColor[2]],
-    [0, 3, populationInaccessibleColor[3]],
-    [0, 4, populationInaccessibleColor[4]],
-    [1, 0, populationAccessibleColor[0]],
-    [1, 1, populationAccessibleColor[1]],
-    [1, 2, populationAccessibleColor[2]],
-    [1, 3, populationAccessibleColor[3]],
-    [1, 4, populationAccessibleColor[4]],
-  ];
-  const xAxisName = computed(() => t("legend.population.accessible"));
-  const yAxisName = computed(() => t("legend.population.population") + " / km\u00B2");
-  const populationLegendOption = {
-    grid: {
-      left: "10%",
-      right: 0,
-      top: "2%",
-      bottom: "7%",
-      containLabel: true,
-    },
-    xAxis: {
-      type: "category",
-      name: xAxisName,
-      nameLocation: "middle",
-      nameGap: 20,
-      data: ["No", "Yes"],
-      splitLine: { show: false },
-      nameTextStyle: {
-        color: "#2c3e50",
-        fontSize: 12,
-        fontFamily: "Arial",
-        fontStyle: "italic",
-      },
-      axisLabel: {
-        color: "#34495e",
-        fontSize: 12,
-        fontFamily: "Arial",
-        fontStyle: "normal",
-      },
-    },
-    yAxis: {
-      type: "category",
-      name: yAxisName,
-      nameLocation: "middle",
-      nameGap: 25,
-      data: ["5", "15", "25", "35", ">35"],
-      splitLine: { show: false },
-      boundaryGap: true,
-      nameTextStyle: {
-        color: "#2c3e50",
-        fontSize: 12,
-        fontFamily: "Arial",
-        fontStyle: "italic",
-      },
-      axisLabel: {
-        color: "#34495e",
-        fontSize: 13,
-        fontFamily: "Arial",
-        fontStyle: "normal",
-      },
-    },
-    series: [
+    }, // Add subtitles for each column
+    graphic: [
       {
-        name: "Grid",
-        type: "custom",
-        renderItem: function (params: any, api: any) {
-          const xValue = api.value(0);
-          const yValue = api.value(1);
-          const start = api.coord([xValue, yValue]);
-          const size = api.size([1, 1]);
-          return {
-            type: "rect",
-            shape: {
-              x: start[0] - size[0] / 2,
-              y: start[1] - size[1] / 2,
-              width: size[0],
-              height: size[1],
-            },
-            style: {
-              fill: api.value(2),
-            },
-          };
+        type: "text",
+        left: 20,
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.dimension")),
+          fontSize: 12,
+          fontWeight: "bold",
         },
-        data: gridData,
       },
-    ],
-  };
-  // Resilience Score
-  const socialScore = [4, 3, 20, 35, 50, 18, 46, 50, 30];
-  const economicScore = [14, 23, 60, 35, 75, 36, 88, 65, 88];
-  const institutionalScore = [35, 26, 87, 12, 97, 74, 45, 23, 55];
-  const physicalScore = [5, 14, 28, 26, 42, 21, 23, 12, 36];
-  const averageArray = socialScore.map(
-    (_, i) =>
-      (socialScore[i] + economicScore[i] + institutionalScore[i] + physicalScore[i]) / 4,
-  );
-  const radarChartType = ref<"dimension" | "total">("dimension");
-  const radarOptionDimension = {
-    legend: {},
-    tooltip: {},
-    radar: {
-      splitNumber: 10,
-      indicator: [
-        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
-      ],
-    },
-    series: [
       {
-        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.dimension")),
-        type: "radar",
-        data: [
-          {
-            value: socialScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.social")),
-            itemStyle: { color: "#91CC75" },
-          },
-          {
-            value: economicScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
-            itemStyle: { color: "#FAC858" },
-          },
-          {
-            value: institutionalScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
-            itemStyle: { color: "#EE6666" },
-          },
-          {
-            value: physicalScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.physical")),
-            itemStyle: { color: "#73C0DE" },
-          },
-        ],
+        type: "text",
+        left: "30%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.indicator")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
       },
-    ],
-  };
-  const radarOptionTotal = {
-    legend: {},
-    tooltip: {},
-    radar: {
-      splitNumber: 10,
-      indicator: [
-        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
-      ],
-    },
-    series: [
       {
-        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.total")),
-        type: "radar",
-        data: [
-          {
-            value: averageArray,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.type.total")),
-            itemStyle: { color: "#9A60B4" },
-          },
-        ],
+        type: "text",
+        left: "85%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.capacity")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
       },
     ],
   };
@@ -7934,10 +7863,6 @@ const useChartStore = defineStore("echarts-options", () => {
     sankeyOption,
     sankeyBasicOption,
     sankeyOptionCapacity,
-    populationLegendOption,
-    radarOptionDimension,
-    radarOptionTotal,
-    radarChartType,
   };
 });
-export default useChartStore;
+export default useIndicatorChartStore;

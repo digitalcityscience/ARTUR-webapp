@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import useEchartsStore from "@/stores/chartStore";
+import usePopulationChartStore from "@/stores/populationChartStore";
+import useIndicatorChartStore from "@/stores/indicatorChartStore";
 import * as echarts from "echarts";
 import { ref, computed, watch, onMounted } from "vue";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
-const echartsStore = useEchartsStore();
+const echartsStore = usePopulationChartStore();
+const indicatorChartStore = useIndicatorChartStore();
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -20,7 +22,7 @@ const initChart = () => {
   chart.setOption(echartsStore.populationLegendOption);
 };
 watch(
-  () => echartsStore.sunburstData.name,
+  () => indicatorChartStore.sunburstData.name,
   () => {
     chart.setOption(echartsStore.populationLegendOption);
   },

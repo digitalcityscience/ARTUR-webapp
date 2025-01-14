@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import useEchartsStore from "@/stores/chartStore";
+import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
 
-const chartStore = useEchartsStore();
+const chartStore = useRadarChartStore();
 const { locale } = useI18n();
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;

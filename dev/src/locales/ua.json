@@ -617,6 +617,11 @@
       "Inclusiveness": "Інклюзивність",
       "Reflectiveness": "Рефлексивність",
       "Flexibility": "Гнучкість"
+    },
+    "subtitle": {
+      "dimension": "Міські виміри",
+      "indicator": "Індикатори вимірювання",
+      "capacity": "Resilience Capacities"
     }
   },
   "initialIndicators": {

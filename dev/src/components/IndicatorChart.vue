@@ -4,11 +4,11 @@ import * as echarts from "echarts";
 import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
 import { ImageFormat, GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
-import useChartStore from "@/stores/chartStore";
+import useIndicatorChartStore from "@/stores/indicatorChartStore";
 import { useI18n } from "vue-i18n";
 
 const indicatorStore = useIndicatorStore();
-const chartStore = useChartStore();
+const chartStore = useIndicatorChartStore();
 const { locale } = useI18n();
 // Constant
 const chartContainer = ref<HTMLDivElement | null>(null);
