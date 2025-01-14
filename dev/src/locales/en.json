@@ -231,7 +231,8 @@
                   "Consideration of the geographical condition of cities (closeness to water as a resource)",
                   "Ensuring a balance in land-use planning (housing, agriculture, industry)"
                 ]
-              }
+              },
+              "group": { "Social": "Social", "Physical": "Physical" }
             }
           },
           "Diversity": {
@@ -276,7 +277,8 @@
                   "Local knowledge collection for empowerment of the population and sense of belonging (to prevent shrinking cities).",
                   "Cohesive emergency operations."
                 ]
-              }
+              },
+              "group": { "Social": "Social", "Physical": "Physical" }
             }
           },
           "Transparency": {
@@ -317,6 +319,10 @@
                   "Having storage capacity of energy sources for several days.",
                   "Support of small, local businesses."
                 ]
+              },
+              "group": {
+                "Resourcefulness of space": "Resourcefulness of space",
+                "Physical": "Resourcefulness of human capital"
               }
             }
           },
@@ -359,7 +365,8 @@
               ]
             }
           }
-        }
+        },
+        "button": "Click here to explore relatable indicators"
       }
     },
     "buttons": {

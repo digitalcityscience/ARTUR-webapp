@@ -1,19 +1,23 @@
 <script lang="ts" setup>
-import LanguageSwitcher from "./LanguageSwitcher.vue";
-import { ref, computed } from "vue";
+import { onMounted, ref, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
+import * as echarts from "echarts";
+import { ImageFormat } from "@/assets/ts/constants";
+import useChartStore from "@/stores/chartStore";
+import LanguageSwitcher from "./LanguageSwitcher.vue";
 
-const capacityIcon = {
-  Robustness: "bi bi-shield-check",
-  Redundancy: "bi bi-diagram-2",
-  Inclusiveness: "bi bi-people-fill",
-  Diversity: "bi bi-palette",
-  Flexibility: "bi bi-arrow-repeat",
-  Resourcefulness: "bi bi-tree-fill",
-  Integration: "bi bi-gear-wide-connected",
-  Reflectiveness: "bi bi-graph-up-arrow",
-  Transparency: "bi bi-eye-fill",
-};
+// Text data
+// const capacityIcon = {
+//   Robustness: "bi bi-shield-check",
+//   Redundancy: "bi bi-diagram-2",
+//   Inclusiveness: "bi bi-people-fill",
+//   Diversity: "bi bi-palette",
+//   Flexibility: "bi bi-arrow-repeat",
+//   Resourcefulness: "bi bi-tree-fill",
+//   Integration: "bi bi-gear-wide-connected",
+//   Reflectiveness: "bi bi-graph-up-arrow",
+//   Transparency: "bi bi-eye-fill",
+// };
 const sections = ref([
   {
     title: "sidebar.knowledgePanel.content.capacities.class.1",
@@ -40,12 +44,54 @@ const sections = ref([
     ],
   },
 ]);
-const capacitySelected = ref("Robustness");
 const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
 const content = computed(() => textData.value.sidebar.knowledgePanel.content);
+// Sankey chart constants
+const chartStore = useChartStore();
+const chartContainer = ref<HTMLDivElement | null>(null);
+let chart: echarts.ECharts;
+const resolution = ref<number>(2);
+const backgroundColor = ref<string>("#ffffff");
+const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
+// Methods
+const downloadChart = () => {
+  const img = new Image();
+  img.src = chart.getDataURL({
+    type: imageFormat.value,
+    pixelRatio: resolution.value,
+    backgroundColor: backgroundColor.value,
+  });
+  const link = document.createElement("a");
+  link.href = img.src;
+  link.download = `Sankey-${chartStore.capacitySelected}-chart.` + imageFormat.value;
+  link.click();
+};
+const initChart = (): void => {
+  chart = echarts.init(chartContainer.value);
+  chart.setOption(chartStore.sankeyOptionCapacity);
+};
+const reloadOptions = () => {
+  chart.clear();
+  chart.setOption(chartStore.sankeyOptionCapacity);
+};
+watch(locale, () => {
+  reloadOptions();
+});
+watch(
+  () => chartStore.capacitySelected,
+  () => {
+    chart.clear();
+    chart.setOption(chartStore.sankeyOptionCapacity);
+  },
+);
+onMounted(() => {
+  if (!chartContainer.value) return;
+  initChart();
+});
 </script>
 <template>
+  <!-- Knowledge Panel -->
   <div class="leaflet-sidebar-pane" id="knowledge">
     <!-- Start Page -->
     <h1 class="leaflet-sidebar-header">
@@ -82,7 +128,7 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
               class="list-group-item d-flex align-items-center btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#capacityModal"
-              @click="capacitySelected = item.label"
+              @click="chartStore.capacitySelected = item.label"
             >
               <i :class="item.iconClass"
                 >{{ " " }}{{ $t("echarts.capacities." + item.label) }}</i
@@ -99,7 +145,7 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5">
-            <i></i>{{ $t("echarts.capacities." + capacitySelected) }}
+            <i></i>{{ $t("echarts.capacities." + chartStore.capacitySelected) }}
           </h1>
           <button
             type="button"
@@ -118,7 +164,7 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
             <p class="text-muted">
               {{
                 $t(
-                  `sidebar.knowledgePanel.content.capacities.${capacitySelected}.definition`,
+                  `sidebar.knowledgePanel.content.capacities.${chartStore.capacitySelected}.definition`,
                 )
               }}
             </p>
@@ -130,7 +176,8 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
             </h6>
             <ul class="list-group p-0">
               <li
-                v-for="(item, index) in content.capacities[capacitySelected].practice"
+                v-for="(item, index) in content.capacities[chartStore.capacitySelected]
+                  .practice"
                 :key="index"
                 class="list-group-item px-2"
               >
@@ -145,13 +192,14 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
             </h6>
             <div
               v-if="
-                content.capacities[capacitySelected].example.type.loc.source === 'list'
+                content.capacities[chartStore.capacitySelected].example.type.loc
+                  .source === 'list'
               "
             >
               <ul class="list-group p-0">
                 <li
-                  v-for="(item, index) in content.capacities[capacitySelected].example
-                    .data"
+                  v-for="(item, index) in content.capacities[chartStore.capacitySelected]
+                    .example.data"
                   :key="index"
                   class="list-group-item px-2"
                 >
@@ -161,15 +209,23 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
             </div>
             <div
               v-else-if="
-                content.capacities[capacitySelected].example.type.loc.source === 'grouped'
+                content.capacities[chartStore.capacitySelected].example.type.loc
+                  .source === 'grouped'
               "
             >
               <div
-                v-for="(group, groupKey) in content.capacities[capacitySelected].example
-                  .data"
+                v-for="(group, groupKey) in content.capacities[
+                  chartStore.capacitySelected
+                ].example.data"
                 :key="groupKey"
               >
-                <h6 class="text-secondary">{{ groupKey + ":" }}</h6>
+                <h6 class="text-secondary">
+                  {{
+                    content.capacities[chartStore.capacitySelected].example.group[
+                      groupKey
+                    ].loc.source + ":"
+                  }}
+                </h6>
                 <ul class="list-group p-0">
                   <li
                     v-for="(item, index) in group"
@@ -187,8 +243,50 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info">
-            Click here to explore relatable indicators
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#sankeyModal"
+          >
+            {{ $t("sidebar.knowledgePanel.content.button") }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sankey Modal -->
+  <div class="modal fade" id="sankeyModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">
+            {{ $t("echarts.capacities." + chartStore.capacitySelected) }}
+            - {{ $t("indicatorChart.graphTypes.sankey") }}
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <!-- Chart -->
+          <div ref="chartContainer" class="chart-container"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" @click="downloadChart">
+            <i class="fa fa-download" aria-hidden="true">{{
+              $t("indicatorChart.buttons.download")
+            }}</i>
+          </button>
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#capacityModal"
+          >
+            {{ $t("sidebar.buttons.back") }}
           </button>
         </div>
       </div>
@@ -198,5 +296,9 @@ const content = computed(() => textData.value.sidebar.knowledgePanel.content);
 <style scoped>
 .text-muted {
   white-space: pre-line;
+}
+.chart-container {
+  width: 1100px;
+  height: 900px;
 }
 </style>

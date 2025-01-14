@@ -111,7 +111,6 @@ function setBasicOption() {
   if (indicatorStore.indicatorType === "basic")
     chart.setOption(chartStore.sunburstBasicOption);
   else {
-    console.log(indicatorStore.indicatorType);
     chart.setOption(chartStore.sunburstOption);
     chart.on("click", (params: any) => handleClick(params));
   }
