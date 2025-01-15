@@ -46,6 +46,8 @@
     "dashboardPanel": {
       "header": "Панель керування",
       "indicator": "індикатори",
+      "graph": "Графіки лікарів",
+      "list": "Перелік індикаторів",
       "result": "Показник стійкості",
       "button": {
         "graph1": "Основні показники",
@@ -621,7 +623,7 @@
     "subtitle": {
       "dimension": "Міські виміри",
       "indicator": "Індикатори вимірювання",
-      "capacity": "Resilience Capacities"
+      "capacity": "Потенціал стійкості"
     }
   },
   "initialIndicators": {

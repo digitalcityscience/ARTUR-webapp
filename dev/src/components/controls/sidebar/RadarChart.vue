@@ -20,15 +20,9 @@ const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
   setOption();
 };
-watch(locale, () => {
-  setOption();
-});
-watch(
-  () => chartStore.radarChartType,
-  () => {
-    setOption();
-  },
-);
+watch(locale, setOption);
+watch(() => chartStore.radarChartType, setOption);
+watch(() => chartStore.radarOptionDimension, setOption, { deep: true });
 // Init Chart on mounted
 onMounted(() => {
   initChart();

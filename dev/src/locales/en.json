@@ -46,6 +46,8 @@
     "dashboardPanel": {
       "header": "Dashboard",
       "indicator": "Indicators",
+      "graph": "Graphs of Indiactors",
+      "list": "List of Indicators",
       "result": "Resilience Score",
       "button": {
         "graph1": "Basic Indicators",
@@ -938,35 +940,35 @@
               "score 1": "20 - 40% level of service (incl. Quality)",
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There are no ambulance response services operating within the city or there is a severe capacity deficit in the city's everyday emergency response capability. This leaves it unable to effectively manage (everyday) health callouts. Paramedics / emergency health responders are not trained, equipped, generally prepared to respond to major incidents which may require specific expertise (e.g., earthquakes, terrorism etc.)., terrorism etc.)."
+            },
+            "2": {
+              "text": "To what extent are the fire services adequately trained and resourced to effectively respond to call-outs?",
+              "score 0": "There are no fire response services operating within the city or there is a severe capacity deficit in the city's everyday emergency response capability. This leaves it unable to effectively manage (everyday) fire incidents. Firefighters are not trained, equipped, generally prepared to respond to major incidents which may require specific expertise (e.g., earthquakes, terrorism etc.).",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "Fire response services operate below maximum capacity at all times and are able to respond to 100% of day-to-day call-outs. There are always sufficient firefighters to respond to fire incidents. There is a robust call out system to receive and process public emergency calls. Firefighters have surplus capacity and/or arrangements to manage surges in the number of incidents. They are well trained, equipped and regulated. They are also prepared and equipped to deal with specific large scale emergencies that the city may face (e.g., earthquakes, terrorism etc.) ensuring that those effected can be located and assisted."
+            },
+            "3": {
+              "text": "To what extent are police adequately trained and resourced to effectively respond to call-outs?",
+              "score 0": "There are no police response services operating within the city or there is a severe capacity deficit in the city's everyday emergency response capability. This leaves it unable to effectively manage (everyday) incidents relating to law and order (police response). Police are not trained, equipped, generally prepared to respond to major incidents which may require specific expertise (e.g., earthquakes, terrorism etc.).",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "Police response services operate below maximum capacity at all times and are able to respond to 100% of day-to-day call-outs. There are always sufficient police to respond to incidents relating to law and order (e.g., police). There is a robust call-out system to receive and process public emergency calls. Police have surplus capacity and/or arrangements to manage surges in the number of incidents. They are well trained, equipped and regulated. They are also prepared and equipped to deal with specific large scale emergencies that the city may face (e.g., earthquakes, terrorism etc.) ensuring that those effected can be located and assisted."
+            },
+            "4": {
+              "text": "To what extent is there an adequately trained, resourced and coordinated official emergency response to manage major incidents and the immediate aftermath of disasters?",
+              "score 0": "There is no emergency response and search and rescue capacity within the city and none available for deployment within the city from regional or national sources if required. It is unable to provide immediate response to major incidents / emergencies.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "Emergency responders (police, fire, ambulance etc.) are trained, equipped and coordinated to manage major incidents (e.g., earthquakes, terrorism etc.). Search and Rescue capability exists with robust strategic arrangements to utilise assets such as the military, NGOs or other trained volunteers as appropriate, Response teams are equipped to meet the needs of all high risk disaster scenarios. This includes any specialist equipment and training (e.g., response to hazardous materials). The city has undertaken a detailed inventory of the full set of response assets both within the city's direct control as well as assets outside its control (i.e. controlled by the private sector or other government body). The inventory is based on accurate, up-to-date data. Mechanisms are in place to regularly review and update the inventory. Responders receive regular training in disaster management/ search and rescue (at least once per year)."
+            },
+            "5": {
+              "text": "To what extent does city have mechanisms in place to mobilise critical non-financial resources (people, equipment) for providing emergency response and staple goods for subsequent relief (i.e. food and basic necessities) after a disaster event?",
+              "score 0": "There are no city-wide emergency plans in place that incorporate planning for emergency resource accessibility. No mechanism to mobilise critical non-financial resources. The city has not undertaken an inventory of assets. OR The city has undertaken an inventory, but the inventory was incomplete (i.e., did not include assets outside of direct city control) or is out of date. No mechanism to establish agreements to utilise critical assets / supplies that are not within direct city controls during times of need.",
+              "score 1": "20 - 40% level of service (incl. Quality)",
+              "score 2": "40 - 60% level of service (incl. Quality)",
+              "score 3": "There are city-wide mechanisms in place that address emergency resource accessibility. The city has undertaken a detailed inventory of the full set of relief assets both within the city's direct control as well as assets outside its control (i.e. controlled by the private sector or other government body). The inventory is based on accurate, up-to-date data. Mechanisms are in place to regularly review and update the inventory. This includes emergency relief (food, shelter, water etc.). It addresses logistics including use of distribution teams and vehicles to manage demand. Responders and volunteers are all effectively trained and coordinated to ensure the immediate needs of those affected by a disaster can be met. Resource preparation / planning reflects the worst-case scenario potential of the city's risk profile."
             }
-          },
-          "2": {
-            "text": "To what extent are the fire services adequately trained and resourced to effectively respond to call-outs?",
-            "score 0": "There are no fire response services operating within the city or there is a severe capacity deficit in the city's everyday emergency response capability. This leaves it unable to effectively manage (everyday) fire incidents. Firefighters are not trained, equipped, generally prepared to respond to major incidents which may require specific expertise (e.g., earthquakes, terrorism etc.).",
-            "score 1": "20 - 40% level of service (incl. Quality)",
-            "score 2": "40 - 60% level of service (incl. Quality)",
-            "score 3": "Fire response services operate below maximum capacity at all times and are able to respond to 100% of day-to-day call-outs. There are always sufficient firefighters to respond to fire incidents. There is a robust call out system to receive and process public emergency calls. Firefighters have surplus capacity and/or arrangements to manage surges in the number of incidents. They are well trained, equipped and regulated. They are also prepared and equipped to deal with specific large scale emergencies that the city may face (e.g., earthquakes, terrorism etc.) ensuring that those effected can be located and assisted."
-          },
-          "3": {
-            "text": "To what extent are police adequately trained and resourced to effectively respond to call-outs?",
-            "score 0": "There are no police response services operating within the city or there is a severe capacity deficit in the city's everyday emergency response capability. This leaves it unable to effectively manage (everyday) incidents relating to law and order (police response). Police are not trained, equipped, generally prepared to respond to major incidents which may require specific expertise (e.g., earthquakes, terrorism etc.).",
-            "score 1": "20 - 40% level of service (incl. Quality)",
-            "score 2": "40 - 60% level of service (incl. Quality)",
-            "score 3": "Police response services operate below maximum capacity at all times and are able to respond to 100% of day-to-day call-outs. There are always sufficient police to respond to incidents relating to law and order (e.g., police). There is a robust call-out system to receive and process public emergency calls. Police have surplus capacity and/or arrangements to manage surges in the number of incidents. They are well trained, equipped and regulated. They are also prepared and equipped to deal with specific large scale emergencies that the city may face (e.g., earthquakes, terrorism etc.) ensuring that those effected can be located and assisted."
-          },
-          "4": {
-            "text": "To what extent is there an adequately trained, resourced and coordinated official emergency response to manage major incidents and the immediate aftermath of disasters?",
-            "score 0": "There is no emergency response and search and rescue capacity within the city and none available for deployment within the city from regional or national sources if required. It is unable to provide immediate response to major incidents / emergencies.",
-            "score 1": "20 - 40% level of service (incl. Quality)",
-            "score 2": "40 - 60% level of service (incl. Quality)",
-            "score 3": "Emergency responders (police, fire, ambulance etc.) are trained, equipped and coordinated to manage major incidents (e.g., earthquakes, terrorism etc.). Search and Rescue capability exists with robust strategic arrangements to utilise assets such as the military, NGOs or other trained volunteers as appropriate, Response teams are equipped to meet the needs of all high risk disaster scenarios. This includes any specialist equipment and training (e.g., response to hazardous materials). The city has undertaken a detailed inventory of the full set of response assets both within the city's direct control as well as assets outside its control (i.e. controlled by the private sector or other government body). The inventory is based on accurate, up-to-date data. Mechanisms are in place to regularly review and update the inventory. Responders receive regular training in disaster management/ search and rescue (at least once per year)."
-          },
-          "5": {
-            "text": "To what extent does city have mechanisms in place to mobilise critical non-financial resources (people, equipment) for providing emergency response and staple goods for subsequent relief (i.e. food and basic necessities) after a disaster event?",
-            "score 0": "There are no city-wide emergency plans in place that incorporate planning for emergency resource accessibility. No mechanism to mobilise critical non-financial resources. The city has not undertaken an inventory of assets. OR The city has undertaken an inventory, but the inventory was incomplete (i.e., did not include assets outside of direct city control) or is out of date. No mechanism to establish agreements to utilise critical assets / supplies that are not within direct city controls during times of need.",
-            "score 1": "20 - 40% level of service (incl. Quality)",
-            "score 2": "40 - 60% level of service (incl. Quality)",
-            "score 3": "There are city-wide mechanisms in place that address emergency resource accessibility. The city has undertaken a detailed inventory of the full set of relief assets both within the city's direct control as well as assets outside its control (i.e. controlled by the private sector or other government body). The inventory is based on accurate, up-to-date data. Mechanisms are in place to regularly review and update the inventory. This includes emergency relief (food, shelter, water etc.). It addresses logistics including use of distribution teams and vehicles to manage demand. Responders and volunteers are all effectively trained and coordinated to ensure the immediate needs of those affected by a disaster can be met. Resource preparation / planning reflects the worst-case scenario potential of the city's risk profile."
           }
         }
       }

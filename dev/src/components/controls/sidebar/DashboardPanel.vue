@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch, reactive, computed } from "vue";
+import { ref, watch, onMounted, computed } from "vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import RadarChart from "./RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
@@ -14,9 +14,8 @@ const { t, messages, locale } = useI18n();
 const translations = computed(
   () => messages.value[locale.value].initialIndicators as any,
 );
-const selectedIndicator = ref("");
-const showedIndicator = ref("");
 
+const showedIndicator = ref("");
 // Open the Indicator Selection Window
 const openIndicatorSelection = (type: "basic" | "total"): void => {
   const mainWinWidth = window.innerWidth;
@@ -43,20 +42,17 @@ function indicatorColor(color: string): string {
 // Questionnaire
 const questionNumber = ref<number[]>([]);
 const questionKey = ref<string>("");
+const indicatorKey = ref<string>("");
+
 // Handle indicator selection
 function indicatorClick(showIndicator: string) {
   showedIndicator.value = showIndicator;
-  let indicator: string;
-  if (locale.value == "ua") indicator = indicatorStore.indicatorEN[showIndicator];
-  else indicator = showIndicator;
-  selectedIndicator.value = indicator;
-  const indicatorKey = indicatorStore.reverseMapping[showIndicator].slice(0, -5);
-  questionKey.value = `${indicatorKey}.questions.`;
-  const questionKeys = indicatorKey!.split(".");
+  indicatorKey.value = indicatorStore.reverseMapping[showIndicator];
+  questionKey.value = `${indicatorKey.value.slice(0, -5)}.questions.`;
+  const questionKeys = indicatorKey.value!.split(".");
   const questions =
     translations.value?.[questionKeys[1]]?.[questionKeys[2]]?.[questionKeys[3]]
       ?.questions;
-
   if (questions) {
     const length = Object.keys(questions).length;
     questionNumber.value = Array.from({ length: length }, (_, i) => i + 1);
@@ -64,52 +60,30 @@ function indicatorClick(showIndicator: string) {
     console.warn("Questions not found for the selected indicator");
     questionNumber.value = [];
   }
+  radarChartStore.initializeAnswer(indicatorKey.value, questionNumber.value);
 }
-
-// Answers object to store scores for questions
-interface Answer {
-  questions: { [key: number]: number | null };
-}
-const answers = reactive<{ [indicator: string]: Answer }>({});
-watch(
-  showedIndicator,
-  (newVal) => {
-    let indicator: string;
-    if (locale.value == "ua") indicator = indicatorStore.indicatorEN[newVal];
-    else indicator = newVal;
-    selectedIndicator.value = indicator;
-    if (!answers[indicator]) {
-      // Initialize the questions object for this indicator
-      answers[indicator] = { questions: {} };
-      // Set default for all questions
-      for (let i = 1; i <= questionNumber.value.length; i++) {
-        answers[indicator].questions[i] = null; // Default score
-      }
-      if (answers[""]) delete answers[""];
-    }
-  },
-  { immediate: true },
-);
 watch(locale, () => {
   questionNumber.value = [];
 });
 // submit and check the answers
-const submitResults = () => {
+function submitResults() {
   const unansweredQuestions = Object.values(
-    answers[selectedIndicator.value].questions,
+    radarChartStore.answers[indicatorKey.value],
   ).includes(null);
   if (unansweredQuestions) {
     // Show an alert or a warning to the user
     alert(t("sidebar.dashboardPanel.questionnaire.warning"));
     return;
   }
-  // Placeholder for analysis logic
-  console.log("Answers:", JSON.stringify(answers, null, 2));
-};
+  radarChartStore.calculateScores();
+}
+
 // Radar Chart
 function setChartType(type: "dimension" | "total") {
   radarChartStore.radarChartType = type;
 }
+// Fetch capacity data on mounted
+onMounted(radarChartStore.fetchIndicatorData);
 </script>
 
 <template>
@@ -130,52 +104,82 @@ function setChartType(type: "dimension" | "total") {
         >
           {{ $t("sidebar.dashboardPanel.indicator") }}
         </button>
-        <div class="collapse show" id="indicator-collapse">
-          <template
-            v-for="indicator in Object.entries(indicatorStore.selectedIndicator).map(
-              ([key, value]) => ({
-                key,
-                value,
-              }),
-            )"
-            :key="indicator.key"
-          >
-            <div
-              class="rounded border ps-2 py-1 m-0 clearfix"
-              :style="{ backgroundColor: indicatorColor(indicator.value) }"
-            >
-              <span
-                type="button"
-                @click="indicatorClick(indicator.key)"
-                data-bs-toggle="modal"
-                data-bs-target="#questionnaire"
-              >
-                {{ indicator.key }}
-              </span>
+        <div class="collapse show ms-1" id="indicator-collapse">
+          <ul class="list-unstyled ps-0">
+            <!-- Indicator Graph Buttons -->
+            <li class="mb-1">
               <button
                 type="button"
-                class="btn btn-close float-end"
-                aria-label="Close"
-                @click.stop="deleteSelection(indicator.key)"
-              ></button>
-            </div>
-          </template>
-          <div class="btn-group mt-1" role="group">
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click="openIndicatorSelection('basic')"
-            >
-              {{ $t("sidebar.dashboardPanel.button.graph1") }}
-            </button>
-            <button
-              type="button"
-              class="btn btn-dark"
-              @click="openIndicatorSelection('total')"
-            >
-              {{ $t("sidebar.dashboardPanel.button.graph2") }}
-            </button>
-          </div>
+                class="btn btn-toggle rounded collapsed ps-0"
+                data-bs-toggle="collapse"
+                data-bs-target="#indicator-graph-collapse"
+                aria-expanded="true"
+              >
+                {{ $t("sidebar.dashboardPanel.graph") }}
+              </button>
+              <div id="indicator-graph-collapse" class="collapse show">
+                <div class="btn-group my-1 ms-1" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    @click="openIndicatorSelection('basic')"
+                  >
+                    {{ $t("sidebar.dashboardPanel.button.graph1") }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-dark"
+                    @click="openIndicatorSelection('total')"
+                  >
+                    {{ $t("sidebar.dashboardPanel.button.graph2") }}
+                  </button>
+                </div>
+              </div>
+            </li>
+            <!-- Indicator List -->
+            <li class="mb-1">
+              <button
+                type="button"
+                class="btn btn-toggle rounded collapsed ps-0"
+                data-bs-toggle="collapse"
+                data-bs-target="#indicator-list-collapse"
+                aria-expanded="true"
+              >
+                {{ $t("sidebar.dashboardPanel.list") }}
+              </button>
+              <div id="indicator-list-collapse" class="collapse show">
+                <template
+                  v-for="indicator in Object.entries(
+                    indicatorStore.selectedIndicator,
+                  ).map(([key, value]) => ({
+                    key,
+                    value,
+                  }))"
+                  :key="indicator.key"
+                >
+                  <div
+                    class="rounded border ms-1 ps-2 py-1 m-0 clearfix"
+                    :style="{ backgroundColor: indicatorColor(indicator.value) }"
+                  >
+                    <span
+                      type="button"
+                      @click="indicatorClick(indicator.key)"
+                      data-bs-toggle="modal"
+                      data-bs-target="#questionnaire"
+                    >
+                      {{ indicator.key }}
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-close float-end"
+                      aria-label="Close"
+                      @click.stop="deleteSelection(indicator.key)"
+                    ></button>
+                  </div>
+                </template>
+              </div>
+            </li>
+          </ul>
         </div>
       </li>
       <li class="mb-1">
@@ -276,7 +280,7 @@ function setChartType(type: "dimension" | "total") {
                 :name="'question-' + i"
                 :id="'question-' + i + '-score-' + score"
                 :value="score"
-                v-model="answers[selectedIndicator].questions[i]"
+                v-model="radarChartStore.answers[indicatorKey][i]"
               />
               <label class="form-check-label" :for="'question-' + i + '-score-' + score">
                 {{ $t(questionKey + i + `.score ${score}`) }}
@@ -285,12 +289,7 @@ function setChartType(type: "dimension" | "total") {
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-dismiss="modal"
-            @click="submitResults"
-          >
+          <button type="button" class="btn btn-primary" @click="submitResults">
             {{ $t("sidebar.dashboardPanel.questionnaire.buttons.submit") }}
           </button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

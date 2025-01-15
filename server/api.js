@@ -7,8 +7,8 @@ router.get("/capacity", async (req, res) => {
   try {
     const { rows } = await pool.query("SELECT * FROM capacity");
     const data = rows.reduce((acc, item) => {
-      const { indicator, ...rest } = item; // Extract the indicator and the rest of the properties
-      acc[indicator] = rest; // Use the indicator as the key
+      const { key, ...rest } = item; // Extract the key column and the rest of the properties
+      acc[key] = rest; // Use the key column as the key
       return acc;
     }, {});
     res.json(data);

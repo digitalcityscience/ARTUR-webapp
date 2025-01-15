@@ -7527,7 +7527,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      target: computed(() => t("echarts.capacities.Robustness")),
       value: 0.2,
     },
     {
