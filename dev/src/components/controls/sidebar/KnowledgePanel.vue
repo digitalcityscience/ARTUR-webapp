@@ -46,7 +46,8 @@ const sections = ref([
 ]);
 const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
-const content = computed(() => textData.value.sidebar.knowledgePanel.content);
+const phaseText = computed(() => textData.value.sidebar.knowledgePanel.content.description.phase);
+const capacity = computed(() => textData.value.sidebar.knowledgePanel.content.capacities);
 // Sankey chart constants
 const chartStore = useChartStore();
 const chartContainer = ref<HTMLDivElement | null>(null);
@@ -89,15 +90,20 @@ onMounted(initChart);
     </h1>
     <language-switcher></language-switcher>
     <div class="sidebar-content">
-      <strong class="sidebar-title">
+      <strong class="sidebar-title text-uppercase text-secondary">
         {{ $t("sidebar.knowledgePanel.content.title") }}</strong
       >
-      <p
-        v-for="(item, index) in content.description"
-        :key="index"
-        class="sidebar-content-text"
-      >
-        {{ item.loc.source }}
+      <p class="sidebar-content-text text-secondary">
+        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.definition") }}:</h6>
+        {{ $t("sidebar.knowledgePanel.content.description.definition") }}
+      </p>
+      <p class="sidebar-content-text text-secondary">
+        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.access") }}:</h6>
+        {{ $t("sidebar.knowledgePanel.content.description.access") }}
+      </p>
+      <p class="sidebar-content-text text-secondary">
+        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.phase") }}:</h6>
+       <p v-for="(item,index) in phaseText" :key="index">{{ item.loc.source }}</p>
       </p>
       <div class="container mt-4">
         <div v-for="(section, index) in sections" :key="index" class="mb-1">
@@ -171,8 +177,7 @@ onMounted(initChart);
             </h6>
             <ul class="list-group p-0">
               <li
-                v-for="(item, index) in content.capacities[chartStore.capacitySelected]
-                  .practice"
+                v-for="(item, index) in capacity[chartStore.capacitySelected].practice"
                 :key="index"
                 class="list-group-item px-2"
               >
@@ -187,14 +192,13 @@ onMounted(initChart);
             </h6>
             <div
               v-if="
-                content.capacities[chartStore.capacitySelected].example.type.loc
-                  .source === 'list'
+                capacity[chartStore.capacitySelected].example.type.loc.source === 'list'
               "
             >
               <ul class="list-group p-0">
                 <li
-                  v-for="(item, index) in content.capacities[chartStore.capacitySelected]
-                    .example.data"
+                  v-for="(item, index) in capacity[chartStore.capacitySelected].example
+                    .data"
                   :key="index"
                   class="list-group-item px-2"
                 >
@@ -204,22 +208,20 @@ onMounted(initChart);
             </div>
             <div
               v-else-if="
-                content.capacities[chartStore.capacitySelected].example.type.loc
-                  .source === 'grouped'
+                capacity[chartStore.capacitySelected].example.type.loc.source ===
+                'grouped'
               "
             >
               <div
-                v-for="(group, groupKey) in content.capacities[
-                  chartStore.capacitySelected
-                ].example.data"
+                v-for="(group, groupKey) in capacity[chartStore.capacitySelected].example
+                  .data"
                 :key="groupKey"
               >
                 <h6 class="text-secondary">
                   {{
-                    content.capacities[chartStore.capacitySelected].example.group[
-                      groupKey
-                    ].loc.source + ":"
-                  }}
+                    capacity[chartStore.capacitySelected].example.group[groupKey].loc
+                      .source + ":"
+                  }}:
                 </h6>
                 <ul class="list-group p-0">
                   <li

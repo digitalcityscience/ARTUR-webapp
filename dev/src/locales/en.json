@@ -46,7 +46,7 @@
     "dashboardPanel": {
       "header": "Dashboard",
       "indicator": "Indicators",
-      "graph": "Graphs of Indiactors",
+      "graph": "Graphs of Indicators",
       "list": "List of Indicators",
       "result": "Resilience Score",
       "button": {
@@ -160,11 +160,20 @@
       "title": "Knowledge Base",
       "content": {
         "title": "Urban Resilience",
-        "description": [
-          "For which phase of development: resilience can be understood as a constantly changing state of a system. In this sense it can be assessed and monitored periodically at different stages of development.",
-          "This is especially important when considering as part of the theoretical framework, that systems under pressure or failure return to a stable state, through the phases of: 1) recovery, 2) adaptation and 3) transformation.",
-          "The 9 considered capacities of a resilient urban system can, in this sense, relate more strongly to a certain phase, whether it is more relevant to assess in the short-term (recovery), in the mid-term (adaptation) or in the long-term (transformation)."
-        ],
+        "subtitle": {
+          "definition": "Definition",
+          "access": "How can it be assessed",
+          "phase": "For which phase of development"
+        },
+        "description": {
+          "definition": "The ability of an urban system and all its constituent socio-ecological and socio-technical networks across temporal and spatial scales to maintain or rapidly return to desired functions in the face of a disturbance, to adapt to change, and to quickly transform systems that limit current or future adaptive capacity (Meerow et al., 2016). How can it be assessed: The following 9 characteristics are considered indispensable capacities of an urban system to be resilient. Thus, by evaluating the intrinsic capacities of a resilient system, how balanced they are, or which are not performing well, city actors can evaluate in which direction to take decisions toward development. Our framework links these 9 resilience capacities to specific dimensions of the urban system, and corresponding indicators.",
+          "access": "The following 9 characteristics are considered indispensable capacities of an urban system to be resilient. Thus, by evaluating the intrinsic capacities of a resilient system, how balanced they are, or which are not performing well, city actors can evaluate in which direction to take decisions toward development. Our framework links these 9 resilience capacities to specific dimensions of the urban system, and corresponding indicators.",
+          "phase": [
+            "Resilience can be understood as a constantly changing state of a system. In this sense it can be assessed and monitored periodically at different stages of development.",
+            "This is especially important when considering as part of the theoretical framework, that systems under pressure or failure return to a stable state, through the phases of: 1) recovery, 2) adaptation and 3) transformation.",
+            "The 9 considered capacities of a resilient urban system can, in this sense, relate more strongly to a certain phase, whether it is more relevant to assess in the short-term (recovery), in the mid-term (adaptation) or in the long-term (transformation)."
+          ]
+        },
         "capacities": {
           "class": {
             "1": "During recovery (short-term)",
