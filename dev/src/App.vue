@@ -9,7 +9,7 @@ const { t } = useI18n();
     <header class="custom-header rounded p-0">
       <div class="container-fluid d-flex align-items-center justify-content-start gap-2">
         <div class="header-text text-light text-nowrap rounded px-2 py-1">
-          <h4 class="header-title">ARTUR tool</h4>
+          <h4 class="header-title">ARTUR Tool</h4>
           <p class="header-subtitle">{{ $t("website.subtitle") }}</p>
         </div>
         <div class="input-group search-bar">

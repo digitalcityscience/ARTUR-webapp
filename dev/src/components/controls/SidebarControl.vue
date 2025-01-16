@@ -4,11 +4,12 @@ import * as L from "leaflet";
 import "leaflet-sidebar-v2/js/leaflet-sidebar.js";
 import "leaflet-sidebar-v2/css/leaflet-sidebar.css";
 import SidebarTabs from "./sidebar/SidebarTabs.vue";
-import InfoPanel from "./sidebar/InfoPanel.vue";
-import SettingsPanel from "./sidebar/SettingsPanel.vue";
-import DashboardPanel from "./sidebar/DashboardPanel.vue";
-import LayerPanel from "./sidebar/LayerPanel.vue";
-import KnowledgePanel from "./sidebar/KnowledgePanel.vue";
+import PanelIntroduction from "./sidebar/PanelIntroduction.vue";
+import PanelSetting from "./sidebar/PanelSetting.vue";
+import PanelIndicator from "./sidebar/PanelIndicator.vue";
+import PanelData from "./sidebar/PanelData.vue";
+import PanelDictionary from "./sidebar/PanelDictionary.vue";
+import PanelVulnerability from "./sidebar/PanelVulnerability.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
 import useIndicatorStore from "@/stores/indicatorStore";
@@ -25,7 +26,7 @@ onMounted(() => {
       closebutton: true,
     })
     .addTo(mapStore.map)
-    .open("info");
+    .open("introduction");
 });
 </script>
 <template>
@@ -36,15 +37,17 @@ onMounted(() => {
       <!-- panel content -->
       <div class="leaflet-sidebar-content">
         <!-- info -->
-        <info-panel />
+        <panel-introduction />
+        <!-- Dictionary -->
+        <panel-dictionary />
+        <!-- Vulnerability -->
+        <panel-vulnerability />
+        <!-- UR Indicator -->
+        <panel-indicator />
         <!-- Layers -->
-        <layer-panel />
-        <!-- Dashboard -->
-        <dashboard-panel />
+        <panel-data />
         <!-- Settings -->
-        <settings-panel />
-        <!-- Knowledge -->
-        <knowledge-panel />
+        <panel-setting />
       </div>
     </div>
   </div>
@@ -63,6 +66,9 @@ onMounted(() => {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.2;
+}
+::v-deep(p) {
+  margin: 0;
 }
 ::v-deep(.btn-toggle) {
   display: inline-flex;
@@ -90,14 +96,10 @@ onMounted(() => {
   right: 0;
 }
 ::v-deep(.sidebar-content) {
-  padding: 3.75rem 0.3rem 2.5rem;
-}
-::v-deep(.sidebar-title) {
-  padding: 0 0 1.875rem 0.3rem;
-  font-weight: bold;
+  padding: 1.25rem 0.15rem 2.25rem;
 }
 ::v-deep(.sidebar-content-text) {
-  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+  padding: 0.3rem;
   line-height: 1.5;
 }
 </style>

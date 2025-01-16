@@ -57,8 +57,13 @@ onMounted(() => {
               ),
             }"
           ></i>
-          {{ $t("vulnerability.properties." + mapStore.selectedVulnerableProperty) }} <=
-          {{ range }}<br />
+          {{
+            $t(
+              "sidebar.vulnerabilityPanel.propertySelector.properties." +
+                mapStore.selectedVulnerableProperty,
+            )
+          }}
+          <= {{ range }}<br />
         </template>
         {{ $t("legend.vulnerability.size") }}
       </div>
@@ -112,9 +117,7 @@ onMounted(() => {
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
           >{{ $t("legend.isochrone.healthSite")
           }}{{
-            $t(
-              "sidebar.layerPanel.healthSiteIsochroneType." + mapStore.getIsochroneType(),
-            )
+            $t("sidebar.dataPanel.healthSiteIsochroneType." + mapStore.getIsochroneType())
           }}
           {{ range }} {{ $t("legend.minute") }}<br />
         </template>

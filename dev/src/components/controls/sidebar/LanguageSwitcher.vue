@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Language } from "@/assets/ts/types";
 import useSidebarStore from "@/stores/sidebarStore";
+import type { Language } from "@/assets/ts/types";
 
 const sidebarStore = useSidebarStore();
 const languages = ["УКР", "EN"] as const;

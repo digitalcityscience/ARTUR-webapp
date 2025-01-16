@@ -1754,12 +1754,6 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     "rgba(242,140,140,1)": "INSTI-\nTUTIONAL",
     "rgba(150,207,230,1)": "PHYSICAL",
   };
-  const sunburstColorConvertion: Record<string, string> = {
-    "rgba(172,216,151,1)": "#91CC75",
-    "rgba(251,213,129,1)": "#FAC858",
-    "rgba(242,140,140,1)": "#EE6666",
-    "rgba(150,207,230,1)": "#73C0DE",
-  };
   // Sunburst Option
   const color = [
     // "#5470C6", // blue
@@ -7855,7 +7849,6 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     sunburstDimension,
     sunburstIndicator,
     sunburstColorSet,
-    sunburstColorConvertion,
     sunburstOption,
     sunburstOption1,
     sunburstOption2,

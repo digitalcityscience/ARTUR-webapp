@@ -44,13 +44,3 @@ export function getPopulationColor(value: number, accessibility: number): string
         return "";
     }
 }
-
-export function getVulnerabilityRadius(population: number) {
-  const minRadius = 3; // Minimum point size
-  const maxRadius = 25; // Maximum point size
-  const maxPopulation = 2952301; // Largest population in the dataset
-
-  // Normalize the population to the size range
-  const size = minRadius + (population / maxPopulation) * (maxRadius - minRadius);
-  return Math.round(size);
-}

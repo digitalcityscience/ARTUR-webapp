@@ -154,27 +154,27 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     },
     series: [
       {
-        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.dimension")),
+        name: computed(() => t("sidebar.indicatorPanel.radarChart.name.dimension")),
         type: "radar",
         data: [
           {
             value: socialScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.social")),
+            name: computed(() => t("sidebar.indicatorPanel.radarChart.social")),
             itemStyle: { color: "#91CC75" },
           },
           {
             value: economicScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+            name: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
             itemStyle: { color: "#FAC858" },
           },
           {
             value: institutionalScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+            name: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
             itemStyle: { color: "#EE6666" },
           },
           {
             value: physicalScore,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.physical")),
+            name: computed(() => t("sidebar.indicatorPanel.radarChart.physical")),
             itemStyle: { color: "#73C0DE" },
           },
         ],
@@ -200,12 +200,12 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     },
     series: [
       {
-        name: computed(() => t("sidebar.dashboardPanel.radarChart.name.total")),
+        name: computed(() => t("sidebar.indicatorPanel.radarChart.name.total")),
         type: "radar",
         data: [
           {
             value: totalArray,
-            name: computed(() => t("sidebar.dashboardPanel.radarChart.type.total")),
+            name: computed(() => t("sidebar.indicatorPanel.radarChart.type.total")),
             itemStyle: { color: "#9A60B4" },
           },
         ],

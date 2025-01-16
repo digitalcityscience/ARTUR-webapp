@@ -20,7 +20,7 @@ import LanguageSwitcher from "./LanguageSwitcher.vue";
 // };
 const sections = ref([
   {
-    title: "sidebar.knowledgePanel.content.capacities.class.1",
+    title: "sidebar.dictionaryPanel.content.capacities.class.1",
     items: [
       { label: "Robustness", iconClass: "bi bi-shield-check" },
       { label: "Redundancy", iconClass: "bi bi-diagram-2" },
@@ -28,7 +28,7 @@ const sections = ref([
     ],
   },
   {
-    title: "sidebar.knowledgePanel.content.capacities.class.2",
+    title: "sidebar.dictionaryPanel.content.capacities.class.2",
     items: [
       { label: "Diversity", iconClass: "bi bi-palette" },
       { label: "Flexibility", iconClass: "bi bi-arrow-repeat" },
@@ -36,7 +36,7 @@ const sections = ref([
     ],
   },
   {
-    title: "sidebar.knowledgePanel.content.capacities.class.3",
+    title: "sidebar.dictionaryPanel.content.capacities.class.3",
     items: [
       { label: "Integration", iconClass: "bi bi-gear-wide-connected" },
       { label: "Reflectiveness", iconClass: "bi bi-graph-up-arrow" },
@@ -46,8 +46,12 @@ const sections = ref([
 ]);
 const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
-const phaseText = computed(() => textData.value.sidebar.knowledgePanel.content.description.phase);
-const capacity = computed(() => textData.value.sidebar.knowledgePanel.content.capacities);
+const phaseText = computed(
+  () => textData.value.sidebar.dictionaryPanel.content.description.phase,
+);
+const capacity = computed(
+  () => textData.value.sidebar.dictionaryPanel.content.capacities,
+);
 // Sankey chart constants
 const chartStore = useChartStore();
 const chartContainer = ref<HTMLDivElement | null>(null);
@@ -82,29 +86,35 @@ onMounted(initChart);
 </script>
 <template>
   <!-- Knowledge Panel -->
-  <div class="leaflet-sidebar-pane" id="knowledge">
+  <div class="leaflet-sidebar-pane" id="dictionary">
     <!-- Start Page -->
     <h1 class="leaflet-sidebar-header">
-      {{ $t("sidebar.knowledgePanel.title") }}
+      {{ $t("sidebar.dictionaryPanel.header") }}
       <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
     </h1>
     <language-switcher></language-switcher>
     <div class="sidebar-content">
-      <strong class="sidebar-title text-uppercase text-secondary">
-        {{ $t("sidebar.knowledgePanel.content.title") }}</strong
-      >
-      <p class="sidebar-content-text text-secondary">
-        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.definition") }}:</h6>
-        {{ $t("sidebar.knowledgePanel.content.description.definition") }}
-      </p>
-      <p class="sidebar-content-text text-secondary">
-        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.access") }}:</h6>
-        {{ $t("sidebar.knowledgePanel.content.description.access") }}
-      </p>
-      <p class="sidebar-content-text text-secondary">
-        <h6>{{ $t("sidebar.knowledgePanel.content.subtitle.phase") }}:</h6>
-       <p v-for="(item,index) in phaseText" :key="index">{{ item.loc.source }}</p>
-      </p>
+      <h5 class="fw-bold text-uppercase text-secondary">
+        {{ $t("sidebar.dictionaryPanel.content.title") }}
+      </h5>
+      <div class="sidebar-content-text text-secondary">
+        <h6 class="fw-bold">
+          {{ $t("sidebar.dictionaryPanel.content.subtitle.definition") }}:
+        </h6>
+        {{ $t("sidebar.dictionaryPanel.content.description.definition") }}
+      </div>
+      <div class="sidebar-content-text text-secondary">
+        <h6 class="fw-bold">
+          {{ $t("sidebar.dictionaryPanel.content.subtitle.access") }}:
+        </h6>
+        {{ $t("sidebar.dictionaryPanel.content.description.access") }}
+      </div>
+      <div class="sidebar-content-text text-secondary">
+        <h6 class="fw-bold">
+          {{ $t("sidebar.dictionaryPanel.content.subtitle.phase") }}:
+        </h6>
+        <p v-for="(item, index) in phaseText" :key="index">{{ item.loc.source }}</p>
+      </div>
       <div class="container mt-4">
         <div v-for="(section, index) in sections" :key="index" class="mb-1">
           <h6
@@ -160,12 +170,12 @@ onMounted(initChart);
           <!-- Definition Section -->
           <div class="mb-4">
             <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.knowledgePanel.content.capacities.title.definition") }}
+              {{ $t("sidebar.dictionaryPanel.content.capacities.title.definition") }}
             </h6>
             <p class="text-muted">
               {{
                 $t(
-                  `sidebar.knowledgePanel.content.capacities.${chartStore.capacitySelected}.definition`,
+                  `sidebar.dictionaryPanel.content.capacities.${chartStore.capacitySelected}.definition`,
                 )
               }}
             </p>
@@ -173,7 +183,7 @@ onMounted(initChart);
           <!-- Best Practices Section -->
           <div class="mb-4">
             <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.knowledgePanel.content.capacities.title.practice") }}
+              {{ $t("sidebar.dictionaryPanel.content.capacities.title.practice") }}
             </h6>
             <ul class="list-group p-0">
               <li
@@ -188,7 +198,7 @@ onMounted(initChart);
           <!-- Examples Section -->
           <div>
             <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.knowledgePanel.content.capacities.title.example") }}
+              {{ $t("sidebar.dictionaryPanel.content.capacities.title.example") }}
             </h6>
             <div
               v-if="
@@ -246,7 +256,7 @@ onMounted(initChart);
             data-bs-toggle="modal"
             data-bs-target="#sankeyModal"
           >
-            {{ $t("sidebar.knowledgePanel.content.button") }}
+            {{ $t("sidebar.dictionaryPanel.content.button") }}
           </button>
         </div>
       </div>

@@ -286,11 +286,6 @@ const useMapStore = defineStore("map", () => {
     visible: ref(true),
     color: "#057dcd",
   };
-  const vulnerabilityLayer: VectorLayer = {
-    name: LayerName.VULNERABILITY,
-    visible: ref(true),
-    range: [], // Store breaks here
-  };
   const shelterLayers: Record<string, VectorLayer> = {
     shelterLayer: {
       name: LayerName.SHELTER,
@@ -354,8 +349,13 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   };
+  const vulnerabilityLayer: VectorLayer = {
+    name: LayerName.VULNERABILITY,
+    visible: ref(false),
+    range: [], // Store breaks here
+  };
   /* vulnerability layer */
-  const selectedVulnerableProperty = ref("duration of alarms, hours in 2024");
+  const selectedVulnerableProperty = ref("city_area"); //duration of alarms, hours in 2024
   // calculate class breaks dynamically
   const calculateClassBreaks = (
     minValue: number,
@@ -391,6 +391,16 @@ const useMapStore = defineStore("map", () => {
     // Default to white if value doesn't fall in any range
     return "#fff";
   };
+  function getVulnerabilityRadius(population: number) {
+    const minRadius = 3; // Minimum point size
+    const maxRadius = 25; // Maximum point size
+    const maxPopulation = 2952301; // Largest population in the dataset
+
+    // Normalize the population to the size range
+    const size = minRadius + (population / maxPopulation) * (maxRadius - minRadius);
+    return Math.round(size);
+  }
+
   const initializeVulnerabilityLayer = (): void => {
     const minValue: number =
       geojsonData.value.vulnerabilityPoint.properties[
@@ -457,7 +467,6 @@ const useMapStore = defineStore("map", () => {
     initializeVulnerabilityLayer,
     setCity,
     fetchCountrywideData,
-    fetchGeoData,
     setIsochroneType,
     getIsochroneType,
     getMarkerOptions,
@@ -466,6 +475,7 @@ const useMapStore = defineStore("map", () => {
     resetHighlight,
     boundaryStyle,
     getVulnerabilityColor,
+    getVulnerabilityRadius,
   };
 });
 export default useMapStore;

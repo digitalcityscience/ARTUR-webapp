@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import * as L from "leaflet";
 
 const useSidebarStore = defineStore("sidebar", () => {
@@ -12,27 +12,49 @@ const useSidebarStore = defineStore("sidebar", () => {
 
   // Methods
   const getSidebar = () => sidebar.value;
-  const goToSetting = () => sidebar.value!.open("settings");
-  const goToNextPage = () =>
-    currentStep.value < 3 ? currentStep.value++ : sidebar.value!.open("layer");
-  const goToPreviousPage = () =>
-    currentStep.value === 1 ? sidebar.value!.open("info") : currentStep.value--;
-  const goToFirstStep = () => (currentStep.value = 1);
+  const openPanel = (index: number) => {
+    switch (index) {
+      case 0:
+        sidebar.value!.open("dictionary");
+        break;
+      case 1:
+        sidebar.value!.open("vulnerability");
+        break;
+      case 2:
+        sidebar.value!.open("indicator");
+        break;
+      case 3:
+        sidebar.value!.open("data");
+        break;
+      default:
+    }
+  };
+  const openSetting = () => sidebar.value!.open("settings");
+  const openNextPage = () =>
+    currentStep.value < 3 ? currentStep.value++ : sidebar.value!.open("data");
+  const openPreviousPage = () =>
+    currentStep.value === 1 ? sidebar.value!.open("introduction") : currentStep.value--;
+  const openFirstStep = () => (currentStep.value = 1);
   // Update the active language and i18n locale
   const setLanguage = (lang: "EN" | "УКР") => {
     currentLanguage.value = lang;
     locale.value = lang == "EN" ? "en" : "ua";
     localStorage.setItem("language", lang);
   };
+  watch(locale, (newVal) => {
+    currentLanguage.value = newVal === "en" ? "EN" : "УКР";
+  });
+
   return {
     sidebar,
     currentStep,
     selectedTopic,
     currentLanguage,
-    goToNextPage,
-    goToPreviousPage,
-    goToFirstStep,
-    goToSetting,
+    openPanel,
+    openNextPage,
+    openPreviousPage,
+    openFirstStep,
+    openSetting,
     getSidebar,
     setLanguage,
   };
