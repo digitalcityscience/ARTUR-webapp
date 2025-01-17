@@ -288,6 +288,11 @@
     },
     "vulnerabilityPanel": {
       "header": "Vulnerability Check (General)",
+      "definition": {
+        "header": "vulnerability",
+        "subtitle": "definition",
+        "text": "Vulnerability refers to the conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards (source UNDRR)."
+      },
       "layer": "Nationwide Layers",
       "citySelection": {
         "title": "City Selection",
@@ -326,6 +331,11 @@
     },
     "indicatorPanel": {
       "header": "Urban Resilience Score (Local)",
+      "explanation": {
+        "header": "reminder",
+        "1": "Once the map relocated to a specific city area you chose, select the menu of indicators to start a local, urban resilience assessment. The menu of indicators suggests a default list from the ARTUR framework. The colors of the indicators list refer to different areas of the urban system (social, physical, institutional or economic indicators).  By clicking into each of them you can start the survey and answer the provided questions which feed into the final result.",
+        "2": "When the survey has been completed for all provided indicators, you will be able to retrieve a “resilience score” (general or by category), by clicking on the button at the bottom of the panel."
+      },
       "indicator": "Indicators",
       "graph": "Graphs of Indicators",
       "list": "List of Indicators",
