@@ -11,55 +11,55 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   const { t } = useI18n();
   // Basic Sunburst Data
   const basicSunburstData = {
-    name: computed(() => t("initialIndicators.name")),
-    children: [
+    name: t("initialIndicators.name"),
+    children: computed(() => [
       // Social
       {
-        name: computed(() => t("initialIndicators.social.name")),
+        name: t("initialIndicators.social.name"),
         children: [
           {
-            name: computed(() => t("initialIndicators.social.1.name")),
+            name: t("initialIndicators.social.1.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.social.1.1.name")),
+                name: t("initialIndicators.social.1.1.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.social.1.2.name")),
+                name: t("initialIndicators.social.1.2.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.social.1.3.name")),
+                name: t("initialIndicators.social.1.3.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.social.1.4.name")),
+                name: t("initialIndicators.social.1.4.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.social.2.name")),
+            name: t("initialIndicators.social.2.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.social.2.1.name")),
+                name: t("initialIndicators.social.2.1.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.social.3.name")),
+            name: t("initialIndicators.social.3.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.social.3.1.name")),
+                name: t("initialIndicators.social.3.1.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.social.3.2.name")),
+                name: t("initialIndicators.social.3.2.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.social.3.3.name")),
+                name: t("initialIndicators.social.3.3.name"),
                 value: 1,
               },
             ],
@@ -68,26 +68,26 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       //Economic
       {
-        name: computed(() => t("initialIndicators.economic.name")),
+        name: t("initialIndicators.economic.name"),
         children: [
           {
-            name: computed(() => t("initialIndicators.economic.1.name")),
+            name: t("initialIndicators.economic.1.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.economic.1.1.name")),
+                name: t("initialIndicators.economic.1.1.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.economic.1.2.name")),
+                name: t("initialIndicators.economic.1.2.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.economic.2.name")),
+            name: t("initialIndicators.economic.2.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.economic.2.1.name")),
+                name: t("initialIndicators.economic.2.1.name"),
                 value: 1,
               },
             ],
@@ -96,39 +96,39 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       //Institutional
       {
-        name: computed(() => t("initialIndicators.institutional.name")),
+        name: t("initialIndicators.institutional.name"),
         children: [
           {
-            name: computed(() => t("initialIndicators.institutional.1.name")),
+            name: t("initialIndicators.institutional.1.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.institutional.1.1.name")),
+                name: t("initialIndicators.institutional.1.1.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.institutional.2.name")),
+            name: t("initialIndicators.institutional.2.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.institutional.2.1.name")),
+                name: t("initialIndicators.institutional.2.1.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.institutional.3.name")),
+            name: t("initialIndicators.institutional.3.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.institutional.3.1.name")),
+                name: t("initialIndicators.institutional.3.1.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.institutional.3.2.name")),
+                name: t("initialIndicators.institutional.3.2.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.institutional.3.3.name")),
+                name: t("initialIndicators.institutional.3.3.name"),
                 value: 1,
               },
             ],
@@ -137,46 +137,46 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       //Physical
       {
-        name: computed(() => t("initialIndicators.physical.name")),
+        name: t("initialIndicators.physical.name"),
         children: [
           {
-            name: computed(() => t("initialIndicators.physical.1.name")),
+            name: t("initialIndicators.physical.1.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.physical.1.1.name")),
+                name: t("initialIndicators.physical.1.1.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.physical.1.2.name")),
+                name: t("initialIndicators.physical.1.2.name"),
                 value: 1,
               },
               {
-                name: computed(() => t("initialIndicators.physical.1.3.name")),
+                name: t("initialIndicators.physical.1.3.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.physical.2.name")),
+            name: t("initialIndicators.physical.2.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.physical.2.1.name")),
+                name: t("initialIndicators.physical.2.1.name"),
                 value: 1,
               },
             ],
           },
           {
-            name: computed(() => t("initialIndicators.physical.3.name")),
+            name: t("initialIndicators.physical.3.name"),
             children: [
               {
-                name: computed(() => t("initialIndicators.physical.3.1.name")),
+                name: t("initialIndicators.physical.3.1.name"),
                 value: 1,
               },
             ],
           },
         ],
       },
-    ],
+    ]),
   };
   const sunburstBasicOption = {
     backgroundColor: "#fff",
@@ -259,16 +259,16 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   };
   // Total Sunburst Data
   const sunburstData = {
-    name: computed(() => t("echarts.name")),
-    children: [
+    name: t("echarts.name"),
+    children: computed(() => [
       {
-        name: computed(() => t("echarts.social.name")),
+        name: t("echarts.social.name"),
         children: [
           {
-            name: computed(() => t("echarts.social.1.name")),
+            name: t("echarts.social.1.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.1.1")),
+                name: t("echarts.social.1.1"),
                 children: [
                   {
                     value: 1,
@@ -279,7 +279,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.1.2")),
+                name: t("echarts.social.1.2"),
                 children: [
                   {
                     value: 2,
@@ -290,7 +290,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.1.3")),
+                name: t("echarts.social.1.3"),
                 children: [
                   {
                     value: 2,
@@ -301,7 +301,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.1.4")),
+                name: t("echarts.social.1.4"),
                 children: [
                   {
                     value: 1,
@@ -312,7 +312,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.1.5")),
+                name: t("echarts.social.1.5"),
                 children: [
                   {
                     value: 1,
@@ -325,10 +325,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.social.2.name")),
+            name: t("echarts.social.2.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.2.1")),
+                name: t("echarts.social.2.1"),
                 children: [
                   {
                     value: 3,
@@ -339,7 +339,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.2.2")),
+                name: t("echarts.social.2.2"),
                 children: [
                   {
                     value: 2,
@@ -350,7 +350,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.2.3")),
+                name: t("echarts.social.2.3"),
                 children: [
                   {
                     value: 3,
@@ -363,10 +363,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.social.3.name")),
+            name: t("echarts.social.3.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.3.1")),
+                name: t("echarts.social.3.1"),
                 children: [
                   {
                     value: 5,
@@ -377,7 +377,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.2")),
+                name: t("echarts.social.3.2"),
                 children: [
                   {
                     value: 2,
@@ -388,7 +388,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.3")),
+                name: t("echarts.social.3.3"),
                 children: [
                   {
                     value: 1,
@@ -399,7 +399,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.4")),
+                name: t("echarts.social.3.4"),
                 children: [
                   {
                     value: 4,
@@ -410,7 +410,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.5")),
+                name: t("echarts.social.3.5"),
                 children: [
                   {
                     value: 4,
@@ -421,7 +421,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.6")),
+                name: t("echarts.social.3.6"),
                 children: [
                   {
                     value: 2,
@@ -432,7 +432,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.7")),
+                name: t("echarts.social.3.7"),
                 children: [
                   {
                     value: 3,
@@ -443,7 +443,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.8")),
+                name: t("echarts.social.3.8"),
                 children: [
                   {
                     value: 4,
@@ -454,7 +454,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.9")),
+                name: t("echarts.social.3.9"),
                 children: [
                   {
                     value: 1,
@@ -465,7 +465,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.10")),
+                name: t("echarts.social.3.10"),
                 children: [
                   {
                     value: 2,
@@ -476,7 +476,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.11")),
+                name: t("echarts.social.3.11"),
                 children: [
                   {
                     value: 1,
@@ -487,7 +487,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.12")),
+                name: t("echarts.social.3.12"),
                 children: [
                   {
                     value: 2,
@@ -498,7 +498,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.13")),
+                name: t("echarts.social.3.13"),
                 children: [
                   {
                     value: 1,
@@ -509,7 +509,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.14")),
+                name: t("echarts.social.3.14"),
                 children: [
                   {
                     value: 3,
@@ -520,7 +520,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.3.15")),
+                name: t("echarts.social.3.15"),
                 children: [
                   {
                     value: 1,
@@ -533,10 +533,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.social.4.name")),
+            name: t("echarts.social.4.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.4.1")),
+                name: t("echarts.social.4.1"),
                 children: [
                   {
                     value: 5,
@@ -547,7 +547,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.4.2")),
+                name: t("echarts.social.4.2"),
                 children: [
                   {
                     value: 3,
@@ -560,10 +560,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.social.5.name")),
+            name: t("echarts.social.5.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.5.1")),
+                name: t("echarts.social.5.1"),
                 children: [
                   {
                     value: 3,
@@ -574,7 +574,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.5.2")),
+                name: t("echarts.social.5.2"),
                 children: [
                   {
                     value: 2,
@@ -585,7 +585,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.5.3")),
+                name: t("echarts.social.5.3"),
                 children: [
                   {
                     value: 5,
@@ -596,7 +596,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.5.4")),
+                name: t("echarts.social.5.4"),
                 children: [
                   {
                     value: 2,
@@ -609,10 +609,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.social.6.name")),
+            name: t("echarts.social.6.name"),
             children: [
               {
-                name: computed(() => t("echarts.social.6.1")),
+                name: t("echarts.social.6.1"),
                 children: [
                   {
                     value: 1,
@@ -623,7 +623,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.social.6.2")),
+                name: t("echarts.social.6.2"),
                 children: [
                   {
                     value: 2,
@@ -639,13 +639,13 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       {
         //Economic Start
-        name: computed(() => t("echarts.economic.name")),
+        name: t("echarts.economic.name"),
         children: [
           {
-            name: computed(() => t("echarts.economic.1.name")),
+            name: t("echarts.economic.1.name"),
             children: [
               {
-                name: computed(() => t("echarts.economic.1.1")),
+                name: t("echarts.economic.1.1"),
                 children: [
                   {
                     value: 1,
@@ -656,7 +656,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.1.2")),
+                name: t("echarts.economic.1.2"),
                 children: [
                   {
                     value: 2,
@@ -667,7 +667,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.1.3")),
+                name: t("echarts.economic.1.3"),
                 children: [
                   {
                     value: 2,
@@ -678,7 +678,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.1.4")),
+                name: t("echarts.economic.1.4"),
                 children: [
                   {
                     value: 3,
@@ -691,10 +691,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.economic.2.name")),
+            name: t("echarts.economic.2.name"),
             children: [
               {
-                name: computed(() => t("echarts.economic.2.1")),
+                name: t("echarts.economic.2.1"),
                 children: [
                   {
                     value: 2,
@@ -705,7 +705,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.2")),
+                name: t("echarts.economic.2.2"),
                 children: [
                   {
                     value: 3,
@@ -716,7 +716,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.3")),
+                name: t("echarts.economic.2.3"),
                 children: [
                   {
                     value: 2,
@@ -727,7 +727,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.4")),
+                name: t("echarts.economic.2.4"),
                 children: [
                   {
                     value: 1,
@@ -738,7 +738,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.5")),
+                name: t("echarts.economic.2.5"),
                 children: [
                   {
                     value: 3,
@@ -749,7 +749,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.6")),
+                name: t("echarts.economic.2.6"),
                 children: [
                   {
                     value: 3,
@@ -760,7 +760,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.7")),
+                name: t("echarts.economic.2.7"),
                 children: [
                   {
                     value: 1,
@@ -771,7 +771,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.8")),
+                name: t("echarts.economic.2.8"),
                 children: [
                   {
                     value: 2,
@@ -782,7 +782,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.9")),
+                name: t("echarts.economic.2.9"),
                 children: [
                   {
                     value: 1,
@@ -793,7 +793,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.10")),
+                name: t("echarts.economic.2.10"),
                 children: [
                   {
                     value: 2,
@@ -804,7 +804,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.11")),
+                name: t("echarts.economic.2.11"),
                 children: [
                   {
                     value: 2,
@@ -815,7 +815,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.2.12")),
+                name: t("echarts.economic.2.12"),
                 children: [
                   {
                     value: 4,
@@ -828,10 +828,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.economic.3.name")),
+            name: t("echarts.economic.3.name"),
             children: [
               {
-                name: computed(() => t("echarts.economic.3.1")),
+                name: t("echarts.economic.3.1"),
                 children: [
                   {
                     value: 4,
@@ -842,7 +842,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.3.2")),
+                name: t("echarts.economic.3.2"),
                 children: [
                   {
                     value: 3,
@@ -853,7 +853,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.economic.3.3")),
+                name: t("echarts.economic.3.3"),
                 children: [
                   {
                     value: 1,
@@ -866,10 +866,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.economic.4.name")),
+            name: t("echarts.economic.4.name"),
             children: [
               {
-                name: computed(() => t("echarts.economic.4.1")),
+                name: t("echarts.economic.4.1"),
                 children: [
                   {
                     value: 1,
@@ -885,13 +885,13 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       {
         //Institutional start
-        name: computed(() => t("echarts.institutional.name")),
+        name: t("echarts.institutional.name"),
         children: [
           {
-            name: computed(() => t("echarts.institutional.1.name")),
+            name: t("echarts.institutional.1.name"),
             children: [
               {
-                name: computed(() => t("echarts.institutional.1.1")),
+                name: t("echarts.institutional.1.1"),
                 children: [
                   {
                     value: 2,
@@ -902,7 +902,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.2")),
+                name: t("echarts.institutional.1.2"),
                 children: [
                   {
                     value: 1,
@@ -913,7 +913,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.3")),
+                name: t("echarts.institutional.1.3"),
                 children: [
                   {
                     value: 1,
@@ -924,7 +924,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.4")),
+                name: t("echarts.institutional.1.4"),
                 children: [
                   {
                     value: 2,
@@ -935,7 +935,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.5")),
+                name: t("echarts.institutional.1.5"),
                 children: [
                   {
                     value: 1,
@@ -946,7 +946,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.6")),
+                name: t("echarts.institutional.1.6"),
                 children: [
                   {
                     value: 2,
@@ -957,7 +957,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.7")),
+                name: t("echarts.institutional.1.7"),
                 children: [
                   {
                     value: 2,
@@ -968,7 +968,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.8")),
+                name: t("echarts.institutional.1.8"),
                 children: [
                   {
                     value: 2,
@@ -979,7 +979,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.9")),
+                name: t("echarts.institutional.1.9"),
                 children: [
                   {
                     value: 4,
@@ -990,7 +990,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.10")),
+                name: t("echarts.institutional.1.10"),
                 children: [
                   {
                     value: 2,
@@ -1001,7 +1001,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.11")),
+                name: t("echarts.institutional.1.11"),
                 children: [
                   {
                     value: 2,
@@ -1012,7 +1012,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.12")),
+                name: t("echarts.institutional.1.12"),
                 children: [
                   {
                     value: 3,
@@ -1023,7 +1023,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.13")),
+                name: t("echarts.institutional.1.13"),
                 children: [
                   {
                     value: 2,
@@ -1034,7 +1034,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.14")),
+                name: t("echarts.institutional.1.14"),
                 children: [
                   {
                     value: 4,
@@ -1045,7 +1045,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.15")),
+                name: t("echarts.institutional.1.15"),
                 children: [
                   {
                     value: 1,
@@ -1056,7 +1056,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.1.16")),
+                name: t("echarts.institutional.1.16"),
                 children: [
                   {
                     value: 2,
@@ -1069,10 +1069,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.institutional.2.name")),
+            name: t("echarts.institutional.2.name"),
             children: [
               {
-                name: computed(() => t("echarts.institutional.2.1")),
+                name: t("echarts.institutional.2.1"),
                 children: [
                   {
                     value: 1,
@@ -1083,7 +1083,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.2.2")),
+                name: t("echarts.institutional.2.2"),
                 children: [
                   {
                     value: 2,
@@ -1096,10 +1096,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.institutional.3.name")),
+            name: t("echarts.institutional.3.name"),
             children: [
               {
-                name: computed(() => t("echarts.institutional.3.1")),
+                name: t("echarts.institutional.3.1"),
                 children: [
                   {
                     value: 3,
@@ -1110,7 +1110,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.2")),
+                name: t("echarts.institutional.3.2"),
                 children: [
                   {
                     value: 4,
@@ -1121,7 +1121,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.3")),
+                name: t("echarts.institutional.3.3"),
                 children: [
                   {
                     value: 6,
@@ -1132,7 +1132,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.4")),
+                name: t("echarts.institutional.3.4"),
                 children: [
                   {
                     value: 2,
@@ -1143,7 +1143,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.5")),
+                name: t("echarts.institutional.3.5"),
                 children: [
                   {
                     value: 2,
@@ -1154,7 +1154,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.6")),
+                name: t("echarts.institutional.3.6"),
                 children: [
                   {
                     value: 2,
@@ -1165,7 +1165,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.7")),
+                name: t("echarts.institutional.3.7"),
                 children: [
                   {
                     value: 4,
@@ -1176,7 +1176,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.8")),
+                name: t("echarts.institutional.3.8"),
                 children: [
                   {
                     value: 3,
@@ -1187,7 +1187,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.9")),
+                name: t("echarts.institutional.3.9"),
                 children: [
                   {
                     value: 2,
@@ -1198,7 +1198,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.10")),
+                name: t("echarts.institutional.3.10"),
                 children: [
                   {
                     value: 3,
@@ -1209,7 +1209,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.11")),
+                name: t("echarts.institutional.3.11"),
                 children: [
                   {
                     value: 5,
@@ -1220,7 +1220,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.3.12")),
+                name: t("echarts.institutional.3.12"),
                 children: [
                   {
                     value: 2,
@@ -1233,10 +1233,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.institutional.4.name")),
+            name: t("echarts.institutional.4.name"),
             children: [
               {
-                name: computed(() => t("echarts.institutional.4.1")),
+                name: t("echarts.institutional.4.1"),
                 children: [
                   {
                     value: 2,
@@ -1247,7 +1247,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.4.2")),
+                name: t("echarts.institutional.4.2"),
                 children: [
                   {
                     value: 1,
@@ -1258,7 +1258,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.4.3")),
+                name: t("echarts.institutional.4.3"),
                 children: [
                   {
                     value: 2,
@@ -1269,7 +1269,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.4.4")),
+                name: t("echarts.institutional.4.4"),
                 children: [
                   {
                     value: 1,
@@ -1280,7 +1280,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.institutional.4.5")),
+                name: t("echarts.institutional.4.5"),
                 children: [
                   {
                     value: 2,
@@ -1296,13 +1296,13 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       },
       {
         //Physical start
-        name: computed(() => t("echarts.physical.name")),
+        name: t("echarts.physical.name"),
         children: [
           {
-            name: computed(() => t("echarts.physical.1.name")),
+            name: t("echarts.physical.1.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.1.1")),
+                name: t("echarts.physical.1.1"),
                 children: [
                   {
                     value: 4,
@@ -1313,7 +1313,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.1.2")),
+                name: t("echarts.physical.1.2"),
                 children: [
                   {
                     value: 2,
@@ -1326,10 +1326,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.2.name")),
+            name: t("echarts.physical.2.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.2.1")),
+                name: t("echarts.physical.2.1"),
                 children: [
                   {
                     value: 3,
@@ -1340,7 +1340,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.2.2")),
+                name: t("echarts.physical.2.2"),
                 children: [
                   {
                     value: 3,
@@ -1353,10 +1353,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.3.name")),
+            name: t("echarts.physical.3.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.3.1")),
+                name: t("echarts.physical.3.1"),
                 children: [
                   {
                     value: 1,
@@ -1367,7 +1367,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.3.2")),
+                name: t("echarts.physical.3.2"),
                 children: [
                   {
                     value: 3,
@@ -1380,10 +1380,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.4.name")),
+            name: t("echarts.physical.4.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.4.1")),
+                name: t("echarts.physical.4.1"),
                 children: [
                   {
                     value: 7,
@@ -1396,10 +1396,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.5.name")),
+            name: t("echarts.physical.5.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.5.1")),
+                name: t("echarts.physical.5.1"),
                 children: [
                   {
                     value: 5,
@@ -1410,7 +1410,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.2")),
+                name: t("echarts.physical.5.2"),
                 children: [
                   {
                     value: 3,
@@ -1421,7 +1421,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.3")),
+                name: t("echarts.physical.5.3"),
                 children: [
                   {
                     value: 2,
@@ -1432,7 +1432,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.4")),
+                name: t("echarts.physical.5.4"),
                 children: [
                   {
                     value: 3,
@@ -1443,7 +1443,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.5")),
+                name: t("echarts.physical.5.5"),
                 children: [
                   {
                     value: 5,
@@ -1454,7 +1454,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.6")),
+                name: t("echarts.physical.5.6"),
                 children: [
                   {
                     value: 1,
@@ -1465,7 +1465,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.7")),
+                name: t("echarts.physical.5.7"),
                 children: [
                   {
                     value: 3,
@@ -1476,7 +1476,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.5.8")),
+                name: t("echarts.physical.5.8"),
                 children: [
                   {
                     value: 5,
@@ -1489,10 +1489,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.6.name")),
+            name: t("echarts.physical.6.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.6.1")),
+                name: t("echarts.physical.6.1"),
                 children: [
                   {
                     value: 2,
@@ -1503,7 +1503,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.6.2")),
+                name: t("echarts.physical.6.2"),
                 children: [
                   {
                     value: 1.5,
@@ -1514,7 +1514,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.6.3")),
+                name: t("echarts.physical.6.3"),
                 children: [
                   {
                     value: 1.5,
@@ -1527,10 +1527,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.7.name")),
+            name: t("echarts.physical.7.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.7.1")),
+                name: t("echarts.physical.7.1"),
                 children: [
                   {
                     value: 2,
@@ -1541,7 +1541,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.2")),
+                name: t("echarts.physical.7.2"),
                 children: [
                   {
                     value: 1,
@@ -1552,7 +1552,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.3")),
+                name: t("echarts.physical.7.3"),
                 children: [
                   {
                     value: 2,
@@ -1563,7 +1563,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.4")),
+                name: t("echarts.physical.7.4"),
                 children: [
                   {
                     value: 2,
@@ -1574,7 +1574,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.5")),
+                name: t("echarts.physical.7.5"),
                 children: [
                   {
                     value: 4,
@@ -1585,7 +1585,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.6")),
+                name: t("echarts.physical.7.6"),
                 children: [
                   {
                     value: 2,
@@ -1596,7 +1596,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.7")),
+                name: t("echarts.physical.7.7"),
                 children: [
                   {
                     value: 3,
@@ -1607,7 +1607,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.8")),
+                name: t("echarts.physical.7.8"),
                 children: [
                   {
                     value: 2,
@@ -1618,7 +1618,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.9")),
+                name: t("echarts.physical.7.9"),
                 children: [
                   {
                     value: 5,
@@ -1629,7 +1629,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.7.10")),
+                name: t("echarts.physical.7.10"),
                 children: [
                   {
                     value: 3,
@@ -1642,10 +1642,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             ],
           },
           {
-            name: computed(() => t("echarts.physical.8.name")),
+            name: t("echarts.physical.8.name"),
             children: [
               {
-                name: computed(() => t("echarts.physical.8.1")),
+                name: t("echarts.physical.8.1"),
                 children: [
                   {
                     value: 4,
@@ -1656,7 +1656,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.2")),
+                name: t("echarts.physical.8.2"),
                 children: [
                   {
                     value: 2,
@@ -1667,7 +1667,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.3")),
+                name: t("echarts.physical.8.3"),
                 children: [
                   {
                     value: 2,
@@ -1678,7 +1678,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.4")),
+                name: t("echarts.physical.8.4"),
                 children: [
                   {
                     value: 2,
@@ -1689,7 +1689,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.5")),
+                name: t("echarts.physical.8.5"),
                 children: [
                   {
                     value: 3,
@@ -1700,7 +1700,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.6")),
+                name: t("echarts.physical.8.6"),
                 children: [
                   {
                     value: 1,
@@ -1711,7 +1711,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                 ],
               },
               {
-                name: computed(() => t("echarts.physical.8.7")),
+                name: t("echarts.physical.8.7"),
                 children: [
                   {
                     value: 2,
@@ -1725,23 +1725,25 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
           },
         ],
       },
-    ],
+    ]),
   };
-  const initialSunburstData = sunburstData.children.map((level1) => ({
-    name: level1.name,
-    children: level1.children.map((level2) => ({
-      name: level2.name,
-      value: 1,
+  const initialSunburstData = computed(() =>
+    sunburstData.children.value.map((level1) => ({
+      name: level1.name,
+      children: level1.children.map((level2) => ({
+        name: level2.name,
+        value: 1,
+      })),
     })),
-  }));
+  );
   const sunburstDimension = new Set();
-  sunburstData.children.forEach((level1: any) => {
+  sunburstData.children.value.forEach((level1: any) => {
     level1.children.forEach((level2: any) => {
       sunburstDimension.add(level2.name);
     });
   });
   const sunburstIndicator = new Set();
-  sunburstData.children.forEach((level1: any) => {
+  sunburstData.children.value.forEach((level1: any) => {
     level1.children.forEach((level2: any) => {
       level2.children.forEach((level3: any) => {
         sunburstIndicator.add(level3.name);
@@ -2004,317 +2006,325 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       right: 0,
     },
   };
-  // Sankey Data
-  const sankeyData = [
+  // Total Sankey Data
+  const sankeyData = computed(() => [
     {
-      name: "Social",
+      name: t("sidebar.indicatorPanel.radarChart.social"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL1,
     },
-    { name: "Economic", itemStyle: { color: "#FAC858" }, depth: SANKEYLEVELS.LEVEL1 },
     {
-      name: "Institutional",
+      name: t("sidebar.indicatorPanel.radarChart.economic"),
+      itemStyle: { color: "#FAC858" },
+      depth: SANKEYLEVELS.LEVEL1,
+    },
+    {
+      name: t("sidebar.indicatorPanel.radarChart.institutional"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL1,
     },
-    { name: "Physical", itemStyle: { color: "#73C0DE" }, depth: SANKEYLEVELS.LEVEL1 },
     {
-      name: "Safe & affordable housing",
+      name: t("sidebar.indicatorPanel.radarChart.physical"),
+      itemStyle: { color: "#73C0DE" },
+      depth: SANKEYLEVELS.LEVEL1,
+    },
+    {
+      name: t("echarts.social.1.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Inclusive access to safe drinking water",
+      name: t("echarts.social.1.3"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Effective sanitation",
+      name: t("echarts.social.1.4"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Adequate affordable energy supply",
+      name: t("echarts.social.1.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Access to all the skills and experience to respond/reduce risks and respond to disaster",
+      name: t("echarts.social.2.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Accessibility to training materials (language)",
+      name: t("echarts.social.2.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Sufficient affordable food supply",
+      name: t("echarts.social.1.5"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Exchange knowledge and learn from other cities facing similar challenges",
+      name: t("echarts.social.2.3"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Grassroots or community organizations participating in pre-event planning and post event response",
+      name: t("echarts.social.3.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Accessible criminal and civil justice",
+      name: t("echarts.social.3.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Cohesive communities",
+      name: t("echarts.social.3.3"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Training programmes provided to the most vulnerable and at need populations",
+      name: t("echarts.social.3.4"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Citizen engagement and communications in relation to disaster resilience and recovery",
+      name: t("echarts.social.3.5"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Widespread community awareness & preparedness",
+      name: t("echarts.social.3.6"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Main public facilities: university, schools, health centres, markets, etc.",
+      name: t("echarts.social.3.7"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Social services infrastructure, including schools, hospitals, and clinics",
+      name: t("echarts.social.3.8"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Local community support",
+      name: t("echarts.social.3.9"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Strong city-wide identity & culture",
+      name: t("echarts.social.3.10"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Actively engaged citizens",
+      name: t("echarts.social.3.11"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Practices and drills involving public and professionals",
+      name: t("echarts.social.3.12"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Adequate education for all",
+      name: t("echarts.social.3.13"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Major community buildings, religious buildings, and historic/cultural assets",
+      name: t("echarts.social.3.14"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Relevant skills & training",
+      name: t("echarts.social.3.15"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+      name: t("echarts.social.4.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Awareness of functions or services that natural capital provides for the city",
+      name: t("echarts.social.4.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Public education towards awareness of hazard, risk and disaster information",
+      name: t("echarts.social.5.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Safe places/havens and the evacuation routes",
+      name: t("echarts.social.5.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+      name: t("echarts.social.5.3"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Awareness of equipment and supply needed + provision",
+      name: t("echarts.social.5.4"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Effective systems to deter crime",
+      name: t("echarts.social.6.1"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "High levels of crime are observed",
+      name: t("echarts.social.6.2"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Diverse economic base",
+      name: t("echarts.economic.1.1"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Inclusive labour policies",
+      name: t("echarts.economic.2.9"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Local business development and innovation",
+      name: t("echarts.economic.2.10"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Supportive financing mechanisms",
+      name: t("echarts.economic.1.3"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Comprehensive business continuity planning",
+      name: t("echarts.economic.2.8"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Attractive business environment",
+      name: t("echarts.economic.2.3"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Strong integration with regional & global economies",
+      name: t("echarts.economic.2.11"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Industrial areas including ports, industrial zones, and factories",
+      name: t("echarts.economic.1.2"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+      name: t("echarts.economic.1.4"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Businesses with a documented business continuity plan",
+      name: t("echarts.economic.2.1"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Knowledge to funding opportunities (for local economy and recovery)",
+      name: t("echarts.economic.2.2"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Economic impact",
+      name: t("echarts.economic.2.4"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Level of insurance cover exists in the city, across all sectors - business and community",
+      name: t("echarts.economic.2.5"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Incentives for business and society to support resilience building",
+      name: t("echarts.economic.2.6"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Planned investments",
+      name: t("echarts.economic.2.7"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
+      name: t("echarts.economic.2.12"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Changes in the overall city's boundaries",
+      name: t("echarts.economic.4.1"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Financial plan and budget for resilience, including contingency funds",
+      name: t("echarts.economic.3.1"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Densities",
+      name: t("echarts.economic.3.3"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Projected changes to population densities and economic activity",
+      name: t("echarts.economic.3.2"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Disaster management authority have sufficient staffing capacity",
+      name: t("echarts.institutional.1.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Appropriate government decision-making",
+      name: t("echarts.institutional.1.6"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Effective co-ordination with other government bodies",
+      name: t("echarts.institutional.1.7"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Proactive multi-stakeholder collaboration",
+      name: t("echarts.institutional.1.8"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Comprehensive government emergency management",
+      name: t("echarts.institutional.3.5"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Consultative planning process",
+      name: t("echarts.institutional.1.2"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Appropriate land use and zoning",
+      name: t("echarts.institutional.3.9"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Robust planning approval process",
+      name: t("echarts.institutional.1.4"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Well-managed public finances",
+      name: t("echarts.institutional.1.5"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -2324,22 +2334,22 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+      name: t("echarts.institutional.1.9"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Urban development to promote resilience",
+      name: t("echarts.institutional.1.10"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Building codes or standards address hazards and risks",
+      name: t("echarts.institutional.1.11"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Enforcement and verification of zoning building zoning and regulations",
+      name: t("echarts.institutional.1.12"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -2349,5261 +2359,5055 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+      name: t("echarts.institutional.1.14"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Proactive corruption prevention",
+      name: t("echarts.institutional.1.15"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Comprehensive city monitoring & data management",
+      name: t("echarts.institutional.1.16"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Land use designations",
+      name: t("echarts.institutional.2.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Changes in land use designations",
+      name: t("echarts.institutional.2.2"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+      name: t("echarts.institutional.3.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
+      name: t("echarts.institutional.3.2"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+      name: t("echarts.institutional.3.3"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Early warning system and reaching level",
+      name: t("echarts.institutional.3.4"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Integration of resilience in city functions / portfolios",
+      name: t("echarts.institutional.3.6"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+      name: t("echarts.institutional.3.7"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Disaster management / preparedness / emergency response plan",
+      name: t("echarts.institutional.3.8"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Appropriately land use planning considering risk, hazards and vulnerability",
+      name: t("echarts.institutional.3.10"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+      name: t("echarts.institutional.3.11"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Projected changes in location of vulnerable populations",
+      name: t("echarts.institutional.3.12"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Adequate access to quality healthcare",
+      name: t("echarts.institutional.4.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Emergency medical care",
+      name: t("echarts.institutional.4.2"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Effective emergency response services",
+      name: t("echarts.institutional.4.3"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Robust public health systems",
+      name: t("echarts.institutional.4.4"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Security services: fire services, police stations, etc.",
+      name: t("echarts.institutional.4.5"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
+      name: t("echarts.physical.1.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Integration of green and blue infrastructure into city policy and projects",
+      name: t("echarts.physical.2.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Reliable communications technology",
+      name: t("echarts.physical.1.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Adequate continuity for critical assets & services",
+      name: t("echarts.physical.8.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Diverse and affordable transport networks",
+      name: t("echarts.physical.8.7"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Natural elements, mangrove, hills, rivers, plantations, among others",
+      name: t("echarts.physical.2.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Secure technology networks",
+      name: t("echarts.physical.3.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+      name: t("echarts.physical.3.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
+      name: t("echarts.physical.4.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
+      name: t("echarts.physical.5.8"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Flexible infrastructure services",
+      name: t("echarts.physical.6.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+      name: t("echarts.physical.5.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Critical infrastructure: mapping, planning and protection strategies",
+      name: t("echarts.physical.5.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Infrastructure and services damaged",
+      name: t("echarts.physical.5.3"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Protective infrastructure: well-designed and well-built based on risk information",
+      name: t("echarts.physical.5.4"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: 'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
+      name: t("echarts.physical.5.5"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Major roads",
+      name: t("echarts.physical.5.6"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
+      name: t("echarts.physical.5.7"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Diligent maintenance & continuity",
+      name: t("echarts.physical.6.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Retained spare capacity",
+      name: t("echarts.physical.6.3"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Housing destroyed and damaged",
+      name: t("echarts.physical.7.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Affected areas",
+      name: t("echarts.physical.7.2"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Topography: elevation, water bodies",
+      name: t("echarts.physical.7.3"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Hazard mapping and monitoring (common awareness)",
+      name: t("echarts.physical.7.4"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
+      name: t("echarts.physical.7.5"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Hazard mapping and monitoring (clear and regular mapping)",
+      name: t("echarts.physical.7.6"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+      name: t("echarts.physical.7.7"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Identification of cascading effects",
+      name: t("echarts.physical.7.8"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+      name: t("echarts.physical.7.9"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+      name: t("echarts.physical.7.10"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
+      name: t("echarts.physical.8.1"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Comprehensive hazard monitoring and risk assessment",
+      name: t("echarts.physical.8.3"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "First responder equipment, with military or civilian back up",
+      name: t("echarts.physical.8.4"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+      name: t("echarts.physical.8.5"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: "Vulnerability and risk",
+      name: t("echarts.physical.8.6"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
-    { name: "Robustness", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#1abc9c" } },
-    { name: "Redundancy", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#2ecc71" } },
     {
-      name: "Inclusiveness",
+      name: t("echarts.capacities.Robustness"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#1abc9c" },
+    },
+    {
+      name: t("echarts.capacities.Redundancy"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#2ecc71" },
+    },
+    {
+      name: t("echarts.capacities.Inclusiveness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#d35400" },
     },
-    { name: "Diversity", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#3498db" } },
-    { name: "Flexibility", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#95a5a6" } },
     {
-      name: "Resourcefulness",
+      name: t("echarts.capacities.Diversity"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#3498db" },
+    },
+    {
+      name: t("echarts.capacities.Flexibility"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#95a5a6" },
+    },
+    {
+      name: t("echarts.capacities.Resourcefulness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#f39c12" },
     },
-    { name: "Integration", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#9b59b6" } },
     {
-      name: "Reflectiveness",
+      name: t("echarts.capacities.Integration"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#9b59b6" },
+    },
+    {
+      name: t("echarts.capacities.Reflectiveness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#e74c3c" },
     },
-    { name: "Transparency", depth: SANKEYLEVELS.LEVEL3, itemStyle: { color: "#7d6b57" } },
-  ];
-  const sankeyLinks = [
     {
-      source: "Physical",
-      target: "Natural elements, mangrove, hills, rivers, plantations, among others",
+      name: t("echarts.capacities.Transparency"),
+      depth: SANKEYLEVELS.LEVEL3,
+      itemStyle: { color: "#7d6b57" },
+    },
+  ]);
+  const sankeyLinks = computed(() => [
+    {
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.2.2"),
       value: 1,
     },
     {
-      source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-      target: "Robustness",
+      source: t("echarts.physical.2.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-      target: "Diversity",
+      source: t("echarts.physical.2.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-      target: "Integration",
+      source: t("echarts.physical.2.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-      target: "Resourcefulness",
+      source: t("echarts.physical.2.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Natural elements, mangrove, hills, rivers, plantations, among others",
-      target: "Inclusiveness",
+      source: t("echarts.physical.2.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.1.1"),
       value: 1,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Robustness",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Diversity",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Integration",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Inclusiveness",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Flexibility",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-      target: "Transparency",
+      source: t("echarts.physical.1.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target: "Adequate continuity for critical assets & services",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.2"),
       value: 1,
     },
     {
-      source: "Adequate continuity for critical assets & services",
-      target: "Robustness",
+      source: t("echarts.physical.8.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Adequate continuity for critical assets & services",
-      target: "Redundancy",
+      source: t("echarts.physical.8.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Adequate continuity for critical assets & services",
-      target: "Resourcefulness",
+      source: t("echarts.physical.8.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Adequate continuity for critical assets & services",
-      target: "Flexibility",
+      source: t("echarts.physical.8.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Adequate continuity for critical assets & services",
-      target: "Transparency",
+      source: t("echarts.physical.8.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Diverse and affordable transport networks",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.7"),
       value: 1,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Robustness",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Redundancy",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Diversity",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Integration",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Resourcefulness",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Inclusiveness",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Diverse and affordable transport networks",
-      target: "Flexibility",
+      source: t("echarts.physical.8.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Physical",
-      target:
-        "Integration of green and blue infrastructure into city policy and projects",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.2.1"),
       value: 1,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Robustness",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Diversity",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Integration",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Resourcefulness",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Reflectiveness",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Flexibility",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source:
-        "Integration of green and blue infrastructure into city policy and projects",
-      target: "Transparency",
+      source: t("echarts.physical.2.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Physical",
-      target: "Reliable communications technology",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.1.2"),
       value: 1,
     },
     {
-      source: "Reliable communications technology",
-      target: "Robustness",
+      source: t("echarts.physical.1.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Reliable communications technology",
-      target: "Integration",
+      source: t("echarts.physical.1.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Reliable communications technology",
-      target: "Resourcefulness",
+      source: t("echarts.physical.1.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Reliable communications technology",
-      target: "Inclusiveness",
+      source: t("echarts.physical.1.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Reliable communications technology",
-      target: "Transparency",
+      source: t("echarts.physical.1.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Secure technology networks",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.3.1"),
       value: 1,
     },
     {
-      source: "Secure technology networks",
-      target: "Robustness",
+      source: t("echarts.physical.3.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Secure technology networks",
-      target: "Redundancy",
+      source: t("echarts.physical.3.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Secure technology networks",
-      target: "Diversity",
+      source: t("echarts.physical.3.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Secure technology networks",
-      target: "Resourcefulness",
+      source: t("echarts.physical.3.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Secure technology networks",
-      target: "Flexibility",
+      source: t("echarts.physical.3.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.3.2"),
       value: 1,
     },
     {
-      source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
-      target: "Diversity",
+      source: t("echarts.physical.3.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
-      target: "Integration",
+      source: t("echarts.physical.3.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
-      target: "Reflectiveness",
+      source: t("echarts.physical.3.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     {
-      source: "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
-      target: "Transparency",
+      source: t("echarts.physical.3.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Physical",
-      target:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.4.1"),
       value: 1,
     },
     {
-      source:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-      target: "Robustness",
+      source: t("echarts.physical.4.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-      target: "Diversity",
+      source: t("echarts.physical.4.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-      target: "Integration",
+      source: t("echarts.physical.4.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-      target: "Reflectiveness",
+      source: t("echarts.physical.4.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source:
-        "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
-      target: "Flexibility",
+      source: t("echarts.physical.4.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.8"),
       value: 1,
     },
     {
-      source:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
-      target: "Robustness",
+      source: t("echarts.physical.5.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
-      target: "Redundancy",
+      source: t("echarts.physical.5.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
-      target: "Diversity",
+      source: t("echarts.physical.5.8"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
-      target: "Integration",
+      source: t("echarts.physical.5.8"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.",
-      target: "Flexibility",
+      source: t("echarts.physical.5.8"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Flexible infrastructure services",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.6.2"),
       value: 1,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Redundancy",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Robustness",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Diversity",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Integration",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Resourcefulness",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Flexible infrastructure services",
-      target: "Flexibility",
+      source: t("echarts.physical.6.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.1"),
       value: 1,
     },
     {
-      source:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
-      target: "Robustness",
+      source: t("echarts.physical.5.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
-      target: "Redundancy",
+      source: t("echarts.physical.5.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
-      target: "Diversity",
+      source: t("echarts.physical.5.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
-      target: "Integration",
+      source: t("echarts.physical.5.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
-      target: "Flexibility",
+      source: t("echarts.physical.5.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Critical infrastructure: mapping, planning and protection strategies",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.2"),
       value: 1,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Robustness",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Diversity",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Integration",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Inclusiveness",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Reflectiveness",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Flexibility",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Critical infrastructure: mapping, planning and protection strategies",
-      target: "Transparency",
+      source: t("echarts.physical.5.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Physical",
-      target: "Infrastructure and services damaged",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.3"),
       value: 1,
     },
     {
-      source: "Infrastructure and services damaged",
-      target: "Robustness",
+      source: t("echarts.physical.5.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Infrastructure and services damaged",
-      target: "Integration",
+      source: t("echarts.physical.5.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Infrastructure and services damaged",
-      target: "Resourcefulness",
+      source: t("echarts.physical.5.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Infrastructure and services damaged",
-      target: "Flexibility",
+      source: t("echarts.physical.5.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Infrastructure and services damaged",
-      target: "Transparency",
+      source: t("echarts.physical.5.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        "Protective infrastructure: well-designed and well-built based on risk information",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.4"),
       value: 1,
     },
     {
-      source:
-        "Protective infrastructure: well-designed and well-built based on risk information",
-      target: "Robustness",
+      source: t("echarts.physical.5.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Protective infrastructure: well-designed and well-built based on risk information",
-      target: "Diversity",
+      source: t("echarts.physical.5.4"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Protective infrastructure: well-designed and well-built based on risk information",
-      target: "Integration",
+      source: t("echarts.physical.5.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Protective infrastructure: well-designed and well-built based on risk information",
-      target: "Resourcefulness",
+      source: t("echarts.physical.5.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source:
-        "Protective infrastructure: well-designed and well-built based on risk information",
-      target: "Flexibility",
+      source: t("echarts.physical.5.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.5"),
       value: 1,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Robustness",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Redundancy",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Integration",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Resourcefulness",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Flexibility",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        'Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for "most severe" disaster scenario',
-      target: "Transparency",
+      source: t("echarts.physical.5.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target: "Major roads",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.6"),
       value: 1,
     },
     {
-      source: "Major roads",
-      target: "Robustness",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Major roads",
-      target: "Redundancy",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Major roads",
-      target: "Diversity",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Major roads",
-      target: "Integration",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Major roads",
-      target: "Resourcefulness",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Major roads",
-      target: "Flexibility",
+      source: t("echarts.physical.5.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.5.7"),
       value: 1,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Robustness",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Redundancy",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Diversity",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Integration",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Resourcefulness",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Transportation: main roads, bus station, airport, train station & rail tracks, etc.",
-      target: "Flexibility",
+      source: t("echarts.physical.5.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target: "Diligent maintenance & continuity",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.6.1"),
       value: 1,
     },
     {
-      source: "Diligent maintenance & continuity",
-      target: "Robustness",
+      source: t("echarts.physical.6.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Diligent maintenance & continuity",
-      target: "Redundancy",
+      source: t("echarts.physical.6.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: "Diligent maintenance & continuity",
-      target: "Resourcefulness",
+      source: t("echarts.physical.6.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Diligent maintenance & continuity",
-      target: "Transparency",
+      source: t("echarts.physical.6.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Physical",
-      target: "Retained spare capacity",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.6.3"),
       value: 1,
     },
     {
-      source: "Retained spare capacity",
-      target: "Robustness",
+      source: t("echarts.physical.6.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Retained spare capacity",
-      target: "Redundancy",
+      source: t("echarts.physical.6.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Retained spare capacity",
-      target: "Diversity",
+      source: t("echarts.physical.6.3"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Retained spare capacity",
-      target: "Resourcefulness",
+      source: t("echarts.physical.6.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Retained spare capacity",
-      target: "Flexibility",
+      source: t("echarts.physical.6.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Housing destroyed and damaged",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.1"),
       value: 1,
     },
     {
-      source: "Housing destroyed and damaged",
-      target: "Robustness",
+      source: t("echarts.physical.7.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Housing destroyed and damaged",
-      target: "Resourcefulness",
+      source: t("echarts.physical.7.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Housing destroyed and damaged",
-      target: "Inclusiveness",
+      source: t("echarts.physical.7.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Housing destroyed and damaged",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Housing destroyed and damaged",
-      target: "Transparency",
+      source: t("echarts.physical.7.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Affected areas",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.2"),
       value: 1,
     },
     {
-      source: "Affected areas",
-      target: "Robustness",
+      source: t("echarts.physical.7.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Affected areas",
-      target: "Diversity",
+      source: t("echarts.physical.7.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Affected areas",
-      target: "Integration",
+      source: t("echarts.physical.7.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Affected areas",
-      target: "Flexibility",
+      source: t("echarts.physical.7.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Affected areas",
-      target: "Transparency",
+      source: t("echarts.physical.7.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target: "Topography: elevation, water bodies",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.3"),
       value: 1,
     },
     {
-      source: "Topography: elevation, water bodies",
-      target: "Robustness",
+      source: t("echarts.physical.7.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Topography: elevation, water bodies",
-      target: "Redundancy",
+      source: t("echarts.physical.7.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Topography: elevation, water bodies",
-      target: "Integration",
+      source: t("echarts.physical.7.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Topography: elevation, water bodies",
-      target: "Resourcefulness",
+      source: t("echarts.physical.7.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Topography: elevation, water bodies",
-      target: "Flexibility",
+      source: t("echarts.physical.7.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     // {
-    //   source: "Topography: elevation, water bodies",
-    //   target: "Transparency",
+    //   source: t("echarts.physical.7.3"),
+    //   target: t("echarts.capacities.Transparency"),
     //   value: 1,
     // },
     {
-      source: "Physical",
-      target: "Hazard mapping and monitoring (common awareness)",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.4"),
       value: 1,
     },
     {
-      source: "Hazard mapping and monitoring (common awareness)",
-      target: "Integration",
+      source: t("echarts.physical.7.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (common awareness)",
-      target: "Inclusiveness",
+      source: t("echarts.physical.7.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (common awareness)",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.4"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (common awareness)",
-      target: "Flexibility",
+      source: t("echarts.physical.7.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (common awareness)",
-      target: "Transparency",
+      source: t("echarts.physical.7.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.5"),
       value: 1,
     },
     {
-      source:
-        "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-      target: "Robustness",
+      source: t("echarts.physical.7.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source:
-        "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-      target: "Integration",
+      source: t("echarts.physical.7.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source:
-        "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.5"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     {
-      source:
-        "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-      target: "Transparency",
+      source: t("echarts.physical.7.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Physical",
-      target: "Hazard mapping and monitoring (clear and regular mapping)",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.6"),
       value: 1,
     },
     {
-      source: "Hazard mapping and monitoring (clear and regular mapping)",
-      target: "Integration",
+      source: t("echarts.physical.7.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (clear and regular mapping)",
-      target: "Inclusiveness",
+      source: t("echarts.physical.7.6"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (clear and regular mapping)",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.6"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (clear and regular mapping)",
-      target: "Flexibility",
+      source: t("echarts.physical.7.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Hazard mapping and monitoring (clear and regular mapping)",
-      target: "Transparency",
+      source: t("echarts.physical.7.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Physical",
-      target:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.7"),
       value: 1,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Robustness",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Redundancy",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Integration",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Resourcefulness",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-      target: "Flexibility",
+      source: t("echarts.physical.7.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target: "Identification of cascading effects",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.8"),
       value: 1,
     },
     {
-      source: "Identification of cascading effects",
-      target: "Robustness",
+      source: t("echarts.physical.7.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Identification of cascading effects",
-      target: "Redundancy",
+      source: t("echarts.physical.7.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Identification of cascading effects",
-      target: "Integration",
+      source: t("echarts.physical.7.8"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Identification of cascading effects",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.8"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Identification of cascading effects",
-      target: "Flexibility",
+      source: t("echarts.physical.7.8"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
 
     {
-      source: "Physical",
-      target:
-        "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.9"),
       value: 1,
     },
     {
-      source:
-        "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
-      target: "Robustness",
+      source: t("echarts.physical.7.9"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source:
-        "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
-      target: "Redundancy",
+      source: t("echarts.physical.7.9"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source:
-        "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.9"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     {
-      source:
-        "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
-      target: "Transparency",
+      source: t("echarts.physical.7.9"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Physical",
-      target:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.7.10"),
       value: 1,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Robustness",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Redundancy",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Integration",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Reflectiveness",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Flexibility",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Changes in intensity, frequency, and location of hazards based on hazard modeling",
-      target: "Transparency",
+      source: t("echarts.physical.7.10"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Physical",
-      target:
-        '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.1"),
       value: 1,
     },
     {
-      source:
-        '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
-      target: "Robustness",
+      source: t("echarts.physical.8.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source:
-        '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
-      target: "Diversity",
+      source: t("echarts.physical.8.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source:
-        '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
-      target: "Inclusiveness",
+      source: t("echarts.physical.8.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.25,
     },
     {
-      source:
-        '% of education structures at risk of damage from "most probable" and "most severe" scenarios',
-      target: "Reflectiveness",
+      source: t("echarts.physical.8.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     {
-      source: "Physical",
-      target: "Comprehensive hazard monitoring and risk assessment",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.3"),
       value: 1,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Robustness",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Integration",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Resourcefulness",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Reflectiveness",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Flexibility",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Comprehensive hazard monitoring and risk assessment",
-      target: "Transparency",
+      source: t("echarts.physical.8.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
 
     {
-      source: "Physical",
-      target: "First responder equipment, with military or civilian back up",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.4"),
       value: 1,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Robustness",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Redundancy",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Integration",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Resourcefulness",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Reflectiveness",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Flexibility",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "First responder equipment, with military or civilian back up",
-      target: "Transparency",
+      source: t("echarts.physical.8.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Physical",
-      target:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.5"),
       value: 1,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Robustness",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Redundancy",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Diversity",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Resourcefulness",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Inclusiveness",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Reflectiveness",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-      target: "Flexibility",
+      source: t("echarts.physical.8.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Physical",
-      target: "Vulnerability and risk",
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("echarts.physical.8.6"),
       value: 1,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Robustness",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Diversity",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Integration",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Inclusiveness",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Reflectiveness",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Flexibility",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Vulnerability and risk",
-      target: "Transparency",
+      source: t("echarts.physical.8.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
-      target: "Appropriate government decision-making",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.6"),
       value: 1,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Integration",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Appropriate government decision-making",
-      target: "Transparency",
+      source: t("echarts.institutional.1.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Effective co-ordination with other government bodies",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.7"),
       value: 1,
     },
     {
-      source: "Effective co-ordination with other government bodies",
-      target: "Diversity",
+      source: t("echarts.institutional.1.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "Effective co-ordination with other government bodies",
-      target: "Integration",
+      source: t("echarts.institutional.1.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Effective co-ordination with other government bodies",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Effective co-ordination with other government bodies",
-      target: "Transparency",
+      source: t("echarts.institutional.1.7"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Institutional",
-      target: "Proactive multi-stakeholder collaboration",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.8"),
       value: 1,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Robustness",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Integration",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Proactive multi-stakeholder collaboration",
-      target: "Transparency",
+      source: t("echarts.institutional.1.8"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Effective emergency response services",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.4.3"),
       value: 1,
     },
     {
-      source: "Effective emergency response services",
-      target: "Robustness",
+      source: t("echarts.institutional.4.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Effective emergency response services",
-      target: "Redundancy",
+      source: t("echarts.institutional.4.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Effective emergency response services",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.4.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Effective emergency response services",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.4.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Effective emergency response services",
-      target: "Flexibility",
+      source: t("echarts.institutional.4.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target: "Disaster management authority have sufficient staffing capacity",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.1"),
       value: 1,
     },
     {
-      source: "Disaster management authority have sufficient staffing capacity",
-      target: "Robustness",
+      source: t("echarts.institutional.1.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Disaster management authority have sufficient staffing capacity",
-      target: "Integration",
+      source: t("echarts.institutional.1.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Disaster management authority have sufficient staffing capacity",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.1.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Disaster management authority have sufficient staffing capacity",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     {
-      source: "Institutional",
-      target: "Consultative planning process",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.2"),
       value: 1,
     },
     {
-      source: "Consultative planning process",
-      target: "Diversity",
+      source: t("echarts.institutional.1.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Consultative planning process",
-      target: "Integration",
+      source: t("echarts.institutional.1.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Consultative planning process",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.1.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Consultative planning process",
-      target: "Transparency",
+      source: t("echarts.institutional.1.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target: "Comprehensive government emergency management",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.5"),
       value: 1,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Robustness",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Integration",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Comprehensive government emergency management",
-      target: "Transparency",
+      source: t("echarts.institutional.3.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
-      target: "Comprehensive city monitoring & data management",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.16"),
       value: 1,
     },
     {
-      source: "Comprehensive city monitoring & data management",
-      target: "Robustness",
+      source: t("echarts.institutional.1.16"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Comprehensive city monitoring & data management",
-      target: "Integration",
+      source: t("echarts.institutional.1.16"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Comprehensive city monitoring & data management",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.16"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Comprehensive city monitoring & data management",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.16"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Comprehensive city monitoring & data management",
-      target: "Transparency",
+      source: t("echarts.institutional.1.16"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target: "Appropriate land use and zoning",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.9"),
       value: 1,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Robustness",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Diversity",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Integration",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Appropriate land use and zoning",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.9"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Robust planning approval process",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.4"),
       value: 1,
     },
     {
-      source: "Robust planning approval process",
-      target: "Robustness",
+      source: t("echarts.institutional.1.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Robust planning approval process",
-      target: "Integration",
+      source: t("echarts.institutional.1.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Robust planning approval process",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Robust planning approval process",
-      target: "Transparency",
+      source: t("echarts.institutional.1.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Institutional",
-      target: "Well-managed public finances",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.5"),
       value: 1,
     },
     {
-      source: "Well-managed public finances",
-      target: "Robustness",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Diversity",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Integration",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Well-managed public finances",
-      target: "Transparency",
+      source: t("echarts.institutional.1.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
       target: "Informal development areas",
       value: 1,
     },
     {
       source: "Informal development areas",
-      target: "Diversity",
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
       source: "Informal development areas",
-      target: "Integration",
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
       source: "Informal development areas",
-      target: "Inclusiveness",
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
 
     {
       source: "Informal development areas",
-      target: "Reflectiveness",
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
       source: "Informal development areas",
-      target: "Flexibility",
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.9"),
       value: 1,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Robustness",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Integration",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source:
-        "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-      target: "Transparency",
+      source: t("echarts.institutional.1.9"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
-      target: "Urban development to promote resilience",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.10"),
       value: 1,
     },
     {
-      source: "Urban development to promote resilience",
-      target: "Robustness",
+      source: t("echarts.institutional.1.10"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Urban development to promote resilience",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.10"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Urban development to promote resilience",
-      target: "Integration",
+      source: t("echarts.institutional.1.10"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Urban development to promote resilience",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.1.10"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Urban development to promote resilience",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.10"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
 
     {
-      source: "Institutional",
-      target: "Building codes or standards address hazards and risks",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.11"),
       value: 1,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Robustness",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Integration",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Building codes or standards address hazards and risks",
-      target: "Transparency",
+      source: t("echarts.institutional.1.11"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Enforcement and verification of zoning building zoning and regulations",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.12"),
       value: 1,
     },
     {
-      source: "Enforcement and verification of zoning building zoning and regulations",
-      target: "Robustness",
+      source: t("echarts.institutional.1.12"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Enforcement and verification of zoning building zoning and regulations",
-      target: "Diversity",
+      source: t("echarts.institutional.1.12"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Enforcement and verification of zoning building zoning and regulations",
-      target: "Integration",
+      source: t("echarts.institutional.1.12"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Enforcement and verification of zoning building zoning and regulations",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.1.12"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Enforcement and verification of zoning building zoning and regulations",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.12"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Institutional",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
       target: "FAIR Data sharing to enhance resilience",
       value: 1,
     },
     {
       source: "FAIR Data sharing to enhance resilience",
-      target: "Integration",
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
       source: "FAIR Data sharing to enhance resilience",
-      target: "Resourcefulness",
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
       source: "FAIR Data sharing to enhance resilience",
-      target: "Inclusiveness",
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
       source: "FAIR Data sharing to enhance resilience",
-      target: "Reflectiveness",
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
       source: "FAIR Data sharing to enhance resilience",
-      target: "Transparency",
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.14"),
       value: 1,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Robustness",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Redundancy",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Integration",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Flexibility",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-      target: "Transparency",
+      source: t("echarts.institutional.1.14"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Proactive corruption prevention",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.1.15"),
       value: 1,
     },
     {
-      source: "Proactive corruption prevention",
-      target: "Diversity",
+      source: t("echarts.institutional.1.15"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.33,
     },
     {
-      source: "Proactive corruption prevention",
-      target: "Integration",
+      source: t("echarts.institutional.1.15"),
+      target: t("echarts.capacities.Integration"),
       value: 0.33,
     },
     {
-      source: "Proactive corruption prevention",
-      target: "Transparency",
+      source: t("echarts.institutional.1.15"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.33,
     },
     {
-      source: "Institutional",
-      target: "Land use designations",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.2.1"),
       value: 1,
     },
     {
-      source: "Land use designations",
-      target: "Robustness",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Land use designations",
-      target: "Diversity",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Land use designations",
-      target: "Integration",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Land use designations",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Land use designations",
-      target: "Flexibility",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Land use designations",
-      target: "Transparency",
+      source: t("echarts.institutional.2.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Changes in land use designations",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.2.2"),
       value: 1,
     },
     {
-      source: "Changes in land use designations",
-      target: "Robustness",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Changes in land use designations",
-      target: "Diversity",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Changes in land use designations",
-      target: "Integration",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Changes in land use designations",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Changes in land use designations",
-      target: "Flexibility",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Changes in land use designations",
-      target: "Transparency",
+      source: t("echarts.institutional.2.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
 
     {
-      source: "Institutional",
-      target:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.1"),
       value: 1,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Robustness",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Integration",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-      target: "Transparency",
+      source: t("echarts.institutional.3.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.2"),
       value: 1,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Robustness",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Integration",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-      target: "Transparency",
+      source: t("echarts.institutional.3.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.3"),
       value: 1,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Robustness",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Diversity",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Integration",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source:
-        "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-      target: "Transparency",
+      source: t("echarts.institutional.3.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
-      target: "Early warning system and reaching level",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.4"),
       value: 1,
     },
     {
-      source: "Early warning system and reaching level",
-      target: "Robustness",
+      source: t("echarts.institutional.3.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Early warning system and reaching level",
-      target: "Integration",
+      source: t("echarts.institutional.3.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Early warning system and reaching level",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Early warning system and reaching level",
-      target: "Transparency",
+      source: t("echarts.institutional.3.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Institutional",
-      target: "Integration of resilience in city functions / portfolios",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.6"),
       value: 1,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Robustness",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Integration",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Integration of resilience in city functions / portfolios",
-      target: "Transparency",
+      source: t("echarts.institutional.3.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.7"),
       value: 1,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Robustness",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Diversity",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Integration",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source:
-        "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-      target: "Transparency",
+      source: t("echarts.institutional.3.7"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Institutional",
-      target: "Disaster management / preparedness / emergency response plan",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.8"),
       value: 1,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Robustness",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Integration",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Disaster management / preparedness / emergency response plan",
-      target: "Transparency",
+      source: t("echarts.institutional.3.8"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
 
     {
-      source: "Institutional",
-      target:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.10"),
       value: 1,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Robustness",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Diversity",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Integration",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Appropriately land use planning considering risk, hazards and vulnerability",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.10"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.11"),
       value: 1,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Robustness",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Redundancy",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Diversity",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Integration",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable",
-      target: "Transparency",
+      source: t("echarts.institutional.3.11"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Projected changes in location of vulnerable populations",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.3.12"),
       value: 1,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Diversity",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Integration",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Flexibility",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Projected changes in location of vulnerable populations",
-      target: "Transparency",
+      source: t("echarts.institutional.3.12"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Adequate access to quality healthcare",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.4.1"),
       value: 1,
     },
     {
-      source: "Adequate access to quality healthcare",
-      target: "Robustness",
+      source: t("echarts.institutional.4.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Adequate access to quality healthcare",
-      target: "Diversity",
+      source: t("echarts.institutional.4.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Adequate access to quality healthcare",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.4.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Adequate access to quality healthcare",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.4.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Adequate access to quality healthcare",
-      target: "Transparency",
+      source: t("echarts.institutional.4.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target: "Emergency medical care",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.4.2"),
       value: 1,
     },
     {
-      source: "Emergency medical care",
-      target: "Robustness",
+      source: t("echarts.institutional.4.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Emergency medical care",
-      target: "Redundancy",
+      source: t("echarts.institutional.4.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: "Emergency medical care",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.4.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Emergency medical care",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.4.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Emergency medical care",
-      target: "Flexibility",
+      source: t("echarts.institutional.4.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Institutional",
-      target: "Robust public health systems",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.4.4"),
       value: 1,
     },
     {
-      source: "Robust public health systems",
-      target: "Robustness",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Robust public health systems",
-      target: "Redundancy",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Robust public health systems",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Robust public health systems",
-      target: "Inclusiveness",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Robust public health systems",
-      target: "Flexibility",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Robust public health systems",
-      target: "Transparency",
+      source: t("echarts.institutional.4.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Institutional",
-      target: "Security services: fire services, police stations, etc.",
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("echarts.institutional.4.5"),
       value: 1,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Robustness",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Redundancy",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Integration",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Resourcefulness",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Reflectiveness",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Flexibility",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Security services: fire services, police stations, etc.",
-      target: "Transparency",
+      source: t("echarts.institutional.4.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Economic",
-      target: "Local business development and innovation",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.10"),
       value: 1,
     },
     {
-      source: "Local business development and innovation",
-      target: "Robustness",
+      source: t("echarts.economic.2.10"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Local business development and innovation",
-      target: "Diversity",
+      source: t("echarts.economic.2.10"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "Local business development and innovation",
-      target: "Integration",
+      source: t("echarts.economic.2.10"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Local business development and innovation",
-      target: "Flexibility",
+      source: t("echarts.economic.2.10"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target: "Supportive financing mechanisms",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.1.3"),
       value: 1,
     },
     {
-      source: "Supportive financing mechanisms",
-      target: "Robustness",
+      source: t("echarts.economic.1.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Supportive financing mechanisms",
-      target: "Redundancy",
+      source: t("echarts.economic.1.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: "Supportive financing mechanisms",
-      target: "Resourcefulness",
+      source: t("echarts.economic.1.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Supportive financing mechanisms",
-      target: "Transparency",
+      source: t("echarts.economic.1.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target: "Comprehensive business continuity planning",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.8"),
       value: 1,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Robustness",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Redundancy",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Reflectiveness",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Flexibility",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Comprehensive business continuity planning",
-      target: "Transparency",
+      source: t("echarts.economic.2.8"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Diverse economic base",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.1.1"),
       value: 1,
     },
     {
-      source: "Diverse economic base",
-      target: "Robustness",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Diverse economic base",
-      target: "Diversity",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Diverse economic base",
-      target: "Resourcefulness",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Diverse economic base",
-      target: "Inclusiveness",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Diverse economic base",
-      target: "Flexibility",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Diverse economic base",
-      target: "Transparency",
+      source: t("echarts.economic.1.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Attractive business environment",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.3"),
       value: 1,
     },
     {
-      source: "Attractive business environment",
-      target: "Robustness",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Attractive business environment",
-      target: "Redundancy",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Attractive business environment",
-      target: "Diversity",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Attractive business environment",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Attractive business environment",
-      target: "Inclusiveness",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Attractive business environment",
-      target: "Flexibility",
+      source: t("echarts.economic.2.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Strong integration with regional & global economies",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.11"),
       value: 1,
     },
     {
-      source: "Strong integration with regional & global economies",
-      target: "Robustness",
+      source: t("echarts.economic.2.11"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Strong integration with regional & global economies",
-      target: "Integration",
+      source: t("echarts.economic.2.11"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Strong integration with regional & global economies",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.11"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Strong integration with regional & global economies",
-      target: "Transparency",
+      source: t("echarts.economic.2.11"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target: "Industrial areas including ports, industrial zones, and factories",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.1.2"),
       value: 1,
     },
     {
-      source: "Industrial areas including ports, industrial zones, and factories",
-      target: "Robustness",
+      source: t("echarts.economic.1.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.33,
     },
     {
-      source: "Industrial areas including ports, industrial zones, and factories",
-      target: "Diversity",
+      source: t("echarts.economic.1.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.33,
     },
     {
-      source: "Industrial areas including ports, industrial zones, and factories",
-      target: "Resourcefulness",
+      source: t("echarts.economic.1.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.33,
     },
     {
-      source: "Economic",
-      target:
-        "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.1.4"),
       value: 1,
     },
     {
-      source:
-        "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
-      target: "Robustness",
+      source: t("echarts.economic.1.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source:
-        "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
-      target: "Redundancy",
+      source: t("echarts.economic.1.4"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source:
-        "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
-      target: "Diversity",
+      source: t("echarts.economic.1.4"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source:
-        "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
-      target: "Resourcefulness",
+      source: t("echarts.economic.1.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target: "Businesses with a documented business continuity plan",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.1"),
       value: 1,
     },
     {
-      source: "Businesses with a documented business continuity plan",
-      target: "Robustness",
+      source: t("echarts.economic.2.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Businesses with a documented business continuity plan",
-      target: "Diversity",
+      source: t("echarts.economic.2.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "Businesses with a documented business continuity plan",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Businesses with a documented business continuity plan",
-      target: "Flexibility",
+      source: t("echarts.economic.2.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target: "Knowledge to funding opportunities (for local economy and recovery)",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.2"),
       value: 1,
     },
     {
-      source: "Knowledge to funding opportunities (for local economy and recovery)",
-      target: "Redundancy",
+      source: t("echarts.economic.2.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: "Knowledge to funding opportunities (for local economy and recovery)",
-      target: "Integration",
+      source: t("echarts.economic.2.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: "Knowledge to funding opportunities (for local economy and recovery)",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Knowledge to funding opportunities (for local economy and recovery)",
-      target: "Transparency",
+      source: t("echarts.economic.2.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: "Economic",
-      target:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.5"),
       value: 1,
     },
     {
-      source:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
-      target: "Robustness",
+      source: t("echarts.economic.2.5"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
-      target: "Redundancy",
+      source: t("echarts.economic.2.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
-      target: "Flexibility",
+      source: t("echarts.economic.2.5"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source:
-        "Level of insurance cover exists in the city, across all sectors - business and community",
-      target: "Transparency",
+      source: t("echarts.economic.2.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Economic",
-      target: "Economic impact",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.4"),
       value: 1,
     },
     {
-      source: "Economic impact",
-      target: "Robustness",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Economic impact",
-      target: "Diversity",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Economic impact",
-      target: "Integration",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Economic impact",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Economic impact",
-      target: "Inclusiveness",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Economic impact",
-      target: "Transparency",
+      source: t("echarts.economic.2.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Incentives for business and society to support resilience building",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.6"),
       value: 1,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Robustness",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Redundancy",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Diversity",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Integration",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Incentives for business and society to support resilience building",
-      target: "Transparency",
+      source: t("echarts.economic.2.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Planned investments",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.7"),
       value: 1,
     },
     {
-      source: "Planned investments",
-      target: "Robustness",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Redundancy",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Diversity",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Integration",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Flexibility",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Planned investments",
-      target: "Transparency",
+      source: t("echarts.economic.2.7"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Economic",
-      target: "Inclusive labour policies",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.9"),
       value: 1,
     },
     {
-      source: "Inclusive labour policies",
-      target: "Robustness",
+      source: t("echarts.economic.2.9"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.33,
     },
     {
-      source: "Inclusive labour policies",
-      target: "Inclusiveness",
+      source: t("echarts.economic.2.9"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.33,
     },
     {
-      source: "Inclusive labour policies",
-      target: "Transparency",
+      source: t("echarts.economic.2.9"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.33,
     },
     {
-      source: "Economic",
-      target:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.2.12"),
       value: 1,
     },
     {
-      source:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-      target: "Robustness",
+      source: t("echarts.economic.2.12"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-      target: "Diversity",
+      source: t("echarts.economic.2.12"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-      target: "Resourcefulness",
+      source: t("echarts.economic.2.12"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-      target: "Inclusiveness",
+      source: t("echarts.economic.2.12"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
-      target: "Flexibility",
+      source: t("echarts.economic.2.12"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Economic",
-      target: "Changes in the overall city's boundaries",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.4.1"),
       value: 1,
     },
     {
-      source: "Changes in the overall city's boundaries",
-      target: "Integration",
+      source: t("echarts.economic.4.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.33,
     },
     {
-      source: "Changes in the overall city's boundaries",
-      target: "Reflectiveness",
+      source: t("echarts.economic.4.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.33,
     },
     {
-      source: "Changes in the overall city's boundaries",
-      target: "Flexibility",
+      source: t("echarts.economic.4.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.33,
     },
     {
-      source: "Economic",
-      target: "Financial plan and budget for resilience, including contingency funds",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.3.1"),
       value: 1,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Robustness",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Redundancy",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Diversity",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Integration",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Resourcefulness",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Flexibility",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Financial plan and budget for resilience, including contingency funds",
-      target: "Transparency",
+      source: t("echarts.economic.3.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Economic",
-      target: "Projected changes to population densities and economic activity",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.3.2"),
       value: 1,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Diversity",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Integration",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Resourcefulness",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Inclusiveness",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Flexibility",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Projected changes to population densities and economic activity",
-      target: "Transparency",
+      source: t("echarts.economic.3.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Economic",
-      target: "Densities",
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("echarts.economic.3.3"),
       value: 1,
     },
     {
-      source: "Densities",
-      target: "Robustness",
+      source: t("echarts.economic.3.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Densities",
-      target: "Diversity",
+      source: t("echarts.economic.3.3"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Densities",
-      target: "Integration",
+      source: t("echarts.economic.3.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Densities",
-      target: "Reflectiveness",
+      source: t("echarts.economic.3.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Densities",
-      target: "Flexibility",
+      source: t("echarts.economic.3.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target: "Safe & affordable housing",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.1.1"),
       value: 1,
     },
     {
-      source: "Safe & affordable housing",
-      target: "Integration",
+      source: t("echarts.social.1.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Safe & affordable housing",
-      target: "Inclusiveness",
+      source: t("echarts.social.1.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Safe & affordable housing",
-      target: "Flexibility",
+      source: t("echarts.social.1.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Safe & affordable housing",
-      target: "Transparency",
+      source: t("echarts.social.1.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target: "Inclusive access to safe drinking water",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.1.3"),
       value: 1,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Robustness",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Redundancy",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Integration",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Resourcefulness",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Inclusiveness",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Inclusive access to safe drinking water",
-      target: "Flexibility",
+      source: t("echarts.social.1.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Adequate affordable energy supply",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.1.2"),
       value: 1,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Robustness",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Redundancy",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Integration",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Resourcefulness",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Inclusiveness",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Adequate affordable energy supply",
-      target: "Flexibility",
+      source: t("echarts.social.1.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Accessibility to training materials (language)",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.2.2"),
       value: 1,
     },
     {
-      source: "Accessibility to training materials (language)",
-      target: "Diversity",
+      source: t("echarts.social.2.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Accessibility to training materials (language)",
-      target: "Resourcefulness",
+      source: t("echarts.social.2.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Accessibility to training materials (language)",
-      target: "Inclusiveness",
+      source: t("echarts.social.2.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Accessibility to training materials (language)",
-      target: "Reflectiveness",
+      source: t("echarts.social.2.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Accessibility to training materials (language)",
-      target: "Transparency",
+      source: t("echarts.social.2.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target: "Sufficient affordable food supply",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.1.5"),
       value: 1,
     },
     {
-      source: "Sufficient affordable food supply",
-      target: "Redundancy",
+      source: t("echarts.social.1.5"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: "Sufficient affordable food supply",
-      target: "Diversity",
+      source: t("echarts.social.1.5"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "Sufficient affordable food supply",
-      target: "Resourcefulness",
+      source: t("echarts.social.1.5"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Sufficient affordable food supply",
-      target: "Inclusiveness",
+      source: t("echarts.social.1.5"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.25,
     },
     {
-      source: "Social",
-      target:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.1"),
       value: 1,
     },
     {
-      source:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
-      target: "Diversity",
+      source: t("echarts.social.3.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
-      target: "Integration",
+      source: t("echarts.social.3.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Grassroots or community organizations participating in pre-event planning and post event response",
-      target: "Transparency",
+      source: t("echarts.social.3.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target: "Accessible criminal and civil justice",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.2"),
       value: 1,
     },
     {
-      source: "Accessible criminal and civil justice",
-      target: "Robustness",
+      source: t("echarts.social.3.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Accessible criminal and civil justice",
-      target: "Diversity",
+      source: t("echarts.social.3.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Accessible criminal and civil justice",
-      target: "Integration",
+      source: t("echarts.social.3.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Accessible criminal and civil justice",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Accessible criminal and civil justice",
-      target: "Transparency",
+      source: t("echarts.social.3.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target:
-        "Training programmes provided to the most vulnerable and at need populations",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.4"),
       value: 1,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Diversity",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Integration",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Flexibility",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Training programmes provided to the most vulnerable and at need populations",
-      target: "Transparency",
+      source: t("echarts.social.3.4"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target:
-        "Main public facilities: university, schools, health centres, markets, etc.",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.7"),
       value: 1,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Robustness",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Redundancy",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Diversity",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Integration",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Main public facilities: university, schools, health centres, markets, etc.",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.7"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Social services infrastructure, including schools, hospitals, and clinics",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.8"),
       value: 1,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Robustness",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Redundancy",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Diversity",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Integration",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Social services infrastructure, including schools, hospitals, and clinics",
-      target: "Flexibility",
+      source: t("echarts.social.3.8"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Social",
-      target: "Practices and drills involving public and professionals",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.12"),
       value: 1,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Robustness",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Redundancy",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Integration",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Flexibility",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Practices and drills involving public and professionals",
-      target: "Transparency",
+      source: t("echarts.social.3.12"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Widespread community awareness & preparedness",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.6"),
       value: 1,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Robustness",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Diversity",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Integration",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Flexibility",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Widespread community awareness & preparedness",
-      target: "Transparency",
+      source: t("echarts.social.3.6"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Strong city-wide identity & culture",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.10"),
       value: 1,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Robustness",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Diversity",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Integration",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Strong city-wide identity & culture",
-      target: "Transparency",
+      source: t("echarts.social.3.10"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Adequate education for all",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.13"),
       value: 1,
     },
     {
-      source: "Adequate education for all",
-      target: "Robustness",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Adequate education for all",
-      target: "Diversity",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: "Adequate education for all",
-      target: "Integration",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Adequate education for all",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Adequate education for all",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Adequate education for all",
-      target: "Transparency",
+      source: t("echarts.social.3.13"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Effective sanitation",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.1.4"),
       value: 1,
     },
     {
-      source: "Effective sanitation",
-      target: "Robustness",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Effective sanitation",
-      target: "Redundancy",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Effective sanitation",
-      target: "Integration",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "Effective sanitation",
-      target: "Resourcefulness",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Effective sanitation",
-      target: "Inclusiveness",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Effective sanitation",
-      target: "Flexibility",
+      source: t("echarts.social.1.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Local community support",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.9"),
       value: 1,
     },
     {
-      source: "Local community support",
-      target: "Robustness",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Diversity",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Integration",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Flexibility",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Local community support",
-      target: "Transparency",
+      source: t("echarts.social.3.9"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Social",
-      target: "Cohesive communities",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.3"),
       value: 1,
     },
     {
-      source: "Cohesive communities",
-      target: "Robustness",
+      source: t("echarts.social.3.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: "Cohesive communities",
-      target: "Diversity",
+      source: t("echarts.social.3.3"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: "Cohesive communities",
-      target: "Integration",
+      source: t("echarts.social.3.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Cohesive communities",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Cohesive communities",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.3"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target: "Actively engaged citizens",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.11"),
       value: 1,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Robustness",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Diversity",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Integration",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Actively engaged citizens",
-      target: "Transparency",
+      source: t("echarts.social.3.11"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: "Social",
-      target:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.2.1"),
       value: 1,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Redundancy",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Diversity",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Integration",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Resourcefulness",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Inclusiveness",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Reflectiveness",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Flexibility",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.13,
     },
     {
-      source:
-        "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-      target: "Transparency",
+      source: t("echarts.social.2.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.13,
     },
     {
-      source: "Social",
-      target: "Exchange knowledge and learn from other cities facing similar challenges",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.2.3"),
       value: 1,
     },
     {
-      source: "Exchange knowledge and learn from other cities facing similar challenges",
-      target: "Integration",
+      source: t("echarts.social.2.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: "Exchange knowledge and learn from other cities facing similar challenges",
-      target: "Resourcefulness",
+      source: t("echarts.social.2.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: "Exchange knowledge and learn from other cities facing similar challenges",
-      target: "Reflectiveness",
+      source: t("echarts.social.2.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: "Exchange knowledge and learn from other cities facing similar challenges",
-      target: "Flexibility",
+      source: t("echarts.social.2.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: "Exchange knowledge and learn from other cities facing similar challenges",
-      target: "Transparency",
+      source: t("echarts.social.2.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.5"),
       value: 1,
     },
     {
-      source:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
-      target: "Diversity",
+      source: t("echarts.social.3.5"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
-      target: "Integration",
+      source: t("echarts.social.3.5"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.5"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.5"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Citizen engagement and communications in relation to disaster resilience and recovery",
-      target: "Transparency",
+      source: t("echarts.social.3.5"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target:
-        "Major community buildings, religious buildings, and historic/cultural assets",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.14"),
       value: 1,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Robustness",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Diversity",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Inclusiveness",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Reflectiveness",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Major community buildings, religious buildings, and historic/cultural assets",
-      target: "Transparency",
+      source: t("echarts.social.3.14"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
       //Not available in spreadsheet
-      source: "Social",
-      target: "Safe places/havens and the evacuation routes",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.5.2"),
       value: 1,
     },
     {
       //Not available in spreadsheet
-      source: "Safe places/havens and the evacuation routes",
-      target: "Transparency",
+      source: t("echarts.social.5.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 1,
     },
     {
-      source: "Social",
-      target:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.5.3"),
       value: 1,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Robustness",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Integration",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Resourcefulness",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Reflectiveness",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Flexibility",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source:
-        "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-      target: "Transparency",
+      source: t("echarts.social.5.3"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Awareness of equipment and supply needed + provision",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.5.4"),
       value: 1,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Robustness",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Redundancy",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Resourcefulness",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Inclusiveness",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Reflectiveness",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "Awareness of equipment and supply needed + provision",
-      target: "Flexibility",
+      source: t("echarts.social.5.4"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Effective systems to deter crime",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.6.1"),
       value: 1,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Robustness",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Redundancy",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Diversity",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Integration",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Inclusiveness",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Reflectiveness",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: "Effective systems to deter crime",
-      target: "Flexibility",
+      source: t("echarts.social.6.1"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: "Social",
-      target: "High levels of crime are observed",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.6.2"),
       value: 1,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Robustness",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Integration",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Inclusiveness",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Reflectiveness",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Flexibility",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: "High levels of crime are observed",
-      target: "Transparency",
+      source: t("echarts.social.6.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target: "Relevant skills & training",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.3.15"),
       value: 1,
     },
     {
-      source: "Relevant skills & training",
-      target: "Robustness",
+      source: t("echarts.social.3.15"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: "Relevant skills & training",
-      target: "Diversity",
+      source: t("echarts.social.3.15"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: "Relevant skills & training",
-      target: "Resourcefulness",
+      source: t("echarts.social.3.15"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: "Relevant skills & training",
-      target: "Flexibility",
+      source: t("echarts.social.3.15"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: "Social",
-      target:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.4.1"),
       value: 1,
     },
     {
-      source:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-      target: "Redundancy",
+      source: t("echarts.social.4.1"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-      target: "Integration",
+      source: t("echarts.social.4.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-      target: "Resourcefulness",
+      source: t("echarts.social.4.1"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-      target: "Inclusiveness",
+      source: t("echarts.social.4.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-      target: "Transparency",
+      source: t("echarts.social.4.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: "Social",
-      target:
-        "Awareness of functions or services that natural capital provides for the city",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.4.2"),
       value: 1,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Robustness",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Redundancy",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Diversity",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Integration",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Resourcefulness",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source:
-        "Awareness of functions or services that natural capital provides for the city",
-      target: "Transparency",
+      source: t("echarts.social.4.2"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: "Social",
-      target:
-        "Public education towards awareness of hazard, risk and disaster information",
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("echarts.social.5.1"),
       value: 1,
     },
     {
-      source:
-        "Public education towards awareness of hazard, risk and disaster information",
-      target: "Robustness",
+      source: t("echarts.social.5.1"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source:
-        "Public education towards awareness of hazard, risk and disaster information",
-      target: "Integration",
+      source: t("echarts.social.5.1"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source:
-        "Public education towards awareness of hazard, risk and disaster information",
-      target: "Inclusiveness",
+      source: t("echarts.social.5.1"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Public education towards awareness of hazard, risk and disaster information",
-      target: "Reflectiveness",
+      source: t("echarts.social.5.1"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source:
-        "Public education towards awareness of hazard, risk and disaster information",
-      target: "Transparency",
+      source: t("echarts.social.5.1"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
-  ];
-  const basicSankeyData = [
+  ]);
+  // Basic Sankey Data
+  const basicSankeyData = computed(() => [
     // Social
     {
-      name: computed(() => t("initialIndicators.social.name")),
+      name: t("sidebar.indicatorPanel.radarChart.social"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL1,
     },
     {
-      name: computed(() => t("initialIndicators.social.1.1.name")),
+      name: t("initialIndicators.social.1.1.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.1.2.name")),
+      name: t("initialIndicators.social.1.2.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.1.3.name")),
+      name: t("initialIndicators.social.1.3.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.1.4.name")),
+      name: t("initialIndicators.social.1.4.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.2.1.name")),
+      name: t("initialIndicators.social.2.1.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.3.1.name")),
+      name: t("initialIndicators.social.3.1.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.3.2.name")),
+      name: t("initialIndicators.social.3.2.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.social.3.3.name")),
+      name: t("initialIndicators.social.3.3.name"),
       itemStyle: { color: "#91CC75" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     // ecomonic
     {
-      name: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
+      name: t("sidebar.indicatorPanel.radarChart.economic"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL1,
     },
     {
-      name: computed(() => t("initialIndicators.economic.1.1.name")),
+      name: t("initialIndicators.economic.1.1.name"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.economic.1.2.name")),
+      name: t("initialIndicators.economic.1.2.name"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.economic.2.1.name")),
+      name: t("initialIndicators.economic.2.1.name"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     // Institutional
     {
-      name: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
+      name: t("sidebar.indicatorPanel.radarChart.institutional"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL1,
     },
     {
-      name: computed(() => t("initialIndicators.institutional.1.1.name")),
+      name: t("initialIndicators.institutional.1.1.name"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.institutional.2.1.name")),
+      name: t("initialIndicators.institutional.2.1.name"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.institutional.3.1.name")),
+      name: t("initialIndicators.institutional.3.1.name"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.institutional.3.2.name")),
+      name: t("initialIndicators.institutional.3.2.name"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.institutional.3.3.name")),
+      name: t("initialIndicators.institutional.3.3.name"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     // Physical
     {
-      name: computed(() => t("initialIndicators.physical.name")),
+      name: t("sidebar.indicatorPanel.radarChart.physical"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL1,
     },
     {
-      name: computed(() => t("initialIndicators.physical.1.1.name")),
+      name: t("initialIndicators.physical.1.1.name"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.physical.1.2.name")),
+      name: t("initialIndicators.physical.1.2.name"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.physical.1.3.name")),
+      name: t("initialIndicators.physical.1.3.name"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.physical.2.1.name")),
+      name: t("initialIndicators.physical.2.1.name"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("initialIndicators.physical.3.1.name")),
+      name: t("initialIndicators.physical.3.1.name"),
       itemStyle: { color: "#73C0DE" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: computed(() => t("echarts.capacities.Robustness")),
+      name: t("echarts.capacities.Robustness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#1abc9c" },
     },
     {
-      name: computed(() => t("echarts.capacities.Redundancy")),
+      name: t("echarts.capacities.Redundancy"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#2ecc71" },
     },
     {
-      name: computed(() => t("echarts.capacities.Inclusiveness")),
+      name: t("echarts.capacities.Inclusiveness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#d35400" },
     },
     {
-      name: computed(() => t("echarts.capacities.Diversity")),
+      name: t("echarts.capacities.Diversity"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#3498db" },
     },
     {
-      name: computed(() => t("echarts.capacities.Flexibility")),
+      name: t("echarts.capacities.Flexibility"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#95a5a6" },
     },
     {
-      name: computed(() => t("echarts.capacities.Resourcefulness")),
+      name: t("echarts.capacities.Resourcefulness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#f39c12" },
     },
     {
-      name: computed(() => t("echarts.capacities.Integration")),
+      name: t("echarts.capacities.Integration"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#9b59b6" },
     },
     {
-      name: computed(() => t("echarts.capacities.Reflectiveness")),
+      name: t("echarts.capacities.Reflectiveness"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#e74c3c" },
     },
     {
-      name: computed(() => t("echarts.capacities.Transparency")),
+      name: t("echarts.capacities.Transparency"),
       depth: SANKEYLEVELS.LEVEL3,
       itemStyle: { color: "#7d6b57" },
     },
-  ];
-  const basicSankeyLinks = [
+  ]);
+  const basicSankeyLinks = computed(() => [
     {
-      source: computed(() => t("initialIndicators.physical.name")),
-      target: computed(() => t("initialIndicators.physical.1.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("initialIndicators.physical.1.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.physical.name")),
-      target: computed(() => t("initialIndicators.physical.1.2.name")),
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("initialIndicators.physical.1.2.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.physical.name")),
-      target: computed(() => t("initialIndicators.physical.1.3.name")),
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("initialIndicators.physical.1.3.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.physical.name")),
-      target: computed(() => t("initialIndicators.physical.2.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("initialIndicators.physical.2.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.physical.name")),
-      target: computed(() => t("initialIndicators.physical.3.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.physical"),
+      target: t("initialIndicators.physical.3.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.physical.1.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.physical.1.1.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.physical.1.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.physical.1.1.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.1.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.physical.1.1.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.2.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.physical.1.2.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.physical.1.3.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.physical.1.3.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.physical.1.3.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.physical.1.3.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.1.3.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.physical.1.3.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.2.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.physical.2.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.2.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.physical.2.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.2.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.physical.2.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.2.1.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.physical.2.1.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.2.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.physical.2.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.physical.3.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.physical.3.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.physical.3.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.physical.3.1.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.physical.3.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.physical.3.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.physical.3.1.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.physical.3.1.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.25,
     },
     // Institutional
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-      target: computed(() => t("initialIndicators.institutional.1.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("initialIndicators.institutional.1.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-      target: computed(() => t("initialIndicators.institutional.2.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("initialIndicators.institutional.2.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-      target: computed(() => t("initialIndicators.institutional.3.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("initialIndicators.institutional.3.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-      target: computed(() => t("initialIndicators.institutional.3.2.name")),
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("initialIndicators.institutional.3.2.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-      target: computed(() => t("initialIndicators.institutional.3.3.name")),
+      source: t("sidebar.indicatorPanel.radarChart.institutional"),
+      target: t("initialIndicators.institutional.3.3.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.1.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.institutional.1.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.1.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.institutional.1.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.1.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.institutional.1.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.1.1.name")),
+      source: t("initialIndicators.institutional.1.1.name"),
       target: "c",
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.2.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.institutional.2.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.2.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.institutional.2.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.2.1.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.institutional.2.1.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.2.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.institutional.2.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.institutional.3.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.institutional.3.1.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.institutional.3.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.institutional.3.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.institutional.3.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.2.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.institutional.3.2.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.2.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.institutional.3.2.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.2.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.institutional.3.2.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.2.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.institutional.3.2.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.2.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.institutional.3.2.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.3.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.institutional.3.3.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.3.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.institutional.3.3.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.3.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.institutional.3.3.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.3.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.institutional.3.3.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.institutional.3.3.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.institutional.3.3.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     // Economic
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
-      target: computed(() => t("initialIndicators.economic.1.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("initialIndicators.economic.1.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
-      target: computed(() => t("initialIndicators.economic.1.2.name")),
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("initialIndicators.economic.1.2.name"),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
-      target: computed(() => t("initialIndicators.economic.2.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.economic"),
+      target: t("initialIndicators.economic.2.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.economic.1.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.economic.1.1.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.economic.1.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.1.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.economic.1.1.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.2.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.economic.1.2.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.2.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.economic.1.2.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.2.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.economic.1.2.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.1.2.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.economic.1.2.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: computed(() => t("initialIndicators.economic.2.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.economic.2.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     // Social
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.1.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.1.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.1.2.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.1.2.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.1.3.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.1.3.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.1.4.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.1.4.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.2.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.2.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.3.1.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.3.1.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.3.2.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.3.2.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.name")),
-      target: computed(() => t("initialIndicators.social.3.3.name")),
+      source: t("sidebar.indicatorPanel.radarChart.social"),
+      target: t("initialIndicators.social.3.3.name"),
       value: 1,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.1.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.1.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.1.1.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.social.1.1.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.social.1.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.2.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.1.2.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.3.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.social.1.3.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.4.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.social.1.4.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.4.name")),
-      target: computed(() => t("echarts.capacities.Diversity")),
+      source: t("initialIndicators.social.1.4.name"),
+      target: t("echarts.capacities.Diversity"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.4.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.1.4.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.social.1.4.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.1.4.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.25,
     },
     {
-      source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.2.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.2.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.2.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.social.2.1.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.2.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.social.2.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.3.1.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.3.1.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.3.1.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.social.3.1.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.1.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.social.3.1.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.2,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Integration")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.2.name")),
-      target: computed(() => t("echarts.capacities.Transparency")),
+      source: t("initialIndicators.social.3.2.name"),
+      target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Robustness")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Redundancy")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Resourcefulness")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Resourcefulness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Inclusiveness")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Reflectiveness")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: computed(() => t("initialIndicators.social.3.3.name")),
-      target: computed(() => t("echarts.capacities.Flexibility")),
+      source: t("initialIndicators.social.3.3.name"),
+      target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
-  ];
+  ]);
+  /* Dictionary Capacity Sankey */
   const capacitySelected = ref("Robustness");
   // Filter by capacity of Sankey Data
   const directLinks = computed(() =>
-    sankeyLinks.filter((link) => link.target === capacitySelected.value),
+    sankeyLinks.value.filter(
+      (link) => link.target === t("echarts.capacities." + capacitySelected.value),
+    ),
   ); // Filter the links directly connected to the target
   const relevantNodes = computed(() => {
     const nodes = new Set();
@@ -7614,17 +7418,17 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     return nodes;
   }); // Collect relevant nodes from the filtered links
   const filteredNodes = computed(() =>
-    sankeyData.filter(
+    sankeyData.value.filter(
       (node) =>
         relevantNodes.value.has(node.name) ||
-        node.name === "Social" ||
-        node.name == "Economic" ||
-        node.name == "Institutional" ||
-        node.name == "Physical",
+        node.name === t("sidebar.indicatorPanel.radarChart.social") ||
+        node.name == t("sidebar.indicatorPanel.radarChart.economic") ||
+        node.name == t("sidebar.indicatorPanel.radarChart.institutional") ||
+        node.name == t("sidebar.indicatorPanel.radarChart.physical"),
     ),
   ); // Filter the nodes
   const parentLinks = computed(() =>
-    sankeyLinks.filter((link) => relevantNodes.value.has(link.target)),
+    sankeyLinks.value.filter((link) => relevantNodes.value.has(link.target)),
   ); // Find parent links connected to these relevant nodes
   const filteredLinks = computed(() =>
     [...directLinks.value, ...parentLinks.value].map((link) => ({
