@@ -6,6 +6,7 @@ import type {
   Polygon,
   MultiPolygon,
   MultiPoint,
+  MultiLineString,
 } from "geojson";
 
 export type CityData = {
@@ -17,7 +18,7 @@ export type IsochroneTypeKey = "auto" | "bus" | "bicycle" | "pedestrian";
 
 export type VectorLayer = {
   name: string;
-  visible: Ref<boolean>;
+  visible: boolean;
   color?: string;
   range?: number[];
 };
@@ -33,24 +34,24 @@ export type ShelterProperties = {
   name: string;
   description: string;
 };
-export type IsochroneProperties = {
+type IsochroneProperties = {
   range: number;
 };
-export type PopulationProperties = {
+type PopulationProperties = {
   value: number;
   access: number;
   name: string;
 };
-export type HealthSitePointProperties = {
+type HealthSitePointProperties = {
   name: string;
   amenity: string;
 };
-export type WaterSourceProperties = {
+type WaterSourceProperties = {
   id: number;
   capacity: string;
   usage: string;
 };
-export type EnergySupplyProperties = {
+type EnergySupplyProperties = {
   id: number;
   capacity: string;
   userType: string;
@@ -70,6 +71,8 @@ export type GeoJSONData = {
   waterSourcePopulation?: FeatureCollection<MultiPolygon, PopulationProperties>;
   energySupplyPoint?: FeatureCollection<Point, EnergySupplyProperties>;
   energySupplyCatchment?: FeatureCollection<MultiPolygon, IsochroneProperties>;
+  sewageLine?: FeatureCollection<MultiLineString, any>;
+  sewagePoint?: FeatureCollection<Point, any>;
 };
 export type Population = {
   accessible: number;

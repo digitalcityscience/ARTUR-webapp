@@ -75,10 +75,12 @@ export enum LayerName {
   WATERSOURCEPOPULATION = "waterSourcePopulation",
   ENERGYSUPPLY = "energySupply",
   ENERGYSUPPLYCATCHMENT = "energySupplyCatchment",
+  SEWAGEPOINT = "sewagePoint",
+  SEWAGELINE = "sewageLine",
 }
 export enum CityName {
   ZHYTOMYR = "zhytomyr",
-  KRYVYIRIH = "kryvyiRih",
+  KRYVYIRIH = "kryvyirih",
   NIKOPOL = "nikopol",
   DNIPRO = "dnipro",
   SUMY = "sumy",

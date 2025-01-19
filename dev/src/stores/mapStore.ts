@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import chroma from "chroma-js";
 import type {
   VectorLayer,
@@ -18,7 +18,7 @@ const useMapStore = defineStore("map", () => {
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
-  const isSilent = ref(true);
+  // const isSilent = ref(true);
   const popup = ref<string>("");
   const isochroneType = ref<IsochroneTypeKey>("auto");
   const dataCache = ref<Record<string, GeoJSONData>>({});
@@ -32,7 +32,7 @@ const useMapStore = defineStore("map", () => {
     try {
       const promises: Promise<any>[] = [];
       promises.push(
-        fetch("api/vulnerability")
+        fetch("/api/vulnerability")
           .then((res) => {
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             return res.json();
@@ -83,7 +83,6 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.shelters = data;
             }),
         );
-
         promises.push(
           fetch(`/api/boundary/${cityName}`)
             .then((res) => {
@@ -94,7 +93,6 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.boundary = data;
             }),
         );
-
         promises.push(
           fetch(`/api/population/${cityName}`)
             .then((res) => {
@@ -109,7 +107,6 @@ const useMapStore = defineStore("map", () => {
               };
             }),
         );
-
         promises.push(
           fetch(`/api/isochrone/${cityName}`)
             .then((res) => {
@@ -123,7 +120,6 @@ const useMapStore = defineStore("map", () => {
               );
             }),
         );
-
         promises.push(
           fetch(`/api/health-site-point/${cityName}`)
             .then((res) => {
@@ -134,7 +130,6 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.healthSitePoint = data;
             }),
         );
-
         promises.push(
           fetch(`/api/hospital-auto-population/${cityName}`)
             .then((res) => {
@@ -149,7 +144,6 @@ const useMapStore = defineStore("map", () => {
               };
             }),
         );
-
         promises.push(
           fetch(`/api/water-source/${cityName}`)
             .then((res) => {
@@ -160,7 +154,6 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.waterSourcePoint = data;
             }),
         );
-
         promises.push(
           fetch(`/api/water-source-catchment/${cityName}`)
             .then((res) => {
@@ -174,7 +167,6 @@ const useMapStore = defineStore("map", () => {
               );
             }),
         );
-
         promises.push(
           fetch(`/api/water-source-population/${cityName}`)
             .then((res) => {
@@ -189,7 +181,6 @@ const useMapStore = defineStore("map", () => {
               };
             }),
         );
-
         promises.push(
           fetch(`/api/energy-supply/${cityName}`)
             .then((res) => {
@@ -200,7 +191,6 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.energySupplyPoint = data;
             }),
         );
-
         promises.push(
           fetch(`/api/energy-supply-catchment/${cityName}`)
             .then((res) => {
@@ -212,6 +202,26 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.energySupplyCatchment!.features.sort(
                 (a, b) => b.properties.range - a.properties.range,
               );
+            }),
+        );
+        promises.push(
+          fetch(`/api/sewage-point/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.sewagePoint = data;
+            }),
+        );
+        promises.push(
+          fetch(`/api/sewage-line/${cityName}`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.sewageLine = data;
             }),
         );
       } else {
@@ -281,80 +291,93 @@ const useMapStore = defineStore("map", () => {
   const getIsochroneType = (): string => isochroneType.value;
 
   // Overlay Visualisation Settings
-  const boundaryLayer: VectorLayer = {
+  const boundaryLayer = reactive<VectorLayer>({
     name: LayerName.BOUNDARY,
-    visible: ref(true),
+    visible: true,
     color: "#057dcd",
-  };
-  const shelterLayers: Record<string, VectorLayer> = {
+  });
+  const shelterLayers = reactive<Record<string, VectorLayer>>({
     shelterLayer: {
       name: LayerName.SHELTER,
-      visible: ref(false),
+      visible: false,
       color: "orange",
     },
     isochroneLayer: {
       name: LayerName.SHELTERISOCHRONE,
-      visible: ref(false),
+      visible: false,
       range: [1, 2, 3, 4, 5],
     },
     populationLayer: {
       name: LayerName.SHELTERPOPULATION,
-      visible: ref(false),
+      visible: false,
       range: [45, 35, 25, 15, 5],
     },
-  };
-  const healthSiteLayers: Record<string, VectorLayer> = {
+  });
+  const healthSiteLayers = reactive<Record<string, VectorLayer>>({
     healthSiteLayer: {
       name: LayerName.HEALTHSITE,
-      visible: ref(false),
+      visible: false,
       color: "#EE6666",
     },
     healthSiteIsochroneLayer: {
       name: LayerName.HEALTHSITEISOCHRONE,
-      visible: ref(false),
+      visible: false,
       range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     },
     healthSitePopulationLayer: {
       name: LayerName.HEALTHSITEPOPULATION,
-      visible: ref(false),
+      visible: false,
       range: [45, 35, 25, 15, 5],
     },
-  };
-  const waterSourceLayers: Record<string, VectorLayer> = {
+  });
+  const waterSourceLayers = reactive<Record<string, VectorLayer>>({
     waterSourceLayer: {
       name: LayerName.WATERSOURCE,
-      visible: ref(false),
+      visible: false,
       color: "#660e60",
     },
     waterSourceCatchmentLayer: {
       name: LayerName.WATERSOURCECATCHMENT,
-      visible: ref(false),
+      visible: false,
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
     waterSourcePopulationLayer: {
       name: LayerName.WATERSOURCEPOPULATION,
-      visible: ref(false),
+      visible: false,
       range: [45, 35, 25, 15, 5],
     },
-  };
-  const energySupplyLayers: Record<string, VectorLayer> = {
+  });
+  const energySupplyLayers = reactive<Record<string, VectorLayer>>({
     energySupplyLayer: {
       name: LayerName.ENERGYSUPPLY,
-      visible: ref(false),
+      visible: false,
       color: "red",
     },
     energySupplyCatchmentLayer: {
       name: LayerName.ENERGYSUPPLYCATCHMENT,
-      visible: ref(false),
+      visible: false,
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
-  };
-  const vulnerabilityLayer: VectorLayer = {
-    name: LayerName.VULNERABILITY,
-    visible: ref(false),
-    range: [], // Store breaks here
-  };
+  });
+  const sewageLayers = reactive<Record<string, VectorLayer>>({
+    sewagePointLayer: {
+      name: LayerName.SEWAGEPOINT,
+      visible: false,
+      color: "#c7522a",
+    },
+    sewageLineLayer: {
+      name: LayerName.SEWAGELINE,
+      visible: false,
+      color: "#d9a7b0",
+    },
+  });
+
   /* vulnerability layer */
+  const vulnerabilityLayer = reactive<VectorLayer>({
+    name: LayerName.VULNERABILITY,
+    visible: false,
+    range: [], // Store breaks here
+  });
   const selectedVulnerableProperty = ref("city_area"); //duration of alarms, hours in 2024
   // calculate class breaks dynamically
   const calculateClassBreaks = (
@@ -400,7 +423,6 @@ const useMapStore = defineStore("map", () => {
     const size = minRadius + (population / maxPopulation) * (maxRadius - minRadius);
     return Math.round(size);
   }
-
   const initializeVulnerabilityLayer = (): void => {
     const minValue: number =
       geojsonData.value.vulnerabilityPoint.properties[
@@ -413,7 +435,7 @@ const useMapStore = defineStore("map", () => {
     // Calculate and store breaks in the range
     vulnerabilityLayer.range = calculateClassBreaks(minValue, maxValue, 5); // 5 is default numClasses
   };
-  // points
+  // points options
   const getMarkerOptions = (color: string, radius = 5) => {
     return {
       radius: radius,
@@ -439,7 +461,7 @@ const useMapStore = defineStore("map", () => {
   const resetHighlight = (e: any) => {
     e.target.setStyle({ color: "white", weight: 1 });
   };
-  // boundary
+  // boundary options
   const boundaryStyle = () => {
     return {
       fillOpacity: 0,
@@ -450,7 +472,6 @@ const useMapStore = defineStore("map", () => {
     map,
     city,
     zoom,
-    isSilent,
     geojsonData,
     popup,
     isJsonDataLoad,
@@ -463,8 +484,8 @@ const useMapStore = defineStore("map", () => {
     healthSiteLayers,
     waterSourceLayers,
     energySupplyLayers,
+    sewageLayers,
     selectedVulnerableProperty,
-    initializeVulnerabilityLayer,
     setCity,
     fetchCountrywideData,
     setIsochroneType,
@@ -474,6 +495,7 @@ const useMapStore = defineStore("map", () => {
     highlightPoint,
     resetHighlight,
     boundaryStyle,
+    initializeVulnerabilityLayer,
     getVulnerabilityColor,
     getVulnerabilityRadius,
   };

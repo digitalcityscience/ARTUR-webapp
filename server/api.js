@@ -3,6 +3,7 @@ import pool from "./db.js";
 
 const router = express.Router();
 
+// nation-level-data
 router.get("/capacity", async (req, res) => {
   try {
     const { rows } = await pool.query("SELECT * FROM capacity");
@@ -97,7 +98,7 @@ router.get("/vulnerability", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
-
+// Urban-level data
 router.get("/shelter/:city", async (req, res) => {
   // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
   const city = req.params.city;
@@ -410,6 +411,58 @@ router.get("/energy-supply-catchment/:city", async (req, res) => {
       properties: { range: row.range },
       geometry: JSON.parse(row.geometry),
     }));
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/sewage-line/:city", async (req, res) => {
+  const city = req.params.city;
+  try {
+    const { rows: columns } = await pool.query(
+      `SELECT column_name FROM information_schema.columns
+       WHERE table_name = '${city}_sewage_line'
+       AND column_name NOT IN ('wkb_geometry')`,
+    );
+    const columnNames = columns.map((row) => `"${row.column_name}"`).join(", ");
+    const query = `
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry FROM ${city}_sewage_line
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      const { geometry, ...properties } = row;
+      return {
+        type: "Feature",
+        properties,
+        geometry: JSON.parse(geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/sewage-point/:city", async (req, res) => {
+  const city = req.params.city;
+  try {
+    const { rows: columns } = await pool.query(
+      `SELECT column_name FROM information_schema.columns
+       WHERE table_name = '${city}_sewage_point'
+       AND column_name NOT IN ('wkb_geometry')`,
+    );
+    const columnNames = columns.map((row) => `"${row.column_name}"`).join(", ");
+    const query = `
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry FROM ${city}_sewage_point
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      const { geometry, ...properties } = row;
+      return {
+        type: "Feature",
+        properties,
+        geometry: JSON.parse(geometry),
+      };
+    });
     res.json({ type: "FeatureCollection", features });
   } catch (err) {
     res.status(500).send("" + err);

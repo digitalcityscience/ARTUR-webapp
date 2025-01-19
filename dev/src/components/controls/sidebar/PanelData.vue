@@ -177,10 +177,38 @@ const changeIsochroneType = () => {
                   </li>
                 </ul>
               </li>
+              <li class="mb-1">
+                <button
+                  class="btn btn-outline-success btn-layer-set"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sewage-layer-set"
+                  aria-expanded="false"
+                >
+                  {{ $t("sidebar.dataPanel.sets.sewageSystem") }}
+                </button>
+                <ul class="form-check list-unstyled collapse" id="sewage-layer-set">
+                  <li
+                    class="mb-1"
+                    v-for="overlay in mapStore.sewageLayers"
+                    :key="overlay.name"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="overlay.name"
+                      :name="overlay.name"
+                      v-model="overlay.visible"
+                    />
+                    <label class="form-check-label" :for="overlay.name">
+                      {{ $t("layerNames." + overlay.name) }}
+                    </label>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         </li>
-
+        <!-- Shelter's Info -->
         <li class="mb-1">
           <button
             class="btn btn-toggle rounded collapsed ps-0"
@@ -198,6 +226,7 @@ const changeIsochroneType = () => {
             ></h6>
           </div>
         </li>
+        <!-- Chart -->
         <li class="mb-1">
           <button
             class="btn btn-toggle rounded collapsed ps-0"

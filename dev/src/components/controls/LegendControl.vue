@@ -88,6 +88,13 @@ onMounted(() => {
         ></i>
         {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
       </div>
+      <div v-show="mapStore.sewageLayers.sewagePointLayer.visible">
+        <i
+          class="point"
+          :style="{ background: mapStore.sewageLayers.sewagePointLayer.color }"
+        ></i>
+        {{ $t("layerNames." + mapStore.sewageLayers.sewagePointLayer.name) }}
+      </div>
       <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
         <i
           class="point"
@@ -98,6 +105,13 @@ onMounted(() => {
       <div v-show="mapStore.boundaryLayer.visible">
         <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
         {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
+      </div>
+      <div v-show="mapStore.sewageLayers.sewageLineLayer.visible">
+        <i
+          class="polyline"
+          :style="{ background: mapStore.sewageLayers.sewageLineLayer.color }"
+        ></i>
+        {{ $t("layerNames." + mapStore.sewageLayers.sewageLineLayer.name) }}
       </div>
       <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
         <template

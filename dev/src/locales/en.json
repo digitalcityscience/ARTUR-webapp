@@ -2,7 +2,7 @@
   "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" },
   "cityNames": {
     "zhytomyr": "Zhytomyr",
-    "kryvyiRih": "Kryvyi Rih",
+    "kryvyirih": "Kryvyi Rih",
     "nikopol": "Nikopol",
     "dnipro": "Dnipro",
     "sumy": "Sumy"
@@ -20,7 +20,9 @@
     "waterSourceCatchment": "Catchment Area of water source",
     "waterSourcePopulation": "Catchment area of Water Source: Population within/outside a certain kilometers according to the transport network",
     "energySupply": "Energy Plant (fake)",
-    "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network"
+    "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network",
+    "sewageLine": "Sewage Network",
+    "sewagePoint": "Sewage Network Point"
   },
   "legend": {
     "title": "Legend",
@@ -373,7 +375,8 @@
         "shelter": "Layer Set: Shelter",
         "healthSite": "Layer Set: Health Site",
         "waterSource": "Layer Set: Water Source",
-        "energySupply": "Layer Set: Energy Supply"
+        "energySupply": "Layer Set: Energy Supply",
+        "sewageSystem": "Layer Set: Sewage System"
       },
       "popups": {
         "sheltersInfo": "Shelters Information",

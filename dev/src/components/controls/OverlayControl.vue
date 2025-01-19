@@ -5,16 +5,16 @@ import {
   LFeatureGroup,
   LTooltip,
   LPopup,
+  LPolyline,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { LayerName } from "@/assets/ts/constants";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, type Ref } from "vue";
 import useMapStore from "@/stores/mapStore";
 
 // Pinia Store
 const mapStore = useMapStore();
-
 // Isochrone Layer Settings
 const isochroneStyle = (feature: any) => {
   return {
@@ -56,6 +56,14 @@ const healthSiteIsochroneStyle = (feature: any) => {
     opacity: 1,
   };
 };
+// Sewage System
+const lineStyle = () => {
+  return {
+    color: mapStore.sewageLayers.sewageLineLayer.color,
+    weight: 5,
+    opacity: 0.8,
+  };
+};
 const isLayerLoad = ref(false);
 onMounted(() => {
   isLayerLoad.value = true;
@@ -68,7 +76,7 @@ onMounted(() => {
     <l-feature-group
       :name="LayerName.SHELTER"
       layer-type="overlay"
-      :visible="mapStore.shelterLayers.shelterLayer.visible as unknown as boolean"
+      :visible="mapStore.shelterLayers.shelterLayer.visible"
     >
       <l-circle-marker
         pane="markerPane"
@@ -90,34 +98,31 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.BOUNDARY"
       :geojson="mapStore.geojsonData.boundary"
-      :visible="mapStore.boundaryLayer.visible as unknown as boolean"
+      :visible="mapStore.boundaryLayer.visible"
       layer-type="overlay"
       :options-style="mapStore.boundaryStyle"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Isochrones -->
     <l-geo-json
       :name="LayerName.SHELTERISOCHRONE"
       :geojson="mapStore.geojsonData.isochrones"
-      :visible="mapStore.shelterLayers.isochroneLayer.visible as unknown as boolean"
+      :visible="mapStore.shelterLayers.isochroneLayer.visible"
       layer-type="overlay"
       :options-style="isochroneStyle"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Shelter Population -->
     <l-geo-json
       :name="LayerName.SHELTERPOPULATION"
       :geojson="mapStore.geojsonData.population"
-      :visible="mapStore.shelterLayers.populationLayer.visible as unknown as boolean"
+      :visible="mapStore.shelterLayers.populationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Health Site Point -->
     <l-feature-group
       :name="LayerName.HEALTHSITE"
       layer-type="overlay"
-      :visible="mapStore.healthSiteLayers.healthSiteLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSiteLayer.visible"
     >
       <l-circle-marker
         pane="markerPane"
@@ -139,26 +144,24 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.HEALTHSITEISOCHRONE"
       :geojson="mapStore.geojsonData.healthSiteIsochrone"
-      :visible="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible"
       layer-type="overlay"
       :options-style="healthSiteIsochroneStyle"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Health Site Population -->
     <l-geo-json
       :name="LayerName.HEALTHSITEPOPULATION"
       :geojson="mapStore.geojsonData.healthSitePopulation"
-      :visible="mapStore.healthSiteLayers.healthSitePopulationLayer.visible as unknown as boolean"
+      :visible="mapStore.healthSiteLayers.healthSitePopulationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
       :options="populationOptions"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Water Source Point -->
     <l-feature-group
       :name="LayerName.WATERSOURCE"
       layer-type="overlay"
-      :visible="mapStore.waterSourceLayers.waterSourceLayer.visible as unknown as boolean"
+      :visible="mapStore.waterSourceLayers.waterSourceLayer.visible"
     >
       <l-circle-marker
         pane="markerPane"
@@ -176,26 +179,24 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.WATERSOURCECATCHMENT"
       :geojson="mapStore.geojsonData.waterSourceCatchment"
-      :visible="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible as unknown as boolean"
+      :visible="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible"
       layer-type="overlay"
       :options-style="isochroneStyle"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Water Source Population -->
     <l-geo-json
       :name="LayerName.HEALTHSITEPOPULATION"
       :geojson="mapStore.geojsonData.waterSourcePopulation"
-      :visible="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible as unknown as boolean"
+      :visible="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
       :options="populationOptions"
-      pane="overlayPane"
     ></l-geo-json>
     <!-- Energy Supply Point -->
     <l-feature-group
       :name="LayerName.ENERGYSUPPLY"
       layer-type="overlay"
-      :visible="mapStore.energySupplyLayers.energySupplyLayer.visible as unknown as boolean"
+      :visible="mapStore.energySupplyLayers.energySupplyLayer.visible"
     >
       <l-circle-marker
         pane="markerPane"
@@ -215,11 +216,36 @@ onMounted(() => {
     <l-geo-json
       :name="LayerName.ENERGYSUPPLYCATCHMENT"
       :geojson="mapStore.geojsonData.energySupplyCatchment"
-      :visible="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible as unknown as boolean"
+      :visible="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible"
       layer-type="overlay"
       :options-style="isochroneStyle"
-      pane="overlayPane"
     ></l-geo-json>
+    <!-- Sewage Line -->
+    <l-geo-json
+      :name="LayerName.SEWAGELINE"
+      :geojson="mapStore.geojsonData.sewageLine"
+      :visible="mapStore.sewageLayers.sewageLineLayer.visible"
+      layer-type="overlay"
+      :options-style="lineStyle"
+    ></l-geo-json>
+    <!-- Sewage Point -->
+    <l-feature-group
+      :name="LayerName.SEWAGEPOINT"
+      layer-type="overlay"
+      :visible="mapStore.sewageLayers.sewagePointLayer.visible"
+    >
+      <l-circle-marker
+        pane="markerPane"
+        v-for="(feature, index) in mapStore.geojsonData.sewagePoint!.features"
+        :key="`${index}-${feature.properties.ogc_fid}`"
+        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
+        :options="mapStore.getMarkerOptions(mapStore.sewageLayers.sewagePointLayer.color!)"
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
+        layer-type="overlay"
+      >
+      </l-circle-marker>
+    </l-feature-group>
   </div>
   <legend-control></legend-control>
 </template>
