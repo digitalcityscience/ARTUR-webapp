@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 
 enum SANKEYLEVELS {
   LEVEL1 = 0,
@@ -6828,7 +6828,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     // ecomonic
     {
-      name: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+      name: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL1,
     },
@@ -6849,7 +6849,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     // Institutional
     {
-      name: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      name: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL1,
     },
@@ -7113,27 +7113,27 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     // Institutional
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       target: computed(() => t("initialIndicators.institutional.1.1.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       target: computed(() => t("initialIndicators.institutional.2.1.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       target: computed(() => t("initialIndicators.institutional.3.1.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       target: computed(() => t("initialIndicators.institutional.3.2.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.institutional")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
       target: computed(() => t("initialIndicators.institutional.3.3.name")),
       value: 1,
     },
@@ -7254,17 +7254,17 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     // Economic
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
       target: computed(() => t("initialIndicators.economic.1.1.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
       target: computed(() => t("initialIndicators.economic.1.2.name")),
       value: 1,
     },
     {
-      source: computed(() => t("sidebar.dashboardPanel.radarChart.economic")),
+      source: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
       target: computed(() => t("initialIndicators.economic.2.1.name")),
       value: 1,
     },

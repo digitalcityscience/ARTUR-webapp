@@ -79,18 +79,11 @@ const useRadarChartStore = defineStore("radar-chart", () => {
           }
         });
         // Calculate the final score for this capacity
-        dimensionScore.value[index] +=
-          (capacityScoreSum * 100) / (3 * capacityWeight[dimension][index]);
-        console.log("capacity:", capacity, "\nscore:", capacityScoreSum);
+        dimensionScore.value[index] += Math.round(
+          (capacityScoreSum * 100) / (3 * capacityWeight[dimension][index]),
+        );
       });
     });
-    console.log(
-      "Scores calculated: ",
-      socialScore.value,
-      economicScore.value,
-      institutionalScore.value,
-      physicalScore.value,
-    );
   };
   const totalCapacity = [34, 21, 15, 23, 28, 24, 19, 24, 19];
   // Average array for the "Total" radar chart
@@ -101,23 +94,8 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         economicScore.value[i] * capacityWeight["Economic"][i] +
         institutionalScore.value[i] * capacityWeight["Institutional"][i] +
         physicalScore.value[i] * capacityWeight["Physical"][i];
-
-      console.log(
-        "total Score:",
-        totalScore,
-        "\ntotal Capacity:",
-        totalScore / totalCapacity[i],
-      );
-      console.log(
-        Math.max(
-          ...(socialScore.value,
-          economicScore.value,
-          institutionalScore.value,
-          physicalScore.value),
-        ) / 5,
-      );
       // Calculate and return the total
-      return totalScore / totalCapacity[i];
+      return Math.round(totalScore / totalCapacity[i]);
     });
   });
 

@@ -5,7 +5,6 @@ import {
   LFeatureGroup,
   LTooltip,
   LPopup,
-  LPolyline,
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";

@@ -5,7 +5,6 @@ import RadarChart from "./RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
-import SidebarControl from "../SidebarControl.vue";
 
 // Constants
 const indicatorStore = useIndicatorStore();
@@ -79,7 +78,6 @@ function setChartType(type: "dimension" | "total") {
 // Fetch capacity data on mounted
 onMounted(radarChartStore.fetchIndicatorData);
 </script>
-
 <template>
   <div class="leaflet-sidebar-pane" id="indicator">
     <h1 class="leaflet-sidebar-header">
