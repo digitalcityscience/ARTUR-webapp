@@ -9,10 +9,6 @@ import useMapStore from "@/stores/mapStore";
 const mapStore = useMapStore();
 // Local state to store the selected isochrone type
 const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
-// Function to change the isochrone type and fetch the corresponding data
-const changeIsochroneType = () => {
-  mapStore.setIsochroneType(selectedIsochroneType.value);
-};
 const waterNetworkType = computed(() =>
   mapStore.city === CityName.NIKOPOL ? "sewageSystem" : "waterNetworkDistribution",
 );
@@ -102,7 +98,7 @@ const waterNetworkType = computed(() =>
                       }}</label>
                       <select
                         v-model="selectedIsochroneType"
-                        @change="changeIsochroneType"
+                        @change="mapStore.setIsochroneType(selectedIsochroneType)"
                         class="form-select form-select-sm rounded"
                         id="isochroneType"
                         aria-label="Isochrone Type Select"
@@ -209,6 +205,22 @@ const waterNetworkType = computed(() =>
                     <label class="form-check-label" :for="overlay.name">
                       {{ $t(`layerNames.${mapStore.city}.${overlay.name}`) }}
                     </label>
+                  </li>
+                  <!-- Scenario Switcher -->
+                  <li class="mb-1" v-if="mapStore.city === CityName.KRYVYIRIH">
+                    <div class="form-floating">
+                      <label for="water-network-scenario">{{ "Select Scenario" }}</label>
+                      <select
+                        v-model="mapStore.selectedWaterScenario"
+                        class="form-select form-select-sm rounded"
+                        id="water-network-scenario"
+                        aria-label="water-network-scenario-select"
+                      >
+                        <option value="0">Scenario 0</option>
+                        <option value="1">Scenario 1</option>
+                        <option value="2">Scenario 2</option>
+                      </select>
+                    </div>
                   </li>
                 </ul>
               </li>

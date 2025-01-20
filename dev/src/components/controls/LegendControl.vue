@@ -1,37 +1,18 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
 import { LControl } from "@vue-leaflet/vue-leaflet";
-import usePopulationChartStore from "@/stores/populationChartStore";
-import useIndicatorChartStore from "@/stores/indicatorChartStore";
-import * as echarts from "echarts";
-import { ref, computed, watch, onMounted } from "vue";
+import PopulationLegend from "./legend/PopulationLegend.vue";
+import WaterPointLegend from "./legend/WaterPointLegend.vue";
+import { CityName } from "@/assets/ts/constants";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
-const echartsStore = usePopulationChartStore();
-const indicatorChartStore = useIndicatorChartStore();
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
 });
-// Population Legend Chart
-const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
-const initChart = () => {
-  chart = echarts.init(chartContainer.value!);
-  chart.setOption(echartsStore.populationLegendOption);
-};
-watch(
-  () => indicatorChartStore.sunburstData.name,
-  () => {
-    chart.setOption(echartsStore.populationLegendOption);
-  },
-);
-onMounted(() => {
-  initChart();
-});
 </script>
-
 <template>
   <l-control position="bottomleft">
     <button
@@ -88,7 +69,12 @@ onMounted(() => {
         ></i>
         {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
       </div>
-      <div v-if="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible">
+      <div
+        v-if="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
+      >
         <i
           class="point"
           :style="{
@@ -100,6 +86,14 @@ onMounted(() => {
             `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkPointLayer.name}`,
           )
         }}
+      </div>
+      <div
+        v-if="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
+      >
+        <water-point-legend></water-point-legend>
       </div>
       <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
         <i
@@ -174,14 +168,13 @@ onMounted(() => {
         "
         class="population-grid"
       >
-        <div ref="chartContainer" class="chartContainer"></div>
+        <population-legend></population-legend>
         <i class="polygon" style="background: #9e0000"></i
         >{{ $t("legend.population.text") }}<br />
       </div>
     </div>
   </l-control>
 </template>
-
 <style scoped>
 .legend {
   padding: 6px 8px;
@@ -215,9 +208,5 @@ onMounted(() => {
 }
 .population-grid {
   width: 160px;
-}
-.chartContainer {
-  width: 100px;
-  height: 180px;
 }
 </style>

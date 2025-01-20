@@ -2,9 +2,9 @@ import { defineStore } from "pinia";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import {
-  populationAccessibleColor,
   populationInaccessibleColor,
-} from "../assets/ts/constants";
+  populationAccessibleColor,
+} from "@/assets/ts/constants";
 
 const usePopulationChartStore = defineStore("population-chart", () => {
   const { t } = useI18n();
@@ -98,6 +98,7 @@ const usePopulationChartStore = defineStore("population-chart", () => {
       },
     ],
   };
+
   return {
     populationLegendOption,
   };

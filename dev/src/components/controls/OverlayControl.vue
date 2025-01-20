@@ -8,8 +8,7 @@ import {
 } from "@vue-leaflet/vue-leaflet";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
-import { LayerName } from "@/assets/ts/constants";
-import { onMounted, ref, type Ref } from "vue";
+import { CityName, LayerName } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";
 
 // Pinia Store
@@ -55,7 +54,7 @@ const healthSiteIsochroneStyle = (feature: any) => {
     opacity: 1,
   };
 };
-// Sewage System
+// Water Distribution Network
 const lineStyle = () => {
   return {
     color: mapStore.waterNetworkLayers.waterNetworkLineLayer.color,
@@ -63,12 +62,15 @@ const lineStyle = () => {
     opacity: 0.8,
   };
 };
-const isLayerLoad = ref(false);
-onMounted(() => {
-  isLayerLoad.value = true;
-});
+const getWaterNetworkPointColor = (property: any) => {
+  if (mapStore.city === CityName.NIKOPOL)
+    return mapStore.getMarkerOptions(
+      mapStore.waterNetworkLayers.waterNetworkPointLayer.color!,
+      4,
+    );
+  else return mapStore.getMarkerOptions(mapStore.getWaterNetworkPointColor(property), 4);
+};
 </script>
-
 <template>
   <div class="leaflet.overlay" v-if="mapStore.isJsonDataLoad">
     <!-- Shelters -->
@@ -230,6 +232,7 @@ onMounted(() => {
     ></l-geo-json>
     <!-- Water Network Point -->
     <l-feature-group
+      :key="mapStore.selectedWaterScenario"
       v-if="mapStore.city"
       :name="LayerName.WATERNETWORKPOINT"
       layer-type="overlay"
@@ -240,11 +243,20 @@ onMounted(() => {
         v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="mapStore.getMarkerOptions(mapStore.waterNetworkLayers.waterNetworkPointLayer.color!)"
+        :options="
+          getWaterNetworkPointColor(
+            feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`],
+          )
+        "
         @mouseover="mapStore.highlightPoint"
         @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
-      >
+        ><l-tooltip
+          >{{ `Betweeness Centrality: `
+          }}{{
+            feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`]
+          }}</l-tooltip
+        >
       </l-circle-marker>
     </l-feature-group>
   </div>

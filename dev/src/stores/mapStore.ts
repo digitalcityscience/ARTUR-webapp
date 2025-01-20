@@ -365,20 +365,58 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   });
+  /* Water Network layer */
   const waterNetworkLayers = reactive<Record<string, VectorLayer>>({
     waterNetworkPointLayer: {
       name: LayerName.WATERNETWORKPOINT,
       visible: false,
       color: "#c7522a",
+      range: [0.1, 0.2, 0.3, 0.4], // Store breaks here
     },
     waterNetworkLineLayer: {
       name: LayerName.WATERNETWORKLINE,
       visible: false,
-      color: "#d9a7b0",
+      color: "#c7522a",
     },
   });
-  const waterSupplyLayers = reactive;
-  /* vulnerability layer */
+  const selectedWaterScenario = ref(0);
+  const getWaterNetworkPointColor = (value: number) => {
+    interface RGB {
+      r: number;
+      g: number;
+      b: number;
+    }
+    // Define color stops from bottom to top of the scale
+    const colorStops: [number, RGB][] = [
+      [0.0, { r: 49, g: 54, b: 149 }], // Liquid Denim
+      [0.1, { r: 93, g: 226, b: 231 }], // Turquoise
+      [0.2, { r: 125, g: 218, b: 88 }], // Fairy Tale Green
+      [0.3, { r: 255, g: 222, b: 89 }], // Dragon’s Gold
+      [0.4, { r: 210, g: 1, b: 3 }], // Dark Red
+      [0.45, { r: 215, g: 48, b: 39 }], // Devilish
+    ];
+    // Find the color stops between which our value falls
+    let lowerStop: [number, RGB] = colorStops[0];
+    let upperStop: [number, RGB] = colorStops[colorStops.length - 1];
+
+    for (let i = 0; i < colorStops.length - 1; i++) {
+      if (value >= colorStops[i][0] && value <= colorStops[i + 1][0]) {
+        lowerStop = colorStops[i];
+        upperStop = colorStops[i + 1];
+        break;
+      }
+    }
+    // Calculate how far between the two stops our value is (0-1)
+    const range = upperStop[0] - lowerStop[0];
+    const factor = range === 0 ? 0 : (value - lowerStop[0]) / range;
+    // Interpolate between the two colors
+    const r = Math.round(lowerStop[1].r + (upperStop[1].r - lowerStop[1].r) * factor);
+    const g = Math.round(lowerStop[1].g + (upperStop[1].g - lowerStop[1].g) * factor);
+    const b = Math.round(lowerStop[1].b + (upperStop[1].b - lowerStop[1].b) * factor);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+  /* Vulnerability layer */
   const vulnerabilityLayer = reactive<VectorLayer>({
     name: LayerName.VULNERABILITY,
     visible: false,
@@ -492,10 +530,12 @@ const useMapStore = defineStore("map", () => {
     energySupplyLayers,
     waterNetworkLayers,
     selectedVulnerableProperty,
+    selectedWaterScenario,
     setCity,
     fetchCountrywideData,
     setIsochroneType,
     getIsochroneType,
+    getWaterNetworkPointColor,
     getMarkerOptions,
     togglePopup,
     highlightPoint,

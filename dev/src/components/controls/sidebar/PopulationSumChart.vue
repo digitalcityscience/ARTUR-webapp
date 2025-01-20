@@ -29,17 +29,17 @@ const getPopulationData = () => {
 const chartData = computed(() => {
   const accessibleName =
     props.type === populationType.HEALTHSITE
-      ? t("sidebar.layerPanel.populationChartText.healthSiteAccess")
+      ? t("sidebar.dataPanel.populationChartText.healthSiteAccess")
       : props.type === populationType.SHELTER
-      ? t("sidebar.layerPanel.populationChartText.shelterAccess")
-      : t("sidebar.layerPanel.populationChartText.waterSourceAccess");
+      ? t("sidebar.dataPanel.populationChartText.shelterAccess")
+      : t("sidebar.dataPanel.populationChartText.waterSourceAccess");
 
   const inaccessibleName =
     props.type === populationType.HEALTHSITE
-      ? t("sidebar.layerPanel.populationChartText.healthSiteInaccess")
+      ? t("sidebar.dataPanel.populationChartText.healthSiteInaccess")
       : props.type === populationType.SHELTER
-      ? t("sidebar.layerPanel.populationChartText.shelterInaccess")
-      : t("sidebar.layerPanel.populationChartText.waterSourceInaccess");
+      ? t("sidebar.dataPanel.populationChartText.shelterInaccess")
+      : t("sidebar.dataPanel.populationChartText.waterSourceInaccess");
 
   return [
     {
