@@ -21,8 +21,14 @@
     "waterSourcePopulation": "Catchment area of Water Source: Population within/outside a certain kilometers according to the transport network",
     "energySupply": "Energy Plant (fake)",
     "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network",
-    "sewageLine": "Sewage Network",
-    "sewagePoint": "Sewage Network Point"
+    "nikopol": {
+      "waterNetworkLine": "Sewage Network",
+      "waterNetworkPoint": "Sewage Network Point"
+    },
+    "kryvyirih": {
+      "waterNetworkLine": "Water Network Scenario Changes",
+      "waterNetworkPoint": "Water Network Nodes"
+    }
   },
   "legend": {
     "title": "Legend",
@@ -376,7 +382,8 @@
         "healthSite": "Layer Set: Health Site",
         "waterSource": "Layer Set: Water Source",
         "energySupply": "Layer Set: Energy Supply",
-        "sewageSystem": "Layer Set: Sewage System"
+        "sewageSystem": "Layer Set: Sewage System",
+        "waterNetworkDistribution": "Layer Set: Water Network Distribution"
       },
       "popups": {
         "sheltersInfo": "Shelters Information",

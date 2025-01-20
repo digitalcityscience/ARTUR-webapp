@@ -7,14 +7,14 @@ import type {
   Population,
   IsochroneTypeKey,
 } from "@/assets/ts/types";
-import { LayerName } from "@/assets/ts/constants";
+import { CityName, LayerName } from "@/assets/ts/constants";
 import type { Point, Feature } from "geojson";
 import type { ShelterProperties } from "@/assets/ts/types";
 
 const useMapStore = defineStore("map", () => {
   // Geojson Data Settings
   const map = ref();
-  const city = ref<string>("");
+  const city = ref<string | null>(null);
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
@@ -204,24 +204,30 @@ const useMapStore = defineStore("map", () => {
               );
             }),
         );
+        const url =
+          cityName === CityName.NIKOPOL
+            ? "sewage"
+            : CityName.KRYVYIRIH
+            ? "water-network"
+            : "";
         promises.push(
-          fetch(`/api/sewage-point/${cityName}`)
+          fetch(`/api/${url}-point/${cityName}`)
             .then((res) => {
               if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
               return res.json();
             })
             .then((data) => {
-              geojsonData.value.sewagePoint = data;
+              geojsonData.value.waterNetworkPoint = data;
             }),
         );
         promises.push(
-          fetch(`/api/sewage-line/${cityName}`)
+          fetch(`/api/${url}-line/${cityName}`)
             .then((res) => {
               if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
               return res.json();
             })
             .then((data) => {
-              geojsonData.value.sewageLine = data;
+              geojsonData.value.waterNetworkLine = data;
             }),
         );
       } else {
@@ -359,19 +365,19 @@ const useMapStore = defineStore("map", () => {
       range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   });
-  const sewageLayers = reactive<Record<string, VectorLayer>>({
-    sewagePointLayer: {
-      name: LayerName.SEWAGEPOINT,
+  const waterNetworkLayers = reactive<Record<string, VectorLayer>>({
+    waterNetworkPointLayer: {
+      name: LayerName.WATERNETWORKPOINT,
       visible: false,
       color: "#c7522a",
     },
-    sewageLineLayer: {
-      name: LayerName.SEWAGELINE,
+    waterNetworkLineLayer: {
+      name: LayerName.WATERNETWORKLINE,
       visible: false,
       color: "#d9a7b0",
     },
   });
-
+  const waterSupplyLayers = reactive;
   /* vulnerability layer */
   const vulnerabilityLayer = reactive<VectorLayer>({
     name: LayerName.VULNERABILITY,
@@ -484,7 +490,7 @@ const useMapStore = defineStore("map", () => {
     healthSiteLayers,
     waterSourceLayers,
     energySupplyLayers,
-    sewageLayers,
+    waterNetworkLayers,
     selectedVulnerableProperty,
     setCity,
     fetchCountrywideData,

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import PopulationSumChart from "@/components/controls/sidebar/PopulationSumChart.vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
-import { populationType, LayerName } from "@/assets/ts/constants";
+import { populationType, LayerName, CityName } from "@/assets/ts/constants";
 import type { IsochroneTypeKey } from "@/assets/ts/types";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import useMapStore from "@/stores/mapStore";
 
 const mapStore = useMapStore();
@@ -13,6 +13,9 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 const changeIsochroneType = () => {
   mapStore.setIsochroneType(selectedIsochroneType.value);
 };
+const waterNetworkType = computed(() =>
+  mapStore.city === CityName.NIKOPOL ? "sewageSystem" : "waterNetworkDistribution",
+);
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="data">
@@ -181,15 +184,19 @@ const changeIsochroneType = () => {
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
-                  data-bs-target="#sewage-layer-set"
+                  data-bs-target="#waterNetwork-layer-set"
                   aria-expanded="false"
                 >
-                  {{ $t("sidebar.dataPanel.sets.sewageSystem") }}
+                  {{ $t(`sidebar.dataPanel.sets.${waterNetworkType}`) }}
                 </button>
-                <ul class="form-check list-unstyled collapse" id="sewage-layer-set">
+                <ul
+                  v-if="mapStore.city"
+                  class="form-check list-unstyled collapse"
+                  id="waterNetwork-layer-set"
+                >
                   <li
                     class="mb-1"
-                    v-for="overlay in mapStore.sewageLayers"
+                    v-for="overlay in mapStore.waterNetworkLayers"
                     :key="overlay.name"
                   >
                     <input
@@ -200,7 +207,7 @@ const changeIsochroneType = () => {
                       v-model="overlay.visible"
                     />
                     <label class="form-check-label" :for="overlay.name">
-                      {{ $t("layerNames." + overlay.name) }}
+                      {{ $t(`layerNames.${mapStore.city}.${overlay.name}`) }}
                     </label>
                   </li>
                 </ul>

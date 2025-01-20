@@ -58,7 +58,7 @@ const healthSiteIsochroneStyle = (feature: any) => {
 // Sewage System
 const lineStyle = () => {
   return {
-    color: mapStore.sewageLayers.sewageLineLayer.color,
+    color: mapStore.waterNetworkLayers.waterNetworkLineLayer.color,
     weight: 5,
     opacity: 0.8,
   };
@@ -219,26 +219,28 @@ onMounted(() => {
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
-    <!-- Sewage Line -->
+    <!-- Water Network Line -->
     <l-geo-json
-      :name="LayerName.SEWAGELINE"
-      :geojson="mapStore.geojsonData.sewageLine"
-      :visible="mapStore.sewageLayers.sewageLineLayer.visible"
+      v-if="mapStore.city"
+      :name="LayerName.WATERNETWORKLINE"
+      :geojson="mapStore.geojsonData.waterNetworkLine"
+      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
       layer-type="overlay"
       :options-style="lineStyle"
     ></l-geo-json>
-    <!-- Sewage Point -->
+    <!-- Water Network Point -->
     <l-feature-group
-      :name="LayerName.SEWAGEPOINT"
+      v-if="mapStore.city"
+      :name="LayerName.WATERNETWORKPOINT"
       layer-type="overlay"
-      :visible="mapStore.sewageLayers.sewagePointLayer.visible"
+      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
     >
       <l-circle-marker
         pane="markerPane"
-        v-for="(feature, index) in mapStore.geojsonData.sewagePoint!.features"
+        v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="mapStore.getMarkerOptions(mapStore.sewageLayers.sewagePointLayer.color!)"
+        :options="mapStore.getMarkerOptions(mapStore.waterNetworkLayers.waterNetworkPointLayer.color!)"
         @mouseover="mapStore.highlightPoint"
         @mouseout="mapStore.resetHighlight"
         layer-type="overlay"

@@ -468,4 +468,56 @@ router.get("/sewage-point/:city", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.get("/water-network-line/:city", async (req, res) => {
+  const city = req.params.city;
+  try {
+    const { rows: columns } = await pool.query(
+      `SELECT column_name FROM information_schema.columns
+       WHERE table_name = '${city}_water_network_line'
+       AND column_name NOT IN ('wkb_geometry')`,
+    );
+    const columnNames = columns.map((row) => `"${row.column_name}"`).join(", ");
+    const query = `
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry FROM ${city}_water_network_line
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      const { geometry, ...properties } = row;
+      return {
+        type: "Feature",
+        properties,
+        geometry: JSON.parse(geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/water-network-point/:city", async (req, res) => {
+  const city = req.params.city;
+  try {
+    const { rows: columns } = await pool.query(
+      `SELECT column_name FROM information_schema.columns
+       WHERE table_name = '${city}_water_network_point'
+       AND column_name NOT IN ('wkb_geometry')`,
+    );
+    const columnNames = columns.map((row) => `"${row.column_name}"`).join(", ");
+    const query = `
+      SELECT ${columnNames}, ST_AsGeoJSON(wkb_geometry) geometry FROM ${city}_water_network_point
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      const { geometry, ...properties } = row;
+      return {
+        type: "Feature",
+        properties,
+        geometry: JSON.parse(geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
 export default router;

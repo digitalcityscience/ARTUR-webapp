@@ -71,8 +71,8 @@ export type GeoJSONData = {
   waterSourcePopulation?: FeatureCollection<MultiPolygon, PopulationProperties>;
   energySupplyPoint?: FeatureCollection<Point, EnergySupplyProperties>;
   energySupplyCatchment?: FeatureCollection<MultiPolygon, IsochroneProperties>;
-  sewageLine?: FeatureCollection<MultiLineString, any>;
-  sewagePoint?: FeatureCollection<Point, any>;
+  waterNetworkLine?: FeatureCollection<MultiLineString, any>;
+  waterNetworkPoint?: FeatureCollection<Point, any>;
 };
 export type Population = {
   accessible: number;

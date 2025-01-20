@@ -88,12 +88,18 @@ onMounted(() => {
         ></i>
         {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
       </div>
-      <div v-show="mapStore.sewageLayers.sewagePointLayer.visible">
+      <div v-if="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.sewageLayers.sewagePointLayer.color }"
+          :style="{
+            background: mapStore.waterNetworkLayers.waterNetworkPointLayer.color,
+          }"
         ></i>
-        {{ $t("layerNames." + mapStore.sewageLayers.sewagePointLayer.name) }}
+        {{
+          $t(
+            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkPointLayer.name}`,
+          )
+        }}
       </div>
       <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
         <i
@@ -106,12 +112,16 @@ onMounted(() => {
         <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
         {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
       </div>
-      <div v-show="mapStore.sewageLayers.sewageLineLayer.visible">
+      <div v-if="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible">
         <i
           class="polyline"
-          :style="{ background: mapStore.sewageLayers.sewageLineLayer.color }"
+          :style="{ background: mapStore.waterNetworkLayers.waterNetworkLineLayer.color }"
         ></i>
-        {{ $t("layerNames." + mapStore.sewageLayers.sewageLineLayer.name) }}
+        {{
+          $t(
+            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
+          )
+        }}
       </div>
       <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
         <template
