@@ -6,13 +6,17 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
+import type { Layer } from "leaflet";
+import { watch } from "vue";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { CityName, LayerName } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";
+import { useI18n } from "vue-i18n";
 
-// Pinia Store
+// Constants
 const mapStore = useMapStore();
+const { t, locale } = useI18n();
 // Isochrone Layer Settings
 const isochroneStyle = (feature: any) => {
   return {
@@ -33,16 +37,11 @@ const populationStyle = (feature: any) => {
     opacity: 0.95,
   };
 };
-const onEachFeatureFunction = () => {
-  return (feature: any, layer: any) => {
-    layer.bindTooltip(`<div>${feature.properties.value}</div>`, {
-      permanent: true,
-      sticky: true,
-    });
-  };
-};
-const populationOptions = {
-  onEachFeature: onEachFeatureFunction,
+const onEachPopulationFeature = (feature: any, layer: Layer) => {
+  const content = `<span>${t("legend.population.population")}: ${
+    feature.properties.value
+  }</span>`;
+  layer.bindTooltip(content);
 };
 // Health Site Point Layer Settings
 const healthSiteIsochroneStyle = (feature: any) => {
@@ -70,6 +69,43 @@ const getWaterNetworkPointColor = (property: any) => {
     );
   else return mapStore.getMarkerOptions(mapStore.getWaterNetworkPointColor(property), 4);
 };
+// Create a map to store references to layers by scenario
+const scenarioLayerMap = new Map<number, Layer>();
+const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
+  // Store a reference to the layer by its scenario
+  const scenario = feature?.properties?.scenario;
+  if (scenario !== undefined) {
+    scenarioLayerMap.set(scenario, layer);
+  }
+  // Customize the content of your popup
+  const popupContent = `
+    <div style="max-height: 100px" class="overflow-auto">
+      <table class="table table-bordered table-striped table-sm mb-0">
+        <tbody>
+          <tr><th scope="row">Scenario</th><td>${scenario}</td></tr>
+          <tr><th scope="row">Change</th><td>${
+            feature?.properties?.change || "N/A"
+          }</td></tr>
+        </tbody>
+      </table>
+    </div>`;
+  // Bind the popup to the layer
+  layer.bindPopup(popupContent);
+};
+// Watch for changes to the selected scenario and open the corresponding popup
+watch(
+  () => mapStore.selectedWaterScenario,
+  (newScenario) => {
+    mapStore.waterNetworkLayers.waterNetworkLineLayer.visible = true;
+    // Close all popups first
+    scenarioLayerMap.forEach((layer) => layer.closePopup());
+    // Open the popup for the selected scenario, if it exists
+    const matchingLayer = scenarioLayerMap.get(newScenario);
+    if (matchingLayer) {
+      matchingLayer.openPopup();
+    }
+  },
+);
 </script>
 <template>
   <div class="leaflet.overlay" v-if="mapStore.isJsonDataLoad">
@@ -113,11 +149,13 @@ const getWaterNetworkPointColor = (property: any) => {
     ></l-geo-json>
     <!-- Shelter Population -->
     <l-geo-json
+      :key="locale"
       :name="LayerName.SHELTERPOPULATION"
       :geojson="mapStore.geojsonData.population"
       :visible="mapStore.shelterLayers.populationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
+      :options="{ onEachFeature: onEachPopulationFeature }"
     ></l-geo-json>
     <!-- Health Site Point -->
     <l-feature-group
@@ -151,12 +189,13 @@ const getWaterNetworkPointColor = (property: any) => {
     ></l-geo-json>
     <!-- Health Site Population -->
     <l-geo-json
+      :key="locale"
       :name="LayerName.HEALTHSITEPOPULATION"
       :geojson="mapStore.geojsonData.healthSitePopulation"
       :visible="mapStore.healthSiteLayers.healthSitePopulationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
-      :options="populationOptions"
+      :options="{ onEachFeature: onEachPopulationFeature }"
     ></l-geo-json>
     <!-- Water Source Point -->
     <l-feature-group
@@ -186,12 +225,13 @@ const getWaterNetworkPointColor = (property: any) => {
     ></l-geo-json>
     <!-- Water Source Population -->
     <l-geo-json
+      :key="locale"
       :name="LayerName.HEALTHSITEPOPULATION"
       :geojson="mapStore.geojsonData.waterSourcePopulation"
       :visible="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
-      :options="populationOptions"
+      :options="{ onEachFeature: onEachPopulationFeature }"
     ></l-geo-json>
     <!-- Energy Supply Point -->
     <l-feature-group
@@ -221,19 +261,20 @@ const getWaterNetworkPointColor = (property: any) => {
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
-    <!-- Water Network Line -->
+    <!-- KRYVYIRIH Water Network Line -->
     <l-geo-json
-      v-if="mapStore.city"
+      v-if="mapStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKLINE"
       :geojson="mapStore.geojsonData.waterNetworkLine"
       :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
       layer-type="overlay"
       :options-style="lineStyle"
+      :options="{ onEachFeature: onEachWaterNetworkLine }"
     ></l-geo-json>
-    <!-- Water Network Point -->
+    <!-- KRYVYIRIH Water Network Point -->
     <l-feature-group
       :key="mapStore.selectedWaterScenario"
-      v-if="mapStore.city"
+      v-if="mapStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKPOINT"
       layer-type="overlay"
       :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
@@ -252,11 +293,41 @@ const getWaterNetworkPointColor = (property: any) => {
         @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip
-          >{{ `Betweeness Centrality: `
+          >{{ $t("layerNames.kryvyirih.betwcen") + ": "
           }}{{
             feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`]
           }}</l-tooltip
         >
+      </l-circle-marker>
+    </l-feature-group>
+    <!-- NIKOPOL Water Network Line -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.WATERNETWORKLINE"
+      :geojson="mapStore.geojsonData.waterNetworkLine"
+      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
+      layer-type="overlay"
+      :options-style="lineStyle"
+    ></l-geo-json>
+    <!-- NIKOPOL Water Network Point -->
+    <l-feature-group
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.WATERNETWORKPOINT"
+      layer-type="overlay"
+      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+    >
+      <l-circle-marker
+        pane="markerPane"
+        v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
+        :key="`${index}-${feature.properties.ogc_fid}`"
+        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
+        :options="
+        mapStore.getMarkerOptions(mapStore.waterNetworkLayers.waterNetworkPointLayer.color!)
+        "
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
+        layer-type="overlay"
+      >
       </l-circle-marker>
     </l-feature-group>
   </div>
