@@ -12,27 +12,19 @@
         </a>
       </li>
       <li>
-        <a href="#dictionary" role="tab" :title="$t('sidebar.dictionaryPanel.header')">
-          <i class="bi bi-gem"></i><span class="badge">1</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#vulnerability"
-          role="tab"
-          :title="$t('sidebar.vulnerabilityPanel.header')"
-          ><i class="bi bi-globe-central-south-asia"></i><span class="badge">2</span></a
-        >
-      </li>
-      <li>
         <a href="#indicator" role="tab" :title="$t('sidebar.indicatorPanel.header')"
-          ><i class="fa fa-bar-chart"></i><span class="badge">3</span></a
+          ><i class="fa fa-bar-chart"></i><span class="badge">1</span></a
         >
       </li>
       <li>
         <a href="#data" role="tab" :title="$t('sidebar.dataPanel.header')"
-          ><i class="bi bi-stack"></i><span class="badge">4</span></a
+          ><i class="bi bi-stack"></i><span class="badge">2</span></a
         >
+      </li>
+      <li>
+        <a href="#dictionary" role="tab" :title="$t('sidebar.dictionaryPanel.header')">
+          <i class="bi bi-gem"></i><span class="badge">3</span>
+        </a>
       </li>
     </ul>
     <!-- bottom tabs -->

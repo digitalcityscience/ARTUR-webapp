@@ -103,7 +103,7 @@ watch(selectedBasemap, (newBasemap) => {
           </div>
         </li>
         <!-- Abandoned -->
-        <li class="mb-1">
+        <!-- <li class="mb-1">
           <button
             class="btn btn-toggle rounded ps-0"
             data-bs-toggle="collapse"
@@ -113,7 +113,6 @@ watch(selectedBasemap, (newBasemap) => {
             {{ $t("sidebar.settingsPanel") }}
           </button>
           <div id="sidebar-steps" class="collapse">
-            <!-- Step 1 -->
             <div v-if="sidebarStore.currentStep === 1">
               <p class="fw-bold">{{ $t("sidebar.settingsPanel.step1.title") }}</p>
               <p class="sidebar-content-text">
@@ -141,7 +140,6 @@ watch(selectedBasemap, (newBasemap) => {
                 </select>
               </div>
             </div>
-            <!-- Step 2 -->
             <div v-if="sidebarStore.currentStep === 2">
               <table class="table table-light">
                 <tbody>
@@ -179,7 +177,6 @@ watch(selectedBasemap, (newBasemap) => {
                 </select>
               </div>
             </div>
-            <!-- Step 3 -->
             <div v-if="sidebarStore.currentStep === 3">
               <p class="fw-bold">{{ $t("sidebar.settingsPanel.step3.title") }}</p>
               <p
@@ -219,7 +216,6 @@ watch(selectedBasemap, (newBasemap) => {
               </table>
               <first-dashboard />
             </div>
-            <!-- Navigation Buttons -->
             <div class="d-flex justify-content-between mt-3">
               <div>
                 <button
@@ -255,7 +251,7 @@ watch(selectedBasemap, (newBasemap) => {
               </button>
             </div>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>

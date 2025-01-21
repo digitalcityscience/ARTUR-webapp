@@ -50,14 +50,12 @@ const listData = computed(() => textData.value.sidebar.introductionPanel.usage.l
                 >
                   <i class="bi bi-arrow-right-circle"
                     ><span v-if="index == 0">
-                      {{ " " + $t("sidebar.dictionaryPanel.header") }}</span
+                      {{ " " + $t("sidebar.indicatorPanel.header") }} </span
                     ><span v-else-if="index == 1">
-                      {{ " " + $t("sidebar.vulnerabilityPanel.header") }}</span
+                      {{ " " + $t("sidebar.dataPanel.header") }} </span
                     ><span v-else-if="index == 2">
-                      {{ " " + $t("sidebar.indicatorPanel.header") }}</span
+                      {{ " " + $t("sidebar.dictionaryPanel.header") }}</span
                     ><span v-else-if="index == 3">
-                      {{ " " + $t("sidebar.dataPanel.header") }}</span
-                    ><span v-else-if="index == 4">
                       {{ " " + $t("sidebar.buttons.documentation") }}</span
                     >
                   </i>

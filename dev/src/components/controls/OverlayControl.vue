@@ -74,12 +74,10 @@ const scenarioLayerMap = new Map<number, Layer>();
 const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
   // Store a reference to the layer by its scenario
   const scenario = feature?.properties?.scenario;
-  if (scenario !== undefined) {
-    scenarioLayerMap.set(scenario, layer);
-  }
+  scenarioLayerMap.set(scenario, layer);
+
   // Customize the content of your popup
-  const popupContent = `
-    <div style="max-height: 100px" class="overflow-auto">
+  const popupContent = `<div style="max-height: 100px" class="overflow-auto">
       <table class="table table-bordered table-striped table-sm mb-0">
         <tbody><tr><th scope="row">${t("legend.waterNetwork.scenario")}</th>
         <td>${scenario}</td></tr>
@@ -90,18 +88,20 @@ const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
     </div>`;
   // Bind the popup to the layer
   layer.bindPopup(popupContent);
+  console.log(layer);
 };
 // Watch for changes to the selected scenario and open the corresponding popup
 watch(
   () => mapStore.selectedWaterScenario,
   (newScenario) => {
+    // Close all popups first
+    scenarioLayerMap.forEach((layer) => layer.closePopup());
     if (newScenario != 0) {
-      // Close all popups first
-      scenarioLayerMap.forEach((layer) => layer.closePopup());
       // Open the popup for the selected scenario, if it exists
       const matchingLayer = scenarioLayerMap.get(newScenario);
       if (matchingLayer) {
         matchingLayer.openPopup();
+        matchingLayer.on("click", () => matchingLayer.openPopup());
       }
     }
   },
@@ -261,19 +261,6 @@ watch(
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
-    <!-- KRYVYIRIH Water Network Changes -->
-    <l-geo-json
-      v-if="mapStore.city === CityName.KRYVYIRIH"
-      :name="LayerName.WATERNETWORKLINE"
-      :geojson="mapStore.geojsonData.waterNetworkLine"
-      :visible="
-        mapStore.waterNetworkLayers.waterNetworkPointLayer.visible ||
-        mapStore.waterNetworkLayers.waterNetworkLineLayer.visible
-      "
-      layer-type="overlay"
-      :options-style="lineStyle"
-      :options="{ onEachFeature: onEachWaterNetworkLine }"
-    ></l-geo-json>
     <!-- KRYVYIRIH Water Network Point -->
     <l-feature-group
       :key="mapStore.selectedWaterScenario"
@@ -303,14 +290,16 @@ watch(
         >
       </l-circle-marker>
     </l-feature-group>
-    <!-- NIKOPOL Sewage Line -->
+    <!-- KRYVYIRIH Water Network Changes -->
     <l-geo-json
-      v-if="mapStore.city === CityName.NIKOPOL"
+      :key="locale"
+      v-if="mapStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKLINE"
       :geojson="mapStore.geojsonData.waterNetworkLine"
-      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
+      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
       layer-type="overlay"
       :options-style="lineStyle"
+      :options="{ onEachFeature: onEachWaterNetworkLine }"
     ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group
@@ -333,6 +322,15 @@ watch(
       >
       </l-circle-marker>
     </l-feature-group>
+    <!-- NIKOPOL Sewage Line -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.WATERNETWORKLINE"
+      :geojson="mapStore.geojsonData.waterNetworkLine"
+      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
+      layer-type="overlay"
+      :options-style="lineStyle"
+    ></l-geo-json>
   </div>
   <legend-control></legend-control>
 </template>

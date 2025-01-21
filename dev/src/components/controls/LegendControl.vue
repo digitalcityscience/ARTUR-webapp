@@ -86,7 +86,7 @@ const btnLegendIconClass = computed(() => {
         <water-point-legend></water-point-legend>
       </div>
       <div
-        v-show="
+        v-if="
           mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
           mapStore.city === CityName.KRYVYIRIH
         "
@@ -103,7 +103,7 @@ const btnLegendIconClass = computed(() => {
       </div>
       <!-- Water Network Legend for NIKOPOL data -->
       <div
-        v-show="
+        v-if="
           mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
@@ -121,7 +121,7 @@ const btnLegendIconClass = computed(() => {
         }}
       </div>
       <div
-        v-show="
+        v-if="
           mapStore.waterNetworkLayers.waterNetworkLineLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "

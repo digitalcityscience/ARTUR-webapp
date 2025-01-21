@@ -9,7 +9,6 @@ import PanelSetting from "./sidebar/PanelSetting.vue";
 import PanelIndicator from "./sidebar/PanelIndicator.vue";
 import PanelData from "./sidebar/PanelData.vue";
 import PanelDictionary from "./sidebar/PanelDictionary.vue";
-import PanelVulnerability from "./sidebar/PanelVulnerability.vue";
 import useMapStore from "@/stores/mapStore";
 import useSidebarStore from "@/stores/sidebarStore";
 import useIndicatorStore from "@/stores/indicatorStore";
@@ -38,14 +37,12 @@ onMounted(() => {
       <div class="leaflet-sidebar-content">
         <!-- info -->
         <panel-introduction />
-        <!-- Dictionary -->
-        <panel-dictionary />
-        <!-- Vulnerability -->
-        <panel-vulnerability />
         <!-- UR Indicator -->
         <panel-indicator />
         <!-- Layers -->
         <panel-data />
+        <!-- Dictionary -->
+        <panel-dictionary />
         <!-- Settings -->
         <panel-setting />
       </div>

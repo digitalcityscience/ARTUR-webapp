@@ -28,7 +28,8 @@
     "kryvyirih": {
       "waterNetworkLine": "Water Network Scenario Changes",
       "waterNetworkPoint": "Water Network Nodes"
-    }
+    },
+    "waterNetwork": "Water Network"
   },
   "legend": {
     "title": "Legend",
@@ -66,10 +67,9 @@
         "title": "How ARTUR helps cities to become more resilient",
         "subtitle": "ARTUR...",
         "list": [
-          "explains what resilience means, and which concepts are important",
-          "provides an overview of the vulnerability state of the region at national level",
           "enables the measuring of city resilience in a segregated manner",
           "offers cartographic tools to visualise and communicate areas of attention",
+          "explains what resilience means, and which concepts are important",
           "provides a step-by-step guidelines as recommendations for targeted planning of countermeasures"
         ],
         "suggestion": "To start using the interactive prototype tool please click on the numbered steps on the side panel and follow the instructions."
@@ -410,7 +410,8 @@
         "healthSiteInaccess": "Inaccessible in 10 min",
         "waterSourceAccess": "In Catchment Area",
         "waterSourceInaccess": "Out of Catchment Area"
-      }
+      },
+      "waterNetwork": { "selectScenario": "Select Scenario", "scenario": "Scenario" }
     },
     "settingsPanel": {
       "header": "Settings",
@@ -484,205 +485,221 @@
     }
   },
   "echarts": {
-    "name": "Міська стійкість",
+    "name": "Urban Resilience",
     "social": {
-      "name": "СОЦІАЛЬНИЙ",
+      "name": "SOCIAL",
       "1": {
-        "name": "Основні потреби",
-        "1": "Безпечне та доступне житло",
-        "2": "Доступне енергопостачання",
-        "3": "Інклюзивний доступ до безпечної питної води",
-        "4": "Ефективна санітарія",
-        "5": "Доступ до їжі за доступними цінами"
+        "name": "Basic necessities",
+        "1": "Safe and affordable housing",
+        "2": "Adequate affordable energy supply",
+        "3": "Inclusive access to safe drinking water",
+        "4": "Effective sanitation",
+        "5": "Sufficient affordable food supply"
       },
       "2": {
-        "name": "Підвищення потенціалу та обізнаності населення",
-        "1": "Доступ до навичок та досвіду для реагування на ризики під час надзвичайних ситуацій",
-        "2": "Доступність навчальних матеріалів (мовні аспекти)",
-        "3": "Обмін досвідом з іншими містами, які стикаються з подібними викликами"
+        "name": "Capacity building and public awareness",
+        "1": "Access to all the skills and experience to respond/reduce risks and respond to disaster",
+        "2": "Accessibility to training materials (language)",
+        "3": "Exchange knowledge and learn from other cities facing similar challenges"
       },
       "3": {
-        "name": "Підтримка громади",
-        "1": "Участь громадських організацій у плануванні та реагуванні на надзвичайні ситуації",
-        "2": "Доступна кримінальна та цивільна юстиція",
-        "3": "Згуртовані громади",
-        "4": "Навчальні програми для найбільш вразливих груп населення",
-        "5": "Залучення громадян до питань стійкості до надзвичайних ситуацій та відновлення",
-        "6": "Широка обізнаність та підготовка громади",
-        "7": "Основні громадські заклади: університети, школи, дитячі садки,  медичні центри, ринки тощо",
-        "8": "Соціальна інфраструктура, включаючи школи, дитячі садки, лікарні та клініки",
-        "9": "Підтримка місцевих громад",
-        "10": "Сильна міська ідентичність та культура",
-        "11": "Активно залучені громадяни",
-        "12": "Практичні заняття та тренування за участю громадськості та професіоналів",
-        "13": "Адекватна освіта для всіх",
-        "14": "Громадські будівлі, релігійні споруди та історичні/культурні заклади",
-        "15": "Актуальні навички та подальша освіта"
+        "name": "Community support",
+        "1": "Grassroots or community organizations participating in pre-event planning and post event response",
+        "2": "Accessible criminal and civil justice",
+        "3": "Cohesive communities",
+        "4": "Training programmes provided to the most vulnerable and at need populations",
+        "5": "Citizen engagement and communications in relation to disaster resilience and recovery",
+        "6": "Widespread community awareness & preparedness",
+        "7": "Main public facilities: university, schools, health centres, markets, etc.",
+        "8": "Social services infrastructure, including schools, hospitals, and clinics",
+        "9": "Local community support",
+        "10": "Strong city-wide identity & culture",
+        "11": "Actively engaged citizens",
+        "12": "Practices and drills involving public and professionals",
+        "13": "Adequate education for all",
+        "14": "Major community buildings, religious buildings, and historic/cultural assets",
+        "15": "Relevant skills & training"
       },
       "4": {
-        "name": "Екосистемні послуги",
-        "1": "Обізнаність про екосистемні послуги, що надаються місту природним капіталом за його межами",
-        "2": "Обізнаність про функції або послуги, які забезпечує природний капітал"
+        "name": "Ecosystem Services",
+        "1": "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+        "2": "Awareness of functions or services that natural capital provides for the city"
       },
       "5": {
-        "name": "Планування стійкості",
-        "1": "Освіта населення щодо ризиків, надзвичайних ситуацій та інформації про небезпеки",
-        "2": "Безпечні місця/укриття та маршрути евакуації",
-        "3": "Навчання з ризиків та стійкості для всіх секторів міста, включаючи уряд, бізнес, неурядові та громадські організації",
-        "4": "Обізнаність про необхідне обладнання та постачання + їх наявність"
+        "name": "Planning Resilience",
+        "1": "Public education towards awareness of hazard, risk and disaster information",
+        "2": "Safe places/havens and the evacuation routes",
+        "3": "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+        "4": "Awareness of equipment and supply needed + provision"
       },
       "6": {
-        "name": "Служби безпеки",
-        "1": "Ефективні системи для запобігання злочинності",
-        "2": "Спостерігається високий рівень злочинності"
+        "name": "Security services",
+        "1": "Effective systems to deter crime",
+        "2": "High levels of crime are observed."
       }
     },
     "economic": {
-      "name": "ЕКО-НОМІЧНИЙ",
+      "name": "ECO-\nNOMIC",
       "1": {
-        "name": "Економічна діяльність",
-        "1": "Різноманітна економічна база",
-        "2": "Промислові зони, включаючи порти, промислові зони та фабрики",
-        "3": "Підтримка механізмів фінансування",
-        "4": "Економічні об'єкти (банки, бізнес-центри, торговельні центри, ринки тощо)"
+        "name": "Economic activities",
+        "1": "Diverse economic base",
+        "2": "Industrial areas including ports, industrial zones, and factories",
+        "3": "Supportive financing mechanisms",
+        "4": "Economic facilities (banks, business centres, shopping malls, markets, etc.)"
       },
       "2": {
-        "name": "Економічний вплив",
-        "1": "Бізнеси з документованим планом безперервності",
-        "2": "Знання про фінансові можливості (для місцевої економіки та відновлення)",
-        "3": "Привабливе бізнес-середовище",
-        "4": "Економічний вплив",
-        "5": "Рівень страхового покриття в місті для всіх секторів - бізнесу та громади",
-        "6": "Інструменти стимулювання бізнесу та суспільства для підтримки побудови стійкості",
-        "7": "Планові інвестиції",
-        "8": "Комплексне планування безперервності бізнесу",
-        "9": "Інклюзивна політика праці",
-        "10": "Розвиток місцевого бізнесу та інновацій",
-        "11": "Сильна інтеграція з регіональною та глобальною економіками",
-        "12": "Економічна діяльність, включаючи комерційні зони, центральні ділові райони, готелі та туристичні об'єкти"
+        "name": "Economic Impact",
+        "1": "Businesses with a documented business continuity plan",
+        "2": "Knowledge to funding opportunities (for local economy and recovery)",
+        "3": "Attractive business environment",
+        "4": "Economic impact",
+        "5": "Level of insurance cover exists in the city, across all sectors - business and community",
+        "6": "Incentives for business and society to support resilience building",
+        "7": "Planned investments",
+        "8": "Comprehensive business continuity planning",
+        "9": "Inclusive labour policies",
+        "10": "Local business development and innovation",
+        "11": "Strong integration with regional & global economies",
+        "12": "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities"
       },
       "3": {
-        "name": "Планування стійкості",
-        "1": "Фінансовий план і бюджет для стійкості, включаючи резервні фонди",
-        "2": "Прогнозовані зміни щільності населення та економічної активності",
-        "3": "Щільності"
+        "name": "Planning Resilience",
+        "1": "Financial plan and budget for resilience, including contingency funds",
+        "2": "Projected changes to population densities and economic activity",
+        "3": "Densities"
       },
       "4": {
-        "name": " Kерування ",
-        "1": "Зміни в межах міста загалом"
+        "name": "Governance",
+        "1": "Changes in the overall city's boundaries"
       }
     },
     "institutional": {
-      "name": "ІНСТИТУ-\nЦІЙНИЙ",
+      "name": "INSTI-\nTUTIONAL",
       "1": {
-        "name": " Керування ",
-        "1": "Орган керування надзвичайними ситуаціями має достатню кількість персоналу",
-        "2": "Консультативний процес планування",
-        "3": "Неформальні зони розвитку",
-        "4": "Міцний процес затвердження планування",
-        "5": "Добре керовані державні фінанси",
-        "6": "Адекватне урядове прийняття рішень",
-        "7": "Ефективна координація з іншими державними органами",
-        "8": "Проактивна багатостороння співпраця",
-        "9": "Чи існує багатовідомчий/секторний механізм з відповідними повноваженнями та ресурсами для зменшення ризиків під час надзвичайних ситуацій?",
-        "10": "Міський розвиток для підвищення стійкості",
-        "11": "Будівельні кодекси або стандарти враховують ризики та небезпеки",
-        "12": "Забезпечення та перевірка зонування будівель та регулювання",
-        "13": "Справедливий обмін даними для підвищення стійкості",
-        "14": "Планування відновлення після подій, включаючи економічний перезапуск та соціальні аспекти",
-        "15": "Проактивна профілактика корупції",
-        "16": "Комплексний моніторинг міста та керування даними"
+        "name": "Governance",
+        "1": "Disaster management authority have sufficient staffing capacity",
+        "2": "Consultative planning process",
+        "3": "Informal development areas",
+        "4": "Robust planning approval process",
+        "5": "Well-managed public finances",
+        "6": "Appropriate government decision-making",
+        "7": "Effective co-ordination with other government bodies",
+        "8": "Proactive multi-stakeholder collaboration",
+        "9": "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+        "10": "Urban development to promote resilience",
+        "11": "Building codes or standards address hazards and risks",
+        "12": "Enforcement and verification of zoning building zoning and regulations",
+        "13": "FAIR Data sharing to enhance resilience",
+        "14": "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+        "15": "Proactive corruption prevention",
+        "16": "Comprehensive city monitoring & data management"
       },
       "2": {
-        "name": "Використання землі",
-        "1": "Призначення землекористування",
-        "2": "Зміни у призначеннях землекористування"
+        "name": "Land use",
+        "1": "Land use designations",
+        "2": "Changes in land use designations"
       },
       "3": {
-        "name": "Планування ризиків та надзвичайних ситуацій ",
-        "1": "Зменшення ризиків під час надзвичайних ситуацій у міських планувальних інструментах",
-        "2": " Нанесення об'єктів на карту та моніторинг вразливості (вразливі групи населення та аналіз сценаріїв надзвичайних ситуацій)",
-        "3": "Чи включають процеси оцінки після подій аналіз помилок та можливість врахування уроків у проектуванні та реалізації відновлювальних проектів?",
-        "4": "Система раннього попередження та досягнення рівня готовності",
-        "5": "Комплексне урядове керування надзвичайними ситуаціями",
-        "6": "Інтеграція стійкості міста",
-        "7": "Центр оперативного реагування: взаємодія між відомствами та реалізація",
-        "8": "План керування надзвичайними ситуаціями/підготовки/реагування на надзвичайні ситуації",
-        "9": "Адекватне використання землі та зонування",
-        "10": "Належне планування землекористування з урахуванням ризиків, небезпек та вразливості",
-        "11": "Розташування різних адміністративних/урядових будівель у вашому місті, на рівні районів, якщо це доречно",
-        "12": "Прогнозовані зміни в розташуванні вразливих груп населення"
+        "name": "Planning for risk and disaster",
+        "1": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+        "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
+        "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+        "4": "Early warning system and reaching level",
+        "5": "Comprehensive government emergency management",
+        "6": "Integration of resilience in city functions / portfolios",
+        "7": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        "8": "Disaster management / preparedness / emergency response plan",
+        "9": "Appropriate land use and zoning",
+        "10": "Appropriately land use planning considering risk, hazards and vulnerability",
+        "11": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
+        "12": "Projected changes in location of vulnerable populations"
       },
       "4": {
-        "name": "Системи охорони здоров'я",
-        "1": "Належний доступ до якісної медичної допомоги",
-        "2": "Невідкладна медична допомога",
-        "3": "Ефективні служби екстреного реагування",
-        "4": "Міцні системи громадського здоров'я",
-        "5": "Служби безпеки: пожежна служба, поліцейські дільниці тощо"
+        "name": "Public health systems",
+        "1": "Adequate access to quality healthcare",
+        "2": "Emergency medical care",
+        "3": "Effective emergency response services",
+        "4": "Robust public health systems",
+        "5": "Security services: fire services, police stations, etc.;"
       }
     },
     "physical": {
-      "name": "ФІЗИЧНИЙ",
+      "name": "PHYSICAL",
       "1": {
-        "name": "Комунікація",
-        "1": "Комунікація: радіо/ТБ станції, вежі мобільного зв'язку та існуюча телекомунікаційна інфраструктура",
-        "2": "Надійні технології зв'язку"
+        "name": "Communication",
+        "1": "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
+        "2": "Reliable communications technology"
       },
       "2": {
-        "name": "Екосистемні послуги",
-        "1": "Інтеграція зеленої та блакитної інфраструктури в політику та проекти міста",
-        "2": "Природні елементи, мангрові ліси, пагорби, річки, плантації тощо"
+        "name": "Ecosystem Services",
+        "1": "Integration of green and blue infrastructure into city policy and projects",
+        "2": "Natural elements, mangrove, hills, rivers, plantations, among others"
       },
       "3": {
-        "name": " Керування",
-        "1": "Захищені технологічні мережі",
-        "2": "Межі міста та субмуніципальні межі (наприклад, райони)"
+        "name": "Governance",
+        "1": "Secure technology networks",
+        "2": "City boundaries and sub-municipal boundaries (e.g., districts, wards)"
       },
       "4": {
-        "name": "Використання землі",
-        "1": "(за необхідності) промислові зони, сільськогосподарські території, екологічно чутливі зони, основні громадські простори (наприклад, громадські площі, парки, спортивні та рекреаційні об'єкти тощо), інші відповідні види землекористування"
+        "name": "Land Use",
+        "1": "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses"
       },
       "5": {
-        "name": "Основна інфраструктура",
-        "1": "Основна інфраструктура: водопостачання, каналізація, дороги, автомагістралі, мости, порти, енергопостачання тощо",
-        "2": "Критична інфраструктура: картографування, планування та стратегії захисту",
-        "3": "Пошкоджена інфраструктура та послуги",
-        "4": "Захисна інфраструктура: добре спроектована та побудована на основі інформації про ризики",
-        "5": "Питна вода та каналізація, енергозабезпечення, транспорт, зв'язок, охорона здоров'я: забезпечення мінімального рівня послуг для найважчого сценарію в надзвичайних ситуаціях",
-        "6": "Основні дороги",
-        "7": "Транспорт: основні дороги, автовокзал, аеропорт, залізнична станція та колії тощо",
-        "8": "Вода, санітарія та енергетика: первинна дренажна мережа, основні резервуари для води/водосховища, інфраструктура очищення стічних вод тощо;"
+        "name": "Major infrastructure",
+        "1": "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+        "2": "Critical infrastructure: mapping, planning and protection strategies",
+        "3": "Infrastructure and services damaged",
+        "4": "Protective infrastructure: well-designed and well-built based on risk information",
+        "5": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
+        "6": "Major roads",
+        "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
+        "8": "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.;"
       },
       "6": {
-        "name": "Основна інфраструктура та планування стійкості",
-        "1": "Сумлінне обслуговування та безперервність",
-        "2": "Гнучкі інфраструктурні послуги",
-        "3": "Збережена резервна потужність"
+        "name": "Major Infrastructure & Planning Resilience",
+        "1": "Diligent maintenance & continuity",
+        "2": "Flexible infrastructure services",
+        "3": "Retained spare capacity"
       },
       "7": {
-        "name": "Планування ризиків та надзвичайних ситуацій",
-        "1": "Зруйноване та пошкоджене житло",
-        "2": "Постраждалі райони",
-        "3": "Топографія: висота, водні об'єкти",
-        "4": " Нанесення на карту та моніторинг небезпек (загальна обізнаність)",
-        "5": "Спільне розуміння ризиків інфраструктури (органи влади, постачальники комунальних послуг, управління інфраструктурою)",
-        "6": " Нанесення на карту та моніторинг небезпек (чітке та регулярне)",
-        "7": "Інфраструктура для пом'якшення наслідків небезпек, включаючи розташування морських стін, дамб, резервуарів",
-        "8": "Ідентифікація каскадних ефектів",
-        "9": "Райони вашого міста, які постраждали від природних небезпек у минулому, наприклад, повені, сильні вітри, пожежі, ерозії, зсуви тощо",
-        "10": "Зміни в інтенсивності, частоті та розташуванні небезпек на основі моделювання небезпек"
+        "name": "Planning for risk and disaster",
+        "1": "Housing destroyed and damaged",
+        "2": "Affected areas",
+        "3": "Topography: elevation, water bodies",
+        "4": "Hazard mapping and monitoring (common awareness)",
+        "5": "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
+        "6": "Hazard mapping and monitoring (clear and regular mapping)",
+        "7": "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+        "8": "Identification of cascading effects",
+        "9": "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+        "10": "Changes in intensity, frequency, and location of hazards based on hazard modeling"
       },
       "8": {
-        "name": "Планування стійкості",
-        "1": "% освітніх структур, які піддаються ризику пошкодження від \"найімовірніших\" та \"найважчих\" сценаріїв",
-        "2": "Адекватна безперервність діяльності та послуг в критичних ситуаціях",
-        "3": "Комплексний моніторинг небезпек та оцінка ризиків",
-        "4": "Обладнання для першого реагування, за підтримки військових чи цивільних",
-        "5": "Їжа, укриття, основні товари та паливо для реагування на надзвичайні ситуації",
-        "6": "Вразливість та ризик",
-        "7": "Різноманітні та доступні транспортні мережі"
+        "name": "Planning Resilience",
+        "1": "% of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
+        "2": "Adequate continuity for critical assets & services",
+        "3": "Comprehensive hazard monitoring and risk assessment",
+        "4": "First responder equipment, with military or civilian back up",
+        "5": "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+        "6": "Vulnerability and risk",
+        "7": "Diverse and affordable transport networks"
       }
+    },
+    "capacities": {
+      "Robustness": "Robustness",
+      "Redundancy": "Redundancy",
+      "Diversity": "Diversity",
+      "Integration": "Integration",
+      "Transparency": "Transparency",
+      "Resourcefulness": "Resourcefulness",
+      "Inclusiveness": "Inclusiveness",
+      "Reflectiveness": "Reflectiveness",
+      "Flexibility": "Flexibility"
+    },
+    "subtitle": {
+      "dimension": "Urban Dimensions",
+      "indicator": "Measuring Indicators",
+      "capacity": "Resilience Capacities"
     }
   },
   "initialIndicators": {
