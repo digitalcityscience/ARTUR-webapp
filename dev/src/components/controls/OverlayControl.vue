@@ -7,7 +7,7 @@ import {
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import type { Layer } from "leaflet";
-import { watch } from "vue";
+import { watch, computed } from "vue";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { CityName, LayerName } from "@/assets/ts/constants";
@@ -81,11 +81,10 @@ const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
   const popupContent = `
     <div style="max-height: 100px" class="overflow-auto">
       <table class="table table-bordered table-striped table-sm mb-0">
-        <tbody>
-          <tr><th scope="row">Scenario</th><td>${scenario}</td></tr>
-          <tr><th scope="row">Change</th><td>${
-            feature?.properties?.change || "N/A"
-          }</td></tr>
+        <tbody><tr><th scope="row">${t("legend.waterNetwork.scenario")}</th>
+        <td>${scenario}</td></tr>
+        <tr><th scope="row">${t("legend.waterNetwork.change")}</th>
+        <td>${feature.properties.change}</td></tr>
         </tbody>
       </table>
     </div>`;
@@ -96,13 +95,14 @@ const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
 watch(
   () => mapStore.selectedWaterScenario,
   (newScenario) => {
-    mapStore.waterNetworkLayers.waterNetworkLineLayer.visible = true;
-    // Close all popups first
-    scenarioLayerMap.forEach((layer) => layer.closePopup());
-    // Open the popup for the selected scenario, if it exists
-    const matchingLayer = scenarioLayerMap.get(newScenario);
-    if (matchingLayer) {
-      matchingLayer.openPopup();
+    if (newScenario != 0) {
+      // Close all popups first
+      scenarioLayerMap.forEach((layer) => layer.closePopup());
+      // Open the popup for the selected scenario, if it exists
+      const matchingLayer = scenarioLayerMap.get(newScenario);
+      if (matchingLayer) {
+        matchingLayer.openPopup();
+      }
     }
   },
 );
@@ -261,12 +261,15 @@ watch(
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
-    <!-- KRYVYIRIH Water Network Line -->
+    <!-- KRYVYIRIH Water Network Changes -->
     <l-geo-json
       v-if="mapStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKLINE"
       :geojson="mapStore.geojsonData.waterNetworkLine"
-      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
+      :visible="
+        mapStore.waterNetworkLayers.waterNetworkPointLayer.visible ||
+        mapStore.waterNetworkLayers.waterNetworkLineLayer.visible
+      "
       layer-type="overlay"
       :options-style="lineStyle"
       :options="{ onEachFeature: onEachWaterNetworkLine }"
@@ -293,14 +296,14 @@ watch(
         @mouseout="mapStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip
-          >{{ $t("layerNames.kryvyirih.betwcen") + ": "
+          >{{ $t("legend.waterNetwork.betwcen") + ": "
           }}{{
             feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`]
           }}</l-tooltip
         >
       </l-circle-marker>
     </l-feature-group>
-    <!-- NIKOPOL Water Network Line -->
+    <!-- NIKOPOL Sewage Line -->
     <l-geo-json
       v-if="mapStore.city === CityName.NIKOPOL"
       :name="LayerName.WATERNETWORKLINE"
@@ -309,7 +312,7 @@ watch(
       layer-type="overlay"
       :options-style="lineStyle"
     ></l-geo-json>
-    <!-- NIKOPOL Water Network Point -->
+    <!-- NIKOPOL Sewage Point -->
     <l-feature-group
       v-if="mapStore.city === CityName.NIKOPOL"
       :name="LayerName.WATERNETWORKPOINT"

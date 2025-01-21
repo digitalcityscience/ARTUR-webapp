@@ -69,8 +69,41 @@ const btnLegendIconClass = computed(() => {
         ></i>
         {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
       </div>
+      <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
+        <i
+          class="point"
+          :style="{ background: mapStore.energySupplyLayers.energySupplyLayer.color }"
+        ></i>
+        {{ $t("layerNames." + mapStore.energySupplyLayers.energySupplyLayer.name) }}
+      </div>
+      <!-- Water Network Legend for KRYVYIRIH data -->
       <div
         v-if="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
+      >
+        <water-point-legend></water-point-legend>
+      </div>
+      <div
+        v-show="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
+      >
+        <i
+          class="polyline"
+          :style="{ background: mapStore.waterNetworkLayers.waterNetworkLineLayer.color }"
+        ></i>
+        {{
+          $t(
+            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
+          )
+        }}
+      </div>
+      <!-- Water Network Legend for NIKOPOL data -->
+      <div
+        v-show="
           mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
@@ -88,25 +121,11 @@ const btnLegendIconClass = computed(() => {
         }}
       </div>
       <div
-        v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
-          mapStore.city === CityName.KRYVYIRIH
+        v-show="
+          mapStore.waterNetworkLayers.waterNetworkLineLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
         "
       >
-        <water-point-legend></water-point-legend>
-      </div>
-      <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
-        <i
-          class="point"
-          :style="{ background: mapStore.energySupplyLayers.energySupplyLayer.color }"
-        ></i>
-        {{ $t("layerNames." + mapStore.energySupplyLayers.energySupplyLayer.name) }}
-      </div>
-      <div v-show="mapStore.boundaryLayer.visible">
-        <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
-        {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
-      </div>
-      <div v-if="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible">
         <i
           class="polyline"
           :style="{ background: mapStore.waterNetworkLayers.waterNetworkLineLayer.color }"
@@ -116,6 +135,10 @@ const btnLegendIconClass = computed(() => {
             `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
           )
         }}
+      </div>
+      <div v-show="mapStore.boundaryLayer.visible">
+        <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
+        {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
       </div>
       <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
         <template

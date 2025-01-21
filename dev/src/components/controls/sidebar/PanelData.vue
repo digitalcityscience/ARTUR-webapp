@@ -176,7 +176,7 @@ const waterNetworkType = computed(() =>
                   </li>
                 </ul>
               </li>
-              <li class="mb-1">
+              <li class="mb-1" v-if="mapStore.city === CityName.KRYVYIRIH">
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
@@ -185,11 +185,7 @@ const waterNetworkType = computed(() =>
                 >
                   {{ $t(`sidebar.dataPanel.sets.${waterNetworkType}`) }}
                 </button>
-                <ul
-                  v-if="mapStore.city"
-                  class="form-check list-unstyled collapse"
-                  id="waterNetwork-layer-set"
-                >
+                <ul class="form-check list-unstyled collapse" id="waterNetwork-layer-set">
                   <li
                     class="mb-1"
                     v-for="overlay in mapStore.waterNetworkLayers"
@@ -200,7 +196,7 @@ const waterNetworkType = computed(() =>
                       type="checkbox"
                       :id="overlay.name"
                       :name="overlay.name"
-                      v-model="overlay.visible"
+                      v-model="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
                     />
                     <label class="form-check-label" :for="overlay.name">
                       {{ $t(`layerNames.${mapStore.city}.${overlay.name}`) }}
@@ -221,6 +217,37 @@ const waterNetworkType = computed(() =>
                         <option value="2">Scenario 2</option>
                       </select>
                     </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="mb-1" v-if="mapStore.city === CityName.NIKOPOL">
+                <button
+                  class="btn btn-outline-success btn-layer-set"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sewage-system-layer-set"
+                  aria-expanded="false"
+                >
+                  {{ $t(`sidebar.dataPanel.sets.${waterNetworkType}`) }}
+                </button>
+                <ul
+                  class="form-check list-unstyled collapse"
+                  id="sewage-system-layer-set"
+                >
+                  <li
+                    class="mb-1"
+                    v-for="overlay in mapStore.waterNetworkLayers"
+                    :key="overlay.name"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="overlay.name"
+                      :name="overlay.name"
+                      v-model="overlay.visible"
+                    />
+                    <label class="form-check-label" :for="overlay.name">
+                      {{ $t(`layerNames.${mapStore.city}.${overlay.name}`) }}
+                    </label>
                   </li>
                 </ul>
               </li>

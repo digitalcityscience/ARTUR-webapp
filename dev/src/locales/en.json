@@ -27,8 +27,7 @@
     },
     "kryvyirih": {
       "waterNetworkLine": "Water Network Scenario Changes",
-      "waterNetworkPoint": "Water Network Nodes",
-      "betwcen": "Betweenness Centrality"
+      "waterNetworkPoint": "Water Network Nodes"
     }
   },
   "legend": {
@@ -49,6 +48,11 @@
       "accessible": "Accessible",
       "population": "Population",
       "text": "Most populated areas but not in the Catchment/Isochrone area"
+    },
+    "waterNetwork": {
+      "betwcen": "Betweenness Centrality",
+      "scenario": "Scenario",
+      "change": "Change"
     }
   },
   "sidebar": {
