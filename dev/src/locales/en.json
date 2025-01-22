@@ -30,7 +30,7 @@
       "waterNetworkPoint": "Water Network Nodes"
     },
     "waterNetwork": "Water Network",
-    "waterNetworkChange": "Water Network changes"
+    "waterNetworkChange": "Water Network Changes"
   },
   "legend": {
     "title": "Legend",
@@ -75,6 +75,77 @@
         ],
         "suggestion": "To start using the interactive prototype tool please click on the numbered steps on the side panel and follow the instructions."
       }
+    },
+    "indicatorPanel": {
+      "header": "Urban Resilience Score (Local)",
+      "explanation": {
+        "header": "reminder",
+        "1": "Once the map relocated to a specific city area you chose, select the menu of indicators to start a local, urban resilience assessment. The menu of indicators suggests a default list from the ARTUR framework. The colors of the indicators list refer to different areas of the urban system (social, physical, institutional or economic indicators).  By clicking into each of them you can start the survey and answer the provided questions which feed into the final result.",
+        "2": "When the survey has been completed for all provided indicators, you will be able to retrieve a “resilience score” (general or by category), by clicking on the button at the bottom of the panel."
+      },
+      "indicator": "Indicators",
+      "graph": "Graphs of Indicators",
+      "list": "List of Indicators",
+      "result": "Resilience Score",
+      "button": {
+        "graph1": "Basic Indicators",
+        "graph2": "All indicators"
+      },
+      "questionnaire": {
+        "title": "Questionnaire",
+        "buttons": { "submit": "Submit", "close": "Close" },
+        "warning": "Please answer all the questions!"
+      },
+      "radarChart": {
+        "name": {
+          "dimension": "Resilience Score by Dimensions",
+          "total": "Resilience Score: Essential Indicators"
+        },
+        "type": { "dimension": "By Dimensions", "total": "Total" },
+        "social": "Social",
+        "economic": "Economic",
+        "institutional": "Institutional",
+        "physical": "Physical"
+      }
+    },
+    "dataPanel": {
+      "header": "Data Visualisation",
+      "close": "Close",
+      "control": {
+        "header": "Layer Control",
+        "basemaps": "Basemaps",
+        "overlays": "Overlays"
+      },
+      "sets": {
+        "shelter": "Layer Set: Shelter",
+        "healthSite": "Layer Set: Health Site",
+        "waterSource": "Layer Set: Water Source",
+        "energySupply": "Layer Set: Energy Supply",
+        "sewageSystem": "Layer Set: Sewage System",
+        "waterNetworkDistribution": "Layer Set: Water Network Distribution"
+      },
+      "popups": {
+        "sheltersInfo": "Shelters Information",
+        "shelterPopulationInfo": "Shelter Access Population Information",
+        "healthSitePopulationInfo": "Health Site Access Population Information",
+        "waterSourcePopulation": "Water Source Catchment Area Population"
+      },
+      "healthSiteIsochroneType": {
+        "label": "select catchment type",
+        "auto": "Car",
+        "bus": "Bus",
+        "bicycle": "Bicycle",
+        "pedestrian": "Pedestrian"
+      },
+      "populationChartText": {
+        "shelterAccess": "Accessible in 5 min",
+        "shelterInaccess": "Inaccessible in 5 min",
+        "healthSiteAccess": "Accessible in 10 min",
+        "healthSiteInaccess": "Inaccessible in 10 min",
+        "waterSourceAccess": "In Catchment Area",
+        "waterSourceInaccess": "Out of Catchment Area"
+      },
+      "waterNetwork": { "selectScenario": "Select Scenario", "scenario": "Scenario" }
     },
     "dictionaryPanel": {
       "header": "Urban Resilience Dictionary",
@@ -167,7 +238,7 @@
             }
           },
           "Diversity": {
-            "definition": "A major source of future options. The more diversity, the better the capacity of a system to adapt to a wide range of different and unpredictable circumstances (Walker & Salt, 2006).",
+            "definition": "A major source of future options. The more diversity, the better the capacity of a system to adapt to a wide range of different and unpredictable circumstances.",
             "practice": [
               "Mixed use",
               "Multi-functional spaces",
@@ -276,7 +347,7 @@
             }
           },
           "Flexibility": {
-            "definition": "(adapted from variability) embrace flexibility rather than attempting to control or reduce it (Walker & Salt, 2006). / a flexible system can change and evolve against changing circumstances.",
+            "definition": "The capacity of a system to embrace change rather than attempting to control or reduce it. A flexible system should be able to change and evolve against unexpected circumstances.",
             "practice": [
               "Street layouts with frequent intersections for re-routing",
               "Adaptive land-use",
@@ -342,77 +413,6 @@
           "distance from the border with rf / rb / front line": "Distance from city to conflict zone or under enemy control"
         }
       }
-    },
-    "indicatorPanel": {
-      "header": "Urban Resilience Score (Local)",
-      "explanation": {
-        "header": "reminder",
-        "1": "Once the map relocated to a specific city area you chose, select the menu of indicators to start a local, urban resilience assessment. The menu of indicators suggests a default list from the ARTUR framework. The colors of the indicators list refer to different areas of the urban system (social, physical, institutional or economic indicators).  By clicking into each of them you can start the survey and answer the provided questions which feed into the final result.",
-        "2": "When the survey has been completed for all provided indicators, you will be able to retrieve a “resilience score” (general or by category), by clicking on the button at the bottom of the panel."
-      },
-      "indicator": "Indicators",
-      "graph": "Graphs of Indicators",
-      "list": "List of Indicators",
-      "result": "Resilience Score",
-      "button": {
-        "graph1": "Basic Indicators",
-        "graph2": "All indicators"
-      },
-      "questionnaire": {
-        "title": "Questionnaire",
-        "buttons": { "submit": "Submit", "close": "Close" },
-        "warning": "Please answer all the questions!"
-      },
-      "radarChart": {
-        "name": {
-          "dimension": "Resilience Score by Dimensions",
-          "total": "Resilience Score: Essential Indicators"
-        },
-        "type": { "dimension": "By Dimensions", "total": "Total" },
-        "social": "Social",
-        "economic": "Economic",
-        "institutional": "Institutional",
-        "physical": "Physical"
-      }
-    },
-    "dataPanel": {
-      "header": "Data Visualisation",
-      "close": "Close",
-      "control": {
-        "header": "Layer Control",
-        "basemaps": "Basemaps",
-        "overlays": "Overlays"
-      },
-      "sets": {
-        "shelter": "Layer Set: Shelter",
-        "healthSite": "Layer Set: Health Site",
-        "waterSource": "Layer Set: Water Source",
-        "energySupply": "Layer Set: Energy Supply",
-        "sewageSystem": "Layer Set: Sewage System",
-        "waterNetworkDistribution": "Layer Set: Water Network Distribution"
-      },
-      "popups": {
-        "sheltersInfo": "Shelters Information",
-        "shelterPopulationInfo": "Shelter Access Population Information",
-        "healthSitePopulationInfo": "Health Site Access Population Information",
-        "waterSourcePopulation": "Water Source Catchment Area Population"
-      },
-      "healthSiteIsochroneType": {
-        "label": "select catchment type",
-        "auto": "Car",
-        "bus": "Bus",
-        "bicycle": "Bicycle",
-        "pedestrian": "Pedestrian"
-      },
-      "populationChartText": {
-        "shelterAccess": "Accessible in 5 min",
-        "shelterInaccess": "Inaccessible in 5 min",
-        "healthSiteAccess": "Accessible in 10 min",
-        "healthSiteInaccess": "Inaccessible in 10 min",
-        "waterSourceAccess": "In Catchment Area",
-        "waterSourceInaccess": "Out of Catchment Area"
-      },
-      "waterNetwork": { "selectScenario": "Select Scenario", "scenario": "Scenario" }
     },
     "settingsPanel": {
       "header": "Settings",
