@@ -503,7 +503,7 @@
       },
       "3": {
         "name": "Community support",
-        "1": "Grassroots or community organizations participating in pre-event planning and post event response",
+        "1": "Public associations, public organisations or unions participating in pre-event planning and post event response",
         "2": "Accessible criminal and civil justice",
         "3": "Cohesive communities",
         "4": "Training programmes provided to the most vulnerable and at need populations",
@@ -548,7 +548,7 @@
       },
       "2": {
         "name": "Economic Impact",
-        "1": "Businesses with a documented business continuity plan",
+        "1": "Municipal enterprises with a documented business continuity plan",
         "2": "Knowledge to funding opportunities (for local economy and recovery)",
         "3": "Attractive business environment",
         "4": "Economic impact",
@@ -801,7 +801,7 @@
       "2": {
         "name": "Community support",
         "1": {
-          "name": "Grassroots or community organizations participating in pre-event planning and post event response",
+          "name": "Public associations, public organisations or unions participating in pre-event planning and post event response",
           "questions": {
             "1": {
               "text": "Are grassroots or community organizations participating in pre-event planning and post event response for each neighbourhood in the city? ",
@@ -886,7 +886,7 @@
       "1": {
         "name": "Economic Impact",
         "1": {
-          "name": "Businesses with a documented business continuity plan",
+          "name": "Municipal enterprises with a documented business continuity plan",
           "questions": {
             "1": {
               "text": "What proportion of businesses have a documented business continuity plan that has been reviewed within the last 18 months?",
