@@ -61,6 +61,13 @@ const lineStyle = () => {
     opacity: 0.8,
   };
 };
+const segmentStyle = () => {
+  return {
+    color: mapStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
+    weight: 2,
+    opacity: 0.8,
+  };
+};
 const getWaterNetworkPointColor = (property: any) => {
   if (mapStore.city === CityName.NIKOPOL)
     return mapStore.getMarkerOptions(
@@ -105,7 +112,7 @@ watch(
 );
 </script>
 <template>
-  <div class="leaflet.overlay" v-if="mapStore.isJsonDataLoad">
+  <div v-if="mapStore.isJsonDataLoad">
     <!-- Shelters -->
     <l-feature-group
       :name="LayerName.SHELTER"
@@ -295,6 +302,15 @@ watch(
       layer-type="overlay"
       :options-style="lineStyle"
       :options="{ onEachFeature: onEachWaterNetworkLine }"
+    ></l-geo-json>
+    <!-- KRYVYIRIH water network segments -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.KRYVYIRIH"
+      :name="LayerName.WATERNETWORKSEGMENT"
+      :geojson="mapStore.geojsonData.waterNetworkSegment"
+      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      layer-type="overlay"
+      :options-style="segmentStyle"
     ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group

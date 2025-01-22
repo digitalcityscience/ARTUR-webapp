@@ -24,7 +24,8 @@
     },
     "kryvyirih": {
       "waterNetworkLine": "Зміни в сценарії розвитку водопровідної мережі",
-      "waterNetworkPoint": "Вузли водопровідної мережі"
+      "waterNetworkPoint": "Вузли водопровідної мережі",
+      "waterNetworkSegment": "Трубопроводи водопровідної мережі"
     },
     "waterNetwork": "Вузли водопровідної",
     "waterNetworkChange": "Вузли водопровідної Зміни"

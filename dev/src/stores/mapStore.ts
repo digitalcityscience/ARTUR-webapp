@@ -230,6 +230,16 @@ const useMapStore = defineStore("map", () => {
               geojsonData.value.waterNetworkLine = data;
             }),
         );
+        promises.push(
+          fetch(`/api/${url}-segment`)
+            .then((res) => {
+              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              geojsonData.value.waterNetworkSegment = data;
+            }),
+        );
       } else {
         // If city data is cached, load it from the cache
         geojsonData.value = { ...dataCache.value[cityName] };
@@ -377,6 +387,11 @@ const useMapStore = defineStore("map", () => {
       name: LayerName.WATERNETWORKLINE,
       visible: false,
       color: "#c7522a",
+    },
+    waterNetworkSegmentLayer: {
+      name: LayerName.WATERNETWORKSEGMENT,
+      visible: false,
+      color: "#bdb2ff",
     },
   });
   const selectedWaterScenario = ref(0);

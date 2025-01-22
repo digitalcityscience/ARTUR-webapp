@@ -77,6 +77,24 @@ const btnLegendIconClass = computed(() => {
           )
         }}
       </div>
+      <div
+        v-if="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
+      >
+        <i
+          class="polyline"
+          :style="{
+            background: mapStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
+          }"
+        ></i>
+        {{
+          $t(
+            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkSegmentLayer.name}`,
+          )
+        }}
+      </div>
       <!-- Water Network Legend for NIKOPOL data -->
       <div
         v-if="

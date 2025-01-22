@@ -24,7 +24,8 @@
     },
     "kryvyirih": {
       "waterNetworkLine": "Water Network Scenario Changes",
-      "waterNetworkPoint": "Water Network Nodes"
+      "waterNetworkPoint": "Water Network Nodes",
+      "waterNetworkSegment": "Water Network Pipelines"
     },
     "waterNetwork": "Water Network",
     "waterNetworkChange": "Water Network Changes"

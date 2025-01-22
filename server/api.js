@@ -520,4 +520,21 @@ router.get("/water-network-point/:city", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.get("/water-network-segment", async (req, res) => {
+  try {
+    const query = `
+      SELECT  ST_AsGeoJSON(ST_Transform(wkb_geometry,4326)) geometry FROM kryvyirih_water_network_segments
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      return {
+        type: "Feature",
+        geometry: JSON.parse(row.geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
 export default router;

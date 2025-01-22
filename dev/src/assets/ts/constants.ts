@@ -79,6 +79,7 @@ export enum LayerName {
   SEWAGELINE = "sewageLine",
   WATERNETWORKPOINT = "waterNetworkPoint",
   WATERNETWORKLINE = "waterNetworkLine",
+  WATERNETWORKSEGMENT = "waterNetworkSegment",
 }
 export enum CityName {
   KRYVYIRIH = "kryvyirih",

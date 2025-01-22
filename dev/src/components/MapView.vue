@@ -43,10 +43,8 @@ const boundaryStyle = () => {
     color: mapStore.boundaryLayer.color,
   };
 };
-const vulDataReady = ref(false);
 onBeforeMount(async () => {
   await mapStore.fetchCountrywideData();
-  vulDataReady.value = true; // Set vulDataReady after fetching
 });
 
 const mapIsReady = ref(false);
@@ -55,7 +53,6 @@ const onReady = () => {
   mapIsReady.value = true;
 };
 </script>
-
 <template>
   <l-map
     ref="map"
@@ -84,7 +81,7 @@ const onReady = () => {
     ></l-geo-json>
     <!-- Controls -->
     <l-control-scale :imperial="false"></l-control-scale>
-    <overlay-control v-if="vulDataReady && mapIsReady"></overlay-control>
-    <sidebar-control v-if="vulDataReady && mapIsReady"></sidebar-control>
+    <overlay-control v-if="mapIsReady"></overlay-control>
+    <sidebar-control v-if="mapIsReady"></sidebar-control>
   </l-map>
 </template>

@@ -4,6 +4,7 @@ import type {
   FeatureCollection,
   Point,
   Polygon,
+  LineString,
   MultiPolygon,
   MultiPoint,
   MultiLineString,
@@ -58,7 +59,6 @@ type EnergySupplyProperties = {
 };
 export type GeoJSONData = {
   countryBoundary?: FeatureCollection<Polygon>;
-  vulnerabilityPoint?: any;
   boundary?: FeatureCollection<Polygon>;
   shelters?: FeatureCollection<Point, ShelterProperties>;
   isochrones?: FeatureCollection<MultiPolygon, IsochroneProperties>;
@@ -73,6 +73,7 @@ export type GeoJSONData = {
   energySupplyCatchment?: FeatureCollection<MultiPolygon, IsochroneProperties>;
   waterNetworkLine?: FeatureCollection<MultiLineString, any>;
   waterNetworkPoint?: any;
+  waterNetworkSegment?: FeatureCollection<LineString>;
 };
 export type Population = {
   accessible: number;
