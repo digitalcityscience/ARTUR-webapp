@@ -10,8 +10,8 @@ let chart: echarts.ECharts;
 const option = computed(() => {
   return {
     title: {
-      text: t("layerNames.kryvyirih.waterNetworkPoint").split(" ").join("\n"),
-      left: 40,
+      text: t("legend.waterNetwork.name"),
+      left: 5,
       top: 0,
       textStyle: {
         color: "#3d3d3d",
@@ -26,11 +26,12 @@ const option = computed(() => {
       inRange: {
         color: ["#313695", "#5DE2E7", "#7DDA58", "#FFDE59", "#D73027"], // Gradient colors
       },
-      text: ["0.45", "0.0"], // Labels on the bar
+      text: [t("legend.waterNetwork.minAxis"), t("legend.waterNetwork.maxAxis")], // Labels on the bar
       textStyle: {
         color: "#000",
+        fontSize: 11,
       },
-      orient: "vertical", // Vertical bar
+      orient: "horizontal",
       left: 5, // Position
       top: "middle",
     },
@@ -53,7 +54,7 @@ onMounted(() => {
 <template><div ref="chartContainer" class="chart-container"></div></template>
 <style scoped>
 .chart-container {
-  width: 100px;
-  height: 200px;
+  width: 360px;
+  height: 80px;
 }
 </style>

@@ -5,8 +5,17 @@ import { populationType, LayerName, CityName } from "@/assets/ts/constants";
 import type { IsochroneTypeKey } from "@/assets/ts/types";
 import { ref, computed } from "vue";
 import useMapStore from "@/stores/mapStore";
+import { useI18n } from "vue-i18n";
 
 const mapStore = useMapStore();
+const { locale, getLocaleMessage } = useI18n();
+const textData = computed(() => getLocaleMessage(locale.value) as any);
+const waterNetworkDescription = computed(
+  () => textData.value.sidebar.dataPanel.waterNetwork.description,
+);
+const waterNetworkIntroduction = computed(
+  () => textData.value.sidebar.dataPanel.waterNetwork.introduction,
+);
 // Local state to store the selected isochrone type
 const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 const waterNetworkType = computed(() =>
@@ -241,23 +250,61 @@ const waterNetworkType = computed(() =>
                       </select>
                     </div>
                   </li>
-                  <li
-                    class="mb-1"
-                    :key="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
-                      :name="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
-                      v-model="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
-                    />
-                    <label
-                      class="form-check-label"
-                      :for="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
-                    >
-                      {{ $t(`layerNames.waterNetworkChange`) }}
-                    </label>
+                  <!-- Copy Right Info-->
+                  <p class="text-secondary m-1" style="font-size: 0.6rem">
+                    {{ $t("sidebar.dataPanel.waterNetwork.copyRight") }}
+                  </p>
+                  <!-- Description -->
+                  <li class="mb-1">
+                    <!-- Scenario Description -->
+                    <ul class="list-unstyled ps-0">
+                      <li class="mb-1">
+                        <h6
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#sidebar-dataPanel-water-network-scenario-description"
+                          aria-expanded="true"
+                          class="btn btn-outline-secondary text-uppercase"
+                        >
+                          {{ waterNetworkDescription.header.loc.source }}
+                          {{ mapStore.selectedWaterScenario }}
+                        </h6>
+                        <ul
+                          id="sidebar-dataPanel-water-network-scenario-description"
+                          class="collapse show lh-base font-size-sm ps-0"
+                        >
+                          <li
+                            v-for="item in waterNetworkDescription[
+                              mapStore.selectedWaterScenario
+                            ]"
+                          >
+                            {{ item.loc.source }}
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <!-- Betweenness Centrality -->
+                    <ul class="list-unstyled ps-0">
+                      <li class="mb-1">
+                        <h6
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#sidebar-dataPanel-water-network-btwcen-intro"
+                          aria-expanded="false"
+                          class="btn btn-outline-secondary text-uppercase"
+                        >
+                          {{ waterNetworkIntroduction.header.loc.source }}
+                        </h6>
+                        <ul
+                          id="sidebar-dataPanel-water-network-btwcen-intro"
+                          class="collapse lh-base font-size-sm ps-0"
+                        >
+                          <li v-for="item in waterNetworkIntroduction.introduction">
+                            {{ item.loc.source }}
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </li>

@@ -50,6 +50,9 @@
       "text": "Most populated areas but not in the Catchment/Isochrone area"
     },
     "waterNetwork": {
+      "name": "Betweenness Centrality (Node criticality)",
+      "minAxis": "0.45\ncritical:\nprobable to connect\nmore nodes",
+      "maxAxis": "0.0\nnot critical:\nconnecting\nfew nodes",
       "betwcen": "Betweenness Centrality",
       "scenario": "Scenario",
       "change": "Change"
@@ -143,7 +146,36 @@
         "waterSourceAccess": "In Catchment Area",
         "waterSourceInaccess": "Out of Catchment Area"
       },
-      "waterNetwork": { "selectScenario": "Select Scenario", "scenario": "Scenario" }
+      "waterNetwork": {
+        "selectScenario": "Select Scenario",
+        "scenario": "Scenario",
+        "description": {
+          "header": "Description of Scenario",
+          "0": [
+            "Base Scenario - current status of the main pipeline water distribution network",
+            "In the current scenario, the more critical nodes (red) concentrate in the central portion of the network,  bearing a moderate criticality on the water distribution. The semi-critical nodes (green to blue)  concentrate along the southwest to northeast axis represent a more balanced path of distribution bearing low importance for the overall water distribution acting as local distribution paths.",
+            "Main characteristics of this scenario: Good redundancy, efficient alternative distribution routes, homogeneous criticality in overall distribution, critical segment in a central Position."
+          ],
+          "1": [
+            "Scenario with interruption of a critical node",
+            "In contrast to the base scenario. the interruption on a portion of moderate impact (0.4 BC) in such a way that the average BC drops to 0.2. Meaning that most of the distribution network becomes more localized and fragmented. Leaving most distribution paths with fewer options for distribution and longer paths with the potential cost of delays or inefficiencies.",
+            "Main characteristics of this scenario: Reduced efficiency, increased vulnerability to additional disruptions, inefficient network. Reduced Diversity, reduced Flexibility capacities."
+          ],
+          "2": [
+            "Base scenario without interruption and an additional main pipe",
+            "In this scenario, the moderate distribution paths (red) connect closest to the new segment shifting the critical nodes towards the new pipe. The new pipeline creates a new shortcut for distribution and leaves previously critical nodes (red) with less of a critical presence in the distribution network.",
+            "Main characteristics of this scenario: It increases network resilience by reducing dependency in central nodes. A disadvantage is the new critical segment. Nevertheless the loss or interruption of the pipeline results in a backdrop to the initial status. In sum, higher efficiency of distribution, better resilience, an emerging critical segment in a less central Position."
+          ]
+        },
+        "introduction": {
+          "header": "What is Betweenness Centrality?",
+          "introduction": [
+            "Betweenness centrality is a topographic metrics - \"Topographic metrics, based on graph theory, can be used to assess the connectivity of water distribution networks. These metrics rely on the physical layout of the network components and can be used to understand how the underlying structure and connectivity constrains resilience.\"",
+            "In a network of main water pipelines, betweenness centrality tells us which junctions or pipelines act as key \"bridges\" for moving water from one area to another. These are the points that water frequently passes through to reach its destination, making them critical for the network's overall flow and functionality."
+          ]
+        },
+        "copyRight": "Simulation by Water Network Tool for Resilience (WNTR), which is an EPANET compatible Python package designed to simulate and analyze resilience of water distribution networks. Copyright 2023 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software."
+      }
     },
     "dictionaryPanel": {
       "header": "Urban Resilience Dictionary",
