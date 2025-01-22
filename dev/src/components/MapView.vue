@@ -9,7 +9,7 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
-import { ref, watch, computed, onBeforeMount } from "vue";
+import { ref, onBeforeMount } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
 import OverlayControl from "./controls/OverlayControl.vue";
@@ -48,24 +48,6 @@ onBeforeMount(async () => {
   await mapStore.fetchCountrywideData();
   vulDataReady.value = true; // Set vulDataReady after fetching
 });
-// Watch for data readiness to initialize the vulnerability layer
-watch(
-  () => vulDataReady.value,
-  (ready) => {
-    if (ready) {
-      mapStore.initializeVulnerabilityLayer();
-    }
-  },
-);
-// Watch for change the range when the selected property changed
-watch(
-  () => mapStore.selectedVulnerableProperty,
-  () => {
-    if (vulDataReady.value) {
-      mapStore.initializeVulnerabilityLayer();
-    }
-  },
-);
 
 const mapIsReady = ref(false);
 const onReady = () => {
@@ -75,8 +57,6 @@ const onReady = () => {
 </script>
 
 <template>
-  <!-- Map Shadow Overlay -->
-  <!-- <div v-if="mapStore.isSilent" class="shadow-fullscreen"></div> -->
   <l-map
     ref="map"
     :use-global-leaflet="false"
@@ -94,61 +74,6 @@ const onReady = () => {
         pane="tilePane"
       ></l-tile-layer>
     </template>
-    <!-- Vulnerability Layer -->
-    <l-feature-group
-      :key="mapStore.selectedVulnerableProperty"
-      layer-type="overlay"
-      :visible="mapStore.vulnerabilityLayer.visible"
-      v-if="vulDataReady"
-    >
-      <l-circle-marker
-        pane="markerPane"
-        v-for="(feature, index) in mapStore.geojsonData.vulnerabilityPoint!.features"
-        :key="`${index}`"
-        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="
-          mapStore.getMarkerOptions(
-            mapStore.getVulnerabilityColor(
-              feature.properties[mapStore.selectedVulnerableProperty],mapStore.vulnerabilityLayer.range as number[]
-            ),
-            mapStore.getVulnerabilityRadius(feature.properties.population_2022),
-          )
-        "
-        layer-type="overlay"
-        ><l-tooltip
-          ><span>
-            {{
-              $t(
-                "sidebar.vulnerabilityPanel.propertySelector.properties." +
-                  mapStore.selectedVulnerableProperty,
-              )
-            }}
-            : {{ feature.properties[mapStore.selectedVulnerableProperty] }}</span
-          ><br /><span
-            >{{
-              $t(
-                "sidebar.vulnerabilityPanel.propertySelector.properties.population_2022",
-              )
-            }}: {{ feature.properties.population_2022 }}</span
-          ></l-tooltip
-        ><l-popup>
-          <div style="max-height: 200px" class="overflow-auto">
-            <table class="table table-bordered table-striped table-sm mb-0">
-              <tbody>
-                <tr v-for="(value, key) in feature.properties" :key="`${key} - ${value}`">
-                  <th scope="row">
-                    {{
-                      $t("sidebar.vulnerabilityPanel.propertySelector.properties." + key)
-                    }}
-                  </th>
-                  <td>{{ value }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </l-popup>
-      </l-circle-marker>
-    </l-feature-group>
     <!-- Boundary -->
     <l-geo-json
       :geojson="mapStore.geojsonData.countryBoundary"
@@ -163,15 +88,3 @@ const onReady = () => {
     <sidebar-control v-if="vulDataReady && mapIsReady"></sidebar-control>
   </l-map>
 </template>
-<style scoped>
-.shadow-fullscreen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 900;
-  pointer-events: all;
-}
-</style>

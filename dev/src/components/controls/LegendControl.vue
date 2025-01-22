@@ -24,30 +24,6 @@ const btnLegendIconClass = computed(() => {
       <i class="bi bi-map ps-2"></i>
     </button>
     <div class="legend" v-show="showLegend">
-      <div v-show="mapStore.vulnerabilityLayer.visible">
-        <template
-          v-for="range in mapStore.vulnerabilityLayer.range?.slice(1)"
-          :key="range"
-        >
-          <i
-            class="point"
-            :style="{
-              background: mapStore.getVulnerabilityColor(
-                range,
-                mapStore.vulnerabilityLayer.range as number[],
-              ),
-            }"
-          ></i>
-          {{
-            $t(
-              "sidebar.vulnerabilityPanel.propertySelector.properties." +
-                mapStore.selectedVulnerableProperty,
-            )
-          }}
-          <= {{ range }}<br />
-        </template>
-        {{ $t("legend.vulnerability.size") }}
-      </div>
       <div v-show="mapStore.shelterLayers.shelterLayer.visible">
         <i
           class="point"

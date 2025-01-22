@@ -31,16 +31,16 @@ const useMapStore = defineStore("map", () => {
   const fetchCountrywideData = async () => {
     try {
       const promises: Promise<any>[] = [];
-      promises.push(
-        fetch("/api/vulnerability")
-          .then((res) => {
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-            return res.json();
-          })
-          .then((data) => {
-            geojsonData.value.vulnerabilityPoint = data;
-          }),
-      );
+      // promises.push(
+      //   fetch("/api/vulnerability")
+      //     .then((res) => {
+      //       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      //       return res.json();
+      //     })
+      //     .then((data) => {
+      //       geojsonData.value.vulnerabilityPoint = data;
+      //     }),
+      // );
       promises.push(
         fetch("/api/country-boundary")
           .then((res) => {
@@ -416,69 +416,6 @@ const useMapStore = defineStore("map", () => {
 
     return `rgb(${r}, ${g}, ${b})`;
   };
-  /* Vulnerability layer */
-  const vulnerabilityLayer = reactive<VectorLayer>({
-    name: LayerName.VULNERABILITY,
-    visible: false,
-    range: [], // Store breaks here
-  });
-  const selectedVulnerableProperty = ref("city_area"); //duration of alarms, hours in 2024
-  // calculate class breaks dynamically
-  const calculateClassBreaks = (
-    minValue: number,
-    maxValue: number,
-    numClasses: number = 5,
-  ): number[] => {
-    const breaks: number[] = [];
-    const step = (maxValue - minValue) / numClasses;
-
-    for (let i = 0; i <= numClasses; i++) {
-      breaks.push(parseFloat((minValue + i * step).toFixed(2))); // Equal interval breaks
-    }
-
-    return breaks;
-  };
-  // assign color based on value and pre-calculated breaks
-  const getVulnerabilityColor = (value: number, breaks: number[]): string => {
-    let colorRamp = ["#ffcd00", "#f03b20"]; // Default ramp
-    // Reverse the ramp for specific property
-    if (
-      selectedVulnerableProperty.value ===
-      "distance from the border with rf / rb / front line"
-    )
-      colorRamp = [...colorRamp].reverse();
-
-    const colorScale = chroma.scale(colorRamp).classes(breaks);
-    // Match the value to its appropriate break range
-    for (let i = 0; i < breaks.length - 1; i++) {
-      if (value >= breaks[i] && value <= breaks[i + 1]) {
-        return colorScale(breaks[i]).hex(); // Return HEX color
-      }
-    }
-    // Default to white if value doesn't fall in any range
-    return "#fff";
-  };
-  function getVulnerabilityRadius(population: number) {
-    const minRadius = 3; // Minimum point size
-    const maxRadius = 25; // Maximum point size
-    const maxPopulation = 2952301; // Largest population in the dataset
-
-    // Normalize the population to the size range
-    const size = minRadius + (population / maxPopulation) * (maxRadius - minRadius);
-    return Math.round(size);
-  }
-  const initializeVulnerabilityLayer = (): void => {
-    const minValue: number =
-      geojsonData.value.vulnerabilityPoint.properties[
-        selectedVulnerableProperty.value
-      ][0];
-    const maxValue: number =
-      geojsonData.value.vulnerabilityPoint.properties[
-        selectedVulnerableProperty.value
-      ][1];
-    // Calculate and store breaks in the range
-    vulnerabilityLayer.range = calculateClassBreaks(minValue, maxValue, 5); // 5 is default numClasses
-  };
   // points options
   const getMarkerOptions = (color: string, radius = 5) => {
     return {
@@ -524,12 +461,10 @@ const useMapStore = defineStore("map", () => {
     waterSourcePopulation,
     shelterLayers,
     boundaryLayer,
-    vulnerabilityLayer,
     healthSiteLayers,
     waterSourceLayers,
     energySupplyLayers,
     waterNetworkLayers,
-    selectedVulnerableProperty,
     selectedWaterScenario,
     setCity,
     fetchCountrywideData,
@@ -541,9 +476,6 @@ const useMapStore = defineStore("map", () => {
     highlightPoint,
     resetHighlight,
     boundaryStyle,
-    initializeVulnerabilityLayer,
-    getVulnerabilityColor,
-    getVulnerabilityRadius,
   };
 });
 export default useMapStore;
