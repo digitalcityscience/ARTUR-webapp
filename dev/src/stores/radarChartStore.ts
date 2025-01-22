@@ -146,22 +146,22 @@ const useRadarChartStore = defineStore("radar-chart", () => {
           type: "radar",
           data: [
             {
-              value: socialScore,
+              value: socialScore.value,
               name: t("sidebar.indicatorPanel.radarChart.social"),
               itemStyle: { color: "#91CC75" },
             },
             {
-              value: economicScore,
+              value: economicScore.value,
               name: t("sidebar.indicatorPanel.radarChart.economic"),
               itemStyle: { color: "#FAC858" },
             },
             {
-              value: institutionalScore,
+              value: institutionalScore.value,
               name: t("sidebar.indicatorPanel.radarChart.institutional"),
               itemStyle: { color: "#EE6666" },
             },
             {
-              value: physicalScore,
+              value: physicalScore.value,
               name: t("sidebar.indicatorPanel.radarChart.physical"),
               itemStyle: { color: "#73C0DE" },
             },
