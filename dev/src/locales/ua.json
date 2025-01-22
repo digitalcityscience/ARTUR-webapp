@@ -29,7 +29,8 @@
       "waterNetworkLine": "Зміни в сценарії розвитку водопровідної мережі",
       "waterNetworkPoint": "Вузли водопровідної мережі"
     },
-    "waterNetwork": "Вузли водопровідної"
+    "waterNetwork": "Вузли водопровідної",
+    "waterNetworkChange": "Вузли водопровідної зміни"
   },
   "legend": {
     "title": "Легенда",

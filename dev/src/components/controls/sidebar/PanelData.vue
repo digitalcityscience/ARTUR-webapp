@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import PopulationSumChart from "@/components/controls/sidebar/PopulationSumChart.vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
-import { populationType, LayerName, CityName, cities } from "@/assets/ts/constants";
+import { populationType, LayerName, CityName } from "@/assets/ts/constants";
 import type { IsochroneTypeKey } from "@/assets/ts/types";
 import { ref, computed } from "vue";
 import useMapStore from "@/stores/mapStore";
@@ -12,26 +12,6 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
 const waterNetworkType = computed(() =>
   mapStore.city === CityName.NIKOPOL ? "sewageSystem" : "waterNetworkDistribution",
 );
-// Cities and topics for dropdowns
-const cityOptions = computed(() =>
-  cities.map((city) => ({
-    name: city.name,
-    latLng: city.latLng,
-    isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
-    isSelected: mapStore.city === city.name,
-  })),
-);
-// Handle City Change
-const handleCityChange = (e: Event) => {
-  const target = e.target as HTMLSelectElement;
-  const selectedCityName = target.value;
-  const city = cities.find((c) => c.name === selectedCityName);
-
-  if (city) {
-    mapStore.map.flyTo(city.latLng, 12);
-    mapStore.setCity(city.name);
-  }
-};
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="data">
@@ -42,43 +22,6 @@ const handleCityChange = (e: Event) => {
     <language-switcher></language-switcher>
     <div class="sidebar-content">
       <ul class="list-unstyled ps-0">
-        <!-- City Selection -->
-        <li class="mb-1">
-          <button
-            class="btn btn-toggle rounded ps-0"
-            data-bs-toggle="collapse"
-            data-bs-target="#city-selector"
-            aria-expanded="true"
-          >
-            {{ $t("sidebar.vulnerabilityPanel.citySelection.title") }}
-          </button>
-          <div class="collapse show" id="city-selector">
-            <p class="sidebar-content-text fw-medium">
-              {{ $t("sidebar.vulnerabilityPanel.citySelection.text") }}
-            </p>
-            <div class="form-group">
-              <select
-                id="city-select"
-                class="form-select"
-                @change="handleCityChange"
-                aria-label="Select a city"
-              >
-                <option value="" disabled selected>
-                  {{ $t("sidebar.settingsPanel.step1.selectDefault") }}
-                </option>
-                <option
-                  v-for="city in cityOptions"
-                  :key="city.name"
-                  :value="city.name"
-                  :disabled="city.isDisabled"
-                  :selected="city.isSelected"
-                >
-                  {{ $t("cityNames." + city.name) }}
-                </option>
-              </select>
-            </div>
-          </div>
-        </li>
         <!-- overlays -->
         <li class="mb-1">
           <button
@@ -297,6 +240,24 @@ const handleCityChange = (e: Event) => {
                         </option>
                       </select>
                     </div>
+                  </li>
+                  <li
+                    class="mb-1"
+                    :key="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :id="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
+                      :name="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
+                      v-model="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+                    />
+                    <label
+                      class="form-check-label"
+                      :for="mapStore.waterNetworkLayers.waterNetworkLineLayer.name"
+                    >
+                      {{ $t(`layerNames.waterNetworkChange`) }}
+                    </label>
                   </li>
                 </ul>
               </li>

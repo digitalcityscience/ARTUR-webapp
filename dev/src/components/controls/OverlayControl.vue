@@ -75,20 +75,18 @@ const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
   // Store a reference to the layer by its scenario
   const scenario = feature?.properties?.scenario;
   scenarioLayerMap.set(scenario, layer);
-
   // Customize the content of your popup
   const popupContent = `<div style="max-height: 100px" class="overflow-auto">
       <table class="table table-bordered table-striped table-sm mb-0">
         <tbody><tr><th scope="row">${t("legend.waterNetwork.scenario")}</th>
-        <td>${scenario}</td></tr>
+        <td>${scenario || "N|A"}</td></tr>
         <tr><th scope="row">${t("legend.waterNetwork.change")}</th>
-        <td>${feature.properties.change}</td></tr>
+        <td>${feature?.properties?.change || "N|A"}</td></tr>
         </tbody>
       </table>
     </div>`;
   // Bind the popup to the layer
   layer.bindPopup(popupContent);
-  console.log(layer);
 };
 // Watch for changes to the selected scenario and open the corresponding popup
 watch(
@@ -101,7 +99,6 @@ watch(
       const matchingLayer = scenarioLayerMap.get(newScenario);
       if (matchingLayer) {
         matchingLayer.openPopup();
-        matchingLayer.on("click", () => matchingLayer.openPopup());
       }
     }
   },
@@ -116,7 +113,6 @@ watch(
       :visible="mapStore.shelterLayers.shelterLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.shelters!.features"
         :key="`${index}-${feature.properties.name}`"
         :name="feature.properties.name"
@@ -164,7 +160,6 @@ watch(
       :visible="mapStore.healthSiteLayers.healthSiteLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.healthSitePoint!.features"
         :key="`${index}-${feature.properties.name}`"
         :lat-lng="[
@@ -204,7 +199,6 @@ watch(
       :visible="mapStore.waterSourceLayers.waterSourceLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.waterSourcePoint!.features"
         :key="`${index}-${feature.properties.id}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
@@ -240,7 +234,6 @@ watch(
       :visible="mapStore.energySupplyLayers.energySupplyLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.energySupplyPoint!.features"
         :key="`${index}-${feature.properties.id}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
@@ -270,7 +263,6 @@ watch(
       :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
@@ -296,7 +288,10 @@ watch(
       v-if="mapStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKLINE"
       :geojson="mapStore.geojsonData.waterNetworkLine"
-      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      :visible="
+        mapStore.waterNetworkLayers.waterNetworkPointLayer.visible ||
+        mapStore.waterNetworkLayers.waterNetworkLineLayer.visible
+      "
       layer-type="overlay"
       :options-style="lineStyle"
       :options="{ onEachFeature: onEachWaterNetworkLine }"
@@ -309,7 +304,6 @@ watch(
       :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
     >
       <l-circle-marker
-        pane="markerPane"
         v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
