@@ -12,7 +12,7 @@ const { t } = useI18n();
           <h4 class="header-title">ARTUR Tool</h4>
           <p class="header-subtitle">{{ $t("website.subtitle") }}</p>
         </div>
-        <div class="input-group search-bar">
+        <!-- <div class="input-group search-bar">
           <input
             type="text"
             class="form-control"
@@ -22,7 +22,7 @@ const { t } = useI18n();
           <button class="btn btn-primary" type="button">
             <i class="bi bi-search"></i>
           </button>
-        </div>
+        </div> -->
         <div class="logo-container">
           <img src="/logos.png" alt="logos" class="logo" />
         </div>
