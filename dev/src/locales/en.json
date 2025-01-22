@@ -1,11 +1,8 @@
 {
   "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" },
   "cityNames": {
-    "zhytomyr": "Zhytomyr",
     "kryvyirih": "Kryvyi Rih",
-    "nikopol": "Nikopol",
-    "dnipro": "Dnipro",
-    "sumy": "Sumy"
+    "nikopol": "Nikopol"
   },
   "layerNames": {
     "shelter": "Shelters",

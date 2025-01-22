@@ -1,11 +1,8 @@
 {
   "website": { "subtitle": "Перевірка стійкості", "searchBar": "Адреса пошуку......" },
   "cityNames": {
-    "zhytomyr": "Житомир",
     "kryvyirih": "Кривий Ріг",
-    "nikopol": "Нікополь",
-    "dnipro": "Дніпро",
-    "sumy": "Суми"
+    "nikopol": "Нікополь"
   },
   "layerNames": {
     "shelter": "Укриття",
