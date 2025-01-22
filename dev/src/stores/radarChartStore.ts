@@ -113,83 +113,105 @@ const useRadarChartStore = defineStore("radar-chart", () => {
 
   // Radar chart configuration
   const radarChartType = ref<"dimension" | "total">("dimension");
-  const radarOptionDimension = {
-    legend: {},
-    tooltip: {},
-    radar: {
-      splitNumber: 10,
-      indicator: [
-        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
-      ],
-    },
-    series: [
-      {
-        name: computed(() => t("sidebar.indicatorPanel.radarChart.name.dimension")),
-        type: "radar",
-        data: [
-          {
-            value: socialScore,
-            name: computed(() => t("sidebar.indicatorPanel.radarChart.social")),
-            itemStyle: { color: "#91CC75" },
+  const radarOptionDimension = computed(() => {
+    return {
+      legend: {},
+      tooltip: {},
+      toolbox: {
+        feature: {
+          saveAsImage: {
+            show: true,
+            name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
+            title: t("indicatorChart.buttons.download"),
           },
-          {
-            value: economicScore,
-            name: computed(() => t("sidebar.indicatorPanel.radarChart.economic")),
-            itemStyle: { color: "#FAC858" },
-          },
-          {
-            value: institutionalScore,
-            name: computed(() => t("sidebar.indicatorPanel.radarChart.institutional")),
-            itemStyle: { color: "#EE6666" },
-          },
-          {
-            value: physicalScore,
-            name: computed(() => t("sidebar.indicatorPanel.radarChart.physical")),
-            itemStyle: { color: "#73C0DE" },
-          },
+        },
+      },
+      radar: {
+        splitNumber: 10,
+        indicator: [
+          { name: t("echarts.capacities.Robustness"), max: 100 },
+          { name: t("echarts.capacities.Redundancy"), max: 100 },
+          { name: t("echarts.capacities.Diversity"), max: 100 },
+          { name: t("echarts.capacities.Integration"), max: 100 },
+          { name: t("echarts.capacities.Transparency"), max: 100 },
+          { name: t("echarts.capacities.Resourcefulness"), max: 100 },
+          { name: t("echarts.capacities.Inclusiveness"), max: 100 },
+          { name: t("echarts.capacities.Reflectiveness"), max: 100 },
+          { name: t("echarts.capacities.Flexibility"), max: 100 },
         ],
       },
-    ],
-  };
-  const radarOptionTotal = {
-    legend: {},
-    tooltip: {},
-    radar: {
-      splitNumber: 10,
-      indicator: [
-        { name: computed(() => t("echarts.capacities.Robustness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Redundancy")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Diversity")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Integration")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Transparency")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Resourcefulness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Inclusiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Reflectiveness")), max: 100 },
-        { name: computed(() => t("echarts.capacities.Flexibility")), max: 100 },
+      series: [
+        {
+          name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
+          type: "radar",
+          data: [
+            {
+              value: socialScore,
+              name: t("sidebar.indicatorPanel.radarChart.social"),
+              itemStyle: { color: "#91CC75" },
+            },
+            {
+              value: economicScore,
+              name: t("sidebar.indicatorPanel.radarChart.economic"),
+              itemStyle: { color: "#FAC858" },
+            },
+            {
+              value: institutionalScore,
+              name: t("sidebar.indicatorPanel.radarChart.institutional"),
+              itemStyle: { color: "#EE6666" },
+            },
+            {
+              value: physicalScore,
+              name: t("sidebar.indicatorPanel.radarChart.physical"),
+              itemStyle: { color: "#73C0DE" },
+            },
+          ],
+        },
       ],
-    },
-    series: [
-      {
-        name: computed(() => t("sidebar.indicatorPanel.radarChart.name.total")),
-        type: "radar",
-        data: [
-          {
-            value: totalArray,
-            name: computed(() => t("sidebar.indicatorPanel.radarChart.type.total")),
-            itemStyle: { color: "#9A60B4" },
+    };
+  });
+  const radarOptionTotal = computed(() => {
+    return {
+      legend: {},
+      tooltip: {},
+      toolbox: {
+        feature: {
+          saveAsImage: {
+            show: true,
+            name: t("sidebar.indicatorPanel.radarChart.name.total"),
+            title: t("indicatorChart.buttons.download"),
           },
+        },
+      },
+      radar: {
+        splitNumber: 10,
+        indicator: [
+          { name: t("echarts.capacities.Robustness"), max: 100 },
+          { name: t("echarts.capacities.Redundancy"), max: 100 },
+          { name: t("echarts.capacities.Diversity"), max: 100 },
+          { name: t("echarts.capacities.Integration"), max: 100 },
+          { name: t("echarts.capacities.Transparency"), max: 100 },
+          { name: t("echarts.capacities.Resourcefulness"), max: 100 },
+          { name: t("echarts.capacities.Inclusiveness"), max: 100 },
+          { name: t("echarts.capacities.Reflectiveness"), max: 100 },
+          { name: t("echarts.capacities.Flexibility"), max: 100 },
         ],
       },
-    ],
-  };
+      series: [
+        {
+          name: t("sidebar.indicatorPanel.radarChart.name.total"),
+          type: "radar",
+          data: [
+            {
+              value: totalArray.value,
+              name: t("sidebar.indicatorPanel.radarChart.type.total"),
+              itemStyle: { color: "#9A60B4" },
+            },
+          ],
+        },
+      ],
+    };
+  });
 
   return {
     fetchIndicatorData,
