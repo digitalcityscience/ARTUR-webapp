@@ -21,7 +21,7 @@ const option = computed(() => {
     visualMap: {
       type: "continuous",
       min: 0,
-      max: 0.45,
+      max: 0.42,
       precision: 2,
       inRange: {
         color: ["#313695", "#5DE2E7", "#7DDA58", "#FFDE59", "#D73027"], // Gradient colors
