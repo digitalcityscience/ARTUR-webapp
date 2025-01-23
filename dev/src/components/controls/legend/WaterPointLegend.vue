@@ -29,7 +29,7 @@ const option = computed(() => {
       text: [t("legend.waterNetwork.minAxis"), t("legend.waterNetwork.maxAxis")], // Labels on the bar
       textStyle: {
         color: "#000",
-        fontSize: 11,
+        fontSize: 10,
       },
       orient: "horizontal",
       left: 5, // Position
@@ -55,6 +55,6 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 360px;
-  height: 80px;
+  height: 82px;
 }
 </style>
