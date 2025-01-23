@@ -230,15 +230,15 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: "20%",
-          r: "41%",
+          r: "45%",
           label: {
             align: "center",
-            width: 100,
+            width: 95,
           },
         },
         {
-          r0: "41%",
-          r: "90%",
+          r0: "45%",
+          r: "99%",
           label: {
             align: "center",
             width: 200,
@@ -1814,14 +1814,14 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: "12%",
-          r: "30%",
+          r: "28%",
           label: {
             rotate: "tangential",
           },
         },
         {
-          r0: "30%",
-          r: "90%",
+          r0: "28%",
+          r: "99%",
           label: {
             align: "center",
             width: 325,
