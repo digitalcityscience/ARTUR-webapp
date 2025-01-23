@@ -261,6 +261,15 @@ watch(
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
+    <!-- KRYVYIRIH water network segments -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.KRYVYIRIH"
+      :name="LayerName.WATERNETWORKSEGMENT"
+      :geojson="mapStore.geojsonData.waterNetworkSegment"
+      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      layer-type="overlay"
+      :options-style="segmentStyle"
+    ></l-geo-json>
     <!-- KRYVYIRIH Water Network Point -->
     <l-feature-group
       :key="mapStore.selectedWaterScenario"
@@ -302,15 +311,6 @@ watch(
       layer-type="overlay"
       :options-style="lineStyle"
       :options="{ onEachFeature: onEachWaterNetworkLine }"
-    ></l-geo-json>
-    <!-- KRYVYIRIH water network segments -->
-    <l-geo-json
-      v-if="mapStore.city === CityName.KRYVYIRIH"
-      :name="LayerName.WATERNETWORKSEGMENT"
-      :geojson="mapStore.geojsonData.waterNetworkSegment"
-      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
-      layer-type="overlay"
-      :options-style="segmentStyle"
     ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group
