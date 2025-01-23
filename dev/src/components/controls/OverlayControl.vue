@@ -6,7 +6,7 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
-import type { Layer } from "leaflet";
+import { featureGroup, type Layer } from "leaflet";
 import { watch, computed } from "vue";
 import LegendControl from "@/components/controls/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
@@ -69,12 +69,21 @@ const segmentStyle = () => {
   };
 };
 const getWaterNetworkPointColor = (property: any) => {
-  if (mapStore.city === CityName.NIKOPOL)
-    return mapStore.getMarkerOptions(
-      mapStore.waterNetworkLayers.waterNetworkPointLayer.color!,
-      4,
-    );
-  else return mapStore.getMarkerOptions(mapStore.getWaterNetworkPointColor(property), 4);
+  return mapStore.getMarkerOptions(mapStore.getWaterNetworkPointColor(property), 4);
+};
+// Stagnent Rainfall Street
+const streetCriticalityStyle = (feature: any) => {
+  return {
+    color: mapStore.getStreetCriticalityColor(feature.properties.nach),
+    weight: 1,
+  };
+};
+const streetHierarchyStyle = (feature: any) => {
+  return {
+    color: mapStore.getStreetHierachyColor(feature.properties.fclass),
+    weight: 1,
+    opacity: 0.7,
+  };
 };
 // Create a map to store references to layers by scenario
 const scenarioLayerMap = new Map<number, Layer>();
@@ -312,19 +321,27 @@ watch(
       :options-style="lineStyle"
       :options="{ onEachFeature: onEachWaterNetworkLine }"
     ></l-geo-json>
+    <!-- NIKOPOL Sewage Line -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.SEWAGELINE"
+      :geojson="mapStore.geojsonData.sewageLine"
+      :visible="mapStore.sewageSystemLayers.sewageLineLayer.visible"
+      :options-style="lineStyle"
+    ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group
       v-if="mapStore.city === CityName.NIKOPOL"
-      :name="LayerName.WATERNETWORKPOINT"
+      :name="LayerName.SEWAGEPOINT"
       layer-type="overlay"
-      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      :visible="mapStore.sewageSystemLayers.sewagePointLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
+        v-for="(feature, index) in mapStore.geojsonData.sewagePoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
-        mapStore.getMarkerOptions(mapStore.waterNetworkLayers.waterNetworkPointLayer.color!)
+        mapStore.getMarkerOptions(mapStore.sewageSystemLayers.sewagePointLayer.color!)
         "
         @mouseover="mapStore.highlightPoint"
         @mouseout="mapStore.resetHighlight"
@@ -332,15 +349,45 @@ watch(
       >
       </l-circle-marker>
     </l-feature-group>
-    <!-- NIKOPOL Sewage Line -->
+    <!-- NIKOPOL Street Hierachy -->
     <l-geo-json
       v-if="mapStore.city === CityName.NIKOPOL"
-      :name="LayerName.WATERNETWORKLINE"
-      :geojson="mapStore.geojsonData.waterNetworkLine"
-      :visible="mapStore.waterNetworkLayers.waterNetworkLineLayer.visible"
+      :name="LayerName.STREETHIERARCHY"
+      :geojson="mapStore.geojsonData.streetHierarchy"
+      :visible="mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible"
       layer-type="overlay"
-      :options-style="lineStyle"
+      :options-style="streetHierarchyStyle"
     ></l-geo-json>
+    <!-- NIKOPOL Street Criticality -->
+    <l-geo-json
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.STREETCRITICALITY"
+      :geojson="mapStore.geojsonData.streetCriticality"
+      :visible="mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
+      layer-type="overlay"
+      :options-style="streetCriticalityStyle"
+    ></l-geo-json>
+    <!-- NIKOPOL Stagnent Rainfall Point -->
+    <l-feature-group
+      v-if="mapStore.city === CityName.NIKOPOL"
+      :name="LayerName.FLOODPOINT"
+      layer-type="overlay"
+      :visible="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+    >
+      <l-circle-marker
+        v-for="(feature, index) in mapStore.geojsonData.floodPoint!.features"
+        :key="`${index}`"
+        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
+        :options="
+          mapStore.getMarkerOptions(
+            mapStore.getRainfallPointColor(feature.properties.criticality),
+          )
+        "
+        @mouseover="mapStore.highlightPoint"
+        @mouseout="mapStore.resetHighlight"
+      >
+      </l-circle-marker>
+    </l-feature-group>
   </div>
   <legend-control></legend-control>
 </template>

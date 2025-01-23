@@ -22,6 +22,7 @@ export type VectorLayer = {
   visible: boolean;
   color?: string;
   range?: number[];
+  class?: string[];
 };
 
 export type TileLayer = {
@@ -74,6 +75,11 @@ export type GeoJSONData = {
   waterNetworkLine?: FeatureCollection<MultiLineString, any>;
   waterNetworkPoint?: any;
   waterNetworkSegment?: FeatureCollection<LineString>;
+  sewagePoint?: any;
+  sewageLine?: FeatureCollection<MultiLineString, any>;
+  floodPoint?: any;
+  streetHierarchy?: FeatureCollection<MultiLineString, any>;
+  streetCriticality?: FeatureCollection<MultiLineString, any>;
 };
 export type Population = {
   accessible: number;

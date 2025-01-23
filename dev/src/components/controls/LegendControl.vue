@@ -3,6 +3,8 @@ import { ref, computed } from "vue";
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import PopulationLegend from "./legend/PopulationLegend.vue";
 import WaterPointLegend from "./legend/WaterPointLegend.vue";
+import StagnentPointLegend from "./legend/StagnentPointLegend.vue";
+import StreetCriticalityLegend from "./legend/StreetCriticalityLegend.vue";
 import { CityName } from "@/assets/ts/constants";
 import { getIsochroneColor } from "@/assets/ts/functions";
 import useMapStore from "@/stores/mapStore";
@@ -53,14 +55,9 @@ const btnLegendIconClass = computed(() => {
         {{ $t("layerNames." + mapStore.energySupplyLayers.energySupplyLayer.name) }}
       </div>
       <!-- Water Network Legend for KRYVYIRIH data -->
-      <div
-        v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
-          mapStore.city === CityName.KRYVYIRIH
-        "
-      >
-        <water-point-legend></water-point-legend>
-      </div>
+      <water-point-legend
+        v-if="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      ></water-point-legend>
       <div
         v-if="
           mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
@@ -95,41 +92,43 @@ const btnLegendIconClass = computed(() => {
           )
         }}
       </div>
-      <!-- Water Network Legend for NIKOPOL data -->
-      <div
-        v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
-          mapStore.city === CityName.NIKOPOL
-        "
-      >
+      <!-- Sewage System Legend for NIKOPOL data -->
+      <div v-if="mapStore.sewageSystemLayers.sewagePointLayer.visible">
         <i
           class="point"
           :style="{
-            background: mapStore.waterNetworkLayers.waterNetworkPointLayer.color,
+            background: mapStore.sewageSystemLayers.sewagePointLayer.color,
           }"
         ></i>
-        {{
-          $t(
-            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkPointLayer.name}`,
-          )
-        }}
+        {{ $t(`layerNames.${mapStore.sewageSystemLayers.sewagePointLayer.name}`) }}
       </div>
-      <div
-        v-if="
-          mapStore.waterNetworkLayers.waterNetworkLineLayer.visible &&
-          mapStore.city === CityName.NIKOPOL
-        "
-      >
+      <div v-if="mapStore.sewageSystemLayers.sewageLineLayer.visible">
         <i
           class="polyline"
-          :style="{ background: mapStore.waterNetworkLayers.waterNetworkLineLayer.color }"
+          :style="{ background: mapStore.sewageSystemLayers.sewageLineLayer.color }"
         ></i>
-        {{
-          $t(
-            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
-          )
-        }}
+        {{ $t(`layerNames.${mapStore.sewageSystemLayers.sewageLineLayer.name}`) }}
       </div>
+      <!-- Stagnent Rainfall Nikopol -->
+      <stagnent-point-legend
+        v-show="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+      ></stagnent-point-legend>
+      <street-criticality-legend
+        v-show="mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
+      ></street-criticality-legend>
+      <div v-show="mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible">
+        <template
+          v-for="fclass in mapStore.stagnentRainfallLayers.streetHierarchyLayer.class"
+          :key="fclass"
+        >
+          <i
+            class="polyline"
+            :style="{ background: mapStore.getStreetHierachyColor(fclass) }"
+          ></i
+          >{{ $t("legend.stagnentRainfall.streetHierarchy." + fclass) }} <br />
+        </template>
+      </div>
+      <!-- OTHER -->
       <div v-show="mapStore.boundaryLayer.visible">
         <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
         {{ $t("layerNames." + mapStore.boundaryLayer.name) }}

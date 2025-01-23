@@ -537,4 +537,58 @@ router.get("/water-network-segment", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.get("/stagnent-rainfall-point", async (req, res) => {
+  try {
+    const query = `
+      SELECT ST_AsGeoJSON(wkb_geometry) geometry, criticality FROM nikopol_stagnent_rainfall_points
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      return {
+        type: "Feature",
+        properties: { criticality: row.criticality },
+        geometry: JSON.parse(row.geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/street-segment", async (req, res) => {
+  try {
+    const query = `
+      SELECT ST_AsGeoJSON(wkb_geometry) geometry, fclass FROM nikopol_street
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      return {
+        type: "Feature",
+        properties: { fclass: row.fclass },
+        geometry: JSON.parse(row.geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
+router.get("/street-criticality", async (req, res) => {
+  try {
+    const query = `
+      SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry,4326)) geometry, nach FROM nikopol_street_nach
+    `;
+    const { rows } = await pool.query(query);
+    const features = rows.map((row) => {
+      return {
+        type: "Feature",
+        properties: { nach: row.nach },
+        geometry: JSON.parse(row.geometry),
+      };
+    });
+    res.json({ type: "FeatureCollection", features });
+  } catch (err) {
+    res.status(500).send("" + err);
+  }
+});
 export default router;

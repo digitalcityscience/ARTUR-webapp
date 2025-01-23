@@ -315,7 +315,7 @@ const waterNetworkType = computed(() =>
                   data-bs-target="#sewage-system-layer-set"
                   aria-expanded="false"
                 >
-                  {{ $t(`sidebar.dataPanel.sets.${waterNetworkType}`) }}
+                  {{ $t(`sidebar.dataPanel.sets.sewageSystem`) }}
                 </button>
                 <ul
                   class="form-check list-unstyled collapse"
@@ -323,7 +323,7 @@ const waterNetworkType = computed(() =>
                 >
                   <li
                     class="mb-1"
-                    v-for="overlay in mapStore.waterNetworkLayers"
+                    v-for="overlay in mapStore.sewageSystemLayers"
                     :key="overlay.name"
                   >
                     <input
@@ -334,10 +334,82 @@ const waterNetworkType = computed(() =>
                       v-model="overlay.visible"
                     />
                     <label class="form-check-label" :for="overlay.name">
-                      {{ $t(`layerNames.${mapStore.city}.${overlay.name}`) }}
+                      {{ $t(`layerNames.${overlay.name}`) }}
                     </label>
                   </li>
                 </ul>
+              </li>
+              <li class="mb-1" v-if="mapStore.city === CityName.NIKOPOL">
+                <button
+                  class="btn btn-outline-success btn-layer-set"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#stagnent-rainfall-layer-set"
+                  aria-expanded="false"
+                >
+                  {{ $t(`sidebar.dataPanel.sets.stagnentRainfall`) }}
+                </button>
+                <div id="stagnent-rainfall-layer-set" class="collapse">
+                  <!-- layers -->
+                  <ul class="form-check list-unstyled mb-2">
+                    <li
+                      class="mb-1"
+                      v-for="overlay in mapStore.stagnentRainfallLayers"
+                      :key="overlay.name"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ $t(`layerNames.${overlay.name}`) }}
+                      </label>
+                    </li>
+                  </ul>
+                  <!-- Description -->
+                  <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                      <h6
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#sidebar-dataPanel-stagnent-rainfall-analysis-description"
+                        aria-expanded="false"
+                        class="btn btn-outline-secondary text-uppercase"
+                      >
+                        {{ $t("sidebar.dataPanel.stagnentRainfall.description") }}
+                      </h6>
+                      <ul
+                        id="sidebar-dataPanel-stagnent-rainfall-analysis-description"
+                        class="collapse lh-sm fs-6 ps-0"
+                      >
+                        <li
+                          v-show="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+                        >
+                          <strong>{{ $t("layerNames.floodPoint") }}:</strong>
+                          {{ $t("sidebar.dataPanel.stagnentRainfall.floodPoint") }}
+                        </li>
+                        <li
+                          v-show="
+                            mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible
+                          "
+                        >
+                          <strong>{{ $t("layerNames.streetHierarchy") }}:</strong>
+                          {{ $t("sidebar.dataPanel.stagnentRainfall.streetHierarchy") }}
+                        </li>
+                        <li
+                          v-show="
+                            mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible
+                          "
+                        >
+                          <strong>{{ $t("layerNames.streetCriticality") }} -</strong>
+                          {{ $t("sidebar.dataPanel.stagnentRainfall.streetCriticality") }}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>

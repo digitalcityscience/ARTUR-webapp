@@ -18,10 +18,11 @@
     "waterSourcePopulation": "Catchment area of Water Source: Population within/outside a certain kilometers according to the transport network",
     "energySupply": "Energy Plant (fake)",
     "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network",
-    "nikopol": {
-      "waterNetworkLine": "Sewage Network",
-      "waterNetworkPoint": "Sewage Network Point"
-    },
+    "sewageLine": "Sewage Network",
+    "sewagePoint": "Sewage Network Point",
+    "floodPoint": "Stagnent Rainfall Locations",
+    "streetHierarchy": "Street network analysis: Street Network Hierarchy (OSM)",
+    "streetCriticality": "Street network analysis: Potential part of a frequently used route",
     "kryvyirih": {
       "waterNetworkLine": "Water Network Scenario Changes",
       "waterNetworkPoint": "Water Network Nodes",
@@ -56,6 +57,16 @@
       "betwcen": "Betweenness Centrality",
       "scenario": "Scenario",
       "change": "Change"
+    },
+    "stagnentRainfall": {
+      "floodPoint": "Stagnent rainfall locations criticality\nby potential importance of\ndisruption to street network",
+      "streetCriticality": "Potential part of a frequently used route",
+      "streetHierarchy": {
+        "primary": "Primary Road",
+        "secondary": "Secondary Road",
+        "tertiary": "Tertiary Road",
+        "other": "Residential and other Roads"
+      }
     }
   },
   "sidebar": {
@@ -123,7 +134,8 @@
         "waterSource": "Layer Set: Water Source",
         "energySupply": "Layer Set: Energy Supply",
         "sewageSystem": "Layer Set: Sewage System",
-        "waterNetworkDistribution": "Layer Set: Water Network Distribution"
+        "waterNetworkDistribution": "Layer Set: Water Network Distribution",
+        "stagnentRainfall": "Layer Set: Stagnent Rainfall"
       },
       "popups": {
         "sheltersInfo": "Shelters Information",
@@ -175,6 +187,12 @@
           ]
         },
         "copyRight": "Simulation by Water Network Tool for Resilience (WNTR), which is an EPANET compatible Python package designed to simulate and analyze resilience of water distribution networks. Copyright 2023 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software."
+      },
+      "stagnentRainfall": {
+        "description": "Description",
+        "floodPoint": "Each of the problematic points reported with flooding account their criticality based on the scores of betweenness centrality, hierarchy of street and number of intersections affected. It means that a flooded intersection with higher BC, primary street, at the intersection of more than 2 streets (for instance a roundabout) scores higher in criticality and request emergent attention.",
+        "streetHierarchy": "The street hierearchy assumed for the city correspond to the classification of streets segments of OSM and the analysis consider 4 levels of importance of streets: primary secondary tertiary and residential+others.",
+        "streetCriticality": "The analysis of the street network infers the most frequently used streets in the city by evaluating the \"normalized betweenness centrality\" following the spacy syntax theory."
       }
     },
     "dictionaryPanel": {

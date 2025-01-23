@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref, reactive } from "vue";
-import chroma from "chroma-js";
 import type {
   VectorLayer,
   GeoJSONData,
@@ -204,42 +203,89 @@ const useMapStore = defineStore("map", () => {
               );
             }),
         );
-        const url =
-          cityName === CityName.NIKOPOL
-            ? "sewage"
-            : CityName.KRYVYIRIH
-            ? "water-network"
-            : "";
-        promises.push(
-          fetch(`/api/${url}-point/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterNetworkPoint = data;
-            }),
-        );
-        promises.push(
-          fetch(`/api/${url}-line/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterNetworkLine = data;
-            }),
-        );
-        promises.push(
-          fetch(`/api/${url}-segment`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterNetworkSegment = data;
-            }),
-        );
+        if (cityName === CityName.KRYVYIRIH) {
+          promises.push(
+            fetch(`/api/water-network-point/${cityName}`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.waterNetworkPoint = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/water-network-line/${cityName}`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.waterNetworkLine = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/water-network-segment`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.waterNetworkSegment = data;
+              }),
+          );
+        } else {
+          promises.push(
+            fetch(`/api/sewage-point/nikopol`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.sewagePoint = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/sewage-line/nikopol`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.sewageLine = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/stagnent-rainfall-point`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.floodPoint = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/street-segment`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.streetHierarchy = data;
+              }),
+          );
+          promises.push(
+            fetch(`/api/street-criticality`)
+              .then((res) => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+              })
+              .then((data) => {
+                geojsonData.value.streetCriticality = data;
+              }),
+          );
+        }
       } else {
         // If city data is cached, load it from the cache
         geojsonData.value = { ...dataCache.value[cityName] };
@@ -305,7 +351,6 @@ const useMapStore = defineStore("map", () => {
     if (city.value) fetchGeoData(city.value, newType);
   };
   const getIsochroneType = (): string => isochroneType.value;
-
   // Overlay Visualisation Settings
   const boundaryLayer = reactive<VectorLayer>({
     name: LayerName.BOUNDARY,
@@ -380,7 +425,6 @@ const useMapStore = defineStore("map", () => {
     waterNetworkPointLayer: {
       name: LayerName.WATERNETWORKPOINT,
       visible: false,
-      color: "#c7522a",
       range: [0.1, 0.2, 0.3, 0.4], // Store breaks here
     },
     waterNetworkLineLayer: {
@@ -395,12 +439,12 @@ const useMapStore = defineStore("map", () => {
     },
   });
   const selectedWaterScenario = ref(0);
+  interface RGB {
+    r: number;
+    g: number;
+    b: number;
+  }
   const getWaterNetworkPointColor = (value: number) => {
-    interface RGB {
-      r: number;
-      g: number;
-      b: number;
-    }
     // Define color stops from bottom to top of the scale
     const colorStops: [number, RGB][] = [
       [0.0, { r: 49, g: 54, b: 149 }], // Liquid Denim
@@ -430,6 +474,107 @@ const useMapStore = defineStore("map", () => {
     const b = Math.round(lowerStop[1].b + (upperStop[1].b - lowerStop[1].b) * factor);
 
     return `rgb(${r}, ${g}, ${b})`;
+  };
+  // Sewage System Layer
+  const sewageSystemLayers = reactive<Record<string, VectorLayer>>({
+    sewagePointLayer: {
+      name: LayerName.SEWAGEPOINT,
+      visible: false,
+      color: "#c7522a",
+    },
+    sewageLineLayer: {
+      name: LayerName.SEWAGELINE,
+      visible: false,
+      color: "#bdb2ff",
+    },
+  });
+  // Stagnent Rainfall Layer
+  const stagnentRainfallLayers = reactive<Record<string, VectorLayer>>({
+    floodPointLayer: {
+      name: LayerName.FLOODPOINT,
+      visible: false,
+    },
+    streetHierarchyLayer: {
+      name: LayerName.STREETHIERARCHY,
+      visible: false,
+      class: ["primary", "secondary", "tertiary", "other"],
+    },
+    streetCriticalityLayer: {
+      name: LayerName.STREETCRITICALITY,
+      visible: false,
+    },
+  });
+  const getRainfallPointColor = (value: number) => {
+    // Define color stops from bottom to top of the scale
+    const colorStops: [number, RGB][] = [
+      [3.43, { r: 49, g: 54, b: 149 }], // Liquid Denim
+      [4.47, { r: 125, g: 218, b: 88 }], // Fairy Tale Green
+      [5.68, { r: 255, g: 222, b: 89 }], // Dragon’s Gold
+      [7.28, { r: 254, g: 153, b: 0 }], // Vitamin C
+      [10.6, { r: 210, g: 1, b: 3 }], // Dark Red
+    ];
+    // Find the color stops between which our value falls
+    let lowerStop: [number, RGB] = colorStops[0];
+    let upperStop: [number, RGB] = colorStops[colorStops.length - 1];
+
+    for (let i = 0; i < colorStops.length - 1; i++) {
+      if (value >= colorStops[i][0] && value <= colorStops[i + 1][0]) {
+        lowerStop = colorStops[i];
+        upperStop = colorStops[i + 1];
+        break;
+      }
+    }
+    // Calculate how far between the two stops our value is (0-1)
+    const range = upperStop[0] - lowerStop[0];
+    const factor = range === 0 ? 0 : (value - lowerStop[0]) / range;
+    // Interpolate between the two colors
+    const r = Math.round(lowerStop[1].r + (upperStop[1].r - lowerStop[1].r) * factor);
+    const g = Math.round(lowerStop[1].g + (upperStop[1].g - lowerStop[1].g) * factor);
+    const b = Math.round(lowerStop[1].b + (upperStop[1].b - lowerStop[1].b) * factor);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+  const getStreetCriticalityColor = (value: number) => {
+    // Define color stops from bottom to top of the scale
+    const colorStops: [number, RGB][] = [
+      [0.29, { r: 49, g: 54, b: 149 }], // Liquid Denim
+      [0.71, { r: 125, g: 218, b: 88 }], // Fairy Tale Green
+      [0.98, { r: 255, g: 222, b: 89 }], // Dragon’s Gold
+      [1.2, { r: 254, g: 153, b: 0 }], // Vitamin C
+      [1.56, { r: 210, g: 1, b: 3 }], // Dark Red
+    ];
+    // Find the color stops between which our value falls
+    let lowerStop: [number, RGB] = colorStops[0];
+    let upperStop: [number, RGB] = colorStops[colorStops.length - 1];
+
+    for (let i = 0; i < colorStops.length - 1; i++) {
+      if (value >= colorStops[i][0] && value <= colorStops[i + 1][0]) {
+        lowerStop = colorStops[i];
+        upperStop = colorStops[i + 1];
+        break;
+      }
+    }
+    // Calculate how far between the two stops our value is (0-1)
+    const range = upperStop[0] - lowerStop[0];
+    const factor = range === 0 ? 0 : (value - lowerStop[0]) / range;
+    // Interpolate between the two colors
+    const r = Math.round(lowerStop[1].r + (upperStop[1].r - lowerStop[1].r) * factor);
+    const g = Math.round(lowerStop[1].g + (upperStop[1].g - lowerStop[1].g) * factor);
+    const b = Math.round(lowerStop[1].b + (upperStop[1].b - lowerStop[1].b) * factor);
+
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+  const getStreetHierachyColor = (fclass: string): string => {
+    switch (true) {
+      case fclass == "primary":
+        return "red";
+      case fclass == "secondary":
+        return "green";
+      case fclass == "tertiary":
+        return "blue";
+      default:
+        return "grey";
+    }
   };
   // points options
   const getMarkerOptions = (color: string, radius = 5) => {
@@ -480,12 +625,17 @@ const useMapStore = defineStore("map", () => {
     waterSourceLayers,
     energySupplyLayers,
     waterNetworkLayers,
+    sewageSystemLayers,
+    stagnentRainfallLayers,
     selectedWaterScenario,
     setCity,
     fetchCountrywideData,
     setIsochroneType,
     getIsochroneType,
     getWaterNetworkPointColor,
+    getRainfallPointColor,
+    getStreetCriticalityColor,
+    getStreetHierachyColor,
     getMarkerOptions,
     togglePopup,
     highlightPoint,
