@@ -385,7 +385,26 @@ watch(
         "
         @mouseover="mapStore.highlightPoint"
         @mouseout="mapStore.resetHighlight"
-      >
+        ><l-popup
+          ><div style="max-height: 100px" class="overflow-auto">
+            <table class="table table-bordered table-striped table-sm mb-0">
+              <tbody>
+                <tr>
+                  <th scope="row">ID</th>
+                  <td>{{ feature.properties.id }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Адреса</th>
+                  <td>{{ feature.properties.address }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Запропоновані рішення</th>
+                  <td>{{ feature.properties.proposed_solutions }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></l-popup
+        >
       </l-circle-marker>
     </l-feature-group>
   </div>

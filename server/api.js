@@ -540,13 +540,18 @@ router.get("/water-network-segment", async (req, res) => {
 router.get("/stagnent-rainfall-point", async (req, res) => {
   try {
     const query = `
-      SELECT ST_AsGeoJSON(wkb_geometry) geometry, criticality FROM nikopol_stagnent_rainfall_points
+      SELECT ST_AsGeoJSON(wkb_geometry) geometry,id,address,proposed_solutions,criticality FROM nikopol_stagnent_rainfall_points
     `;
     const { rows } = await pool.query(query);
     const features = rows.map((row) => {
       return {
         type: "Feature",
-        properties: { criticality: row.criticality },
+        properties: {
+          id: row.id,
+          address: row.address,
+          proposed_solutions: row.proposed_solutions,
+          criticality: row.criticality,
+        },
         geometry: JSON.parse(row.geometry),
       };
     });
