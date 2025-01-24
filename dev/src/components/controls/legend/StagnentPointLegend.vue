@@ -23,6 +23,7 @@ const option = computed(() => {
       type: "continuous",
       min: 3.1,
       max: 10.55,
+      hoverLink: false, // make the legend inreactive
       precision: 2,
       inRange: {
         color: ["#313695", "#7DDA58", "#FFDE59", "#FE9900", "#D73027"], // Gradient colors

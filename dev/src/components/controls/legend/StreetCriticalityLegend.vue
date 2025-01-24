@@ -22,6 +22,7 @@ const option = computed(() => {
       type: "continuous",
       min: 0,
       max: 1.56,
+      hoverLink: false,
       precision: 2,
       inRange: {
         color: ["#313695", "#7DDA58", "#FFDE59", "#FE9900", "#D73027"], // Gradient colors
