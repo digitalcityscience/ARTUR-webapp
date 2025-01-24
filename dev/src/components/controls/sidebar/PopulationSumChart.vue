@@ -19,10 +19,8 @@ const getPopulationData = () => {
     case populationType.SHELTER:
       return mapStore.shelterPopulation[mapStore.city!];
     case populationType.HEALTHSITE:
-      return mapStore.healthSitePopulation[mapStore.city!];
     default:
-    case populationType.WATERSOURCE:
-      return mapStore.waterSourcePopulation[mapStore.city!];
+      return mapStore.healthSitePopulation[mapStore.city!];
   }
 };
 // Reactive computation of translated names
@@ -30,16 +28,12 @@ const chartData = computed(() => {
   const accessibleName =
     props.type === populationType.HEALTHSITE
       ? t("sidebar.dataPanel.populationChartText.healthSiteAccess")
-      : props.type === populationType.SHELTER
-      ? t("sidebar.dataPanel.populationChartText.shelterAccess")
-      : t("sidebar.dataPanel.populationChartText.waterSourceAccess");
+      : t("sidebar.dataPanel.populationChartText.shelterAccess");
 
   const inaccessibleName =
     props.type === populationType.HEALTHSITE
       ? t("sidebar.dataPanel.populationChartText.healthSiteInaccess")
-      : props.type === populationType.SHELTER
-      ? t("sidebar.dataPanel.populationChartText.shelterInaccess")
-      : t("sidebar.dataPanel.populationChartText.waterSourceInaccess");
+      : t("sidebar.dataPanel.populationChartText.shelterInaccess");
 
   return [
     {

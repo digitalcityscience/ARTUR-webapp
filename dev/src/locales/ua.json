@@ -1,5 +1,5 @@
 {
-  "website": { "subtitle": "Перевірка стійкості", "searchBar": "Адреса пошуку......" },
+  "website": { "subtitle": "Перевірка стійкості" },
   "cityNames": {
     "kryvyirih": "Кривий Ріг",
     "nikopol": "Нікополь"
@@ -13,11 +13,6 @@
     "healthSitePoint": "Медичні заклади",
     "healthSiteIsochrone": "Ізохрони медичних закладів",
     "healthSitePopulation": "Доступ до медичних закладів (автотранспортом): населення в межах/поза 10 хв",
-    "waterSource": "Джерело водопостачання (фейкове)",
-    "waterSourceCatchment": "Зона збору води",
-    "waterSourcePopulation": "Зона збору води: населення в межах/поза певних кілометрів в залежностi від транспортної мережі",
-    "energySupply": "Енергетична станція (фейкова)",
-    "energySupplyCatchment": "Зона покриття енергетичної станції: населення в межах/поза певних кілометрів в залежностi від транспортної мережі",
     "sewageLine": "Каналізаційна мережа",
     "sewagePoint": "Точка каналізаційної мережі",
     "floodPoint": "Місця застійних дощових вод",
@@ -131,8 +126,6 @@
       "sets": {
         "shelter": "Укриття",
         "healthSite": "Медичні заклади",
-        "waterSource": "Водопостачання",
-        "energySupply": "Енергопостачання",
         "sewageSystem": "Каналізаційна система",
         "waterNetworkDistribution": "Розподіл мереж водопостачання",
         "stagnentRainfall": "Застійні опади"
@@ -140,8 +133,7 @@
       "popups": {
         "sheltersInfo": "Інформація про укриття",
         "shelterPopulationInfo": "Інформація про населення з доступом до притулків",
-        "healthSitePopulationInfo": "Інформація про населення з доступом до медичних закладів",
-        "waterSourcePopulation": "Інформація про населення в зоні покриття джерел води"
+        "healthSitePopulationInfo": "Інформація про населення з доступом до медичних закладів"
       },
       "healthSiteIsochroneType": {
         "label": "вибрати тип ізохрони",
@@ -154,9 +146,7 @@
         "shelterAccess": "Доступно за 5 хв",
         "shelterInaccess": "Недоступно за 5 хв",
         "healthSiteAccess": "Доступно за 10 хв",
-        "healthSiteInaccess": "Недоступно за 10 хв",
-        "waterSourceAccess": "В зоні збору",
-        "waterSourceInaccess": "Позазоною збору"
+        "healthSiteInaccess": "Недоступно за 10 хв"
       },
       "waterNetwork": {
         "selectScenario": "Виберіть сценарій",

@@ -67,11 +67,6 @@ export type GeoJSONData = {
   healthSitePoint?: FeatureCollection<MultiPoint, HealthSitePointProperties>;
   healthSiteIsochrone?: FeatureCollection<MultiPolygon, IsochroneProperties>;
   healthSitePopulation?: FeatureCollection<MultiPolygon, PopulationProperties>;
-  waterSourcePoint?: FeatureCollection<Point, WaterSourceProperties>;
-  waterSourceCatchment?: FeatureCollection<MultiPolygon, IsochroneProperties>;
-  waterSourcePopulation?: FeatureCollection<MultiPolygon, PopulationProperties>;
-  energySupplyPoint?: FeatureCollection<Point, EnergySupplyProperties>;
-  energySupplyCatchment?: FeatureCollection<MultiPolygon, IsochroneProperties>;
   waterNetworkLine?: FeatureCollection<MultiLineString, any>;
   waterNetworkPoint?: any;
   waterNetworkSegment?: FeatureCollection<LineString>;

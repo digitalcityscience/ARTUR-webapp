@@ -208,68 +208,6 @@ watch(
       :options-style="populationStyle"
       :options="{ onEachFeature: onEachPopulationFeature }"
     ></l-geo-json>
-    <!-- Water Source Point -->
-    <l-feature-group
-      :name="LayerName.WATERSOURCE"
-      layer-type="overlay"
-      :visible="mapStore.waterSourceLayers.waterSourceLayer.visible"
-    >
-      <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.waterSourcePoint!.features"
-        :key="`${index}-${feature.properties.id}`"
-        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="mapStore.getMarkerOptions(mapStore.waterSourceLayers.waterSourceLayer.color!)"
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
-        layer-type="overlay"
-        ><l-tooltip> {{ feature.properties.capacity }} m^3 </l-tooltip>
-      </l-circle-marker>
-    </l-feature-group>
-    <!-- Water Source Catchment Area -->
-    <l-geo-json
-      :name="LayerName.WATERSOURCECATCHMENT"
-      :geojson="mapStore.geojsonData.waterSourceCatchment"
-      :visible="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible"
-      layer-type="overlay"
-      :options-style="isochroneStyle"
-    ></l-geo-json>
-    <!-- Water Source Population -->
-    <l-geo-json
-      :key="locale"
-      :name="LayerName.HEALTHSITEPOPULATION"
-      :geojson="mapStore.geojsonData.waterSourcePopulation"
-      :visible="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
-      layer-type="overlay"
-      :options-style="populationStyle"
-      :options="{ onEachFeature: onEachPopulationFeature }"
-    ></l-geo-json>
-    <!-- Energy Supply Point -->
-    <l-feature-group
-      :name="LayerName.ENERGYSUPPLY"
-      layer-type="overlay"
-      :visible="mapStore.energySupplyLayers.energySupplyLayer.visible"
-    >
-      <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.energySupplyPoint!.features"
-        :key="`${index}-${feature.properties.id}`"
-        :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="
-          mapStore.getMarkerOptions(mapStore.energySupplyLayers.energySupplyLayer.color!)
-        "
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
-        layer-type="overlay"
-        ><l-tooltip> {{ feature.properties.capacity }} kw </l-tooltip>
-      </l-circle-marker>
-    </l-feature-group>
-    <!-- Energy Supply Catchment Area -->
-    <l-geo-json
-      :name="LayerName.ENERGYSUPPLYCATCHMENT"
-      :geojson="mapStore.geojsonData.energySupplyCatchment"
-      :visible="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible"
-      layer-type="overlay"
-      :options-style="isochroneStyle"
-    ></l-geo-json>
     <!-- KRYVYIRIH water network segments -->
     <l-geo-json
       v-if="mapStore.city === CityName.KRYVYIRIH"

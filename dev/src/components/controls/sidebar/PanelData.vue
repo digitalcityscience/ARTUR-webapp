@@ -18,9 +18,6 @@ const waterNetworkIntroduction = computed(
 );
 // Local state to store the selected isochrone type
 const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
-const waterNetworkType = computed(() =>
-  mapStore.city === CityName.NIKOPOL ? "sewageSystem" : "waterNetworkDistribution",
-);
 </script>
 <template>
   <div class="leaflet-sidebar-pane" id="data">
@@ -142,62 +139,6 @@ const waterNetworkType = computed(() =>
                   </li>
                 </ul>
               </li>
-              <li class="mb-1">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#watersource-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t("sidebar.dataPanel.sets.waterSource") }}
-                </button>
-                <ul class="form-check collapse list-unstyled" id="watersource-layer-set">
-                  <li
-                    class="mb-1"
-                    v-for="overlay in mapStore.waterSourceLayers"
-                    :key="overlay.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ $t("layerNames." + overlay.name) }}
-                    </label>
-                  </li>
-                </ul>
-              </li>
-              <li class="mb-1">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#energysupply-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t("sidebar.dataPanel.sets.energySupply") }}
-                </button>
-                <ul class="form-check list-unstyled collapse" id="energysupply-layer-set">
-                  <li
-                    class="mb-1"
-                    v-for="overlay in mapStore.energySupplyLayers"
-                    :key="overlay.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ $t("layerNames." + overlay.name) }}
-                    </label>
-                  </li>
-                </ul>
-              </li>
               <li class="mb-1" v-if="mapStore.city === CityName.KRYVYIRIH">
                 <button
                   class="btn btn-outline-success btn-layer-set"
@@ -205,7 +146,7 @@ const waterNetworkType = computed(() =>
                   data-bs-target="#waterNetwork-layer-set"
                   aria-expanded="false"
                 >
-                  {{ $t(`sidebar.dataPanel.sets.${waterNetworkType}`) }}
+                  {{ $t(`sidebar.dataPanel.sets.waterNetworkDistribution`) }}
                 </button>
                 <ul class="form-check list-unstyled collapse" id="waterNetwork-layer-set">
                   <li
@@ -375,14 +316,14 @@ const waterNetworkType = computed(() =>
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#sidebar-dataPanel-stagnent-rainfall-analysis-description"
-                        aria-expanded="false"
+                        aria-expanded="true"
                         class="btn btn-outline-secondary text-uppercase"
                       >
                         {{ $t("sidebar.dataPanel.stagnentRainfall.description") }}
                       </h6>
                       <ul
                         id="sidebar-dataPanel-stagnent-rainfall-analysis-description"
-                        class="collapse lh-sm fs-6 ps-0"
+                        class="collapse show lh-sm fs-6 ps-0"
                       >
                         <li
                           v-show="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
@@ -470,26 +411,6 @@ const waterNetworkType = computed(() =>
                 mapStore.healthSitePopulation
               "
               :type="populationType.HEALTHSITE"
-            ></population-sum-chart>
-          </div>
-        </li>
-        <li class="mb-1">
-          <button
-            class="btn btn-toggle rounded collapsed ps-0"
-            data-bs-toggle="collapse"
-            data-bs-target="#watersource-population-collapse"
-            v-show="mapStore.waterSourceLayers.waterSourcePopulationLayer.visible"
-            aria-expanded="true"
-          >
-            {{ $t("sidebar.dataPanel.popups.waterSourcePopulation") }}
-          </button>
-          <div class="collapse show" id="watersource-population-collapse">
-            <population-sum-chart
-              v-if="
-                mapStore.waterSourceLayers.waterSourcePopulationLayer.visible &&
-                mapStore.waterSourcePopulation
-              "
-              :type="populationType.WATERSOURCE"
             ></population-sum-chart>
           </div>
         </li>

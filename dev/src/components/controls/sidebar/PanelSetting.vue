@@ -4,7 +4,6 @@ import useSidebarStore from "@/stores/sidebarStore";
 import useMapStore from "@/stores/mapStore";
 import { useI18n } from "vue-i18n";
 import { CityName, cities, basemaps } from "@/assets/ts/constants";
-import FirstDashboard from "./FirstDashboard.vue";
 
 const { locale } = useI18n();
 const sidebarStore = useSidebarStore();
@@ -18,34 +17,6 @@ watch(
     topic.value = newVal === "water" ? "water" : "energy";
   },
 );
-// Cities and topics for dropdowns
-const cityOptions = computed(() =>
-  cities.map((city) => ({
-    name: city.name,
-    latLng: city.latLng,
-    isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
-    isSelected: mapStore.city === city.name,
-  })),
-);
-const topics = computed(() => [
-  { value: "water" },
-  { value: "energy" },
-  { value: "evacuation", disabled: true },
-  { value: "heating", disabled: true },
-  { value: "ecology", disabled: true },
-  { value: "physicalSafety", disabled: true },
-]);
-// Event handlers
-const handleCityChange = (e: Event) => {
-  const target = e.target as HTMLSelectElement;
-  const selectedCityName = target.value;
-  const city = cities.find((c) => c.name === selectedCityName);
-
-  if (city) {
-    map.flyTo(city.latLng, 12);
-    mapStore.setCity(city.name);
-  }
-};
 // Basemap Settings
 // Track the currently selected base map by its name, default is the first
 const selectedBasemap = ref(basemaps[0].name);

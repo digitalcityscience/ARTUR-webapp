@@ -1,5 +1,5 @@
 {
-  "website": { "subtitle": "Resilience Checker", "searchBar": "Search Address......" },
+  "website": { "subtitle": "Resilience Checker" },
   "cityNames": {
     "kryvyirih": "Kryvyi Rih",
     "nikopol": "Nikopol"
@@ -13,11 +13,6 @@
     "healthSitePoint": "Health Sites",
     "healthSiteIsochrone": "Health Sites' Catchment Area",
     "healthSitePopulation": "Health Site Access (Car): Population within/outside 10 min",
-    "waterSource": "Water Source (fake)",
-    "waterSourceCatchment": "Catchment Area of water source",
-    "waterSourcePopulation": "Catchment area of Water Source: Population within/outside a certain kilometers according to the transport network",
-    "energySupply": "Energy Plant (fake)",
-    "energySupplyCatchment": "Catchment area of Energy Plant: Population within/outside a certain kilometers according to the transport network",
     "sewageLine": "Sewage Network",
     "sewagePoint": "Sewage Network Point",
     "floodPoint": "Stagnent Rainfall Locations",
@@ -131,8 +126,6 @@
       "sets": {
         "shelter": "Layer Set: Shelter",
         "healthSite": "Layer Set: Health Site",
-        "waterSource": "Layer Set: Water Source",
-        "energySupply": "Layer Set: Energy Supply",
         "sewageSystem": "Layer Set: Sewage System",
         "waterNetworkDistribution": "Layer Set: Water Network Distribution",
         "stagnentRainfall": "Layer Set: Stagnent Rainfall"
@@ -140,8 +133,7 @@
       "popups": {
         "sheltersInfo": "Shelters Information",
         "shelterPopulationInfo": "Shelter Access Population Information",
-        "healthSitePopulationInfo": "Health Site Access Population Information",
-        "waterSourcePopulation": "Water Source Catchment Area Population"
+        "healthSitePopulationInfo": "Health Site Access Population Information"
       },
       "healthSiteIsochroneType": {
         "label": "select catchment type",
@@ -154,9 +146,7 @@
         "shelterAccess": "Accessible in 5 min",
         "shelterInaccess": "Inaccessible in 5 min",
         "healthSiteAccess": "Accessible in 10 min",
-        "healthSiteInaccess": "Inaccessible in 10 min",
-        "waterSourceAccess": "In Catchment Area",
-        "waterSourceInaccess": "Out of Catchment Area"
+        "healthSiteInaccess": "Inaccessible in 10 min"
       },
       "waterNetwork": {
         "selectScenario": "Select Scenario",

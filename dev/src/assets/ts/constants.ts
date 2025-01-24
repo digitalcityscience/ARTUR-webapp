@@ -4,7 +4,6 @@ import { ref } from "vue";
 export enum populationType {
   SHELTER = "shelter",
   HEALTHSITE = "health site",
-  WATERSOURCE = "water source",
 }
 
 export const basemaps: Array<TileLayer> = [

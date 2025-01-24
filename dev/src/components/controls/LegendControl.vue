@@ -40,23 +40,12 @@ const btnLegendIconClass = computed(() => {
         ></i>
         {{ $t("layerNames." + mapStore.healthSiteLayers.healthSiteLayer.name) }}
       </div>
-      <div v-show="mapStore.waterSourceLayers.waterSourceLayer.visible">
-        <i
-          class="point"
-          :style="{ background: mapStore.waterSourceLayers.waterSourceLayer.color }"
-        ></i>
-        {{ $t("layerNames." + mapStore.waterSourceLayers.waterSourceLayer.name) }}
-      </div>
-      <div v-show="mapStore.energySupplyLayers.energySupplyLayer.visible">
-        <i
-          class="point"
-          :style="{ background: mapStore.energySupplyLayers.energySupplyLayer.color }"
-        ></i>
-        {{ $t("layerNames." + mapStore.energySupplyLayers.energySupplyLayer.name) }}
-      </div>
       <!-- Water Network Legend for KRYVYIRIH data -->
       <water-point-legend
-        v-if="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+        v-if="
+          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
       ></water-point-legend>
       <div
         v-if="
@@ -93,7 +82,12 @@ const btnLegendIconClass = computed(() => {
         }}
       </div>
       <!-- Sewage System Legend for NIKOPOL data -->
-      <div v-if="mapStore.sewageSystemLayers.sewagePointLayer.visible">
+      <div
+        v-if="
+          mapStore.sewageSystemLayers.sewagePointLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
+      >
         <i
           class="point"
           :style="{
@@ -102,7 +96,12 @@ const btnLegendIconClass = computed(() => {
         ></i>
         {{ $t(`layerNames.${mapStore.sewageSystemLayers.sewagePointLayer.name}`) }}
       </div>
-      <div v-if="mapStore.sewageSystemLayers.sewageLineLayer.visible">
+      <div
+        v-if="
+          mapStore.sewageSystemLayers.sewageLineLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
+      >
         <i
           class="polyline"
           :style="{ background: mapStore.sewageSystemLayers.sewageLineLayer.color }"
@@ -111,12 +110,23 @@ const btnLegendIconClass = computed(() => {
       </div>
       <!-- Stagnent Rainfall Nikopol -->
       <stagnent-point-legend
-        v-show="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+        v-show="
+          mapStore.stagnentRainfallLayers.floodPointLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
       ></stagnent-point-legend>
       <street-criticality-legend
-        v-show="mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
+        v-show="
+          mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
       ></street-criticality-legend>
-      <div v-show="mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible">
+      <div
+        v-show="
+          mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible &&
+          mapStore.city === CityName.NIKOPOL
+        "
+      >
         <template
           v-for="fclass in mapStore.stagnentRainfallLayers.streetHierarchyLayer.class"
           :key="fclass"
@@ -155,38 +165,6 @@ const btnLegendIconClass = computed(() => {
           }}
           {{ range }} {{ $t("legend.minute") }}<br />
         </template>
-      </div>
-      <div v-show="mapStore.waterSourceLayers.waterSourceCatchmentLayer.visible">
-        <template
-          v-for="range in mapStore.waterSourceLayers.waterSourceCatchmentLayer.range"
-          :key="range"
-        >
-          <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >{{ $t("legend.isochrone.water") }}{{ range }} {{ $t("legend.kilometer")
-          }}<br />
-        </template>
-      </div>
-      <div v-show="mapStore.energySupplyLayers.energySupplyCatchmentLayer.visible">
-        <template
-          v-for="range in mapStore.energySupplyLayers.energySupplyCatchmentLayer.range"
-          :key="range"
-        >
-          <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
-          >{{ $t("legend.isochrone.energy") }}{{ range }} {{ $t("legend.kilometer")
-          }}<br />
-        </template>
-      </div>
-      <div
-        v-show="
-          mapStore.shelterLayers.populationLayer.visible ||
-          mapStore.healthSiteLayers.healthSitePopulationLayer.visible ||
-          mapStore.waterSourceLayers.waterSourcePopulationLayer.visible
-        "
-        class="population-grid"
-      >
-        <population-legend></population-legend>
-        <i class="polygon" style="background: #9e0000"></i
-        >{{ $t("legend.population.text") }}<br />
       </div>
     </div>
   </l-control>

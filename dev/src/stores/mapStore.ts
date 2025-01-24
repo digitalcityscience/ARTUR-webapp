@@ -17,14 +17,12 @@ const useMapStore = defineStore("map", () => {
   const zoom = 12;
   const geojsonData = ref<GeoJSONData>({});
   const isJsonDataLoad = ref<boolean>(false);
-  // const isSilent = ref(true);
   const popup = ref<string>("");
   const isochroneType = ref<IsochroneTypeKey>("auto");
   const dataCache = ref<Record<string, GeoJSONData>>({});
   const isochroneCache = ref<Record<string, Record<string, any>>>({});
   const shelterPopulation = ref<Record<string, Population>>({});
   const healthSitePopulation = ref<Record<string, Population>>({});
-  const waterSourcePopulation = ref<Record<string, Population>>({});
   const isIsochroneChanged = ref(false);
   // Fetch Data
   const fetchCountrywideData = async () => {
@@ -141,66 +139,6 @@ const useMapStore = defineStore("map", () => {
                 accessible: data.properties.accessible,
                 inaccessible: data.properties.inaccessible,
               };
-            }),
-        );
-        promises.push(
-          fetch(`/api/water-source/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterSourcePoint = data;
-            }),
-        );
-        promises.push(
-          fetch(`/api/water-source-catchment/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterSourceCatchment = data;
-              geojsonData.value.waterSourceCatchment!.features.sort(
-                (a, b) => b.properties.range - a.properties.range,
-              );
-            }),
-        );
-        promises.push(
-          fetch(`/api/water-source-population/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.waterSourcePopulation = data;
-              waterSourcePopulation.value[cityName] = {
-                accessible: data.properties.accessible,
-                inaccessible: data.properties.inaccessible,
-              };
-            }),
-        );
-        promises.push(
-          fetch(`/api/energy-supply/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.energySupplyPoint = data;
-            }),
-        );
-        promises.push(
-          fetch(`/api/energy-supply-catchment/${cityName}`)
-            .then((res) => {
-              if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-              return res.json();
-            })
-            .then((data) => {
-              geojsonData.value.energySupplyCatchment = data;
-              geojsonData.value.energySupplyCatchment!.features.sort(
-                (a, b) => b.properties.range - a.properties.range,
-              );
             }),
         );
         if (cityName === CityName.KRYVYIRIH) {
@@ -389,35 +327,6 @@ const useMapStore = defineStore("map", () => {
       name: LayerName.HEALTHSITEPOPULATION,
       visible: false,
       range: [45, 35, 25, 15, 5],
-    },
-  });
-  const waterSourceLayers = reactive<Record<string, VectorLayer>>({
-    waterSourceLayer: {
-      name: LayerName.WATERSOURCE,
-      visible: false,
-      color: "#660e60",
-    },
-    waterSourceCatchmentLayer: {
-      name: LayerName.WATERSOURCECATCHMENT,
-      visible: false,
-      range: [1, 2, 3, 4, 5, 6, 8, 10],
-    },
-    waterSourcePopulationLayer: {
-      name: LayerName.WATERSOURCEPOPULATION,
-      visible: false,
-      range: [45, 35, 25, 15, 5],
-    },
-  });
-  const energySupplyLayers = reactive<Record<string, VectorLayer>>({
-    energySupplyLayer: {
-      name: LayerName.ENERGYSUPPLY,
-      visible: false,
-      color: "red",
-    },
-    energySupplyCatchmentLayer: {
-      name: LayerName.ENERGYSUPPLYCATCHMENT,
-      visible: false,
-      range: [1, 2, 3, 4, 5, 6, 8, 10],
     },
   });
   /* Water Network layer */
@@ -618,12 +527,9 @@ const useMapStore = defineStore("map", () => {
     isJsonDataLoad,
     shelterPopulation,
     healthSitePopulation,
-    waterSourcePopulation,
     shelterLayers,
     boundaryLayer,
     healthSiteLayers,
-    waterSourceLayers,
-    energySupplyLayers,
     waterNetworkLayers,
     sewageSystemLayers,
     stagnentRainfallLayers,
