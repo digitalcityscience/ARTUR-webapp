@@ -11,9 +11,8 @@ const option = computed(() => {
   return {
     title: {
       text: t("legend.stagnentRainfall.floodPoint"),
-      left: 5,
+      left: 0,
       top: 0,
-      bottom: 0,
       textStyle: {
         color: "#3d3d3d",
         fontSize: 10,
@@ -34,8 +33,7 @@ const option = computed(() => {
         fontSize: 10,
       },
       orient: "horizontal",
-      left: 5, // Position
-      top: 40,
+      left: 0, // Position
       bottom: 0,
     },
   };
@@ -57,6 +55,6 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 230px;
-  height: 90px;
+  height: 65px;
 }
 </style>

@@ -292,8 +292,11 @@ watch(
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
-          getWaterNetworkPointColor(
-            feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`],
+          mapStore.getMarkerOptions(
+            mapStore.getWaterNetworkPointColor(
+              feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`],
+            ),
+            4,
           )
         "
         @mouseover="mapStore.highlightPoint"
@@ -327,7 +330,7 @@ watch(
       :name="LayerName.SEWAGELINE"
       :geojson="mapStore.geojsonData.sewageLine"
       :visible="mapStore.sewageSystemLayers.sewageLineLayer.visible"
-      :options-style="lineStyle"
+      :options-style="segmentStyle"
     ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group

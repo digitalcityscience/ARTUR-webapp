@@ -215,30 +215,30 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       levels: [
         {
           r0: 0,
-          r: "10%",
+          r: 30,
           itemStyle: {
             color: "transparent",
             opacity: 0,
           },
         },
         {
-          r0: "10%",
-          r: "20%",
+          r0: 30,
+          r: 70,
           label: {
             rotate: "tangential",
           },
         },
         {
-          r0: "20%",
-          r: "45%",
+          r0: 70,
+          r: 180,
           label: {
             align: "center",
-            width: 95,
+            width: 100,
           },
         },
         {
-          r0: "45%",
-          r: "99%",
+          r0: 180,
+          r: 385,
           label: {
             align: "center",
             width: 200,
@@ -1806,22 +1806,22 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       levels: [
         {
           r0: 0,
-          r: "12%",
+          r: 50,
           itemStyle: {
             color: "white",
             opacity: 0.4,
           },
         },
         {
-          r0: "12%",
-          r: "28%",
+          r0: 50,
+          r: 120,
           label: {
             rotate: "tangential",
           },
         },
         {
-          r0: "28%",
-          r: "99%",
+          r0: 120,
+          r: 410,
           label: {
             align: "center",
             width: 325,
@@ -1910,7 +1910,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 330,
-          r: 425,
+          r: 400,
           label: {
             width: 100,
             padding: 0,
@@ -1988,7 +1988,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 330,
-          r: 425,
+          r: 400,
           label: {
             width: 100,
             padding: 0,

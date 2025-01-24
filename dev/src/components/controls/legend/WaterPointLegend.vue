@@ -11,7 +11,7 @@ const option = computed(() => {
   return {
     title: {
       text: t("legend.waterNetwork.name"),
-      left: 5,
+      left: 0, // Position
       top: 0,
       textStyle: {
         color: "#3d3d3d",
@@ -32,8 +32,8 @@ const option = computed(() => {
         fontSize: 10,
       },
       orient: "horizontal",
-      left: 5, // Position
-      top: "middle",
+      left: 0, // Position
+      bottom: 0,
     },
     series: [], // No actual data; just displaying the color bar
   };
@@ -54,7 +54,7 @@ onMounted(() => {
 <template><div ref="chartContainer" class="chart-container"></div></template>
 <style scoped>
 .chart-container {
-  width: 360px;
-  height: 82px;
+  width: 320px;
+  height: 65px;
 }
 </style>

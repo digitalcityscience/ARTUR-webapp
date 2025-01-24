@@ -11,7 +11,7 @@ const option = computed(() => {
   return {
     title: {
       text: t("legend.stagnentRainfall.streetCriticality"),
-      left: 5,
+      left: 0,
       top: 0,
       textStyle: {
         color: "#3d3d3d",
@@ -33,8 +33,8 @@ const option = computed(() => {
         fontSize: 10,
       },
       orient: "horizontal",
-      left: 5, // Position
-      top: "middle",
+      left: 0, // Position
+      bottom: 0,
     },
     series: [], // No actual data; just displaying the color bar
   };
@@ -56,6 +56,6 @@ onMounted(() => {
 <style scoped>
 .chart-container {
   width: 230px;
-  height: 82px;
+  height: 50px;
 }
 </style>
