@@ -29,6 +29,11 @@ export default defineConfig({
         },
       },
     },
+    allowedHosts: [
+      "artur.dcs.hcu-hamburg.de",
+      "nikopol.artur.dcs.hcu-hamburg.de",
+      "kryvyirih.artur.dcs.hcu-hamburg.de",
+    ],
   },
   resolve: {
     alias: {
