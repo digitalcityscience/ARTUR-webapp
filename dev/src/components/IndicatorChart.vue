@@ -31,12 +31,11 @@ const getChartOption = () => {
   } else {
     option =
       switchGraph.value == GraphTypes.SANKEY
-        ? chartStore.sunburstOption
+        ? chartStore.sunburstOptionLevel0
         : chartStore.sankeyOption;
   }
   return option;
 };
-
 const switchGraphType = () => {
   switchGraph.value =
     switchGraph.value == GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY;
@@ -71,19 +70,19 @@ function handleClick(params: any): void {
       let dimensionData = chartStore.sunburstData.children.find(
         (node: any) => node.name === chartStore.sunburstColorSet[params.color],
       );
-      reloadChart(chartStore.sunburstOption1, dimensionData, color);
+      reloadChart(chartStore.sunburstOptionLevel1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
       // Sunburst First Graph Click Level 2
       let color = params.color;
       let data = chartStore.sunburstData.children.find(
         (node: any) => node.name === params.name,
       );
-      reloadChart(chartStore.sunburstOption1, data, color);
+      reloadChart(chartStore.sunburstOptionLevel1, data, color);
       return;
     } else if (level === 2) {
       // Sunburst Second Graph Click Level 2
       chart.clear();
-      chart.setOption(chartStore.sunburstOption);
+      chart.setOption(chartStore.sunburstOptionLevel0);
       return;
     } else if (level === 3 && params.value === 1) {
       // Sunburst First Graph Click Level 3
@@ -93,7 +92,7 @@ function handleClick(params: any): void {
         (node: any) => node.name === dimension.name,
       );
       let data = dimensionData?.children.find((node: any) => node.name === params.name);
-      reloadChart(chartStore.sunburstOption2, data, color);
+      reloadChart(chartStore.sunburstOptionLevel2, data, color);
       return;
     }
   }
@@ -111,7 +110,7 @@ function setBasicOption() {
   if (indicatorStore.indicatorType === "basic")
     chart.setOption(chartStore.sunburstBasicOption);
   else {
-    chart.setOption(chartStore.sunburstOption);
+    chart.setOption(chartStore.sunburstOptionLevel0);
     chart.on("click", (params: any) => handleClick(params));
   }
 }

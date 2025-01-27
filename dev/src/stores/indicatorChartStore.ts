@@ -19,7 +19,6 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         children: [
           {
             name: t("initialIndicators.social.1.name"),
-            itemStyle: { color: "#91CC75" },
             children: [
               {
                 name: t("initialIndicators.social.1.1.name"),
@@ -260,1476 +259,264 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   const sunburstData = {
     name: t("echarts.name"),
     children: computed(() => [
+      // Social
       {
         name: t("echarts.social.name"),
         children: [
           {
             name: t("echarts.social.1.name"),
             children: [
-              {
-                name: t("echarts.social.1.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.1.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.1.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.1.4"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.1.5"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.1.1"), value: 1 },
+              { name: t("echarts.social.1.2"), value: 2 },
+              { name: t("echarts.social.1.3"), value: 2 },
+              { name: t("echarts.social.1.4"), value: 1 },
+              { name: t("echarts.social.1.5"), value: 1 },
             ],
           },
           {
             name: t("echarts.social.2.name"),
             children: [
-              {
-                name: t("echarts.social.2.1"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.2.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.2.3"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.2.1"), value: 3 },
+              { name: t("echarts.social.2.2"), value: 2 },
+              { name: t("echarts.social.2.3"), value: 3 },
             ],
           },
           {
             name: t("echarts.social.3.name"),
             children: [
-              {
-                name: t("echarts.social.3.1"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.3"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.4"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.5"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.6"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.7"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.8"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.9"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.10"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.11"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.12"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.13"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.14"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.3.15"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.3.1"), value: 5 },
+              { name: t("echarts.social.3.2"), value: 2 },
+              { name: t("echarts.social.3.3"), value: 1 },
+              { name: t("echarts.social.3.4"), value: 4 },
+              { name: t("echarts.social.3.5"), value: 4 },
+              { name: t("echarts.social.3.6"), value: 2 },
+              { name: t("echarts.social.3.7"), value: 3 },
+              { name: t("echarts.social.3.8"), value: 4 },
+              { name: t("echarts.social.3.9"), value: 1 },
+              { name: t("echarts.social.3.10"), value: 1 },
+              { name: t("echarts.social.3.11"), value: 1 },
+              { name: t("echarts.social.3.12"), value: 2 },
+              { name: t("echarts.social.3.13"), value: 1 },
+              { name: t("echarts.social.3.14"), value: 3 },
+              { name: t("echarts.social.3.15"), value: 1 },
             ],
           },
           {
             name: t("echarts.social.4.name"),
             children: [
-              {
-                name: t("echarts.social.4.1"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.4.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.4.1"), value: 5 },
+              { name: t("echarts.social.4.2"), value: 3 },
             ],
           },
           {
             name: t("echarts.social.5.name"),
             children: [
-              {
-                name: t("echarts.social.5.1"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.5.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.5.3"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.5.4"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.5.1"), value: 3 },
+              { name: t("echarts.social.5.2"), value: 2 },
+              { name: t("echarts.social.5.3"), value: 5 },
+              { name: t("echarts.social.5.4"), value: 2 },
             ],
           },
           {
             name: t("echarts.social.6.name"),
             children: [
-              {
-                name: t("echarts.social.6.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.social.6.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.social.6.1"), value: 1 },
+              { name: t("echarts.social.6.2"), value: 2 },
             ],
           },
         ],
       },
+      //Economic
       {
-        //Economic Start
         name: t("echarts.economic.name"),
         children: [
           {
             name: t("echarts.economic.1.name"),
             children: [
-              {
-                name: t("echarts.economic.1.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.1.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.1.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.1.4"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.economic.1.1"), value: 1 },
+              { name: t("echarts.economic.1.2"), value: 2 },
+              { name: t("echarts.economic.1.3"), value: 2 },
+              { name: t("echarts.economic.1.4"), value: 3 },
             ],
           },
           {
             name: t("echarts.economic.2.name"),
             children: [
-              {
-                name: t("echarts.economic.2.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.4"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.5"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.6"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.7"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.8"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.9"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.10"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.11"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.2.12"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.economic.2.1"), value: 2 },
+              { name: t("echarts.economic.2.2"), value: 3 },
+              { name: t("echarts.economic.2.3"), value: 2 },
+              { name: t("echarts.economic.2.4"), value: 1 },
+              { name: t("echarts.economic.2.5"), value: 3 },
+              { name: t("echarts.economic.2.6"), value: 3 },
+              { name: t("echarts.economic.2.7"), value: 1 },
+              { name: t("echarts.economic.2.8"), value: 2 },
+              { name: t("echarts.economic.2.9"), value: 1 },
+              { name: t("echarts.economic.2.10"), value: 2 },
+              { name: t("echarts.economic.2.11"), value: 2 },
+              { name: t("echarts.economic.2.12"), value: 4 },
             ],
           },
           {
             name: t("echarts.economic.3.name"),
             children: [
-              {
-                name: t("echarts.economic.3.1"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.3.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.economic.3.3"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.economic.3.1"), value: 4 },
+              { name: t("echarts.economic.3.2"), value: 3 },
+              { name: t("echarts.economic.3.3"), value: 1 },
             ],
           },
           {
             name: t("echarts.economic.4.name"),
-            children: [
-              {
-                name: t("echarts.economic.4.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-            ],
+            children: [{ name: t("echarts.economic.4.1"), value: 1 }],
           },
         ],
       },
+      //Institutional
       {
-        //Institutional start
         name: t("echarts.institutional.name"),
         children: [
           {
             name: t("echarts.institutional.1.name"),
             children: [
-              {
-                name: t("echarts.institutional.1.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.2"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.3"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.4"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.5"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.6"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.7"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.8"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.9"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.10"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.11"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.12"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.13"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.14"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.15"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.1.16"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.institutional.1.1"), value: 2 },
+              { name: t("echarts.institutional.1.2"), value: 1 },
+              { name: t("echarts.institutional.1.3"), value: 1 },
+              { name: t("echarts.institutional.1.4"), value: 2 },
+              { name: t("echarts.institutional.1.5"), value: 1 },
+              { name: t("echarts.institutional.1.6"), value: 2 },
+              { name: t("echarts.institutional.1.7"), value: 2 },
+              { name: t("echarts.institutional.1.8"), value: 2 },
+              { name: t("echarts.institutional.1.9"), value: 4 },
+              { name: t("echarts.institutional.1.10"), value: 2 },
+              { name: t("echarts.institutional.1.11"), value: 2 },
+              { name: t("echarts.institutional.1.12"), value: 3 },
+              { name: t("echarts.institutional.1.13"), value: 2 },
+              { name: t("echarts.institutional.1.14"), value: 4 },
+              { name: t("echarts.institutional.1.15"), value: 1 },
+              { name: t("echarts.institutional.1.16"), value: 2 },
             ],
           },
           {
             name: t("echarts.institutional.2.name"),
             children: [
-              {
-                name: t("echarts.institutional.2.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.institutional.2.1"), value: 1 },
               {
                 name: t("echarts.institutional.2.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
+                value: 2,
               },
             ],
           },
           {
             name: t("echarts.institutional.3.name"),
             children: [
-              {
-                name: t("echarts.institutional.3.1"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.2"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.3"),
-                children: [
-                  {
-                    value: 6,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.institutional.3.1"), value: 3 },
+              { name: t("echarts.institutional.3.2"), value: 4 },
+              { name: t("echarts.institutional.3.3"), value: 6 },
             ],
           },
           {
             name: t("echarts.institutional.4.name"),
             children: [
-              {
-                name: t("echarts.institutional.4.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.4.2"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.4.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.4.4"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.institutional.4.1"), value: 2 },
+              { name: t("echarts.institutional.4.2"), value: 1 },
+              { name: t("echarts.institutional.4.3"), value: 2 },
+              { name: t("echarts.institutional.4.4"), value: 1 },
             ],
           },
           {
             name: t("echarts.institutional.5.name"),
             children: [
-              {
-                name: t("echarts.institutional.5.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.4"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.5"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.6"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.7"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.8"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.5.9"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.institutional.5.1"), value: 2 },
+              { name: t("echarts.institutional.5.2"), value: 2 },
+              { name: t("echarts.institutional.5.3"), value: 2 },
+              { name: t("echarts.institutional.5.4"), value: 4 },
+              { name: t("echarts.institutional.5.5"), value: 3 },
+              { name: t("echarts.institutional.5.6"), value: 2 },
+              { name: t("echarts.institutional.5.7"), value: 3 },
+              { name: t("echarts.institutional.5.8"), value: 5 },
+              { name: t("echarts.institutional.5.9"), value: 2 },
             ],
           },
           {
             name: t("echarts.institutional.6.name"),
-            children: [
-              {
-                name: t("echarts.institutional.6.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-            ],
+            children: [{ name: t("echarts.institutional.6.1"), value: 2 }],
           },
         ],
       },
+      //Physical
       {
-        //Physical start
         name: t("echarts.physical.name"),
         children: [
           {
             name: t("echarts.physical.1.name"),
             children: [
-              {
-                name: t("echarts.physical.1.1"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.1.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.1.1"), value: 4 },
+              { name: t("echarts.physical.1.2"), value: 2 },
             ],
           },
           {
             name: t("echarts.physical.2.name"),
             children: [
-              {
-                name: t("echarts.physical.2.1"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.2.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.2.1"), value: 3 },
+              { name: t("echarts.physical.2.2"), value: 3 },
             ],
           },
           {
             name: t("echarts.physical.3.name"),
             children: [
-              {
-                name: t("echarts.physical.3.1"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.3.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.3.1"), value: 1 },
+              { name: t("echarts.physical.3.2"), value: 3 },
             ],
           },
           {
             name: t("echarts.physical.4.name"),
-            children: [
-              {
-                name: t("echarts.physical.4.1"),
-                children: [
-                  {
-                    value: 7,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-            ],
+            children: [{ name: t("echarts.physical.4.1"), value: 7 }],
           },
           {
             name: t("echarts.physical.5.name"),
             children: [
-              {
-                name: t("echarts.physical.5.1"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.2"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.4"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.5"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.6"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.7"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.5.8"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.5.1"), value: 5 },
+              { name: t("echarts.physical.5.2"), value: 3 },
+              { name: t("echarts.physical.5.3"), value: 2 },
+              { name: t("echarts.physical.5.4"), value: 3 },
+              { name: t("echarts.physical.5.5"), value: 5 },
+              { name: t("echarts.physical.5.6"), value: 1 },
+              { name: t("echarts.physical.5.7"), value: 3 },
+              { name: t("echarts.physical.5.8"), value: 5 },
             ],
           },
           {
             name: t("echarts.physical.6.name"),
             children: [
-              {
-                name: t("echarts.physical.6.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.6.2"),
-                children: [
-                  {
-                    value: 1.5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.6.3"),
-                children: [
-                  {
-                    value: 1.5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.6.1"), value: 2 },
+              { name: t("echarts.physical.6.2"), value: 1.5 },
+              { name: t("echarts.physical.6.3"), value: 1.5 },
             ],
           },
           {
             name: t("echarts.physical.7.name"),
             children: [
-              {
-                name: t("echarts.physical.7.1"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.2"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.4"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.5"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.6"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.7"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.8"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.9"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.7.10"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.7.1"), value: 2 },
+              { name: t("echarts.physical.7.2"), value: 1 },
+              { name: t("echarts.physical.7.3"), value: 2 },
+              { name: t("echarts.physical.7.4"), value: 2 },
+              { name: t("echarts.physical.7.5"), value: 4 },
+              { name: t("echarts.physical.7.6"), value: 2 },
+              { name: t("echarts.physical.7.7"), value: 3 },
+              { name: t("echarts.physical.7.8"), value: 2 },
+              { name: t("echarts.physical.7.9"), value: 5 },
+              { name: t("echarts.physical.7.10"), value: 3 },
             ],
           },
           {
             name: t("echarts.physical.8.name"),
             children: [
-              {
-                name: t("echarts.physical.8.1"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.2"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.3"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.4"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.5"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.6"),
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.physical.8.7"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
+              { name: t("echarts.physical.8.1"), value: 4 },
+              { name: t("echarts.physical.8.2"), value: 2 },
+              { name: t("echarts.physical.8.3"), value: 2 },
+              { name: t("echarts.physical.8.4"), value: 2 },
+              { name: t("echarts.physical.8.5"), value: 3 },
+              { name: t("echarts.physical.8.6"), value: 1 },
+              { name: t("echarts.physical.8.7"), value: 2 },
             ],
           },
         ],
@@ -1777,7 +564,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     "#9A60B4", // purple
     "#EA7CCC", // pink
   ];
-  const sunburstOption = {
+  const sunburstOptionLevel0 = {
     backgroundColor: "#fff",
     tooltip: {
       show: true,
@@ -1830,10 +617,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 120,
-          r: 410,
+          r: 420,
           label: {
             align: "center",
-            width: 325,
+            width: 300,
           },
           nodeClick: false,
         },
@@ -1849,7 +636,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   };
   let level1Data: any[] = [];
   let level2Data: any[] = [];
-  let sunburstOption1 = {
+  let sunburstOptionLevel1 = {
     backgroundColor: "#fff",
     tooltip: {
       show: true,
@@ -1908,20 +695,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 170,
-          r: 330,
+          r: 410,
           label: {
             align: "center",
-            width: 160,
-            padding: 0,
-            silent: false,
-          },
-          nodeClick: false,
-        },
-        {
-          r0: 330,
-          r: 400,
-          label: {
-            width: 100,
+            width: 230,
             padding: 0,
             silent: false,
           },
@@ -1937,7 +714,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       right: 0,
     },
   };
-  let sunburstOption2 = {
+  let sunburstOptionLevel2 = {
     backgroundColor: "#fff",
     tooltip: {
       show: true,
@@ -1981,25 +758,15 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
         {
           r0: 70,
-          r: 170,
+          r: 200,
           label: { rotate: "tangential" },
         },
         {
-          r0: 170,
-          r: 330,
+          r0: 200,
+          r: 380,
           label: {
             align: "center",
             width: 160,
-            padding: 0,
-            silent: false,
-          },
-          nodeClick: false,
-        },
-        {
-          r0: 330,
-          r: 400,
-          label: {
-            width: 100,
             padding: 0,
             silent: false,
           },
@@ -7662,9 +6429,9 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     sunburstDimension,
     sunburstIndicator,
     sunburstColorSet,
-    sunburstOption,
-    sunburstOption1,
-    sunburstOption2,
+    sunburstOptionLevel0,
+    sunburstOptionLevel1,
+    sunburstOptionLevel2,
     capacitySelected,
     sankeyOption,
     sankeyBasicOption,
