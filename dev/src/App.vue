@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import MapView from "./components/MapView.vue";
-import { useI18n } from "vue-i18n";
-const { t } = useI18n();
 </script>
 
 <template>
@@ -23,8 +21,8 @@ const { t } = useI18n();
             <i class="bi bi-search"></i>
           </button>
         </div> -->
-        <div class="logo-container">
-          <img src="/logos.png" alt="logos" class="logo" />
+        <div class="logo-container rounded">
+          <img src="/logos.jpg" alt="logos" class="logo" />
         </div>
       </div>
     </header>
@@ -75,6 +73,6 @@ const { t } = useI18n();
 .logo {
   height: 4rem;
   object-fit: contain;
-  opacity: 0.6;
+  opacity: 1;
 }
 </style>
