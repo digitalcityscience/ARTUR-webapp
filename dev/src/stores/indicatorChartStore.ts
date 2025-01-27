@@ -19,6 +19,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         children: [
           {
             name: t("initialIndicators.social.1.name"),
+            itemStyle: { color: "#91CC75" },
             children: [
               {
                 name: t("initialIndicators.social.1.1.name"),
@@ -40,6 +41,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
           },
           {
             name: t("initialIndicators.social.2.name"),
+            itemStyle: { color: "#91CC75" },
             children: [
               {
                 name: t("initialIndicators.social.2.1.name"),
@@ -49,6 +51,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
           },
           {
             name: t("initialIndicators.social.3.name"),
+            itemStyle: { color: "#91CC75" },
             children: [
               {
                 name: t("initialIndicators.social.3.1.name"),
@@ -75,20 +78,15 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             children: [
               {
                 name: t("initialIndicators.economic.1.1.name"),
-                value: 1,
+                value: 1.1,
               },
               {
                 name: t("initialIndicators.economic.1.2.name"),
-                value: 1,
+                value: 1.1,
               },
-            ],
-          },
-          {
-            name: t("initialIndicators.economic.2.name"),
-            children: [
               {
-                name: t("initialIndicators.economic.2.1.name"),
-                value: 1,
+                name: t("initialIndicators.economic.1.3.name"),
+                value: 1.1,
               },
             ],
           },
@@ -161,7 +159,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
             children: [
               {
                 name: t("initialIndicators.physical.2.1.name"),
-                value: 1,
+                value: 1.5,
               },
             ],
           },
@@ -195,6 +193,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     series: {
       type: "sunburst",
       data: basicSunburstData.children,
+      sort: undefined,
       radius: [0, "100%"],
       itemStyle: {
         borderRadius: 7,
@@ -249,7 +248,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         },
       ],
     },
-    color: ["#91CC75", "#EE6666", "#73C0DE", "#FAC858"],
+    color: ["#91CC75", "#FAC858", "#EE6666", "#73C0DE"],
     grid: {
       top: 0,
       bottom: 0,
@@ -1131,105 +1130,6 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                   },
                 ],
               },
-              {
-                name: t("echarts.institutional.3.4"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.5"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.6"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.7"),
-                children: [
-                  {
-                    value: 4,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.8"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.9"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.10"),
-                children: [
-                  {
-                    value: 3,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.11"),
-                children: [
-                  {
-                    value: 5,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
-              {
-                name: t("echarts.institutional.3.12"),
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: { opacity: 0.3 },
-                    tooltip: { show: false },
-                    emphasis: { disabled: true },
-                  },
-                ],
-              },
             ],
           },
           {
@@ -1279,8 +1179,117 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
                   },
                 ],
               },
+            ],
+          },
+          {
+            name: t("echarts.institutional.5.name"),
+            children: [
               {
-                name: t("echarts.institutional.4.5"),
+                name: t("echarts.institutional.5.1"),
+                children: [
+                  {
+                    value: 2,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.2"),
+                children: [
+                  {
+                    value: 2,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.3"),
+                children: [
+                  {
+                    value: 2,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.4"),
+                children: [
+                  {
+                    value: 4,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.5"),
+                children: [
+                  {
+                    value: 3,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.6"),
+                children: [
+                  {
+                    value: 2,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.7"),
+                children: [
+                  {
+                    value: 3,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.8"),
+                children: [
+                  {
+                    value: 5,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+              {
+                name: t("echarts.institutional.5.9"),
+                children: [
+                  {
+                    value: 2,
+                    itemStyle: { opacity: 0.3 },
+                    tooltip: { show: false },
+                    emphasis: { disabled: true },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: t("echarts.institutional.6.name"),
+            children: [
+              {
+                name: t("echarts.institutional.6.1"),
                 children: [
                   {
                     value: 2,
@@ -2304,7 +2313,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.5"),
+      name: t("echarts.institutional.5.2"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -2314,7 +2323,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.9"),
+      name: t("echarts.institutional.5.6"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -2399,37 +2408,37 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.4"),
+      name: t("echarts.institutional.5.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.6"),
+      name: t("echarts.institutional.5.3"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.7"),
+      name: t("echarts.institutional.5.4"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.8"),
+      name: t("echarts.institutional.5.5"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.10"),
+      name: t("echarts.institutional.5.7"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.11"),
+      name: t("echarts.institutional.5.8"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.3.12"),
+      name: t("echarts.institutional.5.9"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -2454,7 +2463,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("echarts.institutional.4.5"),
+      name: t("echarts.institutional.6.1"),
       itemStyle: { color: "#EE6666" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -3989,41 +3998,41 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.5"),
+      target: t("echarts.institutional.5.2"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.5"),
+      source: t("echarts.institutional.5.2"),
       target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
@@ -4059,36 +4068,36 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.9"),
+      target: t("echarts.institutional.5.6"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.9"),
+      source: t("echarts.institutional.5.6"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
@@ -4592,242 +4601,242 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.4"),
+      target: t("echarts.institutional.5.1"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.4"),
+      source: t("echarts.institutional.5.1"),
       target: t("echarts.capacities.Robustness"),
       value: 0.25,
     },
     {
-      source: t("echarts.institutional.3.4"),
+      source: t("echarts.institutional.5.1"),
       target: t("echarts.capacities.Integration"),
       value: 0.25,
     },
     {
-      source: t("echarts.institutional.3.4"),
+      source: t("echarts.institutional.5.1"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.25,
     },
     {
-      source: t("echarts.institutional.3.4"),
+      source: t("echarts.institutional.5.1"),
       target: t("echarts.capacities.Transparency"),
       value: 0.25,
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.6"),
+      target: t("echarts.institutional.5.3"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.6"),
+      source: t("echarts.institutional.5.3"),
       target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.7"),
+      target: t("echarts.institutional.5.4"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.7"),
+      source: t("echarts.institutional.5.4"),
       target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.8"),
+      target: t("echarts.institutional.5.5"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.3.8"),
+      source: t("echarts.institutional.5.5"),
       target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
 
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.10"),
+      target: t("echarts.institutional.5.7"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.10"),
+      source: t("echarts.institutional.5.7"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.11"),
+      target: t("echarts.institutional.5.8"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Robustness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.11"),
+      source: t("echarts.institutional.5.8"),
       target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.3.12"),
+      target: t("echarts.institutional.5.9"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Diversity"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Integration"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Inclusiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.16,
     },
     {
-      source: t("echarts.institutional.3.12"),
+      source: t("echarts.institutional.5.9"),
       target: t("echarts.capacities.Transparency"),
       value: 0.16,
     },
@@ -4928,41 +4937,41 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.institutional"),
-      target: t("echarts.institutional.4.5"),
+      target: t("echarts.institutional.6.1"),
       value: 1,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Reflectiveness"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: t("echarts.institutional.4.5"),
+      source: t("echarts.institutional.6.1"),
       target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },
@@ -6644,7 +6653,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       depth: SANKEYLEVELS.LEVEL2,
     },
     {
-      name: t("initialIndicators.economic.2.1.name"),
+      name: t("initialIndicators.economic.1.3.name"),
       itemStyle: { color: "#FAC858" },
       depth: SANKEYLEVELS.LEVEL2,
     },
@@ -7066,7 +7075,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     },
     {
       source: t("sidebar.indicatorPanel.radarChart.economic"),
-      target: t("initialIndicators.economic.2.1.name"),
+      target: t("initialIndicators.economic.1.3.name"),
       value: 1,
     },
     {
@@ -7110,37 +7119,37 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       value: 0.25,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Robustness"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Redundancy"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Diversity"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Integration"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Resourcefulness"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Flexibility"),
       value: 0.14,
     },
     {
-      source: t("initialIndicators.economic.2.1.name"),
+      source: t("initialIndicators.economic.1.3.name"),
       target: t("echarts.capacities.Transparency"),
       value: 0.14,
     },

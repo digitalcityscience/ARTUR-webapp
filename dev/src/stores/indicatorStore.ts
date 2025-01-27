@@ -27,7 +27,7 @@ const useIndicatorStore = defineStore("selected indicators", () => {
     "initialIndicators.social.3.3.name": "#91CC75",
     "initialIndicators.economic.1.1.name": "#FAC858",
     "initialIndicators.economic.1.2.name": "#FAC858",
-    "initialIndicators.economic.2.1.name": "#FAC858",
+    "initialIndicators.economic.1.3.name": "#FAC858",
     "initialIndicators.institutional.1.1.name": "#EE6666",
     "initialIndicators.institutional.2.1.name": "#EE6666",
     "initialIndicators.institutional.3.1.name": "#EE6666",

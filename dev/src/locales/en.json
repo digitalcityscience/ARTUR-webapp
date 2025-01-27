@@ -596,7 +596,7 @@
         "6": "Incentives for business and society to support resilience building",
         "7": "Planned investments",
         "8": "Comprehensive business continuity planning",
-        "9": "Inclusive labour policies",
+        "9": "Incentives for inclusive labour policies",
         "10": "Local business development and innovation",
         "11": "Strong integration with regional & global economies",
         "12": "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities"
@@ -642,24 +642,30 @@
         "name": "Planning for risk and disaster",
         "1": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
         "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-        "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
-        "4": "Early warning system and reaching level",
-        "5": "Comprehensive government emergency management",
-        "6": "Integration of resilience in city functions / portfolios",
-        "7": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-        "8": "Disaster management / preparedness / emergency response plan",
-        "9": "Appropriate land use and zoning",
-        "10": "Appropriately land use planning considering risk, hazards and vulnerability",
-        "11": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
-        "12": "Projected changes in location of vulnerable populations"
+        "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?"
       },
       "4": {
-        "name": "Public health systems",
-        "1": "Adequate access to quality healthcare",
+        "name": "Public health system",
+        "1": "Access to healthcare",
         "2": "Emergency medical care",
         "3": "Effective emergency response services",
-        "4": "Robust public health systems",
-        "5": "Security services: fire services, police stations, etc.;"
+        "4": "Robust public health systems"
+      },
+      "5": {
+        "name": "Planning Resilience",
+        "1": "Early warning system and reaching level",
+        "2": "Comprehensive government emergency management",
+        "3": "Integration of resilience in city functions / portfolios",
+        "4": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+        "5": "Disaster management / preparedness / emergency response plan",
+        "6": "Appropriate land use and zoning",
+        "7": "Appropriately land use planning considering risk, hazards and vulnerability",
+        "8": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
+        "9": "Projected changes in location of vulnerable populations"
+      },
+      "6": {
+        "name": "Security services",
+        "1": "Security services: fire services, police stations, etc.;"
       }
     },
     "physical": {
@@ -685,14 +691,14 @@
       },
       "5": {
         "name": "Major infrastructure",
-        "1": "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+        "1": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports,  among others",
         "2": "Critical infrastructure: mapping, planning and protection strategies",
         "3": "Infrastructure and services damaged",
         "4": "Protective infrastructure: well-designed and well-built based on risk information",
         "5": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
         "6": "Major roads",
         "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
-        "8": "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.;"
+        "8": "Water managament measures"
       },
       "6": {
         "name": "Major Infrastructure & Planning Resilience",
@@ -715,7 +721,7 @@
       },
       "8": {
         "name": "Planning Resilience",
-        "1": "% of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
+        "1": "Percentage of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
         "2": "Adequate continuity for critical assets & services",
         "3": "Comprehensive hazard monitoring and risk assessment",
         "4": "First responder equipment, with military or civilian back up",
@@ -948,19 +954,23 @@
               "score 3": "The city understands all routes to secure funding for DRR activities, is actively pursuing a range of these and has had some success."
             }
           }
-        }
-      },
-      "2": {
-        "name": "Planning Resilience",
-        "1": {
-          "name": "Financial plan and budget for resilience, including contingency funds",
+        },
+        "3": {
+          "name": "Incentives for inclusive labour policies",
           "questions": {
             "1": {
-              "text": "Does the city have in place a specific 'ring fenced' (protected) budget, the necessary resources and contingency fund arrangements for local disaster risk reduction (mitigation, prevention, response and recovery)?",
-              "score 0": "No clear plan.",
-              "score 1": "There are some plans in different agencies / organizations but they are not co-ordinated.",
-              "score 2": "The city financial plan allows for DRR activities, budgets are ring fenced.",
-              "score 3": "The city financial plan is comprehensive in relation to DRR, budgets are ring fenced and contingency plans are in place."
+              "text": "To what extent are there labour policies and standards in place that effectively deter discrimination and promote fair employment conditions?",
+              "score 0": "ILO labour standards have not been ratified at the national level. The labour market is entirely unregulated and discrimination is widespread. Unemployment among some population groups (gender, age, race etc.) is significantly higher than other groups. There are no policies or standards in place to promote fair employment conditions. There are no regulations in place that establish a minimum wage. Organisations to protect workers' rights are discouraged or illegal.",
+              "score 1": "Slightly better than worse score.",
+              "score 2": "Somewhat worse than maximum score.",
+              "score 3": "International Labour Organization (ILO) labour standards have been ratified at the national level and there is widespread compliance in law and practice. Strong anti-discriminatory laws and regulations apply to the labour market and are enforced. Employment rates are broadly similar between different population groups. There are robust policies and standards in place to promote fair employment conditions. There are no policies or regulations in place to deter membership of organisations to protect workers' rights."
+            },
+            "2": {
+              "text": "To what is extent is there a public aid system that is inclusive for all (dependent on need)?",
+              "score 0": "There is no public aid system operating within the city. There is no financial assistance provided to unemployed persons or financial assistance is available but there are some population groups that are not considered eligible. There are no effective mechanisms in place to help unemployed people out of poverty and into employment.",
+              "score 1": "Slightly better than worse score.",
+              "score 2": "Somewhat worse than maximum score.",
+              "score 3": "There is a comprehensive public aid system available. Financial assistance is provided to unemployed persons and this is available to all groups within the working-age population (regardless of ethnicity, gender and age). There are mechanisms in place to move people out of poverty and into employment and there is robust evidence that these mechanisms are effective."
             }
           }
         }
@@ -984,7 +994,7 @@
         }
       },
       "2": {
-        "name": "Planning for risk and disaster",
+        "name": "Planning Resilience",
         "1": {
           "name": "Early warning system and reaching level",
           "questions": {
@@ -999,9 +1009,9 @@
         }
       },
       "3": {
-        "name": "Public health systems",
+        "name": "Public health system",
         "1": {
-          "name": "Adequate access to quality healthcare",
+          "name": "Access to healthcare",
           "questions": {
             "1": {
               "text": "To what extent do general healthcare services operate within capacity at all times and provide adequate and affordable healthcare to all?",
@@ -1099,7 +1109,7 @@
       "1": {
         "name": "Major infrastructure",
         "1": {
-          "name": "Major infrastructure: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, among others",
+          "name": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports,  among others",
           "questions": {
             "1": {
               "text": "does the city administration or other planning agencies developed, released, and updated a city baseline map or maps for the following topics: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, or other topics of similar nature and relevance?",
@@ -1123,7 +1133,7 @@
           }
         },
         "3": {
-          "name": "Water, sanitation and energy: primary drainage network, main water tanks/water storage facilities, wastewater treatment infrastructure, etc.;",
+          "name": "Water managament measures",
           "questions": {
             "1": {
               "text": "To the best of your knowledge, are there enough water storage facilities which are safe in case of an emergency?",
@@ -1167,7 +1177,7 @@
       "3": {
         "name": "Planning Resilience",
         "1": {
-          "name": "% of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
+          "name": "Percentage of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
           "questions": {
             "1": {
               "text": "% of education structures at risk of damage from “most probable” and “most severe” scenarios",

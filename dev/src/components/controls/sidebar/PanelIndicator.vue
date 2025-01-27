@@ -88,28 +88,6 @@ onMounted(radarChartStore.fetchIndicatorData);
     <div class="sidebar-content">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
-          <h6
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#sidebar-indicatorPanel-explanation"
-            aria-expanded="true"
-            class="btn btn-outline-secondary text-uppercase"
-          >
-            {{ $t("sidebar.indicatorPanel.explanation.header") }}
-          </h6>
-          <ul
-            id="sidebar-indicatorPanel-explanation"
-            class="collapse show text-secondary lh-base font-size-sm"
-          >
-            <li>
-              {{ $t("sidebar.indicatorPanel.explanation.1") }}
-            </li>
-            <li>
-              {{ $t("sidebar.indicatorPanel.explanation.2") }}
-            </li>
-          </ul>
-        </li>
-        <li class="mb-1">
           <button
             type="button"
             class="btn btn-toggle rounded collapsed ps-0"
