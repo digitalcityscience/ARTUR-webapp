@@ -25,7 +25,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   const physicalScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const capacityWeight: Record<string, number[]> = {
     Social: [12, 8, 3, 14, 12, 17, 8, 9, 10],
-    Economic: [2, 2, 2, 2, 3, 0, 0, 2, 2],
+    Economic: [3, 1, 1, 1, 2, 2, 0, 1, 3],
     Institutional: [13, 7, 4, 2, 12, 4, 8, 8, 5],
     Physical: [7, 4, 6, 5, 1, 3, 3, 5, 2],
   };
