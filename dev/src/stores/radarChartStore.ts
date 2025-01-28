@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, computed, reactive, watch } from "vue";
+import { ref, computed, reactive } from "vue";
 import { useI18n } from "vue-i18n";
 
 const useRadarChartStore = defineStore("radar-chart", () => {
@@ -23,12 +23,12 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   const economicScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const institutionalScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const physicalScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  const capacityWeight: Record<string, number[]> = {
-    Social: [12, 8, 3, 14, 12, 17, 8, 9, 10],
-    Economic: [3, 1, 1, 1, 2, 2, 0, 1, 3],
-    Institutional: [13, 7, 4, 2, 12, 4, 8, 8, 5],
-    Physical: [7, 4, 6, 5, 1, 3, 3, 5, 2],
-  };
+  const capacityWeight = computed<Record<string, number[]>>(() => ({
+    Social: indicatorData.value.socialWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    Economic: indicatorData.value.economicWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    Institutional: indicatorData.value.institutionalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    Physical: indicatorData.value.physicalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  }));
   // Dynamically calculate weighted scores for each capacity
   const calculateScores = () => {
     const capacities = [
@@ -48,8 +48,8 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     institutionalScore.value.fill(0);
     physicalScore.value.fill(0);
     // Iterate through each indicator in the data
-    Object.keys(indicatorData.value).forEach((key) => {
-      const indicator = indicatorData.value[key];
+    Object.keys(indicatorData.value.data).forEach((key) => {
+      const indicator = indicatorData.value.data[key];
       const dimension = indicator["dimension"] as string;
 
       // Get dimension's corresponding score array
@@ -80,25 +80,32 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         });
         // Calculate the final score for this capacity
         dimensionScore.value[index] += Math.round(
-          (capacityScoreSum * 100) / (3 * capacityWeight[dimension][index]),
+          (capacityScoreSum * 100) / (3 * capacityWeight.value[dimension][index]),
         );
       });
     });
   };
-  const totalCapacity = [34, 21, 15, 23, 28, 24, 19, 24, 19];
+  const totalCapacity = computed<number[]>(() => {
+    return capacityWeight.value.Social.map(
+      (_: any, i: number) =>
+        capacityWeight.value.Social[i] +
+        capacityWeight.value.Economic[i] +
+        capacityWeight.value.Institutional[i] +
+        capacityWeight.value.Physical[i],
+    );
+  });
   // Average array for the "Total" radar chart
   const totalArray = computed(() => {
     return socialScore.value.map((_, i) => {
       const totalScore =
-        socialScore.value[i] * capacityWeight["Social"][i] +
-        economicScore.value[i] * capacityWeight["Economic"][i] +
-        institutionalScore.value[i] * capacityWeight["Institutional"][i] +
-        physicalScore.value[i] * capacityWeight["Physical"][i];
+        socialScore.value[i] * capacityWeight.value["Social"][i] +
+        economicScore.value[i] * capacityWeight.value["Economic"][i] +
+        institutionalScore.value[i] * capacityWeight.value["Institutional"][i] +
+        physicalScore.value[i] * capacityWeight.value["Physical"][i];
       // Calculate and return the total
-      return Math.round(totalScore / totalCapacity[i]);
+      return Math.round(totalScore / totalCapacity.value[i]);
     });
   });
-
   // Answer Intialization
   const initializeAnswer = (indicatorKey: string, questionNumber: number[]) => {
     if (!answers[indicatorKey]) {
@@ -110,7 +117,6 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       }
     }
   };
-
   // Radar chart configuration
   const radarChartType = ref<"dimension" | "total">("dimension");
   const radarOptionDimension = computed(() => {

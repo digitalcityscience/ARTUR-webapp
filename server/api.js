@@ -6,13 +6,59 @@ const router = express.Router();
 // nation-level-data
 router.get("/capacity", async (req, res) => {
   try {
+    const social =
+      await pool.query(`select sum(robustness*number_of_questions) robustness, 
+        sum(redundancy*number_of_questions) redundancy,
+        sum(diversity*number_of_questions) diversity,
+        sum(integration*number_of_questions) integration,
+        sum(resourcefulness*number_of_questions) resourcefulness,
+        sum(inclusiveness*number_of_questions) inclusiveness,
+        sum(reflectiveness*number_of_questions) reflectiveness,
+        sum(flexibility*number_of_questions) flexibility,
+        sum(transparency*number_of_questions) transparency from capacity c where c.dimension ='Social'`);
+    const economic =
+      await pool.query(`select sum(robustness*number_of_questions) robustness, 
+        sum(redundancy*number_of_questions) redundancy,
+        sum(diversity*number_of_questions) diversity,
+        sum(integration*number_of_questions) integration,
+        sum(resourcefulness*number_of_questions) resourcefulness,
+        sum(inclusiveness*number_of_questions) inclusiveness,
+        sum(reflectiveness*number_of_questions) reflectiveness,
+        sum(flexibility*number_of_questions) flexibility,
+        sum(transparency*number_of_questions) transparency from capacity c where c.dimension ='Economic'`);
+    const institutional =
+      await pool.query(`select sum(robustness*number_of_questions) robustness, 
+        sum(redundancy*number_of_questions) redundancy,
+        sum(diversity*number_of_questions) diversity,
+        sum(integration*number_of_questions) integration,
+        sum(resourcefulness*number_of_questions) resourcefulness,
+        sum(inclusiveness*number_of_questions) inclusiveness,
+        sum(reflectiveness*number_of_questions) reflectiveness,
+        sum(flexibility*number_of_questions) flexibility,
+        sum(transparency*number_of_questions) transparency from capacity c where c.dimension ='Institutional'`);
+    const physical =
+      await pool.query(`select sum(robustness*number_of_questions) robustness, 
+        sum(redundancy*number_of_questions) redundancy,
+        sum(diversity*number_of_questions) diversity,
+        sum(integration*number_of_questions) integration,
+        sum(resourcefulness*number_of_questions) resourcefulness,
+        sum(inclusiveness*number_of_questions) inclusiveness,
+        sum(reflectiveness*number_of_questions) reflectiveness,
+        sum(flexibility*number_of_questions) flexibility,
+        sum(transparency*number_of_questions) transparency from capacity c where c.dimension ='Physical'`);
     const { rows } = await pool.query("SELECT * FROM capacity");
     const data = rows.reduce((acc, item) => {
       const { key, ...rest } = item; // Extract the key column and the rest of the properties
       acc[key] = rest; // Use the key column as the key
       return acc;
     }, {});
-    res.json(data);
+    res.json({
+      data,
+      socialWeight: Object.values(social.rows[0]).map(Number),
+      economicWeight: Object.values(economic.rows[0]).map(Number),
+      institutionalWeight: Object.values(institutional.rows[0]).map(Number),
+      physicalWeight: Object.values(physical.rows[0]).map(Number),
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("" + err);
@@ -303,112 +349,6 @@ router.get("/buildings/:city", async (req, res) => {
         type: row.type,
         level: row.level,
       },
-      geometry: JSON.parse(row.geometry),
-    }));
-    res.json({ type: "FeatureCollection", features });
-  } catch (err) {
-    res.status(500).send("" + err);
-  }
-});
-router.get("/water-source/:city", async (req, res) => {
-  const city = req.params.city;
-  // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
-  try {
-    const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [m*3]" capacity, usage FROM generated_${city}_water_source`,
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: {
-        name: row.id,
-        capacity: row.capacity,
-        usage: row.usage,
-      },
-      geometry: JSON.parse(row.geometry),
-    }));
-    res.json({ type: "FeatureCollection", features });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("" + err);
-  }
-});
-router.get("/water-source-catchment/:city", async (req, res) => {
-  const city = req.params.city;
-  try {
-    const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_water_source_catchment`,
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: { range: row.range },
-      geometry: JSON.parse(row.geometry),
-    }));
-    res.json({ type: "FeatureCollection", features });
-  } catch (err) {
-    res.status(500).send("" + err);
-  }
-});
-router.get("/water-source-population/:city", async (req, res) => {
-  const city = req.params.city;
-  try {
-    const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM generated_${city}_water_source_catchment_population`,
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: {
-        value: row.value,
-        access: row.access,
-        name: `${city}_HealthSite_population`,
-      },
-      geometry: JSON.parse(row.geometry),
-    }));
-    let accessible = 0,
-      inaccessible = 0;
-    rows.forEach((row) => {
-      if (row.access) accessible += row.value;
-      else inaccessible += row.value;
-    });
-    res.json({
-      type: "FeatureCollection",
-      properties: { accessible: accessible, inaccessible: inaccessible },
-      features,
-    });
-  } catch (err) {
-    res.status(500).send("" + err);
-  }
-});
-router.get("/energy-supply/:city", async (req, res) => {
-  const city = req.params.city;
-  // Get the city from the URL parameter http://localhost:3000/api/shelter/zhytomyr
-  try {
-    const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, id, "capacity [kw]" capacity, user_type FROM generated_${city}_energy_supply`,
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: {
-        name: row.id,
-        capacity: row.capacity,
-        userType: row.user_type,
-      },
-      geometry: JSON.parse(row.geometry),
-    }));
-    res.json({ type: "FeatureCollection", features });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("" + err);
-  }
-});
-router.get("/energy-supply-catchment/:city", async (req, res) => {
-  const city = req.params.city;
-  try {
-    const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, range_km range FROM generated_${city}_energy_supply_catchment`,
-    );
-    const features = rows.map((row) => ({
-      type: "Feature",
-      properties: { range: row.range },
       geometry: JSON.parse(row.geometry),
     }));
     res.json({ type: "FeatureCollection", features });
