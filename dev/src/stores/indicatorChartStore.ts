@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
 import { computed, ref, type ComputedRef } from "vue";
 import i18nData from "@/locales/en.json";
+
 enum SANKEYLEVELS {
   LEVEL1 = 0,
   LEVEL2 = 0.5,
@@ -571,7 +572,6 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Basic Sankey Data
   const basicSankeyData = computed(() => basicChartData.value.sankeyNodes);
   const basicSankeyLinks = computed(() => basicChartData.value.sankeyLinks);
-  console.log(basicChartData.value.sankeyLinks);
   /* Dictionary Capacity Sankey */
   const capacitySelected = ref("Robustness");
   // Filter by capacity of Sankey Data
