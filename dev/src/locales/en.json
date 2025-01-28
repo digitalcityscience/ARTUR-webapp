@@ -529,217 +529,576 @@
       "name": "SOCIAL",
       "1": {
         "name": "Basic necessities",
-        "1": "Safe and affordable housing",
-        "2": "Adequate affordable energy supply",
-        "3": "Inclusive access to safe drinking water",
-        "4": "Effective sanitation",
-        "5": "Sufficient affordable food supply"
+        "1": {
+          "name": "Safe and affordable housing",
+          "capacities": [0, 0, 1, 0, 1, 1, 1, 0, 1]
+        },
+        "2": {
+          "name": "Adequate affordable energy supply",
+          "capacities": [1, 1, 1, 0, 1, 1, 1, 0, 0]
+        },
+        "3": {
+          "name": "Inclusive access to safe drinking water",
+          "capacities": [1, 1, 1, 0, 1, 1, 1, 0, 0]
+        },
+        "4": {
+          "name": "Effective sanitation",
+          "capacities": [1, 1, 1, 0, 1, 1, 1, 0, 0]
+        },
+        "5": {
+          "name": "Sufficient affordable food supply",
+          "capacities": [0, 1, 1, 1, 0, 1, 0, 0, 0]
+        }
       },
       "2": {
         "name": "Capacity building and public awareness",
-        "1": "Access to all the skills and experience to respond/reduce risks and respond to disaster",
-        "2": "Accessibility to training materials (language)",
-        "3": "Exchange knowledge and learn from other cities facing similar challenges"
+        "1": {
+          "name": "Access to all the skills and experience to respond/reduce risks and respond to disaster",
+          "capacities": [0, 1, 1, 1, 1, 1, 1, 1, 1]
+        },
+        "2": {
+          "name": "Accessibility to training materials (language)",
+          "capacities": [0, 0, 1, 1, 0, 1, 0, 1, 1]
+        },
+        "3": {
+          "name": "Exchange knowledge and learn from other cities facing similar challenges",
+          "capacities": [0, 0, 0, 0, 1, 1, 1, 1, 1]
+        }
       },
       "3": {
         "name": "Community support",
-        "1": "Public associations, public organisations or unions participating in pre-event planning and post event response",
-        "2": "Accessible criminal and civil justice",
-        "3": "Cohesive communities",
-        "4": "Training programmes provided to the most vulnerable and at need populations",
-        "5": "Citizen engagement and communications in relation to disaster resilience and recovery",
-        "6": "Widespread community awareness & preparedness",
-        "7": "Main public facilities: university, schools, health centres, markets, etc.",
-        "8": "Social services infrastructure, including schools, hospitals, and clinics",
-        "9": "Local community support",
-        "10": "Strong city-wide identity & culture",
-        "11": "Actively engaged citizens",
-        "12": "Practices and drills involving public and professionals",
-        "13": "Adequate education for all",
-        "14": "Major community buildings, religious buildings, and historic/cultural assets",
-        "15": "Relevant skills & training"
+        "1": {
+          "name": "Public associations, public organisations or unions participating in pre-event planning and post event response",
+          "capacities": [0, 0, 1, 1, 0, 0, 1, 1, 1]
+        },
+        "2": {
+          "name": "Accessible criminal and civil justice",
+          "capacities": [1, 0, 1, 1, 0, 0, 1, 0, 1]
+        },
+        "3": {
+          "name": "Cohesive communities",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 0, 0]
+        },
+        "4": {
+          "name": "Training programmes provided to the most vulnerable and at need populations",
+          "capacities": [0, 0, 1, 1, 1, 0, 1, 1, 1]
+        },
+        "5": {
+          "name": "Citizen engagement and communications in relation to disaster resilience and recovery",
+          "capacities": [0, 0, 1, 1, 0, 0, 1, 1, 1]
+        },
+        "6": {
+          "name": "Widespread community awareness & preparedness",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 0, 1]
+        },
+        "7": {
+          "name": "Main public facilities: university, schools, health centres, markets, etc.",
+          "capacities": [1, 1, 1, 1, 0, 1, 1, 0, 0]
+        },
+        "8": {
+          "name": "Social services infrastructure, including schools, hospitals, and clinics",
+          "capacities": [1, 1, 1, 1, 1, 1, 1, 0, 0]
+        },
+        "9": {
+          "name": "Local community support",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
+        },
+        "10": {
+          "name": "Strong city-wide identity & culture",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 0, 1]
+        },
+        "11": {
+          "name": "Actively engaged citizens",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 1, 1]
+        },
+        "12": {
+          "name": "Practices and drills involving public and professionals",
+          "capacities": [1, 1, 1, 0, 1, 0, 1, 0, 1]
+        },
+        "13": {
+          "name": "Adequate education for all",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 0, 1]
+        },
+        "14": {
+          "name": "Major community buildings, religious buildings, and historic/cultural assets",
+          "capacities": [1, 0, 1, 1, 0, 1, 0, 1, 1]
+        },
+        "15": {
+          "name": "Relevant skills & training",
+          "capacities": [1, 0, 0, 1, 1, 1, 0, 0, 0]
+        }
       },
       "4": {
         "name": "Ecosystem Services",
-        "1": "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
-        "2": "Awareness of functions or services that natural capital provides for the city"
+        "1": {
+          "name": "Awareness of ecosystem services being provided to the city from natural capital beyond its administrative borders",
+          "capacities": [0, 1, 1, 0, 0, 1, 1, 0, 1]
+        },
+        "2": {
+          "name": "Awareness of functions or services that natural capital provides for the city",
+          "capacities": [1, 1, 0, 1, 0, 1, 1, 0, 1]
+        }
       },
       "5": {
         "name": "Planning Resilience",
-        "1": "Public education towards awareness of hazard, risk and disaster information",
-        "2": "Safe places/havens and the evacuation routes",
-        "3": "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
-        "4": "Awareness of equipment and supply needed + provision"
+        "1": {
+          "name": "Public education towards awareness of hazard, risk and disaster information",
+          "capacities": [1, 0, 1, 0, 0, 0, 1, 1, 1]
+        },
+        "2": {
+          "name": "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
+          "capacities": [1, 0, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "3": {
+          "name": "Awareness of equipment and supply needed + provision",
+          "capacities": [1, 1, 1, 0, 1, 1, 0, 1, 0]
+        }
       },
       "6": {
         "name": "Security services",
-        "1": "Effective systems to deter crime",
-        "2": "High levels of crime are observed."
+        "1": {
+          "name": "Effective systems to deter crime",
+          "capacities": [1, 1, 1, 1, 1, 0, 1, 1, 0]
+        },
+        "2": {
+          "name": "High levels of crime are observed.",
+          "capacities": [1, 0, 1, 0, 1, 0, 1, 1, 1]
+        }
       }
     },
     "economic": {
       "name": "ECO-\nNOMIC",
       "1": {
         "name": "Economic activities",
-        "1": "Diverse economic base",
-        "2": "Industrial areas including ports, industrial zones, and factories",
-        "3": "Supportive financing mechanisms",
-        "4": "Economic facilities (banks, business centres, shopping malls, markets, etc.)"
+        "1": {
+          "name": "Diverse economic base",
+          "capacities": [1, 0, 1, 1, 1, 1, 0, 0, 1]
+        },
+        "2": {
+          "name": "Industrial areas including ports, industrial zones, and factories",
+          "capacities": [1, 0, 0, 1, 0, 1, 0, 0, 0]
+        },
+        "3": {
+          "name": "Supportive financing mechanisms",
+          "capacities": [1, 1, 0, 0, 0, 1, 0, 0, 1]
+        },
+        "4": {
+          "name": "Economic facilities (banks, business centres, shopping malls, markets, etc.)",
+          "capacities": [1, 1, 0, 1, 0, 1, 0, 0, 0]
+        }
       },
       "2": {
         "name": "Economic Impact",
-        "1": "Municipal enterprises with a documented business continuity plan",
-        "2": "Knowledge to funding opportunities (for local economy and recovery)",
-        "3": "Attractive business environment",
-        "4": "Economic impact",
-        "5": "Level of insurance cover exists in the city, across all sectors - business and community",
-        "6": "Incentives for business and society to support resilience building",
-        "7": "Planned investments",
-        "8": "Comprehensive business continuity planning",
-        "9": "Incentives for inclusive labour policies",
-        "10": "Local business development and innovation",
-        "11": "Strong integration with regional & global economies",
-        "12": "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities"
+        "1": {
+          "name": "Municipal enterprises with a documented business continuity plan",
+          "capacities": [1, 0, 0, 1, 1, 1, 0, 0, 0]
+        },
+        "2": {
+          "name": "Knowledge to funding opportunities (for local economy and recovery)",
+          "capacities": [0, 1, 0, 0, 0, 1, 1, 0, 1]
+        },
+        "3": {
+          "name": "Attractive business environment",
+          "capacities": [1, 1, 1, 1, 1, 1, 0, 0, 0]
+        },
+        "4": {
+          "name": "Economic impact",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 0, 1]
+        },
+        "5": {
+          "name": "Level of insurance cover exists in the city, across all sectors - business and community",
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 0, 1]
+        },
+        "6": {
+          "name": "Incentives for business and society to support resilience building",
+          "capacities": [1, 1, 0, 1, 0, 1, 1, 0, 1]
+        },
+        "7": {
+          "name": "Planned investments",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 1]
+        },
+        "8": {
+          "name": "Comprehensive business continuity planning",
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 1, 1]
+        },
+        "9": {
+          "name": "Incentives for inclusive labour policies",
+          "capacities": [1, 0, 1, 0, 0, 0, 0, 0, 1]
+        },
+        "10": {
+          "name": "Local business development and innovation",
+          "capacities": [1, 0, 0, 1, 1, 0, 1, 0, 0]
+        },
+        "11": {
+          "name": "Strong integration with regional & global economies",
+          "capacities": [1, 0, 0, 0, 0, 1, 1, 0, 1]
+        },
+        "12": {
+          "name": "Economic activities, including commercial zones, central business districts, hotels, and tourist facilities",
+          "capacities": [1, 0, 1, 1, 1, 1, 0, 0, 0]
+        }
       },
       "3": {
         "name": "Planning Resilience",
-        "1": "Financial plan and budget for resilience, including contingency funds",
-        "2": "Projected changes to population densities and economic activity",
-        "3": "Densities"
+        "1": {
+          "name": "Financial plan and budget for resilience, including contingency funds",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 1]
+        },
+        "2": {
+          "name": "Projected changes to population densities and economic activity",
+          "capacities": [0, 0, 1, 1, 1, 1, 1, 0, 1]
+        },
+        "3": {
+          "name": "Densities",
+          "capacities": [1, 0, 0, 1, 1, 0, 1, 1, 0]
+        }
       },
       "4": {
         "name": "Governance",
-        "1": "Changes in the overall city's boundaries"
+        "1": {
+          "name": "Changes in the overall city's boundaries",
+          "capacities": [0, 0, 0, 0, 1, 0, 1, 1, 0]
+        }
       }
     },
     "institutional": {
       "name": "INSTI-\nTUTIONAL",
       "1": {
         "name": "Governance",
-        "1": "Disaster management authority have sufficient staffing capacity",
-        "2": "Consultative planning process",
-        "3": "Informal development areas",
-        "4": "Robust planning approval process",
-        "5": "Well-managed public finances",
-        "6": "Appropriate government decision-making",
-        "7": "Effective co-ordination with other government bodies",
-        "8": "Proactive multi-stakeholder collaboration",
-        "9": "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
-        "10": "Urban development to promote resilience",
-        "11": "Building codes or standards address hazards and risks",
-        "12": "Enforcement and verification of zoning building zoning and regulations",
-        "13": "FAIR Data sharing to enhance resilience",
-        "14": "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
-        "15": "Proactive corruption prevention",
-        "16": "Comprehensive city monitoring & data management"
+        "1": {
+          "name": "Disaster management authority have sufficient staffing capacity",
+          "capacities": [1, 0, 0, 0, 0, 1, 1, 1, 0]
+        },
+        "2": {
+          "name": "Consultative planning process",
+          "capacities": [0, 0, 1, 1, 1, 0, 1, 0, 1]
+        },
+        "3": {
+          "name": "Informal development areas",
+          "capacities": [0, 0, 1, 1, 1, 0, 1, 1, 0]
+        },
+        "4": {
+          "name": "Robust planning approval process",
+          "capacities": [1, 0, 0, 0, 1, 0, 1, 0, 1]
+        },
+        "5": {
+          "name": "Well-managed public finances",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 1]
+        },
+        "6": {
+          "name": "Appropriate government decision-making",
+          "capacities": [0, 1, 1, 0, 1, 0, 1, 1, 1]
+        },
+        "7": {
+          "name": "Effective co-ordination with other government bodies",
+          "capacities": [0, 0, 0, 1, 1, 0, 1, 0, 1]
+        },
+        "8": {
+          "name": "Proactive multi-stakeholder collaboration",
+          "capacities": [1, 1, 1, 0, 1, 0, 1, 0, 1]
+        },
+        "9": {
+          "name": "Is there a multi-agency/sectoral mechanism with appropriate authority and resources to address disaster risk reduction?",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "10": {
+          "name": "Urban development to promote resilience",
+          "capacities": [1, 1, 1, 0, 1, 0, 1, 0, 0]
+        },
+        "11": {
+          "name": "Building codes or standards to address hazards and risks",
+          "capacities": [1, 0, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "12": {
+          "name": "Enforcement and verification of zoning bulding zoning and regulations",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 0, 0]
+        },
+        "13": {
+          "name": "FAIR Data sharing to enhance resilience",
+          "capacities": [0, 0, 1, 0, 0, 1, 1, 1, 1]
+        },
+        "14": {
+          "name": "Plan for post-event recovery and reconstruction, including economic reboot, societal aspects",
+          "capacities": [1, 1, 0, 0, 1, 0, 1, 1, 1]
+        },
+        "15": {
+          "name": "Proactive corruption prevention",
+          "capacities": [0, 0, 0, 1, 0, 0, 1, 0, 1]
+        },
+        "16": {
+          "name": "Comprehensive city monitoring & data management",
+          "capacities": [1, 0, 0, 0, 1, 0, 1, 1, 1]
+        }
       },
       "2": {
         "name": "Land use",
-        "1": "Land use designations",
-        "2": "Changes in land use designations"
+        "1": {
+          "name": "Land use designations",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 0, 1]
+        },
+        "2": {
+          "name": "Changes in land use designations",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 0, 1]
+        }
       },
       "3": {
         "name": "Planning for risk and disaster",
-        "1": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
-        "2": "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
-        "3": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?"
+        "1": {
+          "name": "Disaster and risk reduction in urban planning instruments according to Sendai framework",
+          "capacities": [1, 1, 1, 0, 1, 0, 1, 0, 1]
+        },
+        "2": {
+          "name": "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+          "capacities": [1, 1, 1, 0, 0, 0, 1, 1, 1]
+        },
+        "3": {
+          "name": "Do post-event assessment processes incorporate failure analyses and the ability to capture lessons learned that then feed into design and delivery of rebuilding projects?",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
+        }
       },
       "4": {
         "name": "Public health system",
-        "1": "Access to healthcare",
-        "2": "Emergency medical care",
-        "3": "Effective emergency response services",
-        "4": "Robust public health systems"
+        "1": {
+          "name": "Access to healthcare",
+          "capacities": [1, 0, 1, 1, 0, 1, 0, 0, 1]
+        },
+        "2": {
+          "name": "Emergency medical care",
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 1, 0]
+        },
+        "3": {
+          "name": "Effective emergency response services",
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 1, 0]
+        },
+        "4": {
+          "name": "Robust Public health systems",
+          "capacities": [1, 1, 1, 0, 1, 1, 0, 0, 1]
+        }
       },
       "5": {
         "name": "Planning Resilience",
-        "1": "Early warning system and reaching level",
-        "2": "Comprehensive government emergency management",
-        "3": "Integration of resilience in city functions / portfolios",
-        "4": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
-        "5": "Disaster management / preparedness / emergency response plan",
-        "6": "Appropriate land use and zoning",
-        "7": "Appropriately land use planning considering risk, hazards and vulnerability",
-        "8": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
-        "9": "Projected changes in location of vulnerable populations"
+        "1": {
+          "name": "Early warning system and reaching level",
+          "capacities": [1, 0, 0, 0, 1, 0, 1, 0, 1]
+        },
+        "2": {
+          "name": "Comprehensive government emergency management",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "3": {
+          "name": "Integration of resilience in city functions / portfolios",
+          "capacities": [1, 1, 0, 0, 1, 0, 1, 1, 1]
+        },
+        "4": {
+          "name": "Emergency operations centre: interoperability and inter-agency implementation and coordination",
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 1, 1]
+        },
+        "5": {
+          "name": "Disaster management / preparedness / emergency response plan",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "6": {
+          "name": "Appropriate land use and zoning",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 0]
+        },
+        "7": {
+          "name": "Appropriately land use planning considering risk, hazards and vulnerability",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 0]
+        },
+        "8": {
+          "name": "Locate the various administrative/government buildings in your city, including at the neighbourhood level, as applicable.",
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 1]
+        },
+        "9": {
+          "name": "Projected changes in location of vulnerable populations",
+          "capacities": [0, 0, 1, 1, 1, 0, 1, 1, 1]
+        }
       },
       "6": {
         "name": "Security services",
-        "1": "Security services: fire services, police stations, etc.;"
+        "1": {
+          "name": "Security services: fire services, police stations, etc.;",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 1]
+        }
       }
     },
     "physical": {
       "name": "PHYSICAL",
       "1": {
         "name": "Communication",
-        "1": "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
-        "2": "Reliable communications technology"
+        "1": {
+          "name": "Communication: radio/TV station, cell phone towers and existing telecommunication infrastructure",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 0, 1]
+        },
+        "2": {
+          "name": "Reliable communications technology",
+          "capacities": [1, 0, 1, 0, 0, 1, 1, 0, 1]
+        }
       },
       "2": {
         "name": "Ecosystem Services",
-        "1": "Integration of green and blue infrastructure into city policy and projects",
-        "2": "Natural elements, mangrove, hills, rivers, plantations, among others"
+        "1": {
+          "name": "Integration of green and blue infrastructure into city policy and projects",
+          "capacities": [1, 0, 0, 1, 1, 1, 1, 1, 1]
+        },
+        "2": {
+          "name": "Natural elements, mangrove, hills, rivers, plantations, among others",
+          "capacities": [1, 0, 1, 1, 0, 1, 1, 0, 0]
+        }
       },
       "3": {
         "name": "Governance",
-        "1": "Secure technology networks",
-        "2": "City boundaries and sub-municipal boundaries (e.g., districts, wards)"
+        "1": {
+          "name": "Secure technology networks",
+          "capacities": [1, 1, 0, 1, 1, 1, 0, 0, 0]
+        },
+        "2": {
+          "name": "City boundaries and sub-municipal boundaries (e.g., districts, wards)",
+          "capacities": [0, 0, 0, 1, 0, 0, 1, 1, 1]
+        }
       },
       "4": {
-        "name": "Land Use",
-        "1": "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses"
+        "name": "Land use",
+        "1": {
+          "name": "(identify, as appropriate)industrial areas, agricultural areas, environmentally sensitive areas, main public spaces (e.g. public squares, parks, sport and recreation facilities, etc.), other relevant land uses",
+          "capacities": [1, 0, 0, 1, 1, 0, 1, 1, 0]
+        }
       },
       "5": {
         "name": "Major infrastructure",
-        "1": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports,  among others",
-        "2": "Critical infrastructure: mapping, planning and protection strategies",
-        "3": "Infrastructure and services damaged",
-        "4": "Protective infrastructure: well-designed and well-built based on risk information",
-        "5": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
-        "6": "Major roads",
-        "7": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
-        "8": "Water managament measures"
+        "1": {
+          "name": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports, among others",
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 0]
+        },
+        "2": {
+          "name": "Critical infrastructure: mapping, planning and protection strategies",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
+        },
+        "3": {
+          "name": "Infrastructure and services damaged",
+          "capacities": [1, 0, 0, 0, 1, 1, 1, 0, 1]
+        },
+        "4": {
+          "name": "Protective infrastructure: well-designed and well-built based on risk information",
+          "capacities": [1, 0, 0, 1, 1, 1, 1, 0, 0]
+        },
+        "5": {
+          "name": "Water - potable and Sanitation, Energy, Transport, Communications, Health care: ensured minimal provision for \"most severe\" disaster scenario",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 0, 1]
+        },
+        "6": {
+          "name": "Major roads",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 0]
+        },
+        "7": {
+          "name": "Transportation: main roads, bus station, airport, train station & rail tracks, etc.;",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 0]
+        },
+        "8": {
+          "name": "Water managament measures",
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 0]
+        }
       },
       "6": {
-        "name": "Major Infrastructure & Planning Resilience",
-        "1": "Diligent maintenance & continuity",
-        "2": "Flexible infrastructure services",
-        "3": "Retained spare capacity"
+        "name": "Major infrastructure & Planning Resilience",
+        "1": {
+          "name": "Diligent maintenance & continuity",
+          "capacities": [1, 1, 0, 0, 0, 1, 0, 0, 1]
+        },
+        "2": {
+          "name": "Flexible infrastructure services",
+          "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 0]
+        },
+        "3": {
+          "name": "Retained spare capacity",
+          "capacities": [1, 1, 0, 1, 1, 1, 0, 0, 0]
+        }
       },
       "7": {
         "name": "Planning for risk and disaster",
-        "1": "Housing destroyed and damaged",
-        "2": "Affected areas",
-        "3": "Topography: elevation, water bodies",
-        "4": "Hazard mapping and monitoring (common awareness)",
-        "5": "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
-        "6": "Hazard mapping and monitoring (clear and regular mapping)",
-        "7": "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
-        "8": "Identification of cascading effects",
-        "9": "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
-        "10": "Changes in intensity, frequency, and location of hazards based on hazard modeling"
+        "1": {
+          "name": "Housing destroyed and damaged",
+          "capacities": [1, 0, 1, 0, 0, 1, 0, 1, 1]
+        },
+        "2": {
+          "name": "Affected areas",
+          "capacities": [1, 0, 0, 1, 1, 0, 1, 0, 1]
+        },
+        "3": {
+          "name": "Topography: elevation, water bodies",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 0, 0]
+        },
+        "4": {
+          "name": "Hazard mapping and monitoring (common awareness)",
+          "capacities": [0, 0, 1, 0, 1, 0, 1, 1, 1]
+        },
+        "5": {
+          "name": "Shared understanding of infrastructure risk (authorities, utility providers, infrastructure management)",
+          "capacities": [1, 0, 0, 0, 0, 0, 1, 1, 1]
+        },
+        "6": {
+          "name": "Hazard mapping and monitoring (clear and regular mapping)",
+          "capacities": [0, 0, 1, 0, 1, 0, 1, 1, 1]
+        },
+        "7": {
+          "name": "Hazard mitigation infrastructure, including location of sea walls, dikes, retention ponds",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 0]
+        },
+        "8": {
+          "name": "Identification of cascading effects",
+          "capacities": [1, 1, 0, 0, 1, 0, 1, 1, 0]
+        },
+        "9": {
+          "name": "Areas of your city that were affected by natural hazards in the past, such as floods, strong winds, fire, erosion, landslides, etc.",
+          "capacities": [1, 1, 0, 0, 0, 0, 0, 1, 1]
+        },
+        "10": {
+          "name": "Changes in intensity, frequency, and location of hazards based on hazard modeling",
+          "capacities": [1, 1, 0, 0, 1, 0, 1, 1, 1]
+        }
       },
       "8": {
         "name": "Planning Resilience",
-        "1": "Percentage of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
-        "2": "Adequate continuity for critical assets & services",
-        "3": "Comprehensive hazard monitoring and risk assessment",
-        "4": "First responder equipment, with military or civilian back up",
-        "5": "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
-        "6": "Vulnerability and risk",
-        "7": "Diverse and affordable transport networks"
+        "1": {
+          "name": "Percentage of education structures at risk of damage from \"most probable\" and \"most severe\" scenarios",
+          "capacities": [1, 0, 1, 1, 0, 0, 0, 1, 0]
+        },
+        "2": {
+          "name": "Adequate continuity for critical assets & services",
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 0, 1]
+        },
+        "3": {
+          "name": "Comprehensive hazard monitoring and risk assessment",
+          "capacities": [1, 0, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "4": {
+          "name": "First responder equipment, with military or civilian back up",
+          "capacities": [1, 1, 0, 0, 1, 1, 1, 1, 1]
+        },
+        "5": {
+          "name": "Food, shelter, staple goods and fuel to respond to emergency of disaster scenarios",
+          "capacities": [1, 1, 1, 1, 1, 1, 0, 1, 0]
+        },
+        "6": {
+          "name": "Vulnerability and risk",
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
+        },
+        "7": {
+          "name": "Diverse and affordable transport networks",
+          "capacities": [1, 1, 1, 1, 1, 1, 1, 0, 0]
+        }
       }
     },
     "capacities": {
       "Robustness": "Robustness",
       "Redundancy": "Redundancy",
-      "Diversity": "Diversity",
-      "Integration": "Integration",
-      "Transparency": "Transparency",
-      "Resourcefulness": "Resourcefulness",
       "Inclusiveness": "Inclusiveness",
+      "Diversity": "Diversity",
+      "Flexibility": "Flexibility",
+      "Resourcefulness": "Resourcefulness",
+      "Integration": "Integration",
       "Reflectiveness": "Reflectiveness",
-      "Flexibility": "Flexibility"
+      "Transparency": "Transparency"
     },
     "subtitle": {
       "dimension": "Urban Dimensions",
@@ -777,7 +1136,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There is an emergency housing plan for the city for times of emergency and/or housing is a consideration within the Major Incident Plans for the city. Plans exist which appropriately consider the need for shelter at various stages of a disaster including immediate short-term shelter and medium-long-term replacement housing. Plans consider not just the accommodation but also the facilities and staff required for these premises to be run effectively. The Housing Plan is a considered, well-transitioned process able to meet the potential impact of local hazards and subsequent demand from the city population."
             }
-          }
+          },
+          "capacities": [0, 0, 1, 0, 1, 1, 1, 0, 1]
         },
         "2": {
           "name": "Effective sanitation",
@@ -796,7 +1156,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "Robust contingency arrangements / plans exist outlining actions and responsibilities, including alternative sanitation arrangements. Actions are communicated to citizens. Planning ensures overall sanitation system can manage disruption."
             }
-          }
+          },
+          "capacities": [1, 1, 1, 0, 1, 1, 1, 0, 0]
         },
         "3": {
           "name": "Inclusive access to safe drinking water",
@@ -815,7 +1176,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There are contingency plans for the city that identify how potable water will be distributed in case of a major event or extreme disruption. Well developed mechanisms are in place to provide back-up water supplies to residents, particularly including vulnerable populations, during emergencies. Plans based on accurate, up-to-date data. Mechanisms in place to regularly review and update planning."
             }
-          }
+          },
+          "capacities": [1, 1, 1, 0, 1, 1, 1, 0, 0]
         },
         "4": {
           "name": "Sufficient affordable food supply",
@@ -841,7 +1203,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There are contingency plans for the city that identify how essential food supplies will be secured for households in case of a major event or extreme disruption. Plans based on accurate, up-to-date data. Mechanisms in place to regularly review and update planning. There are effective initiatives and plans in place to increase security of supply of important foodstuffs."
             }
-          }
+          },
+          "capacities": [0, 1, 1, 1, 0, 1, 0, 0, 0]
         }
       },
       "2": {
@@ -856,7 +1219,8 @@
               "score 2": "There is involvement in diverse grassroots organizations, either in some locations, or in some aspect of the planning or response, but it is it not comprehensive.",
               "score 3": "Community organizations that cover a significant proportion of the city's population are actively participating in pre-event planning and post-event response right across the city."
             }
-          }
+          },
+          "capacities": [0, 0, 1, 1, 0, 0, 1, 1, 1]
         }
       },
       "3": {
@@ -899,7 +1263,8 @@
               "score 2": "Campaigns and programmes (PR and education) exist to ensure proper dissemination of hazard, risk and disaster information. Key messages reach over 50% of the city population.",
               "score 3": "Fully co-ordinated campaigns and programmes (PR and education) exist to ensure proper dissemination of hazard, risk and disaster information. Key messages reach over 75% of the city population."
             }
-          }
+          },
+          "capacities": [1, 0, 1, 0, 0, 0, 1, 1, 1]
         },
         "2": {
           "name": "Risk and resilience training to all sectors of the city including government, business, NGOs and community",
@@ -911,7 +1276,8 @@
               "score 2": "The city has a track record of delivering resilience training to some sectors, but other sectors lack training and engagement.",
               "score 3": "There are training courses covering risk, resilience and disaster response offered across all sectors of the city including government, business, NGO's and community?"
             }
-          }
+          },
+          "capacities": [1, 0, 0, 0, 1, 1, 1, 1, 1]
         },
         "3": {
           "name": "Awareness of equipment and supply needed + provision",
@@ -923,7 +1289,8 @@
               "score 2": "Equipment levels and assets have either been modelled or proven to be adequate in practice to deal with a “most severe” scenario, although this relies on mutual aid arrangements. Mutual aid agreements are tested for likelihood of being affected by the same disaster.",
               "score 3": "Equipment levels and assets have either been modelled or proven to be adequate in practice to deal with a “most severe” scenario."
             }
-          }
+          },
+          "capacities": [1, 1, 1, 0, 1, 1, 0, 1, 0]
         }
       }
     },
@@ -941,7 +1308,8 @@
               "score 2": "40 - 60% businesses.",
               "score 3": "60 - 100% businesses."
             }
-          }
+          },
+          "capacities": [1, 0, 0, 1, 1, 1, 0, 0, 0]
         },
         "2": {
           "name": "Knowledge to funding opportunities (for local economy and recovery)",
@@ -953,7 +1321,8 @@
               "score 2": "The city is aware of numerous routes to secure funding for DRR activities and is actively pursuing a range of these.",
               "score 3": "The city understands all routes to secure funding for DRR activities, is actively pursuing a range of these and has had some success."
             }
-          }
+          },
+          "capacities": [0, 1, 0, 0, 0, 1, 1, 0, 1]
         },
         "3": {
           "name": "Incentives for inclusive labour policies",
@@ -972,7 +1341,8 @@
               "score 2": "Somewhat worse than maximum score.",
               "score 3": "There is a comprehensive public aid system available. Financial assistance is provided to unemployed persons and this is available to all groups within the working-age population (regardless of ethnicity, gender and age). There are mechanisms in place to move people out of poverty and into employment and there is robust evidence that these mechanisms are effective."
             }
-          }
+          },
+          "capacities": [1, 0, 1, 0, 0, 0, 0, 0, 1]
         }
       }
     },
@@ -990,7 +1360,8 @@
               "score 2": "Coverage of all neighbourhoods within 24-48 hours.",
               "score 3": "Surge capacity exists and is tested either via actual events or practice drills for disaster and risk scenarios for current and foreseen risks coverage of all neighbourhoods will be possible within 4 hours."
             }
-          }
+          },
+          "capacities": [1, 0, 0, 0, 0, 1, 1, 1, 0]
         }
       },
       "2": {
@@ -1005,7 +1376,8 @@
               "score 2": "Estimated that over 75% of the population is reachable by early warning system.",
               "score 3": "Estimated that over 90% of the population is reachable by early warning system."
             }
-          }
+          },
+          "capacities": [1, 0, 0, 0, 1, 0, 1, 0, 1]
         }
       },
       "3": {
@@ -1041,7 +1413,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There are free mental health services available within the city and they are accessible to all. There is sufficient health and psychological support available for: • Victims of crime and violence • Immigrants • Addiction patients Additionally, the city’s emergency planning has considered a surge in demand for mental health support post-shock."
             }
-          }
+          },
+          "capacities": [1, 0, 1, 1, 0, 1, 0, 0, 1]
         },
         "2": {
           "name": "Emergency medical care",
@@ -1060,7 +1433,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There is effective, integrated emergency planning within the healthcare system to deal with major events. All emergency medical facilities have business continuity plans in place and plans for dealing with major disasters. A city-wide plan exists for co-ordinating medical resources following a major event and roles and responsibilities are clearly defined within this. Disaster preparedness drills are routinely undertaken at the individual facility level (at least annually) and the city-wide level (at least every 3 years)."
             }
-          }
+          },
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 1, 0]
         },
         "3": {
           "name": "Effective emergency response services",
@@ -1100,7 +1474,8 @@
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "There are city-wide mechanisms in place that address emergency resource accessibility. The city has undertaken a detailed inventory of the full set of relief assets both within the city's direct control as well as assets outside its control (i.e. controlled by the private sector or other government body). The inventory is based on accurate, up-to-date data. Mechanisms are in place to regularly review and update the inventory. This includes emergency relief (food, shelter, water etc.). It addresses logistics including use of distribution teams and vehicles to manage demand. Responders and volunteers are all effectively trained and coordinated to ensure the immediate needs of those affected by a disaster can be met. Resource preparation / planning reflects the worst-case scenario potential of the city's risk profile."
             }
-          }
+          },
+          "capacities": [1, 1, 0, 0, 1, 1, 0, 1, 0]
         }
       }
     },
@@ -1109,7 +1484,7 @@
       "1": {
         "name": "Major infrastructure",
         "1": {
-          "name": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports,  among others",
+          "name": "Major infrastructure: water supply, power supply, sanitation and sewerage, roads, highways, bridges, ports, among others",
           "questions": {
             "1": {
               "text": "does the city administration or other planning agencies developed, released, and updated a city baseline map or maps for the following topics: water supply, sanitation and sewerage, roads, highways, bridges, ports, power supply, or other topics of similar nature and relevance?",
@@ -1118,7 +1493,8 @@
               "score 2": "Yes, mostly up dated but not integrated; some topics are missing or not available, or not up-to-date",
               "score 3": "Yes, for all of them and are regularly updated"
             }
-          }
+          },
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 0]
         },
         "2": {
           "name": "Critical infrastructure: mapping, planning and protection strategies",
@@ -1130,7 +1506,8 @@
               "score 2": "There is a critical infrastructure forum or other means to establish a shared understanding of risks between the city and various utility providers upon the points of stress on the system / risks at the city scale?",
               "score 3": "The city owns and implements (in collaboration with other stakeholders) a critical infrastructure plan or strategy to protect its critical infrastructure, utilities and services. The strategy highlights risks / stresses and includes continuity plans for essential services."
             }
-          }
+          },
+          "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
         },
         "3": {
           "name": "Water managament measures",
@@ -1156,7 +1533,8 @@
               "score 2": "There are tax collection mechanisms in place which enable basic service delivery and drainage/road maintenance in some parts of the city",
               "score 3": "Yes, there are effective tax collection mechanisms in place to adequately finance basic service delivery and drainage/road maintenance in most parts of the city"
             }
-          }
+          },
+          "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 0]
         }
       },
       "2": {
@@ -1171,7 +1549,8 @@
               "score 2": ">50% registered, updated and confirmed",
               "score 3": "100% registered, updated and confirmed"
             }
-          }
+          },
+          "capacities": [1, 0, 1, 0, 0, 1, 0, 1, 1]
         }
       },
       "3": {
@@ -1186,7 +1565,8 @@
               "score 2": "No teaching facilities at risk in “most probable” scenario.",
               "score 3": "No teaching facilities at risk in “most severe” scenario."
             }
-          }
+          },
+          "capacities": [1, 0, 1, 1, 0, 0, 0, 1, 0]
         }
       }
     }

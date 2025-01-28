@@ -67,16 +67,14 @@ function handleClick(params: any): void {
     if (level === 2 && chartStore.sunburstDimension.has(params.name)) {
       // Sunburst Second Graph Level 2 Go to Level 1
       let color = params.color;
-      let dimensionData = chartStore.sunburstData.children.find(
+      let dimensionData = chartStore.sunburstData.find(
         (node: any) => node.name === chartStore.sunburstColorSet[params.color],
       );
       reloadChart(chartStore.sunburstOptionLevel1, dimensionData, color);
     } else if (level === 2 && params.value < 10) {
       // Sunburst First Graph Click Level 2
       let color = params.color;
-      let data = chartStore.sunburstData.children.find(
-        (node: any) => node.name === params.name,
-      );
+      let data = chartStore.sunburstData.find((node: any) => node.name === params.name);
       reloadChart(chartStore.sunburstOptionLevel1, data, color);
       return;
     } else if (level === 2) {
@@ -88,10 +86,10 @@ function handleClick(params: any): void {
       // Sunburst First Graph Click Level 3
       let color = params.color;
       let dimension = params.treePathInfo[1];
-      let dimensionData = chartStore.sunburstData.children.find(
+      let dimensionData = chartStore.sunburstData.find(
         (node: any) => node.name === dimension.name,
       );
-      let data = dimensionData?.children.find((node: any) => node.name === params.name);
+      let data = dimensionData?.children?.find((node: any) => node.name === params.name);
       reloadChart(chartStore.sunburstOptionLevel2, data, color);
       return;
     }
