@@ -12,8 +12,8 @@ import {
 import { ref, onBeforeMount } from "vue";
 import useMapStore from "@/stores/mapStore";
 import { basemaps } from "@/assets/ts/constants";
-import OverlayControl from "./controls/OverlayControl.vue";
-import SidebarControl from "@/components/controls/SidebarControl.vue";
+import OverlayControl from "@/components/OverlayControl.vue";
+import SidebarControl from "@/components/SidebarControl.vue";
 
 // Pinia Store
 const mapStore = useMapStore();

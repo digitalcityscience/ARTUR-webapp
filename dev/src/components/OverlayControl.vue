@@ -6,9 +6,9 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
-import { featureGroup, type Layer } from "leaflet";
-import { watch, computed } from "vue";
-import LegendControl from "@/components/controls/LegendControl.vue";
+import { type Layer } from "leaflet";
+import { watch } from "vue";
+import LegendControl from "@/components/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { CityName, LayerName } from "@/assets/ts/constants";
 import useMapStore from "@/stores/mapStore";

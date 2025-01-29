@@ -166,6 +166,12 @@ const btnLegendIconClass = computed(() => {
           {{ range }} {{ $t("legend.minute") }}<br />
         </template>
       </div>
+      <population-legend
+        v-show="
+          mapStore.shelterLayers.populationLayer.visible ||
+          mapStore.healthSiteLayers.healthSitePopulationLayer.visible
+        "
+      ></population-legend>
     </div>
   </l-control>
 </template>

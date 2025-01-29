@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import PopulationSumChart from "@/components/controls/sidebar/PopulationSumChart.vue";
+import PopulationSumChart from "@/components/sidebar/PopulationSumChart.vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import { populationType, LayerName, CityName } from "@/assets/ts/constants";
 import type { IsochroneTypeKey } from "@/assets/ts/types";

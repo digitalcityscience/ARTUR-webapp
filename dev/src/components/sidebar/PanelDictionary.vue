@@ -2,22 +2,11 @@
 import { onMounted, ref, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import * as echarts from "echarts";
-import { ImageFormat } from "@/assets/ts/constants";
+import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
 import useChartStore from "@/stores/indicatorChartStore";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 
 // Text data
-// const capacityIcon = {
-//   Robustness: "bi bi-shield-check",
-//   Redundancy: "bi bi-diagram-2",
-//   Inclusiveness: "bi bi-people-fill",
-//   Diversity: "bi bi-palette",
-//   Flexibility: "bi bi-arrow-repeat",
-//   Resourcefulness: "bi bi-tree-fill",
-//   Integration: "bi bi-gear-wide-connected",
-//   Reflectiveness: "bi bi-graph-up-arrow",
-//   Transparency: "bi bi-eye-fill",
-// };
 const sections = ref([
   {
     title: "sidebar.dictionaryPanel.content.capacities.class.1",
@@ -56,22 +45,8 @@ const capacity = computed(
 const chartStore = useChartStore();
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
-const resolution = ref<number>(2);
-const backgroundColor = ref<string>("#ffffff");
-const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
+const showModal = ref<boolean>(false);
 // Methods
-const downloadChart = () => {
-  const img = new Image();
-  img.src = chart.getDataURL({
-    type: imageFormat.value,
-    pixelRatio: resolution.value,
-    backgroundColor: backgroundColor.value,
-  });
-  const link = document.createElement("a");
-  link.href = img.src;
-  link.download = `Sankey-${chartStore.capacitySelected}-chart.` + imageFormat.value;
-  link.click();
-};
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
   chart.setOption(chartStore.sankeyOptionCapacity);
@@ -284,8 +259,15 @@ onMounted(initChart);
           <div ref="chartContainer" class="chart-container"></div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success" @click="downloadChart">
-            <i class="fa fa-download">{{ $t("indicatorChart.buttons.download") }}</i>
+          <button
+            class="btn btn-success"
+            data-toggle="modal"
+            data-target="#downloadModal"
+            @click="showModal = true"
+          >
+            <i class="fa fa-download" aria-hidden="true">{{
+              $t("indicatorChart.buttons.download")
+            }}</i>
           </button>
           <button
             class="btn btn-primary"
@@ -298,6 +280,8 @@ onMounted(initChart);
       </div>
     </div>
   </div>
+  <!-- Download Chart Modal -->
+  <chart-download-modal v-model:show="showModal" :chart="chart" />
 </template>
 <style scoped>
 .text-muted {
