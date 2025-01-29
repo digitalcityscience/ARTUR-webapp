@@ -7,6 +7,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   // Data fetched from API
   const indicatorData = ref<Record<string, any>>({});
   const answers = reactive<Record<string, Record<number, number | null>>>({}); // Store user answers
+  const showDownloadModal = ref(false);
   // Fetch Indicator Data
   const fetchIndicatorData = async () => {
     try {
@@ -118,52 +119,123 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     }
   };
   // Radar chart configuration
-  const sharedChartConfig = {
-    legend: {},
-    tooltip: {},
-    radar: {
-      splitNumber: 10,
-      indicator: [
-        { name: t("echarts.capacities.Robustness"), max: 100 },
-        { name: t("echarts.capacities.Redundancy"), max: 100 },
-        { name: t("echarts.capacities.Diversity"), max: 100 },
-        { name: t("echarts.capacities.Integration"), max: 100 },
-        { name: t("echarts.capacities.Transparency"), max: 100 },
-        { name: t("echarts.capacities.Resourcefulness"), max: 100 },
-        { name: t("echarts.capacities.Inclusiveness"), max: 100 },
-        { name: t("echarts.capacities.Reflectiveness"), max: 100 },
-        { name: t("echarts.capacities.Flexibility"), max: 100 },
-      ],
-    },
-  };
-  const sharedToolboxConfig = {
-    top: "top",
-    right: "5%",
-    iconStyle: {
-      borderColor: "#5ABE64", // default color
-    },
-    emphasis: {
-      iconStyle: {
-        borderColor: "#54C3F1", // Color Icon hover
-      },
-    },
-    itemSize: 20, // Icon Size
-  };
   const radarChartType = ref<"dimension" | "total">("dimension");
-  const radarOptionDimension = computed(() => {
+  const dataViewButtons = computed(() => [
+    t("indicatorChart.buttons.dataView"),
+    t("indicatorChart.buttons.close"),
+    t("indicatorChart.buttons.refresh"),
+  ]);
+  interface EChartsRadarIndicator {
+    name: string;
+    max: number;
+    min: number;
+  }
+  interface EChartsSeriesData {
+    name: string;
+    value: number[];
+    itemStyle: {
+      color: string;
+    };
+  }
+  const generateTableHTML = (opt: any) => {
+    // Extract radar indicators (column headers)
+    const radarIndicators: EChartsRadarIndicator[] = opt.radar[0].indicator;
+    const headers = radarIndicators.map((indicator) => indicator.name);
+    // Extract series data (rows)
+    const seriesData: EChartsSeriesData[] = opt.series[0].data;
+    // Generate header cells
+    const headerCells = headers
+      .map((header) => `<th scope="col" class="text-center">${header}</th>`)
+      .join("");
+    // Generate data rows
+    const rows = seriesData
+      .map((series) => {
+        const cells = series.value
+          .map((value) => `<td class="text-center">${value}</td>`)
+          .join("");
+        return `
+        <tr>
+          <th scope="row">${series.name}</th>
+          ${cells}
+        </tr>`;
+      })
+      .join("");
+    // Combine into final table HTML
+    const table = `
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col" class="text-center">Dimension</th>
+          ${headerCells}
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>`;
+
+    return table;
+  };
+
+  const sharedChartConfig = computed(() => {
     return {
-      ...sharedChartConfig,
+      title: {
+        show: false,
+        text: t("sidebar.indicatorPanel.radarChart.name." + radarChartType.value),
+      },
+      legend: {},
+      tooltip: {},
       toolbox: {
-        ...sharedToolboxConfig,
+        top: 0,
+        right: 0,
+        orient: "vertical",
+        iconStyle: {
+          color: "#628ee6",
+          borderColor: "transparent",
+        },
+        emphasis: {
+          iconStyle: {
+            borderColor: "#628ee6", // Color Icon hover
+          },
+        },
+        itemSize: 20, // Icon Size
         feature: {
-          saveAsImage: {
-            show: true,
-            name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
+          myTool1: {
             title: t("indicatorChart.buttons.download"),
-            icon: "path://M653.6 770.4L517.8 926.2c-1.6 1.6-4.1 1.6-5.7 0L376.4 770.4l-0.4-0.4c-1.6-2.1 0.1-5.2 2.8-5.2H495V476c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4v288.7h116.1c2.7 0 4.5 3.1 2.8 5.2-0.1 0.2-0.2 0.4-0.3 0.5z,M907.5 434c-36-42.8-84.9-72.9-138.9-85.8-11-56.4-40.5-107.9-84.1-146.2-47.6-41.8-108.8-64.8-172.2-64.8-63.6 0-124.9 23.2-172.6 65.2-43.7 38.6-73.2 90.4-84 147.2-52.6 13.9-100.2 44.3-135 86.6-38.4 46.6-59.5 105.5-59.5 166 0 69.8 27.2 135.4 76.5 184.7 35.5 35.5 79.4 59.5 127.2 70.2 12.4 2.8 24.2-6.7 24.2-19.5v-0.2c0-9.4-6.6-17.4-15.7-19.5-98.5-22.3-172.3-110.6-172.3-215.7 0-104.4 74.1-195.5 176.2-216.6l13.9-2.9 1.9-14.1C307.7 259.4 402 177.1 512.3 177.1c109.8 0 204 81.9 219 190.5l2 14.3 14.2 2.6c105.1 19.1 181.3 110.6 181.3 217.6 0 106.3-75.4 195.3-175.5 216.4-9.3 2-16 10.1-16 19.5v0.2c0 12.6 11.6 22.1 24 19.5 49.3-10.2 94.6-34.6 131-71 49.3-49.3 76.5-114.9 76.5-184.7 0.1-61.3-21.8-121-61.3-168z", //Copy bootstrap icon svg path, multipath use comma to seperate
+            icon: "M1344 1344q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h465l135 136q58 56 136 56t136-56l136-136h464q40 0 68 28t28 68zm-325-569q17 41-14 70l-448 448q-18 19-45 19t-45-19l-448-448q-31-29-14-70 17-39 59-39h256v-448q0-26 19-45t45-19h256q26 0 45 19t19 45v448h256q42 0 59 39z", //Copy bootstrap icon svg path, multipath use comma to seperate
+            onclick: function () {
+              showDownloadModal.value = true;
+            },
+          },
+          dataView: {
+            title: t("indicatorChart.buttons.dataView"),
+            icon: "M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5z,M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z",
+            optionToContent: function (opt: any) {
+              return generateTableHTML(opt);
+            },
+            lang: dataViewButtons.value,
           },
         },
       },
+      radar: {
+        splitNumber: 10,
+        indicator: [
+          { name: t("echarts.capacities.Robustness"), max: 100 },
+          { name: t("echarts.capacities.Redundancy"), max: 100 },
+          { name: t("echarts.capacities.Diversity"), max: 100 },
+          { name: t("echarts.capacities.Integration"), max: 100 },
+          { name: t("echarts.capacities.Resourcefulness"), max: 100 },
+          { name: t("echarts.capacities.Inclusiveness"), max: 100 },
+          { name: t("echarts.capacities.Reflectiveness"), max: 100 },
+          { name: t("echarts.capacities.Flexibility"), max: 100 },
+          { name: t("echarts.capacities.Transparency"), max: 100 },
+        ],
+      },
+    };
+  });
+  const radarOptionDimension = computed(() => {
+    return {
+      ...sharedChartConfig.value,
       series: [
         {
           name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
@@ -196,18 +268,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   });
   const radarOptionTotal = computed(() => {
     return {
-      ...sharedChartConfig,
-      toolbox: {
-        ...sharedToolboxConfig,
-        feature: {
-          saveAsImage: {
-            show: true,
-            name: t("sidebar.indicatorPanel.radarChart.name.total"),
-            title: t("indicatorChart.buttons.download"),
-            icon: "path://M653.6 770.4L517.8 926.2c-1.6 1.6-4.1 1.6-5.7 0L376.4 770.4l-0.4-0.4c-1.6-2.1 0.1-5.2 2.8-5.2H495V476c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4v288.7h116.1c2.7 0 4.5 3.1 2.8 5.2-0.1 0.2-0.2 0.4-0.3 0.5z,M907.5 434c-36-42.8-84.9-72.9-138.9-85.8-11-56.4-40.5-107.9-84.1-146.2-47.6-41.8-108.8-64.8-172.2-64.8-63.6 0-124.9 23.2-172.6 65.2-43.7 38.6-73.2 90.4-84 147.2-52.6 13.9-100.2 44.3-135 86.6-38.4 46.6-59.5 105.5-59.5 166 0 69.8 27.2 135.4 76.5 184.7 35.5 35.5 79.4 59.5 127.2 70.2 12.4 2.8 24.2-6.7 24.2-19.5v-0.2c0-9.4-6.6-17.4-15.7-19.5-98.5-22.3-172.3-110.6-172.3-215.7 0-104.4 74.1-195.5 176.2-216.6l13.9-2.9 1.9-14.1C307.7 259.4 402 177.1 512.3 177.1c109.8 0 204 81.9 219 190.5l2 14.3 14.2 2.6c105.1 19.1 181.3 110.6 181.3 217.6 0 106.3-75.4 195.3-175.5 216.4-9.3 2-16 10.1-16 19.5v0.2c0 12.6 11.6 22.1 24 19.5 49.3-10.2 94.6-34.6 131-71 49.3-49.3 76.5-114.9 76.5-184.7 0.1-61.3-21.8-121-61.3-168z", //Copy bootstrap icon svg path, multipath use comma to seperate
-          },
-        },
-      },
+      ...sharedChartConfig.value,
       series: [
         {
           name: t("sidebar.indicatorPanel.radarChart.name.total"),
@@ -230,6 +291,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     calculateScores,
     answers,
     radarChartType,
+    showDownloadModal,
     radarOptionDimension,
     radarOptionTotal,
   };

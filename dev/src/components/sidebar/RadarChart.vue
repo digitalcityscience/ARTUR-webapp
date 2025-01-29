@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
+import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
 
 const chartStore = useRadarChartStore();
 const { locale } = useI18n();
@@ -23,13 +24,13 @@ const initChart = (): void => {
 watch(locale, setOption);
 watch(() => chartStore.radarChartType, setOption);
 watch(() => chartStore.radarOptionDimension, setOption, { deep: true });
-// Init Chart on mounted
-onMounted(() => {
-  initChart();
-});
+
+onMounted(initChart);
 </script>
 <template>
   <div ref="chartContainer" class="chart-container"></div>
+  <!-- Download modal -->
+  <chart-download-modal v-model:show="chartStore.showDownloadModal" :chart="chart" />
 </template>
 <style scoped>
 .chart-container {

@@ -117,7 +117,7 @@
     },
     "dataPanel": {
       "header": "Data Visualisation",
-      "close": "Close",
+
       "control": {
         "header": "Layer Control",
         "basemaps": "Basemaps",
@@ -510,7 +510,10 @@
   "indicatorChart": {
     "buttons": {
       "download": " Download Chart",
-      "switch": " View"
+      "switch": " View",
+      "dataView": "Data View",
+      "close": "Close",
+      "refresh": "Refresh"
     },
     "modal": {
       "title": "Download Options",
