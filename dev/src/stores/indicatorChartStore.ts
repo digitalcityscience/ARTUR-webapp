@@ -227,231 +227,147 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       })),
     })),
   );
-  const sunburstDimension = new Set();
-  sunburstData.value.forEach((level1: any) => {
-    level1.children.forEach((level2: any) => {
-      sunburstDimension.add(level2.name);
-    });
-  });
-  const sunburstIndicator = new Set();
-  sunburstData.value.forEach((level1: any) => {
-    level1.children.forEach((level2: any) => {
-      level2.children.forEach((level3: any) => {
-        sunburstIndicator.add(level3.name);
+  const sunburstCategory = computed(() => {
+    const categorySet = new Set<string>();
+    sunburstData.value.forEach((dimension: any) => {
+      dimension.children.forEach((category: any) => {
+        categorySet.add(category.name);
       });
     });
+    return categorySet;
   });
-  const sunburstColorSet: Record<string, string> = {
-    "rgba(172,216,151,1)": "SOCIAL",
-    "rgba(251,213,129,1)": "ECO-\nNOMIC",
-    "rgba(242,140,140,1)": "INSTI-\nTUTIONAL",
-    "rgba(150,207,230,1)": "PHYSICAL",
-  };
-  // Sunburst Option
-  const color = [
-    // "#5470C6", // blue
-    "#91CC75", // green
-    "#FAC858", // yellow
-    "#EE6666", // red
-    "#73C0DE", // light blue
-    "#3BA272", // dark green
-    "#FC8452", // orange
-    "#9A60B4", // purple
-    "#EA7CCC", // pink
-  ];
-  const sunburstOptionLevel0 = {
+  const sunburstColorSet = computed<Record<string, string>>(() => {
+    return {
+      "rgba(172,216,151,1)": t("echarts.social.name"),
+      "rgba(251,213,129,1)": t("echarts.economic.name"),
+      "rgba(242,140,140,1)": t("echarts.institutional.name"),
+      "rgba(150,207,230,1)": t("echarts.institutional.name"),
+    };
+  });
+  // Shared colors configuration
+  const color = ["#91CC75", "#FAC858", "#EE6666", "#73C0DE"];
+  // Shared base configuration for all sunburst charts
+  const sharedSunburstConfig = {
     backgroundColor: "#fff",
     tooltip: {
       show: true,
-      formatter: function (params: any) {
-        return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
-                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
-                    params.color,
-                  ]};"></span>
-                  ${params.name.replace(/-\n/g, "")}
-                </div>`;
-      },
+      formatter: (params: any) => `
+        <div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
+          <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${
+            params.color
+          };"></span>
+          ${params.name.replace(/-\n/g, "")}
+        </div>`,
       confine: true,
     },
-    series: {
-      type: "sunburst",
-      data: initialSunburstData,
-      radius: [0, "100%"],
-      sort: undefined,
+    grid: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+    color: color,
+  };
+  // Shared series configuration
+  const sharedSeriesConfig = {
+    type: "sunburst",
+    radius: [0, "100%"],
+    sort: undefined,
+    itemStyle: {
+      borderRadius: 7,
+      borderWidth: 2,
+    },
+    emphasis: {
+      focus: "ancestor",
       itemStyle: {
-        borderRadius: 7,
-        borderWidth: 2,
+        shadowBlur: 20,
+        shadowColor: "rgba(0, 0, 0, 0.8)",
       },
+    },
+  };
+  // Level 0 sunburst option
+  const sunburstOptionLevel0 = {
+    ...sharedSunburstConfig,
+    series: {
+      ...sharedSeriesConfig,
+      data: initialSunburstData,
       label: {
         fontFamily: "Arial",
         overflow: "break",
         fontSize: 15,
       },
-      emphasis: {
-        focus: "ancestor",
-        itemStyle: {
-          shadowBlur: 20,
-          shadowColor: "rgba(0, 0, 0, 0.8)",
-        },
-      },
       levels: [
         {
           r0: 0,
           r: 50,
-          itemStyle: {
-            color: "white",
-            opacity: 0.4,
-          },
+          itemStyle: { color: "white", opacity: 0.4 },
         },
         {
           r0: 50,
           r: 120,
-          label: {
-            rotate: "tangential",
-          },
+          label: { rotate: "tangential" },
         },
         {
           r0: 120,
-          r: 420,
-          label: {
-            align: "center",
-            width: 300,
-          },
+          r: 410,
+          label: { align: "center", width: 290 },
           nodeClick: false,
         },
       ],
     },
-    color: color,
-    grid: {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
   };
-  let level1Data: any[] = [];
-  let level2Data: any[] = [];
-  let sunburstOptionLevel1 = {
-    backgroundColor: "#fff",
-    tooltip: {
-      show: true,
-      formatter: (params: any) => {
-        return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
-                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
-                    params.color,
-                  ]};"></span>
-                  ${params.name.replace(/-\n/g, "")}
-                </div>`;
-      },
-      confine: true,
-    },
+  let level1Data: any = null;
+  let level2Data: any = null;
+  // Level 1 sunburst option
+  const sunburstOptionLevel1 = {
+    ...sharedSunburstConfig,
     series: {
-      type: "sunburst",
+      ...sharedSeriesConfig,
       data: level1Data,
-      radius: [0, "100%"],
-      sort: undefined,
-      itemStyle: {
-        borderRadius: 7,
-        borderWidth: 2,
-      },
       label: {
         fontFamily: "Arial",
         overflow: "break",
-        fontSize: "0.7rem",
-      },
-      emphasis: {
-        focus: "ancestor",
-        itemStyle: {
-          shadowBlur: 20,
-          shadowColor: "rgba(0, 0, 0, 0.8)",
-        },
+        fontSize: 11,
       },
       levels: [
         {
-          itemStyle: {
-            color: "white",
-            opacity: 0.4,
-          },
+          itemStyle: { color: "white", opacity: 0.4 },
         },
         {
           r0: 20,
           r: 70,
-          label: {
-            rotate: "tangential",
-          },
+          label: { rotate: "tangential" },
         },
         {
           r0: 70,
           r: 170,
-          label: {
-            align: "center",
-            width: 100,
-          },
+          label: { align: "center", width: 100 },
           itemStyle: { opacity: 0.9 },
         },
         {
           r0: 170,
           r: 410,
-          label: {
-            align: "center",
-            width: 230,
-            padding: 0,
-            silent: false,
-          },
+          label: { align: "center", width: 230, padding: 0, silent: false },
           itemStyle: { opacity: 0.7 },
           nodeClick: false,
         },
       ],
     },
-    color: color,
-    grid: {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
   };
-  let sunburstOptionLevel2 = {
-    backgroundColor: "#fff",
-    tooltip: {
-      show: true,
-      formatter: (params: any) => {
-        return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
-                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
-                    params.color,
-                  ]};"></span>
-                  ${params.name.replace(/-\n/g, "")}
-                </div>`;
-      },
-      confine: true,
-    },
+  // Level 2 sunburst option
+  const sunburstOptionLevel2 = {
+    ...sharedSunburstConfig,
     series: {
-      type: "sunburst",
+      ...sharedSeriesConfig,
       data: level2Data,
-      radius: [0, "100%"],
-      sort: undefined,
-      itemStyle: {
-        borderRadius: 7,
-        borderWidth: 2,
-      },
       label: {
         fontFamily: "Arial",
         overflow: "break",
-        fontSize: "0.7rem",
-      },
-      emphasis: {
-        focus: "ancestor",
-        itemStyle: {
-          shadowBlur: 20,
-          shadowColor: "rgba(0, 0, 0, 0.8)",
-        },
+        fontSize: 13,
       },
       levels: [
         {
-          itemStyle: {
-            color: "white",
-            opacity: 0.4,
-          },
+          itemStyle: { color: "white", opacity: 0.4 },
         },
         {
           r0: 70,
@@ -461,110 +377,55 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         {
           r0: 200,
           r: 380,
-          label: {
-            align: "center",
-            width: 160,
-            padding: 0,
-            silent: false,
-          },
+          label: { align: "center", width: 160, padding: 0, silent: false },
           nodeClick: false,
         },
       ],
     },
-    color: color,
-    grid: {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
   };
-  // Basic Sunburst Data
+  // Basic sunburst data
   const basicChartData = createChartData(
     t,
     "initialIndicators",
     i18nData.initialIndicators,
   );
   const basicSunburstData = computed(() => basicChartData.value.sunburstData);
+  // Basic sunburst option
   const sunburstBasicOption = {
-    backgroundColor: "#fff",
-    tooltip: {
-      show: true,
-      formatter: (params: any) => {
-        return `<div style="color: #000;font-size: 12px; padding:0;line-height: 12px">
-                  <span style="display:inline-block;margin-right:5px;border-radius:50%;width:12px;height:12px;background-color:${[
-                    params.color,
-                  ]};"></span>
-                  ${params.name.replace(/-\n/g, "")}
-                </div>`;
-      },
-      confine: true,
-    },
+    ...sharedSunburstConfig,
     series: {
-      type: "sunburst",
+      ...sharedSeriesConfig,
       data: basicSunburstData,
-      sort: undefined,
-      radius: [0, "100%"],
-      itemStyle: {
-        borderRadius: 7,
-        borderWidth: 2,
-      },
       label: {
         fontFamily: "Arial",
         overflow: "break",
         fontSize: "0.7rem",
       },
-      emphasis: {
-        focus: "ancestor",
-        itemStyle: {
-          shadowBlur: 20,
-          shadowColor: "rgba(0, 0, 0, 0.8)",
-        },
-      },
       levels: [
         {
           r0: 0,
           r: 30,
-          itemStyle: {
-            color: "transparent",
-            opacity: 0,
-          },
+          itemStyle: { color: "transparent", opacity: 0 },
         },
         {
           r0: 30,
           r: 70,
-          label: {
-            rotate: "tangential",
-          },
+          label: { rotate: "tangential" },
         },
         {
           r0: 70,
-          r: 210,
-          label: {
-            align: "center",
-            width: 130,
-          },
+          r: 205,
+          label: { align: "center", width: 130 },
         },
         {
-          r0: 210,
-          r: 425,
-          label: {
-            align: "center",
-            width: 200,
-            padding: 0,
-            silent: false,
-          },
+          r0: 205,
+          r: 410,
+          label: { align: "center", width: 200, padding: 0, silent: false },
           nodeClick: false,
         },
       ],
     },
-    color: ["#91CC75", "#FAC858", "#EE6666", "#73C0DE"],
-    grid: {
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
+    color: color,
   };
   // Total Sankey Data
   const sankeyData = computed(() => chartData.value.sankeyNodes);
@@ -607,222 +468,104 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       value: 1, // Set link value to 1
     })),
   );
-  // Sankey Graph Options
-  const sankeyOption = {
+  // Shared configurations that are exactly the same for all three options
+  const sharedSankeyConfig = {
     backgroundColor: "#fff",
     tooltip: {
       show: true,
       formatter: "{b}",
       confine: true,
     },
+    graphic: [
+      {
+        type: "text",
+        left: 20,
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.dimension")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "30%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.indicator")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "text",
+        left: "85%",
+        top: 5,
+        style: {
+          text: computed(() => t("echarts.subtitle.capacity")),
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+    ],
+  };
+  // Main sankey option
+  const sankeyOption = {
+    ...sharedSankeyConfig,
     series: {
       type: "sankey",
-      layoutIterations: 0, // toggle this to keep the sequence of nodes
+      layoutIterations: 0,
       layout: "none",
-      emphasis: {
-        focus: "adjacency",
-      },
+      emphasis: { focus: "adjacency" },
       left: 10,
       top: 25,
       right: 70,
       bottom: 25,
-      lineStyle: {
-        color: "gradient",
-      },
-      label: {
-        fontSize: 9,
-      },
+      lineStyle: { color: "gradient" },
+      label: { fontSize: 9 },
       nodeWidth: 15,
-      nodeGap: 2, // Toggle this to avoid link junction
+      nodeGap: 2,
       data: sankeyData,
       links: sankeyLinks,
       levels: [
         { depth: SANKEYLEVELS.LEVEL1 },
-        {
-          depth: SANKEYLEVELS.LEVEL2,
-        },
+        { depth: SANKEYLEVELS.LEVEL2 },
         { depth: SANKEYLEVELS.LEVEL3 },
       ],
     },
-    // Add subtitles for each column
-    graphic: [
-      {
-        type: "text",
-        left: 20,
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.dimension")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "30%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.indicator")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "85%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.capacity")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-    ],
   };
+  // Basic sankey option - only override the different values
   const sankeyBasicOption = {
-    backgroundColor: "#fff",
-    tooltip: {
-      show: true,
-      formatter: "{b}",
-      confine: true,
-    },
+    ...sharedSankeyConfig,
     series: {
-      type: "sankey",
-      layoutIterations: 0,
-      layout: "none",
-      emphasis: {
-        focus: "adjacency",
-      },
-      left: 10,
-      top: 25,
-      right: 70,
-      bottom: 25,
-      lineStyle: {
-        color: "gradient",
-      },
-      label: {
-        fontSize: 11,
-      },
-      nodeWidth: 15,
+      ...sankeyOption.series,
+      label: { fontSize: 11 },
       nodeGap: 12,
       data: basicSankeyData,
       links: basicSankeyLinks,
-      levels: [
-        { depth: SANKEYLEVELS.LEVEL1 },
-        {
-          depth: SANKEYLEVELS.LEVEL2,
-        },
-        { depth: SANKEYLEVELS.LEVEL3 },
-      ],
     },
-    graphic: [
-      {
-        type: "text",
-        left: 20,
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.dimension")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "30%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.indicator")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "85%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.capacity")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-    ],
   };
+  // Capacity sankey option - only override the different values
   const sankeyOptionCapacity = {
-    backgroundColor: "#fff",
-    tooltip: {
-      show: true,
-      formatter: "{b}",
-      confine: true,
-    },
+    ...sharedSankeyConfig,
     series: {
-      type: "sankey",
-      layoutIterations: 0,
-      layout: "none",
-      emphasis: {
-        focus: "adjacency",
-      },
+      ...sankeyOption.series,
       left: 5,
-      top: 25,
       right: 50,
       bottom: 8,
-      lineStyle: {
-        color: "gradient",
-      },
-      label: {
-        fontSize: 10,
-      },
+      label: { fontSize: 10 },
       nodeWidth: 10,
       nodeGap: 5,
       data: filteredNodes,
       links: filteredLinks,
-      levels: [
-        { depth: SANKEYLEVELS.LEVEL1 },
-        {
-          depth: SANKEYLEVELS.LEVEL2,
-        },
-        { depth: SANKEYLEVELS.LEVEL3 },
-      ],
-    }, // Add subtitles for each column
-    graphic: [
-      {
-        type: "text",
-        left: 20,
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.dimension")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "30%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.indicator")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-      {
-        type: "text",
-        left: "85%",
-        top: 5,
-        style: {
-          text: computed(() => t("echarts.subtitle.capacity")),
-          fontSize: 12,
-          fontWeight: "bold",
-        },
-      },
-    ],
+    },
   };
 
   return {
     SANKEYLEVELS,
     sunburstBasicOption,
     sunburstData,
-    sunburstDimension,
-    sunburstIndicator,
+    sunburstCategory,
     sunburstColorSet,
     sunburstOptionLevel0,
     sunburstOptionLevel1,

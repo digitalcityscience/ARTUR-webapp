@@ -59,31 +59,35 @@ const downloadChart = () => {
   link.click();
 };
 // Function to handle node clicks
-function handleClick(params: any): void {
+function handleSunburstClick(params: any): void {
   // Sankey Chart Click
   if (params.data) {
     // Sunburst Chart Click
     const level = params.treePathInfo.length;
-    if (level === 2 && chartStore.sunburstDimension.has(params.name)) {
-      // Sunburst Second Graph Level 2 Go to Level 1
+    if (level === 2 && chartStore.sunburstCategory.has(params.name)) {
+      // Sunburst Second Graph Click Category
       let color = params.color;
       let dimensionData = chartStore.sunburstData.find(
         (node: any) => node.name === chartStore.sunburstColorSet[params.color],
       );
       reloadChart(chartStore.sunburstOptionLevel1, dimensionData, color);
-    } else if (level === 2 && params.value < 10) {
-      // Sunburst First Graph Click Level 2
+    } else if (level === 2 && params.value < 15) {
+      // Sunburst First Graph Click Dimension
       let color = params.color;
       let data = chartStore.sunburstData.find((node: any) => node.name === params.name);
       reloadChart(chartStore.sunburstOptionLevel1, data, color);
       return;
     } else if (level === 2) {
-      // Sunburst Second Graph Click Level 2
+      // Sunburst Second Graph Click Dimension
       chart.clear();
       chart.setOption(chartStore.sunburstOptionLevel0);
       return;
-    } else if (level === 3 && params.value === 1) {
-      // Sunburst First Graph Click Level 3
+    } else if (
+      level === 3 &&
+      chartStore.sunburstCategory.has(params.name) &&
+      params.value === 1
+    ) {
+      // Sunburst First Graph Click Category
       let color = params.color;
       let dimension = params.treePathInfo[1];
       let dimensionData = chartStore.sunburstData.find(
@@ -109,7 +113,7 @@ function setBasicOption() {
     chart.setOption(chartStore.sunburstBasicOption);
   else {
     chart.setOption(chartStore.sunburstOptionLevel0);
-    chart.on("click", (params: any) => handleClick(params));
+    chart.on("click", (params: any) => handleSunburstClick(params));
   }
 }
 const initChart = (): void => {

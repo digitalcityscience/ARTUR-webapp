@@ -10,55 +10,45 @@ import type {
   MultiLineString,
 } from "geojson";
 
-export type CityData = {
+export interface CityData {
   name: CityName;
   latLng: number[];
-};
+}
 
 export type IsochroneTypeKey = "auto" | "bus" | "bicycle" | "pedestrian";
 
-export type VectorLayer = {
+export interface VectorLayer {
   name: string;
   visible: boolean;
   color?: string;
   range?: number[];
   class?: string[];
-};
+}
 
-export type TileLayer = {
+export interface TileLayer {
   name: string;
   url: string;
   visible: Ref<boolean>;
-};
+}
 
 // Type definitions for feature properties
-export type ShelterProperties = {
+export interface ShelterProperties {
   name: string;
   description: string;
-};
-type IsochroneProperties = {
+}
+interface IsochroneProperties {
   range: number;
-};
+}
 type PopulationProperties = {
   value: number;
   access: number;
   name: string;
 };
-type HealthSitePointProperties = {
+interface HealthSitePointProperties {
   name: string;
   amenity: string;
-};
-type WaterSourceProperties = {
-  id: number;
-  capacity: string;
-  usage: string;
-};
-type EnergySupplyProperties = {
-  id: number;
-  capacity: string;
-  userType: string;
-};
-export type GeoJSONData = {
+}
+export interface GeoJSONData {
   countryBoundary?: FeatureCollection<Polygon>;
   boundary?: FeatureCollection<Polygon>;
   shelters?: FeatureCollection<Point, ShelterProperties>;
@@ -75,10 +65,10 @@ export type GeoJSONData = {
   floodPoint?: any;
   streetHierarchy?: FeatureCollection<MultiLineString, any>;
   streetCriticality?: FeatureCollection<MultiLineString, any>;
-};
-export type Population = {
+}
+export interface Population {
   accessible: number;
   inaccessible: number;
-};
+}
 
 export type Language = "EN" | "УКР";
