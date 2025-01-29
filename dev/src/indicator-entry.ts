@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import "bootstrap/dist/css/bootstrap.min.css";
-import IndicatorChart from "./components/IndicatorChart.vue";
+import IndicatorChart from "@/components/indicator/IndicatorChart.vue";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { createPinia } from "pinia";
 import { createI18n } from "vue-i18n";

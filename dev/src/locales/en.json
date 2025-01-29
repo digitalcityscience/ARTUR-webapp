@@ -524,7 +524,7 @@
     }
   },
   "echarts": {
-    "name": "Urban Resilience",
+    "name": "All Urban Resilience Indicators",
     "social": {
       "name": "SOCIAL",
       "1": {
@@ -1107,7 +1107,7 @@
     }
   },
   "initialIndicators": {
-    "name": "Urban Resilience",
+    "name": "Basic Urban Resilience Indicators",
     "social": {
       "name": "SOCIAL",
       "1": {

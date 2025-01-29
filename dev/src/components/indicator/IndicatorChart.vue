@@ -1,8 +1,10 @@
+P
 <script lang="ts" setup>
 import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
-import LanguageSwitcher from "./controls/sidebar/LanguageSwitcher.vue";
-import { ImageFormat, GraphTypes } from "@/assets/ts/constants";
+import LanguageSwitcher from "@/components/sidebar/LanguageSwitcher.vue";
+import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
+import { GraphTypes } from "@/assets/ts/constants";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useIndicatorChartStore from "@/stores/indicatorChartStore";
 import { useI18n } from "vue-i18n";
@@ -16,9 +18,6 @@ const defaultWidth = 1000;
 const defaultHeight = 600;
 let chart: echarts.ECharts;
 const showModal = ref<boolean>(false);
-const resolution = ref<number>(2);
-const backgroundColor = ref<string>("#ffffff");
-const imageFormat = ref<ImageFormat>(ImageFormat.PNG);
 const switchGraph = ref<string>(GraphTypes.SANKEY);
 // Methods
 const getChartOption = () => {
@@ -42,21 +41,6 @@ const switchGraphType = () => {
   const option = getChartOption();
   chart.clear();
   reloadChart(option);
-};
-const downloadChart = () => {
-  const img = new Image();
-  img.src = chart.getDataURL({
-    type: imageFormat.value,
-    pixelRatio: resolution.value,
-    backgroundColor: backgroundColor.value,
-  });
-  const link = document.createElement("a");
-  link.href = img.src;
-  link.download =
-    `UR-${
-      switchGraph.value === GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY
-    }-chart.` + imageFormat.value;
-  link.click();
 };
 // Function to handle node clicks
 function handleSunburstClick(params: any): void {
@@ -82,12 +66,8 @@ function handleSunburstClick(params: any): void {
       chart.clear();
       chart.setOption(chartStore.sunburstOptionLevel0);
       return;
-    } else if (
-      level === 3 &&
-      chartStore.sunburstCategory.has(params.name) &&
-      params.value === 1
-    ) {
-      // Sunburst First Graph Click Category
+    } else if (level === 3 && chartStore.sunburstCategory.has(params.name)) {
+      // Sunburst First Graph && Second Graph Click Category
       let color = params.color;
       let dimension = params.treePathInfo[1];
       let dimensionData = chartStore.sunburstData.find(
@@ -177,80 +157,7 @@ onMounted(() => {
     </div>
   </div>
   <!-- Download Chart Modal -->
-  <div class="modal fade" :class="{ show: showModal }" tabindex="-1" v-show="showModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{ $t("indicatorChart.modal.title") }}</h5>
-          <button
-            type="button"
-            class="btn-close"
-            aria-label="Close"
-            @click="showModal = false"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group d-flex">
-              <label for="resolution" class="mr-2" style="padding-right: 10px">{{
-                $t("indicatorChart.modal.resolution")
-              }}</label>
-              <input
-                type="range"
-                class="form-control-range"
-                id="resolution"
-                v-model="resolution"
-                min="1"
-                max="10"
-                style="float: right"
-              />
-              <span>{{ resolution }}</span>
-            </div>
-            <div class="form-group d-flex">
-              <label
-                for="backgroundColor"
-                class="mr-2"
-                style="padding-right: 80px; padding-top: 10px"
-                >{{ $t("indicatorChart.modal.color") }}</label
-              >
-              <input
-                type="color"
-                class="form-control"
-                id="backgroundColor"
-                v-model="backgroundColor"
-                style="width: 60px; margin-top: 10px"
-              />
-            </div>
-            <div class="form-group d-flex">
-              <label
-                for="imageFormat"
-                class="mr-2"
-                style="padding-right: 90px; padding-top: 20px"
-                >{{ $t("indicatorChart.modal.format") }}</label
-              >
-              <select
-                class="form-select"
-                aria-label="Data Format"
-                id="imageFormat"
-                v-model="imageFormat"
-                style="width: 100px; height: 40px; margin-top: 10px"
-              >
-                <option value="png">PNG</option>
-                <option value="jpeg">JPEG</option>
-                <option value="svg">SVG</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" @click="downloadChart">
-            <i class="bi bi-download"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal-backdrop fade show" v-show="showModal"></div>
+  <chart-download-modal v-model:show="showModal" :chart="chart" />
   <!-- Chart -->
   <div ref="chartContainer" class="chart-container"></div>
 </template>

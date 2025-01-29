@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
 import { computed, ref, type ComputedRef } from "vue";
 import i18nData from "@/locales/en.json";
+import type SaveAsImage from "echarts/types/src/component/toolbox/feature/SaveAsImage.js";
 
 enum SANKEYLEVELS {
   LEVEL1 = 0,
@@ -288,6 +289,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Level 0 sunburst option
   const sunburstOptionLevel0 = {
     ...sharedSunburstConfig,
+    title: { show: false, text: t("echarts.name") + "-" + "sunburst" },
     series: {
       ...sharedSeriesConfig,
       data: initialSunburstData,
@@ -297,22 +299,9 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         fontSize: 15,
       },
       levels: [
-        {
-          r0: 0,
-          r: 50,
-          itemStyle: { color: "white", opacity: 0.4 },
-        },
-        {
-          r0: 50,
-          r: 120,
-          label: { rotate: "tangential" },
-        },
-        {
-          r0: 120,
-          r: 410,
-          label: { align: "center", width: 290 },
-          nodeClick: false,
-        },
+        { r0: 0, r: 50, itemStyle: { color: "transparent", opacity: 0 } },
+        { r0: 50, r: 120, label: { rotate: "tangential" } },
+        { r0: 120, r: 410, label: { align: "center", width: 290 }, nodeClick: false },
       ],
     },
   };
@@ -321,6 +310,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Level 1 sunburst option
   const sunburstOptionLevel1 = {
     ...sharedSunburstConfig,
+    title: { show: false, text: t("echarts.name") + "-" + "sunburst" },
     series: {
       ...sharedSeriesConfig,
       data: level1Data,
@@ -330,14 +320,8 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         fontSize: 11,
       },
       levels: [
-        {
-          itemStyle: { color: "white", opacity: 0.4 },
-        },
-        {
-          r0: 20,
-          r: 70,
-          label: { rotate: "tangential" },
-        },
+        { r0: 0, r: 20, itemStyle: { color: "transparent", opacity: 0 } },
+        { r0: 20, r: 70, label: { rotate: "tangential" } },
         {
           r0: 70,
           r: 170,
@@ -357,6 +341,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Level 2 sunburst option
   const sunburstOptionLevel2 = {
     ...sharedSunburstConfig,
+    title: { show: false, text: t("echarts.name") + "-" + "sunburst" },
     series: {
       ...sharedSeriesConfig,
       data: level2Data,
@@ -366,14 +351,8 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         fontSize: 13,
       },
       levels: [
-        {
-          itemStyle: { color: "white", opacity: 0.4 },
-        },
-        {
-          r0: 70,
-          r: 200,
-          label: { rotate: "tangential" },
-        },
+        { r0: 0, r: 70, itemStyle: { color: "transparent", opacity: 0 } },
+        { r0: 70, r: 200, label: { rotate: "tangential" } },
         {
           r0: 200,
           r: 380,
@@ -393,6 +372,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Basic sunburst option
   const sunburstBasicOption = {
     ...sharedSunburstConfig,
+    title: { show: false, text: t("initialIndicators.name") + "-" + "sunburst" },
     series: {
       ...sharedSeriesConfig,
       data: basicSunburstData,
@@ -402,21 +382,9 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
         fontSize: "0.7rem",
       },
       levels: [
-        {
-          r0: 0,
-          r: 30,
-          itemStyle: { color: "transparent", opacity: 0 },
-        },
-        {
-          r0: 30,
-          r: 70,
-          label: { rotate: "tangential" },
-        },
-        {
-          r0: 70,
-          r: 205,
-          label: { align: "center", width: 130 },
-        },
+        { r0: 0, r: 30, itemStyle: { color: "transparent", opacity: 0 } },
+        { r0: 30, r: 70, label: { rotate: "tangential" } },
+        { r0: 70, r: 205, label: { align: "center", width: 130 } },
         {
           r0: 205,
           r: 410,
@@ -512,6 +480,7 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Main sankey option
   const sankeyOption = {
     ...sharedSankeyConfig,
+    title: { show: false, text: computed(() => t("echarts.name") + "-" + "sankey") },
     series: {
       type: "sankey",
       layoutIterations: 0,
@@ -537,6 +506,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Basic sankey option - only override the different values
   const sankeyBasicOption = {
     ...sharedSankeyConfig,
+    title: {
+      show: false,
+      text: computed(() => t("initialIndicators.name") + "-" + "sankey"),
+    },
     series: {
       ...sankeyOption.series,
       label: { fontSize: 11 },
@@ -548,6 +521,10 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
   // Capacity sankey option - only override the different values
   const sankeyOptionCapacity = {
     ...sharedSankeyConfig,
+    title: {
+      show: false,
+      text: computed(() => `sankey-${t("echarts.capacities." + capacitySelected.value)}`),
+    },
     series: {
       ...sankeyOption.series,
       left: 5,

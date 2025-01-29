@@ -42,7 +42,6 @@ export enum LocalStorageEvent {
 export enum ImageFormat {
   PNG = "png",
   JPEG = "jpeg",
-  SVG = "svg",
 }
 
 export const populationAccessibleColor: string[] = [
