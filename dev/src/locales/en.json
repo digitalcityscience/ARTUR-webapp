@@ -513,7 +513,8 @@
       "switch": " View",
       "dataView": "Data View",
       "close": "Close",
-      "refresh": "Refresh"
+      "refresh": "Refresh",
+      "downloadCSV": "Download CSV"
     },
     "modal": {
       "title": "Download Options",

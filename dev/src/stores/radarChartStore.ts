@@ -137,46 +137,64 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       color: string;
     };
   }
-  const generateTableHTML = (opt: any) => {
-    // Extract radar indicators (column headers)
+  function downloadTableAsCSV(headers: string[], seriesData: EChartsSeriesData[]): void {
+    const csvHeaders = ["#", ...headers];
+    const csvRows = seriesData.map((series) => [series.name, ...series.value]);
+
+    let csvContent = csvHeaders.join(",") + "\n";
+    csvRows.forEach((row) => {
+      csvContent += row.join(",") + "\n";
+    });
+
+    // 🔥 Add UTF-8 BOM to support non-ASCII characters (e.g., Ukrainian, Chinese, Arabic)
+    const utf8BOM = "\uFEFF";
+    const blob = new Blob([utf8BOM + csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${t(
+      "sidebar.indicatorPanel.radarChart.name." + radarChartType.value,
+    )}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  function generateTableHTML(opt: any): string {
     const radarIndicators: EChartsRadarIndicator[] = opt.radar[0].indicator;
-    const headers = radarIndicators.map((indicator) => indicator.name);
-    // Extract series data (rows)
+    const headers: string[] = radarIndicators.map((indicator) => indicator.name);
     const seriesData: EChartsSeriesData[] = opt.series[0].data;
-    // Generate header cells
+
     const headerCells = headers
       .map((header) => `<th scope="col" class="text-center">${header}</th>`)
       .join("");
-    // Generate data rows
+
     const rows = seriesData
       .map((series) => {
         const cells = series.value
           .map((value) => `<td class="text-center">${value}</td>`)
           .join("");
-        return `
-        <tr>
-          <th scope="row">${series.name}</th>
-          ${cells}
-        </tr>`;
+        return `<tr><th scope="row">${series.name}</th>${cells}</tr>`;
       })
       .join("");
-    // Combine into final table HTML
-    const table = `
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr class="table-dark">
-          <th scope="col" class="text-center">Dimension</th>
-          ${headerCells}
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>`;
+
+    const downloadButtons = `
+    <div class="mb-3"><button id="download-csv-btn" class="btn btn-primary me-2">
+    ${t("indicatorChart.buttons.downloadCSV")}</button>
+    </div>`;
+    const table = `${downloadButtons}<table class="table table-striped table-hover"><thead>
+    <tr class="table-dark"><th scope="col" class="text-center">#</th>${headerCells}</tr></thead>
+    <tbody>${rows}</tbody></table>`;
+
+    setTimeout(() => {
+      const downloadBtn = document.getElementById("download-csv-btn");
+      if (downloadBtn) {
+        downloadBtn.addEventListener("click", () =>
+          downloadTableAsCSV(headers, seriesData),
+        );
+      }
+    }, 100);
 
     return table;
-  };
-
+  }
   const sharedChartConfig = computed(() => {
     return {
       title: {
