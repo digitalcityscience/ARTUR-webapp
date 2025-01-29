@@ -118,33 +118,51 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     }
   };
   // Radar chart configuration
+  const sharedChartConfig = {
+    legend: {},
+    tooltip: {},
+    radar: {
+      splitNumber: 10,
+      indicator: [
+        { name: t("echarts.capacities.Robustness"), max: 100 },
+        { name: t("echarts.capacities.Redundancy"), max: 100 },
+        { name: t("echarts.capacities.Diversity"), max: 100 },
+        { name: t("echarts.capacities.Integration"), max: 100 },
+        { name: t("echarts.capacities.Transparency"), max: 100 },
+        { name: t("echarts.capacities.Resourcefulness"), max: 100 },
+        { name: t("echarts.capacities.Inclusiveness"), max: 100 },
+        { name: t("echarts.capacities.Reflectiveness"), max: 100 },
+        { name: t("echarts.capacities.Flexibility"), max: 100 },
+      ],
+    },
+  };
+  const sharedToolboxConfig = {
+    top: "top",
+    right: "5%",
+    iconStyle: {
+      borderColor: "#5ABE64", // default color
+    },
+    emphasis: {
+      iconStyle: {
+        borderColor: "#54C3F1", // Color Icon hover
+      },
+    },
+    itemSize: 20, // Icon Size
+  };
   const radarChartType = ref<"dimension" | "total">("dimension");
   const radarOptionDimension = computed(() => {
     return {
-      legend: {},
-      tooltip: {},
+      ...sharedChartConfig,
       toolbox: {
+        ...sharedToolboxConfig,
         feature: {
           saveAsImage: {
             show: true,
             name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
             title: t("indicatorChart.buttons.download"),
+            icon: "path://M653.6 770.4L517.8 926.2c-1.6 1.6-4.1 1.6-5.7 0L376.4 770.4l-0.4-0.4c-1.6-2.1 0.1-5.2 2.8-5.2H495V476c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4v288.7h116.1c2.7 0 4.5 3.1 2.8 5.2-0.1 0.2-0.2 0.4-0.3 0.5z,M907.5 434c-36-42.8-84.9-72.9-138.9-85.8-11-56.4-40.5-107.9-84.1-146.2-47.6-41.8-108.8-64.8-172.2-64.8-63.6 0-124.9 23.2-172.6 65.2-43.7 38.6-73.2 90.4-84 147.2-52.6 13.9-100.2 44.3-135 86.6-38.4 46.6-59.5 105.5-59.5 166 0 69.8 27.2 135.4 76.5 184.7 35.5 35.5 79.4 59.5 127.2 70.2 12.4 2.8 24.2-6.7 24.2-19.5v-0.2c0-9.4-6.6-17.4-15.7-19.5-98.5-22.3-172.3-110.6-172.3-215.7 0-104.4 74.1-195.5 176.2-216.6l13.9-2.9 1.9-14.1C307.7 259.4 402 177.1 512.3 177.1c109.8 0 204 81.9 219 190.5l2 14.3 14.2 2.6c105.1 19.1 181.3 110.6 181.3 217.6 0 106.3-75.4 195.3-175.5 216.4-9.3 2-16 10.1-16 19.5v0.2c0 12.6 11.6 22.1 24 19.5 49.3-10.2 94.6-34.6 131-71 49.3-49.3 76.5-114.9 76.5-184.7 0.1-61.3-21.8-121-61.3-168z", //Copy bootstrap icon svg path, multipath use comma to seperate
           },
         },
-      },
-      radar: {
-        splitNumber: 10,
-        indicator: [
-          { name: t("echarts.capacities.Robustness"), max: 100 },
-          { name: t("echarts.capacities.Redundancy"), max: 100 },
-          { name: t("echarts.capacities.Diversity"), max: 100 },
-          { name: t("echarts.capacities.Integration"), max: 100 },
-          { name: t("echarts.capacities.Transparency"), max: 100 },
-          { name: t("echarts.capacities.Resourcefulness"), max: 100 },
-          { name: t("echarts.capacities.Inclusiveness"), max: 100 },
-          { name: t("echarts.capacities.Reflectiveness"), max: 100 },
-          { name: t("echarts.capacities.Flexibility"), max: 100 },
-        ],
       },
       series: [
         {
@@ -178,30 +196,17 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   });
   const radarOptionTotal = computed(() => {
     return {
-      legend: {},
-      tooltip: {},
+      ...sharedChartConfig,
       toolbox: {
+        ...sharedToolboxConfig,
         feature: {
           saveAsImage: {
             show: true,
             name: t("sidebar.indicatorPanel.radarChart.name.total"),
             title: t("indicatorChart.buttons.download"),
+            icon: "path://M653.6 770.4L517.8 926.2c-1.6 1.6-4.1 1.6-5.7 0L376.4 770.4l-0.4-0.4c-1.6-2.1 0.1-5.2 2.8-5.2H495V476c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4v288.7h116.1c2.7 0 4.5 3.1 2.8 5.2-0.1 0.2-0.2 0.4-0.3 0.5z,M907.5 434c-36-42.8-84.9-72.9-138.9-85.8-11-56.4-40.5-107.9-84.1-146.2-47.6-41.8-108.8-64.8-172.2-64.8-63.6 0-124.9 23.2-172.6 65.2-43.7 38.6-73.2 90.4-84 147.2-52.6 13.9-100.2 44.3-135 86.6-38.4 46.6-59.5 105.5-59.5 166 0 69.8 27.2 135.4 76.5 184.7 35.5 35.5 79.4 59.5 127.2 70.2 12.4 2.8 24.2-6.7 24.2-19.5v-0.2c0-9.4-6.6-17.4-15.7-19.5-98.5-22.3-172.3-110.6-172.3-215.7 0-104.4 74.1-195.5 176.2-216.6l13.9-2.9 1.9-14.1C307.7 259.4 402 177.1 512.3 177.1c109.8 0 204 81.9 219 190.5l2 14.3 14.2 2.6c105.1 19.1 181.3 110.6 181.3 217.6 0 106.3-75.4 195.3-175.5 216.4-9.3 2-16 10.1-16 19.5v0.2c0 12.6 11.6 22.1 24 19.5 49.3-10.2 94.6-34.6 131-71 49.3-49.3 76.5-114.9 76.5-184.7 0.1-61.3-21.8-121-61.3-168z", //Copy bootstrap icon svg path, multipath use comma to seperate
           },
         },
-      },
-      radar: {
-        splitNumber: 10,
-        indicator: [
-          { name: t("echarts.capacities.Robustness"), max: 100 },
-          { name: t("echarts.capacities.Redundancy"), max: 100 },
-          { name: t("echarts.capacities.Diversity"), max: 100 },
-          { name: t("echarts.capacities.Integration"), max: 100 },
-          { name: t("echarts.capacities.Transparency"), max: 100 },
-          { name: t("echarts.capacities.Resourcefulness"), max: 100 },
-          { name: t("echarts.capacities.Inclusiveness"), max: 100 },
-          { name: t("echarts.capacities.Reflectiveness"), max: 100 },
-          { name: t("echarts.capacities.Flexibility"), max: 100 },
-        ],
       },
       series: [
         {
