@@ -204,7 +204,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       legend: {},
       tooltip: {},
       toolbox: {
-        top: 0,
+        top: 10,
         right: 0,
         orient: "vertical",
         iconStyle: {
