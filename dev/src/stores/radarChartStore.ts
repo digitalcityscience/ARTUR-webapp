@@ -201,7 +201,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         show: false,
         text: t("sidebar.indicatorPanel.radarChart.name." + radarChartType.value),
       },
-      legend: {},
+      legend: { left: 0, top: 30, orient: "vertical", itemGap: 30 },
       tooltip: {},
       toolbox: {
         top: 10,
@@ -237,6 +237,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       },
       radar: {
         splitNumber: 10,
+        center: ["50%", "45%"],
         indicator: [
           { name: t("echarts.capacities.Robustness"), max: 100 },
           { name: t("echarts.capacities.Redundancy"), max: 100 },

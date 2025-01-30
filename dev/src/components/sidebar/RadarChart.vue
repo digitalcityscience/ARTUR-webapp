@@ -34,7 +34,7 @@ onMounted(initChart);
 </template>
 <style scoped>
 .chart-container {
-  width: 40rem;
-  height: 35rem;
+  width: 750px;
+  height: 550px;
 }
 </style>
