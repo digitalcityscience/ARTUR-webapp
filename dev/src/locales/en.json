@@ -6,7 +6,6 @@
   },
   "layerNames": {
     "shelter": "Shelters",
-    "vulnerability": "Vulnerability",
     "boundary": "Boundary",
     "isochrone": "Shelters' Catchment Area (Pedestrian)",
     "population": "Shelter Access (Pedestrian): Population within/outside 5 min",
@@ -36,10 +35,6 @@
     },
     "minute": "min",
     "kilometer": "km",
-    "vulnerability": {
-      "alarm": "Alarm Hours",
-      "size": "The more population, the larger the vulnerability dot."
-    },
     "population": {
       "accessible": "Accessible",
       "population": "Population",
@@ -81,6 +76,11 @@
           "provides a step-by-step guidelines as recommendations for targeted planning of countermeasures"
         ],
         "suggestion": "To start using the interactive prototype tool please click on the numbered steps on the side panel and follow the instructions."
+      },
+      "selectCity": {
+        "title": "City Selection",
+        "text": "Please select your city:",
+        "default": "Select a city"
       }
     },
     "indicatorPanel": {
@@ -117,10 +117,8 @@
     },
     "dataPanel": {
       "header": "Data Visualisation",
-
       "control": {
         "header": "Layer Control",
-        "basemaps": "Basemaps",
         "overlays": "Overlays"
       },
       "sets": {
@@ -212,7 +210,7 @@
           "title": {
             "definition": "Definition",
             "practice": "Best Practices in the Urban Form",
-            "example": "Examples for the case of Ukrainian Cities:"
+            "example": "Examples for the case of Ukrainian Cities"
           },
           "Robustness": {
             "definition": "Property of being strong in its constitution. Ability to tolerate disturbances without collapsing the rest of the system, despite the frequency and complexity of triggering factors. They are self-sufficient parts of the system in an emergency and overcome crises independently.",
@@ -229,7 +227,8 @@
                 "Distributed and decentralized energy systems to prevent widespread blackouts.",
                 "Public spaces which are also water storage basins for storm events.",
                 "Having redundant and decentralized utility supply stations, while also pairing them with dependent services (electricity, water and heating) to close locations to avoid disruptions in distant distribution networks.",
-                "Capable of receiving IDPs. Underground spaces",
+                "Capable of receiving IDPs.",
+                "Underground spaces.",
                 "Dispersal of critical infrastructure facilities.",
                 "Decentralisation in general (of services, of crowds, of resources, of economy)."
               ]
@@ -295,46 +294,24 @@
               ]
             }
           },
-          "Integration": {
-            "definition": "The ability of different systems, sectors, and stakeholders within a city to work together cohesively to address challenges,  collaborate across social, economic, environmental, and governance dimensions and to create a unified approach to anticipate, respond and recover from stresses and shocks.",
+          "Flexibility": {
+            "definition": "(adapted from variability) embrace flexibility rather than attempting to control or reduce it. A flexible system can change and evolve against changing circumstances.",
             "practice": [
-              "Physical: intermodal transportation, mixed-use districts, new districts closer to BRT lines, green-blue infrastructure, integration of utilities with urban design, smart city integration",
-              "Social / Institutional: cross-sectoral collaboration, multi-level governance, bottom-up approaches in local governance, policies based on systems thinking."
-            ],
-            "example": {
-              "type": "grouped",
-              "data": {
-                "Physical": [
-                  "Interconnected transport networks",
-                  "Making sure isolated communities are considered in the planning",
-                  "Under and above ground connectivity in cities.",
-                  "Built and natural spaces integrated for mental health and efficiency of space. ",
-                  "Accessibility in cities, meaning short distances, enhancing pedestrian movement.",
-                  "Improved navigation and alerts."
-                ],
-                "Social": [
-                  "Community integrated into local planning decisions.",
-                  "Local knowledge collection for empowerment of the population and sense of belonging (to prevent shrinking cities).",
-                  "Cohesive emergency operations."
-                ]
-              },
-              "group": { "Social": "Social", "Physical": "Physical" }
-            }
-          },
-          "Transparency": {
-            "definition": "Clear, open, and accessible communication of information about risks, decisions, policies, and actions, ensuring that all stakeholders—including residents, governments, and organizations—understand and can participate in resilience-building processes. Transparency fosters trust, accountability, and collaboration, which are essential for effective urban resilience.",
-            "practice": [
-              "Informing the population to raise awareness.",
-              "Institutional accountability for expenditures and investments on urban development."
+              "Street layouts with frequent intersections for re-routing",
+              "Adaptive land-use",
+              "Modular or incremental housing design",
+              "Multi-functional spaces",
+              "Infrastructure accommodating evolving technologies or capacities without needing complete replacement (wireless tech)"
             ],
             "example": {
               "type": "list",
               "data": [
-                "Informed population in measures such as energy saving.",
-                "Institutional accountability for expenditures and investments on urban recovery.",
-                "Informed population on emergency measures in their own cities.",
-                "Improved navigation, alerts and early warning systems.",
-                "Ensuring access to information to more vulnerable population (elderly, single parents, people suffering from digital divide)."
+                "Interchangeability: buildings capable of holding an alternative temporary use (shelters for IDP).",
+                "Additional infrastructure adaptable as healthcare facilities in emergencies.",
+                "Capacity to assemble quickly additional sheltering for unexpected IDP.",
+                "Multifunctional use of buildings.",
+                "Transformable design.",
+                "Building new infrastructure with consideration of evolving technologies without needing complete replacement (e.g. wireless tech)."
               ]
             }
           },
@@ -366,6 +343,32 @@
               }
             }
           },
+          "Integration": {
+            "definition": "The ability of different systems, sectors, and stakeholders within a city to work together cohesively to address challenges,  collaborate across social, economic, environmental, and governance dimensions and to create a unified approach to anticipate, respond and recover from stresses and shocks.",
+            "practice": [
+              "Physical: intermodal transportation, mixed-use districts, new districts closer to BRT lines, green-blue infrastructure, integration of utilities with urban design, smart city integration",
+              "Social / Institutional: cross-sectoral collaboration, multi-level governance, bottom-up approaches in local governance, policies based on systems thinking."
+            ],
+            "example": {
+              "type": "grouped",
+              "data": {
+                "Physical": [
+                  "Interconnected transport networks",
+                  "Making sure isolated communities are considered in the planning",
+                  "Under and above ground connectivity in cities.",
+                  "Built and natural spaces integrated for mental health and efficiency of space. ",
+                  "Accessibility in cities, meaning short distances, enhancing pedestrian movement.",
+                  "Improved navigation and alerts."
+                ],
+                "Social": [
+                  "Community integrated into local planning decisions.",
+                  "Local knowledge collection for empowerment of the population and sense of belonging (to prevent shrinking cities).",
+                  "Cohesive emergency operations."
+                ]
+              },
+              "group": { "Social": "Social", "Physical": "Physical" }
+            }
+          },
           "Reflectiveness": {
             "definition": "An urban framework or mechanism that actively learns from past experiences, anticipates future challenges, and adapts its structures, policies, and behaviors accordingly to improve resilience. It integrates feedback loops, collective learning, and adaptive strategies to ensure its capacity to respond to and recover from stresses and shocks.",
             "practice": [
@@ -384,127 +387,37 @@
               ]
             }
           },
-          "Flexibility": {
-            "definition": "The capacity of a system to embrace change rather than attempting to control or reduce it. A flexible system should be able to change and evolve against unexpected circumstances.",
+          "Transparency": {
+            "definition": "Clear, open, and accessible communication of information about risks, decisions, policies, and actions, ensuring that all stakeholders—including residents, governments, and organizations—understand and can participate in resilience-building processes. Transparency fosters trust, accountability, and collaboration, which are essential for effective urban resilience.",
             "practice": [
-              "Street layouts with frequent intersections for re-routing",
-              "Adaptive land-use",
-              "Modular or incremental housing design",
-              "Multi-functional spaces",
-              "Infrastructure accommodating evolving technologies or capacities without needing complete replacement (wireless tech)"
+              "Informing the population to raise awareness.",
+              "Institutional accountability for expenditures and investments on urban development."
             ],
             "example": {
               "type": "list",
               "data": [
-                "Interchangeability: buildings capable of holding an alternative temporary use (shelters for IDP).",
-                "Additional infrastructure adaptable as healthcare facilities in emergencies.",
-                "Capacity to assemble quickly additional sheltering for unexpected IDP.",
-                "Multifunctional use of buildings.",
-                "Transformable design.",
-                "Building new infrastructure with consideration of evolving technologies without needing complete replacement (e.g. wireless tech)."
+                "Informed population in measures such as energy saving.",
+                "Institutional accountability for expenditures and investments on urban recovery.",
+                "Informed population on emergency measures in their own cities.",
+                "Improved navigation, alerts and early warning systems.",
+                "Ensuring access to information to more vulnerable population (elderly, single parents, people suffering from digital divide)."
               ]
             }
           }
-        },
-        "button": "Click here to explore relatable indicators"
-      }
-    },
-    "vulnerabilityPanel": {
-      "header": "Vulnerability Check (General)",
-      "definition": {
-        "header": "vulnerability",
-        "subtitle": "definition",
-        "text": "Vulnerability refers to the conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards (source UNDRR)."
-      },
-      "layer": "Nationwide Layers",
-      "citySelection": {
-        "title": "City Selection",
-        "text": "Please select your city:",
-        "selectDefault": "Select a city"
-      },
-      "propertySelector": {
-        "selectLabel": "select coloring property",
-        "properties": {
-          "region": "Region",
-          "district of region": "District of region",
-          "hromada (territorial community)_1": "Hromada (territorial community)_1",
-          "city": "City",
-          "city status": "City status",
-          "city_area": "City area, sq. km",
-          "males, %": "Males, %",
-          "females, %": "Females, %",
-          "0_17 age, %": "0_17 age, %",
-          "18_44 age, %": "18_44 age, %",
-          "45_60 age, %": "45_60 age, %",
-          "61_64 age, %": "61_64 age, %",
-          "65+ age,  %": "65+ age,  %",
-          "median monthly income per person, uah": "Median monthly income per person, uah",
-          "is the city was under occupation?": "Is the city was under occupation?",
-          "active hostilities / occupied territory": "Active hostilities / occupied territory",
-          "number of alarms in the region in 2024": "Number of alarms in the region in 2024",
-          "duration of alarms, hours in 2024": "Duration of alarms, hours in 2024",
-          "number of alarms in the region in 2024 / per day": "Number of alarms in the region in 2024 / per day",
-          "num_idps_oblast": "Number of IDPs in the Oblast",
-          "population_2022": "Population in city (census 2022)",
-          "number of idps_1": "Number of IDPs at the city level",
-          "working_age individuals unemployment rate, %": "Unemployment of the working-age population in the city",
-          "distance from the border with rf / rb / front line": "Distance from city to conflict zone or under enemy control"
         }
+      },
+      "buttons": {
+        "toSankey": "Click here to explore relatable indicators",
+        "back": "Back"
       }
     },
     "settingsPanel": {
       "header": "Settings",
       "language": "Select the language:",
-      "step1": {
-        "title": "Step 1",
-        "content": "Please select your city:",
-        "selectDefault": "Select a city"
-      },
-      "step2": {
-        "title": "Step 2",
-        "content": "From the identified types of challenges in this city, please select the one you would like to consult. Afterwards, click ",
-        "selectDefault": "Select a topic"
-      },
-      "step3": {
-        "title": "Step 3",
-        "content": "Please open the dashboard and then select one type of disruption in the top diagram to evaluate in the map. Afterwards, click ",
-        "tableHeaders": {
-          "diagnoseDashboard": "First Diagnose Dashboard",
-          "city": "City:",
-          "challenge": "Challenge:",
-          "summary": "Summary:"
-        },
-        "summary": {
-          "water": "Water provision is challenged by multiple factors, affecting collection, distribution, sanitation measures. In the following diagrams the specific types of threats are explained.",
-          "energy": "Energy provision is challenged by various factors, including supply and demand disruptions."
-        }
-      }
-    },
-    "analysisDashboard": {
-      "open": "Open Dashboard",
-      "challenge": "Challenge",
-      "disruption_types": "Disruption Types:",
-      "water_supply_chain": "Water supply chain",
-      "affected_urban_resilience_capacities": "Affected Urban Resilience Capacities",
-      "navigate_to_the_map": "Navigate to the map",
-      "go_to_layer_set": "Go to Water Source Layer Set",
-      "other_components": "Other Affected Components in the Urban System",
-      "download": "Download"
+      "basemaps": "Basemaps"
     },
     "buttons": {
-      "goToStep1": " Go to Step 1",
-      "back": " Back",
-      "next": " Next",
-      "goToLayerControl": " Go to Layer Control",
       "documentation": "Support Documentation"
-    },
-    "topics": {
-      "water": "Water",
-      "energy": "Energy",
-      "evacuation": "Evacuation",
-      "heating": "Heating",
-      "ecology": "Ecology",
-      "physicalSafety": "Physical Safety"
     }
   },
   "indicatorChart": {

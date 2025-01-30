@@ -231,7 +231,7 @@ onMounted(initChart);
             data-bs-toggle="modal"
             data-bs-target="#sankeyModal"
           >
-            {{ $t("sidebar.dictionaryPanel.content.button") }}
+            {{ $t("sidebar.dictionaryPanel.buttons.toSankey") }}
           </button>
         </div>
       </div>
@@ -274,7 +274,7 @@ onMounted(initChart);
             data-bs-toggle="modal"
             data-bs-target="#capacityModal"
           >
-            {{ $t("sidebar.buttons.back") }}
+            {{ $t("sidebar.dictionaryPanel.buttons.back") }}
           </button>
         </div>
       </div>

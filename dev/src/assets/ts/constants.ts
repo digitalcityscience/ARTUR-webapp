@@ -60,7 +60,6 @@ export const populationInaccessibleColor: string[] = [
 ];
 
 export enum LayerName {
-  VULNERABILITY = "vulnerability",
   SHELTER = "shelter",
   BOUNDARY = "boundary",
   SHELTERISOCHRONE = "isochrone",

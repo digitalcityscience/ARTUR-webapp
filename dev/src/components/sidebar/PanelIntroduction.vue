@@ -59,11 +59,11 @@ const handleCityChange = (e: Event) => {
             data-bs-target="#city-selector"
             aria-expanded="true"
           >
-            {{ $t("sidebar.vulnerabilityPanel.citySelection.title") }}
+            {{ $t("sidebar.introductionPanel.selectCity.title") }}
           </button>
           <div class="collapse show mb-1" id="city-selector">
             <p class="sidebar-content-text fw-medium">
-              {{ $t("sidebar.vulnerabilityPanel.citySelection.text") }}
+              {{ $t("sidebar.introductionPanel.selectCity.text") }}
             </p>
             <div class="form-group">
               <select
@@ -73,7 +73,7 @@ const handleCityChange = (e: Event) => {
                 aria-label="Select a city"
               >
                 <option value="" disabled selected>
-                  {{ $t("sidebar.settingsPanel.step1.selectDefault") }}
+                  {{ $t("sidebar.introductionPanel.selectCity.default") }}
                 </option>
                 <option
                   v-for="city in cityOptions"
