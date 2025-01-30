@@ -1,22 +1,9 @@
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue";
-import useSidebarStore from "@/stores/sidebarStore";
-import useMapStore from "@/stores/mapStore";
+import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { CityName, cities, basemaps } from "@/assets/ts/constants";
+import { basemaps } from "@/assets/ts/constants";
 
 const { locale } = useI18n();
-const sidebarStore = useSidebarStore();
-const mapStore = useMapStore();
-const map = mapStore.map;
-// Reactive summary value
-const topic = ref("");
-watch(
-  () => sidebarStore.selectedTopic,
-  (newVal) => {
-    topic.value = newVal === "water" ? "water" : "energy";
-  },
-);
 // Basemap Settings
 // Track the currently selected base map by its name, default is the first
 const selectedBasemap = ref(basemaps[0].name);

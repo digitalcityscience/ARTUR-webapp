@@ -7,9 +7,11 @@ import StagnentPointLegend from "./legend/StagnentPointLegend.vue";
 import StreetCriticalityLegend from "./legend/StreetCriticalityLegend.vue";
 import { CityName } from "@/assets/ts/constants";
 import { getIsochroneColor } from "@/assets/ts/functions";
-import useMapStore from "@/stores/mapStore";
+import useMapStore from "@/stores/geoDataStore";
+import useLayerStore from "@/stores/layerStore";
 
 const mapStore = useMapStore();
+const layerStore = useLayerStore();
 const showLegend = ref(true);
 const btnLegendIconClass = computed(() => {
   return showLegend.value ? "bi bi-caret-down-fill" : "bi bi-caret-up-fill";
@@ -26,126 +28,128 @@ const btnLegendIconClass = computed(() => {
       <i class="bi bi-map ps-2"></i>
     </button>
     <div class="legend" v-show="showLegend">
-      <div v-show="mapStore.shelterLayers.shelterLayer.visible">
+      <div v-show="layerStore.shelterLayers.shelterLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.shelterLayers.shelterLayer.color }"
+          :style="{ background: layerStore.shelterLayers.shelterLayer.color }"
         ></i>
-        {{ $t("layerNames." + mapStore.shelterLayers.shelterLayer.name) }}
+        {{ $t("layerNames." + layerStore.shelterLayers.shelterLayer.name) }}
       </div>
-      <div v-show="mapStore.healthSiteLayers.healthSiteLayer.visible">
+      <div v-show="layerStore.healthSiteLayers.healthSiteLayer.visible">
         <i
           class="point"
-          :style="{ background: mapStore.healthSiteLayers.healthSiteLayer.color }"
+          :style="{ background: layerStore.healthSiteLayers.healthSiteLayer.color }"
         ></i>
-        {{ $t("layerNames." + mapStore.healthSiteLayers.healthSiteLayer.name) }}
+        {{ $t("layerNames." + layerStore.healthSiteLayers.healthSiteLayer.name) }}
       </div>
       <!-- Water Network Legend for KRYVYIRIH data -->
       <water-point-legend
         v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          layerStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
           mapStore.city === CityName.KRYVYIRIH
         "
       ></water-point-legend>
       <div
         v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
-          mapStore.city === CityName.KRYVYIRIH
-        "
-      >
-        <i
-          class="polyline"
-          :style="{ background: mapStore.waterNetworkLayers.waterNetworkLineLayer.color }"
-        ></i>
-        {{
-          $t(
-            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
-          )
-        }}
-      </div>
-      <div
-        v-if="
-          mapStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          layerStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
           mapStore.city === CityName.KRYVYIRIH
         "
       >
         <i
           class="polyline"
           :style="{
-            background: mapStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
+            background: layerStore.waterNetworkLayers.waterNetworkLineLayer.color,
           }"
         ></i>
         {{
           $t(
-            `layerNames.${mapStore.city}.${mapStore.waterNetworkLayers.waterNetworkSegmentLayer.name}`,
+            `layerNames.${mapStore.city}.${layerStore.waterNetworkLayers.waterNetworkLineLayer.name}`,
+          )
+        }}
+      </div>
+      <div
+        v-if="
+          layerStore.waterNetworkLayers.waterNetworkPointLayer.visible &&
+          mapStore.city === CityName.KRYVYIRIH
+        "
+      >
+        <i
+          class="polyline"
+          :style="{
+            background: layerStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
+          }"
+        ></i>
+        {{
+          $t(
+            `layerNames.${mapStore.city}.${layerStore.waterNetworkLayers.waterNetworkSegmentLayer.name}`,
           )
         }}
       </div>
       <!-- Sewage System Legend for NIKOPOL data -->
       <div
         v-if="
-          mapStore.sewageSystemLayers.sewagePointLayer.visible &&
+          layerStore.sewageSystemLayers.sewagePointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       >
         <i
           class="point"
           :style="{
-            background: mapStore.sewageSystemLayers.sewagePointLayer.color,
+            background: layerStore.sewageSystemLayers.sewagePointLayer.color,
           }"
         ></i>
-        {{ $t(`layerNames.${mapStore.sewageSystemLayers.sewagePointLayer.name}`) }}
+        {{ $t(`layerNames.${layerStore.sewageSystemLayers.sewagePointLayer.name}`) }}
       </div>
       <div
         v-if="
-          mapStore.sewageSystemLayers.sewageLineLayer.visible &&
+          layerStore.sewageSystemLayers.sewageLineLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       >
         <i
           class="polyline"
-          :style="{ background: mapStore.sewageSystemLayers.sewageLineLayer.color }"
+          :style="{ background: layerStore.sewageSystemLayers.sewageLineLayer.color }"
         ></i>
-        {{ $t(`layerNames.${mapStore.sewageSystemLayers.sewageLineLayer.name}`) }}
+        {{ $t(`layerNames.${layerStore.sewageSystemLayers.sewageLineLayer.name}`) }}
       </div>
       <!-- Stagnent Rainfall Nikopol -->
       <stagnent-point-legend
         v-show="
-          mapStore.stagnentRainfallLayers.floodPointLayer.visible &&
+          layerStore.stagnentRainfallLayers.floodPointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       ></stagnent-point-legend>
       <street-criticality-legend
         v-show="
-          mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible &&
+          layerStore.stagnentRainfallLayers.streetCriticalityLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       ></street-criticality-legend>
       <div
         v-show="
-          mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible &&
+          layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       >
         <template
-          v-for="fclass in mapStore.stagnentRainfallLayers.streetHierarchyLayer.class"
+          v-for="fclass in layerStore.stagnentRainfallLayers.streetHierarchyLayer.class"
           :key="fclass"
         >
           <i
             class="polyline"
-            :style="{ background: mapStore.getStreetHierachyColor(fclass) }"
+            :style="{ background: layerStore.getStreetHierachyColor(fclass) }"
           ></i
           >{{ $t("legend.stagnentRainfall.streetHierarchy." + fclass) }} <br />
         </template>
       </div>
       <!-- OTHER -->
-      <div v-show="mapStore.boundaryLayer.visible">
-        <i class="polyline" :style="{ background: mapStore.boundaryLayer.color }"></i>
-        {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
+      <div v-show="layerStore.boundaryLayer.visible">
+        <i class="polyline" :style="{ background: layerStore.boundaryLayer.color }"></i>
+        {{ $t("layerNames." + layerStore.boundaryLayer.name) }}
       </div>
-      <div v-show="mapStore.shelterLayers.isochroneLayer.visible">
+      <div v-show="layerStore.shelterLayers.isochroneLayer.visible">
         <template
-          v-for="range in mapStore.shelterLayers.isochroneLayer.range"
+          v-for="range in layerStore.shelterLayers.isochroneLayer.range"
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 5) }"></i
@@ -153,9 +157,9 @@ const btnLegendIconClass = computed(() => {
           }}<br />
         </template>
       </div>
-      <div v-show="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible">
+      <div v-show="layerStore.healthSiteLayers.healthSiteIsochroneLayer.visible">
         <template
-          v-for="range in mapStore.healthSiteLayers.healthSiteIsochroneLayer.range"
+          v-for="range in layerStore.healthSiteLayers.healthSiteIsochroneLayer.range"
           :key="range"
         >
           <i class="polygon" :style="{ background: getIsochroneColor(range, 10) }"></i
@@ -168,8 +172,8 @@ const btnLegendIconClass = computed(() => {
       </div>
       <population-legend
         v-show="
-          mapStore.shelterLayers.populationLayer.visible ||
-          mapStore.healthSiteLayers.healthSitePopulationLayer.visible
+          layerStore.shelterLayers.populationLayer.visible ||
+          layerStore.healthSiteLayers.healthSitePopulationLayer.visible
         "
       ></population-legend>
     </div>

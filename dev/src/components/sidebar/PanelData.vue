@@ -4,10 +4,12 @@ import LanguageSwitcher from "./LanguageSwitcher.vue";
 import { populationType, LayerName, CityName } from "@/assets/ts/constants";
 import type { IsochroneTypeKey } from "@/assets/ts/types";
 import { ref, computed } from "vue";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
+import useLayerStore from "@/stores/layerStore";
 import { useI18n } from "vue-i18n";
 
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
+const layerStore = useLayerStore();
 const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
 const waterNetworkDescription = computed(
@@ -45,12 +47,12 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  :id="mapStore.boundaryLayer.name"
-                  :name="mapStore.boundaryLayer.name"
-                  v-model="mapStore.boundaryLayer.visible"
+                  :id="layerStore.boundaryLayer.name"
+                  :name="layerStore.boundaryLayer.name"
+                  v-model="layerStore.boundaryLayer.visible"
                 />
-                <label class="form-check-label" :for="mapStore.boundaryLayer.name">
-                  {{ $t("layerNames." + mapStore.boundaryLayer.name) }}
+                <label class="form-check-label" :for="layerStore.boundaryLayer.name">
+                  {{ $t("layerNames." + layerStore.boundaryLayer.name) }}
                 </label>
               </li>
               <!-- layer sets -->
@@ -66,7 +68,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
                   <li
                     class="mb-1"
-                    v-for="overlay in mapStore.shelterLayers"
+                    v-for="overlay in layerStore.shelterLayers"
                     :key="overlay.name"
                   >
                     <input
@@ -94,7 +96,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 <ul class="form-check collapse list-unstyled" id="healthsite-layer-set">
                   <li
                     class="mb-1"
-                    v-for="overlay in mapStore.healthSiteLayers"
+                    v-for="overlay in layerStore.healthSiteLayers"
                     :key="overlay.name"
                   >
                     <input
@@ -117,7 +119,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                       }}</label>
                       <select
                         v-model="selectedIsochroneType"
-                        @change="mapStore.setIsochroneType(selectedIsochroneType)"
+                        @change="geoDataStore.setIsochroneType(selectedIsochroneType)"
                         class="form-select form-select-sm rounded"
                         id="isochroneType"
                         aria-label="Isochrone Type Select"
@@ -139,7 +141,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                   </li>
                 </ul>
               </li>
-              <li class="mb-1" v-if="mapStore.city === CityName.KRYVYIRIH">
+              <li class="mb-1" v-if="geoDataStore.city === CityName.KRYVYIRIH">
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
@@ -151,18 +153,20 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 <ul class="form-check list-unstyled collapse" id="waterNetwork-layer-set">
                   <li
                     class="mb-1"
-                    :key="mapStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                    :key="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
                   >
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      :id="mapStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                      :name="mapStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                      v-model="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+                      :id="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                      :name="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                      v-model="
+                        layerStore.waterNetworkLayers.waterNetworkPointLayer.visible
+                      "
                     />
                     <label
                       class="form-check-label"
-                      :for="mapStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                      :for="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
                     >
                       {{ $t(`layerNames.waterNetwork`) }}
                     </label>
@@ -174,7 +178,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                         $t("sidebar.dataPanel.waterNetwork.selectScenario")
                       }}</label>
                       <select
-                        v-model="mapStore.selectedWaterScenario"
+                        v-model="layerStore.selectedWaterScenario"
                         class="form-select form-select-sm rounded"
                         id="water-network-scenario"
                         aria-label="water-network-scenario-select"
@@ -208,7 +212,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                           class="btn btn-outline-secondary text-uppercase"
                         >
                           {{ waterNetworkDescription.header.loc.source }}
-                          {{ mapStore.selectedWaterScenario }}
+                          {{ layerStore.selectedWaterScenario }}
                         </h6>
                         <ul
                           id="sidebar-dataPanel-water-network-scenario-description"
@@ -216,7 +220,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                         >
                           <li
                             v-for="item in waterNetworkDescription[
-                              mapStore.selectedWaterScenario
+                              layerStore.selectedWaterScenario
                             ]"
                           >
                             {{ item.loc.source }}
@@ -249,7 +253,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                   </li>
                 </ul>
               </li>
-              <li class="mb-1" v-if="mapStore.city === CityName.NIKOPOL">
+              <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
@@ -264,7 +268,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 >
                   <li
                     class="mb-1"
-                    v-for="overlay in mapStore.sewageSystemLayers"
+                    v-for="overlay in layerStore.sewageSystemLayers"
                     :key="overlay.name"
                   >
                     <input
@@ -280,7 +284,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                   </li>
                 </ul>
               </li>
-              <li class="mb-1" v-if="mapStore.city === CityName.NIKOPOL">
+              <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
@@ -294,7 +298,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                   <ul class="form-check list-unstyled mb-2">
                     <li
                       class="mb-1"
-                      v-for="overlay in mapStore.stagnentRainfallLayers"
+                      v-for="overlay in layerStore.stagnentRainfallLayers"
                       :key="overlay.name"
                     >
                       <input
@@ -326,14 +330,16 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                         class="collapse show lh-sm fs-6 ps-0"
                       >
                         <li
-                          v-show="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+                          v-show="
+                            layerStore.stagnentRainfallLayers.floodPointLayer.visible
+                          "
                         >
                           <strong>{{ $t("layerNames.floodPoint") }}:</strong>
                           {{ $t("sidebar.dataPanel.stagnentRainfall.floodPoint") }}
                         </li>
                         <li
                           v-show="
-                            mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible
+                            layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible
                           "
                         >
                           <strong>{{ $t("layerNames.streetHierarchy") }}:</strong>
@@ -341,7 +347,8 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                         </li>
                         <li
                           v-show="
-                            mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible
+                            layerStore.stagnentRainfallLayers.streetCriticalityLayer
+                              .visible
                           "
                         >
                           <strong>{{ $t("layerNames.streetCriticality") }} -</strong>
@@ -355,31 +362,13 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
             </ul>
           </div>
         </li>
-        <!-- Shelter's Info -->
-        <li class="mb-1">
-          <button
-            class="btn btn-toggle rounded collapsed ps-0"
-            data-bs-toggle="collapse"
-            data-bs-target="#popup-collapse"
-            v-show="mapStore.shelterLayers.shelterLayer.visible"
-            aria-expanded="true"
-          >
-            {{ $t("sidebar.dataPanel.popups.sheltersInfo") }}
-          </button>
-          <div class="collapse show" id="popup-collapse">
-            <h6
-              v-html="mapStore.popup"
-              v-show="mapStore.shelterLayers.shelterLayer.visible"
-            ></h6>
-          </div>
-        </li>
         <!-- Chart -->
         <li class="mb-1">
           <button
             class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#shelter-population-collapse"
-            v-show="mapStore.shelterLayers.populationLayer.visible"
+            v-show="layerStore.shelterLayers.populationLayer.visible"
             aria-expanded="true"
           >
             {{ $t("sidebar.dataPanel.popups.shelterPopulationInfo") }}
@@ -387,8 +376,8 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
           <div class="collapse show" id="shelter-population-collapse">
             <population-sum-chart
               v-if="
-                mapStore.shelterLayers.populationLayer.visible &&
-                mapStore.shelterPopulation
+                layerStore.shelterLayers.populationLayer.visible &&
+                geoDataStore.shelterPopulation
               "
               :type="populationType.SHELTER"
             ></population-sum-chart>
@@ -399,7 +388,7 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
             class="btn btn-toggle rounded collapsed ps-0"
             data-bs-toggle="collapse"
             data-bs-target="#healthsite-population-collapse"
-            v-show="mapStore.healthSiteLayers.healthSitePopulationLayer.visible"
+            v-show="layerStore.healthSiteLayers.healthSitePopulationLayer.visible"
             aria-expanded="true"
           >
             {{ $t("sidebar.dataPanel.popups.healthSitePopulationInfo") }}
@@ -407,8 +396,8 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
           <div class="collapse show" id="healthsite-population-collapse">
             <population-sum-chart
               v-if="
-                mapStore.healthSiteLayers.healthSitePopulationLayer.visible &&
-                mapStore.healthSitePopulation
+                layerStore.healthSiteLayers.healthSitePopulationLayer.visible &&
+                geoDataStore.healthSitePopulation
               "
               :type="populationType.HEALTHSITE"
             ></population-sum-chart>

@@ -3,10 +3,10 @@ import { onMounted, ref, watch, computed } from "vue";
 import * as echarts from "echarts";
 import { populationType } from "@/assets/ts/constants";
 import type { Population } from "@/assets/ts/types";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
 import { useI18n } from "vue-i18n";
 
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
 const { t } = useI18n();
 const props = defineProps<{ type: string }>();
 let population = ref<Population | null>(null);
@@ -17,10 +17,10 @@ let chart: echarts.ECharts;
 const getPopulationData = () => {
   switch (props.type) {
     case populationType.SHELTER:
-      return mapStore.shelterPopulation[mapStore.city!];
+      return geoDataStore.shelterPopulation[geoDataStore.city!];
     case populationType.HEALTHSITE:
     default:
-      return mapStore.healthSitePopulation[mapStore.city!];
+      return geoDataStore.healthSitePopulation[geoDataStore.city!];
   }
 };
 // Reactive computation of translated names
@@ -94,7 +94,7 @@ const setChartOptions = (): void => {
 };
 // Update chart when city changed
 watch(
-  () => mapStore.isJsonDataLoad,
+  () => geoDataStore.isJsonDataLoad,
   (newVal) => {
     if (!newVal) return;
     chart.clear();
@@ -113,11 +113,9 @@ onMounted(() => {
   initChart();
 });
 </script>
-
 <template>
   <div ref="chartContainer" class="chart-container"></div>
 </template>
-
 <style scoped>
 .chart-container {
   width: 25rem;

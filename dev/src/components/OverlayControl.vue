@@ -11,11 +11,13 @@ import { watch } from "vue";
 import LegendControl from "@/components/LegendControl.vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { CityName, LayerName } from "@/assets/ts/constants";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
+import useLayerStore from "@/stores/layerStore";
 import { useI18n } from "vue-i18n";
 
 // Constants
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
+const layerStore = useLayerStore();
 const { t, locale } = useI18n();
 // Isochrone Layer Settings
 const isochroneStyle = (feature: any) => {
@@ -56,31 +58,31 @@ const healthSiteIsochroneStyle = (feature: any) => {
 // Water Distribution Network
 const lineStyle = () => {
   return {
-    color: mapStore.waterNetworkLayers.waterNetworkLineLayer.color,
+    color: layerStore.waterNetworkLayers.waterNetworkLineLayer.color,
     weight: 5,
     opacity: 0.8,
   };
 };
 const segmentStyle = () => {
   return {
-    color: mapStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
+    color: layerStore.waterNetworkLayers.waterNetworkSegmentLayer.color,
     weight: 2,
     opacity: 0.8,
   };
 };
 const getWaterNetworkPointColor = (property: any) => {
-  return mapStore.getMarkerOptions(mapStore.getWaterNetworkPointColor(property), 4);
+  return layerStore.getMarkerOptions(layerStore.getWaterNetworkPointColor(property), 4);
 };
 // Stagnent Rainfall Street
 const streetCriticalityStyle = (feature: any) => {
   return {
-    color: mapStore.getStreetCriticalityColor(feature.properties.nach),
+    color: layerStore.getStreetCriticalityColor(feature.properties.nach),
     weight: 1,
   };
 };
 const streetHierarchyStyle = (feature: any) => {
   return {
-    color: mapStore.getStreetHierachyColor(feature.properties.fclass),
+    color: layerStore.getStreetHierachyColor(feature.properties.fclass),
     weight: 1,
     opacity: 0.7,
   };
@@ -106,7 +108,7 @@ const onEachWaterNetworkLine = (feature: any, layer: Layer) => {
 };
 // Watch for changes to the selected scenario and open the corresponding popup
 watch(
-  () => mapStore.selectedWaterScenario,
+  () => layerStore.selectedWaterScenario,
   (newScenario) => {
     // Close all popups first
     scenarioLayerMap.forEach((layer) => layer.closePopup());
@@ -121,23 +123,23 @@ watch(
 );
 </script>
 <template>
-  <div v-if="mapStore.isJsonDataLoad">
+  <div v-if="geoDataStore.isJsonDataLoad">
     <!-- Shelters -->
     <l-feature-group
       :name="LayerName.SHELTER"
       layer-type="overlay"
-      :visible="mapStore.shelterLayers.shelterLayer.visible"
+      :visible="layerStore.shelterLayers.shelterLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.shelters!.features"
+        v-for="(feature, index) in geoDataStore.geojsonData.shelters!.features"
         :key="`${index}-${feature.properties.name}`"
         :name="feature.properties.name"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
-        :options="mapStore.getMarkerOptions(mapStore.shelterLayers.shelterLayer.color!)"
-        @click="mapStore.togglePopup(feature)"
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
+        :options="layerStore.getMarkerOptions(layerStore.shelterLayers.shelterLayer.color!)"
+        @mouseover="layerStore.highlightPoint"
+        @mouseout="layerStore.resetHighlight"
         layer-type="overlay"
+        ><l-popup :content="feature.properties.description"></l-popup
         ><l-tooltip>
           {{ feature.properties.name }}
         </l-tooltip>
@@ -146,16 +148,16 @@ watch(
     <!-- Boundary -->
     <l-geo-json
       :name="LayerName.BOUNDARY"
-      :geojson="mapStore.geojsonData.boundary"
-      :visible="mapStore.boundaryLayer.visible"
+      :geojson="geoDataStore.geojsonData.boundary"
+      :visible="layerStore.boundaryLayer.visible"
       layer-type="overlay"
-      :options-style="mapStore.boundaryStyle"
+      :options-style="layerStore.boundaryStyle"
     ></l-geo-json>
     <!-- Isochrones -->
     <l-geo-json
       :name="LayerName.SHELTERISOCHRONE"
-      :geojson="mapStore.geojsonData.isochrones"
-      :visible="mapStore.shelterLayers.isochroneLayer.visible"
+      :geojson="geoDataStore.geojsonData.isochrones"
+      :visible="layerStore.shelterLayers.isochroneLayer.visible"
       layer-type="overlay"
       :options-style="isochroneStyle"
     ></l-geo-json>
@@ -163,8 +165,8 @@ watch(
     <l-geo-json
       :key="locale"
       :name="LayerName.SHELTERPOPULATION"
-      :geojson="mapStore.geojsonData.population"
-      :visible="mapStore.shelterLayers.populationLayer.visible"
+      :geojson="geoDataStore.geojsonData.population"
+      :visible="layerStore.shelterLayers.populationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
       :options="{ onEachFeature: onEachPopulationFeature }"
@@ -173,18 +175,18 @@ watch(
     <l-feature-group
       :name="LayerName.HEALTHSITE"
       layer-type="overlay"
-      :visible="mapStore.healthSiteLayers.healthSiteLayer.visible"
+      :visible="layerStore.healthSiteLayers.healthSiteLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.healthSitePoint!.features"
+        v-for="(feature, index) in geoDataStore.geojsonData.healthSitePoint!.features"
         :key="`${index}-${feature.properties.name}`"
         :lat-lng="[
           feature.geometry.coordinates[0][1],
           feature.geometry.coordinates[0][0],
         ]"
-        :options="mapStore.getMarkerOptions(mapStore.healthSiteLayers.healthSiteLayer.color!)"
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
+        :options="layerStore.getMarkerOptions(layerStore.healthSiteLayers.healthSiteLayer.color!)"
+        @mouseover="layerStore.highlightPoint"
+        @mouseout="layerStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip>{{ feature.properties.amenity }}</l-tooltip>
         <l-popup>{{ feature.properties.name }}</l-popup>
@@ -193,8 +195,8 @@ watch(
     <!-- Health Site Isochrones -->
     <l-geo-json
       :name="LayerName.HEALTHSITEISOCHRONE"
-      :geojson="mapStore.geojsonData.healthSiteIsochrone"
-      :visible="mapStore.healthSiteLayers.healthSiteIsochroneLayer.visible"
+      :geojson="geoDataStore.geojsonData.healthSiteIsochrone"
+      :visible="layerStore.healthSiteLayers.healthSiteIsochroneLayer.visible"
       layer-type="overlay"
       :options-style="healthSiteIsochroneStyle"
     ></l-geo-json>
@@ -202,48 +204,45 @@ watch(
     <l-geo-json
       :key="locale"
       :name="LayerName.HEALTHSITEPOPULATION"
-      :geojson="mapStore.geojsonData.healthSitePopulation"
-      :visible="mapStore.healthSiteLayers.healthSitePopulationLayer.visible"
+      :geojson="geoDataStore.geojsonData.healthSitePopulation"
+      :visible="layerStore.healthSiteLayers.healthSitePopulationLayer.visible"
       layer-type="overlay"
       :options-style="populationStyle"
       :options="{ onEachFeature: onEachPopulationFeature }"
     ></l-geo-json>
     <!-- KRYVYIRIH water network segments -->
     <l-geo-json
-      v-if="mapStore.city === CityName.KRYVYIRIH"
+      v-if="geoDataStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKSEGMENT"
-      :geojson="mapStore.geojsonData.waterNetworkSegment"
-      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      :geojson="geoDataStore.geojsonData.waterNetworkSegment"
+      :visible="layerStore.waterNetworkLayers.waterNetworkPointLayer.visible"
       layer-type="overlay"
       :options-style="segmentStyle"
     ></l-geo-json>
     <!-- KRYVYIRIH Water Network Point -->
     <l-feature-group
-      :key="mapStore.selectedWaterScenario"
-      v-if="mapStore.city === CityName.KRYVYIRIH"
+      :key="layerStore.selectedWaterScenario"
+      v-if="geoDataStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKPOINT"
       layer-type="overlay"
-      :visible="mapStore.waterNetworkLayers.waterNetworkPointLayer.visible"
+      :visible="layerStore.waterNetworkLayers.waterNetworkPointLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.waterNetworkPoint!.features"
+        v-for="(feature, index) in geoDataStore.geojsonData.waterNetworkPoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
-          mapStore.getMarkerOptions(
-            mapStore.getWaterNetworkPointColor(
-              feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`],
-            ),
-            4,
+          getWaterNetworkPointColor(
+            feature.properties[`betwcen_s${layerStore.selectedWaterScenario}`],
           )
         "
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
+        @mouseover="layerStore.highlightPoint"
+        @mouseout="layerStore.resetHighlight"
         layer-type="overlay"
         ><l-tooltip
           >{{ $t("legend.waterNetwork.betwcen") + ": "
           }}{{
-            feature.properties[`betwcen_s${mapStore.selectedWaterScenario}`]
+            feature.properties[`betwcen_s${layerStore.selectedWaterScenario}`]
           }}</l-tooltip
         >
       </l-circle-marker>
@@ -251,12 +250,12 @@ watch(
     <!-- KRYVYIRIH Water Network Changes -->
     <l-geo-json
       :key="locale"
-      v-if="mapStore.city === CityName.KRYVYIRIH"
+      v-if="geoDataStore.city === CityName.KRYVYIRIH"
       :name="LayerName.WATERNETWORKLINE"
-      :geojson="mapStore.geojsonData.waterNetworkLine"
+      :geojson="geoDataStore.geojsonData.waterNetworkLine"
       :visible="
-        mapStore.waterNetworkLayers.waterNetworkPointLayer.visible ||
-        mapStore.waterNetworkLayers.waterNetworkLineLayer.visible
+        layerStore.waterNetworkLayers.waterNetworkPointLayer.visible ||
+        layerStore.waterNetworkLayers.waterNetworkLineLayer.visible
       "
       layer-type="overlay"
       :options-style="lineStyle"
@@ -264,68 +263,68 @@ watch(
     ></l-geo-json>
     <!-- NIKOPOL Sewage Line -->
     <l-geo-json
-      v-if="mapStore.city === CityName.NIKOPOL"
+      v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.SEWAGELINE"
-      :geojson="mapStore.geojsonData.sewageLine"
-      :visible="mapStore.sewageSystemLayers.sewageLineLayer.visible"
+      :geojson="geoDataStore.geojsonData.sewageLine"
+      :visible="layerStore.sewageSystemLayers.sewageLineLayer.visible"
       :options-style="segmentStyle"
     ></l-geo-json>
     <!-- NIKOPOL Sewage Point -->
     <l-feature-group
-      v-if="mapStore.city === CityName.NIKOPOL"
+      v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.SEWAGEPOINT"
       layer-type="overlay"
-      :visible="mapStore.sewageSystemLayers.sewagePointLayer.visible"
+      :visible="layerStore.sewageSystemLayers.sewagePointLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.sewagePoint!.features"
+        v-for="(feature, index) in geoDataStore.geojsonData.sewagePoint!.features"
         :key="`${index}-${feature.properties.ogc_fid}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
-        mapStore.getMarkerOptions(mapStore.sewageSystemLayers.sewagePointLayer.color!)
+        layerStore.getMarkerOptions(layerStore.sewageSystemLayers.sewagePointLayer.color!)
         "
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
+        @mouseover="layerStore.highlightPoint"
+        @mouseout="layerStore.resetHighlight"
         layer-type="overlay"
       >
       </l-circle-marker>
     </l-feature-group>
     <!-- NIKOPOL Street Hierachy -->
     <l-geo-json
-      v-if="mapStore.city === CityName.NIKOPOL"
+      v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.STREETHIERARCHY"
-      :geojson="mapStore.geojsonData.streetHierarchy"
-      :visible="mapStore.stagnentRainfallLayers.streetHierarchyLayer.visible"
+      :geojson="geoDataStore.geojsonData.streetHierarchy"
+      :visible="layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible"
       layer-type="overlay"
       :options-style="streetHierarchyStyle"
     ></l-geo-json>
     <!-- NIKOPOL Street Criticality -->
     <l-geo-json
-      v-if="mapStore.city === CityName.NIKOPOL"
+      v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.STREETCRITICALITY"
-      :geojson="mapStore.geojsonData.streetCriticality"
-      :visible="mapStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
+      :geojson="geoDataStore.geojsonData.streetCriticality"
+      :visible="layerStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
       layer-type="overlay"
       :options-style="streetCriticalityStyle"
     ></l-geo-json>
     <!-- NIKOPOL Stagnent Rainfall Point -->
     <l-feature-group
-      v-if="mapStore.city === CityName.NIKOPOL"
+      v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.FLOODPOINT"
       layer-type="overlay"
-      :visible="mapStore.stagnentRainfallLayers.floodPointLayer.visible"
+      :visible="layerStore.stagnentRainfallLayers.floodPointLayer.visible"
     >
       <l-circle-marker
-        v-for="(feature, index) in mapStore.geojsonData.floodPoint!.features"
+        v-for="(feature, index) in geoDataStore.geojsonData.floodPoint!.features"
         :key="`${index}`"
         :lat-lng="[feature.geometry.coordinates[1], feature.geometry.coordinates[0]]"
         :options="
-          mapStore.getMarkerOptions(
-            mapStore.getRainfallPointColor(feature.properties.criticality),
+          layerStore.getMarkerOptions(
+            layerStore.getRainfallPointColor(feature.properties.criticality),
           )
         "
-        @mouseover="mapStore.highlightPoint"
-        @mouseout="mapStore.resetHighlight"
+        @mouseover="layerStore.highlightPoint"
+        @mouseout="layerStore.resetHighlight"
         ><l-popup
           ><div style="max-height: 100px" class="overflow-auto">
             <table class="table table-bordered table-striped table-sm mb-0">

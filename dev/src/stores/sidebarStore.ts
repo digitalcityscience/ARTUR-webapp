@@ -7,7 +7,6 @@ const useSidebarStore = defineStore("sidebar", () => {
   const { locale } = useI18n();
   const sidebar = ref<L.Control.Sidebar | null>(null);
   const currentStep = ref(1);
-  const selectedTopic = ref("");
   const currentLanguage = ref<"EN" | "УКР">("EN");
 
   // Methods
@@ -42,7 +41,6 @@ const useSidebarStore = defineStore("sidebar", () => {
   return {
     sidebar,
     currentStep,
-    selectedTopic,
     currentLanguage,
     openPanel,
     openSetting,

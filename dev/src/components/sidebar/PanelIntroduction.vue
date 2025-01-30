@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
 import languageSwitcher from "./LanguageSwitcher.vue";
 import { cities, CityName } from "@/assets/ts/constants";
 import { useI18n } from "vue-i18n";
@@ -11,14 +11,14 @@ const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
 const listData = computed(() => textData.value.sidebar.introductionPanel.usage.list);
 
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
 // Cities and topics for dropdowns
 const cityOptions = computed(() =>
   cities.map((city) => ({
     name: city.name,
     latLng: city.latLng,
     isDisabled: !(city.name === CityName.KRYVYIRIH || city.name === CityName.NIKOPOL),
-    isSelected: mapStore.city === city.name,
+    isSelected: geoDataStore.city === city.name,
   })),
 );
 // Handle City Change
@@ -28,8 +28,8 @@ const handleCityChange = (e: Event) => {
   const city = cities.find((c) => c.name === selectedCityName);
 
   if (city) {
-    mapStore.map.flyTo(city.latLng, 12);
-    mapStore.setCity(city.name);
+    geoDataStore.map.flyTo(city.latLng, 12);
+    geoDataStore.setCity(city.name);
   }
 };
 </script>

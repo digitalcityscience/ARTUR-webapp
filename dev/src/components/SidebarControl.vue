@@ -9,11 +9,11 @@ import PanelSetting from "./sidebar/PanelSetting.vue";
 import PanelIndicator from "./sidebar/PanelIndicator.vue";
 import PanelData from "./sidebar/PanelData.vue";
 import PanelDictionary from "./sidebar/PanelDictionary.vue";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
 import useSidebarStore from "@/stores/sidebarStore";
 import useIndicatorStore from "@/stores/indicatorStore";
 
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
 const sidebarStore = useSidebarStore();
 const indicatorStore = useIndicatorStore();
 onMounted(() => {
@@ -24,7 +24,7 @@ onMounted(() => {
       position: "right",
       closebutton: true,
     })
-    .addTo(mapStore.map)
+    .addTo(geoDataStore.map)
     .open("introduction");
 });
 </script>

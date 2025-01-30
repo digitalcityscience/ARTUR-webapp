@@ -1,22 +1,15 @@
 <script setup lang="ts">
-import {
-  LMap,
-  LControlScale,
-  LTileLayer,
-  LGeoJson,
-  LFeatureGroup,
-  LCircleMarker,
-  LTooltip,
-  LPopup,
-} from "@vue-leaflet/vue-leaflet";
+import { LMap, LControlScale, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
 import { ref, onBeforeMount } from "vue";
-import useMapStore from "@/stores/mapStore";
+import useGeoDataStore from "@/stores/geoDataStore";
+import useLayerStore from "@/stores/layerStore";
 import { basemaps } from "@/assets/ts/constants";
 import OverlayControl from "@/components/OverlayControl.vue";
 import SidebarControl from "@/components/SidebarControl.vue";
 
 // Pinia Store
-const mapStore = useMapStore();
+const geoDataStore = useGeoDataStore();
+const layerStore = useLayerStore();
 // Map Settings
 const map = ref();
 const mapOptions = {
@@ -40,16 +33,16 @@ const mapOptions = {
 const boundaryStyle = () => {
   return {
     fillOpacity: 0,
-    color: mapStore.boundaryLayer.color,
+    color: layerStore.boundaryLayer.color,
   };
 };
 onBeforeMount(async () => {
-  await mapStore.fetchCountrywideData();
+  await geoDataStore.fetchCountrywideData();
 });
 
 const mapIsReady = ref(false);
 const onReady = () => {
-  mapStore.map = map.value.leafletObject;
+  geoDataStore.map = map.value.leafletObject;
   mapIsReady.value = true;
 };
 </script>
@@ -73,10 +66,10 @@ const onReady = () => {
     </template>
     <!-- Boundary -->
     <l-geo-json
-      :geojson="mapStore.geojsonData.countryBoundary"
+      :geojson="geoDataStore.geojsonData.countryBoundary"
       layer-type="overlay"
       :options-style="boundaryStyle"
-      :visible="mapStore.boundaryLayer.visible"
+      :visible="layerStore.boundaryLayer.visible"
       pane="overlayPane"
     ></l-geo-json>
     <!-- Controls -->
