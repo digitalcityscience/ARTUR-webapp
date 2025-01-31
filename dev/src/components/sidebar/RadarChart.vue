@@ -5,32 +5,39 @@ import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
 import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
 
-const chartStore = useRadarChartStore();
+const radarStore = useRadarChartStore();
 const { locale } = useI18n();
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
 
 const setOption = () => {
-  if (chartStore.radarChartType === "dimension") {
-    chart.setOption(chartStore.radarOptionDimension);
+  if (radarStore.radarChartType === "dimension") {
+    chart.setOption(radarStore.radarOptionDimension);
   } else {
-    chart.setOption(chartStore.radarOptionTotal);
+    chart.setOption(radarStore.radarOptionTotal);
   }
+  chart.on("click", (params: any) => {
+    if (params.targetType === "axisName") {
+      radarStore.selectCapacity(params.name);
+    }
+    return;
+  });
 };
+
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value!);
   setOption();
 };
 watch(locale, setOption);
-watch(() => chartStore.radarChartType, setOption);
-watch(() => chartStore.radarOptionDimension, setOption, { deep: true });
+watch(() => radarStore.radarChartType, setOption);
+watch(() => radarStore.radarOptionDimension, setOption, { deep: true });
 
 onMounted(initChart);
 </script>
 <template>
   <div ref="chartContainer" class="chart-container"></div>
   <!-- Download modal -->
-  <chart-download-modal v-model:show="chartStore.showDownloadModal" :chart="chart" />
+  <chart-download-modal v-model:show="radarStore.showDownloadModal" :chart="chart" />
 </template>
 <style scoped>
 .chart-container {

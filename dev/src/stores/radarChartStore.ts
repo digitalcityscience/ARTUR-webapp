@@ -1,9 +1,22 @@
 import { defineStore } from "pinia";
-import { ref, computed, reactive } from "vue";
+import { ref, computed, reactive, watch, nextTick, type WatchStopHandle } from "vue";
 import { useI18n } from "vue-i18n";
+import useIndicatorChartStore from "./indicatorChartStore";
 
+const capacityTranslation: Record<string, string> = {
+  Міцність: "Robustness",
+  Винахідливість: "Redundancy",
+  Інклюзивність: "Inclusiveness",
+  Різноманітність: "Diversity",
+  "Адаптивність та гнучкість": "Flexibility",
+  "Створення резерву": "Resourcefulness",
+  Інтеграційність: "Integration",
+  "Рефлексивність та рефлективність": "Reflectiveness",
+  Прозорість: "Transparency",
+};
 const useRadarChartStore = defineStore("radar-chart", () => {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const indicatorStore = useIndicatorChartStore();
   // Data fetched from API
   const indicatorData = ref<Record<string, any>>({});
   const answers = reactive<Record<string, Record<number, number | null>>>({}); // Store user answers
@@ -137,7 +150,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       color: string;
     };
   }
-  function downloadTableAsCSV(headers: string[], seriesData: EChartsSeriesData[]): void {
+  function downloadTable(headers: string[], seriesData: EChartsSeriesData[]): void {
     const csvHeaders = ["#", ...headers];
     const csvRows = seriesData.map((series) => [series.name, ...series.value]);
 
@@ -178,7 +191,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
 
     const downloadButtons = `
     <div class="mb-3"><button id="download-csv-btn" class="btn btn-primary me-2">
-    ${t("indicatorChart.buttons.downloadCSV")}</button>
+    ${t("indicatorChart.buttons.downloadTable")}</button>
     </div>`;
     const table = `${downloadButtons}<table class="table table-striped table-hover"><thead>
     <tr class="table-dark"><th scope="col" class="text-center">#</th>${headerCells}</tr></thead>
@@ -187,9 +200,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     setTimeout(() => {
       const downloadBtn = document.getElementById("download-csv-btn");
       if (downloadBtn) {
-        downloadBtn.addEventListener("click", () =>
-          downloadTableAsCSV(headers, seriesData),
-        );
+        downloadBtn.addEventListener("click", () => downloadTable(headers, seriesData));
       }
     }, 100);
 
@@ -238,6 +249,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       radar: {
         splitNumber: 10,
         center: ["50%", "45%"],
+        triggerEvent: true,
         indicator: [
           { name: t("echarts.capacities.Robustness"), max: 100 },
           { name: t("echarts.capacities.Redundancy"), max: 100 },
@@ -250,6 +262,24 @@ const useRadarChartStore = defineStore("radar-chart", () => {
           { name: t("echarts.capacities.Transparency"), max: 100 },
         ],
       },
+      // Add custom text below the legend
+      graphic: [
+        {
+          type: "text",
+          left: "center",
+          bottom: 25, // Position near the bottom of the chart
+          style: {
+            text: t("sidebar.indicatorPanel.radarChart.text"),
+            fontSize: 12,
+            fill: "#777",
+            textAlign: "center",
+            cursor: "pointer",
+          },
+          onclick: function () {
+            alert("Click on the labels to see details in the dictionary!");
+          },
+        },
+      ],
     };
   });
   const radarOptionDimension = computed(() => {
@@ -303,16 +333,38 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       ],
     };
   });
+  const showRadarModal = ref(false);
+  function selectCapacity(label: string) {
+    if (locale.value === "ua") label = capacityTranslation[label];
+    indicatorStore.capacitySelected = label;
+    showRadarModal.value = false;
+    indicatorStore.showCapacityModal = true;
+
+    // Use nextTick to ensure modal is rendered before watching
+    nextTick(() => {
+      const stopWatching: WatchStopHandle = watch(
+        () => indicatorStore.showCapacityModal,
+        (newShowCapacity) => {
+          if (!newShowCapacity) {
+            showRadarModal.value = true;
+            stopWatching(); // Stop the watcher after the first execution
+          }
+        },
+      );
+    });
+  }
 
   return {
-    fetchIndicatorData,
-    initializeAnswer,
-    calculateScores,
     answers,
     radarChartType,
     showDownloadModal,
     radarOptionDimension,
     radarOptionTotal,
+    showRadarModal,
+    fetchIndicatorData,
+    initializeAnswer,
+    calculateScores,
+    selectCapacity,
   };
 });
 export default useRadarChartStore;

@@ -45,7 +45,7 @@ const capacity = computed(
 const chartStore = useChartStore();
 const chartContainer = ref<HTMLDivElement | null>(null);
 let chart: echarts.ECharts;
-const showModal = ref<boolean>(false);
+const showDownloadModal = ref<boolean>(false);
 // Methods
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
@@ -111,9 +111,10 @@ onMounted(initChart);
               :key="itemIndex"
               type="button"
               class="list-group-item d-flex align-items-center btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#capacityModal"
-              @click="chartStore.capacitySelected = item.label"
+              @click="
+                chartStore.capacitySelected = item.label;
+                chartStore.showCapacityModal = true;
+              "
             >
               <i :class="item.iconClass"
                 >{{ " " }}{{ $t("echarts.capacities." + item.label) }}</i
@@ -125,65 +126,49 @@ onMounted(initChart);
     </div>
   </div>
   <!-- Capacity Modal -->
-  <div
-    class="modal fade"
-    id="capacityModal"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-  >
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5">
-            <i></i>{{ $t("echarts.capacities." + chartStore.capacitySelected) }}
-          </h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <!-- Modal Body -->
-        <div class="modal-body bg-light p-4">
-          <!-- Definition Section -->
-          <div class="mb-4">
-            <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.dictionaryPanel.content.capacities.title.definition") }}
-            </h6>
-            <p class="text-muted">
-              {{
-                $t(
-                  `sidebar.dictionaryPanel.content.capacities.${chartStore.capacitySelected}.definition`,
-                )
-              }}
-            </p>
+  <div v-show="chartStore.showCapacityModal">
+    <div
+      class="modal fade show"
+      id="capacityModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">
+              <i></i>{{ $t("echarts.capacities." + chartStore.capacitySelected) }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              @click="chartStore.showCapacityModal = false"
+            ></button>
           </div>
-          <!-- Best Practices Section -->
-          <div class="mb-4">
-            <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.dictionaryPanel.content.capacities.title.practice") }}
-            </h6>
-            <ul class="list-group p-0">
-              <li
-                v-for="(item, index) in capacity[chartStore.capacitySelected].practice"
-                :key="index"
-                class="list-group-item px-2"
-              >
-                {{ item.loc.source }}
-              </li>
-            </ul>
-          </div>
-          <!-- Examples Section -->
-          <div>
-            <h6 class="text-uppercase text-secondary">
-              {{ $t("sidebar.dictionaryPanel.content.capacities.title.example") }}
-            </h6>
-            <div
-              v-if="
-                capacity[chartStore.capacitySelected].example.type.loc.source === 'list'
-              "
-            >
+          <!-- Modal Body -->
+          <div class="modal-body bg-light p-4">
+            <!-- Definition Section -->
+            <div class="mb-4">
+              <h6 class="text-uppercase text-secondary">
+                {{ $t("sidebar.dictionaryPanel.content.capacities.title.definition") }}
+              </h6>
+              <p class="text-muted">
+                {{
+                  $t(
+                    `sidebar.dictionaryPanel.content.capacities.${chartStore.capacitySelected}.definition`,
+                  )
+                }}
+              </p>
+            </div>
+            <!-- Best Practices Section -->
+            <div class="mb-4">
+              <h6 class="text-uppercase text-secondary">
+                {{ $t("sidebar.dictionaryPanel.content.capacities.title.practice") }}
+              </h6>
               <ul class="list-group p-0">
                 <li
-                  v-for="(item, index) in capacity[chartStore.capacitySelected].example
-                    .data"
+                  v-for="(item, index) in capacity[chartStore.capacitySelected].practice"
                   :key="index"
                   class="list-group-item px-2"
                 >
@@ -191,97 +176,121 @@ onMounted(initChart);
                 </li>
               </ul>
             </div>
-            <div
-              v-else-if="
-                capacity[chartStore.capacitySelected].example.type.loc.source ===
-                'grouped'
-              "
-            >
+            <!-- Examples Section -->
+            <div>
+              <h6 class="text-uppercase text-secondary">
+                {{ $t("sidebar.dictionaryPanel.content.capacities.title.example") }}
+              </h6>
               <div
-                v-for="(group, groupKey) in capacity[chartStore.capacitySelected].example
-                  .data"
-                :key="groupKey"
+                v-if="
+                  capacity[chartStore.capacitySelected].example.type.loc.source === 'list'
+                "
               >
-                <h6 class="text-secondary">
-                  {{
-                    capacity[chartStore.capacitySelected].example.group[groupKey].loc
-                      .source + ":"
-                  }}:
-                </h6>
                 <ul class="list-group p-0">
                   <li
-                    v-for="(item, index) in group"
+                    v-for="(item, index) in capacity[chartStore.capacitySelected].example
+                      .data"
                     :key="index"
-                    class="list-group-item px-2 mb-1"
+                    class="list-group-item px-2"
                   >
                     {{ item.loc.source }}
                   </li>
                 </ul>
               </div>
-            </div>
-            <div v-else>
-              <h1>NODATA ERROR</h1>
+              <div
+                v-else-if="
+                  capacity[chartStore.capacitySelected].example.type.loc.source ===
+                  'grouped'
+                "
+              >
+                <div
+                  v-for="(group, groupKey) in capacity[chartStore.capacitySelected]
+                    .example.data"
+                  :key="groupKey"
+                >
+                  <h6 class="text-secondary">
+                    {{
+                      capacity[chartStore.capacitySelected].example.group[groupKey].loc
+                        .source + ":"
+                    }}:
+                  </h6>
+                  <ul class="list-group p-0">
+                    <li
+                      v-for="(item, index) in group"
+                      :key="index"
+                      class="list-group-item px-2 mb-1"
+                    >
+                      {{ item.loc.source }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div v-else>
+                <h1>NODATA ERROR</h1>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#sankeyModal"
-          >
-            {{ $t("sidebar.dictionaryPanel.buttons.toSankey") }}
-          </button>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="chartStore.showSankeyModal = true"
+            >
+              {{ $t("sidebar.dictionaryPanel.buttons.toSankey") }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="modal-backdrop fade show"></div>
   </div>
   <!-- Sankey Modal -->
-  <div
-    class="modal fade"
-    id="sankeyModal"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-  >
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5">
-            {{ $t("echarts.capacities." + chartStore.capacitySelected) }}
-            - {{ $t("indicatorChart.graphTypes.sankey") }}
-          </h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Chart -->
-          <div ref="chartContainer" class="chart-container"></div>
-        </div>
-        <div class="modal-footer">
-          <button
-            class="btn btn-success"
-            data-toggle="modal"
-            data-target="#downloadModal"
-            @click="showModal = true"
-          >
-            <i class="fa fa-download" aria-hidden="true">{{
-              $t("indicatorChart.buttons.download")
-            }}</i>
-          </button>
-          <button
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#capacityModal"
-          >
-            {{ $t("sidebar.dictionaryPanel.buttons.back") }}
-          </button>
+  <div v-show="chartStore.showSankeyModal">
+    <div class="modal-backdrop fade show"></div>
+    <div
+      class="modal fade show"
+      id="sankeyModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">
+              {{ $t("echarts.capacities." + chartStore.capacitySelected) }}
+              - {{ $t("indicatorChart.graphTypes.sankey") }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              @click="chartStore.showSankeyModal = false"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Chart -->
+            <div ref="chartContainer" class="chart-container"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" @click="showDownloadModal = true">
+              <i class="fa fa-download">{{ $t("indicatorChart.buttons.download") }}</i>
+            </button>
+            <button
+              class="btn btn-primary"
+              @click="
+                chartStore.showSankeyModal = false;
+                chartStore.showCapacityModal = true;
+              "
+            >
+              {{ $t("sidebar.dictionaryPanel.buttons.back") }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Download Chart Modal -->
-  <chart-download-modal v-model:show="showModal" :chart="chart" />
+  <chart-download-modal v-model:show="showDownloadModal" :chart="chart" />
 </template>
 <style scoped>
 .text-muted {
@@ -290,5 +299,8 @@ onMounted(initChart);
 .chart-container {
   width: 1100px;
   height: 900px;
+}
+.modal {
+  display: block;
 }
 </style>

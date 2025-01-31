@@ -88,7 +88,7 @@ function reloadChart(option: any, data?: any, color?: string): void {
   chart.clear();
   chart.setOption(option);
 }
-function setBasicOption() {
+function setOption() {
   if (indicatorStore.indicatorType === "basic")
     chart.setOption(chartStore.sunburstBasicOption);
   else {
@@ -98,7 +98,7 @@ function setBasicOption() {
 }
 const initChart = (): void => {
   chart = echarts.init(chartContainer.value);
-  setBasicOption();
+  setOption();
 };
 // Make the chart resizable
 const addResizeObserver = () => {
@@ -136,15 +136,8 @@ onMounted(() => {
   <div class="btn-group" role="group">
     <div class="d-flex align-items-center gap-2">
       <div class="btn-group btn-group-sm float-end mt-2 ms-2">
-        <button
-          class="btn btn-success"
-          data-toggle="modal"
-          data-target="#downloadModal"
-          @click="showModal = true"
-        >
-          <i class="fa fa-download" aria-hidden="true">{{
-            $t("indicatorChart.buttons.download")
-          }}</i>
+        <button class="btn btn-success" data-toggle="modal" @click="showModal = true">
+          <i class="fa fa-download">{{ $t("indicatorChart.buttons.download") }}</i>
         </button>
         <button class="btn btn-warning" @click="switchGraphType">
           <i class="bi bi-arrow-repeat">

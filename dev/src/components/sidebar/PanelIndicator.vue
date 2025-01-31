@@ -33,6 +33,7 @@ const openIndicatorSelection = (type: "basic" | "total"): void => {
 function deleteSelection(indicator: string) {}
 
 // Questionnaire
+const showQuestionnaireModal = ref(false);
 const questionNumber = ref<number[]>([]);
 const questionKey = ref<string>("");
 const indicatorKey = ref<string>("");
@@ -54,6 +55,7 @@ function indicatorClick(showIndicator: string) {
     questionNumber.value = [];
   }
   radarChartStore.initializeAnswer(indicatorKey.value, questionNumber.value);
+  showQuestionnaireModal.value = true;
 }
 watch(locale, () => {
   questionNumber.value = [];
@@ -69,12 +71,9 @@ function submitResults() {
     return;
   }
   radarChartStore.calculateScores();
+  showQuestionnaireModal.value = false;
 }
 
-// Radar Chart
-function setChartType(type: "dimension" | "total") {
-  radarChartStore.radarChartType = type;
-}
 // Fetch capacity data on mounted
 onMounted(radarChartStore.fetchIndicatorData);
 </script>
@@ -154,12 +153,7 @@ onMounted(radarChartStore.fetchIndicatorData);
                       class="rounded border ms-1 ps-2 py-1 m-0 clearfix"
                       :style="{ backgroundColor: indicator.value }"
                     >
-                      <span
-                        type="button"
-                        @click="indicatorClick(indicator.key)"
-                        data-bs-toggle="modal"
-                        data-bs-target="#questionnaire"
-                      >
+                      <span type="button" @click="indicatorClick(indicator.key)">
                         {{ indicator.key }}
                       </span>
                       <button
@@ -175,6 +169,7 @@ onMounted(radarChartStore.fetchIndicatorData);
             </ul>
           </div>
         </li>
+        <!-- Result -->
         <li class="mb-1">
           <button
             type="button"
@@ -190,18 +185,20 @@ onMounted(radarChartStore.fetchIndicatorData);
               <button
                 type="button"
                 class="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#radar"
-                @click="setChartType('dimension')"
+                @click="
+                  radarChartStore.radarChartType = 'dimension';
+                  radarChartStore.showRadarModal = true;
+                "
               >
                 {{ $t("sidebar.indicatorPanel.radarChart.type.dimension") }}
               </button>
               <button
                 type="button"
                 class="btn btn-success"
-                data-bs-toggle="modal"
-                data-bs-target="#radar"
-                @click="setChartType('total')"
+                @click="
+                  radarChartStore.radarChartType = 'total';
+                  radarChartStore.showRadarModal = true;
+                "
               >
                 {{ $t("sidebar.indicatorPanel.radarChart.type.total") }}
               </button>
@@ -212,85 +209,103 @@ onMounted(radarChartStore.fetchIndicatorData);
     </div>
   </div>
   <!-- Radar Modal -->
-  <div
-    class="modal fade"
-    id="radar"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-  >
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="questionnaire-title">
-            {{
-              $t(
-                `sidebar.indicatorPanel.radarChart.name.${radarChartStore.radarChartType}`,
-              )
-            }}
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <radar-chart></radar-chart>
+  <div v-if="radarChartStore.showRadarModal">
+    <div class="modal-backdrop fade show"></div>
+    <div
+      class="modal fade show"
+      id="radarModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="radar-title">
+              {{
+                $t(
+                  `sidebar.indicatorPanel.radarChart.name.${radarChartStore.radarChartType}`,
+                )
+              }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              @click="radarChartStore.showRadarModal = false"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <radar-chart></radar-chart>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <!-- Questionnaire Modal -->
-  <div
-    class="modal fade"
-    id="questionnaire"
-    tabindex="-1"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-  >
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="questionnaire-title">
-            {{ $t("sidebar.indicatorPanel.questionnaire.title") }}:
-            {{ showedIndicator }}
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div v-for="i in questionNumber">
-            <h6>{{ i }}. {{ $t(questionKey + i + ".text") }}</h6>
-            <div class="form-check" v-for="score in [0, 1, 2, 3]" :key="score">
-              <input
-                class="form-check-input"
-                type="radio"
-                :name="'question-' + i"
-                :id="'question-' + i + '-score-' + score"
-                :value="score"
-                v-model="radarChartStore.answers[indicatorKey][i]"
-              />
-              <label class="form-check-label" :for="'question-' + i + '-score-' + score">
-                {{ $t(questionKey + i + `.score ${score}`) }}
-              </label>
+  <div v-if="showQuestionnaireModal">
+    <div
+      class="modal fade show"
+      id="questionnaireModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="questionnaire-title">
+              {{ $t("sidebar.indicatorPanel.questionnaire.title") }}:
+              {{ showedIndicator }}
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              @click="showQuestionnaireModal = false"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div v-for="i in questionNumber">
+              <h6>{{ i }}. {{ $t(questionKey + i + ".text") }}</h6>
+              <div class="form-check" v-for="score in [0, 1, 2, 3]" :key="score">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  :name="'question-' + i"
+                  :id="'question-' + i + '-score-' + score"
+                  :value="score"
+                  v-model="radarChartStore.answers[indicatorKey][i]"
+                />
+                <label
+                  class="form-check-label"
+                  :for="'question-' + i + '-score-' + score"
+                >
+                  {{ $t(questionKey + i + `.score ${score}`) }}
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" @click="submitResults">
-            {{ $t("sidebar.indicatorPanel.questionnaire.buttons.submit") }}
-          </button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            {{ $t("sidebar.indicatorPanel.questionnaire.buttons.close") }}
-          </button>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              @click="showQuestionnaireModal = false"
+            >
+              {{ $t("sidebar.indicatorPanel.questionnaire.buttons.close") }}
+            </button>
+            <button type="button" class="btn btn-primary" @click="submitResults">
+              {{ $t("sidebar.indicatorPanel.questionnaire.buttons.submit") }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="modal-backdrop fade show"></div>
   </div>
 </template>
+<style scoped>
+.modal {
+  display: block;
+}
+</style>

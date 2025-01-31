@@ -44,7 +44,13 @@ const closeModal = () => {
 };
 </script>
 <template>
-  <div class="modal fade" :class="{ show }" tabindex="-1" v-show="show">
+  <div
+    class="modal fade"
+    :class="{ show }"
+    id="downloadModal"
+    tabindex="-1"
+    v-show="show"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">

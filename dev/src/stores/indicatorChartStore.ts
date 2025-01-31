@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import { useI18n } from "vue-i18n";
 import { computed, ref, type ComputedRef } from "vue";
 import i18nData from "@/locales/en.json";
-import type SaveAsImage from "echarts/types/src/component/toolbox/feature/SaveAsImage.js";
 
 enum SANKEYLEVELS {
   LEVEL1 = 0,
@@ -537,9 +536,12 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
       links: filteredLinks,
     },
   };
+  const showCapacityModal = ref(false);
+  const showSankeyModal = ref(false);
 
   return {
     SANKEYLEVELS,
+    CAPACITY_COLORS,
     sunburstBasicOption,
     sunburstData,
     sunburstCategory,
@@ -551,6 +553,8 @@ const useIndicatorChartStore = defineStore("echarts-options", () => {
     sankeyOption,
     sankeyBasicOption,
     sankeyOptionCapacity,
+    showCapacityModal,
+    showSankeyModal,
   };
 });
 export default useIndicatorChartStore;

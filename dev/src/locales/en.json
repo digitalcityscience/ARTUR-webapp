@@ -108,6 +108,8 @@
           "dimension": "Resilience Score by Dimensions",
           "total": "Resilience Score: Essential Indicators"
         },
+        "text": "Click on a Capacity to open its Dictionary Entry",
+        "alert": "Click on the labels to see details in the dictionary!",
         "type": { "dimension": "By Dimensions", "total": "Total" },
         "social": "Social",
         "economic": "Economic",
@@ -427,7 +429,7 @@
       "dataView": "Data View",
       "close": "Close",
       "refresh": "Refresh",
-      "downloadCSV": "Download CSV"
+      "downloadTable": "Download Table"
     },
     "modal": {
       "title": "Download Options",
