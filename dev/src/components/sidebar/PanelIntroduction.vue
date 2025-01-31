@@ -6,12 +6,12 @@ import languageSwitcher from "./LanguageSwitcher.vue";
 import { cities, CityName } from "@/assets/ts/constants";
 import { useI18n } from "vue-i18n";
 
+const geoDataStore = useGeoDataStore();
 const sidebarStore = useSidebarStore();
 const { locale, getLocaleMessage } = useI18n();
 const textData = computed(() => getLocaleMessage(locale.value) as any);
 const listData = computed(() => textData.value.sidebar.introductionPanel.usage.list);
 
-const geoDataStore = useGeoDataStore();
 // Cities and topics for dropdowns
 const cityOptions = computed(() =>
   cities.map((city) => ({
@@ -44,12 +44,115 @@ const handleCityChange = (e: Event) => {
       <ul class="list-unstyled ps-0">
         <!-- Description -->
         <li class="mb-1">
-          <h6 class="fw-bold">
+          <strong class="fw-bold">
             {{ $t("sidebar.introductionPanel.description.title") }}
-          </h6>
-          <p class="sidebar-content-text">
+          </strong>
+          <span class="sidebar-content-text">
             {{ $t("sidebar.introductionPanel.description.text") }}
-          </p>
+          </span>
+        </li>
+        <li class="mb-1" v-if="locale === 'ua'">
+          <div>
+            <h6>МЕТА:</h6>
+            <ul>
+              <li>
+                підвищення міської стійкості та прискорення зусиль з відновлення
+                територій,
+              </li>
+              <li>готовність міст до поточних та майбутніх кризових ситуацій,</li>
+              <li>
+                більше ефективне та обгрунтоване вирішення проблем та прийняття рішень,
+              </li>
+              <li>
+                покращення взаємодії між структурними підрозділами виконавчого комітету
+                міської ради,
+              </li>
+              <li>
+                посилення здатності міст протистояти потенційним загрозам та потрясінням.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5
+              type="button"
+              class="btn btn-outline-primary mt-1"
+              data-bs-toggle="collapse"
+              data-bs-target="#МОЖЛИВОСТІ"
+              aria-expanded="true"
+            >
+              МОЖЛИВОСТІ:
+            </h5>
+            <div id="МОЖЛИВОСТІ" class="collapse show">
+              <div>
+                <h6>Технічні:</h6>
+                <ul>
+                  <li>
+                    вибір інформаційного шару, який відповідає за певну сферу
+                    життєдіяльності міста,
+                  </li>
+                  <li>
+                    вибір кількох інформаційних шарів для комплексного аналізу території,
+                  </li>
+                  <li>
+                    доступ до покрокових інструкцій користування прототипом інструментом
+                    ARTUR.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6>Управлінські:</h6>
+                <ul>
+                  <li>
+                    оцінка та аналіз даних щодо слабких місць, загроз та потреб міста,
+                  </li>
+                  <li>
+                    розрахунок індексу стійкості в цілому та в розрізі окремих індикаторів
+                    в динаміці,
+                  </li>
+                  <li>
+                    просторова візуалізація містобудівних показників, надзвичайних
+                    ситуацій, слабких місць міста (наприклад, недостатність укриттів),
+                  </li>
+                  <li>
+                    доступ одночасно декількох фахівців до інформації для оперативного
+                    реагування на кризові ситуації,
+                  </li>
+                  <li>
+                    доступ до бібліотеки можливих заходів реагування на надзвичайні
+                    ситуації,
+                  </li>
+
+                  <li>вибір проблем для першочергового вирішення,</li>
+                  <li>
+                    отримання вихідних даних для розроблення планів комплексного
+                    відновлення територій територіальних громад та інших стратегічних
+                    документів,
+                  </li>
+
+                  <li>
+                    якісне представлення важливості потреб донорам та міжнародним
+                    організаціям,
+                  </li>
+
+                  <li>якісна аргументація запитів на отримання субвенцій.</li>
+                </ul>
+              </div>
+              <div>
+                <h6>ДЛЯ:</h6>
+                <ul>
+                  <li>
+                    працівників виконавчих комітетів міських рад, відповідальних за
+                    розробку та виконання комплексного відновлення територій
+                    територіальних громад,
+                  </li>
+                  <li>планів реагування на надзвичайні ситуації,</li>
+                  <li>фахівців з міського розвитку,</li>
+                  <li>фахівців просторового планування,</li>
+                  <li>інших спеціалістів міського господарства.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </li>
         <!-- City Selection -->
         <li class="mb-1">

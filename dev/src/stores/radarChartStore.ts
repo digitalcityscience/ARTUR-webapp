@@ -276,7 +276,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
             cursor: "pointer",
           },
           onclick: function () {
-            alert("Click on the labels to see details in the dictionary!");
+            alert(t("sidebar.indicatorPanel.radarChart.alert"));
           },
         },
       ],

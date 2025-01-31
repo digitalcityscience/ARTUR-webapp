@@ -63,8 +63,8 @@
     "introductionPanel": {
       "header": "Introduction",
       "description": {
-        "title": "What is ARTUR?",
-        "text": "ARTUR is a project focused on urban resilience and planning support, for Ukrainian cities. It compiles a toolkit including this prototype tool, designed for city officials such as disaster planners, spatial planners, and advisors to city councils. These experts can consult clear information to make decisions that protect their cities and accelerate recovery efforts."
+        "title": "ARTUR",
+        "text": " is a project focused on urban resilience and planning support, for Ukrainian cities. It compiles a toolkit including this prototype tool, designed for city officials such as disaster planners, spatial planners, and advisors to city councils. These experts can consult clear information to make decisions that protect their cities and accelerate recovery efforts."
       },
       "usage": {
         "title": "How ARTUR helps cities to become more resilient",
