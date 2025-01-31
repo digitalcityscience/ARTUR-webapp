@@ -1102,20 +1102,13 @@
           "name": "Sufficient affordable food supply",
           "questions": {
             "1": {
-              "text": "To what extent are adequate and nutritious food supplies affordable for all households?",
-              "score 0": "It is increasingly difficult for households to access good quality food at affordable prices. Prices of basic food commodities have been subject to large fluctuations in recent years and have become less affordable. The price of the city's main food staples is highly dependent on economic or political variables and there has been significant fluctuation in cost of these commodities in recent years.",
-              "score 1": "20 - 40% level of service (incl. Quality)",
-              "score 2": "40 - 60% level of service (incl. Quality)",
-              "score 3": "The city has a secure, nutritious food supply that is little influenced by economic or political variables. There has been little/no fluctuation in the price of basic food commodities over the recent years. All households are able to access good quality, nutritious food at affordable prices. The city has implemented initiatives to increase production of food within city boundaries"
-            },
-            "2": {
               "text": "To what extent are there adequate and nutritious food supplies that are geographically accessible to households?",
               "score 0": "Many households have very limited or no access to outlets that provide adequate, fresh and nutritious foods (e.g. because there is an absence of markets or supermarkets in certain neighbourhoods).",
               "score 1": "20 - 40% level of service (incl. Quality)",
               "score 2": "40 - 60% level of service (incl. Quality)",
               "score 3": "Initiatives have been implemented to assess the extent to which good quality, nutritious food is physically accessible to households across the city. The city has no neighbourhoods that could be described as 'food deserts' (i.e. no reasonable access to markets, supermarkets or other retail outlets that sell fresh, nutritious food at reasonable prices). All households have good access to outlets that sell adequate, fresh and nutritious foods at reasonable prices."
             },
-            "3": {
+            "2": {
               "text": "To what extent are there mechanisms in place to ensure continuity of essential food supplies in an emergency and during times of stress (e.g., imports from major source of supply are disrupted / stopped)",
               "score 0": "There are no contingency plans for the city that identify how essential food supplies will be secured in case of a major event or extreme disruption. There are no initiatives or plans to increase security of supply of important foodstuffs.",
               "score 1": "20 - 40% level of service (incl. Quality)",

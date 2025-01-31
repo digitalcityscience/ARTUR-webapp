@@ -53,8 +53,15 @@ const handleCityChange = (e: Event) => {
         </li>
         <li class="mb-1" v-if="locale === 'ua'">
           <div>
-            <h6>МЕТА:</h6>
-            <ul>
+            <h6
+              class="btn btn-outline-primary btn-sm mt-1"
+              data-bs-toggle="collapse"
+              data-bs-target="#МЕТА"
+              aria-expanded="true"
+            >
+              МЕТА:
+            </h6>
+            <ul id="МЕТА" class="collapse show">
               <li>
                 підвищення міської стійкості та прискорення зусиль з відновлення
                 територій,
@@ -84,8 +91,16 @@ const handleCityChange = (e: Event) => {
             </h5>
             <div id="МОЖЛИВОСТІ" class="collapse show">
               <div>
-                <h6>Технічні:</h6>
-                <ul>
+                <h6
+                  type="button"
+                  class="btn btn-outline-primary btn-sm mt-1"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#Технічні"
+                  aria-expanded="false"
+                >
+                  Технічні:
+                </h6>
+                <ul id="Технічні" class="collapse">
                   <li>
                     вибір інформаційного шару, який відповідає за певну сферу
                     життєдіяльності міста,
@@ -100,8 +115,16 @@ const handleCityChange = (e: Event) => {
                 </ul>
               </div>
               <div>
-                <h6>Управлінські:</h6>
-                <ul>
+                <h6
+                  type="button"
+                  class="btn btn-outline-primary btn-sm mt-1"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#Управлінські"
+                  aria-expanded="false"
+                >
+                  Управлінські:
+                </h6>
+                <ul id="Управлінські" class="collapse">
                   <li>
                     оцінка та аналіз даних щодо слабких місць, загроз та потреб міста,
                   </li>
@@ -138,8 +161,16 @@ const handleCityChange = (e: Event) => {
                 </ul>
               </div>
               <div>
-                <h6>ДЛЯ:</h6>
-                <ul>
+                <h6
+                  type="button"
+                  class="btn btn-outline-primary btn-sm mt-1"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#ДЛЯ"
+                  aria-expanded="false"
+                >
+                  ДЛЯ:
+                </h6>
+                <ul id="ДЛЯ" class="collapse">
                   <li>
                     працівників виконавчих комітетів міських рад, відповідальних за
                     розробку та виконання комплексного відновлення територій
