@@ -1,20 +1,33 @@
 <script setup lang="ts">
-import { onMounted, ref, watch, computed } from "vue";
-import * as echarts from "echarts";
+import { computed } from "vue";
+import { use } from "echarts/core";
+import { PieChart } from "echarts/charts";
+import { 
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent 
+} from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import VChart from "vue-echarts";
 import { populationType } from "@/assets/ts/constants";
-import type { Population } from "@/assets/ts/types";
 import useGeoDataStore from "@/stores/geoDataStore";
 import { useI18n } from "vue-i18n";
+
+// Register necessary ECharts components
+use([
+  PieChart,
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent,
+  CanvasRenderer
+]);
 
 const geoDataStore = useGeoDataStore();
 const { t } = useI18n();
 const props = defineProps<{ type: string }>();
-let population = ref<Population | null>(null);
-const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
 
 // get population based on the type prop and current city
-const getPopulationData = () => {
+const getPopulationData = computed(() => {
   switch (props.type) {
     case populationType.SHELTER:
       return geoDataStore.shelterPopulation[geoDataStore.city!];
@@ -22,9 +35,13 @@ const getPopulationData = () => {
     default:
       return geoDataStore.healthSitePopulation[geoDataStore.city!];
   }
-};
-// Reactive computation of translated names
-const chartData = computed(() => {
+});
+
+// Reactive computation of translated names and chart data
+const option = computed(() => {
+  const population = getPopulationData.value;
+  if (!population) return {};
+
   const accessibleName =
     props.type === populationType.HEALTHSITE
       ? t("sidebar.dataPanel.populationChartText.healthSiteAccess")
@@ -35,87 +52,61 @@ const chartData = computed(() => {
       ? t("sidebar.dataPanel.populationChartText.healthSiteInaccess")
       : t("sidebar.dataPanel.populationChartText.shelterInaccess");
 
-  return [
+  const chartData = [
     {
-      value: population.value!.accessible,
+      value: population.accessible,
       name: accessibleName,
     },
     {
-      value: population.value!.inaccessible,
+      value: population.inaccessible,
       name: inaccessibleName,
     },
   ];
-});
-// Set the options for the chart
-const setChartOptions = (): void => {
-  if (!chartData.value.length) {
-    chart.clear();
-    return;
-  }
-  // Function to update chart options
-  const updateChartOptions = () => {
-    chart.setOption({
-      legend: {
-        orient: "vertical",
-        left: "left",
-      },
-      series: [
-        {
-          name: "Access",
-          type: "pie",
-          radius: ["40%", "70%"],
-          itemStyle: {
-            borderRadius: 10,
-            borderColor: "#fff",
-            borderWidth: 2,
-          },
-          label: {
-            show: false,
-            position: "center",
-          },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: 16,
-              fontWeight: "bold",
-              formatter: "{b}: {c}",
-            },
-          },
-          data: chartData.value,
+
+  return {
+    legend: {
+      orient: "vertical",
+      left: "left",
+    },
+    series: [
+      {
+        name: "Access",
+        type: "pie",
+        radius: ["40%", "70%"],
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: "#fff",
+          borderWidth: 2,
         },
-      ],
-      color: ["#3999d2", "#c23531"],
-    });
+        label: {
+          show: false,
+          position: "center",
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 16,
+            fontWeight: "bold",
+            formatter: "{b}: {c}",
+          },
+        },
+        data: chartData,
+      },
+    ],
+    color: ["#3999d2", "#c23531"],
   };
-  // Watch for changes in language or population data and update chart
-  watch([chartData, () => population.value], updateChartOptions, {
-    immediate: true,
-  });
-};
-// Update chart when city changed
-watch(
-  () => geoDataStore.isJsonDataLoad,
-  (newVal) => {
-    if (!newVal) return;
-    chart.clear();
-    population.value = getPopulationData();
-    setChartOptions();
-  },
-);
-// Initialize the chart
-const initChart = (): void => {
-  chart = echarts.init(chartContainer.value!);
-  setChartOptions();
-};
-// Init Chart on mounted
-onMounted(() => {
-  population.value = getPopulationData();
-  initChart();
 });
 </script>
+
 <template>
-  <div ref="chartContainer" class="chart-container"></div>
+  <v-chart 
+    class="chart-container" 
+    :option="option" 
+    :loading="!geoDataStore.isJsonDataLoad"
+    autoresize 
+  />
 </template>
+
 <style scoped>
 .chart-container {
   width: 25rem;

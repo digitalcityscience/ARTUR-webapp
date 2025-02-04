@@ -1,7 +1,14 @@
-P
 <script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
-import * as echarts from "echarts";
+import { ref, computed, watch } from "vue";
+import { use } from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
+import { SankeyChart, SunburstChart } from "echarts/charts";
+import { 
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent 
+} from "echarts/components";
+import VChart, { THEME_KEY } from "vue-echarts";
 import LanguageSwitcher from "@/components/sidebar/LanguageSwitcher.vue";
 import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
 import { GraphTypes } from "@/assets/ts/constants";
@@ -9,129 +16,96 @@ import useIndicatorStore from "@/stores/indicatorStore";
 import useIndicatorChartStore from "@/stores/indicatorChartStore";
 import { useI18n } from "vue-i18n";
 
+// Register necessary ECharts components
+use([
+  CanvasRenderer,
+  SankeyChart,
+  SunburstChart,
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent
+]);
+
 const indicatorStore = useIndicatorStore();
 const chartStore = useIndicatorChartStore();
 const { locale } = useI18n();
-// Constant
-const chartContainer = ref<HTMLDivElement | null>(null);
-const defaultWidth = 1000;
-const defaultHeight = 600;
-let chart: echarts.ECharts;
+
 const showModal = ref<boolean>(false);
 const switchGraph = ref<string>(GraphTypes.SANKEY);
+const chartRef = ref();
+
 // Methods
-const getChartOption = () => {
-  let option;
+const chartOption = computed(() => {
   if (indicatorStore.indicatorType === "basic") {
-    option =
-      switchGraph.value == GraphTypes.SANKEY
-        ? chartStore.sunburstBasicOption
-        : chartStore.sankeyBasicOption;
+    return switchGraph.value == GraphTypes.SANKEY
+      ? chartStore.sunburstBasicOption
+      : chartStore.sankeyBasicOption;
   } else {
-    option =
-      switchGraph.value == GraphTypes.SANKEY
-        ? chartStore.sunburstOptionLevel0
-        : chartStore.sankeyOption;
+    return switchGraph.value == GraphTypes.SANKEY
+      ? chartStore.sunburstOptionLevel0
+      : chartStore.sankeyOption;
   }
-  return option;
-};
+});
+
 const switchGraphType = () => {
   switchGraph.value =
     switchGraph.value == GraphTypes.SANKEY ? GraphTypes.SUNBURST : GraphTypes.SANKEY;
-  const option = getChartOption();
-  chart.clear();
-  reloadChart(option);
 };
+
 // Function to handle node clicks
 function handleSunburstClick(params: any): void {
-  // Sankey Chart Click
-  if (params.data) {
-    // Sunburst Chart Click
-    const level = params.treePathInfo.length;
-    if (level === 2 && chartStore.sunburstCategory.has(params.name)) {
-      // Sunburst Second Graph Click Category
-      let color = params.color;
-      let dimensionData = chartStore.sunburstData.find(
-        (node: any) => node.name === chartStore.sunburstColorSet[params.color],
-      );
-      reloadChart(chartStore.sunburstOptionLevel1, dimensionData, color);
-    } else if (level === 2 && params.value < 15) {
-      // Sunburst First Graph Click Dimension
-      let color = params.color;
-      let data = chartStore.sunburstData.find((node: any) => node.name === params.name);
-      reloadChart(chartStore.sunburstOptionLevel1, data, color);
-      return;
-    } else if (level === 2) {
-      // Sunburst Second Graph Click Dimension
-      chart.clear();
-      chart.setOption(chartStore.sunburstOptionLevel0);
-      return;
-    } else if (level === 3 && chartStore.sunburstCategory.has(params.name)) {
-      // Sunburst First Graph && Second Graph Click Category
-      let color = params.color;
-      let dimension = params.treePathInfo[1];
-      let dimensionData = chartStore.sunburstData.find(
-        (node: any) => node.name === dimension.name,
-      );
-      let data = dimensionData?.children?.find((node: any) => node.name === params.name);
-      reloadChart(chartStore.sunburstOptionLevel2, data, color);
-      return;
-    }
+  if (indicatorStore.indicatorType === "basic") return;
+  if (!params.data) return;
+
+  const level = params.treePathInfo.length;
+  const chart = chartRef.value;
+
+  if (level === 2 && chartStore.sunburstCategory.has(params.name)) {
+    // Sunburst Second Graph Click Category
+    let dimensionData = chartStore.sunburstData.find(
+      (node: any) => node.name === chartStore.sunburstColorSet[params.color]
+    );
+    reloadChart(chartStore.sunburstOptionLevel1, dimensionData, params.color);
+  } else if (level === 2 && params.value < 15) {
+    // Sunburst First Graph Click Dimension
+    let data = chartStore.sunburstData.find((node: any) => node.name === params.name);
+    reloadChart(chartStore.sunburstOptionLevel1, data, params.color);
+  } else if (level === 2) {
+    // Sunburst Second Graph Click Dimension
+    chart.setOption(chartStore.sunburstOptionLevel0);
+  } else if (level === 3 && chartStore.sunburstCategory.has(params.name)) {
+    // Sunburst First Graph && Second Graph Click Category
+    let dimension = params.treePathInfo[1];
+    let dimensionData = chartStore.sunburstData.find(
+      (node: any) => node.name === dimension.name
+    );
+    let data = dimensionData?.children?.find((node: any) => node.name === params.name);
+    reloadChart(chartStore.sunburstOptionLevel2, data, params.color);
   }
 }
+
 // Reload chart option
 function reloadChart(option: any, data?: any, color?: string): void {
   if (data !== undefined && color !== undefined) {
     option.series.data = [data];
     option.color = color;
   }
-  chart.clear();
-  chart.setOption(option);
+  chartRef.value?.setOption(option);
 }
-function setOption() {
-  if (indicatorStore.indicatorType === "basic")
-    chart.setOption(chartStore.sunburstBasicOption);
-  else {
-    chart.setOption(chartStore.sunburstOptionLevel0);
-    chart.on("click", (params: any) => handleSunburstClick(params));
-  }
-}
-const initChart = (): void => {
-  chart = echarts.init(chartContainer.value);
-  setOption();
-};
-// Make the chart resizable
-const addResizeObserver = () => {
-  if (chartContainer.value) {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        const { width, height } = entry.contentRect;
-        if (width > defaultWidth && height > defaultHeight) {
-          chart.resize();
-        }
-      }
-    });
-    resizeObserver.observe(chartContainer.value);
-  }
-};
+
 // watch the changes of language
 watch(locale, () => {
-  const option = getChartOption();
-  chart.clear();
-  reloadChart(option);
+  chartRef.value?.setOption(chartOption.value);
 });
-onMounted(() => {
-  if (!chartContainer.value) return;
-  window.addEventListener("storage", (event) => {
-    if (event.key === "indicatorType") {
-      // Update the indicatorType in the store when it changes in localStorage
-      indicatorStore.indicatorType = event.newValue as "basic" | "total";
-    }
-  });
-  initChart();
-  addResizeObserver();
+
+// Listen for localStorage changes
+window.addEventListener("storage", (event) => {
+  if (event.key === "indicatorType") {
+    indicatorStore.indicatorType = event.newValue as "basic" | "total";
+  }
 });
 </script>
+
 <template>
   <div class="btn-group" role="group">
     <div class="d-flex align-items-center gap-2">
@@ -142,18 +116,29 @@ onMounted(() => {
         <button class="btn btn-warning" @click="switchGraphType">
           <i class="bi bi-arrow-repeat">
             {{ $t("indicatorChart.buttons.switch") }}
-            {{ $t("indicatorChart.graphTypes." + switchGraph) }}</i
-          >
+            {{ $t("indicatorChart.graphTypes." + switchGraph) }}</i>
         </button>
       </div>
       <language-switcher></language-switcher>
     </div>
   </div>
+  
   <!-- Download Chart Modal -->
-  <chart-download-modal v-model:show="showModal" :chart="chart" />
+  <chart-download-modal 
+    v-model:show="showModal" 
+    :chart="chartRef" 
+  />
+  
   <!-- Chart -->
-  <div ref="chartContainer" class="chart-container"></div>
+  <v-chart
+    ref="chartRef"
+    class="chart-container"
+    :option="chartOption"
+    @click="handleSunburstClick"
+    autoresize
+  />
 </template>
+
 <style scoped>
 .chart-container {
   width: 100%;

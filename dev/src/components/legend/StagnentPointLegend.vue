@@ -1,11 +1,18 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-const { t, locale } = useI18n();
-import * as echarts from "echarts";
+import { use } from "echarts/core";
+import { VisualMapComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import VChart from "vue-echarts";
 
-const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
+// Register necessary ECharts components
+use([
+  CanvasRenderer,
+  VisualMapComponent
+]);
+
+const { t } = useI18n();
 
 const option = computed(() => {
   return {
@@ -38,20 +45,12 @@ const option = computed(() => {
     },
   };
 });
-
-const initChart = () => {
-  chart = echarts.init(chartContainer.value!);
-  chart.setOption(option.value);
-};
-// Reload the chart when the language changes
-watch(locale, () => {
-  chart.setOption(option.value);
-});
-onMounted(() => {
-  initChart();
-});
 </script>
-<template><div ref="chartContainer" class="chart-container"></div></template>
+
+<template>
+  <v-chart class="chart-container" :option="option" autoresize />
+</template>
+
 <style scoped>
 .chart-container {
   width: 230px;

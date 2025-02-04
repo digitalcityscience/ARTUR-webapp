@@ -1,17 +1,23 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-const { t, locale } = useI18n();
-import * as echarts from "echarts";
+import { use } from "echarts/core";
+import { VisualMapComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import VChart from "vue-echarts";
 
-const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
+use([
+  CanvasRenderer,
+  VisualMapComponent
+]);
+
+const { t } = useI18n();
 
 const option = computed(() => {
   return {
     title: {
       text: t("legend.waterNetwork.name"),
-      left: 0, // Position
+      left: 0,
       top: 0,
       textStyle: {
         color: "#3d3d3d",
@@ -24,34 +30,26 @@ const option = computed(() => {
       max: 0.42,
       precision: 2,
       inRange: {
-        color: ["#313695", "#5DE2E7", "#7DDA58", "#FFDE59", "#D73027"], // Gradient colors
+        color: ["#313695", "#5DE2E7", "#7DDA58", "#FFDE59", "#D73027"],
       },
-      text: [t("legend.waterNetwork.minAxis"), t("legend.waterNetwork.maxAxis")], // Labels on the bar
+      text: [t("legend.waterNetwork.minAxis"), t("legend.waterNetwork.maxAxis")],
       textStyle: {
         color: "#000",
         fontSize: 10,
       },
       orient: "horizontal",
-      left: 0, // Position
+      left: 0,
       bottom: 0,
     },
-    series: [], // No actual data; just displaying the color bar
+    series: [],
   };
 });
-
-const initChart = () => {
-  chart = echarts.init(chartContainer.value!);
-  chart.setOption(option.value);
-};
-// Reload the chart when the language changes
-watch(locale, () => {
-  chart.setOption(option.value);
-});
-onMounted(() => {
-  initChart();
-});
 </script>
-<template><div ref="chartContainer" class="chart-container"></div></template>
+
+<template>
+  <v-chart class="chart-container" :option="option" autoresize />
+</template>
+
 <style scoped>
 .chart-container {
   width: 320px;

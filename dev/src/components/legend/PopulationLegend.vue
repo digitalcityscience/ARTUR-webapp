@@ -1,17 +1,23 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import * as echarts from "echarts";
+import { use } from "echarts/core";
+import { GridComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import VChart from "vue-echarts";
 import {
   populationInaccessibleColor,
   populationAccessibleColor,
 } from "@/assets/ts/constants";
 
-// Population Legend Element
-const chartContainer = ref<HTMLDivElement | null>(null);
-let chart: echarts.ECharts;
-const { locale, t } = useI18n();
-// chart Options
+// Register necessary ECharts components
+use([
+  GridComponent,
+  CanvasRenderer
+]);
+
+const { t } = useI18n();
+
 const gridData = [
   [0, 0, populationInaccessibleColor[0]],
   [0, 1, populationInaccessibleColor[1]],
@@ -24,7 +30,8 @@ const gridData = [
   [1, 3, populationAccessibleColor[3]],
   [1, 4, populationAccessibleColor[4]],
 ];
-const populationLegendOption = computed(() => {
+
+const option = computed(() => {
   return {
     grid: {
       left: "10%",
@@ -101,22 +108,15 @@ const populationLegendOption = computed(() => {
     ],
   };
 });
-// Methods
-const initChart = () => {
-  chart = echarts.init(chartContainer.value!);
-  chart.setOption(populationLegendOption.value);
-};
-// Reload the chart when the language changes
-watch(locale, () => {
-  chart.setOption(populationLegendOption.value);
-});
-// Init Chart on mounted
-onMounted(initChart);
 </script>
-<template><div ref="chartContainer" class="chart-container"></div></template>
+
+<template>
+  <v-chart class="chart-container" :option="option" autoresize />
+</template>
+
 <style scoped>
 .chart-container {
-  width: 100px;
+  width: 110px;
   height: 180px;
 }
 </style>
