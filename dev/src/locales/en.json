@@ -48,8 +48,8 @@
       "scenario": "Scenario",
       "change": "Change"
     },
-    "stagnentRainfall": {
-      "floodPoint": "Stagnent rainfall locations criticality\nby potential importance of\ndisruption to street network",
+    "stagnantRainfall": {
+      "floodPoint": "Stagnant rainfall locations criticality\nby potential importance of\ndisruption to street network",
       "streetCriticality": "Potential part of a frequently used route",
       "streetHierarchy": {
         "primary": "Primary Road",
@@ -128,7 +128,7 @@
         "healthSite": "Layer Set: Health Site",
         "sewageSystem": "Layer Set: Sewage System",
         "waterNetworkDistribution": "Layer Set: Water Network Distribution",
-        "stagnentRainfall": "Layer Set: Stagnent Rainfall"
+        "stagnantRainfall": "Layer Set: Stagnent Rainfall"
       },
       "popups": {
         "sheltersInfo": "Shelters Information",
@@ -178,10 +178,10 @@
         },
         "copyRight": "Simulation by Water Network Tool for Resilience (WNTR), which is an EPANET compatible Python package designed to simulate and analyze resilience of water distribution networks. Copyright 2023 National Technology & Engineering Solutions of Sandia, LLC (NTESS). Under the terms of Contract DE-NA0003525 with NTESS, the U.S. Government retains certain rights in this software."
       },
-      "stagnentRainfall": {
+      "stagnantRainfall": {
         "description": "Description",
         "floodPoint": "Each of the problematic points reported with flooding account their criticality based on the scores of betweenness centrality, hierarchy of street and number of intersections affected. It means that a flooded intersection with higher BC, primary street, at the intersection of more than 2 streets (for instance a roundabout) scores higher in criticality and request emergent attention.",
-        "streetHierarchy": "The street hierearchy assumed for the city correspond to the classification of streets segments of OSM and the analysis consider 4 levels of importance of streets: primary secondary tertiary and residential+others.",
+        "streetHierarchy": "The street hierarchy assumed for the city correspond to the classification of streets segments of OSM and the analysis consider 4 levels of importance of streets: primary secondary tertiary and residential+others.",
         "streetCriticality": "The analysis of the street network infers the most frequently used streets in the city by evaluating the \"normalized betweenness centrality\" following the spacy syntax theory."
       }
     },
@@ -767,7 +767,7 @@
           "capacities": [1, 1, 1, 0, 1, 0, 1, 0, 1]
         },
         "2": {
-          "name": "Vulnerability mapping and monitoring (vulnerable groups and assets, dissaster scenario analysis)",
+          "name": "Vulnerability mapping and monitoring (vulnerable groups and assets, disaster scenario analysis)",
           "capacities": [1, 1, 1, 0, 0, 0, 1, 1, 1]
         },
         "3": {
@@ -914,7 +914,7 @@
           "capacities": [1, 1, 0, 1, 1, 1, 1, 0, 0]
         },
         "8": {
-          "name": "Water managament measures",
+          "name": "Water management measures",
           "capacities": [1, 1, 0, 1, 1, 0, 1, 0, 0]
         }
       },
@@ -1422,7 +1422,7 @@
           "capacities": [1, 0, 1, 1, 1, 0, 1, 1, 1]
         },
         "3": {
-          "name": "Water managament measures",
+          "name": "Water management measures",
           "questions": {
             "1": {
               "text": "To the best of your knowledge, are there enough water storage facilities which are safe in case of an emergency?",
@@ -1456,7 +1456,7 @@
           "questions": {
             "1": {
               "text": "Is there an updated and contrasted register of damaged housing stock (public and privately owned)?",
-              "score 0": "No such activites have been carried-away or there are no updates, no quality of information is not reliable",
+              "score 0": "No such activities have been carried-away or there are no updates, no quality of information is not reliable",
               "score 1": "<50% registered, updated and confirmed",
               "score 2": ">50% registered, updated and confirmed",
               "score 3": "100% registered, updated and confirmed"

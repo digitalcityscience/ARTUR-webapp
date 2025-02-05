@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import { LControl } from "@vue-leaflet/vue-leaflet";
 import PopulationLegend from "./legend/PopulationLegend.vue";
 import WaterPointLegend from "./legend/WaterPointLegend.vue";
-import StagnentPointLegend from "./legend/StagnentPointLegend.vue";
+import StagnantPointLegend from "./legend/StagnantPointLegend.vue";
 import StreetCriticalityLegend from "./legend/StreetCriticalityLegend.vue";
 import { CityName } from "@/assets/ts/constants";
 import { getIsochroneColor } from "@/assets/ts/functions";
@@ -112,34 +112,34 @@ const btnLegendIconClass = computed(() => {
         ></i>
         {{ $t(`layerNames.${layerStore.sewageSystemLayers.sewageLineLayer.name}`) }}
       </div>
-      <!-- Stagnent Rainfall Nikopol -->
-      <stagnent-point-legend
+      <!-- Stagnant Rainfall Nikopol -->
+      <stagnant-point-legend
         v-show="
-          layerStore.stagnentRainfallLayers.floodPointLayer.visible &&
+          layerStore.stagnantRainfallLayers.floodPointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
-      ></stagnent-point-legend>
+      ></stagnant-point-legend>
       <street-criticality-legend
         v-show="
-          layerStore.stagnentRainfallLayers.streetCriticalityLayer.visible &&
+          layerStore.stagnantRainfallLayers.streetCriticalityLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       ></street-criticality-legend>
       <div
         v-show="
-          layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible &&
+          layerStore.stagnantRainfallLayers.streetHierarchyLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       >
         <template
-          v-for="fclass in layerStore.stagnentRainfallLayers.streetHierarchyLayer.class"
+          v-for="fclass in layerStore.stagnantRainfallLayers.streetHierarchyLayer.class"
           :key="fclass"
         >
           <i
             class="polyline"
-            :style="{ background: layerStore.getStreetHierachyColor(fclass) }"
+            :style="{ background: layerStore.getStreetHierarchyColor(fclass) }"
           ></i
-          >{{ $t("legend.stagnentRainfall.streetHierarchy." + fclass) }} <br />
+          >{{ $t("legend.stagnantRainfall.streetHierarchy." + fclass) }} <br />
         </template>
       </div>
       <!-- OTHER -->

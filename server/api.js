@@ -477,7 +477,7 @@ router.get("/water-network-segment", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
-router.get("/stagnent-rainfall-point", async (req, res) => {
+router.get("/stagnant-rainfall-point", async (req, res) => {
   try {
     const query = `
       SELECT ST_AsGeoJSON(wkb_geometry) geometry,id,address,proposed_solutions,criticality FROM nikopol_stagnent_rainfall_points

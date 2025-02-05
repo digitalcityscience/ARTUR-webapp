@@ -73,7 +73,7 @@ const segmentStyle = () => {
 const getWaterNetworkPointColor = (property: any) => {
   return layerStore.getMarkerOptions(layerStore.getWaterNetworkPointColor(property), 4);
 };
-// Stagnent Rainfall Street
+// Stagnant Rainfall Street
 const streetCriticalityStyle = (feature: any) => {
   return {
     color: layerStore.getStreetCriticalityColor(feature.properties.nach),
@@ -82,7 +82,7 @@ const streetCriticalityStyle = (feature: any) => {
 };
 const streetHierarchyStyle = (feature: any) => {
   return {
-    color: layerStore.getStreetHierachyColor(feature.properties.fclass),
+    color: layerStore.getStreetHierarchyColor(feature.properties.fclass),
     weight: 1,
     opacity: 0.7,
   };
@@ -289,12 +289,12 @@ watch(
       >
       </l-circle-marker>
     </l-feature-group>
-    <!-- NIKOPOL Street Hierachy -->
+    <!-- NIKOPOL Street Hierarchy -->
     <l-geo-json
       v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.STREETHIERARCHY"
       :geojson="geoDataStore.geojsonData.streetHierarchy"
-      :visible="layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible"
+      :visible="layerStore.stagnantRainfallLayers.streetHierarchyLayer.visible"
       layer-type="overlay"
       :options-style="streetHierarchyStyle"
     ></l-geo-json>
@@ -303,7 +303,7 @@ watch(
       v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.STREETCRITICALITY"
       :geojson="geoDataStore.geojsonData.streetCriticality"
-      :visible="layerStore.stagnentRainfallLayers.streetCriticalityLayer.visible"
+      :visible="layerStore.stagnantRainfallLayers.streetCriticalityLayer.visible"
       layer-type="overlay"
       :options-style="streetCriticalityStyle"
     ></l-geo-json>
@@ -312,7 +312,7 @@ watch(
       v-if="geoDataStore.city === CityName.NIKOPOL"
       :name="LayerName.FLOODPOINT"
       layer-type="overlay"
-      :visible="layerStore.stagnentRainfallLayers.floodPointLayer.visible"
+      :visible="layerStore.stagnantRainfallLayers.floodPointLayer.visible"
     >
       <l-circle-marker
         v-for="(feature, index) in geoDataStore.geojsonData.floodPoint!.features"

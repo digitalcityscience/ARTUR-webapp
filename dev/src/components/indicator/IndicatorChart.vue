@@ -8,7 +8,7 @@ import {
   TooltipComponent,
   LegendComponent 
 } from "echarts/components";
-import VChart, { THEME_KEY } from "vue-echarts";
+import VChart from "vue-echarts";
 import LanguageSwitcher from "@/components/sidebar/LanguageSwitcher.vue";
 import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
 import { GraphTypes } from "@/assets/ts/constants";

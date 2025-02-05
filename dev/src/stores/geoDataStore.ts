@@ -176,7 +176,7 @@ const useGeoDataStore = defineStore("map", () => {
               }),
           );
           promises.push(
-            fetch(`/api/stagnent-rainfall-point`)
+            fetch(`/api/stagnant-rainfall-point`)
               .then((res) => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();

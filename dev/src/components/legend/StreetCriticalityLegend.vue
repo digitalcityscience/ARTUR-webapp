@@ -17,7 +17,7 @@ const { t } = useI18n();
 const option = computed(() => {
   return {
     title: {
-      text: t("legend.stagnentRainfall.streetCriticality"),
+      text: t("legend.stagnantRainfall.streetCriticality"),
       left: 0,
       top: 0,
       textStyle: {

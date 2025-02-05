@@ -112,8 +112,8 @@ const useLayerStore = defineStore("layer", () => {
       color: "#bdb2ff",
     },
   });
-  // Stagnent Rainfall Layer
-  const stagnentRainfallLayers = reactive<Record<string, VectorLayer>>({
+  // Stagnant Rainfall Layer
+  const stagnantRainfallLayers = reactive<Record<string, VectorLayer>>({
     floodPointLayer: {
       name: LayerName.FLOODPOINT,
       visible: false,
@@ -188,7 +188,7 @@ const useLayerStore = defineStore("layer", () => {
 
     return `rgb(${r}, ${g}, ${b})`;
   };
-  const getStreetHierachyColor = (fclass: string): string => {
+  const getStreetHierarchyColor = (fclass: string): string => {
     switch (true) {
       case fclass == "primary":
         return "red";
@@ -235,12 +235,12 @@ const useLayerStore = defineStore("layer", () => {
     healthSiteLayers,
     waterNetworkLayers,
     sewageSystemLayers,
-    stagnentRainfallLayers,
+    stagnantRainfallLayers,
     selectedWaterScenario,
     getWaterNetworkPointColor,
     getRainfallPointColor,
     getStreetCriticalityColor,
-    getStreetHierachyColor,
+    getStreetHierarchyColor,
     getMarkerOptions,
     highlightPoint,
     resetHighlight,

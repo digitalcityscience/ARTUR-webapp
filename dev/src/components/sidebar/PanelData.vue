@@ -288,17 +288,17 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 <button
                   class="btn btn-outline-success btn-layer-set"
                   data-bs-toggle="collapse"
-                  data-bs-target="#stagnent-rainfall-layer-set"
+                  data-bs-target="#stagnant-rainfall-layer-set"
                   aria-expanded="false"
                 >
-                  {{ $t(`sidebar.dataPanel.sets.stagnentRainfall`) }}
+                  {{ $t(`sidebar.dataPanel.sets.stagnantRainfall`) }}
                 </button>
-                <div id="stagnent-rainfall-layer-set" class="collapse">
+                <div id="stagnant-rainfall-layer-set" class="collapse">
                   <!-- layers -->
                   <ul class="form-check list-unstyled mb-2">
                     <li
                       class="mb-1"
-                      v-for="overlay in layerStore.stagnentRainfallLayers"
+                      v-for="overlay in layerStore.stagnantRainfallLayers"
                       :key="overlay.name"
                     >
                       <input
@@ -319,40 +319,40 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                       <h6
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#sidebar-dataPanel-stagnent-rainfall-analysis-description"
+                        data-bs-target="#sidebar-dataPanel-stagnant-rainfall-analysis-description"
                         aria-expanded="true"
                         class="btn btn-outline-secondary text-uppercase"
                       >
-                        {{ $t("sidebar.dataPanel.stagnentRainfall.description") }}
+                        {{ $t("sidebar.dataPanel.stagnantRainfall.description") }}
                       </h6>
                       <ul
-                        id="sidebar-dataPanel-stagnent-rainfall-analysis-description"
+                        id="sidebar-dataPanel-stagnant-rainfall-analysis-description"
                         class="collapse show lh-sm fs-6 ps-0"
                       >
                         <li
                           v-show="
-                            layerStore.stagnentRainfallLayers.floodPointLayer.visible
+                            layerStore.stagnantRainfallLayers.floodPointLayer.visible
                           "
                         >
                           <strong>{{ $t("layerNames.floodPoint") }}:</strong>
-                          {{ $t("sidebar.dataPanel.stagnentRainfall.floodPoint") }}
+                          {{ $t("sidebar.dataPanel.stagnantRainfall.floodPoint") }}
                         </li>
                         <li
                           v-show="
-                            layerStore.stagnentRainfallLayers.streetHierarchyLayer.visible
+                            layerStore.stagnantRainfallLayers.streetHierarchyLayer.visible
                           "
                         >
                           <strong>{{ $t("layerNames.streetHierarchy") }}:</strong>
-                          {{ $t("sidebar.dataPanel.stagnentRainfall.streetHierarchy") }}
+                          {{ $t("sidebar.dataPanel.stagnantRainfall.streetHierarchy") }}
                         </li>
                         <li
                           v-show="
-                            layerStore.stagnentRainfallLayers.streetCriticalityLayer
+                            layerStore.stagnantRainfallLayers.streetCriticalityLayer
                               .visible
                           "
                         >
                           <strong>{{ $t("layerNames.streetCriticality") }} -</strong>
-                          {{ $t("sidebar.dataPanel.stagnentRainfall.streetCriticality") }}
+                          {{ $t("sidebar.dataPanel.stagnantRainfall.streetCriticality") }}
                         </li>
                       </ul>
                     </li>
