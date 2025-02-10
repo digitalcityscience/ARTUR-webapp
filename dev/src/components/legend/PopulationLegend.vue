@@ -62,7 +62,7 @@ const option = computed(() => {
     },
     yAxis: {
       type: "category",
-      name: t("legend.population.population") + " / km\u00B2",
+      name: t("legend.population.population") ,
       nameLocation: "middle",
       nameGap: 25,
       data: ["5", "15", "25", "35", ">35"],
