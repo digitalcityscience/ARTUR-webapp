@@ -201,7 +201,7 @@ router.get("/population/:city", async (req, res) => {
   const city = req.params.city;
   try {
     const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_population_polygon`,
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry,value,access,count FROM ${city}_population_polygon`,
     );
     const features = rows.map((row) => ({
       type: "Feature",
@@ -211,8 +211,8 @@ router.get("/population/:city", async (req, res) => {
     let accessible = 0,
       inaccessible = 0;
     rows.forEach((row) => {
-      if (row.access) accessible += row.value;
-      else inaccessible += row.value;
+      if (row.access) accessible += row.value * row.count;
+      else inaccessible += row.value * row.count;
     });
     res.json({
       type: "FeatureCollection",
@@ -307,7 +307,7 @@ router.get("/hospital-auto-population/:city", async (req, res) => {
   const city = req.params.city;
   try {
     const { rows } = await pool.query(
-      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry, value, access FROM ${city}_hospital_auto_population`,
+      `SELECT ST_AsGeoJSON(wkb_geometry) as geometry,value,access,count FROM ${city}_hospital_auto_population`,
     );
     const features = rows.map((row) => ({
       type: "Feature",
@@ -321,8 +321,8 @@ router.get("/hospital-auto-population/:city", async (req, res) => {
     let accessible = 0,
       inaccessible = 0;
     rows.forEach((row) => {
-      if (row.access) accessible += row.value;
-      else inaccessible += row.value;
+      if (row.access) accessible += row.value * row.count;
+      else inaccessible += row.value * row.count;
     });
     res.json({
       type: "FeatureCollection",

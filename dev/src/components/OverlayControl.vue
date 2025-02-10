@@ -6,9 +6,10 @@ import {
   LTooltip,
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
-import { type Layer } from "leaflet";
-import { watch } from "vue";
 import LegendControl from "@/components/LegendControl.vue";
+import type {  Layer , LatLng, Tooltip} from "leaflet";
+import * as L from "leaflet";
+import { watch } from "vue";
 import { getIsochroneColor, getPopulationColor } from "@/assets/ts/functions";
 import { CityName, LayerName } from "@/assets/ts/constants";
 import useGeoDataStore from "@/stores/geoDataStore";
@@ -40,10 +41,35 @@ const populationStyle = (feature: any) => {
   };
 };
 const onEachPopulationFeature = (feature: any, layer: Layer) => {
+  let tooltip: Tooltip | null = null;
   const content = `<span>${t("legend.population.population")}: ${
     feature.properties.value
   }</span>`;
-  layer.bindTooltip(content);
+  
+  layer.on("mousemove", (e: any) => {
+    // Remove existing tooltip if it exists
+    if (tooltip) {
+      tooltip.remove();
+    }
+
+    // Create a new tooltip and position it at the mouse pointer
+    tooltip = L.tooltip({
+      permanent: false, // Tooltip should only show when hovering
+      direction: "top",
+      offset: L.point(0, -10), // Slightly adjust tooltip position
+    })
+      .setLatLng(e.latlng as LatLng)
+      .setContent(content) // Display feature ID or any property
+      .addTo(geoDataStore.map); // Add to map (non-null assertion)
+
+    // Cleanup tooltip when mouse leaves
+    layer.on("mouseout", () => {
+      if (tooltip) {
+        tooltip.remove();
+        tooltip = null;
+      }
+    });
+  });
 };
 // Health Site Point Layer Settings
 const healthSiteIsochroneStyle = (feature: any) => {
