@@ -124,7 +124,6 @@ const closeModal = () => {
       </div>
     </div>
   </div>
-  <div class="modal-backdrop fade show" v-show="show"></div>
 </template>
 <style scoped>
 .modal {

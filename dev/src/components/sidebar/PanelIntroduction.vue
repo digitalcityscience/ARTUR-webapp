@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import useSidebarStore from "@/stores/sidebarStore";
 import useGeoDataStore from "@/stores/geoDataStore";
-import languageSwitcher from "./LanguageSwitcher.vue";
+import languageSwitcher from "../chart/LanguageSwitcher.vue";
 import { cities, CityName } from "@/assets/ts/constants";
 import { useI18n } from "vue-i18n";
 

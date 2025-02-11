@@ -114,19 +114,19 @@ const btnLegendIconClass = computed(() => {
       </div>
       <!-- Stagnant Rainfall Nikopol -->
       <stagnant-point-legend
-        v-show="
+        v-if="
           layerStore.stagnantRainfallLayers.floodPointLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       ></stagnant-point-legend>
       <street-criticality-legend
-        v-show="
+        v-if="
           layerStore.stagnantRainfallLayers.streetCriticalityLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "
       ></street-criticality-legend>
       <div
-        v-show="
+        v-if="
           layerStore.stagnantRainfallLayers.streetHierarchyLayer.visible &&
           mapStore.city === CityName.NIKOPOL
         "

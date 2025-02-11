@@ -2,9 +2,9 @@
 import { onMounted, ref, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import * as echarts from "echarts";
-import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
+import ChartDownloadModal from "@/components/chart/ChartDownloadModal.vue";
 import useChartStore from "@/stores/indicatorChartStore";
-import LanguageSwitcher from "./LanguageSwitcher.vue";
+import LanguageSwitcher from "../chart/LanguageSwitcher.vue";
 
 // Text data
 const sections = ref([

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { ref, watch, onMounted, computed } from "vue";
-import LanguageSwitcher from "./LanguageSwitcher.vue";
-import RadarChart from "./RadarChart.vue";
+import LanguageSwitcher from "../chart/LanguageSwitcher.vue";
+import IndicatorChart from "../chart/IndicatorChart.vue";
+import RadarChart from "../chart/RadarChart.vue";
 import useIndicatorStore from "@/stores/indicatorStore";
 import useRadarChartStore from "@/stores/radarChartStore";
 import { useI18n } from "vue-i18n";
@@ -14,20 +15,12 @@ const translations = computed(
   () => messages.value[locale.value].initialIndicators as any,
 );
 const showedIndicator = ref("");
+const showIndicatorChart = ref(false);
+
 // Open the Indicator Selection Window
 const openIndicatorSelection = (type: "basic" | "total"): void => {
-  const mainWinWidth = window.innerWidth;
-  const mainWinHeight = window.innerHeight;
-  const newWinWidth = 1000;
-  const newWinHeight = 1000;
-  const leftOffset = (mainWinWidth - newWinWidth) / 2;
-  const topOffset = (mainWinHeight - newWinHeight) / 2;
   indicatorStore.indicatorType = type;
-  window.open(
-    "/indicator-selection-popup.html",
-    "",
-    `left=${leftOffset},top=${topOffset},width=${newWinWidth},height=${newWinHeight}`,
-  );
+  showIndicatorChart.value = true;
 };
 // Delete the selected indicator and save the deleted indicator name in Local Storage
 function deleteSelection(indicator: string) {}
@@ -208,8 +201,9 @@ onMounted(radarChartStore.fetchIndicatorData);
       </ul>
     </div>
   </div>
+  <indicator-chart v-if="showIndicatorChart" @close="showIndicatorChart = false" />
   <!-- Radar Modal -->
-  <div v-if="radarChartStore.showRadarModal">
+  <div v-show="radarChartStore.showRadarModal">
     <div class="modal-backdrop fade show"></div>
     <div
       class="modal fade show"
@@ -243,7 +237,7 @@ onMounted(radarChartStore.fetchIndicatorData);
     </div>
   </div>
   <!-- Questionnaire Modal -->
-  <div v-if="showQuestionnaireModal">
+  <div v-show="showQuestionnaireModal">
     <div
       class="modal fade show"
       id="questionnaireModal"

@@ -10,7 +10,7 @@ import {
 import { CanvasRenderer } from "echarts/renderers";
 import VChart from "vue-echarts";
 import useRadarChartStore from "@/stores/radarChartStore";
-import ChartDownloadModal from "@/components/indicator/ChartDownloadModal.vue";
+import ChartDownloadModal from "@/components/chart/ChartDownloadModal.vue";
 
 // Register necessary ECharts components
 use([
