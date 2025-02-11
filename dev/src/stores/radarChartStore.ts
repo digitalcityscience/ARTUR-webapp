@@ -21,17 +21,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   const indicatorData = ref<Record<string, any>>({});
   const answers = reactive<Record<string, Record<number, number | null>>>({}); // Store user answers
   const showDownloadModal = ref(false);
-  // Fetch Indicator Data
-  const fetchIndicatorData = async () => {
-    try {
-      const res = await fetch("api/capacity");
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      const data = await res.json();
-      indicatorData.value = data;
-    } catch (error) {
-      console.error("Failed to load initial data: ", error);
-    }
-  };
+
   // Resilience Scores
   const socialScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const economicScore = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -43,8 +33,70 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     Institutional: indicatorData.value.institutionalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
     Physical: indicatorData.value.physicalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
   }));
+  // Update the submitResults function to save to database
+  const saveAnswersToDatabase = async () => {
+    const answersArray: {
+      indicator_key: string;
+      question_number: number;
+      answer: number;
+    }[] = [];
+    Object.entries(answers).forEach(([indicatorKey, questions]) => {
+      Object.entries(questions).forEach(([questionNumber, answer]) => {
+        if (answer !== null) {
+          answersArray.push({
+            indicator_key: indicatorKey,
+            question_number: parseInt(questionNumber),
+            answer: answer,
+          });
+        }
+      });
+    });
+
+    try {
+      await fetch("/api/answers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          answers: answersArray as {
+            indicator_key: string;
+            question_number: number;
+            answer: number;
+          }[],
+        }),
+      });
+    } catch (error) {
+      console.error("Failed to save answers:", error);
+    }
+  };
+  // Load answers from database
+  const loadAnswersFromDatabase = async () => {
+    try {
+      const response = await fetch("/api/answers");
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = (await response.json()) as Record<string, Record<number, number>>;
+      Object.entries(data).forEach(([key, value]) => {
+        answers[key] = value;
+      });
+    } catch (error) {
+      console.error("Failed to load answers:", error);
+    }
+  };
+  // fetch capacity and load answers
+  const fetchIndicatorData = async () => {
+    try {
+      const res = await fetch("api/capacity");
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      const data = await res.json();
+      indicatorData.value = data;
+      await loadAnswersFromDatabase(); // Add this line
+    } catch (error) {
+      console.error("Failed to load initial data: ", error);
+    }
+  };
   // Dynamically calculate weighted scores for each capacity
-  const calculateScores = () => {
+  const calculateScores = async () => {
     const capacities = [
       "robustness",
       "redundancy",
@@ -98,6 +150,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         );
       });
     });
+    await saveAnswersToDatabase();
   };
   const totalCapacity = computed<number[]>(() => {
     return capacityWeight.value.Social.map(

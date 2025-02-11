@@ -64,6 +64,47 @@ router.get("/capacity", async (req, res) => {
     res.status(500).send("" + err);
   }
 });
+router.post("/answers", async (req, res) => {
+  try {
+    const { answers } = req.body;
+
+    // answers should be an array of {indicator_key, question_number, answer}
+    for (const item of answers) {
+      await pool.query(
+        `INSERT INTO indicator_answers (indicator_key, question_number, answer)
+         VALUES ($1, $2, $3)
+         ON CONFLICT (indicator_key, question_number)
+         DO UPDATE SET answer = $3`,
+        [item.indicator_key, item.question_number, item.answer],
+      );
+    }
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
+router.get("/answers", async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      "SELECT indicator_key, question_number, answer FROM indicator_answers",
+    );
+
+    const answers = rows.reduce((acc, row) => {
+      if (!acc[row.indicator_key]) {
+        acc[row.indicator_key] = {};
+      }
+      acc[row.indicator_key][row.question_number] = row.answer;
+      return acc;
+    }, {});
+
+    res.json(answers);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("" + err);
+  }
+});
 router.get("/country-boundary", async (req, res) => {
   try {
     const { rows } = await pool.query(
