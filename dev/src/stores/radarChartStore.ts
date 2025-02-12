@@ -76,9 +76,15 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       const response = await fetch("/api/answers");
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = (await response.json()) as Record<string, Record<number, number>>;
+      console.log("answer data:", data);
+      // Update answers
       Object.entries(data).forEach(([key, value]) => {
         answers[key] = value;
       });
+      // If we have answers, calculate scores
+      if (Object.keys(data).length > 0) {
+        await calculateScores();
+      }
     } catch (error) {
       console.error("Failed to load answers:", error);
     }
@@ -97,6 +103,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   };
   // Dynamically calculate weighted scores for each capacity
   const calculateScores = async () => {
+    await saveAnswersToDatabase();
     const capacities = [
       "robustness",
       "redundancy",
@@ -150,7 +157,6 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         );
       });
     });
-    await saveAnswersToDatabase();
   };
   const totalCapacity = computed<number[]>(() => {
     return capacityWeight.value.Social.map(
