@@ -2,18 +2,43 @@ import { defineStore } from "pinia";
 import { ref, computed, reactive, watch, nextTick, type WatchStopHandle } from "vue";
 import { useI18n } from "vue-i18n";
 import useIndicatorChartStore from "./indicatorChartStore";
+import ua from "@/locales/ua.json";
 
-const capacityTranslation: Record<string, string> = {
-  Міцність: "Robustness",
-  Винахідливість: "Redundancy",
-  Інклюзивність: "Inclusiveness",
-  Різноманітність: "Diversity",
-  "Адаптивність та гнучкість": "Flexibility",
-  "Створення резерву": "Resourcefulness",
-  Інтеграційність: "Integration",
-  "Рефлексивність та рефлективність": "Reflectiveness",
-  Прозорість: "Transparency",
-};
+// interfaces
+interface EChartsRadarIndicator {
+  name: string;
+  max: number;
+  min: number;
+}
+interface EChartsSeriesData {
+  name: string;
+  value: number[];
+  itemStyle: {
+    color: string;
+  };
+}
+// constants
+const CAPACITIES = [
+  "robustness",
+  "redundancy",
+  "diversity",
+  "integration",
+  "resourcefulness",
+  "inclusiveness",
+  "reflectiveness",
+  "flexibility",
+  "transparency",
+] as const;
+const capacityTranslation = generateCapacityTranslation();
+function generateCapacityTranslation(): Record<string, string> {
+  const uaCapacities = ua.echarts.capacities as Record<string, any>;
+  // Create reverse mapping: UA -> EN
+  return Object.entries(uaCapacities).reduce((acc, [engKey, uaValue]) => {
+    acc[uaValue.loc.source] = engKey;
+    return acc;
+  }, {} as Record<string, string>);
+}
+
 const useRadarChartStore = defineStore("radar-chart", () => {
   const { t, locale } = useI18n();
   const indicatorStore = useIndicatorChartStore();
@@ -33,64 +58,8 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     Institutional: indicatorData.value.institutionalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
     Physical: indicatorData.value.physicalWeight ?? [0, 0, 0, 0, 0, 0, 0, 0, 0],
   }));
-  // Update the submitResults function to save to database
-  const saveAnswersToDatabase = async () => {
-    const answersArray: {
-      indicator_key: string;
-      question_number: number;
-      answer: number;
-    }[] = [];
-    Object.entries(answers).forEach(([indicatorKey, questions]) => {
-      Object.entries(questions).forEach(([questionNumber, answer]) => {
-        if (answer !== null) {
-          answersArray.push({
-            indicator_key: indicatorKey,
-            question_number: parseInt(questionNumber),
-            answer: answer,
-          });
-        }
-      });
-    });
-
-    try {
-      await fetch("/api/answers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          answers: answersArray as {
-            indicator_key: string;
-            question_number: number;
-            answer: number;
-          }[],
-        }),
-      });
-    } catch (error) {
-      console.error("Failed to save answers:", error);
-    }
-  };
-  // Load answers from database
-  const loadAnswersFromDatabase = async () => {
-    try {
-      const response = await fetch("/api/answers");
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const data = (await response.json()) as Record<string, Record<number, number>>;
-      console.log("answer data:", data);
-      // Update answers
-      Object.entries(data).forEach(([key, value]) => {
-        answers[key] = value;
-      });
-      // If we have answers, calculate scores
-      if (Object.keys(data).length > 0) {
-        await calculateScores();
-      }
-    } catch (error) {
-      console.error("Failed to load answers:", error);
-    }
-  };
   // fetch capacity and load answers
-  const fetchIndicatorData = async () => {
+  async function fetchIndicatorData() {
     try {
       const res = await fetch("api/capacity");
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -100,21 +69,28 @@ const useRadarChartStore = defineStore("radar-chart", () => {
     } catch (error) {
       console.error("Failed to load initial data: ", error);
     }
-  };
+    // Load answers from database
+    async function loadAnswersFromDatabase() {
+      try {
+        const response = await fetch("/api/answers");
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = (await response.json()) as Record<string, Record<number, number>>;
+        // Update answers
+        Object.entries(data).forEach(([key, value]) => {
+          answers[key] = value;
+        });
+        // If we have answers, calculate scores
+        if (Object.keys(data).length > 0) {
+          await calculateScores();
+        }
+      } catch (error) {
+        console.error("Failed to load answers:", error);
+      }
+    }
+  }
   // Dynamically calculate weighted scores for each capacity
-  const calculateScores = async () => {
+  async function calculateScores() {
     await saveAnswersToDatabase();
-    const capacities = [
-      "robustness",
-      "redundancy",
-      "diversity",
-      "integration",
-      "resourcefulness",
-      "inclusiveness",
-      "reflectiveness",
-      "flexibility",
-      "transparency",
-    ];
     // Reset all scores
     socialScore.value.fill(0);
     economicScore.value.fill(0);
@@ -141,7 +117,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       if (!userAnswers) return;
 
       // Calculate scores for each capacity
-      capacities.forEach((capacity, index) => {
+      CAPACITIES.forEach((capacity, index) => {
         if (indicator[capacity] === 0) return; // Skip if capacity is not applicable
         // Sum up scores for all answered questions in this capacity
         let capacityScoreSum = 0;
@@ -157,7 +133,44 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         );
       });
     });
-  };
+    // Update the submitResults function to save to database
+    async function saveAnswersToDatabase() {
+      const answersArray: {
+        indicator_key: string;
+        question_number: number;
+        answer: number;
+      }[] = [];
+      Object.entries(answers).forEach(([indicatorKey, questions]) => {
+        Object.entries(questions).forEach(([questionNumber, answer]) => {
+          if (answer !== null) {
+            answersArray.push({
+              indicator_key: indicatorKey,
+              question_number: parseInt(questionNumber),
+              answer: answer,
+            });
+          }
+        });
+      });
+
+      try {
+        await fetch("/api/answers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            answers: answersArray as {
+              indicator_key: string;
+              question_number: number;
+              answer: number;
+            }[],
+          }),
+        });
+      } catch (error) {
+        console.error("Failed to save answers:", error);
+      }
+    }
+  }
   const totalCapacity = computed<number[]>(() => {
     return capacityWeight.value.Social.map(
       (_: any, i: number) =>
@@ -179,8 +192,8 @@ const useRadarChartStore = defineStore("radar-chart", () => {
       return Math.round(totalScore / totalCapacity.value[i]);
     });
   });
-  // Answer Intialization
-  const initializeAnswer = (indicatorKey: string, questionNumber: number[]) => {
+  // Answer Initialization
+  function initializeAnswer(indicatorKey: string, questionNumber: number[]) {
     if (!answers[indicatorKey]) {
       // Initialize the questions object for this indicator
       answers[indicatorKey] = {};
@@ -189,83 +202,16 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         answers[indicatorKey][i] = null; // Default score
       }
     }
-  };
-  // Radar chart configuration
+  }
+  /* Radar chart configuration */
   const radarChartType = ref<"dimension" | "total">("dimension");
   const dataViewButtons = computed(() => [
     t("indicatorChart.buttons.dataView"),
     t("indicatorChart.buttons.close"),
     t("indicatorChart.buttons.refresh"),
   ]);
-  interface EChartsRadarIndicator {
-    name: string;
-    max: number;
-    min: number;
-  }
-  interface EChartsSeriesData {
-    name: string;
-    value: number[];
-    itemStyle: {
-      color: string;
-    };
-  }
-  function downloadTable(headers: string[], seriesData: EChartsSeriesData[]): void {
-    const csvHeaders = ["#", ...headers];
-    const csvRows = seriesData.map((series) => [series.name, ...series.value]);
-
-    let csvContent = csvHeaders.join(",") + "\n";
-    csvRows.forEach((row) => {
-      csvContent += row.join(",") + "\n";
-    });
-
-    // 🔥 Add UTF-8 BOM to support non-ASCII characters (e.g., Ukrainian, Chinese, Arabic)
-    const utf8BOM = "\uFEFF";
-    const blob = new Blob([utf8BOM + csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `${t(
-      "sidebar.indicatorPanel.radarChart.name." + radarChartType.value,
-    )}.csv`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-  function generateTableHTML(opt: any): string {
-    const radarIndicators: EChartsRadarIndicator[] = opt.radar[0].indicator;
-    const headers: string[] = radarIndicators.map((indicator) => indicator.name);
-    const seriesData: EChartsSeriesData[] = opt.series[0].data;
-
-    const headerCells = headers
-      .map((header) => `<th scope="col" class="text-center">${header}</th>`)
-      .join("");
-
-    const rows = seriesData
-      .map((series) => {
-        const cells = series.value
-          .map((value) => `<td class="text-center">${value}</td>`)
-          .join("");
-        return `<tr><th scope="row">${series.name}</th>${cells}</tr>`;
-      })
-      .join("");
-
-    const downloadButtons = `
-    <div class="mb-3"><button id="download-csv-btn" class="btn btn-primary me-2">
-    ${t("indicatorChart.buttons.downloadTable")}</button>
-    </div>`;
-    const table = `${downloadButtons}<table class="table table-striped table-hover"><thead>
-    <tr class="table-dark"><th scope="col" class="text-center">#</th>${headerCells}</tr></thead>
-    <tbody>${rows}</tbody></table>`;
-
-    setTimeout(() => {
-      const downloadBtn = document.getElementById("download-csv-btn");
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", () => downloadTable(headers, seriesData));
-      }
-    }, 100);
-
-    return table;
-  }
-  const sharedChartConfig = computed(() => {
+  // Shared chart option
+  const sharedChartOption = computed(() => {
     return {
       title: {
         show: false,
@@ -290,7 +236,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         feature: {
           myTool1: {
             title: t("indicatorChart.buttons.download"),
-            icon: "M1344 1344q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h465l135 136q58 56 136 56t136-56l136-136h464q40 0 68 28t28 68zm-325-569q17 41-14 70l-448 448q-18 19-45 19t-45-19l-448-448q-31-29-14-70 17-39 59-39h256v-448q0-26 19-45t45-19h256q26 0 45 19t19 45v448h256q42 0 59 39z", //Copy bootstrap icon svg path, multipath use comma to seperate
+            icon: "M1344 1344q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h465l135 136q58 56 136 56t136-56l136-136h464q40 0 68 28t28 68zm-325-569q17 41-14 70l-448 448q-18 19-45 19t-45-19l-448-448q-31-29-14-70 17-39 59-39h256v-448q0-26 19-45t45-19h256q26 0 45 19t19 45v448h256q42 0 59 39z", //Copy bootstrap icon svg path, multipath use comma to separate
             onclick: function () {
               showDownloadModal.value = true;
             },
@@ -340,10 +286,66 @@ const useRadarChartStore = defineStore("radar-chart", () => {
         },
       ],
     };
+    function downloadTable(headers: string[], seriesData: EChartsSeriesData[]): void {
+      const csvHeaders = ["#", ...headers];
+      const csvRows = seriesData.map((series) => [series.name, ...series.value]);
+
+      let csvContent = csvHeaders.join(",") + "\n";
+      csvRows.forEach((row) => {
+        csvContent += row.join(",") + "\n";
+      });
+
+      // 🔥 Add UTF-8 BOM to support non-ASCII characters (e.g., Ukrainian, Chinese, Arabic)
+      const utf8BOM = "\uFEFF";
+      const blob = new Blob([utf8BOM + csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${t(
+        "sidebar.indicatorPanel.radarChart.name." + radarChartType.value,
+      )}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    function generateTableHTML(opt: any): string {
+      const radarIndicators: EChartsRadarIndicator[] = opt.radar[0].indicator;
+      const headers: string[] = radarIndicators.map((indicator) => indicator.name);
+      const seriesData: EChartsSeriesData[] = opt.series[0].data;
+
+      const headerCells = headers
+        .map((header) => `<th scope="col" class="text-center">${header}</th>`)
+        .join("");
+
+      const rows = seriesData
+        .map((series) => {
+          const cells = series.value
+            .map((value) => `<td class="text-center">${value}</td>`)
+            .join("");
+          return `<tr><th scope="row">${series.name}</th>${cells}</tr>`;
+        })
+        .join("");
+
+      const downloadButtons = `
+    <div class="mb-3"><button id="download-csv-btn" class="btn btn-primary me-2">
+    ${t("indicatorChart.buttons.downloadTable")}</button>
+    </div>`;
+      const table = `${downloadButtons}<table class="table table-striped table-hover"><thead>
+    <tr class="table-dark"><th scope="col" class="text-center">#</th>${headerCells}</tr></thead>
+    <tbody>${rows}</tbody></table>`;
+
+      setTimeout(() => {
+        const downloadBtn = document.getElementById("download-csv-btn");
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", () => downloadTable(headers, seriesData));
+        }
+      }, 100);
+
+      return table;
+    }
   });
   const radarOptionDimension = computed(() => {
     return {
-      ...sharedChartConfig.value,
+      ...sharedChartOption.value,
       series: [
         {
           name: t("sidebar.indicatorPanel.radarChart.name.dimension"),
@@ -376,7 +378,7 @@ const useRadarChartStore = defineStore("radar-chart", () => {
   });
   const radarOptionTotal = computed(() => {
     return {
-      ...sharedChartConfig.value,
+      ...sharedChartOption.value,
       series: [
         {
           name: t("sidebar.indicatorPanel.radarChart.name.total"),
