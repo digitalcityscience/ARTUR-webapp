@@ -56,249 +56,225 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                 </label>
               </li>
               <!-- layer sets -->
-              <li class="mb-1">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#shelter-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t("sidebar.dataPanel.sets.shelter") }}
-                </button>
-                <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
-                  <li
-                    class="mb-1"
-                    v-for="overlay in layerStore.shelterLayers"
-                    :key="overlay.name"
+              <div v-show="geoDataStore.city != null">
+                <li class="mb-1">
+                  <button
+                    class="btn btn-outline-success btn-layer-set"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#shelter-layer-set"
+                    aria-expanded="false"
                   >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ $t("layerNames." + overlay.name) }}
-                    </label>
-                  </li>
-                </ul>
-              </li>
-              <li class="mb-1">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#healthsite-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t("sidebar.dataPanel.sets.healthSite") }}
-                </button>
-                <ul class="form-check collapse list-unstyled" id="healthsite-layer-set">
-                  <li
-                    class="mb-1"
-                    v-for="overlay in layerStore.healthSiteLayers"
-                    :key="overlay.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ $t("layerNames." + overlay.name) }}
-                    </label>
-                    <!-- Isochrone switcher for healthSiteIsochroneLayer -->
-                    <div
-                      v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
-                      class="form-floating mt-1"
-                    >
-                      <label for="isochroneType">{{
-                        $t("sidebar.dataPanel.healthSiteIsochroneType.label")
-                      }}</label>
-                      <select
-                        v-model="selectedIsochroneType"
-                        @change="geoDataStore.setIsochroneType(selectedIsochroneType)"
-                        class="form-select form-select-sm rounded"
-                        id="isochroneType"
-                        aria-label="Isochrone Type Select"
-                      >
-                        <option value="auto">
-                          {{ $t("sidebar.dataPanel.healthSiteIsochroneType.auto") }}
-                        </option>
-                        <option value="bus">
-                          {{ $t("sidebar.dataPanel.healthSiteIsochroneType.bus") }}
-                        </option>
-                        <option value="bicycle">
-                          {{ $t("sidebar.dataPanel.healthSiteIsochroneType.bicycle") }}
-                        </option>
-                        <option value="pedestrian">
-                          {{ $t("sidebar.dataPanel.healthSiteIsochroneType.pedestrian") }}
-                        </option>
-                      </select>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li class="mb-1" v-if="geoDataStore.city === CityName.KRYVYIRIH">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#waterNetwork-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t(`sidebar.dataPanel.sets.waterNetworkDistribution`) }}
-                </button>
-                <ul class="form-check list-unstyled collapse" id="waterNetwork-layer-set">
-                  <li
-                    class="mb-1"
-                    :key="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                      :name="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                      v-model="
-                        layerStore.waterNetworkLayers.waterNetworkPointLayer.visible
-                      "
-                    />
-                    <label
-                      class="form-check-label"
-                      :for="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
-                    >
-                      {{ $t(`layerNames.waterNetwork`) }}
-                    </label>
-                  </li>
-                  <!-- Scenario Switcher -->
-                  <li class="mb-1">
-                    <div class="form-floating">
-                      <label for="water-network-scenario">{{
-                        $t("sidebar.dataPanel.waterNetwork.selectScenario")
-                      }}</label>
-                      <select
-                        v-model="layerStore.selectedWaterScenario"
-                        class="form-select form-select-sm rounded"
-                        id="water-network-scenario"
-                        aria-label="water-network-scenario-select"
-                      >
-                        <option value="0">
-                          {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 0
-                        </option>
-                        <option value="1">
-                          {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 1
-                        </option>
-                        <option value="2">
-                          {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 2
-                        </option>
-                      </select>
-                    </div>
-                  </li>
-                  <!-- Copy Right Info-->
-                  <p class="text-secondary m-1" style="font-size: 0.6rem">
-                    {{ $t("sidebar.dataPanel.waterNetwork.copyRight") }}
-                  </p>
-                  <!-- Description -->
-                  <li class="mb-1">
-                    <!-- Scenario Description -->
-                    <ul class="list-unstyled ps-0">
-                      <li class="mb-1">
-                        <h6
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#sidebar-dataPanel-water-network-scenario-description"
-                          aria-expanded="true"
-                          class="btn btn-outline-secondary text-uppercase"
-                        >
-                          {{ waterNetworkDescription.header.loc.source }}
-                          {{ layerStore.selectedWaterScenario }}
-                        </h6>
-                        <ul
-                          id="sidebar-dataPanel-water-network-scenario-description"
-                          class="collapse show lh-base font-size-sm ps-0"
-                        >
-                          <li
-                            v-for="item in waterNetworkDescription[
-                              layerStore.selectedWaterScenario
-                            ]"
-                          >
-                            {{ item.loc.source }}
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <!-- Betweenness Centrality -->
-                    <ul class="list-unstyled ps-0">
-                      <li class="mb-1">
-                        <h6
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#sidebar-dataPanel-water-network-btwcen-intro"
-                          aria-expanded="false"
-                          class="btn btn-outline-secondary text-uppercase"
-                        >
-                          {{ waterNetworkIntroduction.header.loc.source }}
-                        </h6>
-                        <ul
-                          id="sidebar-dataPanel-water-network-btwcen-intro"
-                          class="collapse lh-base font-size-sm ps-0"
-                        >
-                          <li v-for="item in waterNetworkIntroduction.introduction">
-                            {{ item.loc.source }}
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#sewage-system-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t(`sidebar.dataPanel.sets.sewageSystem`) }}
-                </button>
-                <ul
-                  class="form-check list-unstyled collapse"
-                  id="sewage-system-layer-set"
-                >
-                  <li
-                    class="mb-1"
-                    v-for="overlay in layerStore.sewageSystemLayers"
-                    :key="overlay.name"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      :id="overlay.name"
-                      :name="overlay.name"
-                      v-model="overlay.visible"
-                    />
-                    <label class="form-check-label" :for="overlay.name">
-                      {{ $t(`layerNames.${overlay.name}`) }}
-                    </label>
-                  </li>
-                </ul>
-              </li>
-              <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
-                <button
-                  class="btn btn-outline-success btn-layer-set"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#stagnant-rainfall-layer-set"
-                  aria-expanded="false"
-                >
-                  {{ $t(`sidebar.dataPanel.sets.stagnantRainfall`) }}
-                </button>
-                <div id="stagnant-rainfall-layer-set" class="collapse">
-                  <!-- layers -->
-                  <ul class="form-check list-unstyled mb-2">
+                    {{ $t("sidebar.dataPanel.sets.shelter") }}
+                  </button>
+                  <ul class="form-check collapse list-unstyled" id="shelter-layer-set">
                     <li
                       class="mb-1"
-                      v-for="overlay in layerStore.stagnantRainfallLayers"
+                      v-for="overlay in layerStore.shelterLayers"
+                      :key="overlay.name"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ $t("layerNames." + overlay.name) }}
+                      </label>
+                    </li>
+                  </ul>
+                </li>
+                <li class="mb-1">
+                  <button
+                    class="btn btn-outline-success btn-layer-set"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#healthsite-layer-set"
+                    aria-expanded="false"
+                  >
+                    {{ $t("sidebar.dataPanel.sets.healthSite") }}
+                  </button>
+                  <ul class="form-check collapse list-unstyled" id="healthsite-layer-set">
+                    <li
+                      class="mb-1"
+                      v-for="overlay in layerStore.healthSiteLayers"
+                      :key="overlay.name"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="overlay.name"
+                        :name="overlay.name"
+                        v-model="overlay.visible"
+                      />
+                      <label class="form-check-label" :for="overlay.name">
+                        {{ $t("layerNames." + overlay.name) }}
+                      </label>
+                      <!-- Isochrone switcher for healthSiteIsochroneLayer -->
+                      <div
+                        v-if="overlay.name === LayerName.HEALTHSITEISOCHRONE"
+                        class="form-floating mt-1"
+                      >
+                        <label for="isochroneType">{{
+                          $t("sidebar.dataPanel.healthSiteIsochroneType.label")
+                        }}</label>
+                        <select
+                          v-model="selectedIsochroneType"
+                          @change="geoDataStore.setIsochroneType(selectedIsochroneType)"
+                          class="form-select form-select-sm rounded"
+                          id="isochroneType"
+                          aria-label="Isochrone Type Select"
+                        >
+                          <option value="auto">
+                            {{ $t("sidebar.dataPanel.healthSiteIsochroneType.auto") }}
+                          </option>
+                          <option value="bus">
+                            {{ $t("sidebar.dataPanel.healthSiteIsochroneType.bus") }}
+                          </option>
+                          <option value="bicycle">
+                            {{ $t("sidebar.dataPanel.healthSiteIsochroneType.bicycle") }}
+                          </option>
+                          <option value="pedestrian">
+                            {{
+                              $t("sidebar.dataPanel.healthSiteIsochroneType.pedestrian")
+                            }}
+                          </option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="mb-1" v-if="geoDataStore.city === CityName.KRYVYIRIH">
+                  <button
+                    class="btn btn-outline-success btn-layer-set"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#waterNetwork-layer-set"
+                    aria-expanded="false"
+                  >
+                    {{ $t(`sidebar.dataPanel.sets.waterNetworkDistribution`) }}
+                  </button>
+                  <ul
+                    class="form-check list-unstyled collapse"
+                    id="waterNetwork-layer-set"
+                  >
+                    <li
+                      class="mb-1"
+                      :key="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :id="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                        :name="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                        v-model="
+                          layerStore.waterNetworkLayers.waterNetworkPointLayer.visible
+                        "
+                      />
+                      <label
+                        class="form-check-label"
+                        :for="layerStore.waterNetworkLayers.waterNetworkPointLayer.name"
+                      >
+                        {{ $t(`layerNames.waterNetwork`) }}
+                      </label>
+                    </li>
+                    <!-- Scenario Switcher -->
+                    <li class="mb-1">
+                      <div class="form-floating">
+                        <label for="water-network-scenario">{{
+                          $t("sidebar.dataPanel.waterNetwork.selectScenario")
+                        }}</label>
+                        <select
+                          v-model="layerStore.selectedWaterScenario"
+                          class="form-select form-select-sm rounded"
+                          id="water-network-scenario"
+                          aria-label="water-network-scenario-select"
+                        >
+                          <option value="0">
+                            {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 0
+                          </option>
+                          <option value="1">
+                            {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 1
+                          </option>
+                          <option value="2">
+                            {{ $t("sidebar.dataPanel.waterNetwork.scenario") }} 2
+                          </option>
+                        </select>
+                      </div>
+                    </li>
+                    <!-- Copy Right Info-->
+                    <p class="text-secondary m-1" style="font-size: 0.6rem">
+                      {{ $t("sidebar.dataPanel.waterNetwork.copyRight") }}
+                    </p>
+                    <!-- Description -->
+                    <li class="mb-1">
+                      <!-- Scenario Description -->
+                      <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                          <h6
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sidebar-dataPanel-water-network-scenario-description"
+                            aria-expanded="true"
+                            class="btn btn-outline-secondary text-uppercase"
+                          >
+                            {{ waterNetworkDescription.header.loc.source }}
+                            {{ layerStore.selectedWaterScenario }}
+                          </h6>
+                          <ul
+                            id="sidebar-dataPanel-water-network-scenario-description"
+                            class="collapse show lh-base font-size-sm ps-0"
+                          >
+                            <li
+                              v-for="item in waterNetworkDescription[
+                                layerStore.selectedWaterScenario
+                              ]"
+                            >
+                              {{ item.loc.source }}
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <!-- Betweenness Centrality -->
+                      <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                          <h6
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sidebar-dataPanel-water-network-btwcen-intro"
+                            aria-expanded="false"
+                            class="btn btn-outline-secondary text-uppercase"
+                          >
+                            {{ waterNetworkIntroduction.header.loc.source }}
+                          </h6>
+                          <ul
+                            id="sidebar-dataPanel-water-network-btwcen-intro"
+                            class="collapse lh-base font-size-sm ps-0"
+                          >
+                            <li v-for="item in waterNetworkIntroduction.introduction">
+                              {{ item.loc.source }}
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
+                  <button
+                    class="btn btn-outline-success btn-layer-set"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#sewage-system-layer-set"
+                    aria-expanded="false"
+                  >
+                    {{ $t(`sidebar.dataPanel.sets.sewageSystem`) }}
+                  </button>
+                  <ul
+                    class="form-check list-unstyled collapse"
+                    id="sewage-system-layer-set"
+                  >
+                    <li
+                      class="mb-1"
+                      v-for="overlay in layerStore.sewageSystemLayers"
                       :key="overlay.name"
                     >
                       <input
@@ -313,52 +289,86 @@ const selectedIsochroneType = ref<IsochroneTypeKey>("auto");
                       </label>
                     </li>
                   </ul>
-                  <!-- Description -->
-                  <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                      <h6
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#sidebar-dataPanel-stagnant-rainfall-analysis-description"
-                        aria-expanded="true"
-                        class="btn btn-outline-secondary text-uppercase"
+                </li>
+                <li class="mb-1" v-if="geoDataStore.city === CityName.NIKOPOL">
+                  <button
+                    class="btn btn-outline-success btn-layer-set"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#stagnant-rainfall-layer-set"
+                    aria-expanded="false"
+                  >
+                    {{ $t(`sidebar.dataPanel.sets.stagnantRainfall`) }}
+                  </button>
+                  <div id="stagnant-rainfall-layer-set" class="collapse">
+                    <!-- layers -->
+                    <ul class="form-check list-unstyled mb-2">
+                      <li
+                        class="mb-1"
+                        v-for="overlay in layerStore.stagnantRainfallLayers"
+                        :key="overlay.name"
                       >
-                        {{ $t("sidebar.dataPanel.stagnantRainfall.description") }}
-                      </h6>
-                      <ul
-                        id="sidebar-dataPanel-stagnant-rainfall-analysis-description"
-                        class="collapse show lh-sm fs-6 ps-0"
-                      >
-                        <li
-                          v-show="
-                            layerStore.stagnantRainfallLayers.floodPointLayer.visible
-                          "
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          :id="overlay.name"
+                          :name="overlay.name"
+                          v-model="overlay.visible"
+                        />
+                        <label class="form-check-label" :for="overlay.name">
+                          {{ $t(`layerNames.${overlay.name}`) }}
+                        </label>
+                      </li>
+                    </ul>
+                    <!-- Description -->
+                    <ul class="list-unstyled ps-0">
+                      <li class="mb-1">
+                        <h6
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#sidebar-dataPanel-stagnant-rainfall-analysis-description"
+                          aria-expanded="true"
+                          class="btn btn-outline-secondary text-uppercase"
                         >
-                          <strong>{{ $t("layerNames.floodPoint") }}:</strong>
-                          {{ $t("sidebar.dataPanel.stagnantRainfall.floodPoint") }}
-                        </li>
-                        <li
-                          v-show="
-                            layerStore.stagnantRainfallLayers.streetHierarchyLayer.visible
-                          "
+                          {{ $t("sidebar.dataPanel.stagnantRainfall.description") }}
+                        </h6>
+                        <ul
+                          id="sidebar-dataPanel-stagnant-rainfall-analysis-description"
+                          class="collapse show lh-sm fs-6 ps-0"
                         >
-                          <strong>{{ $t("layerNames.streetHierarchy") }}:</strong>
-                          {{ $t("sidebar.dataPanel.stagnantRainfall.streetHierarchy") }}
-                        </li>
-                        <li
-                          v-show="
-                            layerStore.stagnantRainfallLayers.streetCriticalityLayer
-                              .visible
-                          "
-                        >
-                          <strong>{{ $t("layerNames.streetCriticality") }} -</strong>
-                          {{ $t("sidebar.dataPanel.stagnantRainfall.streetCriticality") }}
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                          <li
+                            v-show="
+                              layerStore.stagnantRainfallLayers.floodPointLayer.visible
+                            "
+                          >
+                            <strong>{{ $t("layerNames.floodPoint") }}:</strong>
+                            {{ $t("sidebar.dataPanel.stagnantRainfall.floodPoint") }}
+                          </li>
+                          <li
+                            v-show="
+                              layerStore.stagnantRainfallLayers.streetHierarchyLayer
+                                .visible
+                            "
+                          >
+                            <strong>{{ $t("layerNames.streetHierarchy") }}:</strong>
+                            {{ $t("sidebar.dataPanel.stagnantRainfall.streetHierarchy") }}
+                          </li>
+                          <li
+                            v-show="
+                              layerStore.stagnantRainfallLayers.streetCriticalityLayer
+                                .visible
+                            "
+                          >
+                            <strong>{{ $t("layerNames.streetCriticality") }} -</strong>
+                            {{
+                              $t("sidebar.dataPanel.stagnantRainfall.streetCriticality")
+                            }}
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </div>
             </ul>
           </div>
         </li>

@@ -7,10 +7,10 @@
   "layerNames": {
     "shelter": "Shelters",
     "boundary": "Boundary",
-    "isochrone": "Shelters' Catchment Area (Pedestrian)",
+    "isochrone": "Shelter Access (Pedestrian)",
     "population": "Shelter Access (Pedestrian): Population within/outside 5 min",
     "healthSitePoint": "Health Sites",
-    "healthSiteIsochrone": "Health Sites' Catchment Area",
+    "healthSiteIsochrone": "Health Site Access",
     "healthSitePopulation": "Health Site Access (Car): Population within/outside 10 min",
     "sewageLine": "Sewage Network",
     "sewagePoint": "Sewage Network Point",
@@ -28,10 +28,8 @@
   "legend": {
     "title": "Legend",
     "isochrone": {
-      "shelter": "Shelters' Catchment Area ",
-      "healthSite": "Health Site Catchment Area - ",
-      "water": "Water Source Catchment Area ",
-      "energy": "Energy Supply Catchment Area "
+      "shelter": "Shelter Access",
+      "healthSite": "Health Site Access - "
     },
     "minute": "min",
     "kilometer": "km",
